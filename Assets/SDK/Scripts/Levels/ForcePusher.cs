@@ -30,6 +30,15 @@ namespace ThunderRoad
         [ValueDropdown(nameof(GetAllEffectID), AppendNextDrawer = true)]
 #endif
         public string effectId = "Shockwave";
+
+        public void Push(){}
+
+        public void ForcePush(){}
+
+        private void OnDrawGizmos()
+        {
+            Gizmos.DrawWireSphere(transform.position, radius);
+        }
  // ProjectCore
     }
 }
