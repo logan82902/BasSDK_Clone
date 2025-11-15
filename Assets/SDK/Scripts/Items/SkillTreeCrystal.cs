@@ -18,6 +18,7 @@ using TriInspector;
 
 namespace ThunderRoad
 {
+    [RequireComponent(typeof(Item))]
     public class SkillTreeCrystal : ThunderBehaviour
     {
         public RagdollHand hand;
