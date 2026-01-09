@@ -1,49 +1,42 @@
-﻿using UnityEngine;
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+﻿using System;
+using UnityEngine;
 using TriInspector;
+#if UNITY_EDITOR
+using UnityEditor;
 #endif
 namespace ThunderRoad
 {
+    [DrawWithTriInspector]
     [PreferBinarySerialization]
     public class IdMapArray : ScriptableObject
     {
         [Tooltip("The path to the ID map texture.")]
+        [ReadOnly]
         public string idMapPath;
         [Tooltip("The factor to scale the ID map down by.")]
-#if ODIN_INSPECTOR
         [ReadOnly]
-#endif    
         public int scale = 2;
+        [ReadOnly]
+        [HideInInspector]
         public NibbleArray nibbleArray;
         //mainly for recreating the texture from the array
-#if ODIN_INSPECTOR
         [ReadOnly]
-#endif    
         public int originalWidth;
-#if ODIN_INSPECTOR
         [ReadOnly]
-#endif    
         public int originalHeight;
-#if ODIN_INSPECTOR
         [ReadOnly]
-#endif    
         public int width;
-#if ODIN_INSPECTOR
         [ReadOnly]
-#endif    
-        public int height;        
-#if ODIN_INSPECTOR
+        public int height;
         [ShowInInspector]
         [ReadOnly]
-#endif        
         private int estimatedIDMapSize;
-#if ODIN_INSPECTOR
         [ShowInInspector]
         [ReadOnly]
-#endif        
-        private int estimatedIDMapArraySize;  
+        private int estimatedIDMapArraySize;
+        [NonSerialized]
+        [ShowInInspector]
+        [ReadOnly]
         public Texture2D debugTexture;
 
         public int GetIdAtUV(float ux, float uy)
@@ -99,11 +92,11 @@ namespace ThunderRoad
             estimatedIDMapSize = originalWidth * originalHeight * 3;
             //ID map array is 1 byte per 2 pixels
             estimatedIDMapArraySize =  nibbleArray.Length / 2;
+            //open the texture in the inspector
+#if UNITY_EDITOR
+            EditorUtility.OpenPropertyEditor(debugTexture);
+#endif
         }
 
-        private void OnValidate()
-        {
-            debugTexture = null;
-        }
     }
 }

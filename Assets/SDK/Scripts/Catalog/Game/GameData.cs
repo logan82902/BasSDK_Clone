@@ -257,12 +257,40 @@ namespace ThunderRoad
 
         public Color GetIDMapColor(int id)
         {
+            foreach (IDMapColors sc in physicMaterialIDMapColours)
+            {
+                if (sc.id == id)
+                {
+                    return sc.color;
+                }
+            }
             return Color.black;
         }
 
         public int GetIDMapId(Color color)
         {
-return 0;
+            foreach (IDMapColors sc in physicMaterialIDMapColours)
+            {
+                if (sc.color == color)
+                {
+                    return sc.id;
+                }
+            }
+            //we havent found one at this point, so we can try clamping the color to the nearest one
+            float minDistance = float.MaxValue;
+            int id = -1;
+            foreach (IDMapColors sc in physicMaterialIDMapColours)
+            {
+                Vector3 colorSample = new Vector3(sc.color.r, sc.color.g, sc.color.b);
+                Vector3 colorToCheck = new Vector3(color.r, color.g, color.b);
+                float distance = Vector3.Distance(colorSample, colorToCheck);
+                if (distance < minDistance)
+                {
+                    minDistance = distance;
+                    id = sc.id;
+                }
+            }
+            return id;
         }
 
 
@@ -419,6 +447,25 @@ return 0;
 
         public void OnCatalogRefresh()
         {
+            //check if any of the physic material id map colours have duplicate ids, or duplicate colours or are out of range
+            var duplicateIds = physicMaterialIDMapColours.GroupBy(x => x.id).Where(g => g.Count() > 1).Select(y => y.Key).ToList();
+            if (duplicateIds.Count > 0)
+            {
+                string join = string.Join(", ", duplicateIds);
+                Debug.LogError($"Duplicate ids found in physicMaterialIDMapColours: {join}");
+            }
+            var duplicateColours = physicMaterialIDMapColours.GroupBy(x => x.color).Where(g => g.Count() > 1).Select(y => y.Key).ToList();
+            if (duplicateColours.Count > 0)
+            {
+                string join = string.Join(", ", duplicateColours);
+                Debug.LogError($"Duplicate colours found in physicMaterialIDMapColours: {join}");
+            }
+            if (physicMaterialIDMapColours.Any(sc => sc.id < 0 || sc.id > 15))
+            {
+                var values = physicMaterialIDMapColours.Where(sc => sc.id is < 0 or > 15).Select(sc => sc.id);
+                string join = string.Join(", ", values);
+                Debug.LogError($"Invalid ids found in physicMaterialIDMapColours: {join}");
+            }
         }
 
 
