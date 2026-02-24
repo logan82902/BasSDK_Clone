@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 1,
+  "groupPath": "Armors",
   "levelledDrops": [
     {
       "$type": "ThunderRoad.LootTable+DropLevel, ThunderRoad",
@@ -11,6 +12,7 @@
       "drops": [
         {
           "$type": "ThunderRoad.LootTable+Drop, ThunderRoad",
+          "mergeKey": "32d00e69",
           "referenceID": "ApparelOfficerShoulder1L",
           "reference": "Item",
           "randMode": "ItemCount",
@@ -18,10 +20,13 @@
             "x": 1.0,
             "y": 1.0
           },
-          "probabilityWeight": 2.0
+          "probabilityWeight": 2.0,
+          "sensitiveContent": "None",
+          "sensitiveFilterBehaviour": "Discard"
         },
         {
           "$type": "ThunderRoad.LootTable+Drop, ThunderRoad",
+          "mergeKey": "3eea8566",
           "referenceID": "ApparelOfficerShoulder2L",
           "reference": "Item",
           "randMode": "ItemCount",
@@ -29,10 +34,13 @@
             "x": 1.0,
             "y": 1.0
           },
-          "probabilityWeight": 2.0
+          "probabilityWeight": 2.0,
+          "sensitiveContent": "None",
+          "sensitiveFilterBehaviour": "Discard"
         },
         {
           "$type": "ThunderRoad.LootTable+Drop, ThunderRoad",
+          "mergeKey": "9f6c8ce1",
           "referenceID": "ApparelOfficerShoulder1R",
           "reference": "Item",
           "randMode": "ItemCount",
@@ -40,10 +48,13 @@
             "x": 1.0,
             "y": 1.0
           },
-          "probabilityWeight": 2.0
+          "probabilityWeight": 2.0,
+          "sensitiveContent": "None",
+          "sensitiveFilterBehaviour": "Discard"
         },
         {
           "$type": "ThunderRoad.LootTable+Drop, ThunderRoad",
+          "mergeKey": "34b782ff",
           "referenceID": "ApparelOfficerShoulder2R",
           "reference": "Item",
           "randMode": "ItemCount",
@@ -51,10 +62,13 @@
             "x": 1.0,
             "y": 1.0
           },
-          "probabilityWeight": 2.0
+          "probabilityWeight": 2.0,
+          "sensitiveContent": "None",
+          "sensitiveFilterBehaviour": "Discard"
         },
         {
           "$type": "ThunderRoad.LootTable+Drop, ThunderRoad",
+          "mergeKey": "36ef9106",
           "referenceID": "ApparelOfficerShoulders1",
           "reference": "Item",
           "randMode": "ItemCount",
@@ -62,10 +76,13 @@
             "x": 1.0,
             "y": 1.0
           },
-          "probabilityWeight": 2.0
+          "probabilityWeight": 2.0,
+          "sensitiveContent": "None",
+          "sensitiveFilterBehaviour": "Discard"
         },
         {
           "$type": "ThunderRoad.LootTable+Drop, ThunderRoad",
+          "mergeKey": "1871ca1e",
           "referenceID": "ApparelOfficerShoulders2",
           "reference": "Item",
           "randMode": "ItemCount",
@@ -73,10 +90,11 @@
             "x": 1.0,
             "y": 1.0
           },
-          "probabilityWeight": 2.0
+          "probabilityWeight": 2.0,
+          "sensitiveContent": "None",
+          "sensitiveFilterBehaviour": "Discard"
         }
       ]
     }
-  ],
-  "groupPath": "Armors"
+  ]
 }

@@ -4,6 +4,7 @@ using UnityEditor;
 using UnityEngine;
 #pragma warning disable IDE0090 // Use 'new(...)'
 
+#pragma warning disable UDR0001 // Domain Reload Analyzer
 namespace ThunderRoad
 {
     //    Instead of having a window that selects the folder
@@ -25,6 +26,7 @@ namespace ThunderRoad
         static GUIStyle fontAdd = new GUIStyle();
         static GUIStyle fontSkip = new GUIStyle();
         static GUIStyle fontError = new GUIStyle();
+
 
         public static void Initialize()
         {

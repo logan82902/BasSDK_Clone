@@ -3,12 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using Newtonsoft.Json;
-
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
@@ -16,26 +11,31 @@ namespace ThunderRoad
     public class LootTable : LootTableBase, IContainerLoadable<LootTable>
     {
 
-#if ODIN_INSPECTOR
-        [ListDrawerSettings(DraggableItems = false, Expanded = true, HideAddButton = true, HideRemoveButton = true, ShowPaging = false), LabelText("Drop Levels")]
-#endif
+        [LabelText("Drop Levels")]
+        [HideReferencePicker]
+        [ListDrawerSettings(Draggable = false, HideAddButton = true, HideRemoveButton = true)]
         public List<DropLevel> levelledDrops = new List<DropLevel>();
-        private static int maxPickCount = 20;
+        private const int maxPickCount = 20;
 
-
+        
 
         [Serializable]
+        [DeclareBoxGroup("$elementName", Title = "$elementName")]
+        [DeclareVerticalGroup("$elementName/Top")]
+        [DeclareHorizontalGroup("$elementName/Top/Row")]
+        [DeclareVerticalGroup("$elementName/Bottom")]
         public class DropLevel
         {
 
-#if ODIN_INSPECTOR
-            [HorizontalGroup("$elementName/Top/Row", LabelWidth = 120), PropertyOrder(3), ShowInInspector, InlineButton("AddEntryForEachInCategory", "Add entry for each in category")]
-#endif
+            [LabelWidth(120f)]
+            [Group("$elementName/Top/Row")]
             [NonSerialized]
             public ItemData.Type itemCategory;
-#if ODIN_INSPECTOR
-            [Space, TableList(AlwaysExpanded = true), VerticalGroup("$elementName/Bottom"), PropertyOrder(4)]
-#endif
+            [Space]
+            [TableList(AlwaysExpanded = true)]
+            [HideReferencePicker]
+            [Group("$elementName/Bottom")]
+            [PropertyOrder(4)]
             public List<Drop> drops;
 
 
@@ -87,42 +87,41 @@ namespace ThunderRoad
                 RewardValue,
             }
 
-#if ODIN_INSPECTOR
-            [ValueDropdown(nameof(GetAllItemOrLootTableID)), PropertyOrder(1)]
-#endif
-            [JsonMergeKey]
+            [JsonMergeKey(MergeKeyValueProvider = nameof(GetMergeKey))]
+            [HideInInspector]
+            public string mergeKey = "";
+
+            [Dropdown(nameof(GetAllItemOrLootTableID))]
+            [PropertyOrder(1)]
             public string referenceID;
 
-#if ODIN_INSPECTOR
-            [HorizontalGroup("Reference"), PropertyOrder(0), EnumToggleButtons, HideLabel]
-#endif
+            [PropertyOrder(0)]
+            [EnumToggleButtons]
             public Reference reference = Reference.Item;
 
             [NonSerialized]
             public ItemData itemData;
             [NonSerialized]
             public LootTable lootTable;
+            [NonSerialized]
+            public BundleData bundleData;
+            [NonSerialized]
+            public SkillData skillData;
 
-#if ODIN_INSPECTOR
-            [PropertyOrder(1), HideLabel]
-#endif
+            [PropertyOrder(1)]
+            [LabelText("Drop Mode")]
             public RandMode randMode = RandMode.ItemCount;
-#if ODIN_INSPECTOR
-            [PropertyOrder(2), HideLabel]
-#endif
+            [PropertyOrder(2)]
+            [LabelText("Drop Min/Max")]
             public Vector2 minMaxRand = Vector2.one;
 
-#if ODIN_INSPECTOR
             [PropertyOrder(3)]
-#endif
             public float probabilityWeight;
 
-#if ODIN_INSPECTOR
             [PropertyOrder(4)]
             [ShowInInspector]
             [ReadOnly]
-            [ProgressBar(0, 100)]
-#endif
+            //[ProgressBar(0, 100)]
             [NonSerialized]
             public float probabilityPercent;
 
@@ -131,30 +130,37 @@ namespace ThunderRoad
             [NonSerialized]
             public float probabilityRangeTo;
 
-#if ODIN_INSPECTOR
-            public List<ValueDropdownItem<string>> GetAllItemOrLootTableID()
+            public static string GetMergeKey()
             {
-                if (reference == Reference.Item)
-                {
-                    return Catalog.GetDropdownAllID(Category.Item);
-                }
-                else
-                {
-                    return Catalog.GetDropdownAllID(Category.LootTable);
-                }
+                return Guid.NewGuid().ToString().Substring(0, 8);
             }
-#endif
+
+            public TriDropdownList<string> GetAllItemOrLootTableID()
+            {
+                return reference switch
+                {
+                    Reference.Item => Catalog.GetDropdownAllID(Category.Item),
+                    Reference.Bundle => Catalog.GetDropdownAllID(Category.Bundle),
+                    Reference.Skill => Catalog.GetDropdownAllID(Category.Skill),
+                    Reference.Table => Catalog.GetDropdownAllID(Category.LootTable)
+                };
+            }
 
             public enum Reference
             {
                 Item,
                 Table,
+                Skill,
+                Bundle
             }
 
             public Drop Clone()
             {
                 return MemberwiseClone() as Drop;
             }
+
+            public BuildSettings.ContentFlag sensitiveContent = BuildSettings.ContentFlag.None;
+            public BuildSettings.ContentFlagBehaviour sensitiveFilterBehaviour = BuildSettings.ContentFlagBehaviour.Discard;
 
         }
 

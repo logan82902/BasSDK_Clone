@@ -1,7 +1,6 @@
 ﻿using System.Collections;
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#endif
+using System.Collections.Generic;
+using TriInspector;
 using ThunderRoad.Skill.Spell;
 using UnityEngine;
 using Object = UnityEngine.Object;
@@ -9,111 +8,83 @@ using Random = UnityEngine.Random;
 
 namespace ThunderRoad.Skill.SpellMerge
 {
+    [DeclareBoxGroup("Tornado", Title = "Tornado")]
+    [DeclareBoxGroup("Preview", Title = "Preview")]
+    [DeclareBoxGroup("Hand Gesture", Title = "Hand Gesture")]
+    [DeclareBoxGroup("Force", Title = "Force")]
+    [DeclareBoxGroup("Bolts", Title = "Bolts")]
     public class SpellMergeGravnado : SpellMergeData
     {
-#if ODIN_INSPECTOR
-        [BoxGroup("Tornado"), ValueDropdown(nameof(GetAllEffectID))]
-#endif
+
+        [Group("Tornado")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string tornadoId;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Tornado")]
-#endif
+        [Group("Tornado")]
         public float tornadoDuration = 10f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Tornado")]
-#endif
+        [Group("Tornado")]
         public float aimDistance = 3.5f;
-        
-#if ODIN_INSPECTOR
-        [BoxGroup("Preview"), ValueDropdown(nameof(GetAllEffectID))]
-#endif
+
+        [Group("Preview")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string previewEffectId = "SpellLightningBoltZapSingle";
 
         protected EffectData previewEffectData;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Preview"), ValueDropdown(nameof(GetAllEffectID))]
-#endif
+        [Group("Preview")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string previewLoopEffectId;
         protected EffectData previewLoopEffectData;
-#if ODIN_INSPECTOR
-        [BoxGroup("Preview")]
-#endif
+        [Group("Preview")]
         public float minChargeForPreview = 0.3f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Preview")]
-#endif
+        [Group("Preview")]
         public float previewBoltDelay = 1f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Preview")]
-#endif
+        [Group("Preview")]
         public float previewZapBoltDelay = 2f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Preview")]
-#endif
+        [Group("Preview")]
         public float previewZapForce = 10f;
-        
-#if ODIN_INSPECTOR
-        [BoxGroup("Preview")]
-#endif
+
+        [Group("Preview")]
         public Gradient previewBoltGradient;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Preview"), ValueDropdown(nameof(GetAllStatusEffectID))]
-#endif
+        [Group("Preview")]
+        [Dropdown(nameof(GetAllStatusEffectID))]
         public string electrocuteStatusId = "Electrocute";
 
         protected StatusData electrocuteStatusData;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Preview"), ValueDropdown(nameof(GetAllStatusEffectID))]
-#endif
+        [Group("Preview")]
+        [Dropdown(nameof(GetAllStatusEffectID))]
         public string floatingStatusId = "Floating";
         protected StatusData floatingStatusData;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Hand Gesture")]
-#endif
+        [Group("Hand Gesture")]
         public float handSeparationMaxAngle = 45f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Force")]
-#endif
+        [Group("Force")]
         public float radius = 5f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Force")]
-#endif
+        [Group("Force")]
         public AnimationCurve radialForce = Utils.Curve(0, 1, 1, 1).Multiply(-50);
-#if ODIN_INSPECTOR
-        [BoxGroup("Force")]
-#endif
+        [Group("Force")]
         public AnimationCurve swirlForce = Utils.Curve(0, 1, 1, 1).Multiply(50);
-        
-#if ODIN_INSPECTOR
-        [BoxGroup("Force")]
-#endif
+
+        [Group("Force")]
         public AnimationCurve linearForce = Utils.Curve(0, 1, 1, 1).Multiply(50);
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Bolts"), MinMaxSlider(0, 5, true)]
-#endif
+        [Group("Bolts")]
+        [MinMaxSlider(0, 5, true)]
         public Vector2 boltDelay = new(1, 3);
-    
-#if ODIN_INSPECTOR
-        [BoxGroup("Bolts")]
-#endif
+
+        [Group("Bolts")]
         public string thunderboltId = "Thunderbolt";
 
         protected SkillThunderbolt thunderboltData;
-    
-#if ODIN_INSPECTOR
-        [BoxGroup("Bolts")]
-#endif
+
+        [Group("Bolts")]
         public float boltRadius = 10f;
     
         protected EffectData tornadoData;

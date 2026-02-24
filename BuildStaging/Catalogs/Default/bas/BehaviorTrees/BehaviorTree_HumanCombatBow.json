@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
+  "groupPath": null,
   "type": "SubTree",
   "rootNode": {
     "$type": "ThunderRoad.AI.Control.Selector, ThunderRoad",
@@ -31,10 +32,7 @@
               "weaponHandling": "TwoHanded",
               "checkAmmo": true,
               "checkInHolder": false
-            },
-            "blackboard": null,
-            "creature": null,
-            "brainData": null
+            }
           },
           {
             "$type": "ThunderRoad.AI.Decorator.AlwaysSuccess, ThunderRoad",
@@ -55,10 +53,7 @@
                 "$type": "ThunderRoad.AI.Action.HolsterItem, ThunderRoad",
                 "holsterRight": false,
                 "holsterLeft": true,
-                "waitForFinished": false,
-                "blackboard": null,
-                "creature": null,
-                "brainData": null
+                "waitForFinished": false
               }
             }
           },
@@ -81,28 +76,19 @@
                 "$type": "ThunderRoad.AI.Action.HolsterItem, ThunderRoad",
                 "holsterRight": true,
                 "holsterLeft": false,
-                "waitForFinished": false,
-                "blackboard": null,
-                "creature": null,
-                "brainData": null
+                "waitForFinished": false
               }
             }
           },
           {
             "$type": "ThunderRoad.AI.Action.SetStance, ThunderRoad",
             "stance": "Bow",
-            "onlyOnce": false,
-            "blackboard": null,
-            "creature": null,
-            "brainData": null
+            "onlyOnce": false
           },
           {
             "$type": "ThunderRoad.AI.Action.SetDefenseState, ThunderRoad",
             "parry": false,
-            "dodge": true,
-            "blackboard": null,
-            "creature": null,
-            "brainData": null
+            "dodge": true
           },
           {
             "$type": "ThunderRoad.AI.Decorator.AlwaysSuccess, ThunderRoad",
@@ -115,20 +101,14 @@
                   "target": "CurrentTarget",
                   "inputVariableName": "",
                   "checkShortestPath": false,
-                  "outputPositionVariableName": "ShootPosition",
-                  "blackboard": null,
-                  "creature": null,
-                  "brainData": null
+                  "outputPositionVariableName": "ShootPosition"
                 },
                 {
                   "$type": "ThunderRoad.AI.Get.GetShootPosition, ThunderRoad",
                   "target": "CurrentTarget",
                   "inputVariableName": "",
                   "checkShortestPath": false,
-                  "outputPositionVariableName": "ShootPosition",
-                  "blackboard": null,
-                  "creature": null,
-                  "brainData": null
+                  "outputPositionVariableName": "ShootPosition"
                 }
               ]
             }
@@ -154,10 +134,7 @@
               "weaponHandling": "TwoHanded",
               "checkAmmo": true,
               "checkInHolder": false
-            },
-            "blackboard": null,
-            "creature": null,
-            "brainData": null
+            }
           },
           {
             "$type": "ThunderRoad.AI.Control.Selector, ThunderRoad",
@@ -181,12 +158,7 @@
                   "x": 0.0,
                   "y": 0.0,
                   "z": 0.0
-                },
-                "moduleBow": null,
-                "moduleRanged": null,
-                "blackboard": null,
-                "creature": null,
-                "brainData": null
+                }
               },
               {
                 "$type": "ThunderRoad.AI.Action.MoveTo, ThunderRoad",
@@ -223,10 +195,7 @@
                 "angleMode": "None",
                 "changeAngleUntilUnobstructed": false,
                 "targetRadiusMinAngle": 0.0,
-                "targetRadiusMaxAngle": 0.0,
-                "blackboard": null,
-                "creature": null,
-                "brainData": null
+                "targetRadiusMaxAngle": 0.0
               },
               {
                 "$type": "ThunderRoad.AI.Decorator.AlwaysSuccess, ThunderRoad",
@@ -257,10 +226,7 @@
               "$type": "ThunderRoad.AI.Action.HolsterItem, ThunderRoad",
               "holsterRight": false,
               "holsterLeft": true,
-              "waitForFinished": false,
-              "blackboard": null,
-              "creature": null,
-              "brainData": null
+              "waitForFinished": false
             },
             {
               "$type": "ThunderRoad.AI.Decorator.AlwaysFailure, ThunderRoad",
@@ -270,6 +236,5 @@
         }
       }
     ]
-  },
-  "groupPath": null
+  }
 }

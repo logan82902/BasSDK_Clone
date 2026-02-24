@@ -1,11 +1,9 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using Shadowood;
+
 using TriInspector;
-#if UNITY_EDITOR && ODIN_INSPECTOR
-using Sirenix.OdinInspector.Editor;
-#endif
 
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -42,14 +40,24 @@ namespace Shadowood
     {
         public bool debug;
 
+#if UNITY_EDITOR
+        private bool IsModeRiver => mode == eMode.River;
+        private Color RiverColliderGuiColor => riverCollider != null && riverCollider.enabled ? Color.white : Color.red;
+        private Color BoundLimitGuiColor => boundLimit != null && boundLimit.enabled ? Color.white : Color.red;
+        private Color OceanSurfaceGuiColor => oceanSurface != null ? Color.white : Color.red;
+        private Color LightTargetGuiColor => lightTarget != null ? Color.white : Color.red;
+        private Color LightIntensityGuiColor => lightIntensity > 0.03f ? Color.white : Color.red;
+#endif
+
         [Space] //
         [EnumToggleButtons]
         public eMode mode = eMode.Ocean;
 
-        [ShowIf("@mode == eMode.River")] [GUIColor("@riverCollider && riverCollider.enabled ? Color.white : Color.red")]
+        [ShowIf("IsModeRiver")]
+        [GUIColor("$RiverColliderGuiColor")]
         public Collider riverCollider;
 
-        [GUIColor("@boundLimit && boundLimit.enabled ? Color.white : Color.red")]
+        [GUIColor("$BoundLimitGuiColor")]
         public BoxCollider boundLimit;
 
         public enum eMode
@@ -60,8 +68,8 @@ namespace Shadowood
 
         [Space]
         [Tooltip("Transform to follow for the surface height of the ocean")] //
-        [GUIColor("@oceanSurface ? Color.white : Color.red")]
-        //[InlineButton("FindOceanSurface")]
+        [GUIColor("$OceanSurfaceGuiColor")]
+        [InlineButton(nameof(FindOceanSurface))]
         public Transform oceanSurface;
 
         public bool watchOceanSurfaceTransform = false;
@@ -81,16 +89,20 @@ namespace Shadowood
         [ShowIf("affectUnityFog")] public float skyFogStart = 0, skyFogEnd = 100000;
         */
 
-        [Header("Light Sync")] [GUIColor("@lightTarget ? Color.white : Color.red")]
+        [Header("Light Sync")]
+        [GUIColor("$LightTargetGuiColor")]
+        [InlineButton(nameof(FindSun))]
+        [InlineButton(nameof(SyncWithLight), "Sync")]
         public Light lightTarget;
 
         public Color lightColorMult = Color.white;
         public bool copyLightIntensity = true;
 
-        [GUIColor("@lightIntensity > 0.03 ? Color.white : Color.red")]
+        [GUIColor("$LightIntensityGuiColor")]
         public float lightIntensity = 1;
 
-        [Tooltip("Multiplies the lightIntensity")] [GUIColor("@lightIntensity > 0.03 ? Color.white : Color.red")]
+        [Tooltip("Multiplies the lightIntensity")]
+        [GUIColor("$LightIntensityGuiColor")]
         public float lightIntensityExtra = 1;
 
         public const float minNearClip = 0.02f;
@@ -162,8 +174,10 @@ namespace Shadowood
             public float oceanShift;
 
 #if UNITY_EDITOR
-            [GUIColor("@nearClip > 0.01 ? Color.red : Color.white")]
+            [GUIColor("$NearClipGuiColor")]
             public float nearClip;
+
+            private Color NearClipGuiColor => nearClip > 0.01f ? Color.red : Color.white;
 #endif
         }
 
@@ -178,7 +192,7 @@ namespace Shadowood
         private static readonly int GlobalOceanOffset = Shader.PropertyToID("GlobalOceanOffset");
 
         /*
-            [GUIColor("@mirrorSurface ? Color.white : Color.red")] [InlineButton("FindMirror")]
+            [GUIColor("@mirrorSurface ? Color.white : Color.red")] [InlineButton(nameof(FindMirror))]
             public MirrorSurface mirrorSurface;
     
             public void FindMirror()
@@ -191,11 +205,16 @@ namespace Shadowood
 
         //[Range(0.00001f, 1)] public float fogDensityMult = 1;
 
-        [GUIColor("@oceanFogAsset ? Color.white : Color.red")] //
+        [GUIColor("$OceanFogAssetGuiColor")] //
+#if UNITY_EDITOR
+        [InlineButton(nameof(FindOceanFogAsset), NewLine = true)]
+#endif
         [InlineEditor]
         public OceanFogAsset oceanFogAsset;
 
 #if UNITY_EDITOR
+        private Color OceanFogAssetGuiColor => oceanFogAsset != null ? Color.white : Color.red;
+
         [Button]
         public void FindOceanFogAsset()
         {
@@ -203,6 +222,8 @@ namespace Shadowood
         }
 #endif
 
+        private bool hasBoundLimitCollider;
+        
         //public Settings _settings = Settings.kDefaultSettings;
         //public Material _skyBoxMaterial;
 
@@ -475,7 +496,7 @@ namespace Shadowood
 
         public bool TryGetWaterHeight(Vector3 point, out float waterHeight)
         {
-            if (!enabled || (boundLimit != null && !boundLimit.IsInside(point)))
+            if (!enabled || (hasBoundLimitCollider && !boundLimit.IsInside(point)))
             {
                 waterHeight = 0;
                 return false;
@@ -569,14 +590,12 @@ namespace Shadowood
             return false;
         }
 
-        /*
-            private void Start()
-            {
-                underWaterLast = -2;
-                RenderPipelineManager.beginCameraRendering -= BeginCameraRendering;
-                RenderPipelineManager.beginCameraRendering += BeginCameraRendering;
-            }
-        */
+        
+        private void Start()
+        {
+            hasBoundLimitCollider = boundLimit != null;
+        }
+        
         
         
         private void OnEnable()
@@ -865,8 +884,9 @@ namespace Shadowood
 
 namespace UnityEditor
 {
-    [CustomEditor(typeof(OceanFogController)), CanEditMultipleObjects]
-    public class OceanFogControllerEditor : OdinEditor
+    [CustomEditor(typeof(OceanFogController))]
+    [CanEditMultipleObjects]
+    public class OceanFogControllerEditor : TriInspector.Editors.TriEditor
     {
         public override void OnInspectorGUI()
         {

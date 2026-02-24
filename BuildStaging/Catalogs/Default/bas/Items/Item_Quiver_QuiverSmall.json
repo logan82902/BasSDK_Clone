@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 4,
+  "groupPath": null,
   "localizationId": "QuiverSmall",
   "displayName": "Ancient Arrow Quiver",
   "description": "Arrows created from old, restored arrowheads found commonly in Eraden.",
@@ -14,16 +15,18 @@
   "tier": 1,
   "flags": "Spinnable",
   "levelRequired": 0,
+  "type": "Quiver",
   "category": "Bows",
+  "update": "",
   "iconEffectId": null,
   "preferredItemCenter": "Mass",
   "drainImbueWhenIdle": true,
+  "forceImbueUseButton": "None",
   "prefabAddress": "Bas.Item.Ranged.QuiverSmall",
   "iconAddress": "Bas.Item.Ranged.QuiverSmall.Icon[wpn_Q01_smallquiver_arrow]",
   "closeUpIconAddress": null,
   "pooledCount": 0,
   "androidPooledCount": 0,
-  "type": "Quiver",
   "allowedStorage": "Container, SandboxAllItems",
   "despawnOnStoredInInventory": false,
   "isStackable": false,
@@ -37,6 +40,7 @@
   "mass": 1.0,
   "drag": 0.0,
   "angularDrag": 0.05,
+  "density": 1000.0,
   "focusRegenMultiplier": 1.0,
   "spellChargeSpeedPlayerMultiplier": 1.0,
   "spellChargeSpeedNPCMultiplier": 1.0,
@@ -179,18 +183,6 @@
     "preWrapMode": "ClampForever",
     "postWrapMode": "ClampForever"
   },
-  "modules": [
-    {
-      "$type": "ThunderRoad.ItemModuleStats, ThunderRoad",
-      "stats": [
-        {
-          "$type": "ThunderRoad.ItemStatString, ThunderRoad",
-          "value": "12",
-          "name": "HoldAmount"
-        }
-      ]
-    }
-  ],
   "colliderGroups": [],
   "damagers": [
     {
@@ -218,6 +210,17 @@
   ],
   "effectHinges": [],
   "whooshs": [],
-  "entityModules": [],
-  "groupPath": null
+  "modules": [
+    {
+      "$type": "ThunderRoad.ItemModuleStats, ThunderRoad",
+      "stats": [
+        {
+          "$type": "ThunderRoad.ItemStatString, ThunderRoad",
+          "value": "12",
+          "name": "HoldAmount"
+        }
+      ]
+    }
+  ],
+  "entityModules": []
 }

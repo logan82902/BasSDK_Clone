@@ -1,0 +1,100 @@
+{
+  "$type": "ThunderRoad.LootTable, ThunderRoad",
+  "id": "BundlesT4",
+  "sensitiveContent": "None",
+  "sensitiveFilterBehaviour": "Discard",
+  "version": 1,
+  "groupPath": "Rewards/Survival/Bundles",
+  "levelledDrops": [
+    {
+      "$type": "ThunderRoad.LootTable+DropLevel, ThunderRoad",
+      "dropLevel": 0,
+      "drops": [
+        {
+          "$type": "ThunderRoad.LootTable+Drop, ThunderRoad",
+          "mergeKey": "89bdacb1",
+          "referenceID": "TelekineticBundleT4",
+          "reference": "Bundle",
+          "randMode": "ItemCount",
+          "minMaxRand": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "probabilityWeight": 1.0,
+          "sensitiveContent": "None",
+          "sensitiveFilterBehaviour": "Discard"
+        },
+        {
+          "$type": "ThunderRoad.LootTable+Drop, ThunderRoad",
+          "mergeKey": "67d078c2",
+          "referenceID": "SorceryArcherT4",
+          "reference": "Bundle",
+          "randMode": "ItemCount",
+          "minMaxRand": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "probabilityWeight": 1.0,
+          "sensitiveContent": "None",
+          "sensitiveFilterBehaviour": "Discard"
+        },
+        {
+          "$type": "ThunderRoad.LootTable+Drop, ThunderRoad",
+          "mergeKey": "01795b7c",
+          "referenceID": "PunchSorcererBundleT4",
+          "reference": "Bundle",
+          "randMode": "ItemCount",
+          "minMaxRand": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "probabilityWeight": 1.0,
+          "sensitiveContent": "None",
+          "sensitiveFilterBehaviour": "Discard"
+        },
+        {
+          "$type": "ThunderRoad.LootTable+Drop, ThunderRoad",
+          "mergeKey": "91883234",
+          "referenceID": "GrandmasterBundleT4",
+          "reference": "Bundle",
+          "randMode": "ItemCount",
+          "minMaxRand": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "probabilityWeight": 1.0,
+          "sensitiveContent": "None",
+          "sensitiveFilterBehaviour": "Discard"
+        },
+        {
+          "$type": "ThunderRoad.LootTable+Drop, ThunderRoad",
+          "mergeKey": "683cbeac",
+          "referenceID": "ChronoMasterBundleT4",
+          "reference": "Bundle",
+          "randMode": "ItemCount",
+          "minMaxRand": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "probabilityWeight": 1.0,
+          "sensitiveContent": "None",
+          "sensitiveFilterBehaviour": "Discard"
+        },
+        {
+          "$type": "ThunderRoad.LootTable+Drop, ThunderRoad",
+          "mergeKey": "d91a58f7",
+          "referenceID": "RemoteDetonatorBundleT4",
+          "reference": "Bundle",
+          "randMode": "ItemCount",
+          "minMaxRand": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "probabilityWeight": 1.0,
+          "sensitiveContent": "None",
+          "sensitiveFilterBehaviour": "Discard"
+        }
+      ]
+    }
+  ]
+}

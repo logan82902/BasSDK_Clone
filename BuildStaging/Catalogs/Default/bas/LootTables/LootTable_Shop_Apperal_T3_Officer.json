@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 1,
+  "groupPath": "Shop",
   "levelledDrops": [
     {
       "$type": "ThunderRoad.LootTable+DropLevel, ThunderRoad",
@@ -11,6 +12,7 @@
       "drops": [
         {
           "$type": "ThunderRoad.LootTable+Drop, ThunderRoad",
+          "mergeKey": "d8bceb35",
           "referenceID": "ApparelOfficerHelmet",
           "reference": "Item",
           "randMode": "ItemCount",
@@ -18,10 +20,13 @@
             "x": 1.0,
             "y": 1.0
           },
-          "probabilityWeight": 1.0
+          "probabilityWeight": 1.0,
+          "sensitiveContent": "None",
+          "sensitiveFilterBehaviour": "Discard"
         },
         {
           "$type": "ThunderRoad.LootTable+Drop, ThunderRoad",
+          "mergeKey": "5d872a3b",
           "referenceID": "ApparelOfficerChest",
           "reference": "Item",
           "randMode": "ItemCount",
@@ -29,10 +34,13 @@
             "x": 1.0,
             "y": 1.0
           },
-          "probabilityWeight": 1.0
+          "probabilityWeight": 1.0,
+          "sensitiveContent": "None",
+          "sensitiveFilterBehaviour": "Discard"
         },
         {
           "$type": "ThunderRoad.LootTable+Drop, ThunderRoad",
+          "mergeKey": "9a04c104",
           "referenceID": "ApparelOfficerShoulders1",
           "reference": "Item",
           "randMode": "ItemCount",
@@ -40,10 +48,13 @@
             "x": 1.0,
             "y": 1.0
           },
-          "probabilityWeight": 0.5
+          "probabilityWeight": 0.5,
+          "sensitiveContent": "None",
+          "sensitiveFilterBehaviour": "Discard"
         },
         {
           "$type": "ThunderRoad.LootTable+Drop, ThunderRoad",
+          "mergeKey": "e3a71162",
           "referenceID": "ApparelOfficerShoulders2",
           "reference": "Item",
           "randMode": "ItemCount",
@@ -51,10 +62,13 @@
             "x": 1.0,
             "y": 1.0
           },
-          "probabilityWeight": 0.5
+          "probabilityWeight": 0.5,
+          "sensitiveContent": "None",
+          "sensitiveFilterBehaviour": "Discard"
         },
         {
           "$type": "ThunderRoad.LootTable+Drop, ThunderRoad",
+          "mergeKey": "c9b1d445",
           "referenceID": "ApparelOfficerHandL",
           "reference": "Item",
           "randMode": "ItemCount",
@@ -62,10 +76,13 @@
             "x": 1.0,
             "y": 1.0
           },
-          "probabilityWeight": 1.0
+          "probabilityWeight": 1.0,
+          "sensitiveContent": "None",
+          "sensitiveFilterBehaviour": "Discard"
         },
         {
           "$type": "ThunderRoad.LootTable+Drop, ThunderRoad",
+          "mergeKey": "19c0c9f8",
           "referenceID": "ApparelOfficerHandR",
           "reference": "Item",
           "randMode": "ItemCount",
@@ -73,10 +90,13 @@
             "x": 1.0,
             "y": 1.0
           },
-          "probabilityWeight": 1.0
+          "probabilityWeight": 1.0,
+          "sensitiveContent": "None",
+          "sensitiveFilterBehaviour": "Discard"
         },
         {
           "$type": "ThunderRoad.LootTable+Drop, ThunderRoad",
+          "mergeKey": "557ab274",
           "referenceID": "ApparelOfficerLegs",
           "reference": "Item",
           "randMode": "ItemCount",
@@ -84,10 +104,13 @@
             "x": 1.0,
             "y": 1.0
           },
-          "probabilityWeight": 1.0
+          "probabilityWeight": 1.0,
+          "sensitiveContent": "None",
+          "sensitiveFilterBehaviour": "Discard"
         },
         {
           "$type": "ThunderRoad.LootTable+Drop, ThunderRoad",
+          "mergeKey": "226ad0f8",
           "referenceID": "ApparelOfficerBoots",
           "reference": "Item",
           "randMode": "ItemCount",
@@ -95,10 +118,11 @@
             "x": 1.0,
             "y": 1.0
           },
-          "probabilityWeight": 1.0
+          "probabilityWeight": 1.0,
+          "sensitiveContent": "None",
+          "sensitiveFilterBehaviour": "Discard"
         }
       ]
     }
-  ],
-  "groupPath": "Shop"
+  ]
 }

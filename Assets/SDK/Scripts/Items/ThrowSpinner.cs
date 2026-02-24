@@ -3,11 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
 using UnityEngine;
 using UnityEngine.Animations;
 

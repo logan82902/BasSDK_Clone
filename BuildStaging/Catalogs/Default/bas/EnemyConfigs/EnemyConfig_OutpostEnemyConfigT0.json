@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
+  "groupPath": null,
   "iconAddress": "Bas.Icon.EnemyConfig.Outlaws",
   "customIconColor": false,
   "iconColor": {
@@ -36,17 +37,16 @@
   "rareMixId": "ScavengerRareMix",
   "rareMeleeId": "ScavengerRareMelee",
   "rareRangedId": "ScavengerRareRanged",
+  "mixedStd": "Dungeon_Scavenger_Std_Mixed",
   "meleeOnlyStd": "Dungeon_Scavenger_Std_MeleeOnly",
   "meleeFocusedStd": "Dungeon_Scavenger_Std_MeleeFocused",
-  "mixedStd": "Dungeon_Scavenger_Std_Mixed",
   "rangedFocusedStd": "Dungeon_Scavenger_Std_RangedFocused",
+  "mixedArena": "Dungeon_Scavenger_Arena_Mixed",
   "meleeOnlyArena": "Dungeon_Scavenger_Arena_MeleeOnly",
   "meleeFocusedArena": "Dungeon_Scavenger_Arena_MeleeFocused",
-  "mixedArena": "Dungeon_Scavenger_Arena_Mixed",
   "rangedFocusedArena": "Dungeon_Scavenger_Arena_RangedFocused",
+  "mixedEnd": "Dungeon_Scavenger_End_Mixed",
   "meleeOnlyEnd": "Dungeon_Scavenger_End_MeleeOnly",
   "meleeFocusedEnd": "Dungeon_Scavenger_End_MeleeFocused",
-  "mixedEnd": "Dungeon_Scavenger_End_Mixed",
-  "rangedFocusedEnd": "Dungeon_Scavenger_End_RangedFocused",
-  "groupPath": null
+  "rangedFocusedEnd": "Dungeon_Scavenger_End_RangedFocused"
 }

@@ -1,4 +1,6 @@
-﻿namespace ThunderRoad
+﻿using System;
+
+namespace ThunderRoad
 {
     public class AirHelper : ThunderBehaviour
     {
@@ -9,7 +11,6 @@
         public event AirEvent OnAirEvent;
         public event AirEvent OnGroundEvent;
         public override ManagedLoops EnabledManagedLoops => ManagedLoops.Update;
-        public Locomotion locomotion;
         public bool inAir;
 
     }

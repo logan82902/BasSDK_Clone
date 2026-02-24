@@ -1,28 +1,21 @@
 ﻿using System.Collections;
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#endif
+
 using UnityEngine;
+using TriInspector;
 
 namespace ThunderRoad.Skill.Spell
 {
+    [DeclareBoxGroup("Boost", Title = "Boost")]
+    [DeclareBoxGroup("Vortex", Title = "Vortex")]
     public class SkillVortexJump : BoostSkillData
     {
-#if ODIN_INSPECTOR
-        [BoxGroup("Boost")]
-#endif
+        [Group("Boost")]
         public float maxAngle = 20f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Vortex")]
-#endif
+        [Group("Vortex")]
         public float radius = 2f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Vortex")]
-#endif
+        [Group("Vortex")]
         public float duration = 1f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Vortex")]
-#endif
+        [Group("Vortex")]
         public AnimationCurve forceCurve;
 
     }

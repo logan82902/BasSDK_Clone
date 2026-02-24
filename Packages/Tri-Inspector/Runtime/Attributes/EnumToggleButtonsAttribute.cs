@@ -1,4 +1,5 @@
-﻿using System;
+﻿#define SHADOWOODTRI
+using System;
 using System.Diagnostics;
 
 namespace TriInspector
@@ -7,5 +8,8 @@ namespace TriInspector
     [Conditional("UNITY_EDITOR")]
     public class EnumToggleButtonsAttribute : Attribute
     {
+#if SHADOWOODTRI
+        public int Columns { get; set; }
+#endif
     }
 }

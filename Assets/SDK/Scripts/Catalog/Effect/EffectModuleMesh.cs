@@ -2,167 +2,132 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
+using Newtonsoft.Json;
 
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+
+
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
-	public class EffectModuleMesh : EffectModule
+    [DeclareBoxGroup("General", Title = "General")]
+    [DeclareBoxGroup("Color", Title = "Color")]
+    [DeclareBoxGroup("Color (HDR)", Title = "Color (HDR)")]
+    [DeclareHorizontalGroup("Color (HDR)/MainColor")]
+    [DeclareHorizontalGroup("Color (HDR)/SecondaryColor")]
+    [DeclareBoxGroup("Color (Non HDR)", Title = "Color (Non HDR)")]
+    [DeclareHorizontalGroup("Color (Non HDR)/MainNoHdr")]
+    [DeclareHorizontalGroup("Color (Non HDR)/SecondaryNoHdr")]
+    [DeclareBoxGroup("Mesh", Title = "Mesh")]
+    public class EffectModuleMesh : EffectModule
     {
-#if ODIN_INSPECTOR
-        [BoxGroup("General")] 
-#endif
-        public new AnimationCurve intensityCurve;
-#if ODIN_INSPECTOR
-        [BoxGroup("General")] 
-#endif
+        [Group("General")]
+        public AnimationCurve intensityCurve;
+        [Group("General")]
         public float lifeTime = 5;
-#if ODIN_INSPECTOR
-        [BoxGroup("General")] 
-#endif
+        [Group("General")]
         public float refreshSpeed = 0.1f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Color")] 
-#endif
+        [Group("Color")]
         public EffectTarget linkBaseColor = EffectTarget.None;
-#if ODIN_INSPECTOR
-        [BoxGroup("Color")] 
-#endif
+        [Group("Color")]
         public EffectTarget linkTintColor = EffectTarget.None;
-#if ODIN_INSPECTOR
-        [BoxGroup("Color")] 
-#endif
+        [Group("Color")]
         public EffectTarget linkEmissionColor = EffectTarget.None;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Color")] 
-#endif
-        [NonSerialized, GradientUsage(true)]
+        [Group("Color")]
+        [NonSerialized]
+        [JsonIgnore]
+        [GradientUsage(true)]
         private Gradient mainGradient;
 
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Color"), NonSerialized, GradientUsage(true)] 
-#endif
+        [Group("Color")]
+        [NonSerialized]
+        [JsonIgnore]
+        [GradientUsage(true)]
         private Gradient secondaryGradient;
 
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Color"), NonSerialized] 
-#endif
+        [Group("Color")]
+        [NonSerialized]
+        [JsonIgnore]
         private Gradient mainGradientNoHdr;
 
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Color"), NonSerialized] 
-#endif
+        [Group("Color")]
+        [NonSerialized]
+        [JsonIgnore]
         private Gradient secondaryGradientNoHdr;
 
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Color (HDR)")]
-        [HorizontalGroup("Color (HDR)/MainColor")] 
-#endif
-        [ColorUsage(true, true), SerializeField]
+        [Group("Color (HDR)/MainColor")]
+        [ColorPickerField(Alpha = true, HDR = true)]
+        [SerializeField]
         public Color mainColorStart;
-#if ODIN_INSPECTOR
-        [HorizontalGroup("Color (HDR)/MainColor")] 
-#endif
-        [ColorUsage(true, true), SerializeField]
+        [Group("Color (HDR)/MainColor")]
+        [ColorPickerField(Alpha = true, HDR = true)]
+        [SerializeField]
         public Color mainColorEnd;
-#if ODIN_INSPECTOR
-        [HorizontalGroup("Color (HDR)/SecondaryColor")] 
-#endif
-        [ColorUsage(true, true), SerializeField]
+        [Group("Color (HDR)/SecondaryColor")]
+        [ColorPickerField(Alpha = true, HDR = true)]
+        [SerializeField]
         public Color secondaryColorStart;
-#if ODIN_INSPECTOR
-        [HorizontalGroup("Color (HDR)/SecondaryColor")] 
-#endif
-        [ColorUsage(true, true), SerializeField]
+        [Group("Color (HDR)/SecondaryColor")]
+        [ColorPickerField(Alpha = true, HDR = true)]
+        [SerializeField]
         public Color secondaryColorEnd;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Color (Non HDR)")]
-        [HorizontalGroup("Color (Non HDR)/MainNoHdr")] 
-#endif
+        [Group("Color (Non HDR)/MainNoHdr")]
         [SerializeField]
         public Color mainNoHdrColorStart;
-#if ODIN_INSPECTOR
-        [HorizontalGroup("Color (Non HDR)/MainNoHdr")] 
-#endif
+        [Group("Color (Non HDR)/MainNoHdr")]
         [SerializeField]
         public Color mainNoHdrColorEnd;
-#if ODIN_INSPECTOR
-        [HorizontalGroup("Color (Non HDR)/SecondaryNoHdr")] 
-#endif
+        [Group("Color (Non HDR)/SecondaryNoHdr")]
         [SerializeField]
         public Color secondaryNoHdrColorStart;
-#if ODIN_INSPECTOR
-        [HorizontalGroup("Color (Non HDR)/SecondaryNoHdr")] 
-#endif
+        [Group("Color (Non HDR)/SecondaryNoHdr")]
         [SerializeField]
         public Color secondaryNoHdrColorEnd;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Mesh")] 
-#endif
+        [Group("Mesh")]
         public Vector3 localScale = Vector3.one;
-#if ODIN_INSPECTOR
-        [BoxGroup("Mesh")] 
-#endif
+        [Group("Mesh")]
         public bool useSizeCurve;
-#if ODIN_INSPECTOR
-        [BoxGroup("Mesh"), ShowIf("useSizeCurve")] 
-#endif
+        [Group("Mesh")]
+        [ShowIf("useSizeCurve")]
         public AnimationCurve sizeCurve;
-#if ODIN_INSPECTOR
-        [BoxGroup("Mesh")] 
-#endif
+        [Group("Mesh")]
         public float sizeFadeDuration;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Mesh")] 
-#endif
+        [Group("Mesh")]
         public Vector3 localPosition = Vector3.zero;
-#if ODIN_INSPECTOR
-        [BoxGroup("Mesh")] 
-#endif
+        [Group("Mesh")]
         public Vector3 localRotation = Vector3.zero;
-#if ODIN_INSPECTOR
-        [BoxGroup("Mesh")] 
-#endif
+        [Group("Mesh")]
         public bool useRotationYCurve;
-#if ODIN_INSPECTOR
-        [BoxGroup("Mesh"), ShowIf("useRotationYCurve")] 
-#endif
+        [Group("Mesh")]
+        [ShowIf("useRotationYCurve")]
         public AnimationCurve rotationYCurve;
-#if ODIN_INSPECTOR
-        [BoxGroup("Mesh")] 
-#endif
+        [Group("Mesh")]
         public float rotationFadeDuration;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Mesh")] 
-#endif
+        [Group("Mesh")]
         public string meshAddress;
         [NonSerialized]
         public Mesh mesh;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Mesh"), ShowInInspector, TableList(AlwaysExpanded = true)] 
-#endif
-        public List<Materials> materials = new List<Materials>();
+        [Group("Mesh")]
+        [ShowInInspector]
+        [TableList(AlwaysExpanded = true)]
+        public List<Materials> materials = new();
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Mesh"), ShowInInspector, TableList(AlwaysExpanded = true)] 
-#endif
-        public List<MaterialProperty> materialProperties = new List<MaterialProperty>();
+        [Group("Mesh")]
+        [ShowInInspector]
+        [TableList(AlwaysExpanded = true)]
+        public List<MaterialProperty> materialProperties = new();
 
 
         public class Materials
@@ -171,9 +136,8 @@ namespace ThunderRoad
 
             public class Material : Materials 
             {
-#if ODIN_INSPECTOR
-                [ShowInInspector, ReadOnly] 
-#endif
+                [ShowInInspector]
+                [ReadOnly]
                 [NonSerialized]
                 public UnityEngine.Material value; 
             }

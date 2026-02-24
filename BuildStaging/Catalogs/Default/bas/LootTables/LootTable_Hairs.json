@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 1,
+  "groupPath": "BodyParts",
   "levelledDrops": [
     {
       "$type": "ThunderRoad.LootTable+DropLevel, ThunderRoad",
@@ -11,6 +12,7 @@
       "drops": [
         {
           "$type": "ThunderRoad.LootTable+Drop, ThunderRoad",
+          "mergeKey": "ea2f2e63",
           "referenceID": "Hair01",
           "reference": "Item",
           "randMode": "ItemCount",
@@ -18,10 +20,13 @@
             "x": 1.0,
             "y": 1.0
           },
-          "probabilityWeight": 2.0
+          "probabilityWeight": 2.0,
+          "sensitiveContent": "None",
+          "sensitiveFilterBehaviour": "Discard"
         },
         {
           "$type": "ThunderRoad.LootTable+Drop, ThunderRoad",
+          "mergeKey": "d19e8fc4",
           "referenceID": "Hair02",
           "reference": "Item",
           "randMode": "ItemCount",
@@ -29,10 +34,13 @@
             "x": 1.0,
             "y": 1.0
           },
-          "probabilityWeight": 2.0
+          "probabilityWeight": 2.0,
+          "sensitiveContent": "None",
+          "sensitiveFilterBehaviour": "Discard"
         },
         {
           "$type": "ThunderRoad.LootTable+Drop, ThunderRoad",
+          "mergeKey": "dfd7e08f",
           "referenceID": "Hair03",
           "reference": "Item",
           "randMode": "ItemCount",
@@ -40,10 +48,13 @@
             "x": 1.0,
             "y": 1.0
           },
-          "probabilityWeight": 2.0
+          "probabilityWeight": 2.0,
+          "sensitiveContent": "None",
+          "sensitiveFilterBehaviour": "Discard"
         },
         {
           "$type": "ThunderRoad.LootTable+Drop, ThunderRoad",
+          "mergeKey": "6e0a3c22",
           "referenceID": "Hair04",
           "reference": "Item",
           "randMode": "ItemCount",
@@ -51,10 +62,13 @@
             "x": 1.0,
             "y": 1.0
           },
-          "probabilityWeight": 2.0
+          "probabilityWeight": 2.0,
+          "sensitiveContent": "None",
+          "sensitiveFilterBehaviour": "Discard"
         },
         {
           "$type": "ThunderRoad.LootTable+Drop, ThunderRoad",
+          "mergeKey": "678548fb",
           "referenceID": "Hair05",
           "reference": "Item",
           "randMode": "ItemCount",
@@ -62,10 +76,13 @@
             "x": 1.0,
             "y": 1.0
           },
-          "probabilityWeight": 2.0
+          "probabilityWeight": 2.0,
+          "sensitiveContent": "None",
+          "sensitiveFilterBehaviour": "Discard"
         },
         {
           "$type": "ThunderRoad.LootTable+Drop, ThunderRoad",
+          "mergeKey": "f192dfde",
           "referenceID": null,
           "reference": "Item",
           "randMode": "ItemCount",
@@ -73,10 +90,11 @@
             "x": 1.0,
             "y": 1.0
           },
-          "probabilityWeight": 1.0
+          "probabilityWeight": 1.0,
+          "sensitiveContent": "None",
+          "sensitiveFilterBehaviour": "Discard"
         }
       ]
     }
-  ],
-  "groupPath": "BodyParts"
+  ]
 }

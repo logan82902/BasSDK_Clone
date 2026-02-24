@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 1,
+  "groupPath": "Props",
   "levelledDrops": [
     {
       "$type": "ThunderRoad.LootTable+DropLevel, ThunderRoad",
@@ -11,6 +12,7 @@
       "drops": [
         {
           "$type": "ThunderRoad.LootTable+Drop, ThunderRoad",
+          "mergeKey": "6e7bad91",
           "referenceID": "Cart_01",
           "reference": "Item",
           "randMode": "ItemCount",
@@ -18,10 +20,13 @@
             "x": 1.0,
             "y": 1.0
           },
-          "probabilityWeight": 1.0
+          "probabilityWeight": 1.0,
+          "sensitiveContent": "None",
+          "sensitiveFilterBehaviour": "Discard"
         },
         {
           "$type": "ThunderRoad.LootTable+Drop, ThunderRoad",
+          "mergeKey": "8fa82c72",
           "referenceID": "Cart_02",
           "reference": "Item",
           "randMode": "ItemCount",
@@ -29,10 +34,13 @@
             "x": 1.0,
             "y": 1.0
           },
-          "probabilityWeight": 1.0
+          "probabilityWeight": 1.0,
+          "sensitiveContent": "None",
+          "sensitiveFilterBehaviour": "Discard"
         },
         {
           "$type": "ThunderRoad.LootTable+Drop, ThunderRoad",
+          "mergeKey": "2dfd21e2",
           "referenceID": "Cart_03",
           "reference": "Item",
           "randMode": "ItemCount",
@@ -40,10 +48,13 @@
             "x": 1.0,
             "y": 1.0
           },
-          "probabilityWeight": 1.0
+          "probabilityWeight": 1.0,
+          "sensitiveContent": "None",
+          "sensitiveFilterBehaviour": "Discard"
         },
         {
           "$type": "ThunderRoad.LootTable+Drop, ThunderRoad",
+          "mergeKey": "47797fb4",
           "referenceID": "Cart_01_Forsaken",
           "reference": "Item",
           "randMode": "ItemCount",
@@ -51,10 +62,13 @@
             "x": 1.0,
             "y": 1.0
           },
-          "probabilityWeight": 0.4
+          "probabilityWeight": 0.4,
+          "sensitiveContent": "None",
+          "sensitiveFilterBehaviour": "Discard"
         },
         {
           "$type": "ThunderRoad.LootTable+Drop, ThunderRoad",
+          "mergeKey": "cf073e47",
           "referenceID": "Cart_02_Forsaken",
           "reference": "Item",
           "randMode": "ItemCount",
@@ -62,10 +76,13 @@
             "x": 1.0,
             "y": 1.0
           },
-          "probabilityWeight": 0.4
+          "probabilityWeight": 0.4,
+          "sensitiveContent": "None",
+          "sensitiveFilterBehaviour": "Discard"
         },
         {
           "$type": "ThunderRoad.LootTable+Drop, ThunderRoad",
+          "mergeKey": "5d190dab",
           "referenceID": "Cart_03_Forsaken",
           "reference": "Item",
           "randMode": "ItemCount",
@@ -73,10 +90,11 @@
             "x": 1.0,
             "y": 1.0
           },
-          "probabilityWeight": 0.4
+          "probabilityWeight": 0.4,
+          "sensitiveContent": "None",
+          "sensitiveFilterBehaviour": "Discard"
         }
       ]
     }
-  ],
-  "groupPath": "Props"
+  ]
 }

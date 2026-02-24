@@ -3,6 +3,8 @@ using UnityEngine;
 using UnityEngine.Events;
 using TriInspector;
 
+// event linkers are already set up to unsubscribe from named events + static events when they're destroyed
+#pragma warning disable UDR0005 // Domain Reload Analyzer
 namespace ThunderRoad
 {
     [HelpURL("https://kospy.github.io/BasSDK/Components/ThunderRoad/Event-Linkers/GameEventLinker.html")]
@@ -49,6 +51,7 @@ namespace ThunderRoad
         [DeclareHorizontalGroup("FromTo")]
         public class GameUnityEvent
         {
+            [AutoLabelWidth(AddedWidth = 5f)]
             public GameEvent gameEvent;
             private bool showFromTo => gameEvent == GameEvent.OnCreatureHealed
                 || gameEvent == GameEvent.OnCreatureHit
@@ -57,10 +60,12 @@ namespace ThunderRoad
                 || gameEvent == GameEvent.OnCreatureDeflect;
             [ShowIf(nameof(showFromTo))]
             [Group("FromTo")]
+            [AutoLabelWidth(AddedWidth = 5f)]
             [Tooltip("Defines the source creature for this event.")]
             public FromType from;
             [ShowIf(nameof(showFromTo))]
             [Group("FromTo")]
+            [AutoLabelWidth(AddedWidth = 5f)]
             [Tooltip("Defines the target creature for this event.")]
             public ToType to;
             public UnityEvent onActivate;

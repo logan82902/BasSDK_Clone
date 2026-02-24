@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 4,
+  "groupPath": "",
   "localizationId": "MaceLongRaktaKanabo",
   "displayName": "Great Iron",
   "description": "An armor crushing club designed to take out Elite Raike soldiers. It’s very heavy, intended to be used with gravity sorcery to lighten it.",
@@ -14,17 +15,18 @@
   "tier": 1,
   "flags": "Spinnable, Jabbing, Blunt",
   "levelRequired": 0,
-  "category": "Blunt",
+  "type": "Weapon",
+  "category": "Rakta Weapons",
   "update": "Rakta",
   "iconEffectId": "",
   "preferredItemCenter": "Mass",
   "drainImbueWhenIdle": true,
+  "forceImbueUseButton": "None",
   "prefabAddress": "Bas.Item.Melee.MaceLong.RaktaKanabo",
   "iconAddress": "Bas.Item.Melee.MaceLong.RaktaKanabo.Icon[wpn_kanabo]",
   "closeUpIconAddress": "Bas.Item.Melee.MaceLong.RaktaKanabo.IconClose[wpn_kanabo-close-up]",
   "pooledCount": 0,
   "androidPooledCount": 0,
-  "type": "Weapon",
   "allowedStorage": "Container, SandboxAllItems",
   "despawnOnStoredInInventory": false,
   "isStackable": false,
@@ -38,6 +40,7 @@
   "mass": 9.0,
   "drag": 1.0,
   "angularDrag": 0.05,
+  "density": 6000.0,
   "focusRegenMultiplier": 1.0,
   "spellChargeSpeedPlayerMultiplier": 1.0,
   "spellChargeSpeedNPCMultiplier": 1.0,
@@ -151,6 +154,45 @@
     "preWrapMode": "ClampForever",
     "postWrapMode": "ClampForever"
   },
+  "colliderGroups": [
+    {
+      "$type": "ThunderRoad.ItemData+ColliderGroup, ThunderRoad",
+      "transformName": "Blades",
+      "colliderGroupId": "BladeMace2h"
+    }
+  ],
+  "damagers": [
+    {
+      "$type": "ThunderRoad.ItemData+Damager, ThunderRoad",
+      "transformName": "Blunt",
+      "damagerID": "Mace2H"
+    },
+    {
+      "$type": "ThunderRoad.ItemData+Damager, ThunderRoad",
+      "transformName": "BluntHandle",
+      "damagerID": "HandleHeavy"
+    }
+  ],
+  "Interactables": [
+    {
+      "$type": "ThunderRoad.ItemData+Interactable, ThunderRoad",
+      "transformName": "Handle",
+      "interactableId": "ObjectHandleHeavy"
+    }
+  ],
+  "effectHinges": [],
+  "whooshs": [
+    {
+      "$type": "ThunderRoad.ItemData+Whoosh, ThunderRoad",
+      "transformName": "Whoosh",
+      "effectId": "WhooshMace",
+      "trigger": "Always",
+      "stopOnSnap": true,
+      "minVelocity": 3.0,
+      "maxVelocity": 14.0,
+      "dampening": 0.1
+    }
+  ],
   "modules": [
     {
       "$type": "ThunderRoad.ItemModuleAI, ThunderRoad",
@@ -159,7 +201,6 @@
       "weaponHandling": "TwoHanded",
       "secondaryHandling": "None",
       "weaponAttackTypes": "Swing",
-      "ignoredByDefense": false,
       "alwaysPrimary": false,
       "defaultStanceInfo": {
         "$type": "ThunderRoad.ItemModuleAI+StanceInfo, ThunderRoad",
@@ -175,33 +216,8 @@
           "stanceDataID": ""
         }
       ],
-      "rangedWeaponData": {
-        "$type": "ThunderRoad.ItemModuleAI+RangedWeaponData, ThunderRoad",
-        "ammoType": "",
-        "tooCloseDistance": 5.0,
-        "spread": {
-          "x": 1.0,
-          "y": 1.0
-        },
-        "projectileSpeed": 20.0,
-        "accountForGravity": true,
-        "weaponAimAngleOffset": {
-          "x": 0.0,
-          "y": 0.0,
-          "z": 0.0
-        },
-        "weaponHoldPositionOffset": {
-          "x": 0.0,
-          "y": 0.0,
-          "z": 0.0
-        },
-        "weaponHoldAngleOffset": {
-          "x": 0.0,
-          "y": 0.0,
-          "z": 0.0
-        },
-        "customRangedAttackAnimationData": ""
-      },
+      "rangedWeaponData": null,
+      "ignoredByDefense": false,
       "armResistanceMultiplier": 3.0,
       "allowDynamicHeight": false,
       "defenseHasPriority": false
@@ -260,45 +276,5 @@
       ]
     }
   ],
-  "colliderGroups": [
-    {
-      "$type": "ThunderRoad.ItemData+ColliderGroup, ThunderRoad",
-      "transformName": "Blades",
-      "colliderGroupId": "BladeMace2h"
-    }
-  ],
-  "damagers": [
-    {
-      "$type": "ThunderRoad.ItemData+Damager, ThunderRoad",
-      "transformName": "Blunt",
-      "damagerID": "Mace2H"
-    },
-    {
-      "$type": "ThunderRoad.ItemData+Damager, ThunderRoad",
-      "transformName": "BluntHandle",
-      "damagerID": "HandleHeavy"
-    }
-  ],
-  "Interactables": [
-    {
-      "$type": "ThunderRoad.ItemData+Interactable, ThunderRoad",
-      "transformName": "Handle",
-      "interactableId": "ObjectHandleHeavy"
-    }
-  ],
-  "effectHinges": [],
-  "whooshs": [
-    {
-      "$type": "ThunderRoad.ItemData+Whoosh, ThunderRoad",
-      "transformName": "Whoosh",
-      "effectId": "WhooshMace",
-      "trigger": "Always",
-      "stopOnSnap": true,
-      "minVelocity": 3.0,
-      "maxVelocity": 14.0,
-      "dampening": 0.1
-    }
-  ],
-  "entityModules": [],
-  "groupPath": ""
+  "entityModules": []
 }

@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
+  "groupPath": "Outpost/Arena",
   "isUnique": true,
   "areaPrefabAddress": "Bas.Area.GL_End_Arena_Watchtower",
   "lightingPresetAddress": "Bas.Area.GL_End_Arena_Watchtower.LightingPreset",
@@ -106,6 +107,5 @@
       "isZeroIntensity": false,
       "visibleFromGate": true
     }
-  ],
-  "groupPath": "Outpost/Arena"
+  ]
 }

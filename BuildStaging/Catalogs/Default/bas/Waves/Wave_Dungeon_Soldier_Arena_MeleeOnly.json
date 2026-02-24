@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 2,
+  "groupPath": "Dungeon",
   "category": "Dungeon Arena Room",
   "localizationId": "-",
   "title": "Soldier Arena Melee Only",
@@ -16,13 +17,13 @@
     {
       "$type": "ThunderRoad.WaveData+WaveFaction, ThunderRoad",
       "factionID": 8,
-      "factionHealthMultiplier": 1.0,
       "factionMaxAlive": 8
     }
   ],
   "groups": [
     {
       "$type": "ThunderRoad.WaveData+Group, ThunderRoad",
+      "mergeKey": "b9c9608d",
       "reference": "Table",
       "referenceID": "SoldierPatrolMelee",
       "overrideFaction": false,
@@ -44,6 +45,7 @@
     },
     {
       "$type": "ThunderRoad.WaveData+Group, ThunderRoad",
+      "mergeKey": "6f652859",
       "reference": "Table",
       "referenceID": "SoldierAlertMelee",
       "overrideFaction": false,
@@ -65,6 +67,7 @@
     },
     {
       "$type": "ThunderRoad.WaveData+Group, ThunderRoad",
+      "mergeKey": "e4203dc8",
       "reference": "Table",
       "referenceID": "SoldierPatrolMelee",
       "overrideFaction": false,
@@ -86,6 +89,7 @@
     },
     {
       "$type": "ThunderRoad.WaveData+Group, ThunderRoad",
+      "mergeKey": "541eabdb",
       "reference": "Table",
       "referenceID": "SoldierAlertMelee",
       "overrideFaction": false,
@@ -107,6 +111,7 @@
     },
     {
       "$type": "ThunderRoad.WaveData+Group, ThunderRoad",
+      "mergeKey": "7ce84674",
       "reference": "Table",
       "referenceID": "SoldierRareMix",
       "overrideFaction": false,
@@ -127,5 +132,5 @@
       "prereqMaxRemainingAlive": 0
     }
   ],
-  "groupPath": "Dungeon"
+  "modules": null
 }

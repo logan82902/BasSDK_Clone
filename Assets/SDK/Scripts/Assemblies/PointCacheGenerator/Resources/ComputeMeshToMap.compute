@@ -1,9 +1,12 @@
-#pragma kernel TransferData
+#pragma kernel TransferDataBoth
+#pragma kernel TransferDataPosition
+#pragma kernel TransferDataNormal
 
 uint VertexCount;
+uint2 TextureSize;
 
-StructuredBuffer<float> PositionBuffer;
-StructuredBuffer<float> NormalBuffer;
+StructuredBuffer<float3> PositionBuffer;
+StructuredBuffer<float3> NormalBuffer;
 
 RWTexture2D<float4> PositionMap;
 RWTexture2D<float4> NormalMap;
@@ -21,22 +24,61 @@ uint Hash(uint s)
 }
 
 [numthreads(8, 8, 1)]
-void TransferData(uint2 id : SV_DispatchThreadID)
+void TransferDataBoth(uint3 id : SV_DispatchThreadID)
 {
-    uint i = Hash(id.x + id.y * 65536) % VertexCount;
+    uint linearIndex = id.x + id.y * TextureSize.x;
+    
+    // Clamp to vertex count to avoid out-of-bounds
+    if (linearIndex >= VertexCount)
+    {
+        PositionMap[id.xy] = float4(0, 0, 0, 0);
+        NormalMap[id.xy] = float4(0, 0, 0, 0);
+        return;
+    }
+    
+    uint i = Hash(linearIndex) % VertexCount;
+    
+    float3 p1 = PositionBuffer[i];
+    float3 n1 = NormalBuffer[i];
+    
+    PositionMap[id.xy] = float4(p1, 1);
+    NormalMap[id.xy] = float4(n1, 0);
+}
 
-    float3 p1 = float3(
-        PositionBuffer[i * 3],
-        PositionBuffer[i * 3 + 1],
-        PositionBuffer[i * 3 + 2]
-    );
+[numthreads(8, 8, 1)]
+void TransferDataPosition(uint3 id : SV_DispatchThreadID)
+{
+    uint linearIndex = id.x + id.y * TextureSize.x;
+    
+    // Clamp to vertex count to avoid out-of-bounds
+    if (linearIndex >= VertexCount)
+    {
+        PositionMap[id.xy] = float4(0, 0, 0, 0);
+        return;
+    }
+    
+    uint i = Hash(linearIndex) % VertexCount;
+    
+    float3 p1 = PositionBuffer[i];
+    
+    PositionMap[id.xy] = float4(p1, 1);
+}
 
-    float3 n1 = float3(
-        NormalBuffer[i * 3],
-        NormalBuffer[i * 3 + 1],
-        NormalBuffer[i * 3 + 2]
-    );
-
-    PositionMap[id] = float4(p1, 1);
-    NormalMap[id] = float4(n1, 0);
+[numthreads(8, 8, 1)]
+void TransferDataNormal(uint3 id : SV_DispatchThreadID)
+{
+    uint linearIndex = id.x + id.y * TextureSize.x;
+    
+    // Clamp to vertex count to avoid out-of-bounds
+    if (linearIndex >= VertexCount)
+    {
+        NormalMap[id.xy] = float4(0, 0, 0, 0);
+        return;
+    }
+    
+    uint i = Hash(linearIndex) % VertexCount;
+    
+    float3 n1 = NormalBuffer[i];
+    
+    NormalMap[id.xy] = float4(n1, 0);
 }

@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace ThunderRoad
 {
+    [System.Serializable]
     public class ItemModuleSwordOfNaa : ItemModule
     {
         public float maxOrbIntensity = 0.5f;

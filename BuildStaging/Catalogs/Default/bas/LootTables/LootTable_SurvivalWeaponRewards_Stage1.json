@@ -1,0 +1,86 @@
+{
+  "$type": "ThunderRoad.LootTable, ThunderRoad",
+  "id": "SurvivalWeaponRewards_Stage1",
+  "sensitiveContent": "None",
+  "sensitiveFilterBehaviour": "Discard",
+  "version": 1,
+  "groupPath": "Rewards/Survival",
+  "levelledDrops": [
+    {
+      "$type": "ThunderRoad.LootTable+DropLevel, ThunderRoad",
+      "dropLevel": 0,
+      "drops": [
+        {
+          "$type": "ThunderRoad.LootTable+Drop, ThunderRoad",
+          "mergeKey": "ea6fbe1e",
+          "referenceID": "WeaponT0",
+          "reference": "Table",
+          "randMode": "ItemCount",
+          "minMaxRand": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "probabilityWeight": 0.33,
+          "sensitiveContent": "None",
+          "sensitiveFilterBehaviour": "Discard"
+        },
+        {
+          "$type": "ThunderRoad.LootTable+Drop, ThunderRoad",
+          "mergeKey": "5d286e66",
+          "referenceID": "WeaponT1",
+          "reference": "Table",
+          "randMode": "ItemCount",
+          "minMaxRand": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "probabilityWeight": 0.667,
+          "sensitiveContent": "None",
+          "sensitiveFilterBehaviour": "Discard"
+        },
+        {
+          "$type": "ThunderRoad.LootTable+Drop, ThunderRoad",
+          "mergeKey": "f1153b26",
+          "referenceID": "WeaponT2",
+          "reference": "Table",
+          "randMode": "ItemCount",
+          "minMaxRand": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "probabilityWeight": 0.1,
+          "sensitiveContent": "None",
+          "sensitiveFilterBehaviour": "Discard"
+        },
+        {
+          "$type": "ThunderRoad.LootTable+Drop, ThunderRoad",
+          "mergeKey": "ab81c1ea",
+          "referenceID": "WeaponT3",
+          "reference": "Table",
+          "randMode": "ItemCount",
+          "minMaxRand": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "probabilityWeight": 0.0,
+          "sensitiveContent": "None",
+          "sensitiveFilterBehaviour": "Discard"
+        },
+        {
+          "$type": "ThunderRoad.LootTable+Drop, ThunderRoad",
+          "mergeKey": "0f65afd8",
+          "referenceID": "WeaponT4",
+          "reference": "Table",
+          "randMode": "ItemCount",
+          "minMaxRand": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "probabilityWeight": 0.0,
+          "sensitiveContent": "None",
+          "sensitiveFilterBehaviour": "Discard"
+        }
+      ]
+    }
+  ]
+}

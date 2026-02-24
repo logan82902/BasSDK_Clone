@@ -1,0 +1,21 @@
+{
+  "$type": "ThunderRoad.BundleData, ThunderRoad",
+  "id": "CavemanBundleT0",
+  "sensitiveContent": "None",
+  "sensitiveFilterBehaviour": "Discard",
+  "version": 0,
+  "groupPath": "T0",
+  "localizationGroup": "Bundles",
+  "displayName": "BundleCavemanBundleT0Name",
+  "description": null,
+  "altDescriptionTitle": "ContentsTitle",
+  "isArmorBundle": false,
+  "bundleItemId": "Bundle",
+  "items": [
+    "Branch3",
+    "ThrowablesRock"
+  ],
+  "skills": [],
+  "lootTables": [],
+  "spriteAddress": "Ui.Icon.Unknown"
+}

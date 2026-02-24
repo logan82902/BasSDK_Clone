@@ -3,13 +3,11 @@ using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.VFX;
 using System.Collections;
+using Newtonsoft.Json;
 
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
@@ -20,191 +18,149 @@ namespace ThunderRoad
         Target
     }
 
+    [DeclareBoxGroup("General", Title = "General")]
+    [DeclareBoxGroup("Color", Title = "Color")]
+    [DeclareBoxGroup("Color (HDR)", Title = "Color (HDR)")]
+    [DeclareHorizontalGroup("Color (HDR)/MainColor")]
+    [DeclareHorizontalGroup("Color (HDR)/SecondaryColor")]
+    [DeclareBoxGroup("Color (Non HDR)", Title = "Color (Non HDR)")]
+    [DeclareHorizontalGroup("Color (Non HDR)/MainNoHdr")]
+    [DeclareHorizontalGroup("Color (Non HDR)/SecondaryNoHdr")]
+    [DeclareBoxGroup("Scale", Title = "Scale")]
+    [DeclareBoxGroup("PointCache", Title = "PointCache")]
+    [DeclareBoxGroup("Mesh", Title = "Mesh")]
+    [DeclareBoxGroup("Vfx", Title = "Vfx")]
     public class EffectModuleVfx : EffectModule
     {
-#if ODIN_INSPECTOR
-        [BoxGroup("General")] 
-#endif
+        [Group("General")]
         public string vfxAddress;
         [NonSerialized]
         public VisualEffectAsset vfxAsset;
-#if ODIN_INSPECTOR
-        [BoxGroup("General")]
-#endif
+        [Group("General")]
         public bool despawnOnEnd = false;
-#if ODIN_INSPECTOR
-        [BoxGroup("General")]
-#endif
+        [Group("General")]
         public float despawnDelay = 0;
-#if ODIN_INSPECTOR
-        [BoxGroup("General")] 
-#endif
+        [Group("General")]
         public new AnimationCurve intensityCurve;
-#if ODIN_INSPECTOR
-        [BoxGroup("General")] 
-#endif
+        [Group("General")]
         public float lifeTime = 5;
-#if ODIN_INSPECTOR
-        [BoxGroup("General")] 
-#endif
+        [Group("General")]
         public bool useSecondaryRenderer;
-#if ODIN_INSPECTOR
-        [BoxGroup("General")] 
-#endif
+        [Group("General")]
         public bool lookAtTarget;
-#if ODIN_INSPECTOR
-        [BoxGroup("General")] 
-#endif
+        [Group("General")]
         public SpawnTarget spawnOn = SpawnTarget.Default;
 
-#if ODIN_INSPECTOR
-        protected List<ValueDropdownItem<LayerName>> LayerOverrideOptions()
+        protected TriDropdownList<LayerName> LayerOverrideOptions()
         {
-            List<ValueDropdownItem<LayerName>> options = new List<ValueDropdownItem<LayerName>>();
+            TriDropdownList<LayerName> options = new();
             LayerName[] layerNames = (LayerName[])Enum.GetValues(typeof(LayerName));
             for (int i = 0; i < layerNames.Length; i++)
             {
                 LayerName lName = layerNames[i];
                 string text = lName == LayerName.None ? "Don't override" : $"Override: {lName.ToString()}";
-                options.Add(new ValueDropdownItem<LayerName>(text, lName));
+                options.Add(text, lName);
             }
             return options;
         }
 
-        [BoxGroup("General"), ValueDropdown(nameof(LayerOverrideOptions))]
-#endif
+        [Group("General")]
+        [Dropdown(nameof(LayerOverrideOptions))]
         public LayerName layerOverride = LayerName.None;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Color")] 
-#endif
-        [NonSerialized, GradientUsage(true)]
+        [Group("Color")]
+        [NonSerialized]
+        [JsonIgnore]
+        [GradientUsage(true)]
         private Gradient mainGradient;
 
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Color")] 
-#endif
-        [NonSerialized, GradientUsage(true)]
+        [Group("Color")]
+        [NonSerialized]
+        [JsonIgnore]
+        [GradientUsage(true)]
         private Gradient secondaryGradient;
 
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Color")] 
-#endif
+        [Group("Color")]
         [NonSerialized]
+        [JsonIgnore]
         private Gradient mainGradientNoHdr;
 
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Color")] 
-#endif
+        [Group("Color")]
         [NonSerialized]
+        [JsonIgnore]
         private Gradient secondaryGradientNoHdr;
 
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Color (HDR)")]
-        [HorizontalGroup("Color (HDR)/MainColor")] 
-#endif
-        [ColorUsage(true, true), SerializeField]
+        [Group("Color (HDR)/MainColor")]
+        [ColorPickerField(Alpha = true, HDR = true)]
+        [SerializeField]
         public Color mainColorStart;
-#if ODIN_INSPECTOR
-        [HorizontalGroup("Color (HDR)/MainColor")] 
-#endif
-        [ColorUsage(true, true), SerializeField]
+        [Group("Color (HDR)/MainColor")]
+        [ColorPickerField(Alpha = true, HDR = true)]
+        [SerializeField]
         public Color mainColorEnd;
-#if ODIN_INSPECTOR
-        [HorizontalGroup("Color (HDR)/SecondaryColor")] 
-#endif
-        [ColorUsage(true, true), SerializeField]
+        [Group("Color (HDR)/SecondaryColor")]
+        [ColorPickerField(Alpha = true, HDR = true)]
+        [SerializeField]
         public Color secondaryColorStart;
-#if ODIN_INSPECTOR
-        [HorizontalGroup("Color (HDR)/SecondaryColor")] 
-#endif
-        [ColorUsage(true, true), SerializeField]
+        [Group("Color (HDR)/SecondaryColor")]
+        [ColorPickerField(Alpha = true, HDR = true)]
+        [SerializeField]
         public Color secondaryColorEnd;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Color (Non HDR)")]
-        [HorizontalGroup("Color (Non HDR)/MainNoHdr")] 
-#endif
+        [Group("Color (Non HDR)/MainNoHdr")]
         [SerializeField]
         public Color mainNoHdrColorStart;
-#if ODIN_INSPECTOR
-        [HorizontalGroup("Color (Non HDR)/MainNoHdr")] 
-#endif
+        [Group("Color (Non HDR)/MainNoHdr")]
         [SerializeField]
         public Color mainNoHdrColorEnd;
-#if ODIN_INSPECTOR
-        [HorizontalGroup("Color (Non HDR)/SecondaryNoHdr")] 
-#endif
+        [Group("Color (Non HDR)/SecondaryNoHdr")]
         [SerializeField]
         public Color secondaryNoHdrColorStart;
-#if ODIN_INSPECTOR
-        [HorizontalGroup("Color (Non HDR)/SecondaryNoHdr")] 
-#endif
+        [Group("Color (Non HDR)/SecondaryNoHdr")]
         [SerializeField]
         public Color secondaryNoHdrColorEnd;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Scale")] 
-#endif
+        [Group("Scale")]
         public Vector3 localScale = Vector3.one;
-#if ODIN_INSPECTOR
-        [BoxGroup("Scale")] 
-#endif
+        [Group("Scale")]
         public bool useScaleCurve;
-#if ODIN_INSPECTOR
-        [BoxGroup("Scale"), ShowIf("useScaleCurve")] 
-#endif
+        [Group("Scale")]
+        [ShowIf("useScaleCurve")]
         public AnimationCurve scaleCurve;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("PointCache")] 
-#endif
+        [Group("PointCache")]
         public bool usePointCache = false;
-#if ODIN_INSPECTOR
-        [BoxGroup("PointCache"), ShowIf("usePointCache")] 
-#endif
+        [Group("PointCache")]
+        [ShowIf("usePointCache")]
         public bool pointCacheSkinnedMeshUpdate = false;
-#if ODIN_INSPECTOR
-        [BoxGroup("PointCache"), ShowIf("usePointCache")] 
-#endif
-        public int pointCacheMapSize = 512;
-#if ODIN_INSPECTOR
-        [BoxGroup("PointCache"), ShowIf("usePointCache")] 
-#endif
+        [Group("PointCache")]
+        [ShowIf("usePointCache")]
         public int pointCachePointCount = 4096;
-#if ODIN_INSPECTOR
-        [BoxGroup("PointCache"), ShowIf("usePointCache")] 
-#endif
+        [Group("PointCache")]
+        [ShowIf("usePointCache")]
         public int pointCacheSeed = 0;
-#if ODIN_INSPECTOR
-        [BoxGroup("PointCache"), ShowIf("usePointCache")] 
-#endif
+        [Group("PointCache")]
+        [ShowIf("usePointCache")]
         public PointCacheGenerator.Distribution pointCacheDistribution = PointCacheGenerator.Distribution.RandomUniformArea;
-#if ODIN_INSPECTOR
-        [BoxGroup("PointCache"), ShowIf("usePointCache")] 
-#endif
+        [Group("PointCache")]
+        [ShowIf("usePointCache")]
         public PointCacheGenerator.MeshBakeMode pointCacheBakeMode = PointCacheGenerator.MeshBakeMode.Triangle;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Mesh")] 
-#endif
+        [Group("Mesh")]
         public bool useMesh = false;
-#if ODIN_INSPECTOR
         [ShowIf("useMesh")]
-        [BoxGroup("Mesh")] 
-#endif
+        [Group("Mesh")]
         public string meshAddress;
         [NonSerialized]
         public Mesh meshAsset;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Vfx"), TableList(AlwaysExpanded = true)] 
-#endif
-        public List<VfxProperty> materialProperties = new List<VfxProperty>();
+        [Group("Vfx")]
+        [TableList(AlwaysExpanded = true)]
+        public List<VfxProperty> materialProperties = new();
 
 
         [Serializable]

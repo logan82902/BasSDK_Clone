@@ -3,49 +3,49 @@ using System;
 using System.Collections.Generic;
 using UnityEngine.AI;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
-	public class ShootPosition
+    [System.Serializable]
+    [AutoLabelWidth(AddedWidth = 5f, MinWidth = 0f)]
+    public class ShootPosition
     {
         public Vector3 position;
         public bool valid;
         public Creature creature;
     }
 
+    [System.Serializable]
+    [AutoLabelWidth(AddedWidth = 5f, MinWidth = 0f)]
+    [DeclareHorizontalGroup("Split")]
+    [DeclareBoxGroup("Split/Sight", Title = "Sight")]
+    [DeclareBoxGroup("Split/Shoot Position", Title = "Shoot Position")]
+    [DeclareHorizontalGroup("Split2")]
+    [DeclareBoxGroup("Split2/Instance", Title = "Instance")]
     public class BrainModuleSightable : BrainData.Module
     {
-#if ODIN_INSPECTOR
-        [HorizontalGroup("Split")]
-        [BoxGroup("Split/Sight"), LabelWidth(200)] 
-#endif
+        [Group("Split/Sight")]
+        [LabelWidth(200)]
         public float sightThickness = 0.1f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Sight"), LabelWidth(200)] 
-#endif
+        [Group("Split/Sight")]
+        [LabelWidth(200)]
         public float sightDetectionMaxDistance = 20;
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Sight"), LabelWidth(200)] 
-#endif
+        [Group("Split/Sight")]
+        [LabelWidth(200)]
         public float sightMaxDistance = 30;
         // Defines this creature's ability to see in the dark. Objects with a brightness below the minimum brightness aren't visible to the creature, objects above are visible.
         // Max brightness is used for determining how alert a creature may be to the object. Objects above max brightness contribute fully to creature alertedness increases
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Sight"), LabelWidth(200), MinMaxSlider(0f, 1f, showFields: true)] 
-#endif
-        public Vector2 minMaxBrightness = new Vector2(0f, 0.25f);
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Sight"), LabelWidth(200)] 
-#endif
+        [Group("Split/Sight")]
+        [LabelWidth(200)]
+        [MinMaxSlider(0f, 1f, true)]
+        public Vector2 minMaxBrightness = new(0f, 0.25f);
+        [Group("Split/Sight")]
+        [LabelWidth(200)]
         public float shootPointSightThickness = 0;
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Sight"), LabelWidth(200)] 
-#endif
+        [Group("Split/Sight")]
+        [LabelWidth(200)]
         public List<SightableRagdollPart> sightableRagdollParts;
 
         public enum SightableRagdollPart
@@ -59,52 +59,45 @@ namespace ThunderRoad
             FootLeftPart
         }
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Shoot Position"), LabelWidth(200)] 
-#endif
+        [Group("Split/Shoot Position")]
+        [LabelWidth(200)]
         public int shootPositionCircleSteps = 15;
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Shoot Position"), LabelWidth(200)] 
-#endif
+        [Group("Split/Shoot Position")]
+        [LabelWidth(200)]
         public int shootPositionDepthSteps = 4;
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Shoot Position"), LabelWidth(200)] 
-#endif
+        [Group("Split/Shoot Position")]
+        [LabelWidth(200)]
         public int shootPositionMinRadius = 8;
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Shoot Position"), LabelWidth(200)] 
-#endif
+        [Group("Split/Shoot Position")]
+        [LabelWidth(200)]
         public float navSamplePositionMaxDistance = 50;
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Shoot Position"), LabelWidth(200)] 
-#endif
+        [Group("Split/Shoot Position")]
+        [LabelWidth(200)]
         public float lastShootUpdateDelay = 1;
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Shoot Position"), LabelWidth(200)] 
-#endif
+        [Group("Split/Shoot Position")]
+        [LabelWidth(200)]
         public float lastShootUpdatePositionMaxDistance = 0.5f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Shoot Position"), LabelWidth(200)] 
-#endif
+        [Group("Split/Shoot Position")]
+        [LabelWidth(200)]
         public bool debug;
 
-#if ODIN_INSPECTOR
-        [HorizontalGroup("Split2")]
-        [BoxGroup("Split2/Instance"), ShowInInspector, ReadOnly] 
-#endif
+        [Group("Split2/Instance")]
+        [ShowInInspector]
+        [ReadOnly]
         [NonSerialized]
         public ShootPoint[] shootpoints = new ShootPoint[50];
-#if ODIN_INSPECTOR
-        [BoxGroup("Split2/Instance"), ShowInInspector, ReadOnly] 
-#endif
+        [Group("Split2/Instance")]
+        [ShowInInspector]
+        [ReadOnly]
         [NonSerialized]
         public int shootpointCount;
         protected float lastUpdateShootPointsTime;
         protected Vector3 lastUpdateShootPointsLocation;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Split2/Instance"), ShowInInspector, ReadOnly, TableList()] 
-#endif
+        [Group("Split2/Instance")]
+        [ShowInInspector]
+        [ReadOnly]
+        [TableList()]
         [NonSerialized]
         public ShootPosition[] shootPositions;
         protected float lastUpdateShootPositionsTime;

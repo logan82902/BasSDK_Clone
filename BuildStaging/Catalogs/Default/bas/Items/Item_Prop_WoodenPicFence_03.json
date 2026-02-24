@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 4,
+  "groupPath": null,
   "localizationId": null,
   "displayName": "WoodenPicFence_03",
   "description": null,
@@ -14,16 +15,18 @@
   "tier": 0,
   "flags": "None",
   "levelRequired": 0,
+  "type": "Prop",
   "category": null,
+  "update": "",
   "iconEffectId": null,
   "preferredItemCenter": "Mass",
   "drainImbueWhenIdle": true,
+  "forceImbueUseButton": "None",
   "prefabAddress": "Bas.Item.Prop.WoodenPicFence_03",
   "iconAddress": null,
   "closeUpIconAddress": null,
   "pooledCount": 0,
   "androidPooledCount": 0,
-  "type": "Prop",
   "allowedStorage": 0,
   "despawnOnStoredInInventory": false,
   "isStackable": false,
@@ -37,6 +40,7 @@
   "mass": 100.0,
   "drag": 1.0,
   "angularDrag": 1.0,
+  "density": 800.0,
   "focusRegenMultiplier": 1.0,
   "spellChargeSpeedPlayerMultiplier": 1.0,
   "spellChargeSpeedNPCMultiplier": 1.0,
@@ -150,7 +154,6 @@
     "preWrapMode": "ClampForever",
     "postWrapMode": "ClampForever"
   },
-  "modules": null,
   "colliderGroups": [],
   "damagers": [
     {
@@ -162,6 +165,6 @@
   "Interactables": [],
   "effectHinges": [],
   "whooshs": [],
-  "entityModules": [],
-  "groupPath": null
+  "modules": null,
+  "entityModules": []
 }

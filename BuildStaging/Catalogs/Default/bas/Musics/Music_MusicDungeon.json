@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
+  "groupPath": null,
   "volumeDb": -1.0,
   "groupsToLoad": [
     "MusicDungeonChase",
@@ -144,6 +145,5 @@
       "isDefault": true,
       "IsConnected": false
     }
-  },
-  "groupPath": null
+  }
 }

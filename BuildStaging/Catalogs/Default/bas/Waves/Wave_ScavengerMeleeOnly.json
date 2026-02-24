@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 2,
+  "groupPath": "Sandbox",
   "category": "2Outlaws (T0)",
   "localizationId": "ScavengerMeleeOnly",
   "title": "3Melee Only",
@@ -22,13 +23,13 @@
     {
       "$type": "ThunderRoad.WaveData+WaveFaction, ThunderRoad",
       "factionID": 4,
-      "factionHealthMultiplier": 1.0,
       "factionMaxAlive": 8
     }
   ],
   "groups": [
     {
       "$type": "ThunderRoad.WaveData+Group, ThunderRoad",
+      "mergeKey": "6a4a1108",
       "reference": "Table",
       "referenceID": "ScavengerMeleeOnly",
       "overrideFaction": false,
@@ -50,6 +51,7 @@
     },
     {
       "$type": "ThunderRoad.WaveData+Group, ThunderRoad",
+      "mergeKey": "6a33c114",
       "reference": "Table",
       "referenceID": "ScavengerMeleeOnly",
       "overrideFaction": false,
@@ -70,5 +72,5 @@
       "prereqMaxRemainingAlive": 0
     }
   ],
-  "groupPath": "Sandbox"
+  "modules": null
 }

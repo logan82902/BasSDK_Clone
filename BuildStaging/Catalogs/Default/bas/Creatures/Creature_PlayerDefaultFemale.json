@@ -4,19 +4,21 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 6,
+  "groupPath": "",
   "pooledCount": 0,
   "androidPooledCount": 0,
   "name": "HumanFemale",
   "type": "Human",
   "prefabAddress": "Bas.Creature.HumanFemale",
+  "manikinChannelLayersAddress": "Bas.Manikin.ChannelLayers",
   "animatorBundleAddress": "Animation.Controller.Human",
   "removeMeshWhenPooled": false,
   "gender": "Female",
+  "density": 985.0,
   "allowStatus": true,
   "health": 100,
   "focus": 30.0,
   "focusRegen": 3.0,
-  "baseXP": 0,
   "maxFocusPerSkill": 0.48,
   "focusRegenPerSkill": 0.0,
   "maxHealthPerSkill": 0.1666667,
@@ -32,7 +34,6 @@
   "countTowardsMaxAlive": true,
   "hasMetal": false,
   "brainId": "Player",
-  "avoidancePriority": 10,
   "focusReadyEffectId": "FocusReady",
   "focusFullEffectId": "FocusFull",
   "jumpEffectId": "Jump",
@@ -50,7 +51,6 @@
     {
       "$type": "ThunderRoad.CreatureData+EthnicGroup, ThunderRoad",
       "id": "Eradian",
-      "loreTextId": "EradianFlavorText",
       "bodyMaterialAddressLod0": "Bas.Creature.Material.Body.Female.Eradian.LOD0",
       "bodyMaterialAddressLod1": "Bas.Creature.Material.Body.Female.Eradian.LOD1",
       "handsMaterialAddressLod0": "Bas.Creature.Material.Hands.Female.Eradian.LOD0",
@@ -105,7 +105,6 @@
     {
       "$type": "ThunderRoad.CreatureData+EthnicGroup, ThunderRoad",
       "id": "Madene",
-      "loreTextId": "MadeneFlavorText",
       "bodyMaterialAddressLod0": "Bas.Creature.Material.Body.Female.Madene.LOD0",
       "bodyMaterialAddressLod1": "Bas.Creature.Material.Body.Female.Madene.LOD1",
       "handsMaterialAddressLod0": "Bas.Creature.Material.Hands.Female.Madene.LOD0",
@@ -160,7 +159,6 @@
     {
       "$type": "ThunderRoad.CreatureData+EthnicGroup, ThunderRoad",
       "id": "Sentari",
-      "loreTextId": "SentariFlavorText",
       "bodyMaterialAddressLod0": "Bas.Creature.Material.Body.Female.Sentari.LOD0",
       "bodyMaterialAddressLod1": "Bas.Creature.Material.Body.Female.Sentari.LOD1",
       "handsMaterialAddressLod0": "Bas.Creature.Material.Hands.Female.Sentari.LOD0",
@@ -215,7 +213,6 @@
     {
       "$type": "ThunderRoad.CreatureData+EthnicGroup, ThunderRoad",
       "id": "Kharese",
-      "loreTextId": "KhareseFlavorText",
       "bodyMaterialAddressLod0": "Bas.Creature.Material.Body.Female.Kharese.LOD0",
       "bodyMaterialAddressLod1": "Bas.Creature.Material.Body.Female.Kharese.LOD1",
       "handsMaterialAddressLod0": "Bas.Creature.Material.Hands.Female.Kharese.LOD0",
@@ -270,7 +267,6 @@
     {
       "$type": "ThunderRoad.CreatureData+EthnicGroup, ThunderRoad",
       "id": "Raike",
-      "loreTextId": "RaikeFlavorText",
       "bodyMaterialAddressLod0": "Bas.Creature.Material.Body.Female.Raike.LOD0",
       "bodyMaterialAddressLod1": "Bas.Creature.Material.Body.Female.Raike.LOD1",
       "handsMaterialAddressLod0": "Bas.Creature.Material.Hands.Female.Raike.LOD0",
@@ -790,7 +786,6 @@
     "handledMass": 80.0,
     "ragdolledMass": 227.5,
     "meshRaycast": true,
-    "meshRaycastAdjustContactPoint": false,
     "destabilizedSpringRotationMultiplier": 0.5,
     "destabilizedDamperRotationMultiplier": 0.1,
     "destabilizedGroundSpringRotationMultiplier": 0.1,
@@ -800,8 +795,6 @@
     "groundStabilizationMinDuration": 2.0,
     "gripMaxCloseWeight": 0.9,
     "gripEffectId": "GripAndGrab",
-    "footItemId": "Foot",
-    "footTrackedItemId": "FootTracked",
     "fingerSpeed": 5.0,
     "bodyDefaultDamagerID": "Ragdoll",
     "penetrationEffectId": "PenetrationBlood",
@@ -811,7 +804,7 @@
         "$type": "ThunderRoad.CreatureData+PartData, ThunderRoad",
         "bodyPartTypes": "Head",
         "bodyDamagerID": "RagdollHead",
-        "bodyAttackDamagerID": null,
+        "bodyAttackDamagerID": "",
         "sliceParentEffectid": "SliceFleshParent",
         "sliceChildEffectId": "SliceFleshChild",
         "damageMultiplier": 1.5,
@@ -829,7 +822,7 @@
         "$type": "ThunderRoad.CreatureData+PartData, ThunderRoad",
         "bodyPartTypes": "Neck",
         "bodyDamagerID": "Ragdoll",
-        "bodyAttackDamagerID": null,
+        "bodyAttackDamagerID": "",
         "sliceParentEffectid": "SliceFleshParent",
         "sliceChildEffectId": "SliceFleshChild",
         "damageMultiplier": 1.5,
@@ -847,7 +840,7 @@
         "$type": "ThunderRoad.CreatureData+PartData, ThunderRoad",
         "bodyPartTypes": "Torso",
         "bodyDamagerID": "Ragdoll",
-        "bodyAttackDamagerID": null,
+        "bodyAttackDamagerID": "",
         "sliceParentEffectid": "SliceFleshParent",
         "sliceChildEffectId": "SliceFleshChild",
         "damageMultiplier": 1.0,
@@ -883,7 +876,7 @@
         "$type": "ThunderRoad.CreatureData+PartData, ThunderRoad",
         "bodyPartTypes": "LeftArm, RightArm",
         "bodyDamagerID": "Ragdoll",
-        "bodyAttackDamagerID": null,
+        "bodyAttackDamagerID": "",
         "sliceParentEffectid": "SliceFleshParent",
         "sliceChildEffectId": "SliceFleshChild",
         "damageMultiplier": 0.5,
@@ -901,7 +894,7 @@
         "$type": "ThunderRoad.CreatureData+PartData, ThunderRoad",
         "bodyPartTypes": "LeftLeg, RightLeg",
         "bodyDamagerID": "Ragdoll",
-        "bodyAttackDamagerID": null,
+        "bodyAttackDamagerID": "",
         "sliceParentEffectid": "SliceFleshParent",
         "sliceChildEffectId": "SliceFleshChild",
         "damageMultiplier": 0.5,
@@ -1054,36 +1047,8 @@
     "postWrapMode": "ClampForever"
   },
   "gripRecoverTime": 0.5,
-  "waterLocomotionDragMultiplierCurve": {
-    "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-    "keys": [
-      {
-        "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-        "time": 0.0,
-        "value": 1.0,
-        "inTangent": 0.0,
-        "outTangent": 0.0,
-        "inWeight": 0.0,
-        "outWeight": 0.07507136,
-        "weightedMode": "None",
-        "tangentMode": 0
-      },
-      {
-        "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-        "time": 1.0,
-        "value": 7.0,
-        "inTangent": 18.4731312,
-        "outTangent": 18.4731312,
-        "inWeight": 0.0263046622,
-        "outWeight": 0.0,
-        "weightedMode": "None",
-        "tangentMode": 0
-      }
-    ],
-    "length": 2,
-    "preWrapMode": "ClampForever",
-    "postWrapMode": "ClampForever"
-  },
+  "waterLocomotionDragMultiplier": 3.0,
+  "waterRagdollDragMultiplier": 6.0,
   "waterHandSpringMultiplierCurve": {
     "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
     "keys": [
@@ -1145,7 +1110,7 @@
     "preWrapMode": "ClampForever",
     "postWrapMode": "ClampForever"
   },
-  "waterSwimUpForce": 5.0,
+  "waterSwimUpForce": 2.5,
   "waterHandMovementForce": 7.5,
   "waterHandMovementMaxMagnitude": 15.0,
   "waterHandMovementForceCurve": {
@@ -1184,6 +1149,5 @@
   "waterDrowningDamage": 20.0,
   "waterDrowningDamageInterval": 4.0,
   "drownEffectId": "HumanDrown",
-  "entityModules": [],
-  "groupPath": null
+  "entityModules": []
 }

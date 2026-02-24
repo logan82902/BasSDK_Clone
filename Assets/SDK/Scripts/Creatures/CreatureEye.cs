@@ -1,11 +1,8 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using System;
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {

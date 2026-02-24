@@ -1,6 +1,9 @@
-﻿namespace ThunderRoad.AI.Action
+﻿using TriInspector;
+
+namespace ThunderRoad.AI.Action
 {
-	public class Despawn : ActionNode
+    [AutoLabelWidth(AddedWidth = 5f, MinWidth = 0f)]
+    public class Despawn : ActionNode
     {
     }
 }

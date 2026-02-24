@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 2,
+  "groupPath": "Sandbox",
   "category": "6Special",
   "localizationId": "SpecialGauntletMelee",
   "title": "Progressive Gauntlet (Melee)",
@@ -22,13 +23,13 @@
     {
       "$type": "ThunderRoad.WaveData+WaveFaction, ThunderRoad",
       "factionID": 3,
-      "factionHealthMultiplier": 1.0,
       "factionMaxAlive": 8
     }
   ],
   "groups": [
     {
       "$type": "ThunderRoad.WaveData+Group, ThunderRoad",
+      "mergeKey": "5af08012",
       "reference": "Table",
       "referenceID": "ScavengerPatrolMelee",
       "overrideFaction": true,
@@ -50,6 +51,7 @@
     },
     {
       "$type": "ThunderRoad.WaveData+Group, ThunderRoad",
+      "mergeKey": "7caa040b",
       "reference": "Table",
       "referenceID": "ScavengerAlertMelee",
       "overrideFaction": true,
@@ -71,6 +73,7 @@
     },
     {
       "$type": "ThunderRoad.WaveData+Group, ThunderRoad",
+      "mergeKey": "012a83a7",
       "reference": "Table",
       "referenceID": "TribalPatrolMelee",
       "overrideFaction": true,
@@ -83,8 +86,8 @@
       "overrideMaxMeleeCount": 2,
       "groupHealthMultiplier": 1.0,
       "minMaxCount": {
-        "x": 8,
-        "y": 8
+        "x": 6,
+        "y": 6
       },
       "spawnPointIndex": -1,
       "prereqGroupIndex": -1,
@@ -92,6 +95,7 @@
     },
     {
       "$type": "ThunderRoad.WaveData+Group, ThunderRoad",
+      "mergeKey": "31858c7a",
       "reference": "Table",
       "referenceID": "TribalAlertMelee",
       "overrideFaction": true,
@@ -104,8 +108,8 @@
       "overrideMaxMeleeCount": 2,
       "groupHealthMultiplier": 1.0,
       "minMaxCount": {
-        "x": 7,
-        "y": 7
+        "x": 5,
+        "y": 5
       },
       "spawnPointIndex": -1,
       "prereqGroupIndex": -1,
@@ -113,6 +117,29 @@
     },
     {
       "$type": "ThunderRoad.WaveData+Group, ThunderRoad",
+      "mergeKey": "d2f8ef3c",
+      "reference": "Table",
+      "referenceID": "SentaraMeleeOnly",
+      "overrideFaction": true,
+      "factionID": 3,
+      "overrideContainer": false,
+      "overrideContainerID": "",
+      "overrideBrain": false,
+      "overrideBrainID": "",
+      "overrideMaxMelee": false,
+      "overrideMaxMeleeCount": 0,
+      "groupHealthMultiplier": 1.0,
+      "minMaxCount": {
+        "x": 4,
+        "y": 4
+      },
+      "spawnPointIndex": -1,
+      "prereqGroupIndex": -1,
+      "prereqMaxRemainingAlive": 0
+    },
+    {
+      "$type": "ThunderRoad.WaveData+Group, ThunderRoad",
+      "mergeKey": "fbdb4012",
       "reference": "Table",
       "referenceID": "SoldierPatrolMelee",
       "overrideFaction": true,
@@ -134,6 +161,7 @@
     },
     {
       "$type": "ThunderRoad.WaveData+Group, ThunderRoad",
+      "mergeKey": "cc6495af",
       "reference": "Table",
       "referenceID": "SoldierAlertMelee",
       "overrideFaction": true,
@@ -155,6 +183,51 @@
     },
     {
       "$type": "ThunderRoad.WaveData+Group, ThunderRoad",
+      "mergeKey": "6c7c01b9",
+      "reference": "Table",
+      "referenceID": "RaktaMeleeOnly",
+      "overrideFaction": true,
+      "factionID": 3,
+      "overrideContainer": false,
+      "overrideContainerID": "",
+      "overrideBrain": false,
+      "overrideBrainID": "",
+      "overrideMaxMelee": false,
+      "overrideMaxMeleeCount": 2,
+      "groupHealthMultiplier": 1.0,
+      "minMaxCount": {
+        "x": 4,
+        "y": 4
+      },
+      "spawnPointIndex": -1,
+      "prereqGroupIndex": -1,
+      "prereqMaxRemainingAlive": 0
+    },
+    {
+      "$type": "ThunderRoad.WaveData+Group, ThunderRoad",
+      "mergeKey": "4b1aa221",
+      "reference": "Table",
+      "referenceID": "RaktaMeleeOnly",
+      "overrideFaction": true,
+      "factionID": 3,
+      "overrideContainer": false,
+      "overrideContainerID": "",
+      "overrideBrain": false,
+      "overrideBrainID": "",
+      "overrideMaxMelee": false,
+      "overrideMaxMeleeCount": 2,
+      "groupHealthMultiplier": 1.0,
+      "minMaxCount": {
+        "x": 3,
+        "y": 3
+      },
+      "spawnPointIndex": -1,
+      "prereqGroupIndex": -1,
+      "prereqMaxRemainingAlive": 0
+    },
+    {
+      "$type": "ThunderRoad.WaveData+Group, ThunderRoad",
+      "mergeKey": "83888d4a",
       "reference": "Table",
       "referenceID": "CultistPatrolMelee",
       "overrideFaction": true,
@@ -167,8 +240,8 @@
       "overrideMaxMeleeCount": 2,
       "groupHealthMultiplier": 1.0,
       "minMaxCount": {
-        "x": 8,
-        "y": 8
+        "x": 4,
+        "y": 4
       },
       "spawnPointIndex": -1,
       "prereqGroupIndex": -1,
@@ -176,6 +249,7 @@
     },
     {
       "$type": "ThunderRoad.WaveData+Group, ThunderRoad",
+      "mergeKey": "116241d6",
       "reference": "Table",
       "referenceID": "CultistAlertMelee",
       "overrideFaction": true,
@@ -188,8 +262,8 @@
       "overrideMaxMeleeCount": 2,
       "groupHealthMultiplier": 1.0,
       "minMaxCount": {
-        "x": 6,
-        "y": 6
+        "x": 3,
+        "y": 3
       },
       "spawnPointIndex": -1,
       "prereqGroupIndex": -1,
@@ -197,6 +271,7 @@
     },
     {
       "$type": "ThunderRoad.WaveData+Group, ThunderRoad",
+      "mergeKey": "b618f5e4",
       "reference": "Table",
       "referenceID": "Cultist_Base_MeleeStrong",
       "overrideFaction": true,
@@ -217,5 +292,5 @@
       "prereqMaxRemainingAlive": 0
     }
   ],
-  "groupPath": "Sandbox"
+  "modules": null
 }

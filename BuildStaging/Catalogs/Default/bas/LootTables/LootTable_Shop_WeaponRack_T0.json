@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 1,
+  "groupPath": "Shop",
   "levelledDrops": [
     {
       "$type": "ThunderRoad.LootTable+DropLevel, ThunderRoad",
@@ -11,6 +12,7 @@
       "drops": [
         {
           "$type": "ThunderRoad.LootTable+Drop, ThunderRoad",
+          "mergeKey": "939ebab6",
           "referenceID": "SwordShortSeax",
           "reference": "Item",
           "randMode": "ItemCount",
@@ -18,10 +20,13 @@
             "x": 1.0,
             "y": 1.0
           },
-          "probabilityWeight": 1.0
+          "probabilityWeight": 1.0,
+          "sensitiveContent": "None",
+          "sensitiveFilterBehaviour": "Discard"
         },
         {
           "$type": "ThunderRoad.LootTable+Drop, ThunderRoad",
+          "mergeKey": "29e046a4",
           "referenceID": "SwordLongWarbrand",
           "reference": "Item",
           "randMode": "ItemCount",
@@ -29,10 +34,13 @@
             "x": 1.0,
             "y": 1.0
           },
-          "probabilityWeight": 1.0
+          "probabilityWeight": 1.0,
+          "sensitiveContent": "None",
+          "sensitiveFilterBehaviour": "Discard"
         },
         {
           "$type": "ThunderRoad.LootTable+Drop, ThunderRoad",
+          "mergeKey": "6e071b1c",
           "referenceID": "AxeShortCleaver",
           "reference": "Item",
           "randMode": "ItemCount",
@@ -40,10 +48,13 @@
             "x": 1.0,
             "y": 1.0
           },
-          "probabilityWeight": 1.0
+          "probabilityWeight": 1.0,
+          "sensitiveContent": "None",
+          "sensitiveFilterBehaviour": "Discard"
         },
         {
           "$type": "ThunderRoad.LootTable+Drop, ThunderRoad",
+          "mergeKey": "f13cae3f",
           "referenceID": "AxeLongOldLumber",
           "reference": "Item",
           "randMode": "ItemCount",
@@ -51,10 +62,13 @@
             "x": 1.0,
             "y": 1.0
           },
-          "probabilityWeight": 1.0
+          "probabilityWeight": 1.0,
+          "sensitiveContent": "None",
+          "sensitiveFilterBehaviour": "Discard"
         },
         {
           "$type": "ThunderRoad.LootTable+Drop, ThunderRoad",
+          "mergeKey": "2dbc4282",
           "referenceID": "MaceShortBlacksmith",
           "reference": "Item",
           "randMode": "ItemCount",
@@ -62,10 +76,13 @@
             "x": 1.0,
             "y": 1.0
           },
-          "probabilityWeight": 1.0
+          "probabilityWeight": 1.0,
+          "sensitiveContent": "None",
+          "sensitiveFilterBehaviour": "Discard"
         },
         {
           "$type": "ThunderRoad.LootTable+Drop, ThunderRoad",
+          "mergeKey": "943a7327",
           "referenceID": "MaceLongMallet",
           "reference": "Item",
           "randMode": "ItemCount",
@@ -73,10 +90,13 @@
             "x": 1.0,
             "y": 1.0
           },
-          "probabilityWeight": 1.0
+          "probabilityWeight": 1.0,
+          "sensitiveContent": "None",
+          "sensitiveFilterBehaviour": "Discard"
         },
         {
           "$type": "ThunderRoad.LootTable+Drop, ThunderRoad",
+          "mergeKey": "294782e2",
           "referenceID": "SpearHayfork",
           "reference": "Item",
           "randMode": "ItemCount",
@@ -84,10 +104,13 @@
             "x": 1.0,
             "y": 1.0
           },
-          "probabilityWeight": 1.0
+          "probabilityWeight": 1.0,
+          "sensitiveContent": "None",
+          "sensitiveFilterBehaviour": "Discard"
         },
         {
           "$type": "ThunderRoad.LootTable+Drop, ThunderRoad",
+          "mergeKey": "e372e8f0",
           "referenceID": "DaggerSkinning",
           "reference": "Item",
           "randMode": "ItemCount",
@@ -95,10 +118,13 @@
             "x": 1.0,
             "y": 1.0
           },
-          "probabilityWeight": 1.0
+          "probabilityWeight": 1.0,
+          "sensitiveContent": "None",
+          "sensitiveFilterBehaviour": "Discard"
         },
         {
           "$type": "ThunderRoad.LootTable+Drop, ThunderRoad",
+          "mergeKey": "f1ed512e",
           "referenceID": "StaffShaman",
           "reference": "Item",
           "randMode": "ItemCount",
@@ -106,10 +132,13 @@
             "x": 1.0,
             "y": 1.0
           },
-          "probabilityWeight": 1.0
+          "probabilityWeight": 1.0,
+          "sensitiveContent": "None",
+          "sensitiveFilterBehaviour": "Discard"
         },
         {
           "$type": "ThunderRoad.LootTable+Drop, ThunderRoad",
+          "mergeKey": "c0d198fc",
           "referenceID": "SwordGreatExecution",
           "reference": "Item",
           "randMode": "ItemCount",
@@ -117,10 +146,11 @@
             "x": 1.0,
             "y": 1.0
           },
-          "probabilityWeight": 1.0
+          "probabilityWeight": 1.0,
+          "sensitiveContent": "None",
+          "sensitiveFilterBehaviour": "Discard"
         }
       ]
     }
-  ],
-  "groupPath": "Shop"
+  ]
 }

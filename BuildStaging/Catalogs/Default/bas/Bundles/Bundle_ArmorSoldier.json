@@ -1,0 +1,26 @@
+{
+  "$type": "ThunderRoad.BundleData, ThunderRoad",
+  "id": "ArmorSoldier",
+  "sensitiveContent": "None",
+  "sensitiveFilterBehaviour": "Discard",
+  "version": 0,
+  "groupPath": "Armor",
+  "localizationGroup": "Bundles",
+  "displayName": "BundleArmorSoldierName",
+  "description": null,
+  "altDescriptionTitle": "ContentsTitle",
+  "isArmorBundle": true,
+  "bundleItemId": "Bundle",
+  "items": [
+    "ApparelSoldierBoots",
+    "ApparelSoldierPants",
+    "ApparelSoldierGloveL",
+    "ApparelSoldierGloveR",
+    "ApparelSoldierHelmet",
+    "ApparelSoldierJacket",
+    "ApparelSoldierShoulders"
+  ],
+  "skills": [],
+  "lootTables": [],
+  "spriteAddress": "Ui.Icon.Unknown"
+}

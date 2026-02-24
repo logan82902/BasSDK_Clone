@@ -4,11 +4,13 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 1,
+  "groupPath": "Factions/Dungeon",
   "description": "",
   "linkedToGenderRatio": false,
   "drops": [
     {
       "$type": "ThunderRoad.CreatureTable+Drop, ThunderRoad",
+      "mergeKey": "bc027c9c",
       "reference": "Table",
       "referenceID": "Tribal_Base_RangedWeak",
       "overrideFaction": false,
@@ -23,6 +25,7 @@
     },
     {
       "$type": "ThunderRoad.CreatureTable+Drop, ThunderRoad",
+      "mergeKey": "d44a1b64",
       "reference": "Table",
       "referenceID": "Tribal_Base_RangedStrong",
       "overrideFaction": false,
@@ -35,6 +38,5 @@
       "overrideEthnicityID": null,
       "probabilityWeight": 2.0
     }
-  ],
-  "groupPath": "Factions/Dungeon"
+  ]
 }

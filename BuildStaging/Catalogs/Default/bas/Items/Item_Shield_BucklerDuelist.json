@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 4,
+  "groupPath": null,
   "localizationId": "SmallShieldT3",
   "displayName": "Duelist's Buckler",
   "description": "A sturdy yet light weight shield made for single combat.",
@@ -14,16 +15,18 @@
   "tier": 3,
   "flags": "Jabbing, Defensive, Ricochet, Electromagnetic",
   "levelRequired": 0,
+  "type": "Shield",
   "category": "Shields",
+  "update": "",
   "iconEffectId": null,
   "preferredItemCenter": "Mass",
   "drainImbueWhenIdle": true,
+  "forceImbueUseButton": "None",
   "prefabAddress": "Bas.Item.Shield.BucklerDuelist",
   "iconAddress": "Bas.Item.Shield.BucklerDuelist.Icon[wpn_SHS03]",
   "closeUpIconAddress": null,
   "pooledCount": 0,
   "androidPooledCount": 0,
-  "type": "Shield",
   "allowedStorage": "Container, SandboxAllItems",
   "despawnOnStoredInInventory": false,
   "isStackable": false,
@@ -37,6 +40,7 @@
   "mass": 1.0,
   "drag": 0.4,
   "angularDrag": 0.05,
+  "density": 7500.0,
   "focusRegenMultiplier": 1.0,
   "spellChargeSpeedPlayerMultiplier": 1.0,
   "spellChargeSpeedNPCMultiplier": 1.0,
@@ -165,6 +169,50 @@
     "preWrapMode": "ClampForever",
     "postWrapMode": "ClampForever"
   },
+  "colliderGroups": [
+    {
+      "$type": "ThunderRoad.ItemData+ColliderGroup, ThunderRoad",
+      "transformName": "Blunt",
+      "colliderGroupId": "ShieldMetal"
+    },
+    {
+      "$type": "ThunderRoad.ItemData+ColliderGroup, ThunderRoad",
+      "transformName": "Spike",
+      "colliderGroupId": "BladeRapier"
+    }
+  ],
+  "damagers": [
+    {
+      "$type": "ThunderRoad.ItemData+Damager, ThunderRoad",
+      "transformName": "Blunt",
+      "damagerID": "Shield"
+    },
+    {
+      "$type": "ThunderRoad.ItemData+Damager, ThunderRoad",
+      "transformName": "Pierce",
+      "damagerID": "DaggerPierce"
+    }
+  ],
+  "Interactables": [
+    {
+      "$type": "ThunderRoad.ItemData+Interactable, ThunderRoad",
+      "transformName": "Handle",
+      "interactableId": "ObjectHandleShieldMagic"
+    }
+  ],
+  "effectHinges": [],
+  "whooshs": [
+    {
+      "$type": "ThunderRoad.ItemData+Whoosh, ThunderRoad",
+      "transformName": "Whoosh",
+      "effectId": "WhooshPropLight",
+      "trigger": "Always",
+      "stopOnSnap": true,
+      "minVelocity": 5.0,
+      "maxVelocity": 12.0,
+      "dampening": 0.1
+    }
+  ],
   "modules": [
     {
       "$type": "ThunderRoad.ItemModuleAI, ThunderRoad",
@@ -173,11 +221,11 @@
       "weaponHandling": "OneHanded",
       "secondaryHandling": "None",
       "weaponAttackTypes": "Swing",
-      "ignoredByDefense": true,
       "alwaysPrimary": false,
       "defaultStanceInfo": null,
       "stanceInfosByOffhand": null,
       "rangedWeaponData": null,
+      "ignoredByDefense": true,
       "armResistanceMultiplier": 3.0,
       "allowDynamicHeight": false,
       "defenseHasPriority": true
@@ -236,50 +284,5 @@
       ]
     }
   ],
-  "colliderGroups": [
-    {
-      "$type": "ThunderRoad.ItemData+ColliderGroup, ThunderRoad",
-      "transformName": "Blunt",
-      "colliderGroupId": "ShieldMetal"
-    },
-    {
-      "$type": "ThunderRoad.ItemData+ColliderGroup, ThunderRoad",
-      "transformName": "Spike",
-      "colliderGroupId": "BladeRapier"
-    }
-  ],
-  "damagers": [
-    {
-      "$type": "ThunderRoad.ItemData+Damager, ThunderRoad",
-      "transformName": "Blunt",
-      "damagerID": "Shield"
-    },
-    {
-      "$type": "ThunderRoad.ItemData+Damager, ThunderRoad",
-      "transformName": "Pierce",
-      "damagerID": "DaggerPierce"
-    }
-  ],
-  "Interactables": [
-    {
-      "$type": "ThunderRoad.ItemData+Interactable, ThunderRoad",
-      "transformName": "Handle",
-      "interactableId": "ObjectHandleShieldMagic"
-    }
-  ],
-  "effectHinges": [],
-  "whooshs": [
-    {
-      "$type": "ThunderRoad.ItemData+Whoosh, ThunderRoad",
-      "transformName": "Whoosh",
-      "effectId": "WhooshPropLight",
-      "trigger": "Always",
-      "stopOnSnap": true,
-      "minVelocity": 5.0,
-      "maxVelocity": 12.0,
-      "dampening": 0.1
-    }
-  ],
-  "entityModules": [],
-  "groupPath": null
+  "entityModules": []
 }

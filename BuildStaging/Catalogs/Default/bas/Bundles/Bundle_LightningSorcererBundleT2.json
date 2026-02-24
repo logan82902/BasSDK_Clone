@@ -1,0 +1,23 @@
+{
+  "$type": "ThunderRoad.BundleData, ThunderRoad",
+  "id": "LightningSorcererBundleT2",
+  "sensitiveContent": "None",
+  "sensitiveFilterBehaviour": "Discard",
+  "version": 0,
+  "groupPath": "T2",
+  "localizationGroup": "Bundles",
+  "displayName": "BundleLightningSorcererBundleT2Name",
+  "description": null,
+  "altDescriptionTitle": "ContentsTitle",
+  "isArmorBundle": false,
+  "bundleItemId": "Bundle",
+  "items": [
+    "StaffScholar"
+  ],
+  "skills": [
+    "ChainLightning",
+    "Overcharge"
+  ],
+  "lootTables": [],
+  "spriteAddress": "Ui.Icon.Unknown"
+}

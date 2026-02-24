@@ -1,0 +1,24 @@
+{
+  "$type": "ThunderRoad.BundleData, ThunderRoad",
+  "id": "ChargeSapperBundleT3",
+  "sensitiveContent": "None",
+  "sensitiveFilterBehaviour": "Discard",
+  "version": 0,
+  "groupPath": "T3",
+  "localizationGroup": "Bundles",
+  "displayName": "BundleChargeSapperBundleT3Name",
+  "description": null,
+  "altDescriptionTitle": "ContentsTitle",
+  "isArmorBundle": false,
+  "bundleItemId": "Bundle",
+  "items": [
+    "DualBladeStaff"
+  ],
+  "skills": [
+    "ChargeSapping",
+    "FireSapping",
+    "GravitySapping"
+  ],
+  "lootTables": [],
+  "spriteAddress": "Ui.Icon.Unknown"
+}

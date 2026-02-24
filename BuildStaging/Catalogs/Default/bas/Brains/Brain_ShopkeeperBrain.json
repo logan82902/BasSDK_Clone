@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 2,
+  "groupPath": "",
   "pooledCount": 1,
   "cycle": true,
   "cyclePlayerMinDistance": 2.0,
@@ -25,7 +26,7 @@
       "loreChance": 0.2,
       "welcomeVoiceDialogId": "Greeting",
       "newUpdateWelcomeVoiceDialogId": "NewUpdateIntro",
-      "newUpdatesWelcomeVoiceDialogId": "",
+      "newUpdatesWelcomeVoiceDialogId": "MultiNewUpdateIntro",
       "welcomeAnimationId": "HumanGreeting",
       "buyVoiceDialogId": "Buying",
       "buyAnimationId": "HumanElbowRestGesture",
@@ -36,6 +37,8 @@
       "notEnoughMoneyVoiceDialogId": "NoMoney",
       "leavingDialogId": "Leaving",
       "checkoutDialogId": "Checkout",
+      "mapBoardDialogId": "MapBoard",
+      "mapDialogReplaceChance": 0.33,
       "idExactMatchDialogs": {
         "$type": "ThunderRoad.BrainModuleShopkeeper+DialogDictionary, ThunderRoad",
         "FoodApple": {
@@ -61,6 +64,30 @@
           "id": "RaktaMagicWeapon",
           "buy": true,
           "sell": false
+        },
+        "CrystalMusket": {
+          "$type": "ThunderRoad.BrainModuleShopkeeper+DialogId, ThunderRoad",
+          "id": "SentaraPistol",
+          "buy": true,
+          "sell": false
+        },
+        "PotionRumFire": {
+          "$type": "ThunderRoad.BrainModuleShopkeeper+DialogId, ThunderRoad",
+          "id": "FireRum",
+          "buy": true,
+          "sell": false
+        },
+        "PotionRumGravity": {
+          "$type": "ThunderRoad.BrainModuleShopkeeper+DialogId, ThunderRoad",
+          "id": "GravityRum",
+          "buy": true,
+          "sell": false
+        },
+        "PotionRumLightning": {
+          "$type": "ThunderRoad.BrainModuleShopkeeper+DialogId, ThunderRoad",
+          "id": "LightningRum",
+          "buy": true,
+          "sell": false
         }
       },
       "idPartialMatchDialogs": {
@@ -80,6 +107,18 @@
         "ApparelRakta": {
           "$type": "ThunderRoad.BrainModuleShopkeeper+DialogId, ThunderRoad",
           "id": "RaktaArmor",
+          "buy": true,
+          "sell": false
+        },
+        "Sentara": {
+          "$type": "ThunderRoad.BrainModuleShopkeeper+DialogId, ThunderRoad",
+          "id": "SentaraWeapon",
+          "buy": true,
+          "sell": false
+        },
+        "ApparelSentara": {
+          "$type": "ThunderRoad.BrainModuleShopkeeper+DialogId, ThunderRoad",
+          "id": "SentaraApparel",
           "buy": true,
           "sell": false
         }
@@ -139,12 +178,52 @@
           "id": "ItemSword",
           "buy": true,
           "sell": false
+        },
+        "Plate": {
+          "$type": "ThunderRoad.BrainModuleShopkeeper+DialogId, ThunderRoad",
+          "id": "PlateApparel",
+          "buy": true,
+          "sell": false
+        },
+        "Leather": {
+          "$type": "ThunderRoad.BrainModuleShopkeeper+DialogId, ThunderRoad",
+          "id": "LeatherApparel",
+          "buy": true,
+          "sell": false
+        },
+        "Mages": {
+          "$type": "ThunderRoad.BrainModuleShopkeeper+DialogId, ThunderRoad",
+          "id": "MageApparel",
+          "buy": true,
+          "sell": false
+        },
+        "Clothes": {
+          "$type": "ThunderRoad.BrainModuleShopkeeper+DialogId, ThunderRoad",
+          "id": "GenericApparel",
+          "buy": true,
+          "sell": false
+        }
+      },
+      "itemEatDialogs": {
+        "$type": "ThunderRoad.BrainModuleShopkeeper+DialogDictionary, ThunderRoad",
+        "FoodApple": {
+          "$type": "ThunderRoad.BrainModuleShopkeeper+DialogId, ThunderRoad",
+          "id": "ForceFeedFruit",
+          "buy": false,
+          "sell": false
+        },
+        "Egg": {
+          "$type": "ThunderRoad.BrainModuleShopkeeper+DialogId, ThunderRoad",
+          "id": "ForceFeedEgg",
+          "buy": false,
+          "sell": false
         }
       },
       "itemGenericDialogId": "ItemGeneric",
       "tutorial1DialogId": "ShopDialogueA",
       "tutorial2DialogId": "ShopDialogueB",
       "tutorial3DialogId": "ShopDialogueC",
+      "chickenDialogId": "Chicken",
       "updateLoreSets": [
         {
           "$type": "ThunderRoad.BrainModuleShopkeeper+UpdateLoreDialogSet, ThunderRoad",
@@ -156,6 +235,18 @@
             "RaktaLoreC",
             "RaktaLoreD",
             "RaktaLoreE"
+          ]
+        },
+        {
+          "$type": "ThunderRoad.BrainModuleShopkeeper+UpdateLoreDialogSet, ThunderRoad",
+          "updateName": "Sentara",
+          "firstLore": "SentaraFirstPurchase",
+          "purchaseDialogs": [
+            "SentaraLoreA",
+            "SentaraLoreB",
+            "SentaraLoreC",
+            "SentaraLoreD",
+            "SentaraLoreE"
           ]
         }
       ]
@@ -173,9 +264,7 @@
       "audioHitChance": 1.0,
       "audioDeathChance": 1.0,
       "moveMouth": true,
-      "audioLipSyncUpdateRate": 0.05,
-      "audioLipSyncMaxValue": 0.3,
-      "audioLipSampleDataLength": 1024,
+      "audioLipSyncMaxValue": 2.0,
       "lipSyncSpeed": 5.0,
       "speakOnAttackMelee": true,
       "speakOnAttackCast": false,
@@ -206,6 +295,7 @@
       "areaMask": -3,
       "stuckRadius": 0.01,
       "stuckMaxDuration": 0.5,
+      "maxAllowedWaterDepth": 0.6,
       "preventTooClose": true,
       "tooCloseDistance": 0.7,
       "edgeAvoidanceDistance": 0.1,
@@ -440,11 +530,7 @@
       "dropObjectsDelay": {
         "x": 0.0,
         "y": 0.5
-      },
-      "chosenRightHandItem": null,
-      "rightAIModule": null,
-      "chosenLeftHandItem": null,
-      "leftAIModule": null
+      }
     },
     {
       "$type": "ThunderRoad.BrainModuleGrabbed, ThunderRoad",
@@ -835,22 +921,7 @@
       "rotationSpeed": 300.0,
       "dynamicHeightOffset": 0.1,
       "armSpringMultiplier": 1.0,
-      "armMaxForceMultiplier": 10.0,
-      "shieldTransform": null,
-      "shieldAnchor": null,
-      "oneHandTransform": null,
-      "oneHandAnchor": null,
-      "defenseHoldPosition": {
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0
-      },
-      "defenseHoldRotation": {
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0,
-        "w": 0.0
-      }
+      "armMaxForceMultiplier": 10.0
     },
     {
       "$type": "ThunderRoad.BrainModuleExpression, ThunderRoad",
@@ -1087,6 +1158,5 @@
       "delayHideSubtitleDuration": 0.6,
       "painExpressionDuration": 0.3
     }
-  ],
-  "groupPath": ""
+  ]
 }

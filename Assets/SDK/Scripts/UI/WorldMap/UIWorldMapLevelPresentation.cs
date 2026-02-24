@@ -27,6 +27,7 @@ namespace ThunderRoad
 
 
         [Header("Level Options selection")]
+        public int optionsPerPage = 6;
         public Transform optionsPanel = null;
         public UIMapLevelMode modeSelector = null;
         public GameObject modePrevious;

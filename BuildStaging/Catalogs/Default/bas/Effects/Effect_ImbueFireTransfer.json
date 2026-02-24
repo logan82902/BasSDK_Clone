@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
+  "groupPath": null,
   "groupId": "Fire",
   "volumeDb": 0.0,
   "modules": [
@@ -12,7 +13,36 @@
       "vfxAddress": "Bas.Vfx.Misc.ImbueTransfer",
       "despawnOnEnd": false,
       "despawnDelay": 0.0,
-      "intensityCurve": null,
+      "intensityCurve": {
+        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
+        "keys": [
+          {
+            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
+            "time": 0.0,
+            "value": 0.0,
+            "inTangent": 2.0,
+            "outTangent": 2.0,
+            "inWeight": 0.333333343,
+            "outWeight": 0.333333343,
+            "weightedMode": "None",
+            "tangentMode": 0
+          },
+          {
+            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
+            "time": 1.0,
+            "value": 1.0,
+            "inTangent": 0.0,
+            "outTangent": 0.0,
+            "inWeight": 0.333333343,
+            "outWeight": 0.333333343,
+            "weightedMode": "None",
+            "tangentMode": 0
+          }
+        ],
+        "length": 2,
+        "preWrapMode": "ClampForever",
+        "postWrapMode": "ClampForever"
+      },
       "lifeTime": 5.0,
       "useSecondaryRenderer": false,
       "lookAtTarget": false,
@@ -56,13 +86,13 @@
       },
       "secondaryNoHdrColorStart": {
         "r": 1.0,
-        "g": 0.6467265,
+        "g": 0.41568628,
         "b": 0.0,
         "a": 0.09803922
       },
       "secondaryNoHdrColorEnd": {
         "r": 1.0,
-        "g": 0.6467265,
+        "g": 0.41568628,
         "b": 0.0,
         "a": 0.09803922
       },
@@ -75,7 +105,6 @@
       "scaleCurve": null,
       "usePointCache": true,
       "pointCacheSkinnedMeshUpdate": false,
-      "pointCacheMapSize": 512,
       "pointCachePointCount": 4096,
       "pointCacheSeed": 0,
       "pointCacheDistribution": "RandomUniformArea",
@@ -83,6 +112,7 @@
       "useMesh": false,
       "meshAddress": null,
       "materialProperties": [],
+      "mergeKey": "f3df3190",
       "step": "Loop",
       "stepCustomId": null,
       "loopCustomStep": false,
@@ -101,25 +131,56 @@
       "damagersFilter": []
     },
     {
-      "$type": "ThunderRoad.EffectModuleParticle, ThunderRoad",
-      "effectLink": "Intensity",
-      "insideParticleRadius": 0.0,
-      "cullMinIntensity": 0.05,
-      "cullMinSpeed": 0.05,
-      "effectParticleAddress": "Bas.Particle.Misc.ImbueTransfer",
-      "intensityCurve": null,
-      "renderInLateUpdate": false,
+      "$type": "ThunderRoad.EffectModuleVfx, ThunderRoad",
+      "vfxAddress": "Bas.Vfx.Misc.ImbueTransfer",
+      "despawnOnEnd": false,
+      "despawnDelay": 0.0,
+      "intensityCurve": {
+        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
+        "keys": [
+          {
+            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
+            "time": 0.0,
+            "value": 0.0,
+            "inTangent": 2.0,
+            "outTangent": 2.0,
+            "inWeight": 0.333333343,
+            "outWeight": 0.333333343,
+            "weightedMode": "None",
+            "tangentMode": 0
+          },
+          {
+            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
+            "time": 1.0,
+            "value": 1.0,
+            "inTangent": 0.0,
+            "outTangent": 0.0,
+            "inWeight": 0.333333343,
+            "outWeight": 0.333333343,
+            "weightedMode": "None",
+            "tangentMode": 0
+          }
+        ],
+        "length": 2,
+        "preWrapMode": "ClampForever",
+        "postWrapMode": "ClampForever"
+      },
+      "lifeTime": 5.0,
+      "useSecondaryRenderer": false,
+      "lookAtTarget": false,
+      "spawnOn": "Default",
+      "layerOverride": "None",
       "mainColorStart": {
-        "r": 1.0,
-        "g": 0.7843138,
-        "b": 0.345098048,
-        "a": 1.0
+        "r": 0.0,
+        "g": 0.0,
+        "b": 0.0,
+        "a": 0.0
       },
       "mainColorEnd": {
-        "r": 1.0,
-        "g": 0.7843138,
-        "b": 0.345098048,
-        "a": 1.0
+        "r": 0.0,
+        "g": 0.0,
+        "b": 0.0,
+        "a": 0.0
       },
       "secondaryColorStart": {
         "r": 0.0,
@@ -135,27 +196,27 @@
       },
       "mainNoHdrColorStart": {
         "r": 1.0,
-        "g": 0.6467265,
+        "g": 0.647058845,
         "b": 0.0,
-        "a": 0.9746596
+        "a": 0.9764706
       },
       "mainNoHdrColorEnd": {
         "r": 1.0,
-        "g": 0.6467265,
+        "g": 0.647058845,
         "b": 0.0,
-        "a": 0.9746596
+        "a": 0.9764706
       },
       "secondaryNoHdrColorStart": {
-        "r": 1.0,
-        "g": 0.416627437,
+        "r": 0.0,
+        "g": 0.0,
         "b": 0.0,
-        "a": 0.09803922
+        "a": 0.0
       },
       "secondaryNoHdrColorEnd": {
-        "r": 1.0,
-        "g": 0.416627437,
+        "r": 0.0,
+        "g": 0.0,
         "b": 0.0,
-        "a": 0.09803922
+        "a": 0.0
       },
       "localScale": {
         "x": 1.0,
@@ -164,24 +225,21 @@
       },
       "useScaleCurve": false,
       "scaleCurve": null,
-      "localRotation": {
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0
-      },
-      "collisionEffectId": null,
-      "collisionLayerMask": -2097353,
-      "collisionMaxGroundAngle": 45.0,
-      "collisionEmitRate": 0.2,
-      "collisionMinIntensity": 0.0,
-      "collisionMaxIntensity": 1.0,
-      "collisionUseMainGradient": false,
-      "collisionUseSecondaryGradient": false,
+      "usePointCache": true,
+      "pointCacheSkinnedMeshUpdate": false,
+      "pointCachePointCount": 4096,
+      "pointCacheSeed": 0,
+      "pointCacheDistribution": "RandomUniformArea",
+      "pointCacheBakeMode": "Triangle",
+      "useMesh": false,
+      "meshAddress": null,
+      "materialProperties": [],
+      "mergeKey": "0f1db81e",
       "step": "Loop",
       "stepCustomId": null,
       "loopCustomStep": false,
       "platformFilter": "Android",
-      "sensitiveContent": "Blood",
+      "sensitiveContent": "None",
       "sensitiveFilterBehaviour": "Discard",
       "damagerStateFilter": "Inactive, Active",
       "damageTypeFilter": "Energy, Blunt, Slash, Pierce",
@@ -194,6 +252,5 @@
       "damagersFilterLogic": "AnyExcept",
       "damagersFilter": []
     }
-  ],
-  "groupPath": null
+  ]
 }

@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 2,
+  "groupPath": "Humans",
   "pooledCount": 1,
   "cycle": true,
   "cyclePlayerMinDistance": 2.0,
@@ -26,9 +27,7 @@
       "audioHitChance": 1.0,
       "audioDeathChance": 1.0,
       "moveMouth": true,
-      "audioLipSyncUpdateRate": 0.05,
-      "audioLipSyncMaxValue": 0.3,
-      "audioLipSampleDataLength": 1024,
+      "audioLipSyncMaxValue": 2.0,
       "lipSyncSpeed": 5.0,
       "speakOnAttackMelee": true,
       "speakOnAttackCast": false,
@@ -59,6 +58,7 @@
       "areaMask": -3,
       "stuckRadius": 0.01,
       "stuckMaxDuration": 0.5,
+      "maxAllowedWaterDepth": 0.6,
       "preventTooClose": true,
       "tooCloseDistance": 0.7,
       "edgeAvoidanceDistance": 0.1,
@@ -163,12 +163,6 @@
         "x": 45.0,
         "y": 165.0
       },
-      "moduleStance": null,
-      "moduleMove": null,
-      "moduleEquipment": null,
-      "moduleDetection": null,
-      "mostRecentAttack": null,
-      "followingThrough": false,
       "meleeIdle": null
     },
     {
@@ -201,12 +195,7 @@
         "x": 45.0,
         "y": 165.0
       },
-      "shootData": null,
-      "aimTime": 0.0,
-      "moduleMove": null,
-      "moduleLook": null,
-      "moduleEquipment": null,
-      "moduleStance": null
+      "aimTime": 0.0
     },
     {
       "$type": "ThunderRoad.BrainModuleCast, ThunderRoad",
@@ -460,11 +449,7 @@
       "dropObjectsDelay": {
         "x": 0.0,
         "y": 0.5
-      },
-      "chosenRightHandItem": null,
-      "rightAIModule": null,
-      "chosenLeftHandItem": null,
-      "leftAIModule": null
+      }
     },
     {
       "$type": "ThunderRoad.BrainModuleGrabbed, ThunderRoad",
@@ -801,8 +786,7 @@
         "x": 5.0,
         "y": 10.0
       },
-      "forceHoldUpperOff": false,
-      "moduleEquipment": null
+      "forceHoldUpperOff": false
     },
     {
       "$type": "ThunderRoad.BrainModuleThrow, ThunderRoad",
@@ -835,11 +819,7 @@
         "x": 45.0,
         "y": 165.0
       },
-      "aimTime": 0.0,
-      "moduleMove": null,
-      "moduleLook": null,
-      "moduleEquipment": null,
-      "moduleStance": null
+      "aimTime": 0.0
     },
     {
       "$type": "ThunderRoad.BrainModuleFollow, ThunderRoad",
@@ -937,33 +917,14 @@
       "rotationSpeed": 300.0,
       "dynamicHeightOffset": 0.1,
       "armSpringMultiplier": 1.0,
-      "armMaxForceMultiplier": 10.0,
-      "shieldTransform": null,
-      "shieldAnchor": null,
-      "oneHandTransform": null,
-      "oneHandAnchor": null,
-      "defenseHoldPosition": {
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0
-      },
-      "defenseHoldRotation": {
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0,
-        "w": 0.0
-      }
+      "armMaxForceMultiplier": 10.0
     },
     {
       "$type": "ThunderRoad.BrainModuleFear, ThunderRoad",
       "receiving": true,
       "panicScreamDialogID": "falling",
       "cowerDuration": 10.0,
-      "cowerAnimationID": "HumanCower",
-      "speakModule": null,
-      "stanceModule": null,
-      "lookModule": null
+      "cowerAnimationID": "HumanCower"
     }
-  ],
-  "groupPath": "Humans"
+  ]
 }

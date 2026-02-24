@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
+  "groupPath": "Outpost/XSTransi",
   "isUnique": true,
   "areaPrefabAddress": "Bas.Area.GL_XSTransi_Castle_17",
   "lightingPresetAddress": "Bas.Area.GL_XSTransi_Castle_17.LightingPreset",
@@ -88,6 +89,5 @@
       "fakeViewAddress": "Bas.Area.GL_XSTransi_Castle_17.FakeView.2"
     }
   ],
-  "areaGlobalParameters": [],
-  "groupPath": "Outpost/XSTransi"
+  "areaGlobalParameters": []
 }

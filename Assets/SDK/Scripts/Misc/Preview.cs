@@ -12,11 +12,8 @@ using UnityEditor.AddressableAssets;
 
 #endif
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
@@ -40,9 +37,7 @@ namespace ThunderRoad
         public bool updateCatalog = false;
         [Tooltip("List of renderers which can be used in the preview. Not neccessary for weapon mesh.")]
         public List<Renderer> renderers;
-#if ODIN_INSPECTOR
         [ShowInInspector]
-#endif	    
         [NonSerialized]
         public Texture2D generatedIcon;
 

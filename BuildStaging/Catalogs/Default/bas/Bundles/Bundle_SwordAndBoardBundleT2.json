@@ -1,0 +1,21 @@
+{
+  "$type": "ThunderRoad.BundleData, ThunderRoad",
+  "id": "SwordAndBoardBundleT2",
+  "sensitiveContent": "None",
+  "sensitiveFilterBehaviour": "Discard",
+  "version": 0,
+  "groupPath": "T2",
+  "localizationGroup": "Bundles",
+  "displayName": "BundleSwordAndBoardBundleT2Name",
+  "description": null,
+  "altDescriptionTitle": "ContentsTitle",
+  "isArmorBundle": false,
+  "bundleItemId": "Bundle",
+  "items": [
+    "ShieldRound",
+    "SwordShortCommon"
+  ],
+  "skills": [],
+  "lootTables": [],
+  "spriteAddress": "Ui.Icon.Unknown"
+}

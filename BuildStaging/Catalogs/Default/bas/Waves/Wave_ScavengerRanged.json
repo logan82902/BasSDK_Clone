@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 2,
+  "groupPath": "Sandbox",
   "category": "2Outlaws (T0)",
   "localizationId": "ScavengerRanged",
   "title": "4Ranged",
@@ -22,13 +23,13 @@
     {
       "$type": "ThunderRoad.WaveData+WaveFaction, ThunderRoad",
       "factionID": 4,
-      "factionHealthMultiplier": 1.0,
       "factionMaxAlive": 8
     }
   ],
   "groups": [
     {
       "$type": "ThunderRoad.WaveData+Group, ThunderRoad",
+      "mergeKey": "bdb9b6ea",
       "reference": "Table",
       "referenceID": "ScavengerPatrolRanged",
       "overrideFaction": false,
@@ -50,6 +51,7 @@
     },
     {
       "$type": "ThunderRoad.WaveData+Group, ThunderRoad",
+      "mergeKey": "68e2b1ef",
       "reference": "Table",
       "referenceID": "ScavengerPatrolMix",
       "overrideFaction": false,
@@ -71,6 +73,7 @@
     },
     {
       "$type": "ThunderRoad.WaveData+Group, ThunderRoad",
+      "mergeKey": "8c0062c0",
       "reference": "Table",
       "referenceID": "ScavengerPatrolRanged",
       "overrideFaction": false,
@@ -92,6 +95,7 @@
     },
     {
       "$type": "ThunderRoad.WaveData+Group, ThunderRoad",
+      "mergeKey": "3920c8af",
       "reference": "Table",
       "referenceID": "ScavengerAlertMix",
       "overrideFaction": false,
@@ -113,6 +117,7 @@
     },
     {
       "$type": "ThunderRoad.WaveData+Group, ThunderRoad",
+      "mergeKey": "fe754716",
       "reference": "Table",
       "referenceID": "ScavengerAlertRanged",
       "overrideFaction": false,
@@ -134,6 +139,7 @@
     },
     {
       "$type": "ThunderRoad.WaveData+Group, ThunderRoad",
+      "mergeKey": "3dba46b5",
       "reference": "Table",
       "referenceID": "ScavengerAlertMix",
       "overrideFaction": false,
@@ -155,6 +161,7 @@
     },
     {
       "$type": "ThunderRoad.WaveData+Group, ThunderRoad",
+      "mergeKey": "f831e2e3",
       "reference": "Table",
       "referenceID": "ScavengerRareRanged",
       "overrideFaction": false,
@@ -175,5 +182,5 @@
       "prereqMaxRemainingAlive": 0
     }
   ],
-  "groupPath": "Sandbox"
+  "modules": null
 }

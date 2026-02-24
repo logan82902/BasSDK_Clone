@@ -1,26 +1,21 @@
 ﻿using UnityEngine;
-
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
 
 namespace ThunderRoad.AI.Condition
 {
-	public class TargetWithinRange : ConditionNode
+    [DeclareBoxGroup("Inputs", Title = "Inputs")]
+    [DeclareHorizontalGroup("Inputs/Horiz")]
+    [AutoLabelWidth(AddedWidth = 5f, MinWidth = 0f)]
+    public class TargetWithinRange : ConditionNode
     {
-#if ODIN_INSPECTOR
-        [BoxGroup("Inputs")] 
-#endif
+        [Group("Inputs")]
         public bool flatDistance = false;
-#if ODIN_INSPECTOR
-        [BoxGroup("Inputs"), HorizontalGroup("Inputs/Horiz"), LabelWidth(100)] 
-#endif
+        [Group("Inputs/Horiz")]
+        [LabelWidth(100)]
         public Target target = Target.CurrentTarget;
-#if ODIN_INSPECTOR
-        [BoxGroup("Inputs"), HorizontalGroup("Inputs/Horiz"), ShowIf("target", optionalValue: Target.InputTransform), LabelWidth(200)] 
-#endif
+        [Group("Inputs/Horiz")]
+        [ShowIf("target", Target.InputTransform)]
+        [LabelWidth(200)]
         public string inputTransformVariableName = "";
 
         public enum Target
@@ -47,29 +42,21 @@ namespace ThunderRoad.AI.Condition
             Blackboard,
         }
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Inputs")] 
-#endif
+        [Group("Inputs")]
         public CompareType comparison;
-#if ODIN_INSPECTOR
-        [BoxGroup("Inputs")]
-#endif
+        [Group("Inputs")]
         public Range range = Range.Fixed;
-#if ODIN_INSPECTOR
-        [BoxGroup("Inputs"), ShowIf("range", optionalValue: Range.Fixed)]
-#endif
+        [Group("Inputs")]
+        [ShowIf("range", Range.Fixed)]
         public float distance;
-#if ODIN_INSPECTOR
-        [BoxGroup("Inputs"), ShowIf("range", optionalValue: Range.Blackboard)]
-#endif
+        [Group("Inputs")]
+        [ShowIf("range", Range.Blackboard)]
         public string valueName = "TargetWithinRange";
-#if ODIN_INSPECTOR
-        [BoxGroup("Inputs"), HideIf("range", optionalValue: Range.Fixed)]
-#endif
+        [Group("Inputs")]
+        [HideIf("range", Range.Fixed)]
         public float addedDistance;
-#if ODIN_INSPECTOR
-        [BoxGroup("Inputs"), EnableIf("comparison", optionalValue: CompareType.CloseTo)]
-#endif
+        [Group("Inputs")]
+        [EnableIf(nameof(comparison), CompareType.CloseTo)]
         public float maxDiff;
 
     }

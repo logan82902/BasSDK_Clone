@@ -1,37 +1,29 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
 
 namespace ThunderRoad.AI.Get
 {
+    [DeclareBoxGroup("General", Title = "General")]
+    [DeclareBoxGroup("Output", Title = "Output")]
+    [AutoLabelWidth(AddedWidth = 5f, MinWidth = 0f)]
     public class GetTelegrabbedObject : ActionNode
     {
         public bool ignoreFriendlyTK = true;
         public float offsetHeightRatioWhenOnFloor = 1;
         public float raycastOffset = 0.1f;
-#if ODIN_INSPECTOR
-        [BoxGroup("General")] 
-#endif
+        [Group("General")]
         public float maxDistance = 0;
-#if ODIN_INSPECTOR
-        [BoxGroup("General")] 
-#endif
+        [Group("General")]
         public bool debugLines;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Output")] 
-#endif
+        [Group("Output")]
         public string outputPositionVariableName = "TKGrabPosition";
-#if ODIN_INSPECTOR
-        [BoxGroup("Output")] 
-#endif
+        [Group("Output")]
         public string outputOffsetPositionVariableName = "TKGrabOffsetPosition";
+
+        public GetTelegrabbedObject() { }
 
     }
 }

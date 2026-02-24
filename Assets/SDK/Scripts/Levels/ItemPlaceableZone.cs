@@ -1,11 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
@@ -16,20 +13,13 @@ namespace ThunderRoad
         public bool allowItemsFromItemSpawners = true;
         public List<ItemSpawner> ignoredItemSpawners = new List<ItemSpawner>();
 
-#if ODIN_INSPECTOR
-        [ShowInInspector, ReadOnly]
-#endif
+        [ShowInInspector]
+        [ReadOnly]
         public ContentStatus contentStatus { get; protected set; } = ContentStatus.Prespawn;
-        public List<Item> items
-        {
-            get
-            {
-                return itemsInZone.Keys.ToList();
-            }
-        }
-#if ODIN_INSPECTOR
-        [ShowInInspector, ReadOnly]
-#endif
+
+        public List<Item> items => itemsInZone.Keys.ToList();
+        [ShowInInspector]
+        [ReadOnly]
         public Container container { get; protected set; }
 
         protected Dictionary<string, Container> placeableContainers = new Dictionary<string, Container>();

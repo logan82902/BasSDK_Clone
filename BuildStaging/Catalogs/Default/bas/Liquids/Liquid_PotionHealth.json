@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
+  "groupPath": null,
   "healthGain": 20.0,
   "revealBlitDuration": 10.0,
   "revealBlitStep": 0.1,
@@ -13,6 +14,5 @@
     "g": 0.0,
     "b": 0.6037736,
     "a": 0.9019608
-  },
-  "groupPath": null
+  }
 }

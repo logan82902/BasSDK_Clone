@@ -21,5 +21,6 @@
   "randomGateTableAdress": {
     "$type": "ThunderRoad.AreaConnectionTypeData+PrefabAdressTable, ThunderRoad",
     "drops": []
-  }
+  },
+  "groupPath": null
 }

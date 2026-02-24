@@ -1,0 +1,25 @@
+{
+  "$type": "ThunderRoad.MapData, ThunderRoad",
+  "id": "Madlu",
+  "sensitiveContent": "None",
+  "sensitiveFilterBehaviour": "Discard",
+  "version": 0,
+  "groupPath": null,
+  "worldmapPrefabAddress": "Bas.Image.Map.Default",
+  "worldmapTextureAddress": "Bas.Worldmap.Madlu",
+  "worldmapLocalisationId": "MadluMap",
+  "bookmarkIconAddress": "Bas.Icon.Location.Madlu",
+  "bookmarkColor": {
+    "r": 0.258823544,
+    "g": 0.23137255,
+    "b": 0.3137255,
+    "a": 1.0
+  },
+  "iconColor": {
+    "r": 0.5647059,
+    "g": 0.854901969,
+    "b": 0.9019608,
+    "a": 1.0
+  },
+  "order": 5
+}

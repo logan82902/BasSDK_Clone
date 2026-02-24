@@ -7,78 +7,79 @@ using System.Threading.Tasks;
 using UnityEngine.Profiling;
 using Newtonsoft.Json;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
     [Serializable]
+#if UNITY_EDITOR
+    [EditorLoadPriority(0)]
+#endif
+    [AutoLabelWidth(AddedWidth = 5f, MinWidth = 0f)]
+    [DeclareBoxGroup("Pooling", Title = "Pooling")]
+    [DeclareBoxGroup("Cycle", Title = "Cycle")]
+    [DeclareBoxGroup("General", Title = "General")]
+    [DeclareBoxGroup("BehaviorTree", Title = "BehaviorTree")]
     public class BrainData : CatalogData
     {
-#if ODIN_INSPECTOR
-        [BoxGroup("Pooling")]
-#endif
+        [Group("Pooling")]
         public int pooledCount;
-#if ODIN_INSPECTOR
-        [BoxGroup("Cycle")]
-#endif
+        [Group("Cycle")]
         public bool cycle = true;
-#if ODIN_INSPECTOR
-        [BoxGroup("Cycle"), ShowIf("cycle", true)]
-#endif
+        [Group("Cycle")]
+        [ShowIf("cycle", true)]
         public float cyclePlayerMinDistance = 2f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Cycle"), ShowIf("cycle", true)]
-#endif
+        [Group("Cycle")]
+        [ShowIf("cycle", true)]
         public float cyclePlayerMaxDistance = 20f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Cycle"), ShowInInspector, ReadOnly]
-#endif
+        [Group("Cycle")]
+        [ShowInInspector]
+        [ReadOnly]
         [NonSerialized]
         public float cycleSpeed = 1;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("General")]
-#endif
+        [Group("General")]
         public int difficulty = 0;
-#if ODIN_INSPECTOR
-        [BoxGroup("General"), ShowInInspector, ReadOnly]
-#endif
+        [Group("General")]
+        [ShowInInspector]
+        [ReadOnly]
         [NonSerialized]
         public bool isActive;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("BehaviorTree"), ValueDropdown(nameof(GetAllBehaviorTreeID))]
-#endif
+        [Group("BehaviorTree")]
+        [Dropdown(nameof(GetAllBehaviorTreeID))]
         public string treeID;
-#if ODIN_INSPECTOR
-        [BoxGroup("BehaviorTree")]
-#endif
+        [Group("BehaviorTree")]
         public bool treeDebugLog = false;
-#if ODIN_INSPECTOR
-        [BoxGroup("BehaviorTree"), ShowInInspector, ReadOnly]
-#endif
+        [Group("BehaviorTree")]
+        [ShowInInspector]
+        [ReadOnly]
         [NonSerialized]
         public bool hasTree;
-#if ODIN_INSPECTOR
-        [BoxGroup("BehaviorTree")]
-#endif
+        [Group("BehaviorTree")]
         public bool updateTree = true;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Modules"), ShowInInspector]
-#endif
+        [ShowInInspector]
+        [SerializeReference]
+        [ReadOnlyReferencePicker]
+        [ListDrawerSettings(DontForceInline = true, AlwaysExpanded = true)]
         public List<Module> modules;
 
-        public class Module
+        [System.Serializable]
+        [DeclareHorizontalGroup("UsingPartHoriz")]
+        public abstract class Module
         {
-#if ODIN_INSPECTOR
-            [ShowInInspector, ReadOnly, HorizontalGroup("UsingPartHoriz"), LabelWidth(100)]
-#endif
+            [JsonMergeKey]
+            [JsonProperty("$type")]
+            [JsonIgnore]
+            public Type type => GetType();
+
+            [ShowInInspector]
+            [ReadOnly]
+            [Group("UsingPartHoriz")]
+            [LabelWidth(100)]
             [NonSerialized]
+            [JsonIgnore]
             public bool useHead, useArmLeft, useArmRight, useTorso, useLegs;
 
             [JsonIgnore]
@@ -86,12 +87,7 @@ namespace ThunderRoad
 
         }
 
-#if ODIN_INSPECTOR
-        public List<ValueDropdownItem<string>> GetAllBehaviorTreeID()
-        {
-            return Catalog.GetDropdownAllID(Category.BehaviorTree);
-        }
-#endif
+        public TriDropdownList<string> GetAllBehaviorTreeID() => Catalog.GetDropdownAllID(Category.BehaviorTree);
 
         public override int GetCurrentVersion()
         {

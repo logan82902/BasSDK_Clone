@@ -1,8 +1,5 @@
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+﻿
 using TriInspector;
-#endif
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -11,8 +8,13 @@ namespace Shadowood
     [ExecuteInEditMode]
     public class GlobalSkyCube : MonoBehaviour
     {
-        [GUIColor("@skyCube ? Color.white : Color.red")] [InlineButton("Reset", "Find Sky")]
+        [GUIColor("$SkyCubeGuiColor")]
+        [InlineButton(nameof(Reset), "Find Sky")]
         public Texture skyCube;
+
+#if UNITY_EDITOR
+        private Color SkyCubeGuiColor => skyCube != null ? Color.white : Color.red;
+#endif
 
         public RaycastTexture.RaycastTexture raycastTexture;
 

@@ -4,11 +4,13 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 1,
+  "groupPath": "Factions/Dungeon",
   "description": "",
   "linkedToGenderRatio": false,
   "drops": [
     {
       "$type": "ThunderRoad.CreatureTable+Drop, ThunderRoad",
+      "mergeKey": "63ae6e43",
       "reference": "Table",
       "referenceID": "Tribal_Base_MeleeWeak",
       "overrideFaction": false,
@@ -23,6 +25,7 @@
     },
     {
       "$type": "ThunderRoad.CreatureTable+Drop, ThunderRoad",
+      "mergeKey": "a7cc3cf4",
       "reference": "Table",
       "referenceID": "Tribal_Base_MeleeStrong",
       "overrideFaction": false,
@@ -37,6 +40,7 @@
     },
     {
       "$type": "ThunderRoad.CreatureTable+Drop, ThunderRoad",
+      "mergeKey": "de22573e",
       "reference": "Table",
       "referenceID": "Tribal_Base_MeleeSpecial",
       "overrideFaction": false,
@@ -49,6 +53,5 @@
       "overrideEthnicityID": null,
       "probabilityWeight": 2.0
     }
-  ],
-  "groupPath": "Factions/Dungeon"
+  ]
 }

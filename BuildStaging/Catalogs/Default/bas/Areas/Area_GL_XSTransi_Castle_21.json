@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
+  "groupPath": "Outpost/XSTransi",
   "isUnique": true,
   "areaPrefabAddress": "Bas.Area.GL_XSTransi_Castle_21",
   "lightingPresetAddress": "Bas.Area.GL_XSTransi_Castle_21.LightingPreset",
@@ -78,6 +79,5 @@
       "isZeroIntensity": true,
       "visibleFromGate": true
     }
-  ],
-  "groupPath": "Outpost/XSTransi"
+  ]
 }

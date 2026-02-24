@@ -1,32 +1,21 @@
 ﻿using UnityEngine;
-
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
 
 namespace ThunderRoad.AI.Action
 {
+    [AutoLabelWidth(AddedWidth = 5f, MinWidth = 0f)]
     public class SetLookAt : ActionNode
     {
         public bool enabled = true;
-#if ODIN_INSPECTOR
-        [ShowIf("enabled")] 
-#endif
+        [ShowIf("enabled")]
         public BrainModuleLookAt.BodyBehaviour bodyBehaviour = BrainModuleLookAt.BodyBehaviour.BodyUpright;
-#if ODIN_INSPECTOR
-        [ShowIf("enabled")] 
-#endif
+        [ShowIf("enabled")]
         public Target target = Target.CurrentTarget;
-#if ODIN_INSPECTOR
-        [ShowIf("enabled"), HideIf("target", optionalValue: Target.CurrentTarget)] 
-#endif
+        [ShowIf("enabled")]
+        [HideIf("target", Target.CurrentTarget)]
         public string inputVariableName = "LookTarget";
-#if ODIN_INSPECTOR
-        [ShowIf("enabled")] 
-#endif
-        public Vector3 localOffset = new Vector3();
+        [ShowIf("enabled")]
+        public Vector3 localOffset = new();
 
         public enum Target
         {

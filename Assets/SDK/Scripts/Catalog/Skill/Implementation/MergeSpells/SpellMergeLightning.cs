@@ -7,136 +7,93 @@ using Random = UnityEngine.Random;
 using Vector3 = UnityEngine.Vector3;
 
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
 
 namespace ThunderRoad.Skill.SpellMerge
 {
+    [DeclareBoxGroup("General", Title = "General")]
+    [DeclareBoxGroup("Beam", Title = "Beam")]
+    [DeclareBoxGroup("Chaining", Title = "Chaining")]
+    [DeclareBoxGroup("Electrocution", Title = "Electrocution")]
+    [DeclareBoxGroup("Hook", Title = "Hook")]
+    [DeclareBoxGroup("Charge", Title = "Charge")]
     public class SpellMergeLightning : SpellMergeData
     {
-#if ODIN_INSPECTOR
-        [BoxGroup("General")]
-#endif
+        [Group("General")]
         public float movementSpeedMult = 0.8f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Beam"), ValueDropdown(nameof(GetAllEffectID))]
-#endif
+        [Group("Beam")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string beamEffectId;
         [NonSerialized]
         protected EffectData beamEffectData;
 
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Beam")]
-#endif
+        [Group("Beam")]
         public LayerMask beamMask;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Beam")]
-#endif
+        [Group("Beam")]
         public float beamForce = 3f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Beam"), ValueDropdown(nameof(GetAllSpellID))]
-#endif
+        [Group("Beam")]
+        [Dropdown(nameof(GetAllSpellID))]
         public string imbueSpellId;
         protected SpellCastCharge imbueSpell;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Beam")]
-#endif
+        [Group("Beam")]
         public float imbueAmount = 10;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Beam")]
-#endif
+        [Group("Beam")]
         public float damageDelay = 0.5f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Beam")]
-#endif
+        [Group("Beam")]
         public float damageAmount = 10f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Beam")]
-#endif
-        public AnimationCurve beamForceCurve = new AnimationCurve(new Keyframe(0f, 10f), new Keyframe(0.05f, 25f), new Keyframe(0.1f, 10f));
+        [Group("Beam")]
+        public AnimationCurve beamForceCurve = new(new Keyframe(0f, 10f), new Keyframe(0.05f, 25f), new Keyframe(0.1f, 10f));
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Beam")]
-#endif
+        [Group("Beam")]
         public float beamHandPositionSpringMultiplier = 1f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Beam")]
-#endif
+        [Group("Beam")]
         public float beamHandPositionDamperMultiplier = 1f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Beam")]
-#endif
+        [Group("Beam")]
         public float beamHandRotationSpringMultiplier = 0.2f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Beam")]
-#endif
+        [Group("Beam")]
         public float beamHandRotationDamperMultiplier = 0.6f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Beam")]
-#endif
+        [Group("Beam")]
         public float beamHandLocomotionVelocityCorrectionMultiplier = 1;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Beam")]
-#endif
+        [Group("Beam")]
         public float beamLocomotionPushForce = 4f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Beam")]
-#endif
+        [Group("Beam")]
         public float beamCastMinHandAngle = 20f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Beam"), ValueDropdown(nameof(GetAllEffectID))]
-#endif
+        [Group("Beam")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string beamImpactEffectId;
         protected EffectData beamImpactEffectData;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Beam")]
-#endif
+        [Group("Beam")]
         public bool instantBreakBreakables = true;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Chaining")]
-#endif
+        [Group("Chaining")]
         public float chainRadius = 4;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Chaining")]
-#endif
+        [Group("Chaining")]
         public float chainDelay = 1f;
 
-// #if ODIN_INSPECTOR
-//         [BoxGroup("Chaining"), ValueDropdown(nameof(GetAllEffectID))]
-// #endif
-//         public string electrocuteEffectId;
-//         protected EffectData electrocuteEffectData;
-
-#if ODIN_INSPECTOR
-        [BoxGroup("Chaining"), ValueDropdown(nameof(GetAllEffectID))]
-#endif
+        [Group("Chaining")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string chainEffectId;
         protected EffectData chainEffectData;
-        
-#if ODIN_INSPECTOR
-        [BoxGroup("Electrocution"), ValueDropdown(nameof(GetAllStatusEffectID))]
-#endif
+
+        [Group("Electrocution")]
+        [Dropdown(nameof(GetAllStatusEffectID))]
         public string statusEffectId = "Electrocute";
         [NonSerialized]
         public StatusData statusData;
@@ -153,25 +110,15 @@ namespace ThunderRoad.Skill.SpellMerge
         protected float lastChainTick;
         protected Collider[] collidersHit;
         protected HashSet<Creature> creaturesHit;
-#if ODIN_INSPECTOR
-        [BoxGroup("Hook")]
-#endif
+        [Group("Hook")]
         public float beamHookDamper = 150;
-#if ODIN_INSPECTOR
-        [BoxGroup("Hook")]
-#endif
+        [Group("Hook")]
         public float beamHookSpring = 1000;
-#if ODIN_INSPECTOR
-        [BoxGroup("Hook")]
-#endif
+        [Group("Hook")]
         public float beamHookSpeed = 20;
-#if ODIN_INSPECTOR
-        [BoxGroup("Hook")]
-#endif
+        [Group("Hook")]
         public float beamHookMaxAngle = 30;
-#if ODIN_INSPECTOR
-        [BoxGroup("Charge")]
-#endif
+        [Group("Charge")]
         public float zapInterval = 0.7f;
 
         public override void OnCatalogRefresh()

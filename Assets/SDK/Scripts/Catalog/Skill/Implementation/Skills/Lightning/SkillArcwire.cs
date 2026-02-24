@@ -1,98 +1,66 @@
 ﻿using System;
 using System.Collections.Generic;
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#endif //ODIN_INSPECTOR
+using TriInspector;
 using UnityEngine;
 using Plane = UnityEngine.Plane;
 
 namespace ThunderRoad.Skill.Spell
 {
+    [DeclareBoxGroup("Arc Wire", Title = "Arc Wire")]
+    [DeclareBoxGroup("Electrocution", Title = "Electrocution")]
     public class SkillArcwire : SpellSkillData
     {
-#if ODIN_INSPECTOR
-        [BoxGroup("Arc Wire")] 
-#endif
+        [Group("Arc Wire")]
         public float beamShockDuration = 3f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Arc Wire")] 
-#endif
+        [Group("Arc Wire")]
         public float beamThickness = 0.1f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Arc Wire")] 
-#endif
+        [Group("Arc Wire")]
         public float beamDuration = 5f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Arc Wire")] 
-#endif
+        [Group("Arc Wire")]
         public float minBeamNodeDistance = 0.3f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Arc Wire")]
-#endif
+        [Group("Arc Wire")]
         public float minBeamNodeInputVelocity = 0f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Arc Wire")] 
-#endif
+        [Group("Arc Wire")]
         public float maxBeamNodeInputVelocity = 8f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Arc Wire")] 
-#endif
+        [Group("Arc Wire")]
         public float beamNodeVelocityMult = 2;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Arc Wire")] 
-#endif
+        [Group("Arc Wire")]
         public float beamNodeDrag = 3f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Arc Wire")] 
-#endif
+        [Group("Arc Wire")]
         public float imbueCostPerBeamNode = 2;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Arc Wire")] 
-#endif
+        [Group("Arc Wire")]
         public float dismembermentMaxAngle = 60;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Arc Wire")] 
-#endif
+        [Group("Arc Wire")]
         public float sliceWidthMultiplier = 2.5f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Arc Wire"), ValueDropdown(nameof(GetAllEffectID))] 
-#endif
+        [Group("Arc Wire")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string arcEffectId;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Arc Wire")] 
-#endif
+        [Group("Arc Wire")]
         public int arcWirePushLevel = 1;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Arc Wire")]
-#endif
+        [Group("Arc Wire")]
         public float playerBumpForceMultiplier = 1f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Arc Wire")]
-#endif
+        [Group("Arc Wire")]
         public float playerHitDamage = 0f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Arc Wire")]
-#endif
+        [Group("Arc Wire")]
         public bool allowChargeSapping = true;
-        
-#if ODIN_INSPECTOR
-        [BoxGroup("Electrocution"), ValueDropdown(nameof(GetAllStatusEffectID))]
-#endif
+
+        [Group("Electrocution")]
+        [Dropdown(nameof(GetAllStatusEffectID))]
         public string electrocuteStatusId = "Electrocute";
         [NonSerialized]
         public StatusData electrocuteStatusData;
@@ -100,14 +68,12 @@ namespace ThunderRoad.Skill.Spell
         [NonSerialized]
         public EffectData arcEffectData;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Arc Wire"), ValueDropdown(nameof(GetAllEffectID))] 
-#endif
+        [Group("Arc Wire")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string arcStaffEffectId;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Arc Wire"), ValueDropdown(nameof(GetAllEffectID))] 
-#endif
+        [Group("Arc Wire")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string arcWireHitEffectId;
 
         [NonSerialized]

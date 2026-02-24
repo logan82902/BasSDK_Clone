@@ -1,0 +1,24 @@
+{
+  "$type": "ThunderRoad.LiquidFireBreathPotion, ThunderRoad",
+  "id": "SentariRumFireBreath",
+  "sensitiveContent": "None",
+  "sensitiveFilterBehaviour": "Discard",
+  "version": 0,
+  "groupPath": "",
+  "heatStatusId": "Burning",
+  "heatPerReception": 10.0,
+  "baseDuration": 1.0,
+  "durationPerReception": 3.0,
+  "activationDelay": 1.5,
+  "flamethrowerSkillId": "FireBreath",
+  "mouthOpenRatio": 1.0,
+  "lingeringEffectId": "FirePotionHeadLight",
+  "headEffectExtraDuration": 6.0,
+  "designation": "Sentari fire breath rum",
+  "color": {
+    "r": 0.7075472,
+    "g": 0.299991757,
+    "b": 0.0,
+    "a": 0.8509804
+  }
+}

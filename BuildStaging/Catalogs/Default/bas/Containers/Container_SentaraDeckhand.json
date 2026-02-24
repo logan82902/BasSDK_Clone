@@ -1,0 +1,83 @@
+{
+  "$type": "ThunderRoad.ContainerData, ThunderRoad",
+  "id": "SentaraDeckhand",
+  "sensitiveContent": "None",
+  "sensitiveFilterBehaviour": "Discard",
+  "version": 1,
+  "groupPath": "Factions/Sentara",
+  "displayName": "Sentara Deckhand",
+  "description": "",
+  "containerContents": [
+    {
+      "$type": "ThunderRoad.TableContent, ThunderRoad",
+      "quantity": 1,
+      "state": {
+        "$type": "ThunderRoad.ContentStateHolder, ThunderRoad",
+        "holderName": "BackRight"
+      },
+      "customDataList": [],
+      "mergeKey": "4d2ce01b",
+      "referenceID": "WeaponSoldierFootman"
+    },
+    {
+      "$type": "ThunderRoad.ItemContent, ThunderRoad",
+      "quantity": 1,
+      "state": {
+        "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
+      },
+      "customDataList": [],
+      "mergeKey": "72b4d3a0",
+      "referenceID": "ApparelSentaraBandana"
+    },
+    {
+      "$type": "ThunderRoad.TableContent, ThunderRoad",
+      "quantity": 1,
+      "state": {
+        "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
+      },
+      "customDataList": [],
+      "mergeKey": "11a2b2d7",
+      "referenceID": "Shirts"
+    },
+    {
+      "$type": "ThunderRoad.ItemContent, ThunderRoad",
+      "quantity": 1,
+      "state": {
+        "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
+      },
+      "customDataList": [],
+      "mergeKey": "f3e88637",
+      "referenceID": "ApparelRuggedTrousers"
+    },
+    {
+      "$type": "ThunderRoad.TableContent, ThunderRoad",
+      "quantity": 1,
+      "state": {
+        "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
+      },
+      "customDataList": [],
+      "mergeKey": "10a87297",
+      "referenceID": "ScavengerShoes"
+    },
+    {
+      "$type": "ThunderRoad.TableContent, ThunderRoad",
+      "quantity": 1,
+      "state": {
+        "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
+      },
+      "customDataList": [],
+      "mergeKey": "4941519a",
+      "referenceID": "HairsScavenger"
+    },
+    {
+      "$type": "ThunderRoad.TableContent, ThunderRoad",
+      "quantity": 1,
+      "state": {
+        "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
+      },
+      "customDataList": [],
+      "mergeKey": "53ccc5a4",
+      "referenceID": "BeardsScavenger"
+    }
+  ]
+}

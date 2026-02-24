@@ -1,0 +1,70 @@
+{
+  "$type": "ThunderRoad.WaveData, ThunderRoad",
+  "id": "Survival_Wave13",
+  "sensitiveContent": "None",
+  "sensitiveFilterBehaviour": "Discard",
+  "version": 2,
+  "groupPath": "Survival",
+  "category": "Survival",
+  "localizationId": "-",
+  "title": "Wave 13",
+  "description": null,
+  "loopBehavior": "NoLoop",
+  "totalMaxAlive": 4,
+  "alwaysAvailable": false,
+  "waveSelectors": [],
+  "factions": [
+    {
+      "$type": "ThunderRoad.WaveData+WaveFaction, ThunderRoad",
+      "factionID": 3,
+      "factionMaxAlive": 4
+    }
+  ],
+  "groups": [
+    {
+      "$type": "ThunderRoad.WaveData+Group, ThunderRoad",
+      "mergeKey": "9b55df82",
+      "reference": "Table",
+      "referenceID": "SoldierAlertMix",
+      "overrideFaction": true,
+      "factionID": 3,
+      "overrideContainer": false,
+      "overrideContainerID": null,
+      "overrideBrain": false,
+      "overrideBrainID": null,
+      "overrideMaxMelee": false,
+      "overrideMaxMeleeCount": 0,
+      "groupHealthMultiplier": 1.0,
+      "minMaxCount": {
+        "x": 3,
+        "y": 3
+      },
+      "spawnPointIndex": -1,
+      "prereqGroupIndex": -1,
+      "prereqMaxRemainingAlive": 0
+    },
+    {
+      "$type": "ThunderRoad.WaveData+Group, ThunderRoad",
+      "mergeKey": "0f8bed06",
+      "reference": "Table",
+      "referenceID": "TribalAlertMix",
+      "overrideFaction": true,
+      "factionID": 3,
+      "overrideContainer": false,
+      "overrideContainerID": null,
+      "overrideBrain": false,
+      "overrideBrainID": null,
+      "overrideMaxMelee": false,
+      "overrideMaxMeleeCount": 0,
+      "groupHealthMultiplier": 1.0,
+      "minMaxCount": {
+        "x": 3,
+        "y": 3
+      },
+      "spawnPointIndex": -1,
+      "prereqGroupIndex": -1,
+      "prereqMaxRemainingAlive": 0
+    }
+  ],
+  "modules": null
+}

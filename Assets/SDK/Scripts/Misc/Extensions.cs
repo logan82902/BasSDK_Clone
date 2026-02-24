@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -62,8 +63,9 @@ namespace ThunderRoad
 		    }
 	    }
 
-	    //Svc > shader > shader index
-	    public static Dictionary<ShaderVariantCollection, Dictionary<Shader, int>> svcCache;
+
+        //Svc > shader > shader index
+        public static Dictionary<ShaderVariantCollection, Dictionary<Shader, int>> svcCache;
 	    public static bool AddShader(this ShaderVariantCollection svc, Shader shader, PassType passType, string keywords)
 	    {
 		    Profiler.BeginSample("MergeVariants");
@@ -252,6 +254,7 @@ namespace ThunderRoad
             return attribute != null;
         }
         
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static bool TryGetCount(this ICollection collection, out int count)
         {
             count = 0;
@@ -601,6 +604,29 @@ namespace ThunderRoad
             return result;
         }
 
+        /// <summary>
+        /// Get unique pairs for all elements in the collection. Avoid using with extremely large collections, as this method runs in O(n^2) time, not including input actions.
+        /// </summary>
+        public static void PairAll<T>(this IEnumerable<T> enumerable, Action<T> itemAction, Action<T, T> pairAction)
+        {
+            int skipTo = 1;
+            foreach (T itemA in enumerable)
+            {
+                itemAction?.Invoke(itemA);
+                int skipped = 0;
+                foreach (T itemB in enumerable)
+                {
+                    if (skipped < skipTo)
+                    {
+                        skipped++;
+                        continue;
+                    }
+                    pairAction?.Invoke(itemA, itemB);
+                }
+                skipTo++;
+            }
+        }
+
         public static byte[] Serialize<T>(this T source)
         {
             JsonSerializer ser = Catalog.GetJsonNetSerializer();
@@ -697,6 +723,18 @@ namespace ThunderRoad
 
         public static bool IsInfiniteOrNaN(this float f) => float.IsNaN(f) || float.IsInfinity(f) || float.IsNegativeInfinity(f);
 
+        public static void SplitRectWidth(this Rect org, float width, bool normalized, out Rect left, out Rect right)
+        {
+            float leftWidth = normalized ? org.width * width : width;
+            left = new Rect(org.position, new Vector2(leftWidth, org.height));
+            right = new Rect(org.position + new Vector2(leftWidth, 0f), new Vector2(org.width - leftWidth, org.height));
+        }
+
+        public static RectOffset OffsetAdd(this RectOffset org, int left, int right, int top, int bottom)
+        {
+            return new RectOffset(org.left + left, org.right + right, org.top + top, org.bottom + bottom);
+        }
+
         public static float Sum(this float[] floats)
         {
             float result = 0f;
@@ -784,6 +822,16 @@ namespace ThunderRoad
             return closest;
         }
 
+        public static T GetClosestObject<T>(this Vector3 origin, IList<T> objects) where T : Component
+        {
+            T closest = objects[0];
+            for (int i = 1; i < objects.Count; i++)
+            {
+                if ((objects[i].transform.position - origin).sqrMagnitude < (closest.transform.position - origin).sqrMagnitude) closest = objects[i];
+            }
+            return closest;
+        }
+
         public static Vector3 GetFurthestPoint(this Vector3 origin, params Vector3[] checkPoints)
         {
             Vector3 furthest = checkPoints[0];
@@ -804,6 +852,11 @@ namespace ThunderRoad
             return furthest;
         }
 
+        public static bool HasFlagNoGC(this ColliderGroupData.ImbueFeature flags, ColliderGroupData.ImbueFeature value)
+        {
+            return (flags & value) > 0;
+        }
+
         public static bool HasFlagNoGC(this EffectModule.PlatformFilter flags, EffectModule.PlatformFilter value)
         {
             return ((flags & value) > 0);
@@ -818,6 +871,10 @@ namespace ThunderRoad
         {
             return ((flags & value) > 0);
         }
+
+        public static bool HasFlagNoGC(this LevelModuleSurvival.EquipmentSettings flags, LevelModuleSurvival.EquipmentSettings value) => (flags & value) > 0;
+
+        public static bool HasFlagNoGC(this LevelModuleSurvival.RewardTypes flags, LevelModuleSurvival.RewardTypes value) => (flags & value) > 0;
 
         public static bool CheckContentActive(this BuildSettings.ContentFlag flags, BuildSettings.ContentFlag content)
         {
@@ -993,6 +1050,11 @@ namespace ThunderRoad
             return fromdir;
         }
 
+        public static Vector2 ClampMinMax(this Vector2 vector, float min, float max)
+        {
+            return new Vector2(Mathf.Clamp(vector.x, min, max), Mathf.Clamp(vector.y, min, max));
+        }
+
         public static Vector3 ClampMagnitude(this Vector3 vector, float minMagnitude, float maxMagnitude)
         {
             if (vector.sqrMagnitude < minMagnitude * minMagnitude) return vector.normalized * minMagnitude;
@@ -1124,5 +1186,7 @@ namespace ThunderRoad
         {
             return type == baseType || type.IsSubclassOf(baseType);
         }
+        
+        public static float RandomMinMax(this Vector2 minMaxVector) => UnityEngine.Random.Range(minMaxVector.x, minMaxVector.y);
     }
 }

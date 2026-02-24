@@ -3,15 +3,12 @@ using System;
 using System.Collections.Generic;
 using System.Collections;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
     [HelpURL("https://kospy.github.io/BasSDK/Components/ThunderRoad/Items/Damager.html")]
+    [DeclareHorizontalGroup("Depth", Sizes = new float[] { 0f, 125f })]
     public class Damager : MonoBehaviour
     {
         public static bool easyDismemberment = false;
@@ -22,14 +19,26 @@ namespace ThunderRoad
         public Collider colliderOnly;
         [NonSerialized]
         public bool isColliderOnly = false;
+        [AutoLabelWidth(AddedWidth = 5f)]
+        [EnumToggleButtons]
         [Tooltip("Specify which direction the damager will deal damage in.\nAll is best for Blunt Damage.\nForward and Back is best for Slash Damage.\nForward is best for Piercing Damage.")]
         public Direction direction = Direction.All;
-        [Tooltip("Length of which the item can pierce/slash with.\nSet to 0 for Blunt damage and single-point Pierce damage.")]
-        public float penetrationLength = 0;
+        [Group("Depth")]
+        [AutoLabelWidth(AddedWidth = 5f)]
         [Tooltip("Depth of which a damager can deal slash damage.\nSet to 0 for Blunt damage")]
+        [Min(0f)]
         public float penetrationDepth = 0f;
+        [ShowIf(nameof(showMaxDepthExit))]
+        [Group("Depth")]
         [Tooltip("Once the Penetration Depth has reached its' max, unpierce from the object")]
+        [LabelText("Exit on Max Depth")]
+        [LabelWidth(110f)]
         public bool penetrationExitOnMaxDepth;
+        private bool showMaxDepthExit => penetrationDepth > 0f;
+        [AutoLabelWidth(AddedWidth = 5f)]
+        [Tooltip("Length of which the item can pierce/slash with.\nSet to 0 for Blunt damage and single-point Pierce damage.")]
+        [Min(0f)]
+        public float penetrationLength = 0;
 
  // ProjectCore
         public enum Direction
@@ -109,7 +118,7 @@ namespace ThunderRoad
             Vector3 pierceDepth = transform.position + (transform.TransformDirection(localPierceDir) * activePierceDepth);
             Gizmos.DrawLine(transform.position, pierceDepth);
         }
-#endif        
+#endif
 
 
         public void UnPenetrateAll()

@@ -1,79 +1,78 @@
 ﻿using UnityEngine;
 using System;
-
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
 
 namespace ThunderRoad.AI.Action
 {
-	public class AttackMelee : ActionNode
+    [DeclareBoxGroup("Inputs", Title = "Inputs")]
+    [DeclareHorizontalGroup("Inputs/Horiz")]
+    [DeclareHorizontalGroup("Horiz")]
+    [DeclareBoxGroup("Horiz/Melee", Title = "Melee")]
+    [DeclareBoxGroup("Horiz/Range", Title = "Range")]
+    [DeclareBoxGroup("Horiz/Misc", Title = "Misc")]
+    [DeclareBoxGroup("Horiz/Debug", Title = "Debug")]
+    [AutoLabelWidth(AddedWidth = 5f, MinWidth = 0f)]
+    public class AttackMelee : ActionNode
     {
-#if ODIN_INSPECTOR
-        [BoxGroup("Inputs"), HorizontalGroup("Inputs/Horiz"), LabelWidth(100)] 
-#endif
+        [Group("Inputs/Horiz")]
+        [LabelWidth(100)]
         public Target target = Target.CurrentTarget;
-#if ODIN_INSPECTOR
-        [BoxGroup("Inputs"), HorizontalGroup("Inputs/Horiz"), EnableIf("target", optionalValue: Target.InputTransform), HideIf("target", optionalValue: Target.InputCreature), LabelWidth(200)] 
-#endif
+        [Group("Inputs/Horiz")]
+        [EnableIf(nameof(target), Target.InputTransform)]
+        [HideIf("target", Target.InputCreature)]
+        [LabelWidth(200)]
         public string inputTransformVariableName = "";
-#if ODIN_INSPECTOR
-        [BoxGroup("Inputs"), HorizontalGroup("Inputs/Horiz"), ShowIf("target", optionalValue: Target.InputCreature), LabelWidth(200)] 
-#endif
+        [Group("Inputs/Horiz")]
+        [ShowIf("target", Target.InputCreature)]
+        [LabelWidth(200)]
         public string inputCreatureVariableName = "";
 
-#if ODIN_INSPECTOR
-        [HorizontalGroup("Horiz"), BoxGroup("Horiz/Melee"), LabelWidth(160)] 
-#endif
+        [Group("Horiz/Melee")]
+        [LabelWidth(160)]
         public bool useMeleeDelay = false;
-#if ODIN_INSPECTOR
-        [BoxGroup("Horiz/Melee"), DisableIf("target", optionalValue: Target.None), LabelWidth(160)] 
-#endif
+        [Group("Horiz/Melee")]
+        [DisableIf("target", Target.None)]
+        [LabelWidth(160)]
         public bool defensePreferenceChance = true;
-#if ODIN_INSPECTOR
-        [BoxGroup("Horiz/Melee"), DisableIf("target", optionalValue: Target.None), LabelWidth(160)] 
-#endif
+        [Group("Horiz/Melee")]
+        [DisableIf("target", Target.None)]
+        [LabelWidth(160)]
         public bool checkCurrentTargetSight = true;
-#if ODIN_INSPECTOR
-        [BoxGroup("Horiz/Melee"), DisableIf("target", optionalValue: Target.None), LabelWidth(160)] 
-#endif
+        [Group("Horiz/Melee")]
+        [DisableIf("target", Target.None)]
+        [LabelWidth(160)]
         public bool checkCloseAllies = true;
-#if ODIN_INSPECTOR
-        [BoxGroup("Horiz/Melee"), DisableIf("target", optionalValue: Target.None), LabelWidth(160)] 
-#endif
+        [Group("Horiz/Melee")]
+        [DisableIf("target", Target.None)]
+        [LabelWidth(160)]
         public bool checkNavMesh = true;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Horiz/Range"), EnableIf("target", optionalValue: Target.None), LabelWidth(140)] 
-#endif
+        [Group("Horiz/Range")]
+        [EnableIf(nameof(target), Target.None)]
+        [LabelWidth(140)]
         public float forceMeleeRange = 0;
-#if ODIN_INSPECTOR
-        [BoxGroup("Horiz/Range"), EnableIf("target", optionalValue: Target.None), LabelWidth(140)] 
-#endif
+        [Group("Horiz/Range")]
+        [EnableIf(nameof(target), Target.None)]
+        [LabelWidth(140)]
         public float forceMeleeRangeMoved = 0;
-#if ODIN_INSPECTOR
-        [BoxGroup("Horiz/Range"), EnableIf("target", optionalValue: Target.None), LabelWidth(140)] 
-#endif
+        [Group("Horiz/Range")]
+        [EnableIf(nameof(target), Target.None)]
+        [LabelWidth(140)]
         public float forceWeaponReach = 0;
-#if ODIN_INSPECTOR
-        [BoxGroup("Horiz/Range"), EnableIf("target", optionalValue: Target.None), LabelWidth(140)] 
-#endif
+        [Group("Horiz/Range")]
+        [EnableIf(nameof(target), Target.None)]
+        [LabelWidth(140)]
         public float forceMaxRangeDelta = 0;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Horiz/Misc"), LabelWidth(100)] 
-#endif
+        [Group("Horiz/Misc")]
+        [LabelWidth(100)]
         public bool stopOnReset = false;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Horiz/Debug"), EnableIf("target", optionalValue: Target.None)] 
-#endif
+        [Group("Horiz/Debug")]
+        [EnableIf(nameof(target), Target.None)]
         public int pickClipSequentialMaxIndex = 0;
-#if ODIN_INSPECTOR
-        [BoxGroup("Horiz/Debug"), EnableIf("target", optionalValue: Target.None)] 
-#endif
+        [Group("Horiz/Debug")]
+        [EnableIf(nameof(target), Target.None)]
         public bool updateClipRange = false;
 
         public enum Target

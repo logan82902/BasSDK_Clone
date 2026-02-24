@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
 using UnityEngine;
 
 namespace ThunderRoad
@@ -12,27 +8,19 @@ namespace ThunderRoad
     [Serializable]
     public class InventoryStart
     {
-#if ODIN_INSPECTOR
-        [ValueDropdown(nameof(GetAllContainerID))]
-#endif
+        [Dropdown(nameof(GetAllContainerID))]
         public string containerID;
 
-#if ODIN_INSPECTOR
-        [ValueDropdown(nameof(GetAllTextGroupID))]
-#endif
+        [Dropdown(nameof(GetAllTextGroupID))]
         public string textGroupId;
 
-#if ODIN_INSPECTOR
-        [ValueDropdown(nameof(GetAllTextId))]
-#endif
+        [Dropdown(nameof(GetAllTextId))]
         public string titleTextID;
 
         [ShowIf(nameof(titleTextID), null)]
         public string titleText;
 
-#if ODIN_INSPECTOR
-        [ValueDropdown(nameof(GetAllTextId))]
-#endif
+        [Dropdown(nameof(GetAllTextId))]
         public string descriptionTextID;
         
         [ShowIf(nameof(descriptionTextID), null)]
@@ -48,21 +36,10 @@ namespace ThunderRoad
         public event Action<Sprite> onSpriteTitleImageLoade;
 
 
-#if ODIN_INSPECTOR
-        public List<ValueDropdownItem<string>> GetAllContainerID()
-        {
-            return Catalog.GetDropdownAllID(Category.Container);
-        }
+        public TriDropdownList<string> GetAllContainerID() => Catalog.GetDropdownAllID(Category.Container);
 
-        public List<ValueDropdownItem<string>> GetAllTextGroupID()
-        {
-            return Catalog.GetTextData().GetDropdownAllTextGroups();
-        }
+        public TriDropdownList<string> GetAllTextGroupID() => Catalog.GetTextData().GetDropdownAllTextGroups();
 
-        public List<ValueDropdownItem<string>> GetAllTextId()
-        {
-            return Catalog.GetTextData().GetDropdownAllTexts(textGroupId);
-        }
-#endif //ODIN_INSPECTOR
+        public TriDropdownList<string> GetAllTextId() => Catalog.GetTextData().GetDropdownAllTexts(textGroupId);
     }
 }

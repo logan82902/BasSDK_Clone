@@ -3,67 +3,44 @@ using System.Collections.Generic;
 using ThunderRoad.Skill.Spell;
 using UnityEngine;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
 
 namespace ThunderRoad.Skill.SpellPower
 {
-	[Serializable]
+    [Serializable]
+    [DeclareBoxGroup("SlowTime", Title = "SlowTime")]
+    [DeclareBoxGroup("Focus", Title = "Focus")]
+    [DeclareBoxGroup("HyperFocus", Title = "HyperFocus")]
     public class SpellPowerSlowTime : SpellPowerData
     {
-#if ODIN_INSPECTOR
-        [BoxGroup("SlowTime"), ValueDropdown(nameof(GetAllEffectID))] 
-#endif
+        [Group("SlowTime")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string effectId;
         [NonSerialized]
         public EffectData effectData;
-#if ODIN_INSPECTOR
-        [BoxGroup("SlowTime")] 
-#endif
+        [Group("SlowTime")]
         public bool scaleToMixerParameter;
-#if ODIN_INSPECTOR
-        [BoxGroup("SlowTime")] 
-#endif
+        [Group("SlowTime")]
         public string scaleToMixerParameterName;
-#if ODIN_INSPECTOR
-        [BoxGroup("SlowTime")] 
-#endif
+        [Group("SlowTime")]
         public AnimationCurve enterCurve;
-#if ODIN_INSPECTOR
-        [BoxGroup("SlowTime")] 
-#endif
+        [Group("SlowTime")]
         public AnimationCurve exitCurve;
-#if ODIN_INSPECTOR
-        [BoxGroup("Focus")] 
-#endif
+        [Group("Focus")]
         public float scale = 0.5f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Focus")] 
-#endif
+        [Group("Focus")]
         public float focusConsumptionStart = 5f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Focus")] 
-#endif
+        [Group("Focus")]
         public float focusConsumption = 2.5f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Focus")] 
-#endif
+        [Group("Focus")]
         public float focusMinToUse = 10;
-#if ODIN_INSPECTOR
-        [BoxGroup("HyperFocus")]
-#endif
+        [Group("HyperFocus")]
         public string hyperFocusSkillID = "HyperFocus";
-#if ODIN_INSPECTOR
-        [BoxGroup("HyperFocus")]
-#endif
+        [Group("HyperFocus")]
         protected SkillHyperFocus hyperFocusSkill;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Focus"), ValueDropdown(nameof(GetAllEffectID))] 
-#endif
+        [Group("Focus")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string focusDepletedEffectId;
         [NonSerialized]
         public EffectData focusDepletedEffectData;

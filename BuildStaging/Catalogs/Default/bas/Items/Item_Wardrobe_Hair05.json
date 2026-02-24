@@ -4,9 +4,10 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 4,
-  "localizationId": null,
+  "groupPath": "Body/",
+  "localizationId": "",
   "displayName": "5",
-  "description": null,
+  "description": "",
   "author": "Unknown",
   "valueType": "Gold",
   "value": 0.0,
@@ -14,29 +15,32 @@
   "tier": 0,
   "flags": "Spinnable",
   "levelRequired": 0,
-  "category": null,
-  "iconEffectId": null,
+  "type": "Wardrobe",
+  "category": "Unknown",
+  "update": "",
+  "iconEffectId": "",
   "preferredItemCenter": "Mass",
   "drainImbueWhenIdle": true,
-  "prefabAddress": null,
-  "iconAddress": null,
-  "closeUpIconAddress": null,
+  "forceImbueUseButton": "None",
+  "prefabAddress": "",
+  "iconAddress": "",
+  "closeUpIconAddress": "",
   "pooledCount": 0,
   "androidPooledCount": 0,
-  "type": "Wardrobe",
   "allowedStorage": "Inventory, Container, SandboxAllItems",
   "despawnOnStoredInInventory": false,
   "isStackable": false,
-  "consumableId": null,
-  "inventoryAudioContainerAddress": null,
+  "consumableId": "",
+  "inventoryAudioContainerAddress": "",
   "inventoryAudioVolume_dB": 0.0,
-  "slot": null,
-  "snapAudioContainerAddress": null,
+  "slot": "",
+  "snapAudioContainerAddress": "",
   "snapAudioVolume_dB": 0.0,
   "overrideMassAndDrag": true,
   "mass": 1.0,
   "drag": 1.0,
   "angularDrag": 1.0,
+  "density": 1000.0,
   "focusRegenMultiplier": 1.0,
   "spellChargeSpeedPlayerMultiplier": 1.0,
   "spellChargeSpeedNPCMultiplier": 1.0,
@@ -150,22 +154,62 @@
     "preWrapMode": "ClampForever",
     "postWrapMode": "ClampForever"
   },
+  "colliderGroups": [],
+  "damagers": [],
+  "Interactables": [],
+  "effectHinges": [],
+  "whooshs": [],
   "modules": [
     {
       "$type": "ThunderRoad.ItemModuleWardrobe, ThunderRoad",
-      "castSpeedPerHand": null,
       "category": "Body",
       "castShadows": "PlayerAndNPC",
       "wardrobes": [
         {
           "$type": "ThunderRoad.ItemModuleWardrobe+CreatureWardrobe, ThunderRoad",
           "creatureName": "HumanMale",
-          "wardrobeDataAddress": "Bas.Creature.Wardrobe.HumanMale.Hair05"
+          "wardrobeDataAddress": "Bas.Creature.Wardrobe.HumanMale.Hair05",
+          "runtimeBlendshapeActivators": [
+            {
+              "$type": "ThunderRoad.ItemModuleWardrobe+PartBlendShapeActivator, ThunderRoad",
+              "wardrobeDataAddress": "Bas.Creature.Wardrobe.HumanMale.Sentara.Bandana",
+              "meshNameRegex": ".*",
+              "shapeIndex": 0,
+              "defaultValue": 0,
+              "shapeValue": 100
+            },
+            {
+              "$type": "ThunderRoad.ItemModuleWardrobe+PartBlendShapeActivator, ThunderRoad",
+              "wardrobeDataAddress": "Bas.Creature.Wardrobe.HumanMale.Sentara.Hat",
+              "meshNameRegex": ".*",
+              "shapeIndex": 0,
+              "defaultValue": 0,
+              "shapeValue": 100
+            }
+          ]
         },
         {
           "$type": "ThunderRoad.ItemModuleWardrobe+CreatureWardrobe, ThunderRoad",
           "creatureName": "HumanFemale",
-          "wardrobeDataAddress": "Bas.Creature.Wardrobe.HumanFemale.Hair05"
+          "wardrobeDataAddress": "Bas.Creature.Wardrobe.HumanFemale.Hair05",
+          "runtimeBlendshapeActivators": [
+            {
+              "$type": "ThunderRoad.ItemModuleWardrobe+PartBlendShapeActivator, ThunderRoad",
+              "wardrobeDataAddress": "Bas.Creature.Wardrobe.HumanFemale.Sentara.Bandana",
+              "meshNameRegex": ".*",
+              "shapeIndex": 0,
+              "defaultValue": 0,
+              "shapeValue": 100
+            },
+            {
+              "$type": "ThunderRoad.ItemModuleWardrobe+PartBlendShapeActivator, ThunderRoad",
+              "wardrobeDataAddress": "Bas.Creature.Wardrobe.HumanFemale.Sentara.Hat",
+              "meshNameRegex": ".*",
+              "shapeIndex": 0,
+              "defaultValue": 0,
+              "shapeValue": 100
+            }
+          ]
         }
       ],
       "isMetal": false,
@@ -173,11 +217,5 @@
       "armorSoundEffectID": ""
     }
   ],
-  "colliderGroups": [],
-  "damagers": [],
-  "Interactables": [],
-  "effectHinges": [],
-  "whooshs": [],
-  "entityModules": [],
-  "groupPath": "Body/"
+  "entityModules": []
 }

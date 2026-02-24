@@ -1,22 +1,48 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using System;
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+
 using TriInspector;
-#endif
 using UnityEngine.ResourceManagement.ResourceLocations;
 using System.Collections;
 using System.Linq;
 using UnityEngine.Rendering;
+using Newtonsoft.Json;
 
 namespace ThunderRoad
 {
     [Serializable]
+    [AutoLabelWidth(MinWidth = 0f)]
+    [DeclareFoldoutGroup("Water Data", Expanded = false)]
+    [DeclareFoldoutGroup("Fluids (Drag)", Expanded = false)]
+    [DeclareFoldoutGroup("Platform Parameters", Expanded = false)]
+    [DeclareFoldoutGroup("Collision Detection", Expanded = false)]
+    [DeclareFoldoutGroup("Physic Material ID Map colours", Expanded = false)]
+    [DeclareFoldoutGroup("Haptics", Expanded = false)]
     public class GameData
     {
-        public static string savesFolder = "Default";
+        public const string savesFolder = "Default";
+
+#if UNITY_EDITOR
+        [JsonIgnore]
+        [HideInInspector]
+        public const string defaultEditorId = "ORIGINAL";
+        [JsonIgnore]
+        [HideInInspector]
+        public const string overrideEditorId = "OVERRIDE";
+        [JsonIgnore]
+        [HideInInspector]
+        public string filePath;
+        [JsonIgnore]
+        [HideInInspector]
+        public string editorId = defaultEditorId;
+        [JsonIgnore]
+        [HideInInspector]
+        public List<GameData> overriders;
+        [JsonIgnore]
+        [HideInInspector]
+        public bool isOverrider => editorId != defaultEditorId;
+#endif
 
         public bool overrideSaveCharacters = false;
         public bool overrideSaveOptions = false;
@@ -43,47 +69,33 @@ namespace ThunderRoad
         public string defaultPlayerFemaleCreatureID = "PlayerDefaultFemale";
 
 
-#if ODIN_INSPECTOR
-        [ValueDropdown(nameof(GetAllEffectID))]
-#endif
+        [Dropdown(nameof(GetAllEffectID))]
         public string spellWheelEffectId;
         [NonSerialized]
 
-#if ODIN_INSPECTOR
-        [ValueDropdown(nameof(GetAllHandPoseID))]
-#endif
+        [Dropdown(nameof(GetAllHandPoseID))]
         public string SpellWheelOpenHandPoseId;
         [NonSerialized]
         public HandPoseData SpellWheelOpenHandPoseData;
 
-#if ODIN_INSPECTOR
-        [ValueDropdown(nameof(GetAllHandPoseID))]
-#endif
+        [Dropdown(nameof(GetAllHandPoseID))]
         public string SpellWheelCloseHandPoseId;
         [NonSerialized]
         public HandPoseData SpellWheelCloseHandPoseData;
 
-#if ODIN_INSPECTOR
-        [ValueDropdown(nameof(GetAllHandPoseID))]
-#endif
+        [Dropdown(nameof(GetAllHandPoseID))]
         public string uiPointingCloseHandPoseId;
         [NonSerialized]
         public HandPoseData uiPointingCloseHandPoseData;
 
 
-#if ODIN_INSPECTOR
-        [ValueDropdown(nameof(GetAllEffectID))]
-#endif
+        [Dropdown(nameof(GetAllEffectID))]
         public string skillOrbInHandEffectId;
-#if ODIN_INSPECTOR
-        [ValueDropdown(nameof(GetAllEffectID))]
-#endif
+        [Dropdown(nameof(GetAllEffectID))]
         public string defaultWheelOrbEffectId;
         public string defaultPostProcessAddress;
-#if ODIN_INSPECTOR
         [TableList()]
-#endif
-        public List<PostProcessProfile> postProcessProfiles = new List<PostProcessProfile>();
+        public List<PostProcessProfile> postProcessProfiles = new();
 
         [Serializable]
         public class PostProcessProfile
@@ -94,7 +106,7 @@ namespace ThunderRoad
             public VolumeProfile volumeProfile;
         }
 
-        [ColorUsage(true, true)]
+        [ColorPickerField(Alpha = true, HDR = true)]
         public Color[] tierColors;
 
         public string heartBeatLoopAddress;
@@ -108,14 +120,10 @@ namespace ThunderRoad
         public int mergeLeftoverShardMultiplier = 4;
 
         public float playerRespawnDelay = 10f;
-#if ODIN_INSPECTOR
-        [FoldoutGroup("Platform Parameters", false)]
-#endif
-        public PlatformParameters pc = new PlatformParameters();
-#if ODIN_INSPECTOR
-        [FoldoutGroup("Platform Parameters", false)]
-#endif
-        public PlatformParameters android = new PlatformParameters();
+        [Group("Platform Parameters")]
+        public PlatformParameters pc = new();
+        [Group("Platform Parameters")]
+        public PlatformParameters android = new();
         [NonSerialized]
         public PlatformParameters platformParameters;
 
@@ -164,6 +172,8 @@ namespace ThunderRoad
             public int itemsCount;
         }
 
+        [TableList]
+        [HideReferencePicker]
         public List<Faction> factions;
 
         [Serializable]
@@ -171,6 +181,7 @@ namespace ThunderRoad
         {
             public int id;
             public string name;
+            [LabelWidth(0.0001f)]
             public AttackBehaviour attackBehaviour = AttackBehaviour.Default;
 
             public enum AttackBehaviour
@@ -182,19 +193,13 @@ namespace ThunderRoad
             }
         }
 
-#if ODIN_INSPECTOR
-        [TableList()]
-#endif
+        [TableList]
+        [HideReferencePicker]
         public List<Category> categories;
-#if ODIN_INSPECTOR
-        [TableList()]
-#endif
         public List<string> holderSlots;
         public int baseSkillCost = 4;
         public ScalingMode skillCostScalingMode = ScalingMode.Linear;
-#if ODIN_INSPECTOR
         [ShowIf(nameof(skillCostScalingMode), ScalingMode.Exponential)]
-#endif
         public float skillCostMultiplierPerTier = 2;
 
         public ScreenshotFormat screenshotFormat = ScreenshotFormat.JPG;
@@ -218,15 +223,11 @@ namespace ThunderRoad
         public int itemIconResolution = 256;
         public float throwVelocity = 3;
         public float throwMultiplier = 2;
-#if ODIN_INSPECTOR
         [MinMaxSlider(0f, 100f, ShowFields = true)]
-#endif
-        public Vector2 collisionEnterVelocityRange = new Vector2(1f, 7f);
-#if ODIN_INSPECTOR
+        public Vector2 collisionEnterVelocityRange = new(1f, 7f);
         [MinMaxSlider(0f, 20f, ShowFields = true)]
-#endif
-        public Vector2 collisionStayVelocityRange = new Vector2(0.5f, 3f);
-        public Vector2 penetrationVelocityEffectRange = new Vector2(0f, 1f);
+        public Vector2 collisionStayVelocityRange = new(0.5f, 3f);
+        public Vector2 penetrationVelocityEffectRange = new(0f, 1f);
         public int maxObjectCollision = 10;
         public int maxFramesToKeepCollision = 5;
         public int maxCollisionStayCheckPerFrame = 100;
@@ -242,9 +243,7 @@ namespace ThunderRoad
         [NonSerialized]
         public AudioContainer errorAudioGroup;
 
-#if ODIN_INSPECTOR
-        [FoldoutGroup("Collision Detection", false)]
-#endif
+        [Group("Collision Detection")]
         public CollisionDetection collisionDetection;
 
         [Serializable]
@@ -257,6 +256,7 @@ namespace ThunderRoad
 
         public Color GetIDMapColor(int id)
         {
+
             foreach (IDMapColors sc in physicMaterialIDMapColours)
             {
                 if (sc.id == id)
@@ -264,6 +264,7 @@ namespace ThunderRoad
                     return sc.color;
                 }
             }
+
             return Color.black;
         }
 
@@ -291,12 +292,11 @@ namespace ThunderRoad
                 }
             }
             return id;
+
         }
 
 
-#if ODIN_INSPECTOR
-        [FoldoutGroup("Physic Material ID Map colours", false)]
-#endif
+        [Group("Physic Material ID Map colours")]
         [Tooltip("The colours used to represent the different physic material ids in the ID map texture, 16 ids are supported")]
         public List<IDMapColors> physicMaterialIDMapColours = new List<IDMapColors>();
 
@@ -310,9 +310,7 @@ namespace ThunderRoad
             public CollisionDetectionMode npcAttack = CollisionDetectionMode.ContinuousSpeculative;
             public CollisionDetectionMode kick = CollisionDetectionMode.ContinuousSpeculative;
         }
-#if ODIN_INSPECTOR
-        [FoldoutGroup("Haptics", false)]
-#endif
+        [Group("Haptics")]
         public Haptics haptics;
 
         [Serializable]
@@ -370,38 +368,39 @@ namespace ThunderRoad
         }
 
 
-#if ODIN_INSPECTOR
 
-        public List<ValueDropdownItem<string>> GetAllValueTypes()
+        public TriDropdownList<string> GetAllValueTypes()
         {
-            List<ValueDropdownItem<string>> dropdownList = new List<ValueDropdownItem<string>>();
-            dropdownList.Add(new ValueDropdownItem<string>("Gold", "Gold"));
-            dropdownList.Add(new ValueDropdownItem<string>("CrystalShard", "CrystalShard"));
+            TriDropdownList<string> dropdownList = new();
+            dropdownList.Add("Gold", "Gold");
+            dropdownList.Add("CrystalShard", "CrystalShard");
             return dropdownList;
         }
 
-        public List<ValueDropdownItem<string>> GetCategories()
+        public TriDropdownList<string> GetCategories()
         {
-            List<ValueDropdownItem<string>> dropdownList = new List<ValueDropdownItem<string>>();
+            TriDropdownList<string> dropdownList = new();
             foreach (Category category in categories)
             {
-                dropdownList.Add(new ValueDropdownItem<string>(category.name, category.name));
+                dropdownList.Add(category.name, category.name);
             }
             return dropdownList;
         }
 
-        public List<ValueDropdownItem<string>> GetCategoryGroups()
+        public TriDropdownList<string> GetCategoryGroups()
         {
-            List<ValueDropdownItem<string>> categoryGoups = new List<ValueDropdownItem<string>>();
+            TriDropdownList<string> categoryGoups = new();
             foreach (Category category in categories)
             {
-                if (categoryGoups.Contains(new ValueDropdownItem<string>(category.group, category.group))) continue;
+                if (categoryGoups.Contains(new TriDropdownItem<string>() { Text = category.group, Value = category.group }))
+                {
+                    continue;
+                }
 
-                categoryGoups.Add(new ValueDropdownItem<string>(category.group, category.group));
+                categoryGoups.Add(category.group, category.group);
             }
             return categoryGoups;
         }
-#endif
 
 
         public Faction GetFaction(int factionId)
@@ -416,32 +415,21 @@ namespace ThunderRoad
             return null;
         }
 
-#if ODIN_INSPECTOR
-        public List<ValueDropdownItem<int>> GetFactions()
+        public TriDropdownList<int> GetFactions()
         {
-            List<ValueDropdownItem<int>> dropdownList = new List<ValueDropdownItem<int>>();
+            TriDropdownList<int> dropdownList = new();
             foreach (Faction faction in factions)
             {
-                dropdownList.Add(new ValueDropdownItem<int>(faction.name, faction.id));
+                dropdownList.Add(faction.name, faction.id);
             }
             return dropdownList;
         }
 
-        public List<ValueDropdownItem<string>> GetAllLevelID()
-        {
-            return Catalog.GetDropdownAllID(ThunderRoad.Category.Level);
-        }
+        public TriDropdownList<string> GetAllLevelID() => Catalog.GetDropdownAllID(ThunderRoad.Category.Level);
 
-        public List<ValueDropdownItem<string>> GetAllEffectID()
-        {
-            return Catalog.GetDropdownAllID(ThunderRoad.Category.Effect);
-        }
+        public TriDropdownList<string> GetAllEffectID() => Catalog.GetDropdownAllID(ThunderRoad.Category.Effect);
 
-        public List<ValueDropdownItem<string>> GetAllHandPoseID()
-        {
-            return Catalog.GetDropdownAllID(ThunderRoad.Category.HandPose);
-        }
-#endif
+        public TriDropdownList<string> GetAllHandPoseID() => Catalog.GetDropdownAllID(ThunderRoad.Category.HandPose);
 
 
 

@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
+  "groupPath": "Dalgarian/XSTransi",
   "isUnique": true,
   "areaPrefabAddress": "Bas.Area.DA_XSTransi_MetalStorage1",
   "lightingPresetAddress": "Bas.Area.DA_XSTransi_MetalStorage1.LightingPreset",
@@ -100,6 +101,5 @@
       "fakeViewAddress": "Bas.Area.DA_XSTransi_MetalStorage1.FakeView.2"
     }
   ],
-  "areaGlobalParameters": [],
-  "groupPath": "Dalgarian/XSTransi"
+  "areaGlobalParameters": []
 }

@@ -1,86 +1,99 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.Video;
-
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
+#if UNITY_EDITOR
+using UnityEditor;
 #endif
 
 namespace ThunderRoad
 {
     [Serializable]
-    public abstract class SkillData : CatalogData, IContainerLoadable<SkillData>
+    [AutoLabelWidth(MinWidth = 0f)]
+#if UNITY_EDITOR
+    [EditorLoadPriority(-5)]
+#endif
+    [DeclareBoxGroup("Skill Tree Display", Title = "Skill Tree Display")]
+    [DeclareBoxGroup("Skill Popup", Title = "Skill Popup")]
+    [DeclareBoxGroup("Skill Orb", Title = "Skill Orb")]
+    [DeclareBoxGroup("Skill Tutorial", Title = "Skill Tutorial")]
+    [DeclareBoxGroup("Skill Cost", Title = "Skill Cost")]
+    [DeclareBoxGroup("Survival")]
+    public abstract class SkillData : CatalogData, IContainerLoadable<SkillData>, ILootTableDrop
     {
         // Show disabled skills at the bottom of the Odin tree. It's reversed, I don't know why.
         public override string SortKey() => (!showInTree && !isDefaultSkill ? "AAA" : "")
                                             + (8 - (isDefaultSkill ? -1 : tier))
                                             + (isTierBlocker ? 0 : 8 - (isDefaultSkill ? -1 : tier))
                                             + id;
-#if ODIN_INSPECTOR
-        [BoxGroup("Skill Tree Display"), ValueDropdown(nameof(GetAllShardsId))]
-#endif
+        [Group("Skill Tree Display")]
+        [Dropdown(nameof(GetAllShardsId))]
         public string shardId = "Crystal_Small_01_Shard";
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Skill Tree Display")]
-#endif
+        [Group("Skill Tree Display")]
         public string prefabAddress = "Bas.Item.Misc.SkillOrb";
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Skill Tree Display")]
-#endif
+        [Group("Skill Tree Display")]
         public string meshAddress;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Skill Tree Display")]
-#endif
+        [Group("Skill Tree Display")]
         public float meshSize = 1f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Skill Tree Display"), ValueDropdown(nameof(GetAllEffectID))]
-#endif
-        public string orbLinkEffectId = "SkillTreeOrbLink";
-
-#if ODIN_INSPECTOR
-        [BoxGroup("Skill Tree Display"), InfoBox("0-indexed tier. Use 0 for Tier 1, 1 for Tier 2, and 2 for Tier 3.")]
-#endif
+        [Group("Skill Tree Display")]
+        [InfoBox("0-indexed tier. Use 0 for Tier 1, 1 for Tier 2, and 2 for Tier 3.")]
         public int tier;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Skill Tree Display")]
-#endif
+        [Group("Skill Tree Display")]
         public bool allowSkill = true;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Skill Tree Display")]
-#endif
+        [Group("Skill Tree Display")]
         public bool forceAllowRefund = false;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Skill Tree Display")]
-#endif
+        [Group("Skill Tree Display")]
         public bool showInTree = true;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Skill Tree Display")]
-#endif
+        [Group("Skill Tree Display")]
         public bool hideInSkillMenu = false;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Skill Popup")]
-#endif
+        [Group("Skill Tree Display")]
+        public bool IsCombinedSkill => !string.IsNullOrEmpty(primarySkillTreeId) && !string.IsNullOrEmpty(secondarySkillTreeId) && !primarySkillTreeId.Equals(secondarySkillTreeId);
+
+        [Group("Skill Popup")]
         public string skillTreeDisplayName;
 
         public string GetName() 
         {
-            return "Skills";
+            return skillTreeDisplayName;
         }
+
+#if UNITY_EDITOR
+        public override string GetCatalogPath()
+        {
+            string treeName = GetCatalogEditorTreeName();
+            string result = $"Skills/{(treeName == "" ? "No Tree Set" : treeName)}";
+            if (!groupPath.IsNullOrEmptyOrWhitespace()) result += $"/{groupPath}";
+            if (result[^1] == '/') result = result[..^1];
+            return result;
+        }
+
+        public override string GetDataName()
+        {
+            return $"{(!showInTree && !isDefaultSkill ? "-- " : "")}"
+                                         + $"T{(isDefaultSkill ? 0 : tier + 1)}"
+                                         + $"{(isTierBlocker ? "*" : "")} {id}";
+        }
+
+        public override Texture2D Icon()
+        {
+            if (icon != null) return AssetPreview.GetAssetPreview(icon);
+            return null;
+        }
+#endif
 
         public string EditorPrefix()
         {
@@ -90,39 +103,25 @@ namespace ThunderRoad
                    + $"{(IsCombinedSkill ? $"X-{string.Concat((primarySkillTreeId[0].ToString() + secondarySkillTreeId[0]).OrderBy(s => s))}" : primarySkillTreeId[0].ToString())}{tier + 1} ";
         }
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Skill Popup")]
-#endif
+        [Group("Skill Popup")]
         public string description;
 
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Skill Popup")]
-#endif
+        [Group("Skill Popup")]
         public string imageAddress = "";
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Skill Popup")]
-#endif
+        [Group("Skill Popup")]
         public string videoAddress = "";
-        
-#if ODIN_INSPECTOR
-        [BoxGroup("Skill Popup")]
-#endif
+
+        [Group("Skill Popup")]
         public string buttonSpriteSheetAddress = "Bas.Ui.SkillTree.Icons";
-#if ODIN_INSPECTOR
-        [BoxGroup("Skill Popup")]
-#endif
+        [Group("Skill Popup")]
         public string buttonEnabledIconAddress;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Skill Popup")]
-#endif
+        [Group("Skill Popup")]
         public string buttonDisabledIconAddress;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Skill Orb")]
-#endif
+        [Group("Skill Orb")]
         public string orbIconAddress = "";
 
 #if UNITY_EDITOR
@@ -130,40 +129,14 @@ namespace ThunderRoad
         public Sprite icon;
 #endif
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Skill Popup")]
-#endif
+        [Group("Skill Popup")]
         private int videoCount = 0;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Skill Tutorial")]
-#endif
-        public string tutorial;
-
-#if ODIN_INSPECTOR
-        [BoxGroup("Skill Tutorial")]
-#endif
-        public string tutorialLocalizationId;
-
-#if ODIN_INSPECTOR
-        [BoxGroup("Skill Tutorial")]
-#endif
-        public string tutorialGoal;
-
-#if ODIN_INSPECTOR
-        [BoxGroup("Skill Tutorial")]
-#endif
-        public string tutorialGoalLocalizationId;
-
-#if ODIN_INSPECTOR
-        [BoxGroup("Skill Cost")]
-#endif
+        [Group("Skill Cost")]
         public int costOverride = -1;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Skill Cost")]
+        [Group("Skill Cost")]
         [ShowInInspector]
-#endif
         [JsonIgnore]
         public int Cost
         {
@@ -189,13 +162,10 @@ namespace ThunderRoad
             }
         }
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Skill Cost"), FormerlySerializedAs("defaultSkill")]
-#endif
+        [Group("Skill Cost")]
+        [FormerlySerializedAs("defaultSkill")]
         public bool isDefaultSkill = false;
         
-        [NonSerialized]
-        public EffectData orbLinkEffectData;
         [NonSerialized]
         public Texture image = null;
         [NonSerialized]
@@ -207,41 +177,45 @@ namespace ThunderRoad
         public static event SkillLoadedEvent OnLateSkillsLoadedEvent;
         public static event SkillLoadedEvent OnSkillUnloadedEvent;
 
-#if ODIN_INSPECTOR
 
-        [BoxGroup("Skill Tree Display"), ValueDropdown(nameof(GetAllSkillTreeID))]
-#endif
+        [Group("Skill Tree Display")]
+        [Dropdown(nameof(GetAllSkillTreeID))]
         public string primarySkillTreeId;
 
         [NonSerialized]
         public SkillTreeData primarySkillTree;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Skill Tree Display"), ValueDropdown(nameof(GetAllSkillTreeID))]
-#endif
+        [Group("Skill Tree Display")]
+        [Dropdown(nameof(GetAllSkillTreeID))]
         public string secondarySkillTreeId;
 
         [NonSerialized]
         public SkillTreeData secondarySkillTree;
 
-#if ODIN_INSPECTOR
-        [ShowInInspector]
-        [ReadOnly]
-        [BoxGroup("Skill Tree Display")]
-#endif
-        public bool IsCombinedSkill => !string.IsNullOrEmpty(primarySkillTreeId) && !string.IsNullOrEmpty(secondarySkillTreeId) && !primarySkillTreeId.Equals(secondarySkillTreeId);
-
         // Only one should be blocker by Tier
-#if ODIN_INSPECTOR
-        [BoxGroup("Skill Tree Display")]
-#endif
+        [Group("Skill Tree Display")]
         public bool isTierBlocker = false;
 
-        private static bool forceInvalidateIconNames = false;
-        private static bool forceInvalidateButtonNames = false;
-        private static bool forceInvalidateTierBoundMesh = false;
-        private static bool forceOverrideToLocalisedText = false;
-        private static bool forceOverrideVideoAddress = false;
+        [Group("Survival")]
+        public bool canSpawnAsReward = false;
+        [Group("Survival")]
+        public bool allowInRouletteMode = true;
+        [Group("Survival")]
+        public bool combatSkill = false;
+
+        [Group("Survival")]
+        public bool allowOnFirstWave = true;
+
+        [Group("Survival")]
+        [DropdownList(nameof(GetAllSkillID))]
+        public List<string> requiredSkills = new();
+
+        private const bool forceInvalidateIconNames = false;
+        private const bool forceInvalidateButtonNames = false;
+        private const bool forceInvalidateTierBoundMesh = false;
+        private const bool forceOverrideToLocalisedText = false;
+        private const bool forceOverrideVideoAddress = false;
+
 
         public string RemoveTreeAffix(string treeName)
         {
@@ -304,13 +278,11 @@ namespace ThunderRoad
         public void ReleaseVideo()
         {
             videoCount--;
-            if(videoCount <= 0)
-            {
-                VideoClip clip = video;
-                video = null;
-                if (clip != null)
-                    Catalog.ReleaseAsset(clip);
-            }
+            if (videoCount > 0) return;
+            var clip = video;
+            video = null;
+            if (clip != null)
+                Catalog.ReleaseAsset(clip);
         }
 #if UNITY_EDITOR
         public override void CatalogEditorRefresh()
@@ -329,6 +301,14 @@ namespace ThunderRoad
             
             primarySkillTree = Catalog.GetData<SkillTreeData>(primarySkillTreeId);
             secondarySkillTree = Catalog.GetData<SkillTreeData>(secondarySkillTreeId);
+
+            if (isTierBlocker && primarySkillTree != null)
+            {
+                while (primarySkillTree.tierBlockers.Count <= tier)
+                    primarySkillTree.tierBlockers.Add(null);
+
+                primarySkillTree.tierBlockers[tier] = id;
+            }
 
             if (forceOverrideToLocalisedText)
             {
@@ -368,6 +348,28 @@ namespace ThunderRoad
                 if (forceInvalidateButtonNames || string.IsNullOrEmpty(buttonDisabledIconAddress)
                     && string.IsNullOrEmpty(primarySkillTree.iconDisabledAddress))
                     buttonDisabledIconAddress = $"{buttonSpriteSheetAddress}[{primarySkillTreeId}_Button]";
+            }
+        }
+
+        public override IEnumerator OnCatalogRefreshCoroutine()
+        {
+            requiredSkills ??= new List<string>();
+
+            if (primarySkillTree is null) yield break;
+            if (IsCombinedSkill)
+            {
+                // Known issue: If a modder implements non-blocker (i.e. orbiting or minor) dual-tree skills,
+                //  they will not automatically require the central dual tree skill.
+                requiredSkills.Add(primarySkillTree.tierBlockers[tier]);
+                requiredSkills.Add(secondarySkillTree.tierBlockers[tier]);
+            }
+            else if (isTierBlocker && tier > 0)
+            {
+                requiredSkills.Add(primarySkillTree.tierBlockers[tier - 1]);
+            }
+            else if (!isTierBlocker)
+            {
+                requiredSkills.Add(primarySkillTree.tierBlockers[tier]);
             }
         }
 
@@ -419,97 +421,25 @@ namespace ThunderRoad
 	        return new SkillContent(this);
         }
 
-#if ODIN_INSPECTOR
-        
-        public List<ValueDropdownItem<string>> GetAllHandPoseID()
-        {
-            return Catalog.GetDropdownAllID(Category.HandPose);
-        }
-        
-        public List<ValueDropdownItem<string>> GetAllStatusEffectID()
-        {
-            return Catalog.GetDropdownAllID(Category.Status);
-        }
-        
-        public List<ValueDropdownItem<string>> GetAllSpellID()
-        {
-            return Catalog.GetDropdownAllID<SpellData>();
-        }
 
-        public List<ValueDropdownItem<string>> GetAllShardsId()
-        {
-            return Catalog.GetDropdownAllID(Category.Item);
-        }
+        public TriDropdownList<string> GetAllHandPoseID() => Catalog.GetDropdownAllID(Category.HandPose);
 
-        public List<ValueDropdownItem<string>> GetAllEffectID()
-        {
-            return Catalog.GetDropdownAllID(Category.Effect);
-        }
+        public TriDropdownList<string> GetAllStatusEffectID() => Catalog.GetDropdownAllID(Category.Status);
 
-        public List<ValueDropdownItem<string>> GetAllSkillID()
-        {
-            return Catalog.GetDropdownAllID(Category.Skill);
-        }
+        public TriDropdownList<string> GetAllSpellID() => Catalog.GetDropdownAllID<SpellData>();
 
-        public List<ValueDropdownItem<string>> GetAllItemID()
-        {
-            return Catalog.GetDropdownAllID(Category.Item);
-        }
-        
-        public List<ValueDropdownItem<string>> GetAllSkillTreeID()
-        {
-            return Catalog.GetDropdownAllID(Category.SkillTree);
-        }
-        
-        public List<ValueDropdownItem<string>> GetAllDamagerID()
-        {
-	        return Catalog.GetDropdownAllID(Category.Damager);
-        }
-        
-        public List<ValueDropdownItem<string>> GetAllMaterialID()
-        {
-	        return Catalog.GetDropdownAllID(Category.Material);
-        }
-#else
-        public void GetAllHandPoseID()
-        {
-        }
-        
-        public void GetAllStatusEffectID()
-        {
-        }
-        
-        public void GetAllSpellID()
-        {
-        }
+        public TriDropdownList<string> GetAllShardsId() => Catalog.GetDropdownAllID(Category.Item);
 
-        public void GetAllShardsId()
-        {
-        }
+        public TriDropdownList<string> GetAllEffectID() => Catalog.GetDropdownAllID(Category.Effect);
 
-        public void GetAllEffectID()
-        {
-        }
+        public TriDropdownList<string> GetAllSkillID() => Catalog.GetDropdownAllID(Category.Skill);
 
-        public void GetAllSkillID()
-        {
-        }
+        public TriDropdownList<string> GetAllItemID() => Catalog.GetDropdownAllID(Category.Item);
 
-        public void GetAllItemID()
-        {
-        }
-        
-        public void GetAllSkillTreeID()
-        {
-        }
-        
-        public void GetAllDamagerID()
-        {
-        }
-        
-        public void GetAllMaterialID()
-        {
-        }        
-#endif
+        public TriDropdownList<string> GetAllSkillTreeID() => Catalog.GetDropdownAllID(Category.SkillTree);
+
+        public TriDropdownList<string> GetAllDamagerID() => Catalog.GetDropdownAllID(Category.Damager);
+
+        public TriDropdownList<string> GetAllMaterialID() => Catalog.GetDropdownAllID(Category.Material);
     }
 }

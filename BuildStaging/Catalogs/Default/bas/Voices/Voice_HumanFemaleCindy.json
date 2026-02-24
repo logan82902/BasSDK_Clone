@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
+  "groupPath": null,
   "pooledCount": 1,
   "androidPooledCount": 1,
   "dialogs": [
@@ -91,6 +92,5 @@
       "mixerChannel": "Voice",
       "audioGroupAddress": "Bas.AudioGroup.Voice.Female.BreathlessDeath"
     }
-  ],
-  "groupPath": null
+  ]
 }

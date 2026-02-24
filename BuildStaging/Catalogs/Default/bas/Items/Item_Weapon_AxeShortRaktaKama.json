@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 4,
+  "groupPath": "",
   "localizationId": "AxeShortRaktaKama",
   "displayName": "Hand Scythe",
   "description": "A common improvised weapon among the Raike lower class, desperate to defend themselves against bandits and other threats.",
@@ -14,17 +15,18 @@
   "tier": 0,
   "flags": "Spinnable, Jabbing",
   "levelRequired": 0,
-  "category": "Axes",
+  "type": "Weapon",
+  "category": "Rakta Weapons",
   "update": "Rakta",
   "iconEffectId": "",
   "preferredItemCenter": "Mass",
   "drainImbueWhenIdle": true,
+  "forceImbueUseButton": "None",
   "prefabAddress": "Bas.Item.Melee.AxeShort.RaktaKama",
   "iconAddress": "Bas.Item.Melee.AxeShort.RaktaKama.Icon[wpn_kama]",
   "closeUpIconAddress": "",
   "pooledCount": 0,
   "androidPooledCount": 0,
-  "type": "Weapon",
   "allowedStorage": "Container, SandboxAllItems",
   "despawnOnStoredInInventory": false,
   "isStackable": false,
@@ -38,6 +40,7 @@
   "mass": 1.1,
   "drag": 1.0,
   "angularDrag": 0.05,
+  "density": 6500.0,
   "focusRegenMultiplier": 1.0,
   "spellChargeSpeedPlayerMultiplier": 1.0,
   "spellChargeSpeedNPCMultiplier": 1.0,
@@ -194,6 +197,50 @@
     "preWrapMode": "ClampForever",
     "postWrapMode": "ClampForever"
   },
+  "colliderGroups": [
+    {
+      "$type": "ThunderRoad.ItemData+ColliderGroup, ThunderRoad",
+      "transformName": "Blades",
+      "colliderGroupId": "BladeAxe"
+    }
+  ],
+  "damagers": [
+    {
+      "$type": "ThunderRoad.ItemData+Damager, ThunderRoad",
+      "transformName": "Pierce",
+      "damagerID": "DaggerPierce"
+    },
+    {
+      "$type": "ThunderRoad.ItemData+Damager, ThunderRoad",
+      "transformName": "Slash",
+      "damagerID": "DaggerSlash"
+    },
+    {
+      "$type": "ThunderRoad.ItemData+Damager, ThunderRoad",
+      "transformName": "Blunt",
+      "damagerID": "HandleLight"
+    }
+  ],
+  "Interactables": [
+    {
+      "$type": "ThunderRoad.ItemData+Interactable, ThunderRoad",
+      "transformName": "Handle",
+      "interactableId": "ObjectHandleLight"
+    }
+  ],
+  "effectHinges": [],
+  "whooshs": [
+    {
+      "$type": "ThunderRoad.ItemData+Whoosh, ThunderRoad",
+      "transformName": "Whoosh",
+      "effectId": "WhooshAxeSmall",
+      "trigger": "Always",
+      "stopOnSnap": true,
+      "minVelocity": 3.0,
+      "maxVelocity": 10.0,
+      "dampening": 0.1
+    }
+  ],
   "modules": [
     {
       "$type": "ThunderRoad.ItemModuleAI, ThunderRoad",
@@ -202,7 +249,6 @@
       "weaponHandling": "OneHanded",
       "secondaryHandling": "None",
       "weaponAttackTypes": "Swing",
-      "ignoredByDefense": false,
       "alwaysPrimary": false,
       "defaultStanceInfo": {
         "$type": "ThunderRoad.ItemModuleAI+StanceInfo, ThunderRoad",
@@ -230,33 +276,8 @@
           "stanceDataID": "HumanMeleeDualWieldStance"
         }
       ],
-      "rangedWeaponData": {
-        "$type": "ThunderRoad.ItemModuleAI+RangedWeaponData, ThunderRoad",
-        "ammoType": "",
-        "tooCloseDistance": 5.0,
-        "spread": {
-          "x": 1.0,
-          "y": 1.0
-        },
-        "projectileSpeed": 20.0,
-        "accountForGravity": true,
-        "weaponAimAngleOffset": {
-          "x": 0.0,
-          "y": 0.0,
-          "z": 0.0
-        },
-        "weaponHoldPositionOffset": {
-          "x": 0.0,
-          "y": 0.0,
-          "z": 0.0
-        },
-        "weaponHoldAngleOffset": {
-          "x": 0.0,
-          "y": 0.0,
-          "z": 0.0
-        },
-        "customRangedAttackAnimationData": ""
-      },
+      "rangedWeaponData": null,
+      "ignoredByDefense": false,
       "armResistanceMultiplier": 3.0,
       "allowDynamicHeight": false,
       "defenseHasPriority": false
@@ -315,50 +336,5 @@
       ]
     }
   ],
-  "colliderGroups": [
-    {
-      "$type": "ThunderRoad.ItemData+ColliderGroup, ThunderRoad",
-      "transformName": "Blades",
-      "colliderGroupId": "BladeAxe"
-    }
-  ],
-  "damagers": [
-    {
-      "$type": "ThunderRoad.ItemData+Damager, ThunderRoad",
-      "transformName": "Pierce",
-      "damagerID": "DaggerPierce"
-    },
-    {
-      "$type": "ThunderRoad.ItemData+Damager, ThunderRoad",
-      "transformName": "Slash",
-      "damagerID": "DaggerSlash"
-    },
-    {
-      "$type": "ThunderRoad.ItemData+Damager, ThunderRoad",
-      "transformName": "Blunt",
-      "damagerID": "HandleLight"
-    }
-  ],
-  "Interactables": [
-    {
-      "$type": "ThunderRoad.ItemData+Interactable, ThunderRoad",
-      "transformName": "Handle",
-      "interactableId": "ObjectHandleLight"
-    }
-  ],
-  "effectHinges": [],
-  "whooshs": [
-    {
-      "$type": "ThunderRoad.ItemData+Whoosh, ThunderRoad",
-      "transformName": "Whoosh",
-      "effectId": "WhooshAxeSmall",
-      "trigger": "Always",
-      "stopOnSnap": true,
-      "minVelocity": 3.0,
-      "maxVelocity": 10.0,
-      "dampening": 0.1
-    }
-  ],
-  "entityModules": [],
-  "groupPath": ""
+  "entityModules": []
 }

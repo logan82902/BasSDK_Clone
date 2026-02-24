@@ -3,67 +3,48 @@ using System.Collections;
 using UnityEngine;
 using ThunderRoad.Skill.SpellPower;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
 
 namespace ThunderRoad.Skill
 {
+    [DeclareBoxGroup("Charges", Title = "Charges")]
+    [DeclareBoxGroup("Healing", Title = "Healing")]
+    [DeclareBoxGroup("Effect", Title = "Effect")]
+    [DeclareBoxGroup("Knockback", Title = "Knockback")]
+    [DeclareBoxGroup("Rage", Title = "Rage")]
     public class SkillSecondWind : SkillData
     {
-#if ODIN_INSPECTOR
-        [BoxGroup("Charges")]
-#endif
+        [Group("Charges")]
         public int chargesPerLevel = 1;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Healing")]
-#endif
+        [Group("Healing")]
         public float healRatio = 0.5f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Effect"), ValueDropdown(nameof(GetAllEffectID))]
-#endif
+        [Group("Effect")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string startEffectId;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Effect"), ValueDropdown(nameof(GetAllEffectID))]
-#endif
+        [Group("Effect")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string loopEffectId;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Knockback")]
-#endif
+        [Group("Knockback")]
         public float knockbackUpwardsForce = 1;
-#if ODIN_INSPECTOR
-        [BoxGroup("Knockback")]
-#endif
+        [Group("Knockback")]
         public float knockbackRadius = 4;
-#if ODIN_INSPECTOR
-        [BoxGroup("Knockback")]
-#endif
+        [Group("Knockback")]
         public float knockbackForce = 10;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Rage")]
-#endif
+        [Group("Rage")]
         public float rageDamageReduction = 0.1f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Rage")]
-#endif
+        [Group("Rage")]
         public float rageDuration = 10f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Rage")]
-#endif
+        [Group("Rage")]
         public float rageStrengthMultiplier = 10;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Rage")]
-#endif
+        [Group("Rage")]
         public float rageSpeedMultiplier = 1.3f;
 
         public delegate void SecondWindEvent(SkillSecondWind skill, EventTime time);

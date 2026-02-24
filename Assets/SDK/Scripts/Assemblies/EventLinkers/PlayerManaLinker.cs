@@ -1,11 +1,12 @@
-﻿#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
+﻿
 using System;
-#endif
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using TriInspector;
 
+// event linkers are already set up to unsubscribe from named events + static events when they're destroyed
+#pragma warning disable UDR0005 // Domain Reload Analyzer
 namespace ThunderRoad
 {
     [HelpURL("https://kospy.github.io/BasSDK/Components/ThunderRoad/FocusLinker")]
@@ -46,15 +47,27 @@ namespace ThunderRoad
         [System.Serializable]
         public class PlayerManaUnityEvent
         {
+            [AutoLabelWidth(AddedWidth = 5f)]
             public PlayerManaEvent manaEvent;
-            [Tooltip("Only applies to the focus consumed/gained events!")]
-#if ODIN_INSPECTOR
-            [MinMaxSlider(0f, 1f)]
-#endif
-            public Vector2 focusPercentRange = new Vector2(0f, 1f);
+            private bool isOneHandSpellEvent => (manaEvent == PlayerManaEvent.OnSpellLoaded || manaEvent == PlayerManaEvent.OnSpellUnloaded) || ((int)manaEvent >= 13 && (int)manaEvent <= 21);
+            private bool isMergeSpellEvent => (manaEvent == PlayerManaEvent.OnMergeLoaded || manaEvent == PlayerManaEvent.OnMergeUnloaded) || ((int)manaEvent >= 22 && (int)manaEvent <= 26);
+            [ShowIf(nameof(showFocusRange))]
+            [AutoLabelWidth(AddedWidth = 5f)]
+            [MinMaxSlider(0f, 1f, showFields: true)]
+            public Vector2 focusPercentRange = new(0f, 1f);
+            private bool showFocusRange => manaEvent == PlayerManaEvent.OnFocusConsumed || manaEvent == PlayerManaEvent.OnFocusGained;
+            [ShowIf(nameof(canSetID))]
+            [AutoLabelWidth(AddedWidth = 5f)]
             public string spellID;
+            private bool canSetID => isOneHandSpellEvent || isMergeSpellEvent;
+            [ShowIf(nameof(isOneHandSpellEvent))]
+            [AutoLabelWidth(AddedWidth = 5f)]
             public SideSelection casterSide = SideSelection.Either;
             public UnityEvent onActivate;
+
+            public bool checkFocus => showFocusRange;
+            public bool checkID => canSetID && !spellID.IsNullOrEmptyOrWhitespace();
+            public bool checkSide => isOneHandSpellEvent && casterSide != SideSelection.Either;
         }
 
         public enum SideSelection

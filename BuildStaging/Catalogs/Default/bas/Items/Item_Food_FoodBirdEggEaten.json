@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 4,
+  "groupPath": null,
   "localizationId": "FoodBirdEggEaten",
   "displayName": "",
   "description": "",
@@ -14,16 +15,18 @@
   "tier": 0,
   "flags": "None",
   "levelRequired": 0,
+  "type": "Food",
   "category": "Unknown",
+  "update": "",
   "iconEffectId": null,
   "preferredItemCenter": "Mass",
   "drainImbueWhenIdle": true,
+  "forceImbueUseButton": "None",
   "prefabAddress": "Bas.Item.Food.BirdEggEaten",
   "iconAddress": "",
   "closeUpIconAddress": null,
   "pooledCount": 0,
   "androidPooledCount": 0,
-  "type": "Food",
   "allowedStorage": 0,
   "despawnOnStoredInInventory": false,
   "isStackable": false,
@@ -37,6 +40,7 @@
   "mass": 0.03,
   "drag": 0.3,
   "angularDrag": 0.05,
+  "density": 1000.0,
   "focusRegenMultiplier": 1.0,
   "spellChargeSpeedPlayerMultiplier": 1.0,
   "spellChargeSpeedNPCMultiplier": 1.0,
@@ -150,6 +154,11 @@
     "preWrapMode": "ClampForever",
     "postWrapMode": "ClampForever"
   },
+  "colliderGroups": [],
+  "damagers": [],
+  "Interactables": [],
+  "effectHinges": [],
+  "whooshs": [],
   "modules": [
     {
       "$type": "ThunderRoad.ItemModuleStats, ThunderRoad",
@@ -163,11 +172,5 @@
       ]
     }
   ],
-  "colliderGroups": [],
-  "damagers": [],
-  "Interactables": [],
-  "effectHinges": [],
-  "whooshs": [],
-  "entityModules": [],
-  "groupPath": null
+  "entityModules": []
 }

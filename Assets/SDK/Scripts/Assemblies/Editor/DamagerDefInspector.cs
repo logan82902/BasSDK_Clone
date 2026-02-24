@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using UnityEditor;
-using System;
 
 namespace ThunderRoad
 {
@@ -11,7 +10,7 @@ namespace ThunderRoad
         string damagerType = "";
         Damager damager;
 
-        public override void OnInspectorGUI()
+        protected override void OnCreateGUIPreCoreElement()
         {
             script = damager = (Damager)target;
             Item item = damager.transform.GetComponentInParent<ThunderRoad.Item>();
@@ -20,9 +19,10 @@ namespace ThunderRoad
             PointToPointButton(damager.penetrationLength);
 
             EditorGUILayout.HelpBox("This Damager is set up for " + damagerType + " damage.", MessageType.Info);
+        }
 
-            base.OnInspectorGUI();
-
+        protected override void OnCreateGUIPostCoreElement()
+        {
             if (damager.colliderGroup == null)
             {
                 EditorGUILayout.HelpBox("Do not forget to assign a valid Collider Group.", MessageType.Error);
@@ -67,7 +67,7 @@ namespace ThunderRoad
             }
         }
 
-        private void OnEnable()
+        protected override void OnEnablePostCore()
         {
             script = damager = (Damager)target;
             depthPoint = damager.GetMaxDepthPosition();

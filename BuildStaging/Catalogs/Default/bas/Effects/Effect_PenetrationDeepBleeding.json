@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
+  "groupPath": null,
   "groupId": "Blade",
   "volumeDb": 0.0,
   "modules": [
@@ -84,6 +85,7 @@
       "collisionMaxIntensity": 1.0,
       "collisionUseMainGradient": false,
       "collisionUseSecondaryGradient": false,
+      "mergeKey": "487fc0c3",
       "step": "End",
       "stepCustomId": null,
       "loopCustomStep": false,
@@ -103,6 +105,5 @@
       "damagersFilterLogic": "AnyExcept",
       "damagersFilter": []
     }
-  ],
-  "groupPath": null
+  ]
 }

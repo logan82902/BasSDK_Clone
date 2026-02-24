@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
+  "groupPath": "Outpost/XSTransi",
   "isUnique": true,
   "areaPrefabAddress": "Bas.Area.GL_XSTransi_Cave_12",
   "lightingPresetAddress": "Bas.Area.GL_XSTransi_Cave_12.LightingPreset",
@@ -78,6 +79,5 @@
       "isZeroIntensity": false,
       "visibleFromGate": true
     }
-  ],
-  "groupPath": "Outpost/XSTransi"
+  ]
 }

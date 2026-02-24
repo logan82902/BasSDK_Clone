@@ -2,118 +2,75 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
     [CreateAssetMenu(menuName = "ThunderRoad/Creatures/Golem/Throw config")]
+    [DeclareBoxGroup("Thrown Object", Title = "Thrown Object")]
+    [DeclareBoxGroup("Throw", Title = "Throw")]
+    [DeclareBoxGroup("Explosion", Title = "Explosion")]
     public class GolemThrow : GolemAbility
     {
         public static float lastThrowTime;
 #if UNITY_EDITOR
-#if ODIN_INSPECTOR
-        [BoxGroup("Thrown Object")]
-        [ValueDropdown(nameof(GetAllEffectID))]
-#endif
+        [Group("Thrown Object")]
+        [Dropdown(nameof(GetAllEffectID))]
 #endif
         public string summonEffectID;
-#if ODIN_INSPECTOR
-        private List<ValueDropdownItem<string>> GetAllItemID() => Catalog.GetDropdownAllID(Category.Item);
-        private List<ValueDropdownItem<string>> GetAllEffectID() => Catalog.GetDropdownAllID(Category.Effect);
+        private TriDropdownList<string> GetAllItemID() => Catalog.GetDropdownAllID(Category.Item);
+        private TriDropdownList<string> GetAllEffectID() => Catalog.GetDropdownAllID(Category.Effect);
 
-        [BoxGroup("Thrown Object")]
-        [ValueDropdown(nameof(GetAllItemID))]
-#endif
+        [Group("Thrown Object")]
+        [Dropdown(nameof(GetAllItemID))]
         public string throwObjectID;
 #if UNITY_EDITOR
-#if ODIN_INSPECTOR
-        [BoxGroup("Thrown Object")]
-        [ValueDropdown(nameof(GetAllEffectID))]
-#endif
+        [Group("Thrown Object")]
+        [Dropdown(nameof(GetAllEffectID))]
 #endif
         public string objectEffectID;
-#if ODIN_INSPECTOR
-        [BoxGroup("Thrown Object")]
-#endif
+        [Group("Thrown Object")]
         public AnimationCurve objectEffectIntensityCurve = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
-#if ODIN_INSPECTOR
-        [BoxGroup("Throw")]
-#endif
+        [Group("Throw")]
         public LayerMask objectSpawnRaycastMask;
-#if ODIN_INSPECTOR
-        [BoxGroup("Throw")]
-#endif
+        [Group("Throw")]
         public float throwVelocity = 5f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Throw")]
-#endif
+        [Group("Throw")]
         public float throwCooldownDuration = 20;
-#if ODIN_INSPECTOR
-        [BoxGroup("Throw")]
-#endif
+        [Group("Throw")]
         public float throwMaxDistance = 50;
-#if ODIN_INSPECTOR
-        [BoxGroup("Throw")]
-#endif
+        [Group("Throw")]
         public float throwMaxAngle = 30;
-#if ODIN_INSPECTOR
-        [BoxGroup("Throw")]
-#endif
+        [Group("Throw")]
         public float gravityMultiplier = 1f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Throw")]
-#endif
+        [Group("Throw")]
         public Side grabArmSide = Side.Right;
-#if ODIN_INSPECTOR
-        [BoxGroup("Throw")]
-#endif
+        [Group("Throw")]
         public Vector3 holdPosition = Vector3.zero;
-#if ODIN_INSPECTOR
-        [BoxGroup("Throw")]
-#endif
+        [Group("Throw")]
         public float holdForce;
-#if ODIN_INSPECTOR
-        [BoxGroup("Throw")]
-#endif
+        [Group("Throw")]
         public float holdDamper;
-#if ODIN_INSPECTOR
-        [BoxGroup("Explosion")]
-#endif
+        [Group("Explosion")]
         public float explosionRadius = 10f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Explosion")]
-#endif
+        [Group("Explosion")]
         public float explosionDamage = 20;
-#if ODIN_INSPECTOR && UNITY_EDITOR
-        [BoxGroup("Explosion")]
+#if UNITY_EDITOR
+        [Group("Explosion")]
 #endif
         public List<Golem.InflictedStatus> appliedStatuses = new();
-#if ODIN_INSPECTOR
-        [BoxGroup("Explosion")]
-#endif
+        [Group("Explosion")]
         public float explosionForce = 20;
-#if ODIN_INSPECTOR
-        [BoxGroup("Explosion")]
-#endif
+        [Group("Explosion")]
         public ForceMode forceMode = ForceMode.Impulse;
-#if ODIN_INSPECTOR
-        [BoxGroup("Explosion")]
-#endif
+        [Group("Explosion")]
         public float upwardForceMult = 1f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Explosion")]
-#endif
+        [Group("Explosion")]
         public LayerMask explosionLayerMask;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Explosion")]
-        #if UNITY_EDITOR
-        [ValueDropdown(nameof(GetAllEffectID))]
-        #endif
+        [Group("Explosion")]
+#if UNITY_EDITOR
+        [Dropdown(nameof(GetAllEffectID))]
 #endif
         public string explosionEffectID;
 

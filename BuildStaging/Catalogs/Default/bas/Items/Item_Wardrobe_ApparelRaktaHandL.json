@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 4,
+  "groupPath": "Rakta/",
   "localizationId": "ApparelRaktaHandL",
   "displayName": "Raike Elite Bracer (L)",
   "description": "High quality, ornate forearm armor worn by elite Raike soldiers.",
@@ -14,17 +15,18 @@
   "tier": 3,
   "flags": "Spinnable",
   "levelRequired": 0,
-  "category": "Plate",
+  "type": "Wardrobe",
+  "category": "Rakta Armor",
   "update": "Rakta",
   "iconEffectId": "",
   "preferredItemCenter": "Mass",
   "drainImbueWhenIdle": true,
+  "forceImbueUseButton": "None",
   "prefabAddress": "Bas.Item.Apparel.Rakta_HandL",
   "iconAddress": "Bas.Item.Apparel.Rakta_HandL.Icon[ArmorItems_Rakta_Hand_Left]",
   "closeUpIconAddress": "",
   "pooledCount": 0,
   "androidPooledCount": 0,
-  "type": "Wardrobe",
   "allowedStorage": "Inventory, Container, SandboxAllItems",
   "despawnOnStoredInInventory": false,
   "isStackable": false,
@@ -38,6 +40,7 @@
   "mass": 1.4,
   "drag": 1.0,
   "angularDrag": 1.0,
+  "density": 6500.0,
   "focusRegenMultiplier": 0.94,
   "spellChargeSpeedPlayerMultiplier": 0.92,
   "spellChargeSpeedNPCMultiplier": 1.0,
@@ -151,22 +154,51 @@
     "preWrapMode": "ClampForever",
     "postWrapMode": "ClampForever"
   },
+  "colliderGroups": [],
+  "damagers": [
+    {
+      "$type": "ThunderRoad.ItemData+Damager, ThunderRoad",
+      "transformName": "Blunt",
+      "damagerID": "PropBlunt"
+    }
+  ],
+  "Interactables": [
+    {
+      "$type": "ThunderRoad.ItemData+Interactable, ThunderRoad",
+      "transformName": "Handle",
+      "interactableId": "ObjectHandleHeavy"
+    }
+  ],
+  "effectHinges": [],
+  "whooshs": [
+    {
+      "$type": "ThunderRoad.ItemData+Whoosh, ThunderRoad",
+      "transformName": "Whoosh",
+      "effectId": "WhooshPropLight",
+      "trigger": "Always",
+      "stopOnSnap": true,
+      "minVelocity": 5.0,
+      "maxVelocity": 12.0,
+      "dampening": 0.1
+    }
+  ],
   "modules": [
     {
       "$type": "ThunderRoad.ItemModuleWardrobe, ThunderRoad",
-      "castSpeedPerHand": [],
       "category": "Apparel",
       "castShadows": "PlayerAndNPC",
       "wardrobes": [
         {
           "$type": "ThunderRoad.ItemModuleWardrobe+CreatureWardrobe, ThunderRoad",
           "creatureName": "HumanMale",
-          "wardrobeDataAddress": "Bas.Creature.Wardrobe.HumanMale.Rakta.HandL"
+          "wardrobeDataAddress": "Bas.Creature.Wardrobe.HumanMale.Rakta.HandL",
+          "runtimeBlendshapeActivators": null
         },
         {
           "$type": "ThunderRoad.ItemModuleWardrobe+CreatureWardrobe, ThunderRoad",
           "creatureName": "HumanFemale",
-          "wardrobeDataAddress": "Bas.Creature.Wardrobe.HumanFemale.Rakta.HandL"
+          "wardrobeDataAddress": "Bas.Creature.Wardrobe.HumanFemale.Rakta.HandL",
+          "runtimeBlendshapeActivators": null
         }
       ],
       "isMetal": false,
@@ -209,34 +241,5 @@
       "strength": 1.0
     }
   ],
-  "colliderGroups": [],
-  "damagers": [
-    {
-      "$type": "ThunderRoad.ItemData+Damager, ThunderRoad",
-      "transformName": "Blunt",
-      "damagerID": "PropBlunt"
-    }
-  ],
-  "Interactables": [
-    {
-      "$type": "ThunderRoad.ItemData+Interactable, ThunderRoad",
-      "transformName": "Handle",
-      "interactableId": "ObjectHandleHeavy"
-    }
-  ],
-  "effectHinges": [],
-  "whooshs": [
-    {
-      "$type": "ThunderRoad.ItemData+Whoosh, ThunderRoad",
-      "transformName": "Whoosh",
-      "effectId": "WhooshPropLight",
-      "trigger": "Always",
-      "stopOnSnap": true,
-      "minVelocity": 5.0,
-      "maxVelocity": 12.0,
-      "dampening": 0.1
-    }
-  ],
-  "entityModules": [],
-  "groupPath": "Rakta/"
+  "entityModules": []
 }

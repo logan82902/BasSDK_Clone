@@ -3,11 +3,8 @@ using UnityEngine.AI;
 using System.Collections.Generic;
 using System;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
@@ -24,10 +21,10 @@ namespace ThunderRoad
         [NonSerialized]
         public Vector3 navPosition;
         [NonSerialized]
-#if ODIN_INSPECTOR
-        [ShowInInspector, ReadOnly]
-#endif
+        [ShowInInspector]
+        [ReadOnly]
         public Creature currentCreature;
+
 
         protected override void ManagedOnEnable()
         {

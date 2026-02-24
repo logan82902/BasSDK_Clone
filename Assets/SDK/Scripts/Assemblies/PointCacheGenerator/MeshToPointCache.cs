@@ -9,7 +9,6 @@ namespace ThunderRoad
     {
         public Mesh mesh;
 
-        public int pointCacheMapSize = 512;
         public int pointCachePointCount = 4096;
         public int pointCacheSeed = 0;
         public PointCacheGenerator.Distribution pointCacheDistribution = PointCacheGenerator.Distribution.RandomUniformArea;

@@ -3,11 +3,8 @@ using UnityEngine;
 using System;
 using ThunderRoad.Skill.SpellPower;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
@@ -29,6 +26,8 @@ namespace ThunderRoad
     [HelpURL("https://kospy.github.io/BasSDK/Components/ThunderRoad/Creatures/Mana.html")]
     [AddComponentMenu("ThunderRoad/Creatures/Mana")]
     [RequireComponent(typeof(Creature))]
+    [DeclareBoxGroup("Merge", Title = "Merge")]
+    [DeclareBoxGroup("Overlap sphere", Title = "Overlap sphere")]
     public class Mana : ThunderBehaviour
     {
 	    public delegate void FocusChangeEvent(float focus, float maxFocus);

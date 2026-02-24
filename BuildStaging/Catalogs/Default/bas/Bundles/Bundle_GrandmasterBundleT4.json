@@ -1,0 +1,26 @@
+{
+  "$type": "ThunderRoad.BundleData, ThunderRoad",
+  "id": "GrandmasterBundleT4",
+  "sensitiveContent": "None",
+  "sensitiveFilterBehaviour": "Discard",
+  "version": 0,
+  "groupPath": "T4",
+  "localizationGroup": "Bundles",
+  "displayName": "BundleGrandmasterBundleT4Name",
+  "description": null,
+  "altDescriptionTitle": "ContentsTitle",
+  "isArmorBundle": false,
+  "bundleItemId": "Bundle",
+  "items": [],
+  "skills": [
+    "FireMerge",
+    "GravityMerge",
+    "LightningMerge",
+    "PlasmaBeam",
+    "DilationBubble",
+    "Supernova",
+    "SpellMergeGravnado"
+  ],
+  "lootTables": [],
+  "spriteAddress": "Ui.Icon.Unknown"
+}

@@ -1,0 +1,24 @@
+{
+  "$type": "ThunderRoad.LiquidGravityPotion, ThunderRoad",
+  "id": "SentariRumAirSwimming",
+  "sensitiveContent": "None",
+  "sensitiveFilterBehaviour": "Discard",
+  "version": 0,
+  "groupPath": "",
+  "floatingTimePerReception": 12.0,
+  "gravityModifier": 0.0,
+  "dragModifier": 2.0,
+  "effectId": "ImbueGravityRagdoll",
+  "loopingSoundEffectId": "GravityElevatorEnterExit",
+  "countdownSoundCount": 1,
+  "countdownSoundDelay": 3.369,
+  "countdownSoundEffectId": "GravityPotionCountdown",
+  "swimmingForce": -1.0,
+  "designation": "Sentari antigravity rum",
+  "color": {
+    "r": 0.382772326,
+    "g": 0.0,
+    "b": 0.6745098,
+    "a": 0.831372559
+  }
+}

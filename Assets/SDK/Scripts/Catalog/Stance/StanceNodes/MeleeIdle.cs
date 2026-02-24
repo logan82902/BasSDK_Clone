@@ -2,43 +2,47 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
     [System.Serializable]
     public class MeleeIdle : IdlePose
     {
-#if ODIN_INSPECTOR
-        [LabelWidth(150), HorizontalGroup("$prettifiedID/Horiz"), VerticalGroup("$prettifiedID/Horiz/Fields"), HorizontalGroup("$prettifiedID/Horiz/Fields/Row3", Order = 2, Width = 165)]
-#endif
+        [LabelWidth(150)]
+        [Group("StanceNode/Horiz/Fields/Row3")]
         public bool requireThrustWeapon = false;
 
         public override bool showDifficulty => true;
 
         [NonSerialized]
-#if ODIN_INSPECTOR
-        [ShowInInspector, ReadOnly, ShowIf("isPlaying")]
-#endif
+        [ShowInInspector]
+        [ReadOnly]
+        [ShowIf("isPlaying")]
         public List<AttackMotion> attackMotions;
         [NonSerialized]
-#if ODIN_INSPECTOR
-        [ShowInInspector, ReadOnly, ShowIf("isPlaying")]
-#endif
+        [ShowInInspector]
+        [ReadOnly]
+        [ShowIf("isPlaying")]
         public AttackMotion lastPick;
 
         [NonSerialized]
-        public float minRange = 0f;
+        public float targetMinRange = 0f;
         [NonSerialized]
-        public float maxRange = 0f;
+        public float targetMaxRange = 0f;
         [NonSerialized]
-        public float minReachRange = 0f;
+        public float targetMinReachRange = 0f;
         [NonSerialized]
-        public float maxReachRange = 0f;
+        public float targetMaxReachRange = 0f;
+        [NonSerialized]
+        public float realMinRange = 0f;
+        [NonSerialized]
+        public float realMaxRange = 0f;
+        [NonSerialized]
+        public float realMinReachRange = 0f;
+        [NonSerialized]
+        public float realMaxReachRange = 0f;
 
 
 

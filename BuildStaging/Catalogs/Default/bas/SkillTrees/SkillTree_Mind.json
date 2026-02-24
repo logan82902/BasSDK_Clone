@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
+  "groupPath": null,
   "localizationGroupID": "Skills",
   "displayName": "{Mind}",
   "description": "{MindPathDescription}",
@@ -31,5 +32,9 @@
   "videoAddress": "Bas.Video.Infuser.Mind",
   "iconEnabledAddress": "Bas.Ui.SkillTree.Icons[Mind_ButtonColor]",
   "iconDisabledAddress": "Bas.Ui.SkillTree.Icons[Mind_Button]",
-  "groupPath": null
+  "tierBlockers": [
+    "SlowTime",
+    "HyperFocus",
+    "Marionette"
+  ]
 }

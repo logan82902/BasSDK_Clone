@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 1,
+  "groupPath": null,
   "damageType": "Pierce",
   "collisions": [
     {
@@ -1109,6 +1110,5 @@
         }
       ]
     }
-  ],
-  "groupPath": null
+  ]
 }

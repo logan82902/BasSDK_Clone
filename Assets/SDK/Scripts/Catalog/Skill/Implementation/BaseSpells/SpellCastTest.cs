@@ -1,19 +1,20 @@
 ﻿using System;
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
 using UnityEngine;
 
 namespace ThunderRoad.Skill.Spell
 {
+    [DeclareBoxGroup("Item", Title = "Item")]
+    [DeclareBoxGroup("Explosion", Title = "Explosion")]
     public class SpellCastTest : SpellCastCharge
     {
-        [BoxGroup("Item"), ValueDropdown("GetAllItemID")]
+
+        [Group("Item")]
+        [Dropdown("GetAllItemID")]
         public string itemId;
 
-        [BoxGroup("Explosion"), ValueDropdown(nameof(GetAllSkillID))]
+        [Group("Explosion")]
+        [Dropdown(nameof(GetAllSkillID))]
         public string remoteDetonationId = "RemoteDetonation";
 
         public static SkillRemoteDetonation remoteDetonationData;

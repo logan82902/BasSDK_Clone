@@ -1,10 +1,11 @@
-namespace ThunderRoad
+﻿namespace ThunderRoad
 {
-    using UnityEngine;
-    using UnityEditor;
-    using UnityEditor.UI;
- 
-    [CanEditMultipleObjects, CustomEditor(typeof(RaycastTarget), false)]
+using UnityEngine;
+using UnityEditor;
+using UnityEditor.UI;
+
+    [CanEditMultipleObjects]
+    [CustomEditor(typeof(RaycastTarget), false)]
     public class RaycastTargetEditor : GraphicEditor
     {
         public override void OnInspectorGUI ()

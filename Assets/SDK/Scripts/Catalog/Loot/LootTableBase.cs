@@ -1,15 +1,15 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
     [Serializable]
+#if UNITY_EDITOR
+    [EditorLoadPriority(0)]
+#endif
     public abstract class LootTableBase : CatalogData
     {
         public virtual ItemData PickOne(int level = 0, int searchDepth = 0, System.Random randomGen = null)
@@ -27,6 +27,11 @@ namespace ThunderRoad
         {
             List<ItemData> itemDataList = new List<ItemData>();
             return itemDataList;
+        }
+
+        public virtual int Count(int level = -1)
+        {
+            return 0;
         }
 
         public virtual bool DoesLootTableContainItemID(string id, int level = -1, int depth = 0)

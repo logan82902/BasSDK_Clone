@@ -3,14 +3,14 @@ using System;
 using System.Collections.Generic;
 using static ThunderRoad.Brain;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+
 using TriInspector;
-#endif
+using Newtonsoft.Json;
 
 namespace ThunderRoad
 {
+    [System.Serializable]
+    [AutoLabelWidth(AddedWidth = 5f, MinWidth = 0f)]
     public class BrainModulePlayer : BrainData.Module
     {
         #region Enum
@@ -38,10 +38,10 @@ namespace ThunderRoad
         public float focusAngle = 30f;
         public Vector2 lookDistanceMinMax = new Vector2(0.2f, 1.5f);
 
-#if ODIN_INSPECTOR
-        [ShowInInspector, ReadOnly] 
-#endif
+        [ShowInInspector]
+        [ReadOnly]
         [NonSerialized]
+        [JsonIgnore]
         public Exposure exposure = Exposure.None;
         #endregion Public
 

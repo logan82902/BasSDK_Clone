@@ -1,0 +1,104 @@
+{
+  "$type": "ThunderRoad.ContainerData, ThunderRoad",
+  "id": "SentaraBuccaneer",
+  "sensitiveContent": "None",
+  "sensitiveFilterBehaviour": "Discard",
+  "version": 1,
+  "groupPath": "Factions/Sentara",
+  "displayName": "Sentara Buccaneer",
+  "description": "",
+  "containerContents": [
+    {
+      "$type": "ThunderRoad.TableContent, ThunderRoad",
+      "quantity": 1,
+      "state": {
+        "$type": "ThunderRoad.ContentStateHolder, ThunderRoad",
+        "holderName": "BackRight"
+      },
+      "customDataList": [],
+      "mergeKey": "1dd3f6ab",
+      "referenceID": "WeaponSentaraBuccaneer"
+    },
+    {
+      "$type": "ThunderRoad.TableContent, ThunderRoad",
+      "quantity": 1,
+      "state": {
+        "$type": "ThunderRoad.ContentStateHolder, ThunderRoad",
+        "holderName": "BackLeft"
+      },
+      "customDataList": [],
+      "mergeKey": "5f63d976",
+      "referenceID": "WeaponSentaraBuccaneerOffhand"
+    },
+    {
+      "$type": "ThunderRoad.TableContent, ThunderRoad",
+      "quantity": 1,
+      "state": {
+        "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
+      },
+      "customDataList": [],
+      "mergeKey": "9981b29d",
+      "referenceID": "SentaraBandana"
+    },
+    {
+      "$type": "ThunderRoad.ItemContent, ThunderRoad",
+      "quantity": 1,
+      "state": {
+        "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
+      },
+      "customDataList": [],
+      "mergeKey": "92e335a9",
+      "referenceID": "ApparelSentaraTorso"
+    },
+    {
+      "$type": "ThunderRoad.ItemContent, ThunderRoad",
+      "quantity": 1,
+      "state": {
+        "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
+      },
+      "customDataList": [],
+      "mergeKey": "46e0096a",
+      "referenceID": "ApparelSentaraLegs"
+    },
+    {
+      "$type": "ThunderRoad.ItemContent, ThunderRoad",
+      "quantity": 1,
+      "state": {
+        "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
+      },
+      "customDataList": [],
+      "mergeKey": "35ba8d38",
+      "referenceID": "ApparelSentaraBandana"
+    },
+    {
+      "$type": "ThunderRoad.ItemContent, ThunderRoad",
+      "quantity": 1,
+      "state": {
+        "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
+      },
+      "customDataList": [],
+      "mergeKey": "812a71ae",
+      "referenceID": "ApparelSentaraBoots"
+    },
+    {
+      "$type": "ThunderRoad.TableContent, ThunderRoad",
+      "quantity": 1,
+      "state": {
+        "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
+      },
+      "customDataList": [],
+      "mergeKey": "fec15e8b",
+      "referenceID": "HairsScavenger"
+    },
+    {
+      "$type": "ThunderRoad.TableContent, ThunderRoad",
+      "quantity": 1,
+      "state": {
+        "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
+      },
+      "customDataList": [],
+      "mergeKey": "0b5a4e0e",
+      "referenceID": "BeardsScavenger"
+    }
+  ]
+}

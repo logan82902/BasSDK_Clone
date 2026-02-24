@@ -1,19 +1,15 @@
-﻿#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#endif
+﻿
+using TriInspector;
 
 namespace ThunderRoad.Skill.Spell
 {
+    [DeclareBoxGroup("Slam", Title = "Slam")]
     public class SkillHoverSlam : SkillData
     {
-#if ODIN_INSPECTOR
-        [BoxGroup("Slam")]
+        [Group("Slam")]
         public float slamGravityRatio = 5;
-#endif
-#if ODIN_INSPECTOR
-        [BoxGroup("Slam")]
+        [Group("Slam")]
         public float slamDuration = 2f;
-#endif
 
     }
 }

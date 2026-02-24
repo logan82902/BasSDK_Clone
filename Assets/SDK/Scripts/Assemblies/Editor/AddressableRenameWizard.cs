@@ -15,7 +15,7 @@ public class AddressableRenameWizard : ScriptableWizard
     public string search;
     public string replace;
 
-    static string info = "Append : Add text at begining, Search / Replace : Search and text and replace it";
+    const string info = "Append : Add text at beginning, Search / Replace : Search and text and replace it";
 
     [MenuItem("Assets/ThunderRoad/Correct Addressable Name Case")]
     static void FixCase()

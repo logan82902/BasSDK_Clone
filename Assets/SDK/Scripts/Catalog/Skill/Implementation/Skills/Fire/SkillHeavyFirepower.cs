@@ -1,47 +1,31 @@
-﻿#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
-using TriInspector;
-#endif
+﻿using TriInspector;
 using UnityEngine;
 
 namespace ThunderRoad.Skill.Spell
 {
+    [DeclareBoxGroup("Disarm", Title = "Disarm")]
+    [DeclareBoxGroup("Impact Force", Title = "Impact Force")]
+    [DeclareBoxGroup("Effect", Title = "Effect")]
     public class SkillHeavyFirepower : SpellSkillData
     {
-#if ODIN_INSPECTOR
-        [BoxGroup("Disarm")]
-#endif
+        [Group("Disarm")]
         public bool disarmPlayer = true;
-#if ODIN_INSPECTOR
-        [BoxGroup("Disarm")]
-#endif
+        [Group("Disarm")]
         public bool disarmEnemies = true;
-#if ODIN_INSPECTOR
-        [BoxGroup("Impact Force")]
-#endif
+        [Group("Impact Force")]
         public float impactForceItem = 6;
-#if ODIN_INSPECTOR
-        [BoxGroup("Impact Force")]
-#endif
+        [Group("Impact Force")]
         public float impactForceCreature = 30;
-#if ODIN_INSPECTOR
-        [BoxGroup("Impact Force")]
-#endif
+        [Group("Impact Force")]
         public float impactForcePlayer = 30;
-#if ODIN_INSPECTOR
-        [BoxGroup("Impact Force")]
-#endif
+        [Group("Impact Force")]
         public ForceMode impactForceMode = ForceMode.VelocityChange;
-        
-#if ODIN_INSPECTOR
-        [BoxGroup("Impact Force")]
-#endif
+
+        [Group("Impact Force")]
         public int pushLevel = 2;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Effect"), ValueDropdown(nameof(GetAllEffectID))]
-#endif
+        [Group("Effect")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string effectId;
 
         protected EffectData effectData;

@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
+  "groupPath": "Dalgarian",
   "areaSettingTable": {
     "$type": "ThunderRoad.AreaTable+AreaSettingsTable, ThunderRoad",
     "drops": [
@@ -26,6 +27,5 @@
         "probabilityWeight": 1.0
       }
     ]
-  },
-  "groupPath": "Dalgarian"
+  }
 }

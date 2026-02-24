@@ -2,11 +2,8 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+
 using TriInspector;
-#endif
 namespace ThunderRoad
 {
     [HelpURL("https://kospy.github.io/BasSDK/Components/ThunderRoad/Levels/AudioLoader.html")]

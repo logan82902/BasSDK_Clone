@@ -1,19 +1,16 @@
 ﻿using System.Collections.Generic;
-
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+using Newtonsoft.Json;
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
     [System.Serializable]
     public abstract class IdlePose : StanceNode
     {
-#if ODIN_INSPECTOR
-        [ShowInInspector, ReadOnly, ShowIf("isPlaying")]
-#endif
+        [ShowInInspector]
+        [ReadOnly]
+        [JsonIgnore]
+        [ShowIf("isPlaying")]
         public List<IdlePose> nextIdles;
 
     }

@@ -35,7 +35,9 @@ namespace ThunderRoad
 		public virtual int GetDefaultEnumIndex()
         {
 			return GetEnumIndex(defaultIntValue);
-        }public virtual int GetCurrentEnumIndex()
+        }
+		
+		public virtual int GetCurrentEnumIndex()
         {
 			return GetEnumIndex(currentIntValue);
         }
@@ -45,22 +47,22 @@ namespace ThunderRoad
 			return System.Enum.GetValues(GetEnumType()).Length;
 		}
 
-		public virtual void SetEnumValueFromIndex(int index)
-		{
-			var values = System.Enum.GetValues(GetEnumType());
-			int tempValue = (int)values.GetValue(index);
-			SetValue(new OptionIntValue(tempValue));
-		}
-	}
-	
-	[Serializable]
-	public abstract class OptionEnum<T> : OptionEnumInt where T : struct, Enum
-	{
-		public override bool IsHidden() => false; // should be visible by default
-		public override bool IsLevelOption() => true; // should be set as level option by default
-		
-		public T defaultValue;
-		private T currentValue;
+        public virtual void SetEnumValueFromIndex(int index)
+        {
+            Array values = Enum.GetValues(GetEnumType());
+            int tempValue = (int)values.GetValue(index);
+            SetValue(new OptionIntValue(tempValue));
+        }
+    }
+
+    [Serializable]
+    public abstract class OptionEnum<T> : OptionEnumInt where T : struct, Enum
+    {
+        public override bool IsHidden() => false; // should be visible by default
+        public override bool IsLevelOption() => true; // should be set as level option by default
+
+        public T defaultValue;
+        protected T currentValue;
 
 		public override OptionValue DefaultValue()
 		{
@@ -77,33 +79,55 @@ namespace ThunderRoad
 			return typeof(T);
 		}
 
-		public override void SetValue(OptionValue preset)
-		{
-			if (preset is OptionIntValue intPreset)
-			{
-				if (preset is OptionEnumValue<T> enumPreset)
-				{
-					currentValue = enumPreset.enumValue;
-					currentIntValue = intPreset.value;
-				}
-				else
-				{
-					//check the int value is in range for the enum
-					if (Enum.IsDefined(typeof(T), intPreset.value))
-					{
-						currentValue = (T)Enum.ToObject(typeof(T), intPreset.value);
-						currentIntValue = intPreset.value;
-					}
-				}
-			}			
-		}
-		public override string GetCurrentValueLabel()
-		{
-			return currentValue.ToString();
-		}
-		public override string GetDefaultValueLabel()
-		{
-			return defaultValue.ToString();
-		}
-	}
+        public override void SetValue(OptionValue preset)
+        {
+            if (preset is OptionIntValue intPreset)
+            {
+                if (preset is OptionEnumValue<T> enumPreset)
+                {
+                    currentValue = enumPreset.enumValue;
+                    currentIntValue = intPreset.value;
+                }
+                else
+                {
+                    //check the int value is in range for the enum
+                    if (Enum.IsDefined(typeof(T), intPreset.value))
+                    {
+                        currentValue = (T)Enum.ToObject(typeof(T), intPreset.value);
+                        currentIntValue = intPreset.value;
+                    }
+                }
+            }
+            
+            SetDescription();
+        }
+        public override string GetCurrentValueLabel() => currentValue.ToString();
+        public override string GetDefaultValueLabel() => defaultValue.ToString();
+    }
+
+    public abstract class OptionEnumFlag : OptionBoolean
+    {
+        public abstract Type GetEnumType();
+
+        protected abstract int GetIntValue();
+
+        public int Combine(int other)
+        {
+            return other | GetIntValue();
+        }
+    }
+
+    [Serializable]
+    public abstract class OptionEnumFlag<T> : OptionEnumFlag where T : struct, Enum
+    {
+        public override bool IsHidden() => false; // should be visible by default
+        public override bool IsLevelOption() => true; // should be set as level option by default
+
+        public bool invert;
+        public T flagValue;
+
+        public override Type GetEnumType() => typeof(T);
+
+        protected override int GetIntValue() => currentValue ? Convert.ToInt32(flagValue) : 0;
+    }
 }

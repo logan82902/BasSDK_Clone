@@ -1,15 +1,11 @@
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+﻿
 using TriInspector;
-#endif
 namespace ThunderRoad.Skill.Spell
 {
+    [DeclareBoxGroup("Status Effect", Title = "Status Effect")]
     public class SkillFireSapping : SkillSapStatusApplier
     {
-#if ODIN_INSPECTOR        
-        [BoxGroup("Status Effect")]
-#endif        
+        [Group("Status Effect")]
         public float heatTransferPerBolt = 10f;
     }
 }

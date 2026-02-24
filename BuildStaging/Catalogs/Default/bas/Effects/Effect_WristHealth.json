@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
+  "groupPath": null,
   "groupId": "UI",
   "volumeDb": 0.0,
   "modules": [
@@ -75,7 +76,6 @@
       "scaleCurve": null,
       "usePointCache": true,
       "pointCacheSkinnedMeshUpdate": false,
-      "pointCacheMapSize": 512,
       "pointCachePointCount": 4096,
       "pointCacheSeed": 0,
       "pointCacheDistribution": "RandomUniformArea",
@@ -99,6 +99,7 @@
           "name": "Size"
         }
       ],
+      "mergeKey": "def37e54",
       "step": "Loop",
       "stepCustomId": null,
       "loopCustomStep": false,
@@ -193,6 +194,7 @@
       "collisionMaxIntensity": 1.0,
       "collisionUseMainGradient": false,
       "collisionUseSecondaryGradient": false,
+      "mergeKey": "8568602f",
       "step": "Loop",
       "stepCustomId": null,
       "loopCustomStep": false,
@@ -210,6 +212,5 @@
       "damagersFilterLogic": "AnyExcept",
       "damagersFilter": []
     }
-  ],
-  "groupPath": null
+  ]
 }

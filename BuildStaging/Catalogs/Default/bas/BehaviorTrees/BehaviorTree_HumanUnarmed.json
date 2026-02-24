@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
+  "groupPath": null,
   "type": "SubTree",
   "rootNode": {
     "$type": "ThunderRoad.AI.Decorator.IfCondition, ThunderRoad",
@@ -42,28 +43,19 @@
                   "$type": "ThunderRoad.AI.Action.HolsterItem, ThunderRoad",
                   "holsterRight": false,
                   "holsterLeft": true,
-                  "waitForFinished": false,
-                  "blackboard": null,
-                  "creature": null,
-                  "brainData": null
+                  "waitForFinished": false
                 }
               }
             },
             {
               "$type": "ThunderRoad.AI.Action.SetStance, ThunderRoad",
               "stance": "Flee",
-              "onlyOnce": false,
-              "blackboard": null,
-              "creature": null,
-              "brainData": null
+              "onlyOnce": false
             },
             {
               "$type": "ThunderRoad.AI.Action.SetDefenseState, ThunderRoad",
               "parry": false,
-              "dodge": true,
-              "blackboard": null,
-              "creature": null,
-              "brainData": null
+              "dodge": true
             },
             {
               "$type": "ThunderRoad.AI.Get.GetItem, ThunderRoad",
@@ -85,10 +77,7 @@
               "outputItemVariableName": "",
               "outputItemTransformVariableName": "",
               "outputItemHandleVariableName": "WeaponHandleToGrab",
-              "outputItemHandleTransformVariableName": "WeaponHandleToGrabTransform",
-              "blackboard": null,
-              "creature": null,
-              "brainData": null
+              "outputItemHandleTransformVariableName": "WeaponHandleToGrabTransform"
             },
             {
               "$type": "ThunderRoad.AI.Control.Selector, ThunderRoad",
@@ -100,12 +89,7 @@
                   "pickupIKDuration": 0.75,
                   "pickupDuration": 1.05,
                   "useIK": false,
-                  "pickupAnimationId": "HumanPickup",
-                  "moduleLook": null,
-                  "moduleEquipment": null,
-                  "blackboard": null,
-                  "creature": null,
-                  "brainData": null
+                  "pickupAnimationId": "HumanPickup"
                 },
                 {
                   "$type": "ThunderRoad.AI.Action.MoveTo, ThunderRoad",
@@ -142,10 +126,7 @@
                   "angleMode": "None",
                   "changeAngleUntilUnobstructed": false,
                   "targetRadiusMinAngle": 0.0,
-                  "targetRadiusMaxAngle": 0.0,
-                  "blackboard": null,
-                  "creature": null,
-                  "brainData": null
+                  "targetRadiusMaxAngle": 0.0
                 }
               ]
             },
@@ -168,10 +149,7 @@
                   "$type": "ThunderRoad.AI.Action.HolsterItem, ThunderRoad",
                   "holsterRight": false,
                   "holsterLeft": true,
-                  "waitForFinished": false,
-                  "blackboard": null,
-                  "creature": null,
-                  "brainData": null
+                  "waitForFinished": false
                 }
               }
             }
@@ -185,6 +163,5 @@
         }
       ]
     }
-  },
-  "groupPath": null
+  }
 }

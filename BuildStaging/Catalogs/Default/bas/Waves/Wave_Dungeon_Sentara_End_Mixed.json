@@ -1,0 +1,70 @@
+{
+  "$type": "ThunderRoad.WaveData, ThunderRoad",
+  "id": "Dungeon_Sentara_End_Mixed",
+  "sensitiveContent": "None",
+  "sensitiveFilterBehaviour": "Discard",
+  "version": 2,
+  "groupPath": "Dungeon",
+  "category": "Dungeon Arena Room",
+  "localizationId": "-",
+  "title": "Sentara End Mixed",
+  "description": "",
+  "loopBehavior": "NoLoop",
+  "totalMaxAlive": 4,
+  "alwaysAvailable": false,
+  "waveSelectors": [],
+  "factions": [
+    {
+      "$type": "ThunderRoad.WaveData+WaveFaction, ThunderRoad",
+      "factionID": 4,
+      "factionMaxAlive": 4
+    }
+  ],
+  "groups": [
+    {
+      "$type": "ThunderRoad.WaveData+Group, ThunderRoad",
+      "mergeKey": "5ac2da04",
+      "reference": "Table",
+      "referenceID": "SentaraAlertMix",
+      "overrideFaction": false,
+      "factionID": 0,
+      "overrideContainer": false,
+      "overrideContainerID": "",
+      "overrideBrain": false,
+      "overrideBrainID": "",
+      "overrideMaxMelee": false,
+      "overrideMaxMeleeCount": 2,
+      "groupHealthMultiplier": 1.0,
+      "minMaxCount": {
+        "x": 8,
+        "y": 10
+      },
+      "spawnPointIndex": -1,
+      "prereqGroupIndex": -1,
+      "prereqMaxRemainingAlive": 0
+    },
+    {
+      "$type": "ThunderRoad.WaveData+Group, ThunderRoad",
+      "mergeKey": "c1e4f11b",
+      "reference": "Table",
+      "referenceID": "SentaraAlertMix",
+      "overrideFaction": false,
+      "factionID": 0,
+      "overrideContainer": false,
+      "overrideContainerID": "",
+      "overrideBrain": false,
+      "overrideBrainID": "",
+      "overrideMaxMelee": false,
+      "overrideMaxMeleeCount": 2,
+      "groupHealthMultiplier": 1.0,
+      "minMaxCount": {
+        "x": 8,
+        "y": 10
+      },
+      "spawnPointIndex": -1,
+      "prereqGroupIndex": -1,
+      "prereqMaxRemainingAlive": 0
+    }
+  ],
+  "modules": null
+}

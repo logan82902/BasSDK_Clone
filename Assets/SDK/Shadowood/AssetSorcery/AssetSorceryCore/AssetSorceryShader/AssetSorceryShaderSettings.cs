@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#endif
+
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.Serialization;
+using TriInspector;
 
 namespace ThunderRoad.AssetSorcery
 {
@@ -16,7 +14,6 @@ namespace ThunderRoad.AssetSorcery
         public string customShaderName;
 
         public string outputShaderFName;
-        //public string outputShaderFilename;
 
         public AssetSorceryPlatformRuntime.ePlatformAS PlatformAS = AssetSorceryPlatformRuntime.ePlatformAS.Desktop;
         
@@ -31,18 +28,14 @@ namespace ThunderRoad.AssetSorcery
         public bool forceOpaqueDesktop; // Toggles the depth queue between OPAQUE and TRANSPARENT
         public bool forceOpaqueMobile; // Toggles the depth queue between OPAQUE and TRANSPARENT
 
-        
-        #if ODIN_INSPECTOR
-        [ListDrawerSettings(ShowIndexLabels = true, ListElementLabelName = "displayName")]
-#endif
-        public List<PassItem> passItems = new List<PassItem>();
-        
-#if ODIN_INSPECTOR
-        [ListDrawerSettings(ShowIndexLabels = true, ListElementLabelName = "displayName")]
-#endif
-        public List<AssetSorceryShaderKeyword> shaderKeywords = new List<AssetSorceryShaderKeyword>();
+        public int offsetQueueDesktop = 0;
+        public int offsetQueueMobile = 0;
 
-     
+        public Shader desktopShader;
+        public Shader mobileShader;
+        public List<PassItem> passItems = new();
+
+        public List<AssetSorceryShaderKeyword> shaderKeywords = new();
     }
 
   
@@ -54,10 +47,8 @@ namespace ThunderRoad.AssetSorcery
 
         public string passName;
 
-        [HideInInspector] 
-#if ODIN_INSPECTOR
-        [ReadOnly] 
-#endif
+        [HideInInspector]
+        [ReadOnly]
         public bool present;
 
         [HideInInspector] public int indexSubShader;

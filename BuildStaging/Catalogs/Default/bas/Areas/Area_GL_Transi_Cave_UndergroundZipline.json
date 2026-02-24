@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
+  "groupPath": "Outpost/Transi",
   "isUnique": true,
   "areaPrefabAddress": "Bas.Area.GL_Transi_Cave_UndergroundZipline",
   "lightingPresetAddress": "Bas.Area.GL_Transi_Cave_UndergroundZipline.LightingPreset",
@@ -78,6 +79,5 @@
       "isZeroIntensity": false,
       "visibleFromGate": true
     }
-  ],
-  "groupPath": "Outpost/Transi"
+  ]
 }

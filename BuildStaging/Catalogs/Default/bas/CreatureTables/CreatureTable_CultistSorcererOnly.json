@@ -4,11 +4,13 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 1,
+  "groupPath": "Factions/Sandbox",
   "description": null,
   "linkedToGenderRatio": false,
   "drops": [
     {
       "$type": "ThunderRoad.CreatureTable+Drop, ThunderRoad",
+      "mergeKey": "18cae644",
       "reference": "Table",
       "referenceID": "Cultist_Base_MeleeSpecial",
       "overrideFaction": false,
@@ -23,6 +25,7 @@
     },
     {
       "$type": "ThunderRoad.CreatureTable+Drop, ThunderRoad",
+      "mergeKey": "c13ea312",
       "reference": "Table",
       "referenceID": "Cultist_Base_RangedStrong",
       "overrideFaction": false,
@@ -37,6 +40,7 @@
     },
     {
       "$type": "ThunderRoad.CreatureTable+Drop, ThunderRoad",
+      "mergeKey": "a165c1e1",
       "reference": "Table",
       "referenceID": "Cultist_Base_RangedWeak",
       "overrideFaction": false,
@@ -49,6 +53,5 @@
       "overrideEthnicityID": null,
       "probabilityWeight": 1.0
     }
-  ],
-  "groupPath": "Factions/Sandbox"
+  ]
 }

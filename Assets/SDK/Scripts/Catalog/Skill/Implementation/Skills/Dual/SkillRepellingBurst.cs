@@ -1,41 +1,30 @@
 ﻿using System;
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#endif
+using TriInspector;
 using UnityEngine;
 
 namespace ThunderRoad.Skill.Spell
 {
+    [DeclareBoxGroup("Dependencies", Title = "Dependencies")]
+    [DeclareBoxGroup("Explosion Force", Title = "Explosion Force")]
     public class SkillRepellingBurst : SkillData
     {
-        #if ODIN_INSPECTOR
-        [BoxGroup("Dependencies"), ValueDropdown(nameof(GetAllSkillID))]
-        #endif
+        [Group("Dependencies")]
+        [Dropdown(nameof(GetAllSkillID))]
         public string skillRemoteDetonationId = "RemoteDetonation";
         [NonSerialized]
         public SkillRemoteDetonation skillRemoteDetonation;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Explosion Force")]
-#endif
+        [Group("Explosion Force")]
         public float force = 1;
-#if ODIN_INSPECTOR
-        [BoxGroup("Explosion Force")]
-#endif
+        [Group("Explosion Force")]
         public float forcePlayer = 1;
-#if ODIN_INSPECTOR
-        [BoxGroup("Explosion Force")]
-#endif
+        [Group("Explosion Force")]
         public float upwardsModifier = 1;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Explosion Force")]
-#endif
+        [Group("Explosion Force")]
         public ForceMode forceMode = ForceMode.VelocityChange;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Explosion Force")]
-#endif
+        [Group("Explosion Force")]
         public int pushLevel = 2;
 
     }

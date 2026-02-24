@@ -1,14 +1,12 @@
-﻿#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#endif
+﻿
+using TriInspector;
 
 namespace ThunderRoad.Skill.Spell
 {
+    [DeclareBoxGroup("Chaining", Title = "Chaining")]
     public class SkillChainLightning : SpellSkillData
     {
-#if ODIN_INSPECTOR
-        [BoxGroup("Chaining")]
-#endif
+        [Group("Chaining")]
         public float chainRangeMultiplier = 3f;
         public override void OnSpellLoad(SpellData spell, SpellCaster caster = null)
         {

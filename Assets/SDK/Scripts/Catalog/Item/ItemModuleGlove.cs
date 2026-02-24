@@ -1,5 +1,6 @@
 ﻿namespace ThunderRoad
 {
+    [System.Serializable]
     public class ItemModuleGlove : ItemModule
     {
         public Side side;

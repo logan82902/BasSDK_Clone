@@ -1,17 +1,14 @@
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#endif	  
+﻿
 using ThunderRoad.Modules;
 using UnityEngine;
+using TriInspector;
 
 namespace ThunderRoad
 {
     public class DungeonSuccessTrigger : MonoBehaviour
-    { 
-#if ODIN_INSPECTOR
-	    [ShowInInspector]
-#endif	    
-	    bool hasActivated = false;
+    {
+        [ShowInInspector]
+        private bool hasActivated = false;
 
         public void DungeonSuccess()
         {

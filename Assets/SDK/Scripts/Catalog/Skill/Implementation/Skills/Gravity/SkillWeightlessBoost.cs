@@ -1,35 +1,28 @@
 ﻿using System;
 using System.Collections;
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#endif
+using TriInspector;
 using UnityEngine;
 
 namespace ThunderRoad.Skill.Spell
 {
+    [DeclareBoxGroup("Status Effect", Title = "Status Effect")]
+    [DeclareBoxGroup("Boost", Title = "Boost")]
     public class SkillWeightlessBoost : BoostSkillData
     {
-#if ODIN_INSPECTOR
-        [BoxGroup("Status Effect"), ValueDropdown(nameof(GetAllStatusEffectID))]
-#endif
+        [Group("Status Effect")]
+        [Dropdown(nameof(GetAllStatusEffectID))]
         public string statusId;
 
         [NonSerialized]
-        public StatusData statusData; 
-        
-#if ODIN_INSPECTOR
-        [BoxGroup("Status Effect")]
-#endif
+        public StatusData statusData;
+
+        [Group("Status Effect")]
         public float duration = 0.3f;
-        
-#if ODIN_INSPECTOR
-        [BoxGroup("Boost")]
-#endif
+
+        [Group("Boost")]
         public float maxAngle = 20f;
-        
-#if ODIN_INSPECTOR
-        [BoxGroup("Boost")]
-#endif
+
+        [Group("Boost")]
         public float boostWindow = 1;
 
     }

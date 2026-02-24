@@ -1,38 +1,30 @@
-﻿#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#endif
+﻿using TriInspector;
 using System;
 using UnityEngine;
 
 namespace ThunderRoad.Skill.Spell
 {
+    [DeclareBoxGroup("Ignition", Title = "Ignition")]
+    [DeclareBoxGroup("Dependencies", Title = "Dependencies")]
     public class SkillIgnitionBurst : SkillData
     {
-#if ODIN_INSPECTOR
-        [BoxGroup("Ignition")]
-#endif
+        [Group("Ignition")]
         public float igniteMinRadius;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Ignition")]
-#endif
+        [Group("Ignition")]
         public float ignitionHeat;
-        
-#if ODIN_INSPECTOR
-        [BoxGroup("Ignition")]
-#endif
+
+        [Group("Ignition")]
         public AnimationCurve heatFalloffMult = AnimationCurve.Linear(0, 0, 1, 1);
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Dependencies"), ValueDropdown(nameof(GetAllSkillID))]
-#endif
+        [Group("Dependencies")]
+        [Dropdown(nameof(GetAllSkillID))]
         public string remoteDetonationSkillId = "RemoteDetonation";
         [NonSerialized]
         public SkillRemoteDetonation remoteDetonationSkill;
-        
-#if ODIN_INSPECTOR
-        [BoxGroup("Dependencies"), ValueDropdown(nameof(GetAllStatusEffectID))]
-#endif
+
+        [Group("Dependencies")]
+        [Dropdown(nameof(GetAllStatusEffectID))]
         public string burningStatusId = "Burning";
         [NonSerialized]
         public StatusDataBurning burning;

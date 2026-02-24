@@ -4,9 +4,9 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 1,
+  "groupPath": "Factions/Cultist",
   "displayName": "Cultist Sniper",
   "description": "",
-  "contents": [],
   "containerContents": [
     {
       "$type": "ThunderRoad.TableContent, ThunderRoad",
@@ -16,18 +16,22 @@
         "holderName": "BackLeft"
       },
       "customDataList": null,
+      "mergeKey": "f4659a94",
       "referenceID": "WeaponCultistBow"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "b0a653ee",
       "referenceID": "MeleeImbueFire"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "6b209356",
       "referenceID": "ArrowImbueFire"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "7b33d484",
       "referenceID": "MoltenArc"
     },
     {
@@ -38,6 +42,7 @@
         "holderName": "HipsRight"
       },
       "customDataList": null,
+      "mergeKey": "af45d0c1",
       "referenceID": "WeaponCultistGentry"
     },
     {
@@ -48,6 +53,7 @@
         "holderName": "BackRight"
       },
       "customDataList": [],
+      "mergeKey": "02d33074",
       "referenceID": "QuiverLargeNPC"
     },
     {
@@ -57,6 +63,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "a6b43d26",
       "referenceID": "ApparelWarMageHandL"
     },
     {
@@ -66,6 +73,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "aa226f83",
       "referenceID": "ApparelWarMageHandR"
     },
     {
@@ -75,6 +83,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "daab3983",
       "referenceID": "ApparelWarMageChest"
     },
     {
@@ -84,6 +93,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "14a148e5",
       "referenceID": "ApparelWarMageLegs"
     },
     {
@@ -93,6 +103,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "9c0d5154",
       "referenceID": "ApparelWarMageFeet"
     },
     {
@@ -102,8 +113,8 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "dd03705a",
       "referenceID": "HairsSoldier"
     }
-  ],
-  "groupPath": "Factions/Cultist"
+  ]
 }

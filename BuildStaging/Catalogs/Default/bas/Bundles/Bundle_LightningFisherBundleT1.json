@@ -1,0 +1,24 @@
+{
+  "$type": "ThunderRoad.BundleData, ThunderRoad",
+  "id": "LightningFisherBundleT1",
+  "sensitiveContent": "None",
+  "sensitiveFilterBehaviour": "Discard",
+  "version": 0,
+  "groupPath": "T1",
+  "localizationGroup": "Bundles",
+  "displayName": "BundleLightningFisherBundleT1Name",
+  "description": null,
+  "altDescriptionTitle": "ContentsTitle",
+  "isArmorBundle": false,
+  "bundleItemId": "Bundle",
+  "items": [
+    "SpearSentaraHarpoon"
+  ],
+  "skills": [
+    "Lightning",
+    "ShockTrip",
+    "Electromagnetism"
+  ],
+  "lootTables": [],
+  "spriteAddress": "Ui.Icon.Unknown"
+}

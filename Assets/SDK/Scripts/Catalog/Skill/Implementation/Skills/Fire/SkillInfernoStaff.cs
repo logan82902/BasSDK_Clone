@@ -2,60 +2,41 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#endif
+using Newtonsoft.Json;
+using TriInspector;
 
 namespace ThunderRoad.Skill.Spell
 {
+    [DeclareBoxGroup("Flamethrower", Title = "Flamethrower")]
     public class SkillInfernoStaff : SpellSkillData
     {
-#if ODIN_INSPECTOR
-        [BoxGroup("Flamethrower"), ValueDropdown(nameof(GetAllEffectID))]
-#endif
+        [Group("Flamethrower")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string flamethrowerEffectId = "Flamethrower";
 
+        [JsonIgnore]
         public EffectData flamethrowerEffectData;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Flamethrower")]
-#endif
+        [Group("Flamethrower")]
         public float sphereRadius = 3f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Flamethrower")]
-#endif
+        [Group("Flamethrower")]
         public float tickDelay = 0.3f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Flamethrower")]
-#endif
+        [Group("Flamethrower")]
         public float damagePerTick = 1;
-#if ODIN_INSPECTOR
-        [BoxGroup("Flamethrower")]
-#endif
+        [Group("Flamethrower")]
         public LayerMask layerMask;
-#if ODIN_INSPECTOR
-        [BoxGroup("Flamethrower")]
-#endif
+        [Group("Flamethrower")]
         public float forceMult = 2;
-#if ODIN_INSPECTOR
-        [BoxGroup("Flamethrower")]
-#endif
+        [Group("Flamethrower")]
         public float heatTransferPerSecond = 70;
-#if ODIN_INSPECTOR
-        [BoxGroup("Flamethrower"), ValueDropdown(nameof(GetAllStatusEffectID))]
-#endif
+        [Group("Flamethrower")]
+        [Dropdown(nameof(GetAllStatusEffectID))]
         public string burningId = "Burning";
-#if ODIN_INSPECTOR
-        [BoxGroup("Flamethrower")]
-#endif
+        [Group("Flamethrower")]
         public AnimationCurve pushbackCurve = AnimationCurve.EaseInOut(0, 2, 0.5f, 1);
-#if ODIN_INSPECTOR
-        [BoxGroup("Flamethrower")]
-#endif
+        [Group("Flamethrower")]
         public float pushbackForce = 2;
-#if ODIN_INSPECTOR
-        [BoxGroup("Flamethrower")]
-#endif
+        [Group("Flamethrower")]
         public ForceMode pushbackForceMode = ForceMode.Acceleration;
 
         [NonSerialized]

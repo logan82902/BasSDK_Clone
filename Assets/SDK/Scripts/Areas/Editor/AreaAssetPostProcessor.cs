@@ -1,5 +1,7 @@
+using UnityEditor;
 using UnityEngine;
 
+#pragma warning disable UDR0001 // Domain Reload Analyzer
 namespace ThunderRoad
 {
     public class AreaAssetPostProcessor : UnityEditor.AssetPostprocessor

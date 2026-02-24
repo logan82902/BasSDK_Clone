@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 4,
+  "groupPath": null,
   "localizationId": "SwordLongCommon",
   "displayName": "Longsword",
   "description": "A sword with a long, two handed handle, giving the user more agility to maneuver the blade. One of the most versatile weapons in the kingdom.",
@@ -14,16 +15,18 @@
   "tier": 2,
   "flags": "Spinnable, Jabbing",
   "levelRequired": 0,
+  "type": "Weapon",
   "category": "Swords",
+  "update": "",
   "iconEffectId": null,
   "preferredItemCenter": "Mass",
   "drainImbueWhenIdle": true,
+  "forceImbueUseButton": "None",
   "prefabAddress": "Bas.Item.Melee.Sword.Long",
   "iconAddress": "Bas.Item.Melee.Sword.Long.Icon[wpn_SL02_long]",
   "closeUpIconAddress": "Bas.Item.Melee.Sword.Long.IconClose[wpn_SL02_long-close-up]",
   "pooledCount": 0,
   "androidPooledCount": 0,
-  "type": "Weapon",
   "allowedStorage": "Container, SandboxAllItems",
   "despawnOnStoredInInventory": false,
   "isStackable": false,
@@ -37,6 +40,7 @@
   "mass": 2.0,
   "drag": 1.0,
   "angularDrag": 0.05,
+  "density": 7500.0,
   "focusRegenMultiplier": 1.0,
   "spellChargeSpeedPlayerMultiplier": 1.0,
   "spellChargeSpeedNPCMultiplier": 1.0,
@@ -179,6 +183,55 @@
     "preWrapMode": "ClampForever",
     "postWrapMode": "ClampForever"
   },
+  "colliderGroups": [
+    {
+      "$type": "ThunderRoad.ItemData+ColliderGroup, ThunderRoad",
+      "transformName": "Blades",
+      "colliderGroupId": "BladeSword2h"
+    }
+  ],
+  "damagers": [
+    {
+      "$type": "ThunderRoad.ItemData+Damager, ThunderRoad",
+      "transformName": "Pierce",
+      "damagerID": "SwordPierce"
+    },
+    {
+      "$type": "ThunderRoad.ItemData+Damager, ThunderRoad",
+      "transformName": "Slash",
+      "damagerID": "SwordSlash1H"
+    },
+    {
+      "$type": "ThunderRoad.ItemData+Damager, ThunderRoad",
+      "transformName": "Blunt",
+      "damagerID": "HandleHeavy"
+    }
+  ],
+  "Interactables": [
+    {
+      "$type": "ThunderRoad.ItemData+Interactable, ThunderRoad",
+      "transformName": "Handle",
+      "interactableId": "ObjectHandleHeavy"
+    },
+    {
+      "$type": "ThunderRoad.ItemData+Interactable, ThunderRoad",
+      "transformName": "HandleHalfSword",
+      "interactableId": "ObjectHandleHalfSword"
+    }
+  ],
+  "effectHinges": [],
+  "whooshs": [
+    {
+      "$type": "ThunderRoad.ItemData+Whoosh, ThunderRoad",
+      "transformName": "Whoosh",
+      "effectId": "WhooshSwordShort",
+      "trigger": "Always",
+      "stopOnSnap": true,
+      "minVelocity": 3.0,
+      "maxVelocity": 14.0,
+      "dampening": 0.1
+    }
+  ],
   "modules": [
     {
       "$type": "ThunderRoad.ItemModuleAI, ThunderRoad",
@@ -187,7 +240,6 @@
       "weaponHandling": "OneHanded",
       "secondaryHandling": "None",
       "weaponAttackTypes": "Swing, Thrust",
-      "ignoredByDefense": false,
       "alwaysPrimary": false,
       "defaultStanceInfo": {
         "$type": "ThunderRoad.ItemModuleAI+StanceInfo, ThunderRoad",
@@ -216,6 +268,7 @@
         }
       ],
       "rangedWeaponData": null,
+      "ignoredByDefense": false,
       "armResistanceMultiplier": 3.0,
       "allowDynamicHeight": false,
       "defenseHasPriority": false
@@ -274,55 +327,5 @@
       ]
     }
   ],
-  "colliderGroups": [
-    {
-      "$type": "ThunderRoad.ItemData+ColliderGroup, ThunderRoad",
-      "transformName": "Blades",
-      "colliderGroupId": "BladeSword2h"
-    }
-  ],
-  "damagers": [
-    {
-      "$type": "ThunderRoad.ItemData+Damager, ThunderRoad",
-      "transformName": "Pierce",
-      "damagerID": "SwordPierce"
-    },
-    {
-      "$type": "ThunderRoad.ItemData+Damager, ThunderRoad",
-      "transformName": "Slash",
-      "damagerID": "SwordSlash1H"
-    },
-    {
-      "$type": "ThunderRoad.ItemData+Damager, ThunderRoad",
-      "transformName": "Blunt",
-      "damagerID": "HandleHeavy"
-    }
-  ],
-  "Interactables": [
-    {
-      "$type": "ThunderRoad.ItemData+Interactable, ThunderRoad",
-      "transformName": "Handle",
-      "interactableId": "ObjectHandleHeavy"
-    },
-    {
-      "$type": "ThunderRoad.ItemData+Interactable, ThunderRoad",
-      "transformName": "HandleHalfSword",
-      "interactableId": "ObjectHandleHalfSword"
-    }
-  ],
-  "effectHinges": [],
-  "whooshs": [
-    {
-      "$type": "ThunderRoad.ItemData+Whoosh, ThunderRoad",
-      "transformName": "Whoosh",
-      "effectId": "WhooshSwordShort",
-      "trigger": "Always",
-      "stopOnSnap": true,
-      "minVelocity": 3.0,
-      "maxVelocity": 14.0,
-      "dampening": 0.1
-    }
-  ],
-  "entityModules": [],
-  "groupPath": null
+  "entityModules": []
 }

@@ -4,9 +4,9 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 1,
+  "groupPath": "Factions/Soldier",
   "displayName": "Soldier Thrall",
   "description": "Long range magic caster",
-  "contents": [],
   "containerContents": [
     {
       "$type": "ThunderRoad.TableContent, ThunderRoad",
@@ -16,42 +16,52 @@
         "holderName": "BackRight"
       },
       "customDataList": [],
+      "mergeKey": "eb471089",
       "referenceID": "WeaponSoldierThrall"
     },
     {
       "$type": "ThunderRoad.SpellContent, ThunderRoad",
+      "mergeKey": "b5e2fbe1",
       "referenceID": "Fire"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "e43c36e2",
       "referenceID": "FireballRicochet"
     },
     {
       "$type": "ThunderRoad.SpellContent, ThunderRoad",
+      "mergeKey": "46ec8235",
       "referenceID": "Lightning"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "0a681e53",
       "referenceID": "StaticDisarm"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "ca4289b3",
       "referenceID": "ChargeSpeedBoost"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "35437bcc",
       "referenceID": "MeleeImbueRandom"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "ae473f78",
       "referenceID": "ChargeSapping"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "832e94e3",
       "referenceID": "GravitySapping"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "e9c1fe2d",
       "referenceID": "FireSapping"
     },
     {
@@ -61,6 +71,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "1a779303",
       "referenceID": "MageHandL"
     },
     {
@@ -70,6 +81,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "4a452d2d",
       "referenceID": "MageHandR"
     },
     {
@@ -79,6 +91,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "6f249258",
       "referenceID": "ApparelBattlemageJacket"
     },
     {
@@ -88,6 +101,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "a45cc986",
       "referenceID": "ApparelBattleMagePants"
     },
     {
@@ -97,6 +111,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "5ea87a38",
       "referenceID": "ApparelBattlemageBoots"
     },
     {
@@ -106,6 +121,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "9b8d2a32",
       "referenceID": "MageHood"
     },
     {
@@ -115,6 +131,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "ec0c6e34",
       "referenceID": "BeardsSoldier"
     },
     {
@@ -124,12 +141,13 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "26730fb1",
       "referenceID": "HairsSoldier"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "fdaf5370",
       "referenceID": "HeavyFirepower"
     }
-  ],
-  "groupPath": "Factions/Soldier"
+  ]
 }

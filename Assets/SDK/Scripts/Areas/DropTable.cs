@@ -1,11 +1,8 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
@@ -13,9 +10,8 @@ namespace ThunderRoad
     public class DropTable<T>
     {
         #region Data
-#if ODIN_INSPECTOR
-        [TableList(AlwaysExpanded = true)] 
-#endif
+
+        [TableList(AlwaysExpanded = true)]
         public List<Drop> drops;
         private float probabilityTotalWeight;
         //private static int maxPickCount = 20;
@@ -24,23 +20,17 @@ namespace ThunderRoad
         [Serializable]
         public class Drop
         {
-#if ODIN_INSPECTOR
-            [PropertyOrder(0)] 
-#endif
+            [PropertyOrder(0)]
             [JsonMergeKey]
             public T dropItem;
 
-#if ODIN_INSPECTOR
-            [PropertyOrder(1)] 
-#endif
+            [PropertyOrder(1)]
             public float probabilityWeight;
 
-#if ODIN_INSPECTOR
             [PropertyOrder(2)]
             [ShowInInspector]
             [ReadOnly]
-            [ProgressBar(0, 100)]
-#endif
+            //[ProgressBar(0, 100)]
             [NonSerialized]
             public float probabilityPercent;
 

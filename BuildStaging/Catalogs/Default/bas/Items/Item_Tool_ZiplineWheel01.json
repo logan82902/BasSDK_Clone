@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 4,
+  "groupPath": null,
   "localizationId": "ZiplineWheel01",
   "displayName": "Zipline Wheel",
   "description": "A simple but useful device allowing the user to safely ride down zipline ropes. The speed of descent can be manipulated by moving.",
@@ -14,17 +15,18 @@
   "tier": 0,
   "flags": "None",
   "levelRequired": 0,
+  "type": "Tool",
   "category": "Utilities",
   "update": "",
   "iconEffectId": null,
   "preferredItemCenter": "Mass",
   "drainImbueWhenIdle": true,
+  "forceImbueUseButton": "None",
   "prefabAddress": "Bas.Item.Misc.ZiplineWheel01",
   "iconAddress": "Bas.Item.Misc.ZiplineWheel01.Icon[Item_ZiplineWheel01]",
   "closeUpIconAddress": null,
   "pooledCount": 0,
   "androidPooledCount": 0,
-  "type": "Tool",
   "allowedStorage": "Inventory, Container, SandboxAllItems",
   "despawnOnStoredInInventory": false,
   "isStackable": false,
@@ -38,6 +40,7 @@
   "mass": 1.0,
   "drag": 1.0,
   "angularDrag": 1.0,
+  "density": 800.0,
   "focusRegenMultiplier": 1.0,
   "spellChargeSpeedPlayerMultiplier": 1.0,
   "spellChargeSpeedNPCMultiplier": 1.0,
@@ -151,23 +154,6 @@
     "preWrapMode": "ClampForever",
     "postWrapMode": "ClampForever"
   },
-  "modules": [
-    {
-      "$type": "ThunderRoad.ItemModuleStats, ThunderRoad",
-      "stats": []
-    },
-    {
-      "$type": "ThunderRoad.ItemModuleReturnInInventory, ThunderRoad",
-      "returnsToLastHolder": false,
-      "returnsOnItemRelease": false,
-      "returnsWhenNotLookingAtIt": true,
-      "returnsAfterReachingMaxDistance": true,
-      "maxDistanceBeforeReturning": 20.0,
-      "timeAfterWhichItemReturn": 2.0,
-      "useReturningAnimation": false,
-      "returningVelocityValue": 0.0
-    }
-  ],
   "colliderGroups": [
     {
       "$type": "ThunderRoad.ItemData+ColliderGroup, ThunderRoad",
@@ -212,6 +198,22 @@
       "dampening": 0.1
     }
   ],
-  "entityModules": [],
-  "groupPath": null
+  "modules": [
+    {
+      "$type": "ThunderRoad.ItemModuleStats, ThunderRoad",
+      "stats": []
+    },
+    {
+      "$type": "ThunderRoad.ItemModuleReturnInInventory, ThunderRoad",
+      "returnsToLastHolder": false,
+      "returnsOnItemRelease": false,
+      "returnsWhenNotLookingAtIt": true,
+      "returnsAfterReachingMaxDistance": true,
+      "maxDistanceBeforeReturning": 20.0,
+      "timeAfterWhichItemReturn": 2.0,
+      "useReturningAnimation": false,
+      "returningVelocityValue": 0.0
+    }
+  ],
+  "entityModules": []
 }

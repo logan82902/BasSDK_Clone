@@ -4,9 +4,9 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 1,
+  "groupPath": null,
   "displayName": "Unknown",
   "description": null,
-  "contents": [],
   "containerContents": [
     {
       "$type": "ThunderRoad.ItemContent, ThunderRoad",
@@ -29,6 +29,7 @@
         "lastSpawnTime": 0.0
       },
       "customDataList": null,
+      "mergeKey": "5edb2516",
       "referenceID": "SwordOldieFalchion"
     },
     {
@@ -52,8 +53,8 @@
         "lastSpawnTime": 0.0
       },
       "customDataList": null,
+      "mergeKey": "d15e6c16",
       "referenceID": "BaronHat"
     }
-  ],
-  "groupPath": null
+  ]
 }

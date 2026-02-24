@@ -3,66 +3,55 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.ResourceManagement.ResourceLocations;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
     [Serializable]
+#if UNITY_EDITOR
+    [EditorLoadPriority(10)]
+#endif
+    [DeclareBoxGroup("Menu", Title = "Menu")]
+    [DeclareBoxGroup("Instance", Title = "Instance")]
     public class MenuData : CatalogData
     {
-#if ODIN_INSPECTOR
-        [BoxGroup("Menu")] 
-#endif
+        [Group("Menu")]
         public float order;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Menu")] 
-#endif
+        [Group("Menu")]
         public bool isDefault;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Menu")]
-#endif
+        [Group("Menu")]
         public string nameId;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Menu")]
-#endif
+        [Group("Menu")]
         public string iconAddress;
         [NonSerialized]
         public IResourceLocation iconLocation;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Menu")]
-#endif
+        [Group("Menu")]
         public string iconRollhoverAddress;
         [NonSerialized]
         public IResourceLocation iconRollhoverLocation;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Menu")]
-#endif
+        [Group("Menu")]
         public string prefabAddress;
         [NonSerialized]
         public IResourceLocation prefabLocation;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Menu"), ShowInInspector] 
-#endif
+        [Group("Menu")]
+        [ShowInInspector]
         public MenuModule module;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Instance"), ShowInInspector, ReadOnly]
-#endif
+        [Group("Instance")]
+        [ShowInInspector]
+        [ReadOnly]
         [NonSerialized]
         public Transform navigationPane;
-#if ODIN_INSPECTOR
-        [BoxGroup("Instance"), ShowInInspector, ReadOnly]
-#endif
+        [Group("Instance")]
+        [ShowInInspector]
+        [ReadOnly]
         [NonSerialized]
         public Transform contentArea;
 

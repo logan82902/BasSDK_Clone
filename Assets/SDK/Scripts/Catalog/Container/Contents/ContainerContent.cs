@@ -1,9 +1,9 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Newtonsoft.Json;
+using TriInspector;
+using UnityEngine;
+using System;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#endif
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -11,22 +11,37 @@ using UnityEditor;
 
 namespace ThunderRoad
 {
+    [SkipInTypeDropdown]
     [System.Serializable]
+    [DeclareHorizontalGroup("Fields", Sizes = new float[] { 150f, 0f })]
+    [DeclareBoxGroup("Fields/Type", Title = "Content Type")]
+    [DeclareBoxGroup("Fields/Reference ID", Title = "Reference ID")]
     public abstract class ContainerContent
     {
+        [JsonMergeKey(MergeKeyValueProvider = nameof(GetMergeKey))]
+        [HideInInspector]
+        public string mergeKey = "";
+
         [JsonIgnore]
-#if ODIN_INSPECTOR
-        [ReadOnly, ShowInInspector, HorizontalGroup("Fields", Width = 100), BoxGroup("Fields/Type"), HideLabel, PropertyOrder(0)]
+        [ReadOnly]
+        [ShowInInspector]
+        [Group("Fields/Type")]
+        [HideLabel]
+        [PropertyOrder(0)]
         public string type => GetTypeString();
-#endif
-        [JsonMergeKey]
-#if ODIN_INSPECTOR
-        [ValueDropdown(nameof(DropdownOptions)), HorizontalGroup("Fields", DisableAutomaticLabelWidth = false), BoxGroup("Fields/Reference ID"), HideLabel, PropertyOrder(1)]
-#endif
+        [Dropdown(nameof(DropdownOptions))]
+        [Group("Fields/Reference ID")]
+        [HideLabel]
+        [PropertyOrder(1)]
         public string referenceID;
 
         [JsonIgnore]
         public abstract CatalogData catalogData { get; }
+
+        public static string GetMergeKey()
+        {
+            return Guid.NewGuid().ToString().Substring(0, 8);
+        }
 
         public virtual ContainerContent GetEndContent() => Clone();
 
@@ -36,10 +51,8 @@ namespace ThunderRoad
 
         public virtual string GetOutput() => referenceID;
 
-#if ODIN_INSPECTOR
         public abstract string GetTypeString();
 
-        public abstract List<ValueDropdownItem<string>> DropdownOptions();
-#endif
+        public abstract TriDropdownList<string> DropdownOptions();
     }
 }

@@ -3,72 +3,60 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+
 using TriInspector;
-#endif
+using Newtonsoft.Json;
 
 namespace ThunderRoad
 {
+    [DeclareBoxGroup("General", Title = "General")]
+    [DeclareHorizontalGroup("Intensity")]
+    [DeclareBoxGroup("Intensity/Curve", Title = "Curve")]
+    [DeclareBoxGroup("Intensity/Smoothing", Title = "Smoothing")]
+    [DeclareHorizontalGroup("Range")]
+    [DeclareBoxGroup("Range/Curve", Title = "Curve")]
+    [DeclareBoxGroup("Range/Smoothing", Title = "Smoothing")]
+    [DeclareHorizontalGroup("Color")]
+    [DeclareBoxGroup("Color/Curve", Title = "Curve")]
+    [DeclareBoxGroup("Color/Smoothing", Title = "Smoothing")]
+    [DeclareBoxGroup("Flicker", Title = "Flicker")]
     public class EffectModuleLight : EffectModule
     {
-#if ODIN_INSPECTOR
-        [BoxGroup("General")]
-#endif
+        [Group("General")]
         public Quaternion localRotation;
-#if ODIN_INSPECTOR
-        [HorizontalGroup("Intensity", width: 0.7f, LabelWidth = 150)]
-        [BoxGroup("Intensity/Curve")]
-#endif
-        public new AnimationCurve intensityCurve = AnimationCurve.Constant(0, 1, 1);
-#if ODIN_INSPECTOR
-        [BoxGroup("Intensity/Smoothing")]
-#endif
+        [LabelWidth(150f)]
+        [Group("Intensity/Curve")]
+        public AnimationCurve intensityCurve = AnimationCurve.Constant(0, 1, 1);
+        [Group("Intensity/Smoothing")]
         public float intensitySmoothFactor = 0;
 
-#if ODIN_INSPECTOR
-        [HorizontalGroup("Range", width: 0.7f, LabelWidth = 150)]
-        [BoxGroup("Range/Curve")]
-#endif
+        [LabelWidth(150f)]
+        [Group("Range/Curve")]
         public AnimationCurve rangeCurve = AnimationCurve.Constant(0, 1, 1);
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Range/Smoothing")]
-#endif
+        [Group("Range/Smoothing")]
         public float rangeSmoothFactor = 0;
 
-#if ODIN_INSPECTOR
-        [HorizontalGroup("Color", width: 0.7f, LabelWidth = 150)]
-        [BoxGroup("Color/Curve")]
-#endif
+        [LabelWidth(150f)]
+        [Group("Color/Curve")]
         public Color colorStart;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Color/Curve")]
-#endif
+        [Group("Color/Curve")]
         public Color colorEnd;
 
         [NonSerialized]
+        [JsonIgnore]
         protected Gradient colorCurve;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Color/Smoothing")]
-#endif
+        [Group("Color/Smoothing")]
         public float colorSmoothFactor = 0;
-#if ODIN_INSPECTOR
-        [BoxGroup("General")]
-#endif
+        [Group("General")]
         public float loopFadeDelay = 0;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Flicker")]
-#endif
+        [Group("Flicker")]
 
         public AnimationCurve flickerIntensityCurve = AnimationCurve.Constant(0, 1, 1);
-#if ODIN_INSPECTOR
-        [BoxGroup("Flicker")]
-#endif
+        [Group("Flicker")]
 
         public AnimationCurve flickerRateCurve = AnimationCurve.Constant(0, 1, 0);
 

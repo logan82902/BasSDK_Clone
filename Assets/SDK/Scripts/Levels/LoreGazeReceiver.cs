@@ -1,8 +1,5 @@
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+﻿
 using TriInspector;
-#endif
 using System;
 using System.Collections;
 using UnityEngine;

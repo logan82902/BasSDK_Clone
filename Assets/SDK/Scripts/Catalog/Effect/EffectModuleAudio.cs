@@ -2,241 +2,145 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
-
-
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
+
 
 namespace ThunderRoad
 {
+    [DeclareTabGroup("Tab")]
+    [DeclareBoxGroup("Tab/Audio/General", Title = "General")]
+    [DeclareBoxGroup("Tab/Audio/Smoothing", Title = "Smoothing")]
+    [DeclareBoxGroup("Tab/Audio/Volume", Title = "Volume")]
+    [DeclareBoxGroup("Tab/Audio/AI", Title = "AI")]
+    [DeclareBoxGroup("Tab/Audio/Dynamic Music", Title = "Dynamic Music")]
+    [DeclareBoxGroup("Tab/Audio/Random play", Title = "Random play")]
+    [DeclareBoxGroup("Tab/Audio/Random Time", Title = "Random Time")]
+    [DeclareBoxGroup("Tab/Audio/Pitch", Title = "Pitch")]
+    [DeclareBoxGroup("Tab/Audio/Low pass filter", Title = "Low pass filter")]
+    [DeclareBoxGroup("Tab/Audio/High pass filter", Title = "High pass filter")]
+    [DeclareBoxGroup("Tab/Audio/Reverb filter", Title = "Reverb filter")]
+    [DeclareBoxGroup("Tab/Audio/Distance", Title = "Distance")]
+    [DeclareBoxGroup("Tab/Steam Audio/Direct Sound", Title = "Direct Sound")]
+    [DeclareBoxGroup("Tab/Steam Audio/Directivity", Title = "Directivity")]
+    [DeclareBoxGroup("Tab/Steam Audio/Indirect Sound", Title = "Indirect Sound")]
     public class EffectModuleAudio : EffectModule
     {
-#if ODIN_INSPECTOR
-        [TabGroup("Tab", "Audio"), BoxGroup("Tab/Audio/General")]
-#endif
+        [Group("Tab/Audio/General")]
         public string audioContainerAddress;
         [NonSerialized]
         public AudioContainer audioContainer;
-#if ODIN_INSPECTOR
-        [BoxGroup("Tab/Audio/General")]
-#endif
+        [Group("Tab/Audio/General")]
         public float fadeInTime = 0;
-#if ODIN_INSPECTOR
-        [BoxGroup("Tab/Audio/General")]
-#endif
+        [Group("Tab/Audio/General")]
         public float loopFadeDelay = 0;
-#if ODIN_INSPECTOR
-        [BoxGroup("Tab/Audio/General")]
-#endif
+        [Group("Tab/Audio/General")]
         public AudioMixerName audioMixer = AudioMixerName.Effect;
-#if ODIN_INSPECTOR
-        [BoxGroup("Tab/Audio/General"), Range(0, 1)]
-#endif
+        [Group("Tab/Audio/General")]
+        [Range(0, 1)]
         public float spatialBlend = 1;
-#if ODIN_INSPECTOR
-        [BoxGroup("Tab/Audio/General")]
-#endif
+        [Group("Tab/Audio/General")]
         public bool globalOnPlayerOnly = false;
-#if ODIN_INSPECTOR
-        [BoxGroup("Tab/Audio/General")]
-#endif
+        [Group("Tab/Audio/General")]
         public float playDelay;
-#if ODIN_INSPECTOR
-        [BoxGroup("Tab/Audio/General")]
-#endif
+        [Group("Tab/Audio/General")]
         public float dopplerLevel = 0;
-#if ODIN_INSPECTOR
-        [BoxGroup("Tab/Audio/General")]
-#endif
+        [Group("Tab/Audio/General")]
         public bool useAudioForHaptic;
-#if ODIN_INSPECTOR
-        [BoxGroup("Tab/Audio/Smoothing")]
-#endif
+        [Group("Tab/Audio/Smoothing")]
         public int intensitySmoothingSampleCount = 0;
-#if ODIN_INSPECTOR
-        [BoxGroup("Tab/Audio/Smoothing")]
-#endif
+        [Group("Tab/Audio/Smoothing")]
         public int speedSmoothingSampleCount = 0;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Tab/Audio/Volume")]
-#endif
+        [Group("Tab/Audio/Volume")]
         public float cullMinVolume = 0.1f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Tab/Audio/Volume")]
-#endif
+        [Group("Tab/Audio/Volume")]
         public float volumeDb = 0;
-#if ODIN_INSPECTOR
-        [BoxGroup("Tab/Audio/Volume")]
-#endif
+        [Group("Tab/Audio/Volume")]
         public bool useVolumeIntensity;
-#if ODIN_INSPECTOR
-        [BoxGroup("Tab/Audio/Volume"), ShowIf("useVolumeIntensity")]
-#endif
-        public AnimationCurve volumeIntensityCurve = new AnimationCurve(new Keyframe(0, 1), new Keyframe(1, 1));
-#if ODIN_INSPECTOR
-        [BoxGroup("Tab/Audio/Volume")]
-#endif
+        [Group("Tab/Audio/Volume")]
+        [ShowIf("useVolumeIntensity")]
+        public AnimationCurve volumeIntensityCurve;
+        [Group("Tab/Audio/Volume")]
         public bool useVolumeSpeed;
-#if ODIN_INSPECTOR
-        [BoxGroup("Tab/Audio/Volume"), ShowIf("useVolumeSpeed")]
-#endif
-        public AnimationCurve volumeSpeedCurve = new AnimationCurve(new Keyframe(0, 1), new Keyframe(1, 1));
-#if ODIN_INSPECTOR
-        [BoxGroup("Tab/Audio/Volume"), ShowIf("useVolumeIntensity"), ShowIf("useVolumeSpeed")]
-#endif
+        [Group("Tab/Audio/Volume")]
+        [ShowIf("useVolumeSpeed")]
+        public AnimationCurve volumeSpeedCurve;
+        [Group("Tab/Audio/Volume")]
+        [ShowIf("useVolumeIntensity")]
+        [ShowIf("useVolumeSpeed")]
         public BlendMode volumeBlendMode = BlendMode.Min;
-#if ODIN_INSPECTOR
-        [BoxGroup("Tab/Audio/Volume")]
-#endif
+        [Group("Tab/Audio/Volume")]
         public float reverbZoneMix = 1.0f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Tab/Audio/AI")]
-#endif
+        [Group("Tab/Audio/AI")]
         public bool isNoiseForAI;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Tab/Audio/Dynamic Music")]
-#endif
+        [Group("Tab/Audio/Dynamic Music")]
         public bool onDynamicMusic;
-#if ODIN_INSPECTOR
-        [BoxGroup("Tab/Audio/Dynamic Music"), ShowIf("onDynamicMusic")]
-#endif
+        [Group("Tab/Audio/Dynamic Music")]
+        [ShowIf("onDynamicMusic")]
         public Music.MusicTransition.TransitionType dynamicMusicTiming;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Tab/Audio/Random play")]
-#endif
+        [Group("Tab/Audio/Random play")]
         public bool randomPlay;
-#if ODIN_INSPECTOR
-        [BoxGroup("Tab/Audio/Random play"), ShowIf(nameof(randomPlay))]
-#endif
+        [Group("Tab/Audio/Random play")]
+        [ShowIf(nameof(randomPlay))]
         public float randomMinTime = 2;
-#if ODIN_INSPECTOR
-        [BoxGroup("Tab/Audio/Random play"), ShowIf(nameof(randomPlay))]
-#endif
+        [Group("Tab/Audio/Random play")]
+        [ShowIf(nameof(randomPlay))]
         public float randomMaxTime = 5;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Tab/Audio/Random Time")]
-#endif
+        [Group("Tab/Audio/Random Time")]
         public bool randomTime;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Tab/Audio/Pitch")]
-#endif
+        [Group("Tab/Audio/Pitch")]
         public bool linkEffectPitch = true;
-#if ODIN_INSPECTOR
-        [BoxGroup("Tab/Audio/Pitch")]
-#endif
+        [Group("Tab/Audio/Pitch")]
         public bool randomPitch;
-#if ODIN_INSPECTOR
-        [BoxGroup("Tab/Audio/Pitch")]
-#endif
+        [Group("Tab/Audio/Pitch")]
         public EffectLink pitchEffectLink = EffectLink.Intensity;
-#if ODIN_INSPECTOR
-        [BoxGroup("Tab/Audio/Pitch")]
-#endif
-        public AnimationCurve pitchCurve = new AnimationCurve(new Keyframe(0, 1), new Keyframe(1, 1));
+        [Group("Tab/Audio/Pitch")]
+        public AnimationCurve pitchCurve;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Tab/Audio/Low pass filter")]
-#endif
+        [Group("Tab/Audio/Low pass filter")]
         public bool useLowPassFilter;
-#if ODIN_INSPECTOR
-        [BoxGroup("Tab/Audio/Low pass filter"), ShowIf("useLowPassFilter")]
-#endif
+        [Group("Tab/Audio/Low pass filter")]
+        [ShowIf("useLowPassFilter")]
         public EffectLink lowPassEffectLink = EffectLink.Intensity;
-#if ODIN_INSPECTOR
-        [BoxGroup("Tab/Audio/Low pass filter"), ShowIf("useLowPassFilter")]
-#endif
-        public AnimationCurve lowPassCutoffFrequencyCurve = new AnimationCurve(new Keyframe(0, 22000), new Keyframe(1, 22000));
-#if ODIN_INSPECTOR
-        [BoxGroup("Tab/Audio/Low pass filter"), ShowIf("useLowPassFilter")]
-#endif
-        public AnimationCurve lowPassResonanceQCurve = new AnimationCurve(new Keyframe(0, 1), new Keyframe(1, 1));
+        [Group("Tab/Audio/Low pass filter")]
+        [ShowIf("useLowPassFilter")]
+        public AnimationCurve lowPassCutoffFrequencyCurve;
+        [Group("Tab/Audio/Low pass filter")]
+        [ShowIf("useLowPassFilter")]
+        public AnimationCurve lowPassResonanceQCurve;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Tab/Audio/High pass filter")]
-#endif
+        [Group("Tab/Audio/High pass filter")]
         public bool useHighPassFilter;
-#if ODIN_INSPECTOR
-        [BoxGroup("Tab/Audio/High pass filter"), ShowIf("useHighPassFilter")]
-#endif
+        [Group("Tab/Audio/High pass filter")]
+        [ShowIf("useHighPassFilter")]
         public EffectLink highPassEffectLink = EffectLink.Intensity;
-#if ODIN_INSPECTOR
-        [BoxGroup("Tab/Audio/High pass filter"), ShowIf("useHighPassFilter")]
-#endif
-        public AnimationCurve highPassCutoffFrequencyCurve = new AnimationCurve(new Keyframe(0, 10), new Keyframe(1, 10));
-#if ODIN_INSPECTOR
-        [BoxGroup("Tab/Audio/High pass filter"), ShowIf("useHighPassFilter")]
-#endif
-        public AnimationCurve highPassResonanceQCurve = new AnimationCurve(new Keyframe(0, 1), new Keyframe(1, 1));
+        [Group("Tab/Audio/High pass filter")]
+        [ShowIf("useHighPassFilter")]
+        public AnimationCurve highPassCutoffFrequencyCurve;
+        [Group("Tab/Audio/High pass filter")]
+        [ShowIf("useHighPassFilter")]
+        public AnimationCurve highPassResonanceQCurve;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Tab/Audio/Reverb filter")]
-#endif
+        [Group("Tab/Audio/Reverb filter")]
         public bool useReverbFilter;
-#if ODIN_INSPECTOR
-        [BoxGroup("Tab/Audio/Reverb filter"), ShowIf("useReverbFilter")]
-#endif
+        [Group("Tab/Audio/Reverb filter")]
+        [ShowIf("useReverbFilter")]
         public EffectLink reverbEffectLink = EffectLink.Intensity;
-#if ODIN_INSPECTOR
-        [BoxGroup("Tab/Audio/Reverb filter"), ShowIf("useReverbFilter")]
-#endif
-        public AnimationCurve reverbDryLevelCurve = new AnimationCurve(new Keyframe(0, 0), new Keyframe(1, 0));
+        [Group("Tab/Audio/Reverb filter")]
+        [ShowIf("useReverbFilter")]
+        public AnimationCurve reverbDryLevelCurve;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Tab/Audio/Distance")]
-#endif
+        [Group("Tab/Audio/Distance")]
         public float minDistance = 1;
-#if ODIN_INSPECTOR
-        [BoxGroup("Tab/Audio/Distance")]
-#endif
+        [Group("Tab/Audio/Distance")]
         public float maxDistance = 500;
 
-        /*
-        [TabGroup("Tab", "Steam Audio")]
-        public bool overrideSteamAudio = false;
-        [BoxGroup("Tab/Steam Audio/Direct Sound"), ShowIf("overrideSteamAudio", true)]
-        public bool steamDirectBinaural = true;
-        [BoxGroup("Tab/Steam Audio/Direct Sound"), ShowIf("directBinaural", true), ShowIf("overrideSteamAudio", true)]
-        public SteamAudio.HRTFInterpolation steamInterpolation = SteamAudio.HRTFInterpolation.Nearest;
-        [BoxGroup("Tab/Steam Audio/Direct Sound"), ShowIf("overrideSteamAudio", true)]
-        public bool steamPhysicsBasedAttenuation = true;
-        [BoxGroup("Tab/Steam Audio/Direct Sound"), ShowIf("overrideSteamAudio", true)]
-        public SteamAudio.OcclusionMode steamOcclusionMode = SteamAudio.OcclusionMode.OcclusionWithFrequencyDependentTransmission;
-        [BoxGroup("Tab/Steam Audio/Direct Sound"), ShowIf("overrideSteamAudio", true)]
-        public SteamAudio.OcclusionMethod steamOcclusionMethod = SteamAudio.OcclusionMethod.Partial;
-        [BoxGroup("Tab/Steam Audio/Direct Sound"), Range(0.1f, 10.0f), ShowIf("overrideSteamAudio", true)]
-        public float steamSourceRadius = 1.0f;
-        [BoxGroup("Tab/Steam Audio/Direct Sound"), Range(2, 256), ShowIf("overrideSteamAudio", true)]
-        public int steamOcclusionSamples = 16;
-        [BoxGroup("Tab/Steam Audio/Direct Sound"), ShowIf("overrideSteamAudio", true)]
-        public bool steamAirAbsorption = true;
-        [BoxGroup("Tab/Steam Audio/Direct Sound"), Range(0.0f, 1.0f), ShowIf("overrideSteamAudio", true)]
-        public float steamDirectMixLevel = 1.0f;
 
-        [BoxGroup("Tab/Steam Audio/Directivity"), Range(0.0f, 1.0f), ShowIf("overrideSteamAudio", true)]
-        public float steamDipoleWeight = 0.0f;
-        [BoxGroup("Tab/Steam Audio/Directivity"), Range(0.0f, 4.0f), ShowIf("overrideSteamAudio", true)]
-        public float steamDipolePower = 0.0f;
-
-        [BoxGroup("Tab/Steam Audio/Indirect Sound"), ShowIf("overrideSteamAudio", true)]
-        public bool steamReflections = true;
-        [BoxGroup("Tab/Steam Audio/Indirect Sound"), ShowIf("reflections", true), ShowIf("overrideSteamAudio", true)]
-        public SteamAudio.SourceSimulationType steamSimulationType = SteamAudio.SourceSimulationType.Realtime;
-        [BoxGroup("Tab/Steam Audio/Indirect Sound"), ShowIf("reflections", true), ShowIf("overrideSteamAudio", true)]
-        public bool steamPhysicsBasedAttenuationForIndirect = true;
-        [BoxGroup("Tab/Steam Audio/Indirect Sound"), Range(0.0f, 10.0f), ShowIf("reflections", true), ShowIf("overrideSteamAudio", true)]
-        public float steamIndirectMixLevel = 0.5f;
-        [BoxGroup("Tab/Steam Audio/Indirect Sound"), ShowIf("reflections", true), ShowIf("overrideSteamAudio", true)]
-        public bool steamIndirectBinaural = true;
-        */
 
     }
 

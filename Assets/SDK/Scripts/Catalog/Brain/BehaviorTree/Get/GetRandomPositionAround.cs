@@ -1,23 +1,21 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
-
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
 
 namespace ThunderRoad.AI.Get
 {
-	public class GetRandomPositionAround : ActionNode
+    [DeclareBoxGroup("Inputs", Title = "Inputs")]
+    [DeclareBoxGroup("Output", Title = "Output")]
+    [DeclareBoxGroup("Instance", Title = "Instance")]
+    [AutoLabelWidth(AddedWidth = 5f, MinWidth = 0f)]
+    public class GetRandomPositionAround : ActionNode
     {
-#if ODIN_INSPECTOR
-        [BoxGroup("Inputs"), LabelWidth(100)] 
-#endif
+        [Group("Inputs")]
+        [LabelWidth(100)]
         public Target target = Target.CurrentTarget;
-#if ODIN_INSPECTOR
-        [BoxGroup("Inputs"), DisableIf("target", optionalValue: Target.CurrentTarget), LabelWidth(200)] 
-#endif
+        [Group("Inputs")]
+        [DisableIf("target", Target.CurrentTarget)]
+        [LabelWidth(200)]
         public string inputTargetVariableName = "";
         public bool scaleMinMaxByHeightDiff = false;
         public float maxHeightDiff = 10f;
@@ -30,23 +28,20 @@ namespace ThunderRoad.AI.Get
             InputPosition,
         }
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Inputs"), LabelWidth(100)] 
-#endif
+        [Group("Inputs")]
+        [LabelWidth(100)]
         public float minRadius = 0;
-#if ODIN_INSPECTOR
-        [BoxGroup("Inputs"), LabelWidth(100)] 
-#endif
+        [Group("Inputs")]
+        [LabelWidth(100)]
         public float maxRadius = 3;
-#if ODIN_INSPECTOR
-        [BoxGroup("Inputs"), LabelWidth(100)] 
-#endif
+        [Group("Inputs")]
+        [LabelWidth(100)]
         public int attempts = 1;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Output")] 
-#endif
+        [Group("Output")]
         public string outputPositionVariableName = "RandomPosition";
+
+        public GetRandomPositionAround() { }
 
     }
 }

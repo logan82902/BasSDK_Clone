@@ -1,0 +1,12 @@
+{
+  "$type": "ThunderRoad.EffectGroupData, ThunderRoad",
+  "id": "Musket",
+  "sensitiveContent": "None",
+  "sensitiveFilterBehaviour": "Discard",
+  "version": 0,
+  "groupPath": null,
+  "groupId": null,
+  "globalVolumeDb": 1.0,
+  "globalMinPitch": 1.0,
+  "globalMaxPitch": 1.0
+}

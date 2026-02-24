@@ -4,15 +4,14 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 3,
+  "groupPath": "",
   "name": "ShipShop",
   "description": "Best wares in Eraden!",
   "descriptionLocalizationId": "ShipShopDescription",
   "sceneAddress": "Bas.Level.Shop",
   "showOnlyDevMode": false,
   "showInLevelSelection": false,
-  "worldmapPrefabAddress": "Bas.Image.Map.Default",
-  "worldmapTextureAddress": "Bas.Worldmap.Eraden",
-  "worldmapLabel": null,
+  "worldMapId": "Eraden",
   "worldMapTravelAudioContainerAddress": "Bas.AudioGroup.UI.PinSelected",
   "mapLocationIndex": 95,
   "showOnMap": true,
@@ -64,9 +63,7 @@
       "availableOptions": []
     }
   ],
-  "modePickCountPerRank": 2,
   "customCameras": [],
   "throwableRefType": "Item",
-  "improvisedThrowableID": null,
-  "groupPath": ""
+  "improvisedThrowableID": null
 }

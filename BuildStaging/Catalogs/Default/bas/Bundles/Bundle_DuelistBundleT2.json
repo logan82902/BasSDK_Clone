@@ -1,0 +1,21 @@
+{
+  "$type": "ThunderRoad.BundleData, ThunderRoad",
+  "id": "DuelistBundleT2",
+  "sensitiveContent": "None",
+  "sensitiveFilterBehaviour": "Discard",
+  "version": 0,
+  "groupPath": "T2",
+  "localizationGroup": "Bundles",
+  "displayName": "BundleDuelistBundleT2Name",
+  "description": null,
+  "altDescriptionTitle": "ContentsTitle",
+  "isArmorBundle": false,
+  "bundleItemId": "Bundle",
+  "items": [
+    "SwordSentaraDuelingSword",
+    "DaggerSentaraStiletto"
+  ],
+  "skills": [],
+  "lootTables": [],
+  "spriteAddress": "Ui.Icon.Unknown"
+}

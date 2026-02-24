@@ -1,33 +1,25 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#endif
+using TriInspector;
 
 namespace ThunderRoad.AI.Action
 {
+    [AutoLabelWidth(AddedWidth = 5f, MinWidth = 0f)]
     public class PlayAnimation : ActionNode
     {
         [Header("Animation")]
         public bool useAddressableAddress = false;
-#if ODIN_INSPECTOR
-        [ValueDropdown(nameof(GetAllAnimationID))]
+        [Dropdown(nameof(GetAllAnimationID))]
         [HideIf("useAddressableAddress")]
-#endif
         public string animationDataID;
-#if ODIN_INSPECTOR
         [HideIf("useAddressableAddress")]
-#endif
         public bool overrideSpeed;
-#if ODIN_INSPECTOR
         [ShowIf("useAddressableAddress")]
-#endif
         public string animationAddress;
-#if ODIN_INSPECTOR
-        [ShowIf("@this.useAddressableAddress || this.overrideSpeed")]
-#endif
+        [ShowIf(nameof(showAnimationSpeed))]
         public float animationSpeed = 1f;
+        private bool showAnimationSpeed => useAddressableAddress || overrideSpeed;
         public PlayType playType = PlayType.OneShot;
         public bool avoidLastPick = false;
         public bool upperOnly = false;
@@ -37,9 +29,7 @@ namespace ThunderRoad.AI.Action
         public bool mirror = false;
         [Header("Tree")]
         public bool doCallbackNode;
-#if ODIN_INSPECTOR
-        [EnableIf("doCallbackNode")]
-#endif
+        [EnableIf(nameof(doCallbackNode))]
         public Node callbackNode;
 
         public enum PlayType
@@ -51,12 +41,7 @@ namespace ThunderRoad.AI.Action
             LimitedThreeStep,
         }
 
-#if ODIN_INSPECTOR
-        public List<ValueDropdownItem<string>> GetAllAnimationID()
-        {
-            return Catalog.GetDropdownAllID(Category.Animation);
-        } 
-#endif
+        public TriDropdownList<string> GetAllAnimationID() => Catalog.GetDropdownAllID(Category.Animation);
 
     }
 }

@@ -1,83 +1,58 @@
 ﻿using System;
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#endif
+using TriInspector;
 using ThunderRoad.Skill.SpellPower;
 using UnityEngine;
 
 namespace ThunderRoad.Skill
 {
+    [DeclareBoxGroup("Ricochet", Title = "Ricochet")]
+    [DeclareBoxGroup("Throw", Title = "Throw")]
+    [DeclareBoxGroup("Return", Title = "Return")]
+    [DeclareBoxGroup("Effect", Title = "Effect")]
     public class SkillRicochetThrow : TkSkillData
     {
-#if ODIN_INSPECTOR
-        [BoxGroup("Ricochet")]
-#endif
+        [Group("Ricochet")]
         public float maxDistance = 10f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Ricochet")]
-#endif
+        [Group("Ricochet")]
         public float maxAngle = 50f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Ricochet")]
-#endif
+        [Group("Ricochet")]
         public int maxBounces = 1;
-#if ODIN_INSPECTOR
-        [BoxGroup("Ricochet")]
-#endif
+        [Group("Ricochet")]
         public float maxRicochetVelocity = 20;
-#if ODIN_INSPECTOR
-        [BoxGroup("Ricochet")]
-#endif
+        [Group("Ricochet")]
         public float velocityHitMultiplier = 0.9f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Ricochet")]
-#endif
+        [Group("Ricochet")]
         public float additionalDamageMult = 2;
-#if ODIN_INSPECTOR
-        [BoxGroup("Ricochet")]
-#endif
+        [Group("Ricochet")]
         public float nonAimAssistVelocityMult = 0.8f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Throw")]
-#endif
+        [Group("Throw")]
         public float throwVelocityMultiplier = 1.3f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Throw")]
-#endif
+        [Group("Throw")]
         public float maxThrowDistance = 10f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Throw")]
-#endif
+        [Group("Throw")]
         public float maxThrowAngle = 30f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Return")]
-#endif
+        [Group("Return")]
         public bool returnOnLastBounce = true;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Return"), ShowIf("returnOnLastBounce")]
-#endif
+        [Group("Return")]
+        [ShowIf("returnOnLastBounce")]
         public float returnSpeed = 10f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Return"), ShowIf("returnOnLastBounce")]
-#endif
+        [Group("Return")]
+        [ShowIf("returnOnLastBounce")]
         public float autoGrabRadius = 2f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Return"), ShowIf("returnOnLastBounce")]
-#endif
+        [Group("Return")]
+        [ShowIf("returnOnLastBounce")]
         public float grabWindow = 0.6f;
-        
-#if ODIN_INSPECTOR
-        [BoxGroup("Return"), ValueDropdown(nameof(GetAllEffectID))]
-#endif
+
+        [Group("Return")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string returnEffectId;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Effect"), ValueDropdown(nameof(GetAllEffectID))]
-#endif
+        [Group("Effect")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string grabEffectId;
 
         [NonSerialized]

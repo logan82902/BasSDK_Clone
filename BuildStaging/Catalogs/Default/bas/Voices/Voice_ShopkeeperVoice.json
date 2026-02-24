@@ -259,6 +259,138 @@
       "id": "RaktaLoreE",
       "mixerChannel": "Voice",
       "audioGroupAddress": "Bas.AudioGroup.Voice.Baron.RaktaLoreE"
+    },
+    {
+      "$type": "ThunderRoad.VoiceData+Dialog, ThunderRoad",
+      "id": "Chicken",
+      "mixerChannel": "Voice",
+      "audioGroupAddress": "Bas.AudioGroup.Voice.Baron.Chicken"
+    },
+    {
+      "$type": "ThunderRoad.VoiceData+Dialog, ThunderRoad",
+      "id": "FireRum",
+      "mixerChannel": "Voice",
+      "audioGroupAddress": "Bas.AudioGroup.Voice.Baron.FireRum"
+    },
+    {
+      "$type": "ThunderRoad.VoiceData+Dialog, ThunderRoad",
+      "id": "ForceFeedFruit",
+      "mixerChannel": "Voice",
+      "audioGroupAddress": "Bas.AudioGroup.Voice.Baron.ForceFeedApple"
+    },
+    {
+      "$type": "ThunderRoad.VoiceData+Dialog, ThunderRoad",
+      "id": "ForceFeedEgg",
+      "mixerChannel": "Voice",
+      "audioGroupAddress": "Bas.AudioGroup.Voice.Baron.ForceFeedEgg"
+    },
+    {
+      "$type": "ThunderRoad.VoiceData+Dialog, ThunderRoad",
+      "id": "GenericApparel",
+      "mixerChannel": "Voice",
+      "audioGroupAddress": "Bas.AudioGroup.Voice.Baron.GenericApparel"
+    },
+    {
+      "$type": "ThunderRoad.VoiceData+Dialog, ThunderRoad",
+      "id": "GravityRum",
+      "mixerChannel": "Voice",
+      "audioGroupAddress": "Bas.AudioGroup.Voice.Baron.GravityRum"
+    },
+    {
+      "$type": "ThunderRoad.VoiceData+Dialog, ThunderRoad",
+      "id": "LeatherApparel",
+      "mixerChannel": "Voice",
+      "audioGroupAddress": "Bas.AudioGroup.Voice.Baron.LeatherApparel"
+    },
+    {
+      "$type": "ThunderRoad.VoiceData+Dialog, ThunderRoad",
+      "id": "LightningRum",
+      "mixerChannel": "Voice",
+      "audioGroupAddress": "Bas.AudioGroup.Voice.Baron.LightningRum"
+    },
+    {
+      "$type": "ThunderRoad.VoiceData+Dialog, ThunderRoad",
+      "id": "MageApparel",
+      "mixerChannel": "Voice",
+      "audioGroupAddress": "Bas.AudioGroup.Voice.Baron.MageApparel"
+    },
+    {
+      "$type": "ThunderRoad.VoiceData+Dialog, ThunderRoad",
+      "id": "MapBoard",
+      "mixerChannel": "Voice",
+      "audioGroupAddress": "Bas.AudioGroup.Voice.Baron.MapBoard"
+    },
+    {
+      "$type": "ThunderRoad.VoiceData+Dialog, ThunderRoad",
+      "id": "MultiNewUpdateIntro",
+      "mixerChannel": "Voice",
+      "audioGroupAddress": "Bas.AudioGroup.Voice.Baron.MultiIntro"
+    },
+    {
+      "$type": "ThunderRoad.VoiceData+Dialog, ThunderRoad",
+      "id": "PlateApparel",
+      "mixerChannel": "Voice",
+      "audioGroupAddress": "Bas.AudioGroup.Voice.Baron.PlateApparel"
+    },
+    {
+      "$type": "ThunderRoad.VoiceData+Dialog, ThunderRoad",
+      "id": "SentaraApparel",
+      "mixerChannel": "Voice",
+      "audioGroupAddress": "Bas.AudioGroup.Voice.Baron.SentaraApparel"
+    },
+    {
+      "$type": "ThunderRoad.VoiceData+Dialog, ThunderRoad",
+      "id": "SentaraFirstPurchase",
+      "mixerChannel": "Voice",
+      "audioGroupAddress": "Bas.AudioGroup.Voice.Baron.SentaraIntroLore"
+    },
+    {
+      "$type": "ThunderRoad.VoiceData+Dialog, ThunderRoad",
+      "id": "SentaraLoreA",
+      "mixerChannel": "Voice",
+      "audioGroupAddress": "Bas.AudioGroup.Voice.Baron.SentaraLoreA"
+    },
+    {
+      "$type": "ThunderRoad.VoiceData+Dialog, ThunderRoad",
+      "id": "SentaraLoreB",
+      "mixerChannel": "Voice",
+      "audioGroupAddress": "Bas.AudioGroup.Voice.Baron.SentaraLoreB"
+    },
+    {
+      "$type": "ThunderRoad.VoiceData+Dialog, ThunderRoad",
+      "id": "SentaraLoreC",
+      "mixerChannel": "Voice",
+      "audioGroupAddress": "Bas.AudioGroup.Voice.Baron.SentaraLoreC"
+    },
+    {
+      "$type": "ThunderRoad.VoiceData+Dialog, ThunderRoad",
+      "id": "SentaraLoreD",
+      "mixerChannel": "Voice",
+      "audioGroupAddress": "Bas.AudioGroup.Voice.Baron.SentaraLoreD"
+    },
+    {
+      "$type": "ThunderRoad.VoiceData+Dialog, ThunderRoad",
+      "id": "SentaraLoreE",
+      "mixerChannel": "Voice",
+      "audioGroupAddress": "Bas.AudioGroup.Voice.Baron.SentaraLoreE"
+    },
+    {
+      "$type": "ThunderRoad.VoiceData+Dialog, ThunderRoad",
+      "id": "SentaraPistol",
+      "mixerChannel": "Voice",
+      "audioGroupAddress": "Bas.AudioGroup.Voice.Baron.SentaraPistol"
+    },
+    {
+      "$type": "ThunderRoad.VoiceData+Dialog, ThunderRoad",
+      "id": "SentaraWeapon",
+      "mixerChannel": "Voice",
+      "audioGroupAddress": "Bas.AudioGroup.Voice.Baron.SentaraWeapon"
+    },
+    {
+      "$type": "ThunderRoad.VoiceData+Dialog, ThunderRoad",
+      "id": "SkeletonHand",
+      "mixerChannel": "Voice",
+      "audioGroupAddress": "Bas.AudioGroup.Voice.Baron.SkeletonHand"
     }
   ]
 }

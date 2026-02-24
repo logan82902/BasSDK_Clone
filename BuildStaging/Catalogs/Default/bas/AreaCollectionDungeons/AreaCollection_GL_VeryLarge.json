@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
+  "groupPath": "DungeonRun/Outpost",
   "path": [
     {
       "$type": "ThunderRoad.AreaCollectionDungeon+PathGroup, ThunderRoad",
@@ -158,6 +159,5 @@
       },
       "maxCreature": 18.0
     }
-  ],
-  "groupPath": "DungeonRun/Outpost"
+  ]
 }

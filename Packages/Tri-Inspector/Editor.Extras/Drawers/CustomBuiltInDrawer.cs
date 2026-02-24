@@ -1,4 +1,4 @@
-﻿using TriInspector;
+using TriInspector;
 using TriInspector.Drawers;
 using TriInspector.Editors;
 using TriInspector.Elements;

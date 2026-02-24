@@ -1,12 +1,9 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+
 using TriInspector;
-#endif // ODIN_INSPECTOR
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -17,6 +14,7 @@ using System.IO;
 namespace ThunderRoad
 {
     [CreateAssetMenu(menuName = "ThunderRoad/Lore/Lore")]
+    [DeclareFoldoutGroup("pack", Expanded = false)]
     public class LoreScriptableObject : ScriptableObject
     {
         public enum LoreType
@@ -65,30 +63,18 @@ namespace ThunderRoad
 
         public LoreDisplayTypeScriptableObject displayType;
 
-#if ODIN_INSPECTOR
         [ReadOnly]
-#endif
         public LorePack[] allLorePacks;
-#if ODIN_INSPECTOR
         [ReadOnly]
-#endif
         public List<int> rootLoreHashIds = null;
-#if ODIN_INSPECTOR
         [ReadOnly]
-#endif
         public int loreId;
-#if ODIN_INSPECTOR
         [ReadOnly]
-#endif
         public int changeCheckHash;
-#if ODIN_INSPECTOR
         [ReadOnly]
-#endif
-        public HashSet<string> uniqueRequiredParamsInPack = new HashSet<string>();
-#if ODIN_INSPECTOR
+        public HashSet<string> uniqueRequiredParamsInPack = new();
         [ReadOnly]
-#endif
-        public HashSet<string> uniqueLevelOptionsInPack = new HashSet<string>();
+        public HashSet<string> uniqueLevelOptionsInPack = new();
 
         private Dictionary<int, LorePack> _hashIdToLorePack;
 
@@ -339,18 +325,12 @@ namespace ThunderRoad
         [Serializable]
         public struct LoreOrderTitles
         {
-#if ODIN_INSPECTOR
             [ReadOnly]
-#endif
             public string packTitle;
-#if ODIN_INSPECTOR
             [ReadOnly]
-#endif
             public List<string> noteTitles;
 
-#if ODIN_INSPECTOR
-            [FoldoutGroup("pack")]
-#endif // ODIN_INSPECTOR
+            [Group("pack")]
             public LorePackScriptableObject lorePack;
 
             public LoreOrderTitles(LorePackScriptableObject lorePack)
@@ -367,9 +347,7 @@ namespace ThunderRoad
         }
 
         [NonSerialized]
-#if ODIN_INSPECTOR
         [ShowInInspector]
-#endif
         public List<LoreOrderTitles> loreOrder;
         [Button]
         public void LoadLoreOrder()

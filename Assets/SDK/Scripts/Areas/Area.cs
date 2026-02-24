@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System;
 using System.Collections.Generic;
 using UnityEngine.Events;
@@ -10,11 +10,8 @@ using UnityEngine.AI;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
@@ -112,9 +109,7 @@ namespace ThunderRoad
         [Tooltip("Ignores the reference mesh when a boundery bounds is calculated")]
         public Renderer[] boundRendererToIgnore;
 
-#if ODIN_INSPECTOR
         [ShowInInspector]
-#endif
         public bool modifiedInImport = false;
 #endif //UNITY_EDITOR
 
@@ -122,15 +117,12 @@ namespace ThunderRoad
         public List<CustomReference> customReferences;
 
         [Header("Culling")]
-#if ODIN_INSPECTOR
-        [InlineButton("UpdateCullingVolume", "Update Volume")]
-#endif
         [Tooltip("Spawns the area across a number of frames during load time (Recommended 2)")]
         public float spawnRoomObjectsAcrossFrames = 2;
 
         [Header("Audio blend")]
-#if ODIN_INSPECTOR
-        [InlineButton("AddLoopedAudioSources")]
+#if UNITY_EDITOR
+        [InlineButton(nameof(AddLoopedAudioSources))]
 #endif
         [Tooltip("Lists looping audio sources which will blend between eachother.")]
         public List<AudioSource> audioSourcesToBlend = new List<AudioSource>();
@@ -173,52 +165,45 @@ namespace ThunderRoad
         #endregion SerializedFields
 
         #region NonSerializedFields
-#if ODIN_INSPECTOR
-        [ShowInInspector, Sirenix.OdinInspector.ReadOnly]
-#endif
+
+        [ShowInInspector]
+        [TriInspector.ReadOnly]
         [NonSerialized]
         public Dictionary<int, AreaGateway> connectedGateways = new Dictionary<int, AreaGateway>();
 
-#if ODIN_INSPECTOR
-        [ShowInInspector, Sirenix.OdinInspector.ReadOnly]
-#endif
+        [ShowInInspector]
+        [TriInspector.ReadOnly]
         [NonSerialized]
         public List<GameObject> blockers = new List<GameObject>();
 
-#if ODIN_INSPECTOR
-        [ShowInInspector, Sirenix.OdinInspector.ReadOnly]
-#endif
+        [ShowInInspector]
+        [TriInspector.ReadOnly]
         [NonSerialized]
         public bool initialized;
 
         [Header("Culling")]
-#if ODIN_INSPECTOR
-        [ShowInInspector, Sirenix.OdinInspector.ReadOnly]
-#endif
+        [ShowInInspector]
+        [TriInspector.ReadOnly]
         [NonSerialized]
         public List<BlendAudioSource> blendAudioSources;
 
-#if ODIN_INSPECTOR
-        [ShowInInspector, Sirenix.OdinInspector.ReadOnly]
-#endif
+        [ShowInInspector]
+        [TriInspector.ReadOnly]
         [NonSerialized]
         public List<Item> items = new List<Item>();
 
-#if ODIN_INSPECTOR
-        [ShowInInspector, Sirenix.OdinInspector.ReadOnly]
-#endif
+        [ShowInInspector]
+        [TriInspector.ReadOnly]
         [NonSerialized]
         public List<Creature> creatures = new List<Creature>();
 
-#if ODIN_INSPECTOR
-        [ShowInInspector, Sirenix.OdinInspector.ReadOnly]
-#endif
+        [ShowInInspector]
+        [TriInspector.ReadOnly]
         [NonSerialized]
         public bool isCulled;
 
-#if ODIN_INSPECTOR
-        [ShowInInspector, Sirenix.OdinInspector.ReadOnly]
-#endif
+        [ShowInInspector]
+        [TriInspector.ReadOnly]
         [NonSerialized]
         public bool isHidden;
 
@@ -708,6 +693,7 @@ namespace ThunderRoad
             boundRendererToIgnore = tempHash.ToArray();
         }
 
+#if UNITY_EDITOR
         [Button]
         public void UpdateDataBounds()
         {
@@ -875,6 +861,7 @@ namespace ThunderRoad
 
             Catalog.SaveToJson(data);
         }
+#endif
 
  //ProjectCore
 

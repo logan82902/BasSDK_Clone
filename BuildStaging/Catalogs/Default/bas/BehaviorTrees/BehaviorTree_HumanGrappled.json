@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
+  "groupPath": null,
   "type": "SubTree",
   "rootNode": {
     "$type": "ThunderRoad.AI.Control.Sequence, ThunderRoad",
@@ -17,18 +18,12 @@
           "childs": [
             {
               "$type": "ThunderRoad.AI.Action.SetBrainState, ThunderRoad",
-              "brainState": "Grappled",
-              "blackboard": null,
-              "creature": null,
-              "brainData": null
+              "brainState": "Grappled"
             },
             {
               "$type": "ThunderRoad.AI.Action.SetStance, ThunderRoad",
               "stance": "Flee",
-              "onlyOnce": false,
-              "blackboard": null,
-              "creature": null,
-              "brainData": null
+              "onlyOnce": false
             },
             {
               "$type": "ThunderRoad.AI.Get.GetCreature, ThunderRoad",
@@ -43,10 +38,7 @@
               "outputCreatureAsCurrentTarget": true,
               "outputCreatureVariableName": "Grappler",
               "outputTransform": "None",
-              "outputTransformVariableName": "GrapplerTransform",
-              "blackboard": null,
-              "creature": null,
-              "brainData": null
+              "outputTransformVariableName": "GrapplerTransform"
             },
             {
               "$type": "ThunderRoad.AI.Decorator.AlwaysSuccess, ThunderRoad",
@@ -60,10 +52,7 @@
                   "x": 0.0,
                   "y": 0.0,
                   "z": 0.0
-                },
-                "blackboard": null,
-                "creature": null,
-                "brainData": null
+                }
               }
             },
             {
@@ -77,10 +66,7 @@
                 "x": 5.0,
                 "y": 10.0
               },
-              "succeedOnCooldown": true,
-              "blackboard": null,
-              "creature": null,
-              "brainData": null
+              "succeedOnCooldown": true
             },
             {
               "$type": "ThunderRoad.AI.Action.GrappleEscape, ThunderRoad",
@@ -92,15 +78,11 @@
               },
               "twoGrabPenalty": 0.1,
               "maximumSuccessChance": 0.5,
-              "resetAttemptsOnDamage": true,
-              "blackboard": null,
-              "creature": null,
-              "brainData": null
+              "resetAttemptsOnDamage": true
             }
           ]
         }
       }
     ]
-  },
-  "groupPath": null
+  }
 }

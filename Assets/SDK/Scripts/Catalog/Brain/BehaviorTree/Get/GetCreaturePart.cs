@@ -1,19 +1,13 @@
 ﻿using UnityEngine;
-
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
 
 namespace ThunderRoad.AI.Get
 {
-	public class GetCreaturePart : ActionNode
+    [AutoLabelWidth(AddedWidth = 5f, MinWidth = 0f)]
+    public class GetCreaturePart : ActionNode
     {
         public Target target = Target.CurrentTarget;
-#if ODIN_INSPECTOR
-        [ShowIf("target", optionalValue: Target.InputCreature)] 
-#endif
+        [ShowIf("target", Target.InputCreature)]
         public string inputCreatureVariableName = "";
 
         public enum Target
@@ -35,6 +29,8 @@ namespace ThunderRoad.AI.Get
             RagdollHandRight,
             RagdollHandLeft,
         }
+
+        public GetCreaturePart() { }
 
     }
 }

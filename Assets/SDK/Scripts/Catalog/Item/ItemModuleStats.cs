@@ -1,16 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#endif
+using TriInspector;
+using UnityEngine;
 
 namespace ThunderRoad
 {
-	[Serializable]
-	public class ItemModuleStats : ItemModule
-	{
-		
-		public List<IStats> stats = new List<IStats>();
+    [System.Serializable]
+    public class ItemModuleStats : ItemModule
+    {
+        [ShowInInspector]
+        [SerializeReference]
+        [ListDrawerSettings(AlwaysExpanded = true)]
+        public List<IStats> stats = new();
 
 		public bool TryGetStat(string id, out IStats stat)
 		{
@@ -21,8 +22,7 @@ namespace ThunderRoad
 		public IStats GetStat(string id)
 		{
 return null;
-		}
-#if ODIN_INSPECTOR
+        }
 #if UNITY_EDITOR
 		public enum ItemStatCollection
 		{
@@ -77,7 +77,5 @@ return null;
 			}
 		}
 #endif
-#endif
-		
-	}
+    }
 }

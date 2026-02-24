@@ -8,49 +8,46 @@
   "displayName": "ProtoDagger",
   "description": "",
   "author": "",
-  "price": 0.0,
-  "purchasable": false,
+  "valueType": "Gold",
+  "value": 0.0,
+  "rewardValue": 0.0,
   "tier": 2,
-  "weight": null,
-  "size": null,
+  "flags": "None",
   "levelRequired": 0,
   "category": "Daggers",
+  "update": "",
   "iconEffectId": null,
   "preferredItemCenter": "Mass",
+  "drainImbueWhenIdle": true,
   "prefabAddress": "Item.ProtoDagger",
   "iconAddress": "Item.ProtoDagger.Icon",
   "closeUpIconAddress": null,
   "pooledCount": 0,
   "androidPooledCount": 0,
   "type": "Weapon",
-  "canBeStoredInPlayerInventory": false,
-  "limitMaxStorableQuantity": false,
-  "maxStorableQuantity": 0,
+  "allowedStorage": 0,
+  "despawnOnStoredInInventory": false,
   "isStackable": false,
-  "maxStackQuantity": 0,
-  "inventoryHoverSounds": null,
-  "inventorySelectSounds": null,
-  "inventoryStoreSounds": {
-    "$type": "ThunderRoad.GameData+AudioContainerAddressAndVolume, ThunderRoad",
-    "audioContainerAddress": null,
-    "volumeDb": 0.0
-  },
+  "consumableId": null,
+  "inventoryAudioContainerAddress": null,
+  "inventoryAudioVolume_dB": 0.0,
   "slot": "Small",
   "snapAudioContainerAddress": "Bas.AudioGroup.Snap.Dagger",
   "snapAudioVolume_dB": 0.0,
-  "unsnapAudioContainerAddress": null,
-  "unsnapAudioVolume_dB": 0.0,
   "overrideMassAndDrag": true,
   "mass": 0.8,
   "drag": 0.4,
   "angularDrag": 0.05,
-  "manaRegenMultiplier": 1.0,
+  "density": 1000.0,
+  "focusRegenMultiplier": 1.0,
   "spellChargeSpeedPlayerMultiplier": 1.0,
   "spellChargeSpeedNPCMultiplier": 1.0,
   "collisionMaxOverride": 0,
   "collisionEnterOnly": false,
   "collisionNoMinVelocityCheck": false,
   "forceLayer": "None",
+  "diffForceLayerWhenHeld": false,
+  "forceLayerHeld": "None",
   "waterHandSpringMultiplierCurve": {
     "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
     "keys": [
@@ -112,11 +109,12 @@
     "postWrapMode": "ClampForever"
   },
   "waterSampleMinRadius": 0.2,
-  "flyFromThrow": true,
+  "throwMultiplier": 1.0,
+  "runSpeedMultiplier": 1.0,
   "flyRotationSpeed": 3.0,
   "flyThrowAngle": 145.0,
+  "allowFlyBackwards": false,
   "telekinesisSafeDistance": 1.0,
-  "telekinesisSpinEnabled": true,
   "telekinesisThrowRatio": 1.0,
   "telekinesisAutoGrabAnyHandle": false,
   "grippable": true,
@@ -157,40 +155,43 @@
   "modules": [
     {
       "$type": "ThunderRoad.ItemModuleAI, ThunderRoad",
-      "weaponClass": "Melee",
+      "primaryClass": "Melee",
       "secondaryClass": "None",
       "weaponHandling": "OneHanded",
       "secondaryHandling": "None",
-      "parryIgnoreRotation": false,
-      "parryRotation": 90.0,
-      "parryDualRotation": 60.0,
-      "armResistanceMultiplier": 2.0,
-      "parryRevertAngleRange": {
-        "x": -80.0,
-        "y": -180.0
+      "weaponAttackTypes": "Swing, Thrust",
+      "ignoredByDefense": false,
+      "alwaysPrimary": false,
+      "defaultStanceInfo": {
+        "$type": "ThunderRoad.ItemModuleAI+StanceInfo, ThunderRoad",
+        "offhand": "Anything",
+        "grabAIHandleRadius": 0.0,
+        "stanceDataID": "HumanMelee1hStance"
       },
-      "parryDefaultPosition": {
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0
-      },
-      "parryDefaultLeftRotation": {
-        "x": 25.0,
-        "y": -10.0,
-        "z": -65.0
-      },
-      "parryDefaultRightRotation": {
-        "x": 30.0,
-        "y": 5.0,
-        "z": 60.0
-      },
-      "allowDynamicHeight": false,
-      "defenseHasPriority": false,
-      "attackIgnore": false,
-      "attackForceParryIgnoreRotation": false,
-      "ammoType": "",
+      "stanceInfosByOffhand": [
+        {
+          "$type": "ThunderRoad.ItemModuleAI+StanceInfo, ThunderRoad",
+          "offhand": "Empty",
+          "grabAIHandleRadius": 0.0,
+          "stanceDataID": "HumanMelee1hStance"
+        },
+        {
+          "$type": "ThunderRoad.ItemModuleAI+StanceInfo, ThunderRoad",
+          "offhand": "AnyShield",
+          "grabAIHandleRadius": 0.0,
+          "stanceDataID": "HumanMeleeShieldStance"
+        },
+        {
+          "$type": "ThunderRoad.ItemModuleAI+StanceInfo, ThunderRoad",
+          "offhand": "AnyMelee",
+          "grabAIHandleRadius": 0.0,
+          "stanceDataID": "HumanMeleeDualWieldStance"
+        }
+      ],
       "rangedWeaponData": null,
-      "stanceDatas": []
+      "armResistanceMultiplier": 2.0,
+      "allowDynamicHeight": false,
+      "defenseHasPriority": false
     }
   ],
   "colliderGroups": [
@@ -241,5 +242,7 @@
       "maxVelocity": 10.0,
       "dampening": 0.1
     }
-  ]
+  ],
+  "entityModules": [],
+  "groupPath": null
 }

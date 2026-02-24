@@ -3,47 +3,35 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-
-using UnityEngine;
-
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
+using UnityEngine;
 
 namespace ThunderRoad
 {
     [Serializable]
+    [AutoLabelWidth(MinWidth = 0f)]
+    [DeclareHorizontalGroup("standaloneData")]
+    [DeclareBoxGroup("standaloneData/Data", Title = "Data")]
+    [DeclareHorizontalGroup("standaloneData/Data/Split")]
+    [DeclareBoxGroup("showOwnershipFields/Modding", Title = "Modding")]
     public class CatalogData
     {
-#if ODIN_INSPECTOR
-        [HorizontalGroup("standaloneData")]
-#endif
-        [NonSerialized]
-        public bool standaloneData = false;
-#if ODIN_INSPECTOR
-        [ShowIfGroup("standaloneData")]
-        [BoxGroup("standaloneData/Data")]
-        [HorizontalGroup("standaloneData/Data/Split"), LabelWidth(15), JsonProperty(Order = -2)]
-#endif
+        [HideInInspector]
+        [JsonProperty(Order = -2)]
         public string id;
 
         public virtual string SortKey() => id;
 
-#if ODIN_INSPECTOR
-        [HorizontalGroup("standaloneData/Data/Split"), LabelWidth(105), JsonProperty(Order = -2)]
-#endif
+        [HideInInspector]
+        [JsonProperty(Order = -2)]
         public BuildSettings.ContentFlag sensitiveContent = BuildSettings.ContentFlag.None;
-#if ODIN_INSPECTOR
-        [HorizontalGroup("standaloneData/Data/Split"), LabelWidth(150), JsonProperty(Order = -2)]
-#endif
+
+        [HideInInspector]
+        [JsonProperty(Order = -2)]
         public BuildSettings.ContentFlagBehaviour sensitiveFilterBehaviour = BuildSettings.ContentFlagBehaviour.Discard;
 
-#if ODIN_INSPECTOR
-        [HorizontalGroup("standaloneData/Data/Split"), LabelWidth(90), ReadOnly, ShowInInspector, JsonProperty(Order = -2)]
-#endif
         [NonSerialized]
+        [JsonProperty(Order = -2)]
         public string sourceFolders;
 
         public string GetLatestOverrideFolder()
@@ -55,68 +43,96 @@ namespace ThunderRoad
             return sourceFolders.Split('+').Last();
         }
 
-#if ODIN_INSPECTOR
-        [HorizontalGroup("standaloneData/Data/Split"), ReadOnly, LabelWidth(45), NonSerialized, ShowInInspector, JsonProperty(Order = -2)]
-#endif
+        [NonSerialized]
+        [JsonProperty(Order = -2)]
         public int hashId;
-#if ODIN_INSPECTOR
-        [HorizontalGroup("standaloneData/Data/Split"), ReadOnly, LabelWidth(50), JsonProperty(Order = -2)]
-#endif
+
+        [HideInInspector]
+        [JsonProperty(Order = -2)]
         public int version;
 
-#if ODIN_INSPECTOR
-        private bool showOwnershipFields => standaloneData && ModManager.gameModsLoaded;
-
-        public List<ValueDropdownItem<string>> GetJsonFolders()
-        {
-            List<ValueDropdownItem<string>> dropdownList = new List<ValueDropdownItem<string>>();
-            foreach (string folderName in FileManager.GetFolderNames(FileManager.Type.JSONCatalog, FileManager.Source.Default))
-            {
-                if (folderName == ".git")
-                    continue;
-                dropdownList.Add(new ValueDropdownItem<string>(folderName, folderName));
-            }
-            return dropdownList;
-        }
-#endif
-#if ODIN_INSPECTOR
-        [HorizontalGroup("standaloneData/Data/Split"), LabelWidth(70)]
-#endif
+        [HideInInspector]
+        [JsonProperty(Order = -2)]
         public string groupPath;
 
         [NonSerialized]
-#if ODIN_INSPECTOR
-        [ShowInInspector, ReadOnly, BoxGroup("standaloneData/Data"), LabelWidth(60)]
-#endif
-        public string filePath;
+        public string realFilePath;
+
         [NonSerialized]
-#if ODIN_INSPECTOR
-        [ShowIfGroup("showOwnershipFields")]
-        [BoxGroup("showOwnershipFields/Modding"), ShowInInspector, ReadOnly, ShowIf("showOwnershipFields")]
-#endif
+        public string filePath;
+
+        [NonSerialized]
         public ModManager.ModData owner;
         [NonSerialized]
-#if ODIN_INSPECTOR
-        [BoxGroup("showOwnershipFields/Modding"), ShowInInspector, ReadOnly, ShowIf("showOwnershipFields")]
-#endif
-        public List<ModManager.ModData> changers = new List<ModManager.ModData>();
+        public List<ModManager.ModData> changers = new();
 
-        public virtual int GetCurrentVersion()
+#if UNITY_EDITOR
+        [NonSerialized]
+        [JsonIgnore]
+        public string editorGuid;
+        [NonSerialized]
+        [JsonIgnore]
+        public string overrideID;
+        [NonSerialized]
+        [JsonIgnore]
+        public List<CatalogData> overriderDatas;
+
+        [JsonIgnore]
+        public bool isOverrider => !overrideID.IsNullOrEmptyOrWhitespace();
+
+        public string GetOwnerString() => owner == null ? "Vanilla" : $"{owner.Name} - {owner.Author}";
+
+        public virtual string GetCatalogPath()
         {
-            return 0;
+            string categoryName = Catalog.GetCategory(GetType()).ToString();
+            if (categoryName.ToLowerInvariant()[^1] == 's') categoryName += "e";
+            string result = $"{categoryName}s";
+            if (!groupPath.IsNullOrEmptyOrWhitespace()) result += $"/{groupPath}";
+            if (result[result.Length - 1] == '/') result = result.Substring(0, result.Length - 1);
+            return result;
         }
+
+        public virtual string GetDataName()
+        {
+            return id;
+        }
+
+        public GUIContent GetCatalogEditorButtonContent()
+        {
+            Texture2D icon = Icon();
+            // only display the first four characters of the editor GUID here since we don't need additional information
+            GUIContent buttonContent = new GUIContent($"{(icon != null ? " " : "")}{GetDataName()}{(isOverrider ? $" ({editorGuid.Substring(0, 4)})" : "")}", icon);
+            return buttonContent;
+        }
+
+        public virtual Texture2D Icon() => null;
+
+        public virtual void OnEditorSave() { }
+
+        public virtual string GetFileNameString()
+        {
+            Category category = Category.Custom;
+            Catalog.TryGetCategory(GetType(), out category);
+            return $"{category}_{id}";
+        }
+#endif
+
+        public virtual int GetCurrentVersion() => 0;
 
         public virtual void Init()
         {
             hashId = Animator.StringToHash(id.ToLower());
+#if UNITY_EDITOR
+            if (Catalog.loadOverridesSeparately && isOverrider)
+            {
+                hashId = Animator.StringToHash(editorGuid.ToLower());
+            }
+#endif
         }
-
-        public virtual void OnEditorSave() { }
 
         public virtual void OnCatalogRefresh()
         {
             version = GetCurrentVersion();
-            standaloneData = true;
         }
 
         public virtual CatalogData Clone()
@@ -151,6 +167,6 @@ namespace ThunderRoad
         {
 
         }
-#endif        
+#endif
     }
 }

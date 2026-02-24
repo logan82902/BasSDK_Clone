@@ -1,13 +1,10 @@
-using System;
+﻿using System;
 using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
 using System.Collections;
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
@@ -15,31 +12,23 @@ namespace ThunderRoad
     {
         public static Shop local { get; protected set; }
 
-#if ODIN_INSPECTOR
-        public List<ValueDropdownItem<string>> GetAllShopID()
-        {
-            return Catalog.GetDropdownAllID(Category.Shop);
-        }
+        public TriDropdownList<string> GetAllShopID() => Catalog.GetDropdownAllID(Category.Shop);
 
-        [ValueDropdown(nameof(GetAllShopID), AppendNextDrawer = true)]
-#endif
+        [Dropdown(nameof(GetAllShopID))]
         public string shopDataID;
         [NonSerialized]
-#if ODIN_INSPECTOR
-        [ShowInInspector, ReadOnly]
-#endif
+        [ShowInInspector]
+        [ReadOnly]
         public ShopData data;
         public Transform defaultShopkeeperSpawnPoint;
         public Transform tutorialShopkeeperSpawnPoint;
         [NonSerialized]
-#if ODIN_INSPECTOR
-        [ShowInInspector, ReadOnly]
-#endif
+        [ShowInInspector]
+        [ReadOnly]
         public Creature shopkeeper;
         [NonSerialized]
-#if ODIN_INSPECTOR
-        [ShowInInspector, ReadOnly]
-#endif
+        [ShowInInspector]
+        [ReadOnly]
         [HideInInspector]
         public BrainModuleShopkeeper moduleShopkeeper;
         public Container shopContents;
@@ -50,27 +39,23 @@ namespace ThunderRoad
         public float shopKeeperKillReloadDuration = 10;
 
         [NonSerialized]
-#if ODIN_INSPECTOR
-        [ShowInInspector, ReadOnly]
-#endif
-        public List<Item> buyingItems = new List<Item>();
+        [ShowInInspector]
+        [ReadOnly]
+        public List<Item> buyingItems = new();
 
         [NonSerialized]
-#if ODIN_INSPECTOR
-        [ShowInInspector, ReadOnly]
-#endif
-        public List<Item> sellingItems = new List<Item>();
+        [ShowInInspector]
+        [ReadOnly]
+        public List<Item> sellingItems = new();
 
         [NonSerialized]
-#if ODIN_INSPECTOR
-        [ShowInInspector, ReadOnly]
-#endif
+        [ShowInInspector]
+        [ReadOnly]
         public int buyingValue = 0;
 
         [NonSerialized]
-#if ODIN_INSPECTOR
-        [ShowInInspector, ReadOnly]
-#endif
+        [ShowInInspector]
+        [ReadOnly]
         public int sellingValue = 0;
 
         public Transform shopkeeperBuyWaypoint;

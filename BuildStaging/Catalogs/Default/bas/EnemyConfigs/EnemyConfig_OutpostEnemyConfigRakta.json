@@ -1,0 +1,52 @@
+{
+  "$type": "ThunderRoad.EnemyConfig, ThunderRoad",
+  "id": "OutpostEnemyConfigRakta",
+  "sensitiveContent": "None",
+  "sensitiveFilterBehaviour": "Discard",
+  "version": 0,
+  "groupPath": "",
+  "iconAddress": "Bas.Icon.Rakta",
+  "customIconColor": true,
+  "iconColor": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+  },
+  "color": {
+    "r": 0.41568628,
+    "g": 0.274509817,
+    "b": 0.266666681,
+    "a": 1.0
+  },
+  "name": "{Rakta}",
+  "nameLocalizationId": "Rakta",
+  "descriptionsByLevelId": [
+    {
+      "$type": "ThunderRoad.EnemyConfig+DescriptionByLevelId, ThunderRoad",
+      "levelId": "DungeonOutpost",
+      "description": "RaktaOutpostDesc"
+    }
+  ],
+  "patrolMixId": "RaktaAlertMix",
+  "patrolMeleeId": "RaktaMeleeOnly",
+  "patrolRangedId": "Rakta_Base_RangedWeak",
+  "alertMixId": "RaktaAlertMix",
+  "alertMeleeId": "RaktaMeleeOnly",
+  "alertRangedId": "Rakta_Base_RangedWeak",
+  "rareMixId": "RaktaAlertMix",
+  "rareMeleeId": "RaktaMeleeOnly",
+  "rareRangedId": "Rakta_Base_RangedStrong",
+  "mixedStd": "Dungeon_Rakta_Std_Mixed",
+  "meleeOnlyStd": "Dungeon_Rakta_Std_MeleeOnly",
+  "meleeFocusedStd": "Dungeon_Rakta_Std_MeleeFocused",
+  "rangedFocusedStd": "Dungeon_Rakta_Std_RangedFocused",
+  "mixedArena": "Dungeon_Rakta_Arena_Mixed",
+  "meleeOnlyArena": "Dungeon_Rakta_Arena_MeleeOnly",
+  "meleeFocusedArena": "Dungeon_Rakta_Arena_MeleeFocused",
+  "rangedFocusedArena": "Dungeon_Rakta_Arena_RangedFocused",
+  "mixedEnd": "Dungeon_Rakta_End_Mixed",
+  "meleeOnlyEnd": "Dungeon_Rakta_End_MeleeOnly",
+  "meleeFocusedEnd": "Dungeon_Rakta_End_MeleeFocused",
+  "rangedFocusedEnd": "Dungeon_Rakta_End_RangedFocused"
+}

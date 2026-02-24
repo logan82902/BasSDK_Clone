@@ -1,0 +1,138 @@
+{
+  "$type": "ThunderRoad.ContainerData, ThunderRoad",
+  "id": "RaktaMage",
+  "sensitiveContent": "None",
+  "sensitiveFilterBehaviour": "Discard",
+  "version": 1,
+  "groupPath": "Factions/Rakta",
+  "displayName": "Rakta Mage",
+  "description": "",
+  "containerContents": [
+    {
+      "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "949008a0",
+      "referenceID": "ChargeSpeedBoost"
+    },
+    {
+      "$type": "ThunderRoad.SpellContent, ThunderRoad",
+      "mergeKey": "d73d6a4e",
+      "referenceID": "Fire"
+    },
+    {
+      "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "d5e94c2d",
+      "referenceID": "Ignition"
+    },
+    {
+      "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "34fe804e",
+      "referenceID": "FireballRicochet"
+    },
+    {
+      "$type": "ThunderRoad.SpellContent, ThunderRoad",
+      "mergeKey": "f9d08d42",
+      "referenceID": "ThunderboltAILightning"
+    },
+    {
+      "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "e95a7173",
+      "referenceID": "Thunderbolt"
+    },
+    {
+      "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "9c4cd754",
+      "referenceID": "Overcharge"
+    },
+    {
+      "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "1600fa43",
+      "referenceID": "MeleeImbueRandom"
+    },
+    {
+      "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "57aaa437",
+      "referenceID": "ChargeSapping"
+    },
+    {
+      "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "1cd4bb71",
+      "referenceID": "FireSapping"
+    },
+    {
+      "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "7b478967",
+      "referenceID": "GravitySapping"
+    },
+    {
+      "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "d92e7aa2",
+      "referenceID": "HeavyFirepower"
+    },
+    {
+      "$type": "ThunderRoad.ItemContent, ThunderRoad",
+      "quantity": 1,
+      "state": {
+        "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
+      },
+      "customDataList": [],
+      "mergeKey": "7ec8cbe8",
+      "referenceID": "ApparelRaktaLegs"
+    },
+    {
+      "$type": "ThunderRoad.ItemContent, ThunderRoad",
+      "quantity": 1,
+      "state": {
+        "$type": "ThunderRoad.ContentStateHolder, ThunderRoad",
+        "holderName": "BackRight"
+      },
+      "customDataList": [],
+      "mergeKey": "ce3fdf95",
+      "referenceID": "StaffRaktaBoStaff"
+    },
+    {
+      "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "40baa595",
+      "referenceID": "ModifierArmored"
+    },
+    {
+      "$type": "ThunderRoad.TableContent, ThunderRoad",
+      "quantity": 1,
+      "state": {
+        "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
+      },
+      "customDataList": [],
+      "mergeKey": "8f592399",
+      "referenceID": "HairsSoldier"
+    },
+    {
+      "$type": "ThunderRoad.ItemContent, ThunderRoad",
+      "quantity": 1,
+      "state": {
+        "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
+      },
+      "customDataList": [],
+      "mergeKey": "a9e4b71f",
+      "referenceID": "ApparelRaktaShoulders"
+    },
+    {
+      "$type": "ThunderRoad.ItemContent, ThunderRoad",
+      "quantity": 1,
+      "state": {
+        "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
+      },
+      "customDataList": [],
+      "mergeKey": "4fe6a81c",
+      "referenceID": "ApparelRaktaFeet"
+    },
+    {
+      "$type": "ThunderRoad.ItemContent, ThunderRoad",
+      "quantity": 1,
+      "state": {
+        "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
+      },
+      "customDataList": [],
+      "mergeKey": "fcff6439",
+      "referenceID": "ApparelRaktaChest"
+    }
+  ]
+}

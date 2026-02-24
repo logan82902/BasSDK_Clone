@@ -1,31 +1,21 @@
-﻿#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#endif
+﻿
 using UnityEngine;
+using TriInspector;
 
 namespace ThunderRoad.Skill.Spell
 {
+    [DeclareBoxGroup("Homing", Title = "Homing")]
     public class SkillElectromagnetism : SpellSkillData
     {
-#if ODIN_INSPECTOR
-        [BoxGroup("Homing")]
-#endif
+        [Group("Homing")]
         public float lerpAmount = 10;
-#if ODIN_INSPECTOR
-        [BoxGroup("Homing")]
-#endif
+        [Group("Homing")]
         public float homingForce = 1;
-#if ODIN_INSPECTOR
-        [BoxGroup("Homing")]
-#endif
+        [Group("Homing")]
         public float homingAngle = 15f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Homing")]
-#endif
+        [Group("Homing")]
         public float homingDistance = 5f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Homing")]
-#endif
+        [Group("Homing")]
         public float lerpAmountNpc = 10;
 
  //ProjectCore

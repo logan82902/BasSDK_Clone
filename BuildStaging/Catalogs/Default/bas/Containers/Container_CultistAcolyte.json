@@ -4,9 +4,9 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 1,
+  "groupPath": "Factions/Cultist",
   "displayName": "Cultist Acolyte",
   "description": null,
-  "contents": [],
   "containerContents": [
     {
       "$type": "ThunderRoad.TableContent, ThunderRoad",
@@ -16,54 +16,67 @@
         "holderName": "BackRight"
       },
       "customDataList": [],
+      "mergeKey": "16bef405",
       "referenceID": "WeaponCultistPureblood"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "b718560d",
       "referenceID": "ChargeSpeedBoost"
     },
     {
       "$type": "ThunderRoad.SpellContent, ThunderRoad",
+      "mergeKey": "a291e1ae",
       "referenceID": "Fire"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "75d8b811",
       "referenceID": "Ignition"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "05f9635b",
       "referenceID": "FireballRicochet"
     },
     {
       "$type": "ThunderRoad.SpellContent, ThunderRoad",
+      "mergeKey": "09006b9e",
       "referenceID": "ThunderboltAILightning"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "549caa7b",
       "referenceID": "Thunderbolt"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "416220b1",
       "referenceID": "Overcharge"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "83246507",
       "referenceID": "MeleeImbueRandom"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "e6c54b6c",
       "referenceID": "ChargeSapping"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "4898785f",
       "referenceID": "FireSapping"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "218a10c0",
       "referenceID": "GravitySapping"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "afc5e397",
       "referenceID": "HeavyFirepower"
     },
     {
@@ -73,6 +86,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "d89f2fe7",
       "referenceID": "ApparelWarMageHeadShoulders"
     },
     {
@@ -82,6 +96,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "b6444cb8",
       "referenceID": "ApparelWarMageHandL"
     },
     {
@@ -91,6 +106,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "f1f08d45",
       "referenceID": "ApparelWarMageHandR"
     },
     {
@@ -100,6 +116,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "8229e839",
       "referenceID": "ApparelWarMageChest"
     },
     {
@@ -109,6 +126,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "264be7f0",
       "referenceID": "ApparelWarMageLegs"
     },
     {
@@ -118,6 +136,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "9632f38f",
       "referenceID": "ApparelWarMageFeet"
     },
     {
@@ -127,6 +146,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "07deefd5",
       "referenceID": "HairsSoldier"
     },
     {
@@ -136,8 +156,8 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "0a57f90c",
       "referenceID": "BeardsMage"
     }
-  ],
-  "groupPath": "Factions/Cultist"
+  ]
 }

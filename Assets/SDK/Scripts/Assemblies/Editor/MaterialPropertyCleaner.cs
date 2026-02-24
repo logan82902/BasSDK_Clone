@@ -40,6 +40,10 @@ public class MaterialPropertyCleaner : EditorWindow
         Repaint();
     }
 
+    private void OnDestroy()
+    {
+        Undo.undoRedoPerformed -= OnUndoRedo;
+    }
     protected virtual void OnSelectionChange()
     {
         GetSelectedMaterials();

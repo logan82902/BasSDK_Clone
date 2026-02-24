@@ -1,29 +1,23 @@
-﻿
-using System;
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#endif
+﻿using System;
+using TriInspector;
 using System.Collections.Generic;
 
 namespace ThunderRoad.Skill.Spell
 {
+    [DeclareBoxGroup("Status Effect", Title = "Status Effect")]
     public class SkillBurning : SpellSkillData
     {
-#if ODIN_INSPECTOR
-        [BoxGroup("Status Effect"), ValueDropdown(nameof(GetAllStatusEffectID))]
-#endif
+        [Group("Status Effect")]
+        [Dropdown(nameof(GetAllStatusEffectID))]
         public string statusEffectId = "Burning";
 
         [NonSerialized]
         public StatusData statusEffect;
-#if ODIN_INSPECTOR
-        [BoxGroup("Status Effect")]
-#endif
+        [Group("Status Effect")]
         public float heatTransfer = 5;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Status Effect"), ValueDropdown(nameof(GetAllMaterialID))]
-#endif
+        [Group("Status Effect")]
+        [DropdownList(nameof(GetAllMaterialID))]
         public List<string> ignitionBlockedMaterials;
         
 

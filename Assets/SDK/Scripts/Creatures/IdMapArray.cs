@@ -46,6 +46,9 @@ namespace ThunderRoad
                 Debug.LogError("ID map array is null.");
                 return -1;
             }
+            //handle uvs outside 0-1 range by wrapping them
+            ux -= Mathf.Floor(ux);
+            uy -= Mathf.Floor(uy);
             
             //convert the uv to pixel coordinates
             int x = (int)(ux * width);

@@ -3,11 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.Events;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
@@ -58,10 +55,17 @@ namespace ThunderRoad
         protected Coroutine itemShakeCoroutine;
         protected Coroutine playerShakeCoroutine;
         protected Coroutine endCoroutine;
+        protected Coroutine shakeRoutine;
+
+        public Coroutine ShakeForDuration(float duration)
+        {
+            return null;
+        }
 
         [Button]
         public void End()
         {
+            shakeRoutine = null;
         }
 
         [Button]

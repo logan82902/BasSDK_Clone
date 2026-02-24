@@ -2,58 +2,43 @@
 using UnityEngine;
 using ThunderRoad.Skill.SpellPower;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
 
 namespace ThunderRoad.Skill
 {
+    [DeclareBoxGroup("Limb Tearing", Title = "Limb Tearing")]
+    [DeclareBoxGroup("Karate Chop", Title = "Karate Chop")]
+    [DeclareBoxGroup("Karate Chop Damager", Title = "Karate Chop Damager")]
     public class SkillBruteForce : SkillData
     {
-#if ODIN_INSPECTOR
-        [BoxGroup("Limb Tearing")]
-#endif
+        [Group("Limb Tearing")]
         public float minBreakForceMultiplier = 1.5f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Karate Chop")]
-#endif
+        [Group("Karate Chop")]
         public bool overrideMinSpeed = false;
-#if ODIN_INSPECTOR
-        [BoxGroup("Karate Chop")]
-#endif
+        [Group("Karate Chop")]
         public float chopMinSpeed = 6f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Karate Chop Damager"), ValueDropdown(nameof(GetAllDamagerID))]
-#endif
+        [Group("Karate Chop Damager")]
+        [Dropdown(nameof(GetAllDamagerID))]
         public string damagerId;
         protected DamagerData damagerData;
-#if ODIN_INSPECTOR
-        [BoxGroup("Karate Chop Damager")]
-#endif
+        [Group("Karate Chop Damager")]
         public int damagerTier = 3;
-#if ODIN_INSPECTOR
-        [BoxGroup("Karate Chop Damager")]
-#endif
+        [Group("Karate Chop Damager")]
         public bool ignoreArmor = false;
-#if ODIN_INSPECTOR
-        [BoxGroup("Karate Chop Damager"), ValueDropdown(nameof(GetAllMaterialID))]
-#endif
+        [Group("Karate Chop Damager")]
+        [Dropdown(nameof(GetAllMaterialID))]
         public string materialId;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Karate Chop"), ValueDropdown(nameof(GetAllHandPoseID))]
-#endif
+        [Group("Karate Chop")]
+        [Dropdown(nameof(GetAllHandPoseID))]
         public string karateChopTargetPoseId;
 
         [NonSerialized]
         public HandPoseData karateChopTargetPose;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Karate Chop"), ValueDropdown(nameof(GetAllHandPoseID))]
-#endif
+        [Group("Karate Chop")]
+        [Dropdown(nameof(GetAllHandPoseID))]
         public string karateChopDefaultPoseId;
 
     }

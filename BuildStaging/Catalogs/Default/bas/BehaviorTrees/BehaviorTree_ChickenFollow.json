@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
+  "groupPath": null,
   "type": "SubTree",
   "rootNode": {
     "$type": "ThunderRoad.AI.Control.Sequence, ThunderRoad",
@@ -24,10 +25,7 @@
         "clampLower": true,
         "minValue": 0.0,
         "clampUpper": true,
-        "maxValue": 20.0,
-        "blackboard": null,
-        "creature": null,
-        "brainData": null
+        "maxValue": 20.0
       },
       {
         "$type": "ThunderRoad.AI.Control.Selector, ThunderRoad",
@@ -65,17 +63,11 @@
                   "clampLower": true,
                   "minValue": 0.0,
                   "clampUpper": true,
-                  "maxValue": 20.0,
-                  "blackboard": null,
-                  "creature": null,
-                  "brainData": null
+                  "maxValue": 20.0
                 },
                 {
                   "$type": "ThunderRoad.AI.Action.SetBrainState, ThunderRoad",
-                  "brainState": "Alert",
-                  "blackboard": null,
-                  "creature": null,
-                  "brainData": null
+                  "brainState": "Alert"
                 }
               ]
             }
@@ -97,10 +89,7 @@
                     "rememberDuration": 20.0,
                     "outputCreatureAsCurrentTarget": false,
                     "outputCreatureVariableName": "LastAggressor",
-                    "outputPartTransformVariableName": "",
-                    "blackboard": null,
-                    "creature": null,
-                    "brainData": null
+                    "outputPartTransformVariableName": ""
                   },
                   {
                     "$type": "ThunderRoad.AI.Get.GetGrabber, ThunderRoad",
@@ -111,10 +100,7 @@
                     "fromDirection": "Either",
                     "rememberDuration": 20.0,
                     "outputCreatureAsCurrentTarget": false,
-                    "outputCreatureVariableName": "LastAggressor",
-                    "blackboard": null,
-                    "creature": null,
-                    "brainData": null
+                    "outputCreatureVariableName": "LastAggressor"
                   }
                 ]
               },
@@ -133,17 +119,11 @@
                 "clampLower": true,
                 "minValue": 0.0,
                 "clampUpper": true,
-                "maxValue": 20.0,
-                "blackboard": null,
-                "creature": null,
-                "brainData": null
+                "maxValue": 20.0
               },
               {
                 "$type": "ThunderRoad.AI.Action.SetBrainState, ThunderRoad",
-                "brainState": "Alert",
-                "blackboard": null,
-                "creature": null,
-                "brainData": null
+                "brainState": "Alert"
               },
               {
                 "$type": "ThunderRoad.AI.Action.MoveTo, ThunderRoad",
@@ -180,10 +160,7 @@
                 "angleMode": "Randomize",
                 "changeAngleUntilUnobstructed": true,
                 "targetRadiusMinAngle": 0.0,
-                "targetRadiusMaxAngle": 120.0,
-                "blackboard": null,
-                "creature": null,
-                "brainData": null
+                "targetRadiusMaxAngle": 120.0
               }
             ]
           },
@@ -202,10 +179,7 @@
                   "rememberDuration": 1.0,
                   "outputCreatureAsCurrentTarget": false,
                   "outputCreatureVariableName": "LastFriendly",
-                  "outputPartTransformVariableName": "",
-                  "blackboard": null,
-                  "creature": null,
-                  "brainData": null
+                  "outputPartTransformVariableName": ""
                 },
                 {
                   "$type": "ThunderRoad.AI.Action.BlackboardFloatAdd, ThunderRoad",
@@ -222,10 +196,7 @@
                   "clampLower": true,
                   "minValue": 0.0,
                   "clampUpper": true,
-                  "maxValue": 20.0,
-                  "blackboard": null,
-                  "creature": null,
-                  "brainData": null
+                  "maxValue": 20.0
                 }
               ]
             }
@@ -262,17 +233,11 @@
                   "clampLower": true,
                   "minValue": 0.0,
                   "clampUpper": true,
-                  "maxValue": 20.0,
-                  "blackboard": null,
-                  "creature": null,
-                  "brainData": null
+                  "maxValue": 20.0
                 },
                 {
                   "$type": "ThunderRoad.AI.Action.SetBrainState, ThunderRoad",
-                  "brainState": "Follow",
-                  "blackboard": null,
-                  "creature": null,
-                  "brainData": null
+                  "brainState": "Follow"
                 }
               ]
             }
@@ -296,10 +261,7 @@
                       "fromDirection": "Either",
                       "rememberDuration": 1.0,
                       "outputCreatureAsCurrentTarget": false,
-                      "outputCreatureVariableName": "LastFriendly",
-                      "blackboard": null,
-                      "creature": null,
-                      "brainData": null
+                      "outputCreatureVariableName": "LastFriendly"
                     },
                     {
                       "$type": "ThunderRoad.AI.Action.BlackboardFloatAdd, ThunderRoad",
@@ -316,10 +278,7 @@
                       "clampLower": true,
                       "minValue": 0.0,
                       "clampUpper": true,
-                      "maxValue": 20.0,
-                      "blackboard": null,
-                      "creature": null,
-                      "brainData": null
+                      "maxValue": 20.0
                     }
                   ]
                 }
@@ -343,10 +302,7 @@
                   "childs": [
                     {
                       "$type": "ThunderRoad.AI.Action.SetBrainState, ThunderRoad",
-                      "brainState": "Follow",
-                      "blackboard": null,
-                      "creature": null,
-                      "brainData": null
+                      "brainState": "Follow"
                     },
                     {
                       "$type": "ThunderRoad.AI.Action.MoveTo, ThunderRoad",
@@ -383,10 +339,7 @@
                       "angleMode": "None",
                       "changeAngleUntilUnobstructed": false,
                       "targetRadiusMinAngle": 0.0,
-                      "targetRadiusMaxAngle": 0.0,
-                      "blackboard": null,
-                      "creature": null,
-                      "brainData": null
+                      "targetRadiusMaxAngle": 0.0
                     }
                   ]
                 }
@@ -396,6 +349,5 @@
         ]
       }
     ]
-  },
-  "groupPath": null
+  }
 }

@@ -4,6 +4,7 @@ using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
+#pragma warning disable UDR0001 // Domain Reload Analyzer
 namespace ThunderRoad
 {
     [InitializeOnLoad]
@@ -12,6 +13,7 @@ namespace ThunderRoad
         private static Texture buttonTexture;
         static AreaHierarchyEditor()
         {
+            EditorApplication.hierarchyWindowItemOnGUI -= HandleHierarchyWindowItemOnGUI;
             EditorApplication.hierarchyWindowItemOnGUI += HandleHierarchyWindowItemOnGUI;
             buttonTexture = (Texture2D)AssetDatabase.LoadAssetAtPath("Assets/SDK/Scripts/Areas/Editor/Lock.png", typeof(Texture));
         }

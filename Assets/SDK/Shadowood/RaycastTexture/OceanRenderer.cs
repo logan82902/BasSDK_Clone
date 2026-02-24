@@ -2,11 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using Shadowood.RaycastTexture;
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+
 using TriInspector;
-#endif
 using UnityEngine;
 using UnityEngine.Rendering;
 using Random = UnityEngine.Random;
@@ -62,7 +59,8 @@ namespace Shadowood.RaycastTexture
         [Space] [Header("drawMeshInstanced settings")] [Range(1, 31)]
         public int instancedGridNum = 16;
 
-        [Tooltip("Mask spline to hide water surface")] [InlineButton("FindThunderSpline")]
+        [Tooltip("Mask spline to hide water surface")]
+        [InlineButton(nameof(FindThunderSpline))]
         public ThunderSplineWithin thunderSplineWithin;
 
         void FindThunderSpline()

@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Linq;
 using JetBrains.Annotations;
 
@@ -8,6 +8,8 @@ namespace TriInspector.Resolvers
     {
         [CanBeNull] private ValueResolver<IEnumerable<TriDropdownItem<T>>> _itemsResolver;
         [CanBeNull] private ValueResolver<IEnumerable<T>> _valuesResolver;
+
+        public bool needsValidation;
 
         [PublicAPI]
         public static DropdownValuesResolver<T> Resolve(TriPropertyDefinition propertyDefinition, string expression)
@@ -41,7 +43,7 @@ namespace TriInspector.Resolvers
             if (_valuesResolver != null)
             {
                 var values = _valuesResolver.GetValue(property, Enumerable.Empty<T>());
-
+                if (values is TriDropdownList<T> list) needsValidation = list.needsValidation;
                 foreach (var value in values)
                 {
                     yield return new TriDropdownItem {Text = $"{value}", Value = value,};

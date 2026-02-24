@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
+  "groupPath": null,
   "type": "SubTree",
   "rootNode": {
     "$type": "ThunderRoad.AI.Control.Sequence, ThunderRoad",
@@ -40,6 +41,5 @@
         ]
       }
     ]
-  },
-  "groupPath": null
+  }
 }

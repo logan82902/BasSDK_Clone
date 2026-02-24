@@ -1,25 +1,15 @@
-using UnityEngine;
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+﻿using UnityEngine;
 using TriInspector;
-#endif
 
 public class GolemIK : MonoBehaviour
 {
-#if ODIN_INSPECTOR
-	[Title("General")]
-#endif
-    public float alphaMoveSpeed = 3f;	
-	public float angleMoveSpeed= 5f;	
-
+    [Title("General")]
+    public float alphaMoveSpeed = 3f;
+    public float angleMoveSpeed = 5f;
 
 	public Animator animator;
 
-
-#if ODIN_INSPECTOR
     [Title("Right Hand IK")]
-#endif
 
     [Range(0, 1)]
 	public float rightHandIKWeight = 0;
@@ -29,17 +19,13 @@ public class GolemIK : MonoBehaviour
 	public float rightHandAlphaTarget = 0;
 	public bool rightArmCheckGround = true;
 
-	[Range(-90, 90)]
-#if ODIN_INSPECTOR
+    [Range(-90, 90)]
     [ShowIf(nameof(rightArmCheckGround))]
-#endif
     public float rightHandAngle = 0;
 
 	public Vector3 localRightOffset = Vector3.zero;
 
-#if ODIN_INSPECTOR
     [Title("Left Hand IK")]
-#endif
     [Range(0, 1)]
 	public float leftHandIkWeight = 0;
 	[Range(0, 1)]
@@ -47,28 +33,19 @@ public class GolemIK : MonoBehaviour
 	[Range(0, 1)]
 	public float leftHandAlphaTarget = 0;
 
-	public bool leftUseAngle = true;
-	[Range(-90, 90)]
-#if ODIN_INSPECTOR
+    public bool leftUseAngle = true;
+    [Range(-90, 90)]
     [ShowIf(nameof(leftUseAngle))]
-#endif
-	public float leftHandAngle = 0;
-	public Vector3 localLeftOffset = Vector3.zero;
+    public float leftHandAngle = 0;
+    public Vector3 localLeftOffset = Vector3.zero;
 
     // debug for the stretch curve
-#if ODIN_INSPECTOR
     [Title("Debug")]
-#endif
     public bool debugAnimStretchCurve = false;
-#if ODIN_INSPECTOR
     [ShowIf(nameof(debugAnimStretchCurve))]
-#endif
     public AnimationCurve timeStretchCurve;
-#if ODIN_INSPECTOR
     [ShowIf(nameof(debugAnimStretchCurve))]
-#endif
-	public string multParameterName;
-
+    public string multParameterName;
 
 	void Start()
     {
@@ -76,7 +53,6 @@ public class GolemIK : MonoBehaviour
 		if (!animator)
 			animator = GetComponent<Animator>();
 	}
-
 
     void Update()
     {
@@ -97,13 +73,9 @@ public class GolemIK : MonoBehaviour
 	public float armThickness = 0;
 	private void OnAnimatorIK(int layerIndex)
 	{
-
 		// Right hand offset
-
 		Vector3 rightOffset = localRightOffset;
 		GetOffsetForHand(ref rightOffset,ref rightHandAngle, rightHandAlignToGround, AvatarIKGoal.RightHand);
-
-
 
 		// Left hand
 		Vector3 leftOffset = animator.transform.rotation * localLeftOffset;
@@ -112,7 +84,6 @@ public class GolemIK : MonoBehaviour
 		SetHandIK(AvatarIKGoal.RightHand, rightHandIKWeight, rightHandAlpha, rightOffset);
         SetHandIK(AvatarIKGoal.LeftHand, leftHandIkWeight,  leftHandAlpha, leftOffset);
 	}
-
 
 	void GetOffsetForHand(ref Vector3 offset,ref float handAngle,bool alignToGround, AvatarIKGoal goal)
 	{
@@ -143,8 +114,6 @@ public class GolemIK : MonoBehaviour
 			float distance = 5f;
 			Physics.Raycast(rayOrigin, transform.up * -1, out hitInfo, distance, 1 << 0);
 
-			//Debug.DrawLine(rayOrigin, rayOrigin + (transform.up * -1f) * distance);
-
 			angle = 0;
 			if (hitInfo.collider)
 			{
@@ -159,9 +128,6 @@ public class GolemIK : MonoBehaviour
 					float dist = Mathf.Sqrt(Mathf.Pow(shoulderToHand.magnitude, 2) - Mathf.Pow(hitInfo.distance, 2));
 
 					Vector3 dir = Vector3.ProjectOnPlane(shoulderToHand.normalized, transform.up).normalized * dist;
-					//Debug.DrawLine(hitInfo.point, hitInfo.point + dir, Color.black) ;
-					//Debug.DrawLine(shoulder.position, shoulder.position+ shoulderToHand, Color.red) ;
-					//Debug.DrawLine(shoulder.position, shoulder.position+ ((hitInfo.point + dir) - shoulder.position).normalized, Color.green) ;
 
 					angle = Vector3.Angle(shoulderToHand.normalized, ((hitInfo.point + dir) - shoulder.position).normalized);
 				}
@@ -171,8 +137,6 @@ public class GolemIK : MonoBehaviour
 					// Since the point is always below the angle will always be minus
 					angle = -Vector3.Angle(shoulderToHand.normalized, dir.normalized);
 				}
-
-				
 			}
 			handAngle = FInterpTo(handAngle, angle, Time.deltaTime, angleMoveSpeed);
 
@@ -239,10 +203,4 @@ public class GolemIK : MonoBehaviour
 		leftHandAlignToGround = false;
 
 	}
-
-
-
-
-
-
 }

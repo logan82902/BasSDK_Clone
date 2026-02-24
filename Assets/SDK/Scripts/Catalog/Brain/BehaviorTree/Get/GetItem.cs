@@ -1,58 +1,49 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
 
 namespace ThunderRoad.AI.Get
 {
-	public class GetItem : ActionNode
+    [DeclareHorizontalGroup("Horiz1", Sizes = new float[] { 155f, 0f })]
+    [DeclareHorizontalGroup("Horiz2", Sizes = new float[] { 155f, 0f })]
+    [DeclareHorizontalGroup("Horiz3", Sizes = new float[] { 155f, 0f })]
+    [DeclareHorizontalGroup("Horiz4", Sizes = new float[] { 155f, 0f })]
+    [DeclareHorizontalGroup("Horiz5", Sizes = new float[] { 155f, 0f })]
+    [AutoLabelWidth(AddedWidth = 5f, MinWidth = 0f)]
+    public class GetItem : ActionNode
     {
         public float searchRadius = 30f;
         public bool checkCanSeeItem = true;
-#if ODIN_INSPECTOR
-        [HorizontalGroup("Horiz1", MinWidth = 170), LabelWidth(140)] 
-#endif
+        [Group("Horiz1")]
         public bool checkID = false;
-#if ODIN_INSPECTOR
-        [HorizontalGroup("Horiz1"), EnableIf("checkID"), LabelWidth(120)] 
-#endif
+        [Group("Horiz1")]
+        [EnableIf(nameof(checkID))]
+        [HideLabel]
         public string itemID = "";
-#if ODIN_INSPECTOR
-        [HorizontalGroup("Horiz2", MinWidth = 170), LabelWidth(140)] 
-#endif
+        [Group("Horiz2")]
         public bool checkType = true;
-#if ODIN_INSPECTOR
-        [HorizontalGroup("Horiz2"), EnableIf("checkType"), LabelWidth(120)] 
-#endif
+        [Group("Horiz2")]
+        [EnableIf(nameof(checkType))]
+        [HideLabel]
         public ItemData.Type type = ItemData.Type.Weapon;
-#if ODIN_INSPECTOR
-        [HorizontalGroup("Horiz3", MinWidth = 170), LabelWidth(140)] 
-#endif
+        [Group("Horiz3")]
         public bool checkClass = true;
-#if ODIN_INSPECTOR
-        [HorizontalGroup("Horiz3"), EnableIf("checkClass"), LabelWidth(120)] 
-#endif
+        [Group("Horiz3")]
+        [EnableIf(nameof(checkClass))]
+        [HideLabel]
         public ItemModuleAI.WeaponClass weaponClass = ItemModuleAI.WeaponClass.Melee;
-#if ODIN_INSPECTOR
-        [HorizontalGroup("Horiz4", MinWidth = 170), LabelWidth(140)] 
-#endif
+        [Group("Horiz4")]
         public bool checkHandling = true;
-#if ODIN_INSPECTOR
-        [HorizontalGroup("Horiz4"), EnableIf("checkHandling"), LabelWidth(120)] 
-#endif
+        [Group("Horiz4")]
+        [EnableIf(nameof(checkHandling))]
+        [HideLabel]
         public ItemModuleAI.WeaponHandling weaponHandling = ItemModuleAI.WeaponHandling.OneHanded;
-#if ODIN_INSPECTOR
-        [HorizontalGroup("Horiz5", MinWidth = 170), LabelWidth(140)] 
-#endif
+        [Group("Horiz5")]
         public bool checkGrabbableSide = true;
-#if ODIN_INSPECTOR
-        [HorizontalGroup("Horiz5"), EnableIf("checkGrabbableSide"), LabelWidth(120)] 
-#endif
+        [Group("Horiz5")]
+        [EnableIf(nameof(checkGrabbableSide))]
+        [HideLabel]
         public Side handleSide = Side.Right;
 
         public float avoidTargetRadius = 4;
@@ -64,6 +55,8 @@ namespace ThunderRoad.AI.Get
         public string outputItemTransformVariableName = "";
         public string outputItemHandleVariableName = "";
         public string outputItemHandleTransformVariableName = "";
+
+        public GetItem() { }
 
     }
 }

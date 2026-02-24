@@ -4,9 +4,9 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 1,
+  "groupPath": "Factions/Tribal",
   "displayName": "Tribal Gladiator",
   "description": null,
-  "contents": [],
   "containerContents": [
     {
       "$type": "ThunderRoad.TableContent, ThunderRoad",
@@ -16,6 +16,7 @@
         "holderName": "BackRight"
       },
       "customDataList": [],
+      "mergeKey": "3d5aaa1f",
       "referenceID": "WeaponTribalGladiator"
     },
     {
@@ -25,6 +26,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "928a5174",
       "referenceID": "ApparelGladiatorHeadband"
     },
     {
@@ -34,6 +36,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "a4afb882",
       "referenceID": "ApparelGladiatorJacket"
     },
     {
@@ -43,6 +46,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "08610157",
       "referenceID": "ApparelGladiatorShoulderR"
     },
     {
@@ -52,6 +56,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "5235e1ae",
       "referenceID": "GladiatorHandR"
     },
     {
@@ -61,6 +66,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "a7a1f720",
       "referenceID": "GladiatorHandL"
     },
     {
@@ -70,6 +76,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "a76d7794",
       "referenceID": "ApparelGladiatorBoots"
     },
     {
@@ -79,6 +86,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "f751ee84",
       "referenceID": "HairsTribal"
     },
     {
@@ -88,8 +96,8 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "6fb53692",
       "referenceID": "BeardsTribal"
     }
-  ],
-  "groupPath": "Factions/Tribal"
+  ]
 }

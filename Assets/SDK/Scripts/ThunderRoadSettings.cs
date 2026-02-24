@@ -5,14 +5,15 @@ using System.IO;
 #if !UNITY_EDITOR    
 using UnityEngine.AddressableAssets;
 #endif
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
+    [HideMonoScript]
+    [DeclareBoxGroup("General", Title = "General")]
+    [DeclareBoxGroup("References", Title = "References")]
+    [DeclareBoxGroup("Runtime", Title = "Runtime")]
     public class ThunderRoadSettings : ScriptableObject
     {
         const string address = "ThunderRoad.Settings";
@@ -23,16 +24,16 @@ namespace ThunderRoad
             get
             {
                 if (!initialized)
-                { 
+                {
                     ThunderRoadSettings thunderRoadSettings = null;
                     if (Application.isBatchMode)
                     {
                         // Seem that Addressables.LoadAssetAsync or op.WaitForCompletion() don't work in batch mode 
-                        thunderRoadSettings = Catalog.EditorLoad<ThunderRoadSettings>(address);     
+                        thunderRoadSettings = Catalog.EditorLoad<ThunderRoadSettings>(address);
                     }
                     else
                     {
-#if UNITY_EDITOR                        
+#if UNITY_EDITOR
                         thunderRoadSettings = Catalog.EditorLoad<ThunderRoadSettings>(address);
 #else
 #if TESTINGLOCALLY
@@ -49,10 +50,10 @@ namespace ThunderRoad
                     }
                     else
                     {
-                        #if !TESTINGLOCALLY
-                                Debug.LogError("Could not load ThunderRoad settings from address: " + address);
-                                Application.Quit();
-                        #endif
+#if !TESTINGLOCALLY
+                        Debug.LogError("Could not load ThunderRoad settings from address: " + address);
+                        Application.Quit();
+#endif
                     }
                 }
                 return _current;
@@ -61,29 +62,19 @@ namespace ThunderRoad
 
         private static ThunderRoadSettings _current;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("General")]
-#endif
+#if UNITY_EDITOR
+        [Group("General")]
         public string addressableEditorPath = "BuildStaging/AddressableAssets";
-#if ODIN_INSPECTOR
-        [BoxGroup("General")]
-#endif
+        [Group("General")]
         public string catalogsEditorPath = "BuildStaging/Catalogs";
-#if ODIN_INSPECTOR
-        [BoxGroup("General")]
 #endif
+        [Group("General")]
         public string areaSceneAddress = "Level.Areas";
-#if ODIN_INSPECTOR
-        [BoxGroup("General")]
-#endif
+        [Group("General")]
         public bool overrideData = true;
-#if ODIN_INSPECTOR
-        [BoxGroup("General")]
-#endif
+        [Group("General")]
         public LayerMask groundLayer = 1 << 0;
-#if ODIN_INSPECTOR
-        [BoxGroup("General")]
-#endif
+        [Group("General")]
         public GameSettings game;
 
         private void Init()
@@ -107,8 +98,14 @@ namespace ThunderRoad
 
 
             initialized = true;
-            
         }
 
+
+        public bool TryGetStoreSettings(out StoreSettings storeSettings)
+        {
+            storeSettings = null;
+            return storeSettings != null;
+        }
     }
+
 }

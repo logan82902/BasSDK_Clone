@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 1,
+  "groupPath": null,
   "damageType": "Energy",
   "collisions": [
     {
@@ -256,6 +257,5 @@
         }
       ]
     }
-  ],
-  "groupPath": null
+  ]
 }

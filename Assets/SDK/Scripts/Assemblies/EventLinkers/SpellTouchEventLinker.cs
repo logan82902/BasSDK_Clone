@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using TriInspector;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -18,10 +19,13 @@ namespace ThunderRoad
         [Serializable]
         public class SpellUnityEvent
         {
+            [AutoLabelWidth(AddedWidth = 5f)]
             public string spellId;
             [NonSerialized]
             public int spellHashId;
+            [AutoLabelWidth(AddedWidth = 5f)]
             public Step step;
+            [AutoLabelWidth(AddedWidth = 5f)]
             public float minCharge = 0;
             public UnityEvent onActivate;
         }

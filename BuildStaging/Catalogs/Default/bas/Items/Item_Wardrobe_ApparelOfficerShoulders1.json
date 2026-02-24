@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 4,
+  "groupPath": "Officer/",
   "localizationId": "OfficerShoulders01",
   "displayName": "Blackened Pauldrons",
   "description": "Shaped plate shoulder armor, very effective at protecting from a variety of damage.",
@@ -14,16 +15,18 @@
   "tier": 3,
   "flags": "Spinnable",
   "levelRequired": 0,
+  "type": "Wardrobe",
   "category": "Plate",
+  "update": "",
   "iconEffectId": null,
   "preferredItemCenter": "Mass",
   "drainImbueWhenIdle": true,
+  "forceImbueUseButton": "None",
   "prefabAddress": "Bas.Item.Apparel.Officer.Shoulders01",
   "iconAddress": "Bas.Item.Apparel.Officer.Shoulders01.Icon[ArmorItem_Officer_Shoulders01]",
   "closeUpIconAddress": null,
   "pooledCount": 0,
   "androidPooledCount": 0,
-  "type": "Wardrobe",
   "allowedStorage": "Inventory, Container, SandboxAllItems",
   "despawnOnStoredInInventory": false,
   "isStackable": false,
@@ -37,6 +40,7 @@
   "mass": 3.4,
   "drag": 1.0,
   "angularDrag": 1.0,
+  "density": 7000.0,
   "focusRegenMultiplier": 0.9,
   "spellChargeSpeedPlayerMultiplier": 0.88,
   "spellChargeSpeedNPCMultiplier": 1.0,
@@ -150,22 +154,45 @@
     "preWrapMode": "ClampForever",
     "postWrapMode": "ClampForever"
   },
+  "colliderGroups": [],
+  "damagers": [
+    {
+      "$type": "ThunderRoad.ItemData+Damager, ThunderRoad",
+      "transformName": "Blunt",
+      "damagerID": "PropBlunt"
+    }
+  ],
+  "Interactables": [
+    {
+      "$type": "ThunderRoad.ItemData+Interactable, ThunderRoad",
+      "transformName": "Handle",
+      "interactableId": "ObjectHandleHeavy"
+    },
+    {
+      "$type": "ThunderRoad.ItemData+Interactable, ThunderRoad",
+      "transformName": "Handle2",
+      "interactableId": "ObjectHandleHeavy"
+    }
+  ],
+  "effectHinges": [],
+  "whooshs": [],
   "modules": [
     {
       "$type": "ThunderRoad.ItemModuleWardrobe, ThunderRoad",
-      "castSpeedPerHand": null,
       "category": "Apparel",
       "castShadows": "PlayerAndNPC",
       "wardrobes": [
         {
           "$type": "ThunderRoad.ItemModuleWardrobe+CreatureWardrobe, ThunderRoad",
           "creatureName": "HumanMale",
-          "wardrobeDataAddress": "Bas.Creature.Wardrobe.HumanMale.Officer.Shoulders_01"
+          "wardrobeDataAddress": "Bas.Creature.Wardrobe.HumanMale.Officer.Shoulders_01",
+          "runtimeBlendshapeActivators": null
         },
         {
           "$type": "ThunderRoad.ItemModuleWardrobe+CreatureWardrobe, ThunderRoad",
           "creatureName": "HumanFemale",
-          "wardrobeDataAddress": "Bas.Creature.Wardrobe.HumanFemale.Officer.Shoulders01"
+          "wardrobeDataAddress": "Bas.Creature.Wardrobe.HumanFemale.Officer.Shoulders01",
+          "runtimeBlendshapeActivators": null
         }
       ],
       "isMetal": true,
@@ -202,28 +229,5 @@
       ]
     }
   ],
-  "colliderGroups": [],
-  "damagers": [
-    {
-      "$type": "ThunderRoad.ItemData+Damager, ThunderRoad",
-      "transformName": "Blunt",
-      "damagerID": "PropBlunt"
-    }
-  ],
-  "Interactables": [
-    {
-      "$type": "ThunderRoad.ItemData+Interactable, ThunderRoad",
-      "transformName": "Handle",
-      "interactableId": "ObjectHandleHeavy"
-    },
-    {
-      "$type": "ThunderRoad.ItemData+Interactable, ThunderRoad",
-      "transformName": "Handle2",
-      "interactableId": "ObjectHandleHeavy"
-    }
-  ],
-  "effectHinges": [],
-  "whooshs": [],
-  "entityModules": [],
-  "groupPath": "Officer/"
+  "entityModules": []
 }

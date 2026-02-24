@@ -4,9 +4,9 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 1,
+  "groupPath": "Factions/Civilian",
   "displayName": "",
   "description": null,
-  "contents": [],
   "containerContents": [
     {
       "$type": "ThunderRoad.ItemContent, ThunderRoad",
@@ -16,6 +16,7 @@
         "holderName": "BackLeft"
       },
       "customDataList": null,
+      "mergeKey": "1797a7eb",
       "referenceID": "BowCommon"
     },
     {
@@ -26,6 +27,7 @@
         "holderName": "BackRight"
       },
       "customDataList": null,
+      "mergeKey": "f92097b7",
       "referenceID": "QuiverNPC"
     },
     {
@@ -36,6 +38,7 @@
         "holderName": "HipsRight"
       },
       "customDataList": [],
+      "mergeKey": "347afd17",
       "referenceID": "WeaponCivilian"
     },
     {
@@ -45,6 +48,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "375712ce",
       "referenceID": "ApparelCivilianHandL"
     },
     {
@@ -54,6 +58,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "89bee74c",
       "referenceID": "ApparelCivilianHandR"
     },
     {
@@ -63,6 +68,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "ce6964cd",
       "referenceID": "ApparelCivilianChest"
     },
     {
@@ -72,6 +78,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "4a42caec",
       "referenceID": "ApparelCivilianLegs"
     },
     {
@@ -81,6 +88,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "7967b4e9",
       "referenceID": "ApparelCivilianBoots"
     },
     {
@@ -90,6 +98,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "5cc2eb6a",
       "referenceID": "HairsSoldier"
     },
     {
@@ -99,8 +108,8 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "6d6a836f",
       "referenceID": "BeardsSoldier"
     }
-  ],
-  "groupPath": "Factions/Civilian"
+  ]
 }

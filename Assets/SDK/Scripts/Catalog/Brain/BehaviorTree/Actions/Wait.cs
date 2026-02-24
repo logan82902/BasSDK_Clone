@@ -1,13 +1,10 @@
 ﻿using UnityEngine;
-
-#if ODIN_INSPECTOR
-#else
 using TriInspector;
-#endif
 
 namespace ThunderRoad.AI.Action
 {
-	public class Wait : ActionNode
+    [AutoLabelWidth(AddedWidth = 5f, MinWidth = 0f)]
+    public class Wait : ActionNode
     {
         public bool startWaiting = true;
         public float minDuration = 1;

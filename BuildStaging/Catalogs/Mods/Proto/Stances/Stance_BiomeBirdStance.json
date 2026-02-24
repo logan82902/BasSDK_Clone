@@ -55,5 +55,6 @@
     "showDifficulty": false,
     "showWeight": false
   },
-  "baseStance": "Staff"
+  "baseStance": "Staff",
+  "groupPath": null
 }

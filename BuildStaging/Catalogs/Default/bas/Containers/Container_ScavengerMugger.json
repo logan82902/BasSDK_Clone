@@ -4,9 +4,9 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 1,
+  "groupPath": "Factions/Scavenger",
   "displayName": "Scavenger Mugger",
   "description": "",
-  "contents": [],
   "containerContents": [
     {
       "$type": "ThunderRoad.TableContent, ThunderRoad",
@@ -16,6 +16,7 @@
         "holderName": "BackRight"
       },
       "customDataList": [],
+      "mergeKey": "5db3bf7e",
       "referenceID": "WeaponScavenger1H"
     },
     {
@@ -25,6 +26,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "c7b7bd01",
       "referenceID": "ImprovisedLeatherShoulders"
     },
     {
@@ -34,6 +36,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "583b1d50",
       "referenceID": "ScavengerShirts"
     },
     {
@@ -43,6 +46,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "00e94892",
       "referenceID": "ImprovisedLeatherHandL"
     },
     {
@@ -52,6 +56,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "2490556c",
       "referenceID": "ImprovisedLeatherHandR"
     },
     {
@@ -61,6 +66,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "38cf667b",
       "referenceID": "ApparelRuggedTrousers"
     },
     {
@@ -70,6 +76,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "b434b6c4",
       "referenceID": "ScavengerShoes"
     },
     {
@@ -79,6 +86,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "71853f99",
       "referenceID": "HairsScavenger"
     },
     {
@@ -88,8 +96,8 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "cb55dd66",
       "referenceID": "BeardsScavenger"
     }
-  ],
-  "groupPath": "Factions/Scavenger"
+  ]
 }

@@ -2,26 +2,26 @@
 using System.Collections.Generic;
 using System;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
     [HelpURL("https://kospy.github.io/BasSDK/Components/ThunderRoad/Misc/Interactable.html")]
+    [DeclareBoxGroup("Data", Title = "Interactable")]
+    [DeclareBoxGroup("Touch")]
     public class Interactable : ThunderBehaviour
     {
-#if ODIN_INSPECTOR
-        [ValueDropdown(nameof(GetAllInteractableID), AppendNextDrawer = true)]
-#endif
+
+        [Group("Data")]
+        [Dropdown(nameof(GetAllInteractableID))]
         [Tooltip("(Only needed for non-json handles)\nInsert Interactable ID here.")]
         public string interactableId;
 
+        [Group("Touch")]
         [Tooltip("What hand is allowed to grab the handle.")]
         public HandSide allowedHandSide = HandSide.Both;
 
+        [Group("Data")]
         public Transform highlighterTransform;
 
         public enum HandSide
@@ -31,12 +31,18 @@ namespace ThunderRoad
             Left,
         }
 
+        [Group("Touch")]
         [Tooltip("The length of which the player can grab along.\nIf >0, a button will appear and allow you to adjust the length along its points")]
+        [Min(0f)]
         public float axisLength = 0;
+        [Group("Touch")]
         [Tooltip("The radius of which the player can grab the handle")]
+        [Min(0f)]
         public float touchRadius = 0.1f;
-        [Tooltip("When the player's hand is within the range of multiple interactables, the closest one is prioritized. \n \nArtifical distance is a fake distance added to the player's hand while checking which interactable is the nearest.\nSetting this to a high value gives it a low priority when working out which interactable to use, while a low (or negative) value will give it a high priority compared to other interactables. \n \n Generally, you can leave this value at 0.")]
+        [Group("Touch")]
+        [Tooltip( "When the player's hand is within the range of multiple interactables, the closest one is prioritized. \n \nArtifical distance is a fake distance added to the player's hand while checking which interactable is the nearest.\nSetting this to a high value gives it a low priority when working out which interactable to use, while a low (or negative) value will give it a high priority compared to other interactables. \n \n Generally, you can leave this value at 0.")]
         public float artificialDistance = 0f;
+        [Group("Touch")]
         [Tooltip("Determines the center of the touchRadius")]
         public Vector3 touchCenter;
 
@@ -80,9 +86,10 @@ namespace ThunderRoad
 
         public static bool showTouchHighlighter = true;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Interactable"), NonSerialized, ShowInInspector]
-#endif
+        [Group("Data")]
+        [NonSerialized]
+        [ShowInInspector]
+        [ReadOnly]
         public InteractableData data;
 
         [NonSerialized]
@@ -142,12 +149,7 @@ namespace ThunderRoad
             public float proximityDistance = 2;
         }
 
-#if ODIN_INSPECTOR
-        public List<ValueDropdownItem<string>> GetAllInteractableID()
-        {
-            return Catalog.GetDropdownAllID(Category.Interactable);
-        }
-#endif
+        public TriDropdownList<string> GetAllInteractableID() => Catalog.GetDropdownAllID(Category.Interactable);
 
     }
 }

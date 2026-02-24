@@ -4,29 +4,52 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 2,
+  "groupPath": "Survival",
   "category": "Survival",
   "localizationId": "-",
   "title": "Wave 2",
   "description": null,
   "loopBehavior": "NoLoop",
-  "totalMaxAlive": 3,
+  "totalMaxAlive": 4,
   "alwaysAvailable": false,
   "waveSelectors": [],
   "factions": [
     {
       "$type": "ThunderRoad.WaveData+WaveFaction, ThunderRoad",
-      "factionID": 7,
-      "factionHealthMultiplier": 1.0,
-      "factionMaxAlive": 8
+      "factionID": 3,
+      "factionMaxAlive": 4
     }
   ],
   "groups": [
     {
       "$type": "ThunderRoad.WaveData+Group, ThunderRoad",
+      "mergeKey": "46cb2737",
       "reference": "Table",
-      "referenceID": "TribalPatrolMelee",
-      "overrideFaction": false,
-      "factionID": 0,
+      "referenceID": "ScavengerAlertMix",
+      "overrideFaction": true,
+      "factionID": 3,
+      "overrideContainer": false,
+      "overrideContainerID": null,
+      "overrideBrain": false,
+      "overrideBrainID": null,
+      "overrideMaxMelee": false,
+      "overrideMaxMeleeCount": 0,
+      "groupHealthMultiplier": 1.0,
+      "minMaxCount": {
+        "x": 3,
+        "y": 3
+      },
+      "spawnPointIndex": -1,
+      "prereqGroupIndex": -1,
+      "prereqMaxRemainingAlive": 0
+    },
+    {
+      "$type": "ThunderRoad.WaveData+Group, ThunderRoad",
+      "mergeKey": "2eaa5005",
+      "reference": "Table",
+      "referenceID": "TribalAlertMix",
+      "overrideFaction": true,
+      "factionID": 3,
       "overrideContainer": false,
       "overrideContainerID": null,
       "overrideBrain": false,
@@ -36,111 +59,6 @@
       "groupHealthMultiplier": 1.0,
       "minMaxCount": {
         "x": 2,
-        "y": 4
-      },
-      "spawnPointIndex": -1,
-      "prereqGroupIndex": -1,
-      "prereqMaxRemainingAlive": 0
-    },
-    {
-      "$type": "ThunderRoad.WaveData+Group, ThunderRoad",
-      "reference": "Table",
-      "referenceID": "TribalRareMelee",
-      "overrideFaction": false,
-      "factionID": 0,
-      "overrideContainer": false,
-      "overrideContainerID": null,
-      "overrideBrain": false,
-      "overrideBrainID": null,
-      "overrideMaxMelee": false,
-      "overrideMaxMeleeCount": 0,
-      "groupHealthMultiplier": 1.0,
-      "minMaxCount": {
-        "x": 1,
-        "y": 2
-      },
-      "spawnPointIndex": -1,
-      "prereqGroupIndex": -1,
-      "prereqMaxRemainingAlive": 0
-    },
-    {
-      "$type": "ThunderRoad.WaveData+Group, ThunderRoad",
-      "reference": "Table",
-      "referenceID": "TribalPatrolMelee",
-      "overrideFaction": false,
-      "factionID": 0,
-      "overrideContainer": false,
-      "overrideContainerID": null,
-      "overrideBrain": false,
-      "overrideBrainID": null,
-      "overrideMaxMelee": false,
-      "overrideMaxMeleeCount": 0,
-      "groupHealthMultiplier": 1.0,
-      "minMaxCount": {
-        "x": 2,
-        "y": 4
-      },
-      "spawnPointIndex": -1,
-      "prereqGroupIndex": -1,
-      "prereqMaxRemainingAlive": 0
-    },
-    {
-      "$type": "ThunderRoad.WaveData+Group, ThunderRoad",
-      "reference": "Table",
-      "referenceID": "TribalRareMelee",
-      "overrideFaction": false,
-      "factionID": 0,
-      "overrideContainer": false,
-      "overrideContainerID": null,
-      "overrideBrain": false,
-      "overrideBrainID": null,
-      "overrideMaxMelee": false,
-      "overrideMaxMeleeCount": 0,
-      "groupHealthMultiplier": 1.0,
-      "minMaxCount": {
-        "x": 1,
-        "y": 2
-      },
-      "spawnPointIndex": -1,
-      "prereqGroupIndex": -1,
-      "prereqMaxRemainingAlive": 0
-    },
-    {
-      "$type": "ThunderRoad.WaveData+Group, ThunderRoad",
-      "reference": "Table",
-      "referenceID": "TribalAlertMelee",
-      "overrideFaction": false,
-      "factionID": 0,
-      "overrideContainer": false,
-      "overrideContainerID": null,
-      "overrideBrain": false,
-      "overrideBrainID": null,
-      "overrideMaxMelee": false,
-      "overrideMaxMeleeCount": 0,
-      "groupHealthMultiplier": 1.0,
-      "minMaxCount": {
-        "x": 2,
-        "y": 4
-      },
-      "spawnPointIndex": -1,
-      "prereqGroupIndex": -1,
-      "prereqMaxRemainingAlive": 0
-    },
-    {
-      "$type": "ThunderRoad.WaveData+Group, ThunderRoad",
-      "reference": "Table",
-      "referenceID": "TribalRareMelee",
-      "overrideFaction": false,
-      "factionID": 0,
-      "overrideContainer": false,
-      "overrideContainerID": null,
-      "overrideBrain": false,
-      "overrideBrainID": null,
-      "overrideMaxMelee": false,
-      "overrideMaxMeleeCount": 0,
-      "groupHealthMultiplier": 1.0,
-      "minMaxCount": {
-        "x": 1,
         "y": 2
       },
       "spawnPointIndex": -1,
@@ -148,5 +66,5 @@
       "prereqMaxRemainingAlive": 0
     }
   ],
-  "groupPath": "Survival"
+  "modules": null
 }

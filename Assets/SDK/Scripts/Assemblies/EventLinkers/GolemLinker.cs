@@ -1,7 +1,10 @@
 ﻿using System.Collections.Generic;
+using TriInspector;
 using UnityEngine;
 using UnityEngine.Events;
 
+// event linkers are already set up to unsubscribe from named events + static events when they're destroyed
+#pragma warning disable UDR0005 // Domain Reload Analyzer
 namespace ThunderRoad
 {
     [HelpURL("https://kospy.github.io/BasSDK/Components/ThunderRoad/SkillEventLinker")]
@@ -28,8 +31,11 @@ namespace ThunderRoad
         [System.Serializable]
         public class GolemUnityEvent
         {
+            [AutoLabelWidth(AddedWidth = 5f)]
             public GolemEvent golemEvent;
+            [AutoLabelWidth(AddedWidth = 5f)]
             public EventTime eventTime;
+            [AutoLabelWidth(AddedWidth = 5f)]
             public Vector2Int crystalsLeft;
             public UnityEvent<Golem> onActivate;
 

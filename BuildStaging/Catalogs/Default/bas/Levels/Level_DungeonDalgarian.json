@@ -4,15 +4,14 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 3,
+  "groupPath": "Dungeon Biomes",
   "name": "Dalgarian",
   "description": "An ancient Dalgarian ruin. Be prepared for a long and treacherous run through a labyrinth.",
   "descriptionLocalizationId": "DalgarianDescription",
   "sceneAddress": "Level.Areas",
   "showOnlyDevMode": false,
   "showInLevelSelection": true,
-  "worldmapPrefabAddress": "Bas.Image.Map.Default",
-  "worldmapTextureAddress": "Bas.Worldmap.Eraden",
-  "worldmapLabel": null,
+  "worldMapId": "Eraden",
   "worldMapTravelAudioContainerAddress": "Bas.AudioGroup.Dungeon.DalgarianStart",
   "mapLocationIndex": 25,
   "showOnMap": true,
@@ -119,11 +118,15 @@
         {
           "$type": "ThunderRoad.EnemyConfigOption, ThunderRoad",
           "valueList": [
+            "OutpostEnemyConfigT0",
             "DalgarianEnemyConfigT1",
             "DalgarianEnemyConfigT2",
-            "DalgarianEnemyConfigT3"
+            "DalgarianEnemyConfigT3",
+            "DalgarianEnemyConfigRakta",
+            "DalgarianEnemyConfigSentara"
           ],
           "name": "EnemyConfig",
+          "localizationGroup": "Default",
           "displayName": "EnemyConfig",
           "description": "EnemyConfigDesc"
         },
@@ -135,6 +138,7 @@
             "Industrial"
           ],
           "name": "DungeonLength",
+          "localizationGroup": "Default",
           "displayName": "District",
           "description": "DistrictDesc"
         },
@@ -145,15 +149,14 @@
           "defaultValue": 1,
           "stepValue": 1,
           "name": "GolemTier",
+          "localizationGroup": "Default",
           "displayName": "GolemTier",
           "description": "GolemTierDesc"
         }
       ]
     }
   ],
-  "modePickCountPerRank": 2,
   "customCameras": [],
   "throwableRefType": "Item",
-  "improvisedThrowableID": null,
-  "groupPath": "Dungeon Biomes"
+  "improvisedThrowableID": null
 }

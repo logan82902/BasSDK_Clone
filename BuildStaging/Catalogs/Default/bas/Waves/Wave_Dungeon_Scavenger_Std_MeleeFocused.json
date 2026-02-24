@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 2,
+  "groupPath": "Dungeon",
   "category": "Dungeon Standard Room",
   "localizationId": "-",
   "title": "Scavenger Std Melee Focused",
@@ -16,13 +17,13 @@
     {
       "$type": "ThunderRoad.WaveData+WaveFaction, ThunderRoad",
       "factionID": 4,
-      "factionHealthMultiplier": 1.0,
       "factionMaxAlive": 8
     }
   ],
   "groups": [
     {
       "$type": "ThunderRoad.WaveData+Group, ThunderRoad",
+      "mergeKey": "c7045464",
       "reference": "Table",
       "referenceID": "ScavengerAlertRanged",
       "overrideFaction": false,
@@ -44,6 +45,7 @@
     },
     {
       "$type": "ThunderRoad.WaveData+Group, ThunderRoad",
+      "mergeKey": "624b2392",
       "reference": "Table",
       "referenceID": "ScavengerAlertMelee",
       "overrideFaction": false,
@@ -64,5 +66,5 @@
       "prereqMaxRemainingAlive": 0
     }
   ],
-  "groupPath": "Dungeon"
+  "modules": null
 }

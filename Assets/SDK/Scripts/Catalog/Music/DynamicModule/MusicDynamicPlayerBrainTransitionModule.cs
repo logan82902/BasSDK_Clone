@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace ThunderRoad
 {
-    public class BrainMusicMapping : Dictionary<BrainModulePlayer.Exposure, string> { }
+    public class BrainMusicMapping : UnitySerializedDictionary<BrainModulePlayer.Exposure, string> { }
 
 
     [Serializable]

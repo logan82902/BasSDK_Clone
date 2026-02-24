@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
+  "groupPath": null,
   "groupId": "Misc",
   "volumeDb": 0.0,
   "modules": [
@@ -84,6 +85,7 @@
       "collisionMaxIntensity": 1.0,
       "collisionUseMainGradient": false,
       "collisionUseSecondaryGradient": false,
+      "mergeKey": "ea8dbb77",
       "step": "Start",
       "stepCustomId": null,
       "loopCustomStep": false,
@@ -178,6 +180,7 @@
       "collisionMaxIntensity": 1.0,
       "collisionUseMainGradient": false,
       "collisionUseSecondaryGradient": false,
+      "mergeKey": "370178f9",
       "step": "Loop",
       "stepCustomId": null,
       "loopCustomStep": false,
@@ -272,6 +275,7 @@
       "collisionMaxIntensity": 1.0,
       "collisionUseMainGradient": false,
       "collisionUseSecondaryGradient": false,
+      "mergeKey": "e81568c0",
       "step": "End",
       "stepCustomId": null,
       "loopCustomStep": false,
@@ -289,6 +293,5 @@
       "damagersFilterLogic": "AnyExcept",
       "damagersFilter": []
     }
-  ],
-  "groupPath": null
+  ]
 }

@@ -4,9 +4,9 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 1,
+  "groupPath": "Factions/Soldier",
   "displayName": "Soldier Watchman",
   "description": "",
-  "contents": [],
   "containerContents": [
     {
       "$type": "ThunderRoad.TableContent, ThunderRoad",
@@ -16,6 +16,7 @@
         "holderName": "BackRight"
       },
       "customDataList": [],
+      "mergeKey": "6fbabd1c",
       "referenceID": "WeaponSoldierFootman"
     },
     {
@@ -26,6 +27,7 @@
         "holderName": "BackLeft"
       },
       "customDataList": [],
+      "mergeKey": "a7845e1a",
       "referenceID": "ShieldSoldier"
     },
     {
@@ -35,6 +37,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "a5621835",
       "referenceID": "ApparelBanditHelmet"
     },
     {
@@ -44,6 +47,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "630295ec",
       "referenceID": "BanditHandR"
     },
     {
@@ -53,6 +57,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "c5b55045",
       "referenceID": "ApparelBanditJacket"
     },
     {
@@ -62,6 +67,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "389223e6",
       "referenceID": "ApparelBanditPants"
     },
     {
@@ -71,6 +77,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "6f1827a2",
       "referenceID": "ApparelBanditBoots"
     },
     {
@@ -80,6 +87,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "8689ed2c",
       "referenceID": "HairsSoldier"
     },
     {
@@ -89,8 +97,8 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "19f7d856",
       "referenceID": "BeardsSoldier"
     }
-  ],
-  "groupPath": "Factions/Soldier"
+  ]
 }

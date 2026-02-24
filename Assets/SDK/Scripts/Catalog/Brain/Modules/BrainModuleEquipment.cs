@@ -2,17 +2,17 @@
 using System.Collections;
 using UnityEngine;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+
 using TriInspector;
-#endif
+using Newtonsoft.Json;
 
 namespace ThunderRoad
 {
+    [System.Serializable]
+    [AutoLabelWidth(AddedWidth = 5f, MinWidth = 0f)]
     public class BrainModuleEquipment : BrainData.Module
     {
-        public static float drawDelay = 0.8f;
+        public const float drawDelay = 0.8f;
 
         public bool allowArmGrabDisarm = true;
         public int grabDisarmPushLevel = 2;
@@ -21,10 +21,8 @@ namespace ThunderRoad
 
         public int handHitDisarmPushLevel = 2;
 
-#if ODIN_INSPECTOR
-        [MinMaxSlider(0, 10, showFields: true)] 
-#endif
-        public Vector2 dropObjectsDelay = new Vector2(0, 0.5f);
+        [MinMaxSlider(0, 10, true)]
+        public Vector2 dropObjectsDelay = new(0, 0.5f);
 
         [NonSerialized]
         public bool isDrawing;

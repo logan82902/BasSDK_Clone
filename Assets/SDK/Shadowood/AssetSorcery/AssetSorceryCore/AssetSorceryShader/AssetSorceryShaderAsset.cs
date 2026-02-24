@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+
 using TriInspector;
-#endif
 using UnityEditor;
 using UnityEngine;
 
@@ -19,7 +16,7 @@ namespace ThunderRoad.AssetSorcery
         public Shader targetShader;
 
 
-        //[MultiLineProperty(6)] public string mali;
+        //[Multiline(6)] public string mali;
 
         public bool debug;
 

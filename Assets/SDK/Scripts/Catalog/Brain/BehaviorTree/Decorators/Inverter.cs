@@ -1,6 +1,11 @@
-﻿namespace ThunderRoad.AI.Decorator
+﻿using TriInspector;
+
+namespace ThunderRoad.AI.Decorator
 {
-	public class Inverter : DecoratorNode
+    [AutoLabelWidth(AddedWidth = 5f, MinWidth = 0f)]
+    public class Inverter : DecoratorNode
     {
+        public Inverter() : base() { }
+
     }
 }

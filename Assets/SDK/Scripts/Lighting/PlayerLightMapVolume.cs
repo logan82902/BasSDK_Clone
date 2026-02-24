@@ -17,7 +17,19 @@ namespace ThunderRoad
     public class PlayerLightMapVolume : MonoBehaviour
     {
 #if UNITY_EDITOR        
-        
+
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+        private static void ResetStatics()
+        {
+            drawGizmos = false;
+            drawAllBakedLODGroups = false;
+            drawLinesToVolumes = false;
+            drawLightmapScaleColors = false;
+            updateSelectedLightmapScale = false;
+            playerLightMapVolumes = new();
+            selectedPlayerLightmapVolumes = new();
+            primarySelectedPlayerLightmapVolume = null;
+        }
         private static bool drawGizmos = false;
         [GUIColor("$GetColorGizmos")]
         [Button("PLV Gizmos")]

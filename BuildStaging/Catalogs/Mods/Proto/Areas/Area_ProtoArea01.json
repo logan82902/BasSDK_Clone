@@ -4,7 +4,6 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
-  "groupPath": null,
   "isUnique": false,
   "areaPrefabAddress": "Area.Proto01",
   "lightingPresetAddress": "Area.LightingPresetProto01",
@@ -69,5 +68,6 @@
       "fakeViewAddress": "Area.Proto01.FakeView.1"
     }
   ],
-  "areaGlobalParameters": []
+  "areaGlobalParameters": [],
+  "groupPath": null
 }

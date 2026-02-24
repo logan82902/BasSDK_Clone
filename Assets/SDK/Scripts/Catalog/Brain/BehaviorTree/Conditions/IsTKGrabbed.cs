@@ -1,28 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
 using ThunderRoad.Skill.SpellPower;
-
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
 
 namespace ThunderRoad.AI.Condition
 {
-	public class IsTKGrabbed : ConditionNode
+    [DeclareBoxGroup("Options", Title = "Options")]
+    [DeclareHorizontalGroup("Options/Horiz")]
+    [DeclareHorizontalGroup("Options/Horiz2")]
+    [DeclareHorizontalGroup("Options/Horiz3")]
+    [AutoLabelWidth(AddedWidth = 5f, MinWidth = 0f)]
+    public class IsTKGrabbed : ConditionNode
     {
-#if ODIN_INSPECTOR
-        [BoxGroup("Options"), HorizontalGroup("Options/Horiz"), LabelWidth(200)] 
-#endif
+        [Group("Options/Horiz")]
+        [LabelWidth(200)]
         public bool anyHandle = true;
-#if ODIN_INSPECTOR
-        [BoxGroup("Options"), HorizontalGroup("Options/Horiz2"), LabelWidth(200), DisableIf("anyHandle", optionalValue: true)] 
-#endif
+        [Group("Options/Horiz2")]
+        [LabelWidth(200)]
+        [DisableIf("anyHandle", true)]
         public TKOptions handleSpecifiers = TKOptions.SpecificHandle;
-#if ODIN_INSPECTOR
-        [BoxGroup("Options"), HorizontalGroup("Options/Horiz3"), LabelWidth(200), DisableIf("anyHandle", optionalValue: true), EnableIf("handleSpecifiers", optionalValue: TKOptions.SpecificHandle)] 
-#endif
+        [Group("Options/Horiz3")]
+        [LabelWidth(200)]
+        [DisableIf("anyHandle", true)]
+        [EnableIf(nameof(handleSpecifiers), TKOptions.SpecificHandle)]
         public string handleName = "None";
 
         [Flags]

@@ -5,7 +5,7 @@
   "sensitiveFilterBehaviour": "Discard",
   "version": 2,
   "groupPath": "Sandbox",
-  "category": "6Special",
+  "category": "7Rakta",
   "localizationId": "RaktaDuel",
   "title": "Rakta Elite Duel",
   "description": "Fight the Rakta Elite in their full armor and Raike Sword.",
@@ -22,16 +22,16 @@
   "factions": [
     {
       "$type": "ThunderRoad.WaveData+WaveFaction, ThunderRoad",
-      "factionID": 3,
-      "factionHealthMultiplier": 1.0,
-      "factionMaxAlive": 8
+      "factionID": 5,
+      "factionMaxAlive": 1
     }
   ],
   "groups": [
     {
       "$type": "ThunderRoad.WaveData+Group, ThunderRoad",
+      "mergeKey": "10e1c3ec",
       "reference": "Table",
-      "referenceID": "RaktaElite",
+      "referenceID": "Rakta_Base_MeleeWeak",
       "overrideFaction": false,
       "factionID": 0,
       "overrideContainer": false,
@@ -47,13 +47,13 @@
       },
       "spawnPointIndex": -1,
       "prereqGroupIndex": -1,
-      "prereqMaxRemainingAlive": 0,
-      "label": "Group Index 0"
+      "prereqMaxRemainingAlive": 0
     },
     {
       "$type": "ThunderRoad.WaveData+Group, ThunderRoad",
+      "mergeKey": "49ee9e1f",
       "reference": "Table",
-      "referenceID": "RaktaElite",
+      "referenceID": "Rakta_Base_MeleeWeak",
       "overrideFaction": false,
       "factionID": 0,
       "overrideContainer": false,
@@ -69,8 +69,8 @@
       },
       "spawnPointIndex": -1,
       "prereqGroupIndex": -1,
-      "prereqMaxRemainingAlive": 0,
-      "label": "Group Index 1"
+      "prereqMaxRemainingAlive": 0
     }
-  ]
+  ],
+  "modules": null
 }

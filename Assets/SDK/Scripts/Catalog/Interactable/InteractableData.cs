@@ -1,49 +1,32 @@
 ﻿using System;
 using UnityEngine;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
-	[Serializable]
+    [Serializable]
+#if UNITY_EDITOR
+    [EditorLoadPriority(-5)]
+#endif
+    [DeclareBoxGroup("Interactable", Title = "Interactable")]
     public class InteractableData : CatalogData
     {
-        public static bool showTouchHighlighter = true;
-        public static bool showHudHighlighter = true;
-        public static float highlighterProximityDistance = 0;
-
-#if ODIN_INSPECTOR
-        [BoxGroup("Interactable")] 
-#endif
+        [Group("Interactable")]
         public bool disableTouch;
-#if ODIN_INSPECTOR
-        [BoxGroup("Interactable")] 
-#endif
+        [Group("Interactable")]
         public bool highlighterViewHandFreeOnly = false;
-#if ODIN_INSPECTOR
-        [BoxGroup("Interactable")]
-#endif
+        [Group("Interactable")]
         public bool ignoreWhenTouchConflict;
-#if ODIN_INSPECTOR
-        [BoxGroup("Interactable")]
-#endif
+        [Group("Interactable")]
         public ReferencePoint referencePoint = ReferencePoint.Grip;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Interactable")] 
-#endif
+        [Group("Interactable")]
         public string localizationId;
-#if ODIN_INSPECTOR
-        [BoxGroup("Interactable")] 
-#endif
+        [Group("Interactable")]
         public string highlightDefaultTitle;
-#if ODIN_INSPECTOR
-        [BoxGroup("Interactable")] 
-#endif
+        [Group("Interactable")]
         [Multiline]
         public string highlightDefaultDesignation;
 
@@ -70,9 +53,32 @@ namespace ThunderRoad
             IndexTip,
         }
 
-        public override int GetCurrentVersion()
+        public override int GetCurrentVersion() => 3;
+
+#if UNITY_EDITOR
+       public override string GetCatalogPath()
         {
-            return 3;
+            string categoryName = Catalog.GetCategory(GetType()).ToString();
+            if (categoryName.ToLowerInvariant()[^1] == 's') categoryName += "e";
+            string interactableTypeString = "Generic";
+            Type interactableType = GetType();
+            if (this is HandleRagdollData)
+            {
+                interactableTypeString = "Ragdoll Handle";
+            }
+            else if (this is HandleData)
+            {
+                interactableTypeString = "Object Handle";
+            }
+            else if (this is HolderData)
+            {
+                interactableTypeString = "Holder";
+            }
+            string result = $"{categoryName}s/{interactableTypeString}";
+            if (!groupPath.IsNullOrEmptyOrWhitespace()) result += $"/{groupPath}";
+            if (result[result.Length - 1] == '/') result = result.Substring(0, result.Length - 1);
+            return result;
         }
+#endif
     }
 }

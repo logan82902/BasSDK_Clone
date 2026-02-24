@@ -3,11 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -98,13 +94,11 @@ namespace ThunderRoad
         public AnimationClip overrideA;
         public AnimationClip overrideB;
 
-#if ODIN_INSPECTOR
-        [ShowInInspector, ReadOnly]
-#endif
+        [ShowInInspector]
+        [ReadOnly]
         public bool animated { get; protected set; }
-#if ODIN_INSPECTOR
-        [ShowInInspector, ReadOnly]
-#endif
+        [ShowInInspector]
+        [ReadOnly]
         public Expression currentPrimaryExpression
         {
             get => _currentPrimaryExpression;
@@ -116,27 +110,22 @@ namespace ThunderRoad
             }
         }
         private Expression _currentPrimaryExpression;
-#if ODIN_INSPECTOR
-        [ShowInInspector, ReadOnly]
-#endif
+        [ShowInInspector]
+        [ReadOnly]
         public Expression lastPrimaryExpression { get; protected set; }
-#if ODIN_INSPECTOR
-        [ShowInInspector, ReadOnly]
-#endif
+        [ShowInInspector]
+        [ReadOnly]
         public bool customExpression { get; protected set; }
-#if ODIN_INSPECTOR
-        [ShowInInspector, ReadOnly]
-#endif
+        [ShowInInspector]
+        [ReadOnly]
         public SmoothDampTarget expressionValues { get; protected set; }
-#if ODIN_INSPECTOR
-        [ShowInInspector, ReadOnly]
-#endif
+        [ShowInInspector]
+        [ReadOnly]
         public SmoothDampTarget varianceValues { get; protected set; }
         public Animator animator { get; protected set; }
         [NonSerialized]
-#if ODIN_INSPECTOR
-        [ShowInInspector, ReadOnly]
-#endif
+        [ShowInInspector]
+        [ReadOnly]
         public bool brainDriven = false;
         protected AnimatorOverrideController runtimeAnimatorOverrideController;
         protected KeyValuePair<AnimationClip, AnimationClip>[] animationClipOverrides;
@@ -145,6 +134,7 @@ namespace ThunderRoad
         protected int hashDynamicExpression, hashLoopDynamic;
         protected float animationEndTime = 0f;
         protected float? neutralExpressionTime = null;
+
 
         private void Start()
         {
@@ -335,30 +325,32 @@ namespace ThunderRoad
         public class SerializeableBinding
         {
             public string propertyName;
-#if ODIN_INSPECTOR
-            [ValueDropdown(nameof(GetTargetProperties))]
-#endif
+            [Dropdown(nameof(GetTargetProperties))]
             public string coorespondingProperty;
             private GameObject gameObject;
 
-#if ODIN_INSPECTOR
-            public List<ValueDropdownItem<string>> GetTargetProperties()
+            public TriDropdownList<string> GetTargetProperties()
             {
-                List<ValueDropdownItem<string>> options = new List<ValueDropdownItem<string>>();
+                TriDropdownList<string> options = new();
                 if (gameObject == null)
                 {
-                    options.Add(new ValueDropdownItem<string>("ASSIGN TO FACE ANIMATOR", "ASSIGN TO FACE ANIMATOR"));
+                    options.Add("ASSIGN TO FACE ANIMATOR", "ASSIGN TO FACE ANIMATOR");
                     return options;
                 }
                 foreach (EditorCurveBinding binding in AnimationUtility.GetAnimatableBindings(gameObject, gameObject))
                 {
-                    if (!binding.propertyName.ToLower().Contains("blendshape")) continue;
-                    if (binding.propertyName.ToLower().Contains("m_blendshapes")) continue;
-                    options.Add(new ValueDropdownItem<string>(binding.propertyName, binding.propertyName));
+                    if (!binding.propertyName.ToLower().Contains("blendshape"))
+                    {
+                        continue;
+                    }
+                    if (binding.propertyName.ToLower().Contains("m_blendshapes"))
+                    {
+                        continue;
+                    }
+                    options.Add(binding.propertyName, binding.propertyName);
                 }
                 return options;
             }
-#endif
 
             public void SetGameObject(GameObject g) => gameObject = g;
 
@@ -433,9 +425,7 @@ namespace ThunderRoad
             }
         }
 
-#if ODIN_INSPECTOR
         [InlineEditor]
-#endif
         public FacePropertyBindings bindings;
         public Dictionary<string, string> blendshapePairings;
 

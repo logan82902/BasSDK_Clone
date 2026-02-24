@@ -4,12 +4,29 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 2,
+  "groupPath": null,
   "poses": [
     {
       "$type": "ThunderRoad.HandPoseData+Pose, ThunderRoad",
       "creatureName": "HumanMale",
       "leftFingers": {
         "$type": "ThunderRoad.HandPoseData+Pose+Fingers, ThunderRoad",
+        "gripLocalPosition": {
+          "x": -0.08,
+          "y": -0.01,
+          "z": -0.025
+        },
+        "gripLocalRotation": {
+          "x": -0.704416037,
+          "y": 0.0616285428,
+          "z": 0.7071068,
+          "w": 7.4505806E-08
+        },
+        "rootLocalPosition": {
+          "x": 0.0291459151,
+          "y": 0.04629619,
+          "z": -0.06428202
+        },
         "thumb": {
           "$type": "ThunderRoad.HandPoseData+Pose+Finger, ThunderRoad",
           "proximal": {
@@ -259,26 +276,26 @@
             "y": 0.0011,
             "z": 0.0032
           }
-        },
-        "gripLocalPosition": {
-          "x": -0.08,
-          "y": -0.01,
-          "z": -0.025
-        },
-        "gripLocalRotation": {
-          "x": -0.704416037,
-          "y": 0.0616285428,
-          "z": 0.7071068,
-          "w": 7.4505806E-08
-        },
-        "rootLocalPosition": {
-          "x": 0.0291459151,
-          "y": 0.04629619,
-          "z": -0.06428202
         }
       },
       "rightFingers": {
         "$type": "ThunderRoad.HandPoseData+Pose+Fingers, ThunderRoad",
+        "gripLocalPosition": {
+          "x": -0.08,
+          "y": 0.01,
+          "z": -0.025
+        },
+        "gripLocalRotation": {
+          "x": 0.0616286844,
+          "y": -0.704416037,
+          "z": -2.682209E-07,
+          "w": 0.7071068
+        },
+        "rootLocalPosition": {
+          "x": 0.0291459151,
+          "y": -0.04629619,
+          "z": -0.06428202
+        },
         "thumb": {
           "$type": "ThunderRoad.HandPoseData+Pose+Finger, ThunderRoad",
           "proximal": {
@@ -528,22 +545,6 @@
             "y": -0.0011,
             "z": 0.0032
           }
-        },
-        "gripLocalPosition": {
-          "x": -0.08,
-          "y": 0.01,
-          "z": -0.025
-        },
-        "gripLocalRotation": {
-          "x": 0.0616286844,
-          "y": -0.704416037,
-          "z": -2.682209E-07,
-          "w": 0.7071068
-        },
-        "rootLocalPosition": {
-          "x": 0.0291459151,
-          "y": -0.04629619,
-          "z": -0.06428202
         }
       }
     },
@@ -552,6 +553,22 @@
       "creatureName": "HumanFemale",
       "leftFingers": {
         "$type": "ThunderRoad.HandPoseData+Pose+Fingers, ThunderRoad",
+        "gripLocalPosition": {
+          "x": -0.08,
+          "y": -0.01,
+          "z": -0.025
+        },
+        "gripLocalRotation": {
+          "x": -0.704416037,
+          "y": 0.0616285428,
+          "z": 0.7071068,
+          "w": 7.4505806E-08
+        },
+        "rootLocalPosition": {
+          "x": 0.0291459151,
+          "y": 0.04629619,
+          "z": -0.06428202
+        },
         "thumb": {
           "$type": "ThunderRoad.HandPoseData+Pose+Finger, ThunderRoad",
           "proximal": {
@@ -801,26 +818,26 @@
             "y": 0.0,
             "z": 0.0
           }
-        },
-        "gripLocalPosition": {
-          "x": -0.08,
-          "y": -0.01,
-          "z": -0.025
-        },
-        "gripLocalRotation": {
-          "x": -0.704416037,
-          "y": 0.0616285428,
-          "z": 0.7071068,
-          "w": 7.4505806E-08
-        },
-        "rootLocalPosition": {
-          "x": 0.0291459151,
-          "y": 0.04629619,
-          "z": -0.06428202
         }
       },
       "rightFingers": {
         "$type": "ThunderRoad.HandPoseData+Pose+Fingers, ThunderRoad",
+        "gripLocalPosition": {
+          "x": -0.08,
+          "y": 0.01,
+          "z": -0.025
+        },
+        "gripLocalRotation": {
+          "x": 0.0616286844,
+          "y": -0.704416037,
+          "z": -2.682209E-07,
+          "w": 0.7071068
+        },
+        "rootLocalPosition": {
+          "x": 0.0291459151,
+          "y": -0.04629619,
+          "z": -0.06428202
+        },
         "thumb": {
           "$type": "ThunderRoad.HandPoseData+Pose+Finger, ThunderRoad",
           "proximal": {
@@ -1070,25 +1087,8 @@
             "y": 0.0,
             "z": 0.0
           }
-        },
-        "gripLocalPosition": {
-          "x": -0.08,
-          "y": 0.01,
-          "z": -0.025
-        },
-        "gripLocalRotation": {
-          "x": 0.0616286844,
-          "y": -0.704416037,
-          "z": -2.682209E-07,
-          "w": 0.7071068
-        },
-        "rootLocalPosition": {
-          "x": 0.0291459151,
-          "y": -0.04629619,
-          "z": -0.06428202
         }
       }
     }
-  ],
-  "groupPath": null
+  ]
 }

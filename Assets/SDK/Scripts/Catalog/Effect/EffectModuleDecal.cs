@@ -3,135 +3,104 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+
 using TriInspector;
-#endif
+using Newtonsoft.Json;
 
 namespace ThunderRoad
 {
-	public class EffectModuleDecal : EffectModule
+    [DeclareBoxGroup("Decal", Title = "Decal")]
+    [DeclareBoxGroup("Size", Title = "Size")]
+    [DeclareBoxGroup("Color", Title = "Color")]
+    [DeclareBoxGroup("Color (HDR)", Title = "Color (HDR)")]
+    [DeclareHorizontalGroup("Color (HDR)/MainColor")]
+    [DeclareHorizontalGroup("Color (HDR)/SecondaryColor")]
+    [DeclareBoxGroup("Color (Non HDR)", Title = "Color (Non HDR)")]
+    [DeclareHorizontalGroup("Color (Non HDR)/MainNoHdr")]
+    [DeclareHorizontalGroup("Color (Non HDR)/SecondaryNoHdr")]
+    public class EffectModuleDecal : EffectModule
     {
-#if ODIN_INSPECTOR
-        [BoxGroup("Decal")] 
-#endif
+        [Group("Decal")]
         public string materialAddress;
         [NonSerialized]
         public Material material;
-#if ODIN_INSPECTOR
-        [BoxGroup("Decal")] 
-#endif
+        [Group("Decal")]
         public float baseLifeTime = 60;
-#if ODIN_INSPECTOR
-        [BoxGroup("Decal")] 
-#endif
+        [Group("Decal")]
         public float emissionLifeTime = 10;
-#if ODIN_INSPECTOR
-        [BoxGroup("Decal")] 
-#endif
+        [Group("Decal")]
         public float fadeRefreshSpeed = 0.1f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Decal")] 
-#endif
+        [Group("Decal")]
         public int priority = 0;
-#if ODIN_INSPECTOR
-        [BoxGroup("Decal")] 
-#endif
+        [Group("Decal")]
         public bool allowRagdollPart = false;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Size")] 
-#endif
+        [Group("Size")]
         public Vector3 size = Vector3.one;
-#if ODIN_INSPECTOR
-        [BoxGroup("Size")] 
-#endif
+        [Group("Size")]
         public float sizeRandomRange = 0;
-#if ODIN_INSPECTOR
-        [BoxGroup("Size")] 
-#endif
+        [Group("Size")]
         public AnimationCurve sizeCurve;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Color")] 
-#endif
+        [Group("Color")]
         public EffectTarget linkBaseColor = EffectTarget.None;
-#if ODIN_INSPECTOR
-        [BoxGroup("Color")] 
-#endif
+        [Group("Color")]
         public EffectTarget linkEmissionColor = EffectTarget.None;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Color")] 
-#endif
-        [NonSerialized, GradientUsage(true)]
+        [Group("Color")]
+        [NonSerialized]
+        [JsonIgnore]
+        [GradientUsage(true)]
         private Gradient mainGradient;
 
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Color")] 
-#endif
-        [NonSerialized, GradientUsage(true)]
+        [Group("Color")]
+        [NonSerialized]
+        [JsonIgnore]
+        [GradientUsage(true)]
         private Gradient secondaryGradient;
 
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Color")] 
-#endif
+        [Group("Color")]
         [NonSerialized]
+        [JsonIgnore]
         private Gradient mainGradientNoHdr;
 
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Color")] 
-#endif
+        [Group("Color")]
         [NonSerialized]
+        [JsonIgnore]
         private Gradient secondaryGradientNoHdr;
 
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Color (HDR)")]
-        [HorizontalGroup("Color (HDR)/MainColor")] 
-#endif
-        [ColorUsage(true, true), SerializeField]
+        [Group("Color (HDR)/MainColor")]
+        [ColorPickerField(Alpha = true, HDR = true)]
+        [SerializeField]
         public Color mainColorStart;
-#if ODIN_INSPECTOR
-        [HorizontalGroup("Color (HDR)/MainColor")] 
-#endif
-        [ColorUsage(true, true), SerializeField]
+        [Group("Color (HDR)/MainColor")]
+        [ColorPickerField(Alpha = true, HDR = true)]
+        [SerializeField]
         public Color mainColorEnd;
-#if ODIN_INSPECTOR
-        [HorizontalGroup("Color (HDR)/SecondaryColor")] 
-#endif
-        [ColorUsage(true, true), SerializeField]
+        [Group("Color (HDR)/SecondaryColor")]
+        [ColorPickerField(Alpha = true, HDR = true)]
+        [SerializeField]
         public Color secondaryColorStart;
-#if ODIN_INSPECTOR
-        [HorizontalGroup("Color (HDR)/SecondaryColor")] 
-#endif
-        [ColorUsage(true, true), SerializeField]
+        [Group("Color (HDR)/SecondaryColor")]
+        [ColorPickerField(Alpha = true, HDR = true)]
+        [SerializeField]
         public Color secondaryColorEnd;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Color (Non HDR)")]
-        [HorizontalGroup("Color (Non HDR)/MainNoHdr")] 
-#endif
+        [Group("Color (Non HDR)/MainNoHdr")]
         [SerializeField]
         public Color mainNoHdrColorStart;
-#if ODIN_INSPECTOR
-        [HorizontalGroup("Color (Non HDR)/MainNoHdr")] 
-#endif
+        [Group("Color (Non HDR)/MainNoHdr")]
         [SerializeField]
         public Color mainNoHdrColorEnd;
-#if ODIN_INSPECTOR
-        [HorizontalGroup("Color (Non HDR)/SecondaryNoHdr")] 
-#endif
+        [Group("Color (Non HDR)/SecondaryNoHdr")]
         [SerializeField]
         public Color secondaryNoHdrColorStart;
-#if ODIN_INSPECTOR
-        [HorizontalGroup("Color (Non HDR)/SecondaryNoHdr")] 
-#endif
+        [Group("Color (Non HDR)/SecondaryNoHdr")]
         [SerializeField]
         public Color secondaryNoHdrColorEnd;
 

@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 3,
+  "groupPath": null,
   "behaviour": "None",
   "scaleDuringCombat": 1.5,
   "tkActiveCondition": "Always",
@@ -121,6 +122,5 @@
   "referencePoint": "Grip",
   "localizationId": "Hips",
   "highlightDefaultTitle": "Hips",
-  "highlightDefaultDesignation": "",
-  "groupPath": null
+  "highlightDefaultDesignation": ""
 }

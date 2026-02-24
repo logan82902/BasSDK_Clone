@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 4,
+  "groupPath": null,
   "localizationId": "MaceFlanged",
   "displayName": "Flanged Mace",
   "description": "A mace with a design that strikes fear even into the most heavily armored soldiers.",
@@ -14,16 +15,18 @@
   "tier": 3,
   "flags": "Spinnable, Jabbing, Blunt",
   "levelRequired": 0,
+  "type": "Weapon",
   "category": "Blunt",
+  "update": "",
   "iconEffectId": null,
   "preferredItemCenter": "Mass",
   "drainImbueWhenIdle": true,
+  "forceImbueUseButton": "None",
   "prefabAddress": "Bas.Item.Melee.Mace.Flangedmace",
   "iconAddress": "Bas.Item.Melee.Mace.Flangedmace.Icon[wpn_MS03_flangedmace]",
   "closeUpIconAddress": "Bas.Item.Melee.Mace.Flangedmace.IconClose[wpn_MS03_flangedmace-close-up]",
   "pooledCount": 0,
   "androidPooledCount": 0,
-  "type": "Weapon",
   "allowedStorage": "Container, SandboxAllItems",
   "despawnOnStoredInInventory": false,
   "isStackable": false,
@@ -37,6 +40,7 @@
   "mass": 1.7,
   "drag": 1.0,
   "angularDrag": 0.05,
+  "density": 7000.0,
   "focusRegenMultiplier": 1.0,
   "spellChargeSpeedPlayerMultiplier": 1.0,
   "spellChargeSpeedNPCMultiplier": 1.0,
@@ -179,6 +183,55 @@
     "preWrapMode": "ClampForever",
     "postWrapMode": "ClampForever"
   },
+  "colliderGroups": [
+    {
+      "$type": "ThunderRoad.ItemData+ColliderGroup, ThunderRoad",
+      "transformName": "Head",
+      "colliderGroupId": "BladeMace"
+    },
+    {
+      "$type": "ThunderRoad.ItemData+ColliderGroup, ThunderRoad",
+      "transformName": "Spike",
+      "colliderGroupId": "BladeDagger"
+    }
+  ],
+  "damagers": [
+    {
+      "$type": "ThunderRoad.ItemData+Damager, ThunderRoad",
+      "transformName": "Pierce",
+      "damagerID": "DaggerPierce"
+    },
+    {
+      "$type": "ThunderRoad.ItemData+Damager, ThunderRoad",
+      "transformName": "Blunt",
+      "damagerID": "Mace1H"
+    },
+    {
+      "$type": "ThunderRoad.ItemData+Damager, ThunderRoad",
+      "transformName": "HandleBlunt",
+      "damagerID": "HandleHeavy"
+    }
+  ],
+  "Interactables": [
+    {
+      "$type": "ThunderRoad.ItemData+Interactable, ThunderRoad",
+      "transformName": "Handle",
+      "interactableId": "ObjectHandleLight"
+    }
+  ],
+  "effectHinges": [],
+  "whooshs": [
+    {
+      "$type": "ThunderRoad.ItemData+Whoosh, ThunderRoad",
+      "transformName": "Whoosh",
+      "effectId": "WhooshMace",
+      "trigger": "Always",
+      "stopOnSnap": true,
+      "minVelocity": 3.0,
+      "maxVelocity": 10.0,
+      "dampening": 0.1
+    }
+  ],
   "modules": [
     {
       "$type": "ThunderRoad.ItemModuleAI, ThunderRoad",
@@ -187,7 +240,6 @@
       "weaponHandling": "OneHanded",
       "secondaryHandling": "None",
       "weaponAttackTypes": "Swing",
-      "ignoredByDefense": false,
       "alwaysPrimary": false,
       "defaultStanceInfo": {
         "$type": "ThunderRoad.ItemModuleAI+StanceInfo, ThunderRoad",
@@ -216,6 +268,7 @@
         }
       ],
       "rangedWeaponData": null,
+      "ignoredByDefense": false,
       "armResistanceMultiplier": 3.0,
       "allowDynamicHeight": false,
       "defenseHasPriority": false
@@ -274,55 +327,5 @@
       ]
     }
   ],
-  "colliderGroups": [
-    {
-      "$type": "ThunderRoad.ItemData+ColliderGroup, ThunderRoad",
-      "transformName": "Head",
-      "colliderGroupId": "BladeMace"
-    },
-    {
-      "$type": "ThunderRoad.ItemData+ColliderGroup, ThunderRoad",
-      "transformName": "Spike",
-      "colliderGroupId": "BladeDagger"
-    }
-  ],
-  "damagers": [
-    {
-      "$type": "ThunderRoad.ItemData+Damager, ThunderRoad",
-      "transformName": "Pierce",
-      "damagerID": "DaggerPierce"
-    },
-    {
-      "$type": "ThunderRoad.ItemData+Damager, ThunderRoad",
-      "transformName": "Blunt",
-      "damagerID": "Mace1H"
-    },
-    {
-      "$type": "ThunderRoad.ItemData+Damager, ThunderRoad",
-      "transformName": "HandleBlunt",
-      "damagerID": "HandleHeavy"
-    }
-  ],
-  "Interactables": [
-    {
-      "$type": "ThunderRoad.ItemData+Interactable, ThunderRoad",
-      "transformName": "Handle",
-      "interactableId": "ObjectHandleLight"
-    }
-  ],
-  "effectHinges": [],
-  "whooshs": [
-    {
-      "$type": "ThunderRoad.ItemData+Whoosh, ThunderRoad",
-      "transformName": "Whoosh",
-      "effectId": "WhooshMace",
-      "trigger": "Always",
-      "stopOnSnap": true,
-      "minVelocity": 3.0,
-      "maxVelocity": 10.0,
-      "dampening": 0.1
-    }
-  ],
-  "entityModules": [],
-  "groupPath": null
+  "entityModules": []
 }

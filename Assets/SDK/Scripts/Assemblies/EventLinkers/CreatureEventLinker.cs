@@ -2,11 +2,10 @@
 using ThunderRoad.Skill.SpellPower;
 using UnityEngine;
 using UnityEngine.Events;
-#if ODIN_INSPECTOR
-#else
 using TriInspector;
-#endif
 
+// event linkers are already set up to unsubscribe from named events + static events when they're destroyed
+#pragma warning disable UDR0005 // Domain Reload Analyzer
 namespace ThunderRoad
 {
     [HelpURL("https://kospy.github.io/BasSDK/Components/ThunderRoad/Event-Linkers/CreatureEventLinker.html")]
@@ -67,7 +66,9 @@ namespace ThunderRoad
         [System.Serializable]
         public class CreatureUnityEvent
         {
+            [AutoLabelWidth(AddedWidth = 5f)]
             public CreatureEvent creatureEvent;
+            [AutoLabelWidth(AddedWidth = 5f)]
             public LifeState aliveState;
             public UnityEvent<Creature> onActivate;
 

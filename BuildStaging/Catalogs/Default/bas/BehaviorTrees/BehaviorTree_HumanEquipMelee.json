@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
+  "groupPath": null,
   "type": "SubTree",
   "rootNode": {
     "$type": "ThunderRoad.AI.Control.Selector, ThunderRoad",
@@ -34,27 +35,18 @@
               "weaponHandling": "OneHanded",
               "checkAmmo": false,
               "checkInHolder": false
-            },
-            "blackboard": null,
-            "creature": null,
-            "brainData": null
+            }
           },
           {
             "$type": "ThunderRoad.AI.Action.SetStanceFromData, ThunderRoad",
             "getStanceFromWeapons": true,
             "specifiedID": null,
-            "onlyOnce": false,
-            "blackboard": null,
-            "creature": null,
-            "brainData": null
+            "onlyOnce": false
           },
           {
             "$type": "ThunderRoad.AI.Action.SetDefenseState, ThunderRoad",
             "parry": true,
-            "dodge": true,
-            "blackboard": null,
-            "creature": null,
-            "brainData": null
+            "dodge": true
           }
         ]
       },
@@ -83,27 +75,18 @@
               "weaponHandling": "OneHanded",
               "checkAmmo": false,
               "checkInHolder": false
-            },
-            "blackboard": null,
-            "creature": null,
-            "brainData": null
+            }
           },
           {
             "$type": "ThunderRoad.AI.Action.SetStanceFromData, ThunderRoad",
             "getStanceFromWeapons": true,
             "specifiedID": null,
-            "onlyOnce": false,
-            "blackboard": null,
-            "creature": null,
-            "brainData": null
+            "onlyOnce": false
           },
           {
             "$type": "ThunderRoad.AI.Action.SetDefenseState, ThunderRoad",
             "parry": true,
-            "dodge": true,
-            "blackboard": null,
-            "creature": null,
-            "brainData": null
+            "dodge": true
           }
         ]
       },
@@ -136,10 +119,7 @@
                   "weaponHandling": "None",
                   "checkAmmo": false,
                   "checkInHolder": false
-                },
-                "blackboard": null,
-                "creature": null,
-                "brainData": null
+                }
               },
               {
                 "$type": "ThunderRoad.AI.Action.DrawItem, ThunderRoad",
@@ -162,10 +142,7 @@
                   "weaponHandling": "None",
                   "checkAmmo": false,
                   "checkInHolder": false
-                },
-                "blackboard": null,
-                "creature": null,
-                "brainData": null
+                }
               }
             ]
           },
@@ -173,18 +150,12 @@
             "$type": "ThunderRoad.AI.Action.SetStanceFromData, ThunderRoad",
             "getStanceFromWeapons": true,
             "specifiedID": null,
-            "onlyOnce": false,
-            "blackboard": null,
-            "creature": null,
-            "brainData": null
+            "onlyOnce": false
           },
           {
             "$type": "ThunderRoad.AI.Action.SetDefenseState, ThunderRoad",
             "parry": true,
-            "dodge": true,
-            "blackboard": null,
-            "creature": null,
-            "brainData": null
+            "dodge": true
           }
         ]
       },
@@ -212,18 +183,12 @@
             {
               "$type": "ThunderRoad.AI.Action.SetStance, ThunderRoad",
               "stance": "Melee1H",
-              "onlyOnce": false,
-              "blackboard": null,
-              "creature": null,
-              "brainData": null
+              "onlyOnce": false
             },
             {
               "$type": "ThunderRoad.AI.Action.SetDefenseState, ThunderRoad",
               "parry": true,
-              "dodge": true,
-              "blackboard": null,
-              "creature": null,
-              "brainData": null
+              "dodge": true
             },
             {
               "$type": "ThunderRoad.AI.Action.MoveLeftToRight, ThunderRoad",
@@ -231,24 +196,17 @@
               "disarmedActionStartDelay": {
                 "x": 0.1,
                 "y": 0.25
-              },
-              "blackboard": null,
-              "creature": null,
-              "brainData": null
+              }
             },
             {
               "$type": "ThunderRoad.AI.Action.SetStanceFromData, ThunderRoad",
               "getStanceFromWeapons": true,
               "specifiedID": null,
-              "onlyOnce": false,
-              "blackboard": null,
-              "creature": null,
-              "brainData": null
+              "onlyOnce": false
             }
           ]
         }
       }
     ]
-  },
-  "groupPath": null
+  }
 }

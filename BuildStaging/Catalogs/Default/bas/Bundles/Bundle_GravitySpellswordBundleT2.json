@@ -1,0 +1,23 @@
+{
+  "$type": "ThunderRoad.BundleData, ThunderRoad",
+  "id": "GravitySpellswordBundleT2",
+  "sensitiveContent": "None",
+  "sensitiveFilterBehaviour": "Discard",
+  "version": 0,
+  "groupPath": "T2",
+  "localizationGroup": "Bundles",
+  "displayName": "BundleGravitySpellswordBundleT2Name",
+  "description": null,
+  "altDescriptionTitle": "ContentsTitle",
+  "isArmorBundle": false,
+  "bundleItemId": "Bundle",
+  "items": [],
+  "skills": [
+    "ImpactPulse",
+    "Lithobrake"
+  ],
+  "lootTables": [
+    "1HMeleeT2"
+  ],
+  "spriteAddress": "Ui.Icon.Unknown"
+}

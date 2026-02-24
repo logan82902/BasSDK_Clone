@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
+  "groupPath": "Outpost/Arena",
   "isUnique": true,
   "areaPrefabAddress": "Bas.Area.GL_Arena_Ext_WaterMill",
   "lightingPresetAddress": "Bas.Area.GL_Arena_Ext_WaterMill.LightingPreset",
@@ -102,6 +103,5 @@
       "isZeroIntensity": false,
       "visibleFromGate": true
     }
-  ],
-  "groupPath": "Outpost/Arena"
+  ]
 }

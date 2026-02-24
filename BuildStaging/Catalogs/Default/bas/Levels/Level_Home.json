@@ -4,15 +4,14 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 3,
+  "groupPath": null,
   "name": "Home",
   "description": "Home sweet home",
   "descriptionLocalizationId": "HomeDescription",
   "sceneAddress": "Bas.Level.Home",
   "showOnlyDevMode": false,
   "showInLevelSelection": false,
-  "worldmapPrefabAddress": "Bas.Image.Map.Default",
-  "worldmapTextureAddress": "Bas.Worldmap.Eraden",
-  "worldmapLabel": null,
+  "worldMapId": "Eraden",
   "worldMapTravelAudioContainerAddress": "Bas.AudioGroup.UI.PinSelected",
   "mapLocationIndex": 95,
   "showOnMap": true,
@@ -25,7 +24,7 @@
       "$type": "ThunderRoad.LevelData+Mode, ThunderRoad",
       "name": "Sandbox",
       "displayName": "Sandbox",
-      "description": "NoDescription",
+      "description": "",
       "allowGameModes": [
         "Sandbox"
       ],
@@ -66,9 +65,7 @@
       "availableOptions": []
     }
   ],
-  "modePickCountPerRank": 2,
   "customCameras": [],
   "throwableRefType": "Item",
-  "improvisedThrowableID": null,
-  "groupPath": null
+  "improvisedThrowableID": null
 }

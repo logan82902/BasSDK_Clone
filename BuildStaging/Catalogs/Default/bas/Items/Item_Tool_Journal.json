@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 4,
+  "groupPath": null,
   "localizationId": "Journal",
   "displayName": "Journal",
   "description": "Player Journal",
@@ -14,16 +15,18 @@
   "tier": 0,
   "flags": "None",
   "levelRequired": 0,
+  "type": "Tool",
   "category": "Utilities",
+  "update": "",
   "iconEffectId": null,
   "preferredItemCenter": "Mass",
   "drainImbueWhenIdle": true,
+  "forceImbueUseButton": "None",
   "prefabAddress": "Bas.Item.Journal",
   "iconAddress": "Bas.Item.Journal.Icon[Journal_Icon]",
   "closeUpIconAddress": null,
   "pooledCount": 0,
   "androidPooledCount": 0,
-  "type": "Tool",
   "allowedStorage": "Inventory",
   "despawnOnStoredInInventory": false,
   "isStackable": false,
@@ -37,6 +40,7 @@
   "mass": 0.4,
   "drag": 1.0,
   "angularDrag": 1.0,
+  "density": 500.0,
   "focusRegenMultiplier": 1.0,
   "spellChargeSpeedPlayerMultiplier": 1.0,
   "spellChargeSpeedNPCMultiplier": 1.0,
@@ -150,23 +154,6 @@
     "preWrapMode": "ClampForever",
     "postWrapMode": "ClampForever"
   },
-  "modules": [
-    {
-      "$type": "ThunderRoad.ItemModuleStats, ThunderRoad",
-      "stats": []
-    },
-    {
-      "$type": "ThunderRoad.ItemModuleReturnInInventory, ThunderRoad",
-      "returnsToLastHolder": false,
-      "returnsOnItemRelease": false,
-      "returnsWhenNotLookingAtIt": true,
-      "returnsAfterReachingMaxDistance": true,
-      "maxDistanceBeforeReturning": 15.0,
-      "timeAfterWhichItemReturn": 2.0,
-      "useReturningAnimation": false,
-      "returningVelocityValue": 0.0
-    }
-  ],
   "colliderGroups": [],
   "damagers": [
     {
@@ -195,6 +182,22 @@
       "dampening": 0.1
     }
   ],
-  "entityModules": [],
-  "groupPath": null
+  "modules": [
+    {
+      "$type": "ThunderRoad.ItemModuleStats, ThunderRoad",
+      "stats": []
+    },
+    {
+      "$type": "ThunderRoad.ItemModuleReturnInInventory, ThunderRoad",
+      "returnsToLastHolder": false,
+      "returnsOnItemRelease": false,
+      "returnsWhenNotLookingAtIt": true,
+      "returnsAfterReachingMaxDistance": true,
+      "maxDistanceBeforeReturning": 15.0,
+      "timeAfterWhichItemReturn": 2.0,
+      "useReturningAnimation": false,
+      "returningVelocityValue": 0.0
+    }
+  ],
+  "entityModules": []
 }

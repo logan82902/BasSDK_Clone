@@ -1,11 +1,7 @@
-using System.Collections.Generic;
-
+﻿using System.Collections.Generic;
 using Shadowood.RaycastTexture;
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+
 using TriInspector;
-#endif
 
 using ThunderRoad.Splines;
 using Unity.Mathematics;

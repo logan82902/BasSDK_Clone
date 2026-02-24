@@ -1,22 +1,17 @@
-﻿using UnityEngine;
-
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+﻿using Newtonsoft.Json;
+using UnityEngine;
 using TriInspector;
-#endif
 
 namespace ThunderRoad.AI.Action
 {
-	public class AttackBow : AttackRanged
+    [DeclareBoxGroup("Overrides", Title = "Overrides")]
+    [AutoLabelWidth(AddedWidth = 5f, MinWidth = 0f)]
+    public class AttackBow : AttackRanged
     {
-#if ODIN_INSPECTOR
-        [BoxGroup("Overrides")] 
-#endif
+        [Group("Overrides")]
         public bool overrideMaxShootAngle = false;
-#if ODIN_INSPECTOR
-        [BoxGroup("Overrides"), EnableIf("overrideMaxShootAngle")] 
-#endif
+        [Group("Overrides")]
+        [EnableIf(nameof(overrideMaxShootAngle))]
         public float maxShootAngleOverride = 0f;
 
     }

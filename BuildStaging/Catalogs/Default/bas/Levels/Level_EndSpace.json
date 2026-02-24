@@ -4,15 +4,14 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 3,
+  "groupPath": null,
   "name": "EndSpace",
   "description": "To be continued",
   "descriptionLocalizationId": null,
   "sceneAddress": "Bas.Level.EndSpace",
   "showOnlyDevMode": false,
   "showInLevelSelection": true,
-  "worldmapPrefabAddress": "Bas.Image.Map.Default",
-  "worldmapTextureAddress": "Bas.Worldmap.Eraden",
-  "worldmapLabel": null,
+  "worldMapId": "Eraden",
   "worldMapTravelAudioContainerAddress": "Bas.AudioGroup.UI.PinSelected",
   "mapLocationIndex": 0,
   "showOnMap": false,
@@ -40,9 +39,7 @@
       "availableOptions": []
     }
   ],
-  "modePickCountPerRank": 2,
   "customCameras": [],
   "throwableRefType": "Item",
-  "improvisedThrowableID": null,
-  "groupPath": null
+  "improvisedThrowableID": null
 }

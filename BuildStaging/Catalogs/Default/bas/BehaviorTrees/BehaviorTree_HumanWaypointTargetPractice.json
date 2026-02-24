@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
+  "groupPath": null,
   "type": "SubTree",
   "rootNode": {
     "$type": "ThunderRoad.AI.Control.Selector, ThunderRoad",
@@ -31,10 +32,7 @@
               "weaponHandling": "TwoHanded",
               "checkAmmo": true,
               "checkInHolder": false
-            },
-            "blackboard": null,
-            "creature": null,
-            "brainData": null
+            }
           },
           {
             "$type": "ThunderRoad.AI.Decorator.AlwaysSuccess, ThunderRoad",
@@ -55,10 +53,7 @@
                 "$type": "ThunderRoad.AI.Action.HolsterItem, ThunderRoad",
                 "holsterRight": true,
                 "holsterLeft": false,
-                "waitForFinished": false,
-                "blackboard": null,
-                "creature": null,
-                "brainData": null
+                "waitForFinished": false
               }
             }
           },
@@ -83,18 +78,12 @@
               "weaponHandling": "TwoHanded",
               "checkAmmo": true,
               "checkInHolder": false
-            },
-            "blackboard": null,
-            "creature": null,
-            "brainData": null
+            }
           },
           {
             "$type": "ThunderRoad.AI.Action.SetStance, ThunderRoad",
             "stance": "Bow",
-            "onlyOnce": false,
-            "blackboard": null,
-            "creature": null,
-            "brainData": null
+            "onlyOnce": false
           },
           {
             "$type": "ThunderRoad.AI.Control.Selector, ThunderRoad",
@@ -118,12 +107,7 @@
                   "x": 0.0,
                   "y": 0.0,
                   "z": 0.0
-                },
-                "moduleBow": null,
-                "moduleRanged": null,
-                "blackboard": null,
-                "creature": null,
-                "brainData": null
+                }
               },
               {
                 "$type": "ThunderRoad.AI.Decorator.AlwaysRunning, ThunderRoad",
@@ -152,10 +136,7 @@
             "$type": "ThunderRoad.AI.Action.HolsterItem, ThunderRoad",
             "holsterRight": false,
             "holsterLeft": true,
-            "waitForFinished": false,
-            "blackboard": null,
-            "creature": null,
-            "brainData": null
+            "waitForFinished": false
           }
         }
       },
@@ -209,18 +190,12 @@
                       "weaponHandling": "None",
                       "checkAmmo": false,
                       "checkInHolder": false
-                    },
-                    "blackboard": null,
-                    "creature": null,
-                    "brainData": null
+                    }
                   },
                   {
                     "$type": "ThunderRoad.AI.Action.SetStance, ThunderRoad",
                     "stance": "Staff",
-                    "onlyOnce": false,
-                    "blackboard": null,
-                    "creature": null,
-                    "brainData": null
+                    "onlyOnce": false
                   }
                 ]
               },
@@ -249,18 +224,12 @@
                       "weaponHandling": "None",
                       "checkAmmo": false,
                       "checkInHolder": false
-                    },
-                    "blackboard": null,
-                    "creature": null,
-                    "brainData": null
+                    }
                   },
                   {
                     "$type": "ThunderRoad.AI.Action.SetStance, ThunderRoad",
                     "stance": "Melee1H",
-                    "onlyOnce": false,
-                    "blackboard": null,
-                    "creature": null,
-                    "brainData": null
+                    "onlyOnce": false
                   }
                 ]
               }
@@ -272,20 +241,14 @@
             "selectionMode": "ByDistance",
             "spellID": "Fire",
             "target": "InputTransform",
-            "inputTransformVariableName": "WaypointTarget",
-            "blackboard": null,
-            "creature": null,
-            "brainData": null
+            "inputTransformVariableName": "WaypointTarget"
           },
           {
             "$type": "ThunderRoad.AI.Action.AttackSpell, ThunderRoad",
             "target": "InputTransform",
             "inputTransformVariableName": "WaypointTarget",
             "castLeft": true,
-            "castRight": false,
-            "blackboard": null,
-            "creature": null,
-            "brainData": null
+            "castRight": false
           }
         ]
       },
@@ -338,14 +301,10 @@
             "forceMaxRangeDelta": 0.0,
             "stopOnReset": false,
             "pickClipSequentialMaxIndex": 0,
-            "updateClipRange": false,
-            "blackboard": null,
-            "creature": null,
-            "brainData": null
+            "updateClipRange": false
           }
         ]
       }
     ]
-  },
-  "groupPath": null
+  }
 }

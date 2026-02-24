@@ -1,27 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
-	[Serializable]
+    [Serializable]
+    [DeclareHorizontalGroup("Effect")]
     public class EffectBundle
     {
-#if ODIN_INSPECTOR
-        [ValueDropdown(nameof(GetAllEffectID)), HideLabel, HorizontalGroup("Effect", 0.5f)] 
-#endif
+        [Dropdown(nameof(GetAllEffectID))]
+        [HideLabel]
+        [Group("Effect")]
         public string effectId;
         [NonSerialized]
         public EffectData effectData;
 
-#if ODIN_INSPECTOR
-        [ValueDropdown(nameof(GetAllEffetModuleTypes)), LabelText("Ignored module(s)"), HorizontalGroup("Effect")] 
-#endif
+        [DropdownList(nameof(GetAllEffetModuleTypes))]
+        [LabelText("Ignored module(s)")]
+        [Group("Effect")]
         public List<string> ignoredEffects;
         [NonSerialized]
         public Type[] ignoredEffectTypes;
@@ -47,22 +44,20 @@ namespace ThunderRoad
             }
         }
 
-#if ODIN_INSPECTOR
-        public List<ValueDropdownItem<string>> GetAllEffetModuleTypes()
+        public TriDropdownList<string> GetAllEffetModuleTypes()
         {
-            List<ValueDropdownItem<string>> dropdownList = new List<ValueDropdownItem<string>>();
-            dropdownList.Add(new ValueDropdownItem<string>("None", null));
+            TriDropdownList<string> dropdownList = new();
+            dropdownList.Add("None", null);
             foreach (Type type in typeof(EffectModule).Assembly.GetTypes())
             {
-                if (type.IsSubclassOf(typeof(EffectModule))) dropdownList.Add(new ValueDropdownItem<string>(type.ToString(), type.ToString()));
+                if (type.IsSubclassOf(typeof(EffectModule)))
+                {
+                    dropdownList.Add(new TriDropdownItem<string>() { Text = type.ToString(), Value = type.ToString() });
+                }
             }
             return dropdownList;
         }
 
-        public List<ValueDropdownItem<string>> GetAllEffectID()
-        {
-            return Catalog.GetDropdownAllID(Category.Effect);
-        } 
-#endif
+        public TriDropdownList<string> GetAllEffectID() => Catalog.GetDropdownAllID(Category.Effect);
     }
 }

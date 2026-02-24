@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
+  "groupPath": null,
   "name": "Sandbox",
   "nameLocalizationId": "DungeonSandBoxName",
   "description": "Access all weapons and powers without restriction. Spawn enemies of your choice in arena-based environments or enter the dungeon in sandbox mode.",
@@ -174,6 +175,7 @@
       "defaultValue": 100,
       "stepValue": 20,
       "name": "EnemyDamageMultiplier",
+      "localizationGroup": "Default",
       "displayName": "EnemyDamageMultiplier",
       "description": "EnemyDamageMultiplierDescription"
     },
@@ -184,6 +186,7 @@
       "defaultValue": 100,
       "stepValue": 25,
       "name": "PlayerDamageMultiplier",
+      "localizationGroup": "Default",
       "displayName": "PlayerDamageMultiplier",
       "description": "PlayerDamageMultiplierDescription"
     },
@@ -191,6 +194,7 @@
       "$type": "ThunderRoad.EnableCheatMenuOption, ThunderRoad",
       "defaultValue": true,
       "name": "Cheat",
+      "localizationGroup": "Default",
       "displayName": "Cheats",
       "description": "Cheats"
     }
@@ -268,6 +272,5 @@
   "warningMessageTextId": "CHSpoilerWarning",
   "cheatsAllowed": [
     "Skills"
-  ],
-  "groupPath": null
+  ]
 }

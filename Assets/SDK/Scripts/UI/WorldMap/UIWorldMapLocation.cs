@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using ThunderRoad;
 using TMPro;
 using UnityEngine;
@@ -21,13 +20,10 @@ public class UIWorldMapLocation : MonoBehaviour
     public Image enemyIconImage;
     public Image enemyBackground;
 
-    public float bannerDeployDuration = 0.1f;
-    public float bannerFoldedAnchor = 0.0f;
     public float bannerDeployedAnchor = 1.0f;
+    
 
     public void OnToogle(bool isSelected)
     {
     }
-
- // ProjectCore
 }

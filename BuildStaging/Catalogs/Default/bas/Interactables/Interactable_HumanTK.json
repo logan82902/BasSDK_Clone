@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 3,
+  "groupPath": null,
   "behaviour": "None",
   "scaleDuringCombat": 1.0,
   "tkActiveCondition": "Always",
@@ -112,6 +113,5 @@
   "referencePoint": "Grip",
   "localizationId": "TK",
   "highlightDefaultTitle": "TK",
-  "highlightDefaultDesignation": "",
-  "groupPath": null
+  "highlightDefaultDesignation": ""
 }

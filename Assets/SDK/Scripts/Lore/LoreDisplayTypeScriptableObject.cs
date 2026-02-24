@@ -1,22 +1,16 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#endif
+using TriInspector;
 
 namespace ThunderRoad
 {
     [CreateAssetMenu(menuName = "ThunderRoad/Lore/LoreDisplayType")]
     public class LoreDisplayTypeScriptableObject : ScriptableObject
     {
-#if ODIN_INSPECTOR
-        [ValueDropdown(nameof(GetAllTextGroupID))]
-#endif
+        [Dropdown(nameof(GetAllTextGroupID))]
         public string groupID;
-#if ODIN_INSPECTOR
-        [ValueDropdown(nameof(GetAllTextId))]
-#endif
+        [Dropdown(nameof(GetAllTextId))]
         public string displayName;
         public Color32 colour;
         [Tooltip("Display this pack as dalgarian in the journal?")] public bool displayInJournalAsDalgarian;
@@ -41,16 +35,8 @@ namespace ThunderRoad
             return obj;
         }
 
-#if ODIN_INSPECTOR
-        public List<ValueDropdownItem<string>> GetAllTextGroupID()
-        {
-            return Catalog.GetTextData().GetDropdownAllTextGroups();
-        }
+        public TriDropdownList<string> GetAllTextGroupID() => Catalog.GetTextData().GetDropdownAllTextGroups();
 
-        public List<ValueDropdownItem<string>> GetAllTextId()
-        {
-            return Catalog.GetTextData().GetDropdownAllTexts(groupID);
-        }
-#endif // ODIN_INSPECTOR
+        public TriDropdownList<string> GetAllTextId() => Catalog.GetTextData().GetDropdownAllTexts(groupID);
     }
 }

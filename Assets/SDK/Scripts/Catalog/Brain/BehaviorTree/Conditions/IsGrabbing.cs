@@ -1,11 +1,9 @@
-#if ODIN_INSPECTOR
-#else
-using TriInspector;
-#endif
+﻿using TriInspector;
 
 namespace ThunderRoad.AI.Condition
 {
-	public partial class IsGrabbing : ConditionNode
+    [AutoLabelWidth(AddedWidth = 5f, MinWidth = 0f)]
+    public partial class IsGrabbing : ConditionNode
     {
         public bool weaponOnly = false;
         public Side hand = Side.Right;

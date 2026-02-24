@@ -1,0 +1,24 @@
+{
+  "$type": "ThunderRoad.BundleData, ThunderRoad",
+  "id": "FireSorcererBundleT2",
+  "sensitiveContent": "None",
+  "sensitiveFilterBehaviour": "Discard",
+  "version": 0,
+  "groupPath": "T2",
+  "localizationGroup": "Bundles",
+  "displayName": "BundleFireSorcererBundleT2Name",
+  "description": null,
+  "altDescriptionTitle": "ContentsTitle",
+  "isArmorBundle": false,
+  "bundleItemId": "Bundle",
+  "items": [
+    "StaffScholar"
+  ],
+  "skills": [
+    "HeavyFirepower",
+    "IgnitionBurst",
+    "HomingRedirection"
+  ],
+  "lootTables": [],
+  "spriteAddress": "Ui.Icon.Unknown"
+}

@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 4,
+  "groupPath": null,
   "localizationId": "DalgDoorOrb",
   "displayName": "Dalgarian Door Orb",
   "description": "No description",
@@ -14,16 +15,18 @@
   "tier": 0,
   "flags": "None",
   "levelRequired": 0,
+  "type": "Prop",
   "category": "Breakable",
+  "update": "",
   "iconEffectId": null,
   "preferredItemCenter": "Mass",
   "drainImbueWhenIdle": true,
+  "forceImbueUseButton": "None",
   "prefabAddress": "Bas.Items.DalgarianDoorKeyOrb",
   "iconAddress": "",
   "closeUpIconAddress": null,
   "pooledCount": 0,
   "androidPooledCount": 0,
-  "type": "Prop",
   "allowedStorage": 0,
   "despawnOnStoredInInventory": false,
   "isStackable": false,
@@ -37,6 +40,7 @@
   "mass": 0.3,
   "drag": 1.0,
   "angularDrag": 0.2,
+  "density": 1000.0,
   "focusRegenMultiplier": 1.0,
   "spellChargeSpeedPlayerMultiplier": 1.0,
   "spellChargeSpeedNPCMultiplier": 1.0,
@@ -150,7 +154,6 @@
     "preWrapMode": "ClampForever",
     "postWrapMode": "ClampForever"
   },
-  "modules": [],
   "colliderGroups": [],
   "damagers": [
     {
@@ -168,6 +171,6 @@
   ],
   "effectHinges": [],
   "whooshs": [],
-  "entityModules": [],
-  "groupPath": null
+  "modules": [],
+  "entityModules": []
 }

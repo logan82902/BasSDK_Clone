@@ -15,6 +15,7 @@ namespace ThunderRoad
 
         public override ManagedLoops EnabledManagedLoops => ManagedLoops.Update | ManagedLoops.FixedUpdate;
 
+
         public void Awake()
         {
             if (instance != null)
@@ -114,7 +115,7 @@ namespace ThunderRoad
             var cloneList = new Dictionary<int, IStatus>(list);
             foreach ((int id, var status) in cloneList)
             {
-                if (status is not T) continue;
+                if (status is not T || status.IgnoreClearByType) continue;
                 status.ClearHandlers();
                 // If no handlers left, remove the status.
                 if (!status.Refresh()) continue;

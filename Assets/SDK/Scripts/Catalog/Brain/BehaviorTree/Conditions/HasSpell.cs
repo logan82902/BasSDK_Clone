@@ -1,11 +1,9 @@
-#if ODIN_INSPECTOR
-#else
-using TriInspector;
-#endif
+﻿using TriInspector;
 
 namespace ThunderRoad.AI.Condition
 {
-	public partial class HasSpell : ConditionNode
+    [AutoLabelWidth(AddedWidth = 5f, MinWidth = 0f)]
+    public partial class HasSpell : ConditionNode
     {
         public string spellID;
         public float spellMinDistance = 8;

@@ -1,22 +1,19 @@
-﻿using ThunderRoad.Manikin;
+﻿using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+using System.Text.RegularExpressions;
+using ThunderRoad.Manikin;
 using TriInspector;
-#endif
+using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
 
 namespace ThunderRoad
 {
+    [System.Serializable]
     public class ItemModuleWardrobe : ItemModule
     {
-        public float[] castSpeedPerHand;
-	    
-	    
         public enum CastShadows { None = 0, PlayerOnly = 1, PlayerAndNPC = 2 }
         public Equipment.WardRobeCategory category = Equipment.WardRobeCategory.Apparel;
         public CastShadows castShadows = CastShadows.None;
@@ -28,38 +25,66 @@ namespace ThunderRoad
         [Serializable]
         public class CreatureWardrobe
         {
-#if ODIN_INSPECTOR
-            [ValueDropdown(nameof(GetAllCreatureName))] 
-#endif
+            [Dropdown(nameof(GetAllCreatureName))]
             [JsonMergeKey]
             public string creatureName;
             public string wardrobeDataAddress;
-#if ODIN_INSPECTOR
-            [ShowInInspector, ReadOnly] 
-#endif
+            
+            private int _creatureNameHash = -1;
+            [JsonIgnore]
+            public int creatureNameHash {
+                get
+                {
+                    if (_creatureNameHash == -1)
+                    {
+                        _creatureNameHash = Animator.StringToHash(creatureName);
+                    }
+                    return _creatureNameHash;
+                }
+            }
+            
+            [ShowInInspector]
+            [ReadOnly]
             [NonSerialized]
             public ManikinWardrobeData manikinWardrobeData;
+
+            public List<PartBlendShapeActivator> runtimeBlendshapeActivators;
 
             public CreatureWardrobe Clone()
             {
                 return MemberwiseClone() as CreatureWardrobe;
             }
 
-#if ODIN_INSPECTOR
-            public List<ValueDropdownItem<string>> GetAllCreatureName()
+            public TriDropdownList<string> GetAllCreatureName()
             {
-                List<ValueDropdownItem<string>> dropdownList = new List<ValueDropdownItem<string>>();
+                TriDropdownList<string> dropdownList = new();
                 foreach (CreatureData creatureData in Catalog.GetDataList(Category.Creature))
                 {
                     if (dropdownList.Exists(d => d.Value == creatureData.name))
                     {
                         continue;
                     }
-                    dropdownList.Add(new ValueDropdownItem<string>(creatureData.name, creatureData.name));
+                    dropdownList.Add(creatureData.name, creatureData.name);
                 }
                 return dropdownList;
-            } 
-#endif
+            }
+        }
+
+        [Serializable]
+        [AutoLabelWidth]
+        [DeclareHorizontalGroup("Horiz", Sizes = new float[] { 0f, 0f, 120f, 120f, 120f})]
+        public class PartBlendShapeActivator
+        {
+            [Group("Horiz")]
+            public string wardrobeDataAddress;
+            [Group("Horiz")]
+            public string meshNameRegex = ".*";
+            [Group("Horiz")]
+            public int shapeIndex = 0;
+            [Group("Horiz")]
+            public int defaultValue = 0;
+            [Group("Horiz")]
+            public int shapeValue = 100;
         }
 
     }

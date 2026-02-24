@@ -1,15 +1,13 @@
-﻿#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#endif
-using UnityEngine;
+﻿using UnityEngine;
+using TriInspector;
 
 namespace ThunderRoad.Skill.Spell
 {
+    [DeclareBoxGroup("Boost", Title = "Boost")]
     public class BoostSkillData : SkillData
     {
-#if ODIN_INSPECTOR
-        [BoxGroup("Boost"), ValueDropdown(nameof(GetAllSkillID))]
-#endif
+        [Group("Boost")]
+        [Dropdown(nameof(GetAllSkillID))]
         public string boostJumpSkillId = "BoostJump";
 
 

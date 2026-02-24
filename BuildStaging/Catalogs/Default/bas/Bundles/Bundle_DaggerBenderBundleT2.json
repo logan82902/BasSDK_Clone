@@ -1,0 +1,23 @@
+{
+  "$type": "ThunderRoad.BundleData, ThunderRoad",
+  "id": "DaggerBenderBundleT2",
+  "sensitiveContent": "None",
+  "sensitiveFilterBehaviour": "Discard",
+  "version": 0,
+  "groupPath": "T2",
+  "localizationGroup": "Bundles",
+  "displayName": "BundleDaggerBenderBundleT2Name",
+  "description": null,
+  "altDescriptionTitle": "ContentsTitle",
+  "isArmorBundle": false,
+  "bundleItemId": "Bundle",
+  "items": [
+    "DaggerQuiver"
+  ],
+  "skills": [
+    "Electromagnetism",
+    "RangedExpertise"
+  ],
+  "lootTables": [],
+  "spriteAddress": "Ui.Icon.Unknown"
+}

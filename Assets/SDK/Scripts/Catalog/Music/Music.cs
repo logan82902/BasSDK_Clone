@@ -1,21 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
-
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
     [Serializable]
-    public class MusicDynamicModuleMap : Dictionary<string, MusicDynamicModule> { }
+    public class MusicDynamicModuleMap : UnitySerializedDictionary<string, MusicDynamicModule> { }
 
     [Serializable]
+#if UNITY_EDITOR
+    [EditorLoadPriority(10)]
+#endif
+    [DeclareBoxGroup("Music", Title = "Music")]
     public class Music : CatalogData
     {
         [Serializable]
+        [AutoLabelWidth]
+        [DeclareBoxGroup("Transition", Title = "$" + nameof(transitionName))]
+        [DeclareHorizontalGroup("Transition/Horiz")]
+        [DeclareBoxGroup("Transition/Horiz/TransitionIn", Title = "TransitionIn")]
+        [DeclareBoxGroup("Transition/Horiz/PreTransition", Title = "PreTransition")]
+        [DeclareBoxGroup("Transition/Horiz/TransitionOut", Title = "TransitionOut")]
         public class MusicTransition
         {
             public enum TransitionType
@@ -26,66 +31,48 @@ namespace ThunderRoad
                 OnGrid
             }
 
-#if ODIN_INSPECTOR
-            [BoxGroup("Transition")]
-            [ValueDropdown(nameof(GetAllMusicGroupID))] 
-#endif
+            private string sourceName => sourceGroup.IsNullOrEmptyOrWhitespace() ? "None" : sourceGroup;
+            private string destinationName => destinationGroup.IsNullOrEmptyOrWhitespace() ? "None" : destinationGroup;
+            private string transitionName => $"{sourceName} -> {destinationName}";
+
+            [Group("Transition")]
+            [Dropdown(nameof(GetAllMusicGroupID))]
             public string sourceGroup;
 
-#if ODIN_INSPECTOR
-            [BoxGroup("Transition")]
-            [ValueDropdown(nameof(GetAllMusicGroupID))] 
-#endif
+            [Group("Transition")]
+            [Dropdown(nameof(GetAllMusicGroupID))]
             public string destinationGroup;
 
-#if ODIN_INSPECTOR
-            [BoxGroup("Transition"), ShowInInspector]
-            [ValueDropdown(nameof(GetAllMusicGroupID))] 
-#endif
+            [Group("Transition")]
+            [ShowInInspector]
+            [Dropdown(nameof(GetAllMusicGroupID))]
             public string musicGroup;
 
-#if ODIN_INSPECTOR
-            [BoxGroup("TransitionIn")] 
-#endif
-            /// Number of beat/bar/grid  to wait  to start transition (0 mean on next beat/bar/grid)
+            [Group("Transition/Horiz/TransitionIn")]
+            // Number of beat/bar/grid  to wait  to start transition (0 mean on next beat/bar/grid)
             public int timeBeforeTransition;
 
-#if ODIN_INSPECTOR
-            [BoxGroup("TransitionIn")] 
-#endif
+            [Group("Transition/Horiz/TransitionIn")]
             // Type to define multiplier with timeBeforeTransition
             public TransitionType transitionType;
 
-#if ODIN_INSPECTOR
-            [BoxGroup("PreTransition")] 
-#endif
+            [Group("Transition/Horiz/PreTransition")]
             // Number of beat/bar/grid to start pre-transition. (before transition time) In  this  timing both source music and transition will be play during this time
             public int timePreTransition;
 
-#if ODIN_INSPECTOR
-            [BoxGroup("PreTransition")]
-#endif
+            [Group("Transition/Horiz/PreTransition")]
             // Type to define multiplier with timePreTransition
             public TransitionType preTransitionType = TransitionType.Immediate;
 
-#if ODIN_INSPECTOR
-            [BoxGroup("TransitionOut")]
-#endif
-            /// Number of beat/bar/grid to wait after transition time to start destination music (0 mean on next beat/bar/grid)
+            [Group("Transition/Horiz/TransitionOut")]
+            // Number of beat/bar/grid to wait after transition time to start destination music (0 mean on next beat/bar/grid)
             public int timeBeforeDestStart;
 
-#if ODIN_INSPECTOR
-            [BoxGroup("TransitionOut")]
-#endif
+            [Group("Transition/Horiz/TransitionOut")]
             // Type to define multiplier with timeBeforeDestStart
             public TransitionType transitionDestStartType;
 
-#if ODIN_INSPECTOR
-            public List<ValueDropdownItem<string>> GetAllMusicGroupID()
-            {
-                return Catalog.GetDropdownAllID(Category.MusicGroup);
-            } 
-#endif
+            public TriDropdownList<string> GetAllMusicGroupID() => Catalog.GetDropdownAllID(Category.MusicGroup);
         }
 
         [NonSerialized]
@@ -93,29 +80,22 @@ namespace ThunderRoad
 
         public float volumeDb = 0.0f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Music")]
-        [ValueDropdown(nameof(GetAllMusicGroupID))] 
-#endif
+        [Group("Music")]
+        [ListDrawerSettings(AlwaysExpanded = true)]
+        [DropdownList(nameof(GetAllMusicGroupID))]
         public List<string> groupsToLoad;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Music")] 
-#endif
+        [Group("Music")]
+        [HideReferencePicker]
+        [ListDrawerSettings(AlwaysExpanded = true)]
         public List<MusicTransition> transitions;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Dynamic Module")]
-        [ShowInInspector] 
-#endif
-        public MusicDynamicModuleMap dynamicModules = new MusicDynamicModuleMap();
+        [ShowInInspector]
+        [InlineProperty]
+        [LabelWidth(0.0001f)]
+        public MusicDynamicModuleMap dynamicModules = new();
 
-#if ODIN_INSPECTOR
-        public List<ValueDropdownItem<string>> GetAllMusicGroupID()
-        {
-            return Catalog.GetDropdownAllID(Category.MusicGroup);
-        } 
-#endif
+        public TriDropdownList<string> GetAllMusicGroupID() => Catalog.GetDropdownAllID(Category.MusicGroup);
 
     }
 }

@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
+  "groupPath": null,
   "alternateAttackSides": true,
   "chainAttacksOnBody": "UseChance",
   "openingAttacks": [
@@ -3154,7 +3155,6 @@
     {
       "$type": "ThunderRoad.MeleeIdle, ThunderRoad",
       "requireThrustWeapon": false,
-      "nextIdles": null,
       "id": "SimpleStance",
       "address": "Bas.Animation.DualWield.Stance1",
       "animationSpeed": 1.0,
@@ -3168,7 +3168,6 @@
     {
       "$type": "ThunderRoad.MeleeIdle, ThunderRoad",
       "requireThrustWeapon": true,
-      "nextIdles": null,
       "id": "ThrustingStance",
       "address": "Bas.Animation.DualWield.Stance2",
       "animationSpeed": 1.0,
@@ -3182,7 +3181,6 @@
     {
       "$type": "ThunderRoad.MeleeIdle, ThunderRoad",
       "requireThrustWeapon": false,
-      "nextIdles": null,
       "id": "HighStance",
       "address": "Bas.Animation.DualWield.Stance3",
       "animationSpeed": 1.0,
@@ -3194,6 +3192,5 @@
       "showWeight": false
     }
   ],
-  "baseStance": "DualWield",
-  "groupPath": null
+  "baseStance": "DualWield"
 }

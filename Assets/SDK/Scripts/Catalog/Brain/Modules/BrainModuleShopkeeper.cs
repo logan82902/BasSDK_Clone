@@ -3,17 +3,15 @@ using System;
 using System.Collections.Generic;
 using System.Collections;
 using Newtonsoft.Json;
-
+using ThunderRoad.Modules;
 using System.Linq;
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
     [System.Serializable]
+    [AutoLabelWidth(AddedWidth = 5f, MinWidth = 0f)]
     public class BrainModuleShopkeeper : BrainData.Module
     {
         public float maxPlayerRangeToSpeak = 10;
@@ -29,40 +27,32 @@ namespace ThunderRoad
         public string welcomeVoiceDialogId;
         public string newUpdateWelcomeVoiceDialogId;
         public string newUpdatesWelcomeVoiceDialogId;
-#if ODIN_INSPECTOR
-        [ValueDropdown(nameof(GetAllAnimationID))]
-#endif
+        [Dropdown(nameof(GetAllAnimationID))]
         public string welcomeAnimationId;
 
         public string buyVoiceDialogId;
-#if ODIN_INSPECTOR
-        [ValueDropdown(nameof(GetAllAnimationID))]
-#endif
+        [Dropdown(nameof(GetAllAnimationID))]
         public string buyAnimationId;
 
         public string sellVoiceDialogId;
-#if ODIN_INSPECTOR
-        [ValueDropdown(nameof(GetAllAnimationID))]
-#endif
+        [Dropdown(nameof(GetAllAnimationID))]
         public string sellAnimationId;
 
         public string angryVoiceDialogId;
-#if ODIN_INSPECTOR
-        [ValueDropdown(nameof(GetAllAnimationID))]
-#endif
+        [Dropdown(nameof(GetAllAnimationID))]
         public string angryAnimationId;
 
-#if ODIN_INSPECTOR
-        public List<ValueDropdownItem<string>> GetAllAnimationID()
+        public TriDropdownList<string> GetAllAnimationID()
         {
             return Catalog.GetDropdownAllID(Category.Animation);
         }
-#endif
 
         public string notEnoughMoneyVoiceDialogId;
 
         public string leavingDialogId;
         public string checkoutDialogId;
+        public string mapBoardDialogId;
+        public float mapDialogReplaceChance = 0.33f;
 
         [LabelWidth(0.0001f)]
         public DialogDictionary idExactMatchDialogs;
@@ -70,6 +60,8 @@ namespace ThunderRoad
         public DialogDictionary idPartialMatchDialogs;
         [LabelWidth(0.0001f)]
         public DialogDictionary categoryDialogs;
+        [LabelWidth(0.0001f)]
+        public DialogDictionary itemEatDialogs;
 
         #region Compatibility
         private void SetInDictionary(int idMatchLevel, string key, string value, bool defaultBuySell = true)
@@ -169,6 +161,8 @@ namespace ThunderRoad
         public string tutorial2DialogId;
         public string tutorial3DialogId;
 
+        public string chickenDialogId;
+
         public List<UpdateLoreDialogSet> updateLoreSets = new List<UpdateLoreDialogSet>();
 
         [Serializable]
@@ -200,22 +194,17 @@ namespace ThunderRoad
         }
 
         [Serializable]
+        [DeclareHorizontalGroup("Info", Sizes = new float[] { 0f, 60f, 60f })]
         public class DialogId
         {
-#if ODIN_INSPECTOR
             [LabelWidth(25f)]
-            [Sirenix.OdinInspector.HorizontalGroup("Info")]
-#endif
+            [Group("Info")]
             public string id;
-#if ODIN_INSPECTOR
             [LabelWidth(40f)]
-            [Sirenix.OdinInspector.HorizontalGroup("Info", Width = 60f)]
-#endif
+            [Group("Info")]
             public bool buy = true;
-#if ODIN_INSPECTOR
             [LabelWidth(40f)]
-            [Sirenix.OdinInspector.HorizontalGroup("Info", Width = 60f)]
-#endif
+            [Group("Info")]
             public bool sell = false;
 
             public DialogId() { }

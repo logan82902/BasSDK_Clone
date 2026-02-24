@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 1,
+  "groupPath": null,
   "languageCode": "it",
   "textGroups": [
     {
@@ -260,6 +261,293 @@
           "text": "Hai ricevuto una ricompensa.\nAggiungila all'inventario per tornare a casa.",
           "spriteAddress": null,
           "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "OptionPresetName",
+          "text": "Preimpostato",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "OptionWaveModeName",
+          "text": "Ciclo Ondata",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "OptionWaveModeDescription",
+          "text": "Determina cosa dovrebbe accadere quando completi le ondate finali.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "RouletteChallengeName",
+          "text": "Rimuovi le ricompense precedenti",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "RouletteChallengeDescription",
+          "text": "Se attivata, le ricompense precedenti scompariranno al completamento di un'ondata.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "ForbidEnemyWeaponsName",
+          "text": "Proibisci le armi nemiche",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "ForbidEnemyWeaponsDescription",
+          "text": "Se attivato, non puoi raccogliere o usare le armi dei nemici.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SpawnWeaponsName",
+          "text": "Genera armi",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SpawnWeaponsDescription",
+          "text": "Se attivata, include le armi nel pool di ricompense.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SpawnSkillsCombatName",
+          "text": "Genera abilità di combattimento",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SpawnSkillsCombatDescription",
+          "text": "Se attivata, include le abilità offensive nel pool di ricompense.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SpawnSkillsNonCombatName",
+          "text": "Genera Abilità Non da Combattimento",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SpawnSkillsNonCombatDescription",
+          "text": "Se attivato, include le abilità di utilità nel pool di ricompense.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SpawnPotionsName",
+          "text": "Genera Pozioni",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SpawnPotionsDescription",
+          "text": "Se attivato, include le pozioni nel pool di ricompense.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SpawnArmorName",
+          "text": "Genera Armatura",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SpawnArmorDescription",
+          "text": "Se attivata, include pezzi di armatura nel pool di ricompense.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SpawnBundlesName",
+          "text": "Bundle di Spawn",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SpawnBundlesDescription",
+          "text": "Se attivato, include pacchetti di abilità e armi correlate nel pool di ricompense.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "RemovePlayerWeaponsName",
+          "text": "Rimuovi armi del giocatore",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "RemovePlayerWeaponsDescription",
+          "text": "Se attivata, rimuove tutte le armi sandbox equipaggiate prima che inizi la prima ondata.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "RemovePlayerSkillsName",
+          "text": "Rimuovi Abilità del Giocatore",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "RemovePlayerSkillsDescription",
+          "text": "Se attivata, rimuove tutte le tue abilità sandbox prima che inizi la prima ondata.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "RemovePlayerArmorName",
+          "text": "Rimuovi armatura del giocatore",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "RemovePlayerArmorDescription",
+          "text": "Se attivata, rimuove l'armatura equipaggiata nella sandbox prima che inizi la prima ondata.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "PresetProgressionName",
+          "text": "Progresso",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "PresetProgressionDescription",
+          "text": "Parti dal nulla e cresci in potenza. Guadagna abilità, armi e armature completando le ondate. Non sono ammesse armi nemiche e inizi senza armatura.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "PresetProgressionUnrestrictedName",
+          "text": "Progressione (Senza restrizioni)",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "PresetProgressionUnrestrictedDescription",
+          "text": "Parti dal nulla e accresci il tuo potere. Guadagna abilità, armi e armature completando le ondate. Puoi conservare qualsiasi arma, armatura e abilità da sandbox che hai equipaggiato.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "PresetRouletteModeName",
+          "text": "Modalità Roulette",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "PresetRouletteModeDescription",
+          "text": "Ogni round puoi utilizzare un premio valido solo per quel round. Il premio viene resettato tra ogni round.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "PresetClassicName",
+          "text": "Sopravvivenza Classica",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "PresetClassicDescription",
+          "text": "Solo le armi appariranno come ricompense. Puoi mantenere qualsiasi arma, armatura e abilità che hai equipaggiato nella sandbox.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "LoopModeNoLoopName",
+          "text": "Torna a Casa",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "LoopModeNoLoopDescription",
+          "text": "Torna a casa dopo aver completato tutte le ondate.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "LoopModeLoopName",
+          "text": "Ricomincia dall'inizio",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "LoopModeLoopDescription",
+          "text": "Ricomincia dall'ondata uno dopo aver completato tutte le ondate.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "LoopModeRepeatLastWaveName",
+          "text": "Ripeti l'ultima ondata",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "LoopModeRepeatLastWaveDescription",
+          "text": "Ripeti l'ultima ondata indefinitamente.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "HoldTriggerToChooseItem",
+          "text": "Tieni premuto il grilletto per scegliere l'oggetto",
+          "spriteAddress": "",
+          "videoAddress": ""
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "HoldTriggerToChooseBundle",
+          "text": "Tieni premuto il grilletto per scegliere il pacchetto",
+          "spriteAddress": "",
+          "videoAddress": ""
         }
       ]
     },
@@ -5408,6 +5696,104 @@
           "text": "Offset Altezza",
           "spriteAddress": null,
           "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "Rakta",
+          "text": "Rakta",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "Rakta Armor",
+          "text": "Rakta",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "Rakta Weapons",
+          "text": "Rakta",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "Madene Armor",
+          "text": "Madene",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "Sentara",
+          "text": "Sentara",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "Sentara Weapons",
+          "text": "Sentara",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "Sentara Armor",
+          "text": "Sentara",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "Madene Weapons",
+          "text": "Madene",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "Madene",
+          "text": "Madene",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "Khar-Tib Armor",
+          "text": "Khar-Tib",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "Khar-Tib Weapons",
+          "text": "Khar-Tib",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "Khar-Tib",
+          "text": "Khar-Tib",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "LoreAccurateFlintlockName",
+          "text": "Abilità del Bastone a Pietra Focaia",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "LoreAccurateFlintlockDescription",
+          "text": "Se consentire l'uso di abilità come Filo Arcano, Martello Gravitazionale o Bastone Inferno sulla pistola a pietra focaia Sentari.",
+          "spriteAddress": null,
+          "videoAddress": null
         }
       ]
     },
@@ -5942,6 +6328,62 @@
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
           "id": "OutpostCoastalFortDescription",
           "text": "Una fortezza costruita lungo la spiaggia come difesa e avamposto contro gli invasori.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "RaktaDojo",
+          "text": "Tempio di Raike",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "RaktaDojoDescription",
+          "text": "Un tempio di Raike utilizzato per rituali di meditazione avanzata e per affinare la pratica della stregoneria.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SentaraShip",
+          "text": "Relitto Sentari",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SentaraShipDescription",
+          "text": "Una nave Sentari giace arenata contro un faro in rovina, spaccata e rivelante un cristallo misterioso.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "RaktaMap",
+          "text": "Rakta",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibMap",
+          "text": "Khar-Tib",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SentaraMap",
+          "text": "Sentara",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "MadluMap",
+          "text": "Madlu",
           "spriteAddress": null,
           "videoAddress": null
         }
@@ -13926,6 +14368,475 @@
           "text": "I Raike sono artigiani eccezionali. Quindi， qualsiasi equipaggiamento arrivi a riva， lo metterò in vendita. Tieni gli occhi aperti per le nuove scorte.",
           "spriteAddress": null,
           "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "MultiUpdateIntro_1",
+          "text": "Ehi! Da quando te ne sei andato, ho visto parecchie navi straniere finire nella tempesta. I loro relitti si riverseranno sulle mie coste, quindi tieni gli occhi aperti per nuove mercanzie.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "MultiUpdateIntro_2",
+          "text": "Ehilà! Negli ultimi giorni, parecchie navi straniere sono naufragate nella tempesta. Mentre i relitti si arenano sulla mia isola, dovrei avere per te armi e armature uniche.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "MageApparel_1",
+          "text": "Gli stregoni tendono a indossare equipaggiamenti del genere. A quanto pare, li aiuta a incanalare i loro poteri più velocemente.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "MageApparel_2",
+          "text": "Quindi... sei una specie di stregone?",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "MageApparel_3",
+          "text": "La stregoneria è potente, ma non lasciare che ti consumi.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "MageApparel_4",
+          "text": "Ah, una volta ho incontrato un tipo, una specie di stregone eccentrico... indossava abiti proprio così... portava in cintura una sorta di spada-pane. Ultimamente ho sentito che ora ha una sorta di seguito.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "PlateApparel_1",
+          "text": "Metallo solido. Ti appesantirà, ma sarai meno incline a subire una ferita mortale in battaglia.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "PlateApparel_2",
+          "text": "L'armatura a piastre è rumorosa e pessima per la furtività, ma ehi, immagino che non serva essere furtivi quando si è coperti dalla testa ai piedi.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "PlateApparel_3",
+          "text": "È acciaio solido, ma attenzione agli apriscatole!",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "LeatherApparel_1",
+          "text": "Questa armatura è ottima per mobilità e destrezza. Ma attenzione, non offre la migliore protezione disponibile.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "LeatherApparel_2",
+          "text": "Questa pelle è in ottime condizioni. Il precedente proprietario se ne è preso molta cura.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "LeatherApparel_3",
+          "text": "Al Porto-Mercato, c'erano tutti quei sedicenti furfanti che si aggiravano furtivi in armatura di cuoio, convinti di essere silenziosi come gatti. Ridicolo... si sentivano questi impostori cigolare nel loro cuoio non oliato da due vicoli di distanza.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "GenericApparel_1",
+          "text": "Questo completerà davvero il tuo equipaggiamento.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "GenericApparel_2",
+          "text": "Ti starà benissimo.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "GenericApparel_3",
+          "text": "Rinnovi il guardaroba? Qui c'è un sacco di roba in vendita!",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SentariIntroLore_0",
+          "text": "Ah, questo mi riporta indietro! Viene dalla mia terra natale, Sentara, amico. Siamo una piccola ma prospera nazione mercantile a ovest di Eraden.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SentariIntroLore_1",
+          "text": "Sentara non ha molte città, né una grande popolazione, ma colpiamo ben al di sopra della nostra categoria grazie ai migliori marinai di Byeth.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SentariIntroLore_2",
+          "text": "I nostri marinai osano navigare anche sui mari più insidiosi per commerciare ricchezze, informazioni e diffondere la nostra influenza.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SentariIntroLore_3",
+          "text": "Certo, Sentara spesso viene criticata per le accuse secondo cui gran parte di quella ricchezza deriva dal restare in disparte nei giochi diplomatici, sfruttando il ruolo di intermediario commerciale tra nazioni rivali, compresi beni illegali.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SentariIntroLore_4",
+          "text": "E, uh, non hanno proprio torto.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SentariWeapon_2",
+          "text": "Molte armi che si arenano qui vengono danneggiate dall'acqua salata, ma non le armi Sentari! Resistono a qualsiasi esposizione all'acqua di mare.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SentariWeapon_3",
+          "text": "Vuoi fare un po' di duelli? Le armi Sentari sono proprio quello che ti serve, ma ricorda anche di tenere salda la posizione!",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SentariWeapon_1",
+          "text": "Le armi Sentari sono perfette per i duelli, ma fai attenzione a dove sono i tuoi nemici, o ti ritroverai una lama nella schiena.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SentariWeapon_4",
+          "text": "Scoprirai che la maggior parte delle armi Sentari sono progettate per essere usate a una mano. Non puoi permetterti di rinunciare a una mano libera che potresti usare per dondolarti sulle sartie. Ma questo potrebbe suonare ironico, detto da me.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "Pistol_1",
+          "text": "La stregoneria non è proprio la specialità dei Sentari, ma ci armeggiamo abbastanza per pareggiare il campo di gioco. Basta infondere questa bellezza e far esplodere tutto!",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "Pistol_2",
+          "text": "Oh, ne avevo uno ai miei tempi! È un'arma fantastica, ma non così eccezionale dopo aver perso un occhio.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "Pistol_3",
+          "text": "I Sentari non sono maghi molto bravi, ma siamo ottimi armeggiatori. Non proprio un'intelligenza da genio, ma qualche furbo a casa ha capito come far funzionare quell'arma attraverso tentativi ed errori sbattendo cristalli insieme.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "FireRum_1",
+          "text": "Questa bevanda ti farà sentire la bocca in fiamme. Beh, non solo sentire...",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "FireRum_2",
+          "text": "Questa bevanda è popolare tra i pirati Sentari, sebbene alcuni capitani la proibiscano categoricamente a bordo della nave. Prendine un sorso e capirai perché!",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "GravityRum_1",
+          "text": "Attento con questo, amico! Se voli troppo in alto, quando atterri rischi di romperti più dell'orgoglio!",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "GravityRum_2",
+          "text": "Questa bevanda è popolare tra i marinai Sentari. Un sorso rapido e potrai arrampicarti sull'albero maestro con facilità.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "LightningRum_1",
+          "text": "Questa pozione è un vero divertimento; bevine un sorso e inizierai ad attirare tutti gli oggetti metallici nelle vicinanze.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "LightningRum_2",
+          "text": "Ho visto i marinai Sentari usare questa pozione per fare scherzi ai compagni. Un sorso durante la cena e improvvisamente tutte le posate volano via dal tavolo.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SentariArmour_1",
+          "text": "L'abbigliamento Sentari non offre molta protezione, ma è leggero e alla moda; perfetto per un mercante che visita terre straniere.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SentariArmour_2",
+          "text": "L'abbigliamento Sentari è progettato per la mobilità, non per la protezione. Molta arrampicata, molto oscillare e, quando le cose vanno male, molto nuotare.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SentariArmour_3",
+          "text": "Questo è abbigliamento Sentari di qualità.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SentariArmour_4",
+          "text": "Questa è alta moda Sentari, proprio qui.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SentariArmour_5",
+          "text": "Sapevi che puoi capire il ruolo di un marinaio dal suo abbigliamento? Beh, non proprio, ma il cappello e il cappotto possono farti sentire importante.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SentaraLoreA_0",
+          "text": "Hai mai sentito parlare di Graystone? È un'isola appena al largo della costa di Sentara. I Sentari non si sono mai preoccupati di colonizzarla finché non sono stati scoperti giacimenti di cristalli.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SentaraLoreA_1",
+          "text": "Nei miei giorni giovanili, mi fu ordinato di guidare una spedizione lì. Nel cuore dell'isola, ci imbattemmo nell'ingresso di una camera sotterranea decrepita.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SentaraLoreA_2",
+          "text": "Ma laggiù, nell'oscurità, ugh... Creature come non ne avevo mai viste prima a Byeth.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SentaraLoreA_3",
+          "text": "Resti di uomini, marci e putridi, morti, ma in qualche modo capaci di muoversi, brandire una lama... immuni al dolore e ai danni.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SentaraLoreA_4",
+          "text": "È un orrore che non dimenticherò facilmente!",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SentaraLoreB_0",
+          "text": "Sembra passata una vita, ma sai, ero un barone a Sentara.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SentaraLoreB_1",
+          "text": "Sentara ha sempre avuto una cooperazione tra classi feudali e doge locale, ma tutti sapevano che il vero potere dietro il paese era nelle grandi gilde commerciali.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SentaraLoreB_2",
+          "text": "Era solo questione di tempo prima che il doge di uno di questi conglomerati gettasse il suo peso in politica e si proclamasse Gran Doge, scatenando la Guerra delle Vele; una guerra civile totale per il futuro di Sentara.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SentaraLoreB_3",
+          "text": "A quel punto, l'alta nobiltà era già saldamente nelle tasche del Gran Doge, quindi la guerra divampò tra la piccola nobiltà e le infinite monete della gilda commerciale, con i loro eserciti di mercenari e spadaccini.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SentaraLoreC_0",
+          "text": "Sentara non ha molte città importanti, ma la capitale Port-Market è l'eccezione.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SentaraLoreC_1",
+          "text": "La città è un'enorme metropoli proprio sulla costa, con il palazzo che domina il molo mentre si approda.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SentaraLoreC_2",
+          "text": "È di gran lunga il mercato più grande di Sentara, con in vendita tutto ciò che si possa immaginare.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SentaraLoreD_0",
+          "text": "Data la loro propensione per la navigazione, gli espatriati Sentari spesso lavorano come liberi professionisti, unendosi a equipaggi di mercenari, cacciatori di taglie e persino fuorilegge.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SentaraLoreE_0",
+          "text": "A Sentara ci sono molte gilde, ma solo una è conosciuta come La Gilda. Originariamente fondata come gilda di avventurieri e cacciatori di tesori, con un po' di contrabbando di contorno.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SentaraLoreE_1",
+          "text": "Sai come vanno queste cose.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "NewMaps_1",
+          "text": "Eraden è un luogo vasto, ma dovresti viaggiare per il mondo se puoi.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "NewMaps_2",
+          "text": "Se viaggi per Byeth, portami un souvenir!",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "NewMaps_3",
+          "text": "Se stai pensando a un viaggio fuori Eraden, assicurati di fare scorta qui prima.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "Chicken_1",
+          "text": "Mi dispiace, ma Jonathan non è in vendita.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "Chicken_2",
+          "text": "Ehi, giù dal bancone!",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "FeedingFruit_1",
+          "text": "Sto soffocando qui...",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "FeedingFruit_2",
+          "text": "Uh... grazie, sto bene.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "FeedingFruit_3",
+          "text": "Oof, forzi sempre gli estranei a mangiare?",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "FeedingEgg_1",
+          "text": "Sai, forse dovresti prima cucinarlo.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "FeedingEgg_2",
+          "text": "Oh, guscio e tutto. Beh, non c'è niente di male in un po' di croccantezza.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "FeedingEgg_3",
+          "text": "Wow... immagina vivere una vita di grande avventura, solo per morire di salmonella perché qualcuno ti ha costretto a mangiare un uovo crudo...",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SkeletonHand_1",
+          "text": "Ah!... sì... Penso che sia troppo tardi per riattaccarlo.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SkeletonHand_2",
+          "text": "Non chiederò da dove l'hai preso.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "Pistol_4",
+          "text": "Carica e spara, amico!",
+          "spriteAddress": null,
+          "videoAddress": null
         }
       ]
     },
@@ -14035,6 +14946,62 @@
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
           "id": "CHArenaDesc",
           "text": "Affronta ondate di nemici per vincere una ricompensa... sempre che sopravvivi.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "RaktaDalg",
+          "text": "Rakta",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "RaktaOutpost",
+          "text": "Rakta",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "RaktaDalgDesc",
+          "text": "Rovine di Rakta Dalgarian",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "RaktaOutpostDesc",
+          "text": "Avamposto Rakta",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SentaraOutpostDesc",
+          "text": "Rovina dell’avamposto di Sentara",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SentaraDalgDesc",
+          "text": "Rovina dalgariana di Sentara",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "Sentara",
+          "text": "Sentara",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "Rakta",
+          "text": "Rakta",
           "spriteAddress": null,
           "videoAddress": null
         }
@@ -14528,6 +15495,488 @@
           "videoAddress": null
         }
       ]
+    },
+    {
+      "$type": "ThunderRoad.TextData+TextGroup, ThunderRoad",
+      "id": "Bundles",
+      "texts": [
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleBanditArmorName",
+          "text": "Pacchetto Armatura del Brigante",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleDruidArmorName",
+          "text": "Pacchetto Armatura del Druido",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleSoldierArmorName",
+          "text": "Pacchetto Armatura del Soldato",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleArmorBanditName",
+          "text": "Pacchetto Armatura di Cuoio",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleArmorBattleMageName",
+          "text": "Pacchetto Tuniche da Magoguerrriero",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleArmorDruidName",
+          "text": "Pacchetto Armatura del Druido",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleArmorGladiatorName",
+          "text": "Pacchetto di Armature Tribali",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleArmorMageName",
+          "text": "Pacchetto di Tuniche Patchwork",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleArmorMercenaryName",
+          "text": "Pacchetto Armatura del Predone",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleArmorOfficerName",
+          "text": "Pacchetto Piastre Annerite",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleArmorRaktaName",
+          "text": "Pacchetto Armature d'Elite Raike",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleArmorRogueName",
+          "text": "Pacchetto Armature Marauder",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleArmorSoldierName",
+          "text": "Pacchetto Armatura a Piastre",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleArmorWarMageName",
+          "text": "Pacchetto Tuniche dell'Accolito",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleBlacksmithBundleT0Name",
+          "text": "Pacchetto del Fabbro",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleCavemanBundleT0Name",
+          "text": "Pacchetto dell'Età della Pietra",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleFarmerBundleT0Name",
+          "text": "Pacchetto Agricolo",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleGravediggerBundleT0Name",
+          "text": "Pacchetto Becchino",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleGravitySorcererBundleT0Name",
+          "text": "Pacchetto Stregone Fuorilegge",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundlePoomancerBundleT0Name",
+          "text": "Pacchetto Stregone Stercorario",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleSwordAndBoardBundleT0Name",
+          "text": "Pacchetto Spada e Scudo",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleTavernBrawlerBundleT0Name",
+          "text": "Rissatore da Taverna",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleWannabeSorcererBundleT0Name",
+          "text": "Pacchetto Ciarlatano",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleArcherBundleT1Name",
+          "text": "Pacchetto Arciere",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleBerserkerBundleT1Name",
+          "text": "Pacchetto Berserker",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleDalgarianSmasherBundleT2Name",
+          "text": "Pacchetto Frantumatore Dalgariano",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleFireSorcererBundleT1Name",
+          "text": "Pacchetto Stregone del Fuoco",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleFireSpellswordBundleT1Name",
+          "text": "Pacchetto Spadaccino Incantatore del Fuoco",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleLightningFisherBundleT1Name",
+          "text": "Pacchetto Pescatore della Tempesta",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleSpearmanBundleT1Name",
+          "text": "Pacchetto Guerriero della Lancia",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleSwordAndBoardBundleT1Name",
+          "text": "Pacchetto Spada e Scudo",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleTelekineticBundleT1Name",
+          "text": "Pacchetto Telecinetico",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleThrowingKnifeBundleT1Name",
+          "text": "Pacchetto Lame Vorticoso",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleWarriorMonkBundleT1Name",
+          "text": "Pacchetto Monaco Guerriero",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleArcherBundleT2Name",
+          "text": "Pacchetto Arciere",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleCaptainDalgarianBundleT2Name",
+          "text": "Pacchetto Rimbalzo Scudo",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleChargeSapperBundleT3Name",
+          "text": "Pacchetto Zappatore Caricato",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleDaggerBenderBundleT2Name",
+          "text": "Pacchetto Lame Cercatrici",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleDuelistBundleT2Name",
+          "text": "Pacchetto Duellante",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleFireSorcererBundleT2Name",
+          "text": "Pacchetto Stregone del Fuoco",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleFireSpellswordBundleT2Name",
+          "text": "Pacchetto Spadaccino del Fuoco",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleGravityMonkBundleT2Name",
+          "text": "Pacchetto Monaco della Gravità",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleLightningSorcererBundleT2Name",
+          "text": "Pacchetto Stregone del Fulmine",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleLightningSpellswordBundleT2Name",
+          "text": "Pacchetto Spadaccino del Fulmine",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleMobilityBundleT2Name",
+          "text": "Pacchetto Salto Gravitazionale",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleSpearmanBundleT2Name",
+          "text": "Pacchetto Guerriero della Lancia",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleSwordAndBoardBundleT2Name",
+          "text": "Pacchetto Spada e Scudo",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleWarriorMonkBundleT2Name",
+          "text": "Pacchetto Monaco Guerriero",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleArcherBundleT3Name",
+          "text": "Pacchetto Arciere",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleArcwireBundleT3Name",
+          "text": "Spadomago Filo Arcano",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleBaronBundleT3Name",
+          "text": "Pacchetto del Barone",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleBerserkerBundleT3Name",
+          "text": "Pacchetto del Berserker",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleFireSorcererBundleT3Name",
+          "text": "Pacchetto Stregone del Fuoco",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleGravitySorcererBundleT3Name",
+          "text": "Pacchetto Stregone della Gravità",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleLightningSorcererBundleT3Name",
+          "text": "Pacchetto Stregone del Fulmine",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleSpearmanBundleT3Name",
+          "text": "Pacchetto Guerriero della Lancia",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleSwordAndBoardBundleT3Name",
+          "text": "Pacchetto Spada e Scudo",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleTeslaWiresBundleT3Name",
+          "text": "Pacchetto Fili Tesla",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleUnarmedSorceryBundleT3Name",
+          "text": "Pacchetto di Stregoneria Corporea",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleChronoMasterBundleT4Name",
+          "text": "Pacchetto del Cronomastro",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleGrandmasterBundleT4Name",
+          "text": "Pacchetto Gran Maestro",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundlePunchSorcererBundleT4Name",
+          "text": "Pacchetto Maestro del Corpo a Corpo",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleRemoteDetonatorBundleT4Name",
+          "text": "Pacchetto Detonatore a Distanza",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleSorceryArcherT4Name",
+          "text": "Pacchetto Arciere Dotato",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleTelekineticBundleT4Name",
+          "text": "Pacchetto Telecinetico Maestro",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleFoodBundleName",
+          "text": "Pacchetto di Cibo",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleElementalistBundleT1Name",
+          "text": "Pacchetto Elementalista",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundlePsionicBundleT1Name",
+          "text": "Pacchetto Psionico",
+          "spriteAddress": null,
+          "videoAddress": null
+        }
+      ]
     }
   ],
   "items": [
@@ -14716,12 +16165,6 @@
       "id": "MaceLongBecDeCorbin",
       "name": "Becco di corvo",
       "description": "Un mazzapicchio ideale per sconfiggere i soldati corazzati. La punta è in grado di penetrare qualsiasi armatura con la giusta forza, ma è necessaria molta abilità per maneggiare un'asta così lunga."
-    },
-    {
-      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
-      "id": "MaceLongClub",
-      "name": "Mazza di legno",
-      "description": "Poco più di un ramo scelto con cura, eppure è spesso sufficiente per convincere i nemici a non avvicinarsi."
     },
     {
       "$type": "ThunderRoad.TextData+Item, ThunderRoad",
@@ -16197,7 +17640,7 @@
       "$type": "ThunderRoad.TextData+Item, ThunderRoad",
       "id": "SwordDalgarSmall",
       "name": "Spada di pietra",
-      "description": ""
+      "description": "Una spada di pietra estratta da una delle tante statue del Re Dalgar sparse per Eraden."
     },
     {
       "$type": "ThunderRoad.TextData+Item, ThunderRoad",
@@ -16408,6 +17851,126 @@
       "id": "ApparelRaktaShoulders",
       "name": "Spallacci d'Élite Raike",
       "description": "Spallacci ornamentali di alta qualità, indossati dai soldati d'élite Raike."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "AxeSentaraBoardingAxe",
+      "name": "Ascia d’Abbordaggio",
+      "description": "Un'ascia Sentari, una varietà che si trova sempre sulle navi da guerra come strumento utile per abbordare le navi nemiche e sfondare le porte. Naturalmente, funge anche da arma efficace."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "SwordSentaraCutlass",
+      "name": "Sciabola d’Arrembaggio",
+      "description": "Una sciabola Sentari agile. Sebbene la sua lunghezza ridotta possa sembrare uno svantaggio, è estremamente utile negli spazi angusti delle navi."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "SwordSentaraDuelingSword",
+      "name": "Spada da Duello",
+      "description": "Una spada da lato Sentari spesso portata dai capitani di nave, noti per amare i duelli nonostante le voci sulla loro natura scaltra."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "SpearSentaraHarpoon",
+      "name": "Arpione",
+      "description": "Un arpione usato per catturare grandi creature marine per nutrire l'equipaggio delle navi Sentari. I suoi barbigli lo rendono una lancia terrificante da avere contro."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "SwordSentaraSaber",
+      "name": "Sciabola Sentari",
+      "description": "Un'elegante sciabola di origine Sentari, magistralmente forgiata per la guerra. L’elsa si presta particolarmente bene a combattere contro altre spade."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "DaggerSentaraStiletto",
+      "name": "Pugnale Sentari",
+      "description": "Un pugnale Sentari ornato, portato tanto come accessorio quanto come arma di riserva. Progettato esclusivamente per attacchi di stoccata, lo rende particolarmente adatto a finire nemici corazzati."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "CrystalMusket",
+      "name": "Artiglio dei Frammenti",
+      "description": "Un congegno che consente l'uso di arti magiche distruttive con un'affinità magica minima. Inventato dai Sentara, che preferivano vendere i frammenti piuttosto che consumarli."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "SentaraPotionLightning",
+      "name": "Pozione Folgorante",
+      "description": "Un intruglio Sentari intriso di magia, dai fini ignoti agli estranei. Berla caricherà il corpo di elettricità e attirerà gli oggetti metallici vicini."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "SentaraPotionFire",
+      "name": "Pozione Ardente",
+      "description": "Un intruglio Sentari intriso di magia, dai fini ignoti agli estranei. Berla potrebbe far brillare intensamente la testa e far sprizzare fiamme dalla bocca."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "SentaraPotionGravity",
+      "name": "Pozione Piuma",
+      "description": "Un intruglio Sentari intriso di magia, dai fini ignoti agli estranei. Berla provocherà un senso di assenza di peso, permettendo di nuotare nell'aria come se fosse acqua."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "ApparelSentaraBandana",
+      "name": "Bandana Sentari",
+      "description": "Protegge i capelli dall’aria salmastra del mare."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "ApparelSentaraBoots",
+      "name": "Stivali Sentari",
+      "description": "Protegge i piedi dalla sabbia della spiaggia."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "ApparelSentaraCoat",
+      "name": "Soprabito Sentari",
+      "description": "Un soprabito lussuoso che esibisce il proprio status."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "ApparelSentaraHandLeft",
+      "name": "Gioielli Sentari (L)",
+      "description": "Un set di anelli squisiti per chi ha bisogno di mettersi in mostra."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "ApparelSentaraHandRight",
+      "name": "Gioielli Sentari (R)",
+      "description": "Un set di anelli squisiti per chi ha bisogno di mettersi in mostra."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "ApparelSentaraHat",
+      "name": "Tricorno Sentari",
+      "description": "Un cappello elegante adatto a un capitano di nave."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "ApparelSentaraLegs",
+      "name": "Pantaloni Sentari",
+      "description": "Un paio di pantaloni assolutamente straordinari."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "ApparelSentaraTorso",
+      "name": "Gilet Sentari",
+      "description": "Un gilet elegante progettato per mantenere alto il morale dell'equipaggio anche nei momenti più bui."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "Dojo_IncenseBurner",
+      "name": "Bruciaprofumi",
+      "description": null
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "Dojo_Gong_Mallet",
+      "name": "Mazzuolo per Gong",
+      "description": null
     }
   ],
   "waves": [
@@ -16608,7 +18171,48 @@
       "id": "SpecialWeaponSwordDuel",
       "title": "Duello tra spadaccini",
       "description": "Un duello solo con nemici che impugnano spade."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Wave, ThunderRoad",
+      "id": "RaktaFull",
+      "title": "Normale",
+      "description": "Combatti contro ogni tipo di nemico di questa fazione."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Wave, ThunderRoad",
+      "id": "RaktaMeleeOnly",
+      "title": "Solo mischia",
+      "description": "Combatti solo contro i nemici che usano armi da mischia."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Wave, ThunderRoad",
+      "id": "RaktaSorceryOnly",
+      "title": "Solo maghi",
+      "description": "Combatti contro gli stregoni di questa fazione."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Wave, ThunderRoad",
+      "id": "RaktaDuel",
+      "title": "Duello d'élite Rakta",
+      "description": "Combatti l'élite Rakta con armatura completa e brandendo la sua spada Raike."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Wave, ThunderRoad",
+      "id": "SentaraFull",
+      "title": "Normale",
+      "description": "Combatti contro ogni tipo di nemico di questa fazione."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Wave, ThunderRoad",
+      "id": "SentaraMeleeOnly",
+      "title": "Solo mischia",
+      "description": "Combatti solo contro i nemici che usano armi da mischia."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Wave, ThunderRoad",
+      "id": "SentaraDuel",
+      "title": "Duello del Capitano Sentari",
+      "description": "Affronta un Capitano Sentari in un duello all’ultimo sangue."
     }
-  ],
-  "groupPath": null
+  ]
 }

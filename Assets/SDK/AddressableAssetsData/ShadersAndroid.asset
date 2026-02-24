@@ -35,6 +35,18 @@ MonoBehaviour:
     m_SerializedLabels:
     - Android
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d2d182b6579bd2749afcbfb3390e1a0a
+    m_Address: vfx_android_ocean_v2
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ec3e75b1122818844808a5a3dee3a4d7
+    m_Address: vfx_android_ocean
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: b14c4d9d8b63f3247be008fe8b53d3ae, type: 2}
   m_SchemaSet:

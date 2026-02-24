@@ -1,9 +1,9 @@
-﻿#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#endif
+﻿
+using TriInspector;
 
 namespace ThunderRoad.Skill.Spell
 {
+    [DeclareBoxGroup("Recharge", Title = "Recharge")]
     public class SkillFrictionalHeating : SpellSkillData
     {
     }

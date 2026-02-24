@@ -1,0 +1,22 @@
+{
+  "$type": "ThunderRoad.BundleData, ThunderRoad",
+  "id": "LightningSorcererBundleT3",
+  "sensitiveContent": "None",
+  "sensitiveFilterBehaviour": "Discard",
+  "version": 0,
+  "groupPath": "T3",
+  "localizationGroup": "Bundles",
+  "displayName": "BundleLightningSorcererBundleT3Name",
+  "description": null,
+  "altDescriptionTitle": "ContentsTitle",
+  "isArmorBundle": false,
+  "bundleItemId": "Bundle",
+  "items": [
+    "StaffWizard"
+  ],
+  "skills": [
+    "Thunderbolt"
+  ],
+  "lootTables": [],
+  "spriteAddress": "Ui.Icon.Unknown"
+}

@@ -1,0 +1,24 @@
+{
+  "$type": "ThunderRoad.BundleData, ThunderRoad",
+  "id": "BerserkerBundleT1",
+  "sensitiveContent": "None",
+  "sensitiveFilterBehaviour": "Discard",
+  "version": 0,
+  "groupPath": "T1",
+  "localizationGroup": "Bundles",
+  "displayName": "BundleBerserkerBundleT1Name",
+  "description": null,
+  "altDescriptionTitle": "ContentsTitle",
+  "isArmorBundle": false,
+  "bundleItemId": "Bundle",
+  "items": [
+    "AxeShortHatchet",
+    "AxeShortHatchet"
+  ],
+  "skills": [
+    "SlowTime",
+    "CombatFocus"
+  ],
+  "lootTables": [],
+  "spriteAddress": "Ui.Icon.Unknown"
+}

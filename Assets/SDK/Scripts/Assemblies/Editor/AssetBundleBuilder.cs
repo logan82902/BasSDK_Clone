@@ -20,6 +20,7 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using Debug = UnityEngine.Debug;
 
+#pragma warning disable UDR0001 // Domain Reload Analyzer
 namespace ThunderRoad
 {
     public class AssetBundleBuilder
@@ -29,7 +30,7 @@ namespace ThunderRoad
         public delegate void BuildEvent(EventTime eventTime);
         public static event BuildEvent OnBuildEvent;
 
-        public static string androidAssetFolderName = "obb";
+        public const string androidAssetFolderName = "obb";
 
         public static string assetsLocalPath
         {
@@ -391,6 +392,7 @@ namespace ThunderRoad
 
         public class AssetBundleShaderStripPreprocess : IPreprocessShaders
         {
+            
             private static bool enabled;
             private static List<Shader> stripShaders = new List<Shader>();
 

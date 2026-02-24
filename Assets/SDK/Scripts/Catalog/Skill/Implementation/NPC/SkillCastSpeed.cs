@@ -1,14 +1,12 @@
-﻿#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#endif
+﻿
+using TriInspector;
 
 namespace ThunderRoad.Skill
 {
+    [DeclareBoxGroup("Charge Speed", Title = "Charge Speed")]
     public class SkillCastSpeed : AISkillData
     {
-#if ODIN_INSPECTOR
-        [BoxGroup("Charge Speed")]
-#endif
+        [Group("Charge Speed")]
         public float chargeSpeedMultiplier = 1;
 
         public override void OnSpellLoad(SpellData spell, SpellCaster caster = null)

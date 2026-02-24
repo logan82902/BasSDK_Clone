@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
+  "groupPath": null,
   "collisionHandling": "ByGroup",
   "allowPenetration": false,
   "modifiers": [
@@ -19,6 +20,7 @@
       "imbueVelocityLossPerSecond": 0.0,
       "imbueEffectiveness": 1.0,
       "waterLossRateMultiplier": 1000.0,
+      "imbueFeatures": 0,
       "deflectMaxAngleCollision": 0.0,
       "deflectMaxAngleTarget": 0.0,
       "deflectSpeedMultiplier": 2.0,
@@ -31,7 +33,5 @@
   "ignoredImbueEffectModules": null,
   "customSpellEffects": false,
   "customSpellEffectIDs": null,
-  "customSpellEffectData": null,
-  "blockPoolSteal": false,
-  "groupPath": null
+  "blockPoolSteal": false
 }

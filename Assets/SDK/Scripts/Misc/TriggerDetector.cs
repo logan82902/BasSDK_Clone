@@ -1,14 +1,15 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
+using UnityEngine.Events;
 
 namespace ThunderRoad
 {
     public class TriggerDetector : MonoBehaviour
     {
-        public delegate void TriggerEvent(Collider other);
+        public UnityEvent<Collider> OnTriggerEnterEvent = new();
+        public UnityEvent<Collider> OnTriggerExitEvent = new();
+        public UnityEvent<Collider> OnTriggerStayEvent = new();
 
-        public event TriggerEvent OnTriggerEnterEvent;
-        public event TriggerEvent OnTriggerExitEvent;
-        public event TriggerEvent OnTriggerStayEvent;
         private void OnTriggerEnter(Collider other) => OnTriggerEnterEvent?.Invoke(other);
         private void OnTriggerExit(Collider other) => OnTriggerExitEvent?.Invoke(other);
         private void OnTriggerStay(Collider other) => OnTriggerStayEvent?.Invoke(other);

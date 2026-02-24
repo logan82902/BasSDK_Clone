@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 1,
+  "groupPath": null,
   "damageModifierId": "BluntHeavyProp",
   "tiers": [
     {
@@ -214,6 +215,5 @@
   "penetrationPressureMaxDot": 0.2,
   "dismembermentAllowed": false,
   "dismembermentMinVelocity": 10.0,
-  "dismembermentNoPenetrationDuration": 1.0,
-  "groupPath": null
+  "dismembermentNoPenetrationDuration": 1.0
 }

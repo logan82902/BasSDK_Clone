@@ -1,0 +1,25 @@
+{
+  "$type": "ThunderRoad.BundleData, ThunderRoad",
+  "id": "ArmorDruid",
+  "sensitiveContent": "None",
+  "sensitiveFilterBehaviour": "Discard",
+  "version": 0,
+  "groupPath": "Armor",
+  "localizationGroup": "Bundles",
+  "displayName": "BundleArmorDruidName",
+  "description": null,
+  "altDescriptionTitle": "ContentsTitle",
+  "isArmorBundle": true,
+  "bundleItemId": "Bundle",
+  "items": [
+    "ApparelDruidFeet",
+    "ApparelDruidLegs",
+    "ApparelDruidHandL",
+    "ApparelDruidHandR",
+    "ApparelDruidTorso",
+    "ApparelDruidHeadband"
+  ],
+  "skills": [],
+  "lootTables": [],
+  "spriteAddress": "Ui.Icon.Unknown"
+}

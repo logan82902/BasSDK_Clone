@@ -8,43 +8,38 @@
   "displayName": "ApparelProtoHelmet",
   "description": null,
   "author": "Drags & foltz",
-  "price": 10.0,
-  "purchasable": true,
+  "valueType": "Gold",
+  "value": 0.0,
+  "rewardValue": 0.0,
   "tier": 2,
-  "weight": null,
-  "size": null,
+  "flags": "None",
   "levelRequired": 0,
   "category": "Leather",
+  "update": "",
   "iconEffectId": null,
   "preferredItemCenter": "Mass",
+  "drainImbueWhenIdle": true,
   "prefabAddress": "Item.ProtoHelmet",
   "iconAddress": "Item.ProtoHelmet.Icon",
   "closeUpIconAddress": null,
   "pooledCount": 0,
   "androidPooledCount": 0,
   "type": "Wardrobe",
-  "canBeStoredInPlayerInventory": false,
-  "limitMaxStorableQuantity": false,
-  "maxStorableQuantity": 0,
+  "allowedStorage": 0,
+  "despawnOnStoredInInventory": false,
   "isStackable": false,
-  "maxStackQuantity": 0,
-  "inventoryHoverSounds": null,
-  "inventorySelectSounds": null,
-  "inventoryStoreSounds": {
-    "$type": "ThunderRoad.GameData+AudioContainerAddressAndVolume, ThunderRoad",
-    "audioContainerAddress": null,
-    "volumeDb": 0.0
-  },
+  "consumableId": null,
+  "inventoryAudioContainerAddress": null,
+  "inventoryAudioVolume_dB": 0.0,
   "slot": null,
   "snapAudioContainerAddress": "Bas.AudioGroup.Apparel.Wool",
   "snapAudioVolume_dB": 0.0,
-  "unsnapAudioContainerAddress": "Bas.AudioGroup.Apparel.Wool",
-  "unsnapAudioVolume_dB": 0.0,
   "overrideMassAndDrag": true,
   "mass": 1.0,
   "drag": 1.0,
   "angularDrag": 1.0,
-  "manaRegenMultiplier": 1.0,
+  "density": 1000.0,
+  "focusRegenMultiplier": 1.0,
   "spellChargeSpeedPlayerMultiplier": 1.0,
   "spellChargeSpeedNPCMultiplier": 1.0,
   "collisionMaxOverride": 0,
@@ -114,11 +109,12 @@
     "postWrapMode": "ClampForever"
   },
   "waterSampleMinRadius": 0.2,
-  "flyFromThrow": false,
+  "throwMultiplier": 1.0,
+  "runSpeedMultiplier": 1.0,
   "flyRotationSpeed": 2.0,
   "flyThrowAngle": 0.0,
+  "allowFlyBackwards": false,
   "telekinesisSafeDistance": 1.0,
-  "telekinesisSpinEnabled": true,
   "telekinesisThrowRatio": 1.0,
   "telekinesisAutoGrabAnyHandle": false,
   "grippable": false,
@@ -159,6 +155,7 @@
   "modules": [
     {
       "$type": "ThunderRoad.ItemModuleWardrobe, ThunderRoad",
+      "castSpeedPerHand": null,
       "category": "Apparel",
       "castShadows": "PlayerAndNPC",
       "wardrobes": [
@@ -173,7 +170,9 @@
           "wardrobeDataAddress": "Creature.Wardrobe.ProtoFemaleHelmet"
         }
       ],
-      "isMetal": false
+      "isMetal": false,
+      "armorSoundEffectPriority": 0,
+      "armorSoundEffectID": null
     }
   ],
   "colliderGroups": [],
@@ -218,5 +217,7 @@
       "maxVelocity": 12.0,
       "dampening": 0.1
     }
-  ]
+  ],
+  "entityModules": [],
+  "groupPath": null
 }

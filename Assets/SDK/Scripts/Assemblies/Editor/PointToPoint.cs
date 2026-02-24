@@ -1,10 +1,9 @@
 ﻿using UnityEngine;
 using UnityEditor;
-using System;
 
 namespace ThunderRoad
 {
-    public class PointToPoint : Editor
+    public class PointToPoint : ThunderInspector
     {
         protected Vector3 lengthPoint1;
         protected Vector3 lengthPoint2;
@@ -14,12 +13,21 @@ namespace ThunderRoad
         protected Tool previousTool;
         protected MonoBehaviour script;
 
-        protected void PointToPointButton(Vector3 pointStart, Vector3 pointEnd){
-            PointToPointButton(0, pointStart, pointEnd, false);
+        protected override void OnDisablePostDispose()
+        {
+            if (target)
+            {
+                EditorUtility.SetDirty(target);
+            }
+            if (toolsHidden)
+            {
+                Tools.current = previousTool;
+                toolsHidden = false;
+            }
         }
-        protected void PointToPointButton(float length){
-            PointToPointButton(length, Vector3.zero, Vector3.zero, true);
-        }
+
+        protected void PointToPointButton(Vector3 pointStart, Vector3 pointEnd) => PointToPointButton(0, pointStart, pointEnd, false);
+        protected void PointToPointButton(float length) => PointToPointButton(length, Vector3.zero, Vector3.zero, true);
         private void PointToPointButton(float length, Vector3 pointStart, Vector3 pointEnd, bool useLength)
         {
             if (length > 0 || !useLength)
@@ -120,16 +128,5 @@ namespace ThunderRoad
                 toolsHidden = false;
             }
         }
-        
-        public void OnDisable()
-        {
-            if (target) EditorUtility.SetDirty(target);
-            if (toolsHidden)
-            {
-                Tools.current = previousTool;
-                toolsHidden = false;
-            }
-        }
-
     }
 }

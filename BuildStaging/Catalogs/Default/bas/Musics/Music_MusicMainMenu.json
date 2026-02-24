@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
+  "groupPath": null,
   "volumeDb": 0.0,
   "groupsToLoad": [
     "MainMenuIntro"
@@ -36,6 +37,5 @@
   ],
   "dynamicModules": {
     "$type": "ThunderRoad.MusicDynamicModuleMap, ThunderRoad"
-  },
-  "groupPath": null
+  }
 }

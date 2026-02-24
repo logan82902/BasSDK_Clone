@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+using Newtonsoft.Json;
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
-	public class BrainModuleFollow : BrainData.Module
+    [System.Serializable]
+    [AutoLabelWidth(AddedWidth = 5f, MinWidth = 0f)]
+    [DeclareBoxGroup("Follow", Title = "Follow")]
+    [DeclareBoxGroup("Followers", Title = "Followers")]
+    public class BrainModuleFollow : BrainData.Module
     {
         public enum FollowBehavior
         {
@@ -18,22 +18,14 @@ namespace ThunderRoad
             SearchForFollowable
         }
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Follow")] 
-#endif
+        [Group("Follow")]
         public FollowBehavior followBehavior = FollowBehavior.OnlyWhenSet;
-#if ODIN_INSPECTOR
-        [BoxGroup("Follow")] 
-#endif
-        public List<Brain.State> clearFollowBrainStates = new List<Brain.State>();
+        [Group("Follow")]
+        public List<Brain.State> clearFollowBrainStates = new();
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Followers")] 
-#endif
+        [Group("Followers")]
         public bool allowFollowers = true;
-#if ODIN_INSPECTOR
-        [BoxGroup("Followers")] 
-#endif
+        [Group("Followers")]
         public int maxFollowers = 3;
 
     }

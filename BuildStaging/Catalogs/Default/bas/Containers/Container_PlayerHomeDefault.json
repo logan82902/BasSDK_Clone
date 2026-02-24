@@ -4,9 +4,9 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 1,
+  "groupPath": null,
   "displayName": "",
   "description": null,
-  "contents": [],
   "containerContents": [
     {
       "$type": "ThunderRoad.ItemContent, ThunderRoad",
@@ -16,6 +16,7 @@
         "holderName": "HolderF1"
       },
       "customDataList": [],
+      "mergeKey": "844aae14",
       "referenceID": "MaceShortCommon"
     },
     {
@@ -26,6 +27,7 @@
         "holderName": "HolderF2"
       },
       "customDataList": [],
+      "mergeKey": "710d6f8b",
       "referenceID": "SwordLongCommon"
     },
     {
@@ -36,6 +38,7 @@
         "holderName": "HolderF3"
       },
       "customDataList": [],
+      "mergeKey": "b347dac6",
       "referenceID": "MaceLongMaul"
     },
     {
@@ -46,6 +49,7 @@
         "holderName": "HolderF4"
       },
       "customDataList": [],
+      "mergeKey": "5844572a",
       "referenceID": "AxeShortCommon"
     },
     {
@@ -56,8 +60,8 @@
         "holderName": "HolderF5"
       },
       "customDataList": [],
+      "mergeKey": "05b386ec",
       "referenceID": "SwordShortCommon"
     }
-  ],
-  "groupPath": null
+  ]
 }

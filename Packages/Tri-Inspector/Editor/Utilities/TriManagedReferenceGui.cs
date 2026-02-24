@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using TriInspectorUnityInternalBridge;
@@ -15,18 +15,20 @@ namespace TriInspector.Utilities
         {
             var typeName = property.ValueType != null
                 ? TriTypeUtilities.GetTypeNiceName(property.ValueType)
-                : "[None]";
-            var typeNameContent = new GUIContent(typeName);
+                : "Null";
+            var icon = AssetDatabase.LoadAssetAtPath<Texture2D>($"Assets/SDK/UI/TriInspectorIcons/object_cog.png");
+            var typeNameContent = new GUIContent($" {typeName} ({property.FieldType.Name})", icon);
 
-            if (EditorGUI.DropdownButton(rect, typeNameContent, FocusType.Passive))
+            GUIStyle objectRefStyle = new GUIStyle(EditorStyles.objectField)
+            {
+                imagePosition = ImagePosition.ImageLeft,
+            };
+            EditorGUIUtility.SetIconSize(new Vector2(objectRefStyle.fontSize, objectRefStyle.fontSize));
+            if (GUI.Button(rect, typeNameContent, objectRefStyle))
             {
                 var dropdown = new ReferenceTypeDropDown(property, new AdvancedDropdownState());
                 dropdown.Show(rect);
-
-                if (dropdown.CanHideHeader)
-                {
-                    AdvancedDropdownProxy.SetShowHeader(dropdown, false);
-                }
+                AdvancedDropdownProxy.SetShowHeader(dropdown, false);
 
                 Event.current.Use();
             }
@@ -35,8 +37,6 @@ namespace TriInspector.Utilities
         private class ReferenceTypeDropDown : AdvancedDropdown
         {
             private readonly TriProperty _property;
-
-            public bool CanHideHeader { get; private set; }
 
             public ReferenceTypeDropDown(TriProperty property, AdvancedDropdownState state) : base(state)
             {
@@ -51,21 +51,38 @@ namespace TriInspector.Utilities
                     .Where(type => !typeof(Object).IsAssignableFrom(type))
                     .Where(type => _property.FieldType.IsAssignableFrom(type))
                     .Where(type => type.IsValueType || type.GetConstructor(Type.EmptyTypes) != null)
+                    .Where(type => !type.ContainsGenericParameters)
                     .ToList();
-
-                var groupByNamespace = types.Count > 20;
-
-                CanHideHeader = !groupByNamespace;
 
                 var root = new ReferenceTypeGroupItem("Type");
                 root.AddChild(new ReferenceTypeItem(null));
-                root.AddSeparator();
+
+                Dictionary<string, int> namespacePartCounts = new Dictionary<string, int>();
 
                 foreach (var type in types)
                 {
-                    IEnumerable<string> namespaceEnumerator = groupByNamespace && type.Namespace != null
-                        ? type.Namespace.Split('.')
-                        : Array.Empty<string>();
+                    if (string.IsNullOrEmpty(type.Namespace)) continue;
+                    foreach (string part in type.Namespace.Split('.'))
+                    {
+                        namespacePartCounts[part] = namespacePartCounts.TryGetValue(part, out int count) ? count + 1 : 1;
+                    }
+                }
+
+                foreach (var type in types)
+                {
+                    IEnumerable<string> namespaceEnumerator = Array.Empty<string>();
+                    if (!string.IsNullOrEmpty(type.Namespace))
+                    {
+                        IEnumerable<string> GetNamespaceEnumator()
+                        {
+                            foreach (string part in type.Namespace.Split('.'))
+                            {
+                                if (namespacePartCounts.TryGetValue(part, out int count) && count == types.Count) continue;
+                                yield return part;
+                            }
+                        }
+                        namespaceEnumerator = GetNamespaceEnumator();
+                    }
 
                     root.AddTypeChild(type, namespaceEnumerator.GetEnumerator());
                 }
@@ -133,8 +150,6 @@ namespace TriInspector.Utilities
                         child.Build();
                     }
 
-                    AddSeparator();
-
                     foreach (var child in _childItems)
                     {
                         AddChild(child);
@@ -145,7 +160,7 @@ namespace TriInspector.Utilities
             private class ReferenceTypeItem : AdvancedDropdownItem
             {
                 public ReferenceTypeItem(Type type, Texture2D preview = null)
-                    : base(type != null ? TriTypeUtilities.GetTypeNiceName(type) : "[None]")
+                    : base(type != null ? TriTypeUtilities.GetTypeNiceName(type) : "Null")
                 {
                     Type = type;
                     icon = preview;

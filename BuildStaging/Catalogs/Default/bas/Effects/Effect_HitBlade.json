@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
+  "groupPath": null,
   "groupId": "Blade",
   "volumeDb": 0.0,
   "modules": [
@@ -65,36 +66,7 @@
         "postWrapMode": "ClampForever"
       },
       "useVolumeSpeed": false,
-      "volumeSpeedCurve": {
-        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-        "keys": [
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 0.0,
-            "value": 1.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          },
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 1.0,
-            "value": 1.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          }
-        ],
-        "length": 2,
-        "preWrapMode": "ClampForever",
-        "postWrapMode": "ClampForever"
-      },
+      "volumeSpeedCurve": null,
       "volumeBlendMode": "Min",
       "reverbZoneMix": 1.0,
       "isNoiseForAI": false,
@@ -139,162 +111,18 @@
       },
       "useLowPassFilter": false,
       "lowPassEffectLink": "Intensity",
-      "lowPassCutoffFrequencyCurve": {
-        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-        "keys": [
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 0.0,
-            "value": 22000.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          },
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 1.0,
-            "value": 22000.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          }
-        ],
-        "length": 2,
-        "preWrapMode": "ClampForever",
-        "postWrapMode": "ClampForever"
-      },
-      "lowPassResonanceQCurve": {
-        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-        "keys": [
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 0.0,
-            "value": 1.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          },
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 1.0,
-            "value": 1.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          }
-        ],
-        "length": 2,
-        "preWrapMode": "ClampForever",
-        "postWrapMode": "ClampForever"
-      },
+      "lowPassCutoffFrequencyCurve": null,
+      "lowPassResonanceQCurve": null,
       "useHighPassFilter": false,
       "highPassEffectLink": "Intensity",
-      "highPassCutoffFrequencyCurve": {
-        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-        "keys": [
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 0.0,
-            "value": 10.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          },
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 1.0,
-            "value": 10.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          }
-        ],
-        "length": 2,
-        "preWrapMode": "ClampForever",
-        "postWrapMode": "ClampForever"
-      },
-      "highPassResonanceQCurve": {
-        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-        "keys": [
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 0.0,
-            "value": 1.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          },
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 1.0,
-            "value": 1.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          }
-        ],
-        "length": 2,
-        "preWrapMode": "ClampForever",
-        "postWrapMode": "ClampForever"
-      },
+      "highPassCutoffFrequencyCurve": null,
+      "highPassResonanceQCurve": null,
       "useReverbFilter": false,
       "reverbEffectLink": "Intensity",
-      "reverbDryLevelCurve": {
-        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-        "keys": [
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 0.0,
-            "value": 0.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          },
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 1.0,
-            "value": 0.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          }
-        ],
-        "length": 2,
-        "preWrapMode": "ClampForever",
-        "postWrapMode": "ClampForever"
-      },
+      "reverbDryLevelCurve": null,
       "minDistance": 1.0,
       "maxDistance": 500.0,
+      "mergeKey": "fd65cde4",
       "step": "Start",
       "stepCustomId": null,
       "loopCustomStep": false,
@@ -313,37 +141,7 @@
         "BladeAxe2h"
       ],
       "damagersFilterLogic": "AnyExcept",
-      "damagersFilter": [],
-      "intensityCurve": {
-        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-        "keys": [
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 0.0,
-            "value": 0.0,
-            "inTangent": 0.0,
-            "outTangent": 1.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          },
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 1.0,
-            "value": 1.0,
-            "inTangent": 1.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          }
-        ],
-        "length": 2,
-        "preWrapMode": "ClampForever",
-        "postWrapMode": "ClampForever"
-      }
+      "damagersFilter": []
     },
     {
       "$type": "ThunderRoad.EffectModuleAudio, ThunderRoad",
@@ -403,36 +201,7 @@
         "postWrapMode": "ClampForever"
       },
       "useVolumeSpeed": false,
-      "volumeSpeedCurve": {
-        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-        "keys": [
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 0.0,
-            "value": 1.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          },
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 1.0,
-            "value": 1.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          }
-        ],
-        "length": 2,
-        "preWrapMode": "ClampForever",
-        "postWrapMode": "ClampForever"
-      },
+      "volumeSpeedCurve": null,
       "volumeBlendMode": "Min",
       "reverbZoneMix": 1.0,
       "isNoiseForAI": false,
@@ -477,162 +246,18 @@
       },
       "useLowPassFilter": false,
       "lowPassEffectLink": "Intensity",
-      "lowPassCutoffFrequencyCurve": {
-        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-        "keys": [
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 0.0,
-            "value": 22000.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          },
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 1.0,
-            "value": 22000.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          }
-        ],
-        "length": 2,
-        "preWrapMode": "ClampForever",
-        "postWrapMode": "ClampForever"
-      },
-      "lowPassResonanceQCurve": {
-        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-        "keys": [
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 0.0,
-            "value": 1.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          },
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 1.0,
-            "value": 1.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          }
-        ],
-        "length": 2,
-        "preWrapMode": "ClampForever",
-        "postWrapMode": "ClampForever"
-      },
+      "lowPassCutoffFrequencyCurve": null,
+      "lowPassResonanceQCurve": null,
       "useHighPassFilter": false,
       "highPassEffectLink": "Intensity",
-      "highPassCutoffFrequencyCurve": {
-        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-        "keys": [
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 0.0,
-            "value": 10.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          },
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 1.0,
-            "value": 10.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          }
-        ],
-        "length": 2,
-        "preWrapMode": "ClampForever",
-        "postWrapMode": "ClampForever"
-      },
-      "highPassResonanceQCurve": {
-        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-        "keys": [
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 0.0,
-            "value": 1.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          },
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 1.0,
-            "value": 1.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          }
-        ],
-        "length": 2,
-        "preWrapMode": "ClampForever",
-        "postWrapMode": "ClampForever"
-      },
+      "highPassCutoffFrequencyCurve": null,
+      "highPassResonanceQCurve": null,
       "useReverbFilter": false,
       "reverbEffectLink": "Intensity",
-      "reverbDryLevelCurve": {
-        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-        "keys": [
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 0.0,
-            "value": 0.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          },
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 1.0,
-            "value": 0.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          }
-        ],
-        "length": 2,
-        "preWrapMode": "ClampForever",
-        "postWrapMode": "ClampForever"
-      },
+      "reverbDryLevelCurve": null,
       "minDistance": 1.0,
       "maxDistance": 500.0,
+      "mergeKey": "07e7eb1b",
       "step": "Start",
       "stepCustomId": null,
       "loopCustomStep": false,
@@ -651,37 +276,7 @@
         "BladeAxe2h"
       ],
       "damagersFilterLogic": "AnyExcept",
-      "damagersFilter": [],
-      "intensityCurve": {
-        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-        "keys": [
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 0.0,
-            "value": 0.0,
-            "inTangent": 0.0,
-            "outTangent": 1.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          },
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 1.0,
-            "value": 1.0,
-            "inTangent": 1.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          }
-        ],
-        "length": 2,
-        "preWrapMode": "ClampForever",
-        "postWrapMode": "ClampForever"
-      }
+      "damagersFilter": []
     },
     {
       "$type": "ThunderRoad.EffectModuleAudio, ThunderRoad",
@@ -741,36 +336,7 @@
         "postWrapMode": "ClampForever"
       },
       "useVolumeSpeed": false,
-      "volumeSpeedCurve": {
-        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-        "keys": [
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 0.0,
-            "value": 1.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          },
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 1.0,
-            "value": 1.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          }
-        ],
-        "length": 2,
-        "preWrapMode": "ClampForever",
-        "postWrapMode": "ClampForever"
-      },
+      "volumeSpeedCurve": null,
       "volumeBlendMode": "Min",
       "reverbZoneMix": 1.0,
       "isNoiseForAI": false,
@@ -815,162 +381,18 @@
       },
       "useLowPassFilter": false,
       "lowPassEffectLink": "Intensity",
-      "lowPassCutoffFrequencyCurve": {
-        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-        "keys": [
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 0.0,
-            "value": 22000.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          },
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 1.0,
-            "value": 22000.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          }
-        ],
-        "length": 2,
-        "preWrapMode": "ClampForever",
-        "postWrapMode": "ClampForever"
-      },
-      "lowPassResonanceQCurve": {
-        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-        "keys": [
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 0.0,
-            "value": 1.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          },
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 1.0,
-            "value": 1.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          }
-        ],
-        "length": 2,
-        "preWrapMode": "ClampForever",
-        "postWrapMode": "ClampForever"
-      },
+      "lowPassCutoffFrequencyCurve": null,
+      "lowPassResonanceQCurve": null,
       "useHighPassFilter": false,
       "highPassEffectLink": "Intensity",
-      "highPassCutoffFrequencyCurve": {
-        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-        "keys": [
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 0.0,
-            "value": 10.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          },
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 1.0,
-            "value": 10.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          }
-        ],
-        "length": 2,
-        "preWrapMode": "ClampForever",
-        "postWrapMode": "ClampForever"
-      },
-      "highPassResonanceQCurve": {
-        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-        "keys": [
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 0.0,
-            "value": 1.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          },
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 1.0,
-            "value": 1.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          }
-        ],
-        "length": 2,
-        "preWrapMode": "ClampForever",
-        "postWrapMode": "ClampForever"
-      },
+      "highPassCutoffFrequencyCurve": null,
+      "highPassResonanceQCurve": null,
       "useReverbFilter": false,
       "reverbEffectLink": "Intensity",
-      "reverbDryLevelCurve": {
-        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-        "keys": [
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 0.0,
-            "value": 0.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          },
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 1.0,
-            "value": 0.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          }
-        ],
-        "length": 2,
-        "preWrapMode": "ClampForever",
-        "postWrapMode": "ClampForever"
-      },
+      "reverbDryLevelCurve": null,
       "minDistance": 1.0,
       "maxDistance": 500.0,
+      "mergeKey": "8c234bfa",
       "step": "Start",
       "stepCustomId": null,
       "loopCustomStep": false,
@@ -988,37 +410,7 @@
         "BladeDagger"
       ],
       "damagersFilterLogic": "AnyExcept",
-      "damagersFilter": [],
-      "intensityCurve": {
-        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-        "keys": [
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 0.0,
-            "value": 0.0,
-            "inTangent": 0.0,
-            "outTangent": 1.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          },
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 1.0,
-            "value": 1.0,
-            "inTangent": 1.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          }
-        ],
-        "length": 2,
-        "preWrapMode": "ClampForever",
-        "postWrapMode": "ClampForever"
-      }
+      "damagersFilter": []
     },
     {
       "$type": "ThunderRoad.EffectModuleAudio, ThunderRoad",
@@ -1078,36 +470,7 @@
         "postWrapMode": "ClampForever"
       },
       "useVolumeSpeed": false,
-      "volumeSpeedCurve": {
-        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-        "keys": [
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 0.0,
-            "value": 1.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          },
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 1.0,
-            "value": 1.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          }
-        ],
-        "length": 2,
-        "preWrapMode": "ClampForever",
-        "postWrapMode": "ClampForever"
-      },
+      "volumeSpeedCurve": null,
       "volumeBlendMode": "Min",
       "reverbZoneMix": 1.0,
       "isNoiseForAI": false,
@@ -1152,162 +515,18 @@
       },
       "useLowPassFilter": false,
       "lowPassEffectLink": "Intensity",
-      "lowPassCutoffFrequencyCurve": {
-        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-        "keys": [
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 0.0,
-            "value": 22000.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          },
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 1.0,
-            "value": 22000.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          }
-        ],
-        "length": 2,
-        "preWrapMode": "ClampForever",
-        "postWrapMode": "ClampForever"
-      },
-      "lowPassResonanceQCurve": {
-        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-        "keys": [
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 0.0,
-            "value": 1.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          },
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 1.0,
-            "value": 1.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          }
-        ],
-        "length": 2,
-        "preWrapMode": "ClampForever",
-        "postWrapMode": "ClampForever"
-      },
+      "lowPassCutoffFrequencyCurve": null,
+      "lowPassResonanceQCurve": null,
       "useHighPassFilter": false,
       "highPassEffectLink": "Intensity",
-      "highPassCutoffFrequencyCurve": {
-        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-        "keys": [
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 0.0,
-            "value": 10.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          },
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 1.0,
-            "value": 10.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          }
-        ],
-        "length": 2,
-        "preWrapMode": "ClampForever",
-        "postWrapMode": "ClampForever"
-      },
-      "highPassResonanceQCurve": {
-        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-        "keys": [
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 0.0,
-            "value": 1.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          },
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 1.0,
-            "value": 1.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          }
-        ],
-        "length": 2,
-        "preWrapMode": "ClampForever",
-        "postWrapMode": "ClampForever"
-      },
+      "highPassCutoffFrequencyCurve": null,
+      "highPassResonanceQCurve": null,
       "useReverbFilter": false,
       "reverbEffectLink": "Intensity",
-      "reverbDryLevelCurve": {
-        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-        "keys": [
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 0.0,
-            "value": 0.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          },
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 1.0,
-            "value": 0.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          }
-        ],
-        "length": 2,
-        "preWrapMode": "ClampForever",
-        "postWrapMode": "ClampForever"
-      },
+      "reverbDryLevelCurve": null,
       "minDistance": 1.0,
       "maxDistance": 500.0,
+      "mergeKey": "f35b6a6a",
       "step": "Start",
       "stepCustomId": null,
       "loopCustomStep": false,
@@ -1325,37 +544,7 @@
         "BladeDagger"
       ],
       "damagersFilterLogic": "AnyExcept",
-      "damagersFilter": [],
-      "intensityCurve": {
-        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-        "keys": [
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 0.0,
-            "value": 0.0,
-            "inTangent": 0.0,
-            "outTangent": 1.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          },
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 1.0,
-            "value": 1.0,
-            "inTangent": 1.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          }
-        ],
-        "length": 2,
-        "preWrapMode": "ClampForever",
-        "postWrapMode": "ClampForever"
-      }
+      "damagersFilter": []
     },
     {
       "$type": "ThunderRoad.EffectModuleAudio, ThunderRoad",
@@ -1415,36 +604,7 @@
         "postWrapMode": "ClampForever"
       },
       "useVolumeSpeed": false,
-      "volumeSpeedCurve": {
-        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-        "keys": [
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 0.0,
-            "value": 1.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          },
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 1.0,
-            "value": 1.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          }
-        ],
-        "length": 2,
-        "preWrapMode": "ClampForever",
-        "postWrapMode": "ClampForever"
-      },
+      "volumeSpeedCurve": null,
       "volumeBlendMode": "Min",
       "reverbZoneMix": 1.0,
       "isNoiseForAI": false,
@@ -1489,162 +649,18 @@
       },
       "useLowPassFilter": false,
       "lowPassEffectLink": "Intensity",
-      "lowPassCutoffFrequencyCurve": {
-        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-        "keys": [
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 0.0,
-            "value": 22000.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          },
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 1.0,
-            "value": 22000.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          }
-        ],
-        "length": 2,
-        "preWrapMode": "ClampForever",
-        "postWrapMode": "ClampForever"
-      },
-      "lowPassResonanceQCurve": {
-        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-        "keys": [
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 0.0,
-            "value": 1.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          },
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 1.0,
-            "value": 1.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          }
-        ],
-        "length": 2,
-        "preWrapMode": "ClampForever",
-        "postWrapMode": "ClampForever"
-      },
+      "lowPassCutoffFrequencyCurve": null,
+      "lowPassResonanceQCurve": null,
       "useHighPassFilter": false,
       "highPassEffectLink": "Intensity",
-      "highPassCutoffFrequencyCurve": {
-        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-        "keys": [
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 0.0,
-            "value": 10.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          },
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 1.0,
-            "value": 10.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          }
-        ],
-        "length": 2,
-        "preWrapMode": "ClampForever",
-        "postWrapMode": "ClampForever"
-      },
-      "highPassResonanceQCurve": {
-        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-        "keys": [
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 0.0,
-            "value": 1.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          },
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 1.0,
-            "value": 1.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          }
-        ],
-        "length": 2,
-        "preWrapMode": "ClampForever",
-        "postWrapMode": "ClampForever"
-      },
+      "highPassCutoffFrequencyCurve": null,
+      "highPassResonanceQCurve": null,
       "useReverbFilter": false,
       "reverbEffectLink": "Intensity",
-      "reverbDryLevelCurve": {
-        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-        "keys": [
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 0.0,
-            "value": 0.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          },
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 1.0,
-            "value": 0.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          }
-        ],
-        "length": 2,
-        "preWrapMode": "ClampForever",
-        "postWrapMode": "ClampForever"
-      },
+      "reverbDryLevelCurve": null,
       "minDistance": 1.0,
       "maxDistance": 500.0,
+      "mergeKey": "e670bbef",
       "step": "Start",
       "stepCustomId": null,
       "loopCustomStep": false,
@@ -1666,37 +682,7 @@
         "BladeSwordCrystal"
       ],
       "damagersFilterLogic": "AnyExcept",
-      "damagersFilter": [],
-      "intensityCurve": {
-        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-        "keys": [
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 0.0,
-            "value": 0.0,
-            "inTangent": 0.0,
-            "outTangent": 1.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          },
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 1.0,
-            "value": 1.0,
-            "inTangent": 1.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          }
-        ],
-        "length": 2,
-        "preWrapMode": "ClampForever",
-        "postWrapMode": "ClampForever"
-      }
+      "damagersFilter": []
     },
     {
       "$type": "ThunderRoad.EffectModuleAudio, ThunderRoad",
@@ -1756,36 +742,7 @@
         "postWrapMode": "ClampForever"
       },
       "useVolumeSpeed": false,
-      "volumeSpeedCurve": {
-        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-        "keys": [
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 0.0,
-            "value": 1.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          },
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 1.0,
-            "value": 1.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          }
-        ],
-        "length": 2,
-        "preWrapMode": "ClampForever",
-        "postWrapMode": "ClampForever"
-      },
+      "volumeSpeedCurve": null,
       "volumeBlendMode": "Min",
       "reverbZoneMix": 1.0,
       "isNoiseForAI": false,
@@ -1830,162 +787,18 @@
       },
       "useLowPassFilter": false,
       "lowPassEffectLink": "Intensity",
-      "lowPassCutoffFrequencyCurve": {
-        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-        "keys": [
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 0.0,
-            "value": 22000.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          },
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 1.0,
-            "value": 22000.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          }
-        ],
-        "length": 2,
-        "preWrapMode": "ClampForever",
-        "postWrapMode": "ClampForever"
-      },
-      "lowPassResonanceQCurve": {
-        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-        "keys": [
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 0.0,
-            "value": 1.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          },
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 1.0,
-            "value": 1.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          }
-        ],
-        "length": 2,
-        "preWrapMode": "ClampForever",
-        "postWrapMode": "ClampForever"
-      },
+      "lowPassCutoffFrequencyCurve": null,
+      "lowPassResonanceQCurve": null,
       "useHighPassFilter": false,
       "highPassEffectLink": "Intensity",
-      "highPassCutoffFrequencyCurve": {
-        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-        "keys": [
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 0.0,
-            "value": 10.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          },
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 1.0,
-            "value": 10.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          }
-        ],
-        "length": 2,
-        "preWrapMode": "ClampForever",
-        "postWrapMode": "ClampForever"
-      },
-      "highPassResonanceQCurve": {
-        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-        "keys": [
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 0.0,
-            "value": 1.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          },
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 1.0,
-            "value": 1.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          }
-        ],
-        "length": 2,
-        "preWrapMode": "ClampForever",
-        "postWrapMode": "ClampForever"
-      },
+      "highPassCutoffFrequencyCurve": null,
+      "highPassResonanceQCurve": null,
       "useReverbFilter": false,
       "reverbEffectLink": "Intensity",
-      "reverbDryLevelCurve": {
-        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-        "keys": [
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 0.0,
-            "value": 0.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          },
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 1.0,
-            "value": 0.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          }
-        ],
-        "length": 2,
-        "preWrapMode": "ClampForever",
-        "postWrapMode": "ClampForever"
-      },
+      "reverbDryLevelCurve": null,
       "minDistance": 1.0,
       "maxDistance": 500.0,
+      "mergeKey": "9c953c68",
       "step": "Start",
       "stepCustomId": null,
       "loopCustomStep": false,
@@ -2003,37 +816,7 @@
         "BladeSword"
       ],
       "damagersFilterLogic": "AnyExcept",
-      "damagersFilter": [],
-      "intensityCurve": {
-        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-        "keys": [
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 0.0,
-            "value": 0.0,
-            "inTangent": 0.0,
-            "outTangent": 1.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          },
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 1.0,
-            "value": 1.0,
-            "inTangent": 1.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          }
-        ],
-        "length": 2,
-        "preWrapMode": "ClampForever",
-        "postWrapMode": "ClampForever"
-      }
+      "damagersFilter": []
     },
     {
       "$type": "ThunderRoad.EffectModuleAudio, ThunderRoad",
@@ -2093,36 +876,7 @@
         "postWrapMode": "ClampForever"
       },
       "useVolumeSpeed": false,
-      "volumeSpeedCurve": {
-        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-        "keys": [
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 0.0,
-            "value": 1.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          },
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 1.0,
-            "value": 1.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          }
-        ],
-        "length": 2,
-        "preWrapMode": "ClampForever",
-        "postWrapMode": "ClampForever"
-      },
+      "volumeSpeedCurve": null,
       "volumeBlendMode": "Min",
       "reverbZoneMix": 1.0,
       "isNoiseForAI": false,
@@ -2167,162 +921,18 @@
       },
       "useLowPassFilter": false,
       "lowPassEffectLink": "Intensity",
-      "lowPassCutoffFrequencyCurve": {
-        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-        "keys": [
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 0.0,
-            "value": 22000.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          },
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 1.0,
-            "value": 22000.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          }
-        ],
-        "length": 2,
-        "preWrapMode": "ClampForever",
-        "postWrapMode": "ClampForever"
-      },
-      "lowPassResonanceQCurve": {
-        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-        "keys": [
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 0.0,
-            "value": 1.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          },
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 1.0,
-            "value": 1.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          }
-        ],
-        "length": 2,
-        "preWrapMode": "ClampForever",
-        "postWrapMode": "ClampForever"
-      },
+      "lowPassCutoffFrequencyCurve": null,
+      "lowPassResonanceQCurve": null,
       "useHighPassFilter": false,
       "highPassEffectLink": "Intensity",
-      "highPassCutoffFrequencyCurve": {
-        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-        "keys": [
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 0.0,
-            "value": 10.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          },
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 1.0,
-            "value": 10.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          }
-        ],
-        "length": 2,
-        "preWrapMode": "ClampForever",
-        "postWrapMode": "ClampForever"
-      },
-      "highPassResonanceQCurve": {
-        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-        "keys": [
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 0.0,
-            "value": 1.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          },
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 1.0,
-            "value": 1.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          }
-        ],
-        "length": 2,
-        "preWrapMode": "ClampForever",
-        "postWrapMode": "ClampForever"
-      },
+      "highPassCutoffFrequencyCurve": null,
+      "highPassResonanceQCurve": null,
       "useReverbFilter": false,
       "reverbEffectLink": "Intensity",
-      "reverbDryLevelCurve": {
-        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-        "keys": [
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 0.0,
-            "value": 0.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          },
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 1.0,
-            "value": 0.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          }
-        ],
-        "length": 2,
-        "preWrapMode": "ClampForever",
-        "postWrapMode": "ClampForever"
-      },
+      "reverbDryLevelCurve": null,
       "minDistance": 1.0,
       "maxDistance": 500.0,
+      "mergeKey": "0d86d5b5",
       "step": "Start",
       "stepCustomId": null,
       "loopCustomStep": false,
@@ -2340,37 +950,7 @@
         "BladeSword2h"
       ],
       "damagersFilterLogic": "AnyExcept",
-      "damagersFilter": [],
-      "intensityCurve": {
-        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-        "keys": [
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 0.0,
-            "value": 0.0,
-            "inTangent": 0.0,
-            "outTangent": 1.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          },
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 1.0,
-            "value": 1.0,
-            "inTangent": 1.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          }
-        ],
-        "length": 2,
-        "preWrapMode": "ClampForever",
-        "postWrapMode": "ClampForever"
-      }
+      "damagersFilter": []
     },
     {
       "$type": "ThunderRoad.EffectModuleAudio, ThunderRoad",
@@ -2430,36 +1010,7 @@
         "postWrapMode": "ClampForever"
       },
       "useVolumeSpeed": false,
-      "volumeSpeedCurve": {
-        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-        "keys": [
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 0.0,
-            "value": 1.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          },
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 1.0,
-            "value": 1.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          }
-        ],
-        "length": 2,
-        "preWrapMode": "ClampForever",
-        "postWrapMode": "ClampForever"
-      },
+      "volumeSpeedCurve": null,
       "volumeBlendMode": "Min",
       "reverbZoneMix": 1.0,
       "isNoiseForAI": false,
@@ -2504,162 +1055,18 @@
       },
       "useLowPassFilter": false,
       "lowPassEffectLink": "Intensity",
-      "lowPassCutoffFrequencyCurve": {
-        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-        "keys": [
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 0.0,
-            "value": 22000.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          },
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 1.0,
-            "value": 22000.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          }
-        ],
-        "length": 2,
-        "preWrapMode": "ClampForever",
-        "postWrapMode": "ClampForever"
-      },
-      "lowPassResonanceQCurve": {
-        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-        "keys": [
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 0.0,
-            "value": 1.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          },
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 1.0,
-            "value": 1.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          }
-        ],
-        "length": 2,
-        "preWrapMode": "ClampForever",
-        "postWrapMode": "ClampForever"
-      },
+      "lowPassCutoffFrequencyCurve": null,
+      "lowPassResonanceQCurve": null,
       "useHighPassFilter": false,
       "highPassEffectLink": "Intensity",
-      "highPassCutoffFrequencyCurve": {
-        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-        "keys": [
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 0.0,
-            "value": 10.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          },
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 1.0,
-            "value": 10.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          }
-        ],
-        "length": 2,
-        "preWrapMode": "ClampForever",
-        "postWrapMode": "ClampForever"
-      },
-      "highPassResonanceQCurve": {
-        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-        "keys": [
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 0.0,
-            "value": 1.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          },
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 1.0,
-            "value": 1.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          }
-        ],
-        "length": 2,
-        "preWrapMode": "ClampForever",
-        "postWrapMode": "ClampForever"
-      },
+      "highPassCutoffFrequencyCurve": null,
+      "highPassResonanceQCurve": null,
       "useReverbFilter": false,
       "reverbEffectLink": "Intensity",
-      "reverbDryLevelCurve": {
-        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-        "keys": [
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 0.0,
-            "value": 0.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          },
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 1.0,
-            "value": 0.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          }
-        ],
-        "length": 2,
-        "preWrapMode": "ClampForever",
-        "postWrapMode": "ClampForever"
-      },
+      "reverbDryLevelCurve": null,
       "minDistance": 1.0,
       "maxDistance": 500.0,
+      "mergeKey": "fe0c7450",
       "step": "Start",
       "stepCustomId": null,
       "loopCustomStep": false,
@@ -2677,37 +1084,7 @@
         "BladeSword2h"
       ],
       "damagersFilterLogic": "AnyExcept",
-      "damagersFilter": [],
-      "intensityCurve": {
-        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-        "keys": [
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 0.0,
-            "value": 0.0,
-            "inTangent": 0.0,
-            "outTangent": 1.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          },
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 1.0,
-            "value": 1.0,
-            "inTangent": 1.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          }
-        ],
-        "length": 2,
-        "preWrapMode": "ClampForever",
-        "postWrapMode": "ClampForever"
-      }
+      "damagersFilter": []
     },
     {
       "$type": "ThunderRoad.EffectModuleAudio, ThunderRoad",
@@ -2756,36 +1133,7 @@
         "postWrapMode": "ClampForever"
       },
       "useVolumeSpeed": false,
-      "volumeSpeedCurve": {
-        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-        "keys": [
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 0.0,
-            "value": 1.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          },
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 1.0,
-            "value": 1.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          }
-        ],
-        "length": 2,
-        "preWrapMode": "ClampForever",
-        "postWrapMode": "ClampForever"
-      },
+      "volumeSpeedCurve": null,
       "volumeBlendMode": "Min",
       "reverbZoneMix": 1.0,
       "isNoiseForAI": false,
@@ -2830,162 +1178,18 @@
       },
       "useLowPassFilter": false,
       "lowPassEffectLink": "Intensity",
-      "lowPassCutoffFrequencyCurve": {
-        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-        "keys": [
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 0.0,
-            "value": 22000.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          },
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 1.0,
-            "value": 22000.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          }
-        ],
-        "length": 2,
-        "preWrapMode": "ClampForever",
-        "postWrapMode": "ClampForever"
-      },
-      "lowPassResonanceQCurve": {
-        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-        "keys": [
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 0.0,
-            "value": 1.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          },
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 1.0,
-            "value": 1.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          }
-        ],
-        "length": 2,
-        "preWrapMode": "ClampForever",
-        "postWrapMode": "ClampForever"
-      },
+      "lowPassCutoffFrequencyCurve": null,
+      "lowPassResonanceQCurve": null,
       "useHighPassFilter": false,
       "highPassEffectLink": "Intensity",
-      "highPassCutoffFrequencyCurve": {
-        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-        "keys": [
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 0.0,
-            "value": 10.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          },
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 1.0,
-            "value": 10.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          }
-        ],
-        "length": 2,
-        "preWrapMode": "ClampForever",
-        "postWrapMode": "ClampForever"
-      },
-      "highPassResonanceQCurve": {
-        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-        "keys": [
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 0.0,
-            "value": 1.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          },
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 1.0,
-            "value": 1.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          }
-        ],
-        "length": 2,
-        "preWrapMode": "ClampForever",
-        "postWrapMode": "ClampForever"
-      },
+      "highPassCutoffFrequencyCurve": null,
+      "highPassResonanceQCurve": null,
       "useReverbFilter": false,
       "reverbEffectLink": "Intensity",
-      "reverbDryLevelCurve": {
-        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-        "keys": [
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 0.0,
-            "value": 0.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          },
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 1.0,
-            "value": 0.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          }
-        ],
-        "length": 2,
-        "preWrapMode": "ClampForever",
-        "postWrapMode": "ClampForever"
-      },
+      "reverbDryLevelCurve": null,
       "minDistance": 1.0,
       "maxDistance": 500.0,
+      "mergeKey": "f38d60f5",
       "step": "Start",
       "stepCustomId": null,
       "loopCustomStep": false,
@@ -3003,37 +1207,7 @@
         "BladeSpear"
       ],
       "damagersFilterLogic": "AnyExcept",
-      "damagersFilter": [],
-      "intensityCurve": {
-        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-        "keys": [
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 0.0,
-            "value": 0.0,
-            "inTangent": 0.0,
-            "outTangent": 1.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          },
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 1.0,
-            "value": 1.0,
-            "inTangent": 1.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          }
-        ],
-        "length": 2,
-        "preWrapMode": "ClampForever",
-        "postWrapMode": "ClampForever"
-      }
+      "damagersFilter": []
     },
     {
       "$type": "ThunderRoad.EffectModuleAudio, ThunderRoad",
@@ -3082,36 +1256,7 @@
         "postWrapMode": "ClampForever"
       },
       "useVolumeSpeed": false,
-      "volumeSpeedCurve": {
-        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-        "keys": [
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 0.0,
-            "value": 1.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          },
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 1.0,
-            "value": 1.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          }
-        ],
-        "length": 2,
-        "preWrapMode": "ClampForever",
-        "postWrapMode": "ClampForever"
-      },
+      "volumeSpeedCurve": null,
       "volumeBlendMode": "Min",
       "reverbZoneMix": 1.0,
       "isNoiseForAI": false,
@@ -3156,162 +1301,18 @@
       },
       "useLowPassFilter": false,
       "lowPassEffectLink": "Intensity",
-      "lowPassCutoffFrequencyCurve": {
-        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-        "keys": [
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 0.0,
-            "value": 22000.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          },
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 1.0,
-            "value": 22000.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          }
-        ],
-        "length": 2,
-        "preWrapMode": "ClampForever",
-        "postWrapMode": "ClampForever"
-      },
-      "lowPassResonanceQCurve": {
-        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-        "keys": [
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 0.0,
-            "value": 1.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          },
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 1.0,
-            "value": 1.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          }
-        ],
-        "length": 2,
-        "preWrapMode": "ClampForever",
-        "postWrapMode": "ClampForever"
-      },
+      "lowPassCutoffFrequencyCurve": null,
+      "lowPassResonanceQCurve": null,
       "useHighPassFilter": false,
       "highPassEffectLink": "Intensity",
-      "highPassCutoffFrequencyCurve": {
-        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-        "keys": [
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 0.0,
-            "value": 10.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          },
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 1.0,
-            "value": 10.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          }
-        ],
-        "length": 2,
-        "preWrapMode": "ClampForever",
-        "postWrapMode": "ClampForever"
-      },
-      "highPassResonanceQCurve": {
-        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-        "keys": [
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 0.0,
-            "value": 1.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          },
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 1.0,
-            "value": 1.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          }
-        ],
-        "length": 2,
-        "preWrapMode": "ClampForever",
-        "postWrapMode": "ClampForever"
-      },
+      "highPassCutoffFrequencyCurve": null,
+      "highPassResonanceQCurve": null,
       "useReverbFilter": false,
       "reverbEffectLink": "Intensity",
-      "reverbDryLevelCurve": {
-        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-        "keys": [
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 0.0,
-            "value": 0.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          },
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 1.0,
-            "value": 0.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          }
-        ],
-        "length": 2,
-        "preWrapMode": "ClampForever",
-        "postWrapMode": "ClampForever"
-      },
+      "reverbDryLevelCurve": null,
       "minDistance": 1.0,
       "maxDistance": 500.0,
+      "mergeKey": "ea2677e2",
       "step": "Start",
       "stepCustomId": null,
       "loopCustomStep": false,
@@ -3329,37 +1330,7 @@
         "BladeRapier"
       ],
       "damagersFilterLogic": "AnyExcept",
-      "damagersFilter": [],
-      "intensityCurve": {
-        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-        "keys": [
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 0.0,
-            "value": 0.0,
-            "inTangent": 0.0,
-            "outTangent": 1.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          },
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 1.0,
-            "value": 1.0,
-            "inTangent": 1.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          }
-        ],
-        "length": 2,
-        "preWrapMode": "ClampForever",
-        "postWrapMode": "ClampForever"
-      }
+      "damagersFilter": []
     },
     {
       "$type": "ThunderRoad.EffectModuleAudio, ThunderRoad",
@@ -3419,36 +1390,7 @@
         "postWrapMode": "ClampForever"
       },
       "useVolumeSpeed": false,
-      "volumeSpeedCurve": {
-        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-        "keys": [
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 0.0,
-            "value": 1.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          },
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 1.0,
-            "value": 1.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          }
-        ],
-        "length": 2,
-        "preWrapMode": "ClampForever",
-        "postWrapMode": "ClampForever"
-      },
+      "volumeSpeedCurve": null,
       "volumeBlendMode": "Min",
       "reverbZoneMix": 1.0,
       "isNoiseForAI": false,
@@ -3493,162 +1435,18 @@
       },
       "useLowPassFilter": false,
       "lowPassEffectLink": "Intensity",
-      "lowPassCutoffFrequencyCurve": {
-        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-        "keys": [
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 0.0,
-            "value": 22000.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          },
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 1.0,
-            "value": 22000.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          }
-        ],
-        "length": 2,
-        "preWrapMode": "ClampForever",
-        "postWrapMode": "ClampForever"
-      },
-      "lowPassResonanceQCurve": {
-        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-        "keys": [
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 0.0,
-            "value": 1.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          },
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 1.0,
-            "value": 1.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          }
-        ],
-        "length": 2,
-        "preWrapMode": "ClampForever",
-        "postWrapMode": "ClampForever"
-      },
+      "lowPassCutoffFrequencyCurve": null,
+      "lowPassResonanceQCurve": null,
       "useHighPassFilter": false,
       "highPassEffectLink": "Intensity",
-      "highPassCutoffFrequencyCurve": {
-        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-        "keys": [
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 0.0,
-            "value": 10.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          },
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 1.0,
-            "value": 10.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          }
-        ],
-        "length": 2,
-        "preWrapMode": "ClampForever",
-        "postWrapMode": "ClampForever"
-      },
-      "highPassResonanceQCurve": {
-        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-        "keys": [
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 0.0,
-            "value": 1.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          },
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 1.0,
-            "value": 1.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          }
-        ],
-        "length": 2,
-        "preWrapMode": "ClampForever",
-        "postWrapMode": "ClampForever"
-      },
+      "highPassCutoffFrequencyCurve": null,
+      "highPassResonanceQCurve": null,
       "useReverbFilter": false,
       "reverbEffectLink": "Intensity",
-      "reverbDryLevelCurve": {
-        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-        "keys": [
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 0.0,
-            "value": 0.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          },
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 1.0,
-            "value": 0.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          }
-        ],
-        "length": 2,
-        "preWrapMode": "ClampForever",
-        "postWrapMode": "ClampForever"
-      },
+      "reverbDryLevelCurve": null,
       "minDistance": 1.0,
       "maxDistance": 500.0,
+      "mergeKey": "08c7e16b",
       "step": "Start",
       "stepCustomId": null,
       "loopCustomStep": false,
@@ -3667,37 +1465,7 @@
         "BladeMace2h"
       ],
       "damagersFilterLogic": "AnyExcept",
-      "damagersFilter": [],
-      "intensityCurve": {
-        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-        "keys": [
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 0.0,
-            "value": 0.0,
-            "inTangent": 0.0,
-            "outTangent": 1.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          },
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 1.0,
-            "value": 1.0,
-            "inTangent": 1.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          }
-        ],
-        "length": 2,
-        "preWrapMode": "ClampForever",
-        "postWrapMode": "ClampForever"
-      }
+      "damagersFilter": []
     },
     {
       "$type": "ThunderRoad.EffectModuleAudio, ThunderRoad",
@@ -3757,36 +1525,7 @@
         "postWrapMode": "ClampForever"
       },
       "useVolumeSpeed": false,
-      "volumeSpeedCurve": {
-        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-        "keys": [
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 0.0,
-            "value": 1.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          },
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 1.0,
-            "value": 1.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          }
-        ],
-        "length": 2,
-        "preWrapMode": "ClampForever",
-        "postWrapMode": "ClampForever"
-      },
+      "volumeSpeedCurve": null,
       "volumeBlendMode": "Min",
       "reverbZoneMix": 1.0,
       "isNoiseForAI": false,
@@ -3831,162 +1570,18 @@
       },
       "useLowPassFilter": false,
       "lowPassEffectLink": "Intensity",
-      "lowPassCutoffFrequencyCurve": {
-        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-        "keys": [
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 0.0,
-            "value": 22000.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          },
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 1.0,
-            "value": 22000.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          }
-        ],
-        "length": 2,
-        "preWrapMode": "ClampForever",
-        "postWrapMode": "ClampForever"
-      },
-      "lowPassResonanceQCurve": {
-        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-        "keys": [
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 0.0,
-            "value": 1.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          },
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 1.0,
-            "value": 1.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          }
-        ],
-        "length": 2,
-        "preWrapMode": "ClampForever",
-        "postWrapMode": "ClampForever"
-      },
+      "lowPassCutoffFrequencyCurve": null,
+      "lowPassResonanceQCurve": null,
       "useHighPassFilter": false,
       "highPassEffectLink": "Intensity",
-      "highPassCutoffFrequencyCurve": {
-        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-        "keys": [
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 0.0,
-            "value": 10.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          },
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 1.0,
-            "value": 10.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          }
-        ],
-        "length": 2,
-        "preWrapMode": "ClampForever",
-        "postWrapMode": "ClampForever"
-      },
-      "highPassResonanceQCurve": {
-        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-        "keys": [
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 0.0,
-            "value": 1.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          },
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 1.0,
-            "value": 1.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          }
-        ],
-        "length": 2,
-        "preWrapMode": "ClampForever",
-        "postWrapMode": "ClampForever"
-      },
+      "highPassCutoffFrequencyCurve": null,
+      "highPassResonanceQCurve": null,
       "useReverbFilter": false,
       "reverbEffectLink": "Intensity",
-      "reverbDryLevelCurve": {
-        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-        "keys": [
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 0.0,
-            "value": 0.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          },
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 1.0,
-            "value": 0.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          }
-        ],
-        "length": 2,
-        "preWrapMode": "ClampForever",
-        "postWrapMode": "ClampForever"
-      },
+      "reverbDryLevelCurve": null,
       "minDistance": 1.0,
       "maxDistance": 500.0,
+      "mergeKey": "5cef6803",
       "step": "Start",
       "stepCustomId": null,
       "loopCustomStep": false,
@@ -4004,37 +1599,7 @@
         "BladeMace"
       ],
       "damagersFilterLogic": "AnyExcept",
-      "damagersFilter": [],
-      "intensityCurve": {
-        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-        "keys": [
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 0.0,
-            "value": 0.0,
-            "inTangent": 0.0,
-            "outTangent": 1.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          },
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 1.0,
-            "value": 1.0,
-            "inTangent": 1.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          }
-        ],
-        "length": 2,
-        "preWrapMode": "ClampForever",
-        "postWrapMode": "ClampForever"
-      }
+      "damagersFilter": []
     },
     {
       "$type": "ThunderRoad.EffectModuleAudio, ThunderRoad",
@@ -4083,36 +1648,7 @@
         "postWrapMode": "ClampForever"
       },
       "useVolumeSpeed": false,
-      "volumeSpeedCurve": {
-        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-        "keys": [
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 0.0,
-            "value": 1.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          },
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 1.0,
-            "value": 1.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          }
-        ],
-        "length": 2,
-        "preWrapMode": "ClampForever",
-        "postWrapMode": "ClampForever"
-      },
+      "volumeSpeedCurve": null,
       "volumeBlendMode": "Min",
       "reverbZoneMix": 1.0,
       "isNoiseForAI": false,
@@ -4157,162 +1693,18 @@
       },
       "useLowPassFilter": false,
       "lowPassEffectLink": "Intensity",
-      "lowPassCutoffFrequencyCurve": {
-        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-        "keys": [
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 0.0,
-            "value": 22000.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          },
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 1.0,
-            "value": 22000.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          }
-        ],
-        "length": 2,
-        "preWrapMode": "ClampForever",
-        "postWrapMode": "ClampForever"
-      },
-      "lowPassResonanceQCurve": {
-        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-        "keys": [
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 0.0,
-            "value": 1.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          },
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 1.0,
-            "value": 1.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          }
-        ],
-        "length": 2,
-        "preWrapMode": "ClampForever",
-        "postWrapMode": "ClampForever"
-      },
+      "lowPassCutoffFrequencyCurve": null,
+      "lowPassResonanceQCurve": null,
       "useHighPassFilter": false,
       "highPassEffectLink": "Intensity",
-      "highPassCutoffFrequencyCurve": {
-        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-        "keys": [
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 0.0,
-            "value": 10.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          },
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 1.0,
-            "value": 10.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          }
-        ],
-        "length": 2,
-        "preWrapMode": "ClampForever",
-        "postWrapMode": "ClampForever"
-      },
-      "highPassResonanceQCurve": {
-        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-        "keys": [
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 0.0,
-            "value": 1.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          },
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 1.0,
-            "value": 1.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          }
-        ],
-        "length": 2,
-        "preWrapMode": "ClampForever",
-        "postWrapMode": "ClampForever"
-      },
+      "highPassCutoffFrequencyCurve": null,
+      "highPassResonanceQCurve": null,
       "useReverbFilter": false,
       "reverbEffectLink": "Intensity",
-      "reverbDryLevelCurve": {
-        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-        "keys": [
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 0.0,
-            "value": 0.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          },
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 1.0,
-            "value": 0.0,
-            "inTangent": 0.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          }
-        ],
-        "length": 2,
-        "preWrapMode": "ClampForever",
-        "postWrapMode": "ClampForever"
-      },
+      "reverbDryLevelCurve": null,
       "minDistance": 1.0,
       "maxDistance": 500.0,
+      "mergeKey": "dfe404c2",
       "step": "Start",
       "stepCustomId": null,
       "loopCustomStep": false,
@@ -4330,38 +1722,7 @@
         "BladeMace2h"
       ],
       "damagersFilterLogic": "AnyExcept",
-      "damagersFilter": [],
-      "intensityCurve": {
-        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-        "keys": [
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 0.0,
-            "value": 0.0,
-            "inTangent": 0.0,
-            "outTangent": 1.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          },
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 1.0,
-            "value": 1.0,
-            "inTangent": 1.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          }
-        ],
-        "length": 2,
-        "preWrapMode": "ClampForever",
-        "postWrapMode": "ClampForever"
-      }
+      "damagersFilter": []
     }
-  ],
-  "groupPath": null
+  ]
 }

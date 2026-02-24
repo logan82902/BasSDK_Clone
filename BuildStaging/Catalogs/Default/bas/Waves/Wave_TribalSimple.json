@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 2,
+  "groupPath": "Sandbox",
   "category": "3Wildfolk (T1)",
   "localizationId": "TribalSimple",
   "title": "2Simple",
@@ -22,13 +23,13 @@
     {
       "$type": "ThunderRoad.WaveData+WaveFaction, ThunderRoad",
       "factionID": 7,
-      "factionHealthMultiplier": 1.0,
       "factionMaxAlive": 8
     }
   ],
   "groups": [
     {
       "$type": "ThunderRoad.WaveData+Group, ThunderRoad",
+      "mergeKey": "b32e4cfb",
       "reference": "Table",
       "referenceID": "TribalPatrolMix",
       "overrideFaction": false,
@@ -50,6 +51,7 @@
     },
     {
       "$type": "ThunderRoad.WaveData+Group, ThunderRoad",
+      "mergeKey": "0ce8856e",
       "reference": "Table",
       "referenceID": "TribalPatrolMix",
       "overrideFaction": false,
@@ -70,5 +72,5 @@
       "prereqMaxRemainingAlive": 0
     }
   ],
-  "groupPath": "Sandbox"
+  "modules": null
 }

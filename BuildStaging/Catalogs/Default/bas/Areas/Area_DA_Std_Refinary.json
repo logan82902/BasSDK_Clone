@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
+  "groupPath": "Dalgarian/Standard",
   "isUnique": true,
   "areaPrefabAddress": "Bas.Area.DA_Std_Refinary",
   "lightingPresetAddress": "Bas.Area.DA_Std_Refinary.LightingPreset",
@@ -100,6 +101,5 @@
       "fakeViewAddress": "Bas.Area.DA_Std_Refinary.FakeView.2"
     }
   ],
-  "areaGlobalParameters": [],
-  "groupPath": "Dalgarian/Standard"
+  "areaGlobalParameters": []
 }

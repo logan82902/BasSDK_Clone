@@ -1,24 +1,19 @@
 ﻿using System.Collections.Generic;
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#endif
+using TriInspector;
 using UnityEngine;
 
 namespace ThunderRoad.Skill.Spell
 {
+    [DeclareBoxGroup("Shove Detection", Title = "Shove Detection")]
+    [DeclareBoxGroup("Status", Title = "Status")]
     public class SkillWeightlessShove : SpellSkillData
     {
-#if ODIN_INSPECTOR
-        [BoxGroup("Shove Detection")]
-#endif
+        [Group("Shove Detection")]
         public float maxDelay = 0.1f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Status"), ValueDropdown(nameof(GetAllStatusEffectID))]
-#endif
+        [Group("Status")]
+        [Dropdown(nameof(GetAllStatusEffectID))]
         public string statusId;
-#if ODIN_INSPECTOR
-        [BoxGroup("Status")]
-#endif
+        [Group("Status")]
         public float duration = 2f;
         
         protected StatusData statusData;

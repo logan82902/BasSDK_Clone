@@ -1,94 +1,67 @@
-﻿#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#endif
+﻿using TriInspector;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace ThunderRoad.Skill.Spell
 {
+    [DeclareBoxGroup("Fall Damage", Title = "Fall Damage")]
+    [DeclareBoxGroup("Dive", Title = "Dive")]
+    [DeclareBoxGroup("Shockwave", Title = "Shockwave")]
+    [DeclareBoxGroup("Shake", Title = "Shake")]
     public class SkillAirstrike : SkillSpellPunch
     {
-#if ODIN_INSPECTOR
-        [BoxGroup("Fall Damage")]
-#endif
+        [Group("Fall Damage")]
         public float fallDamageScale = 0f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Dive")]
-#endif
+        [Group("Dive")]
         public float maxAngle = 70f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Dive")]
-#endif
+        [Group("Dive")]
         public float minDownwardVelocity = 5f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Dive")]
-#endif
+        [Group("Dive")]
         public float minHeight = 4f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Dive")]
-#endif
+        [Group("Dive")]
         public float maxHeightDistance = 3f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Dive"), ValueDropdown(nameof(GetAllEffectID))]
-#endif
+        [Group("Dive")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string whooshEffectId;
 
         protected EffectData whooshEffectData;
-#if ODIN_INSPECTOR
-        [BoxGroup("Shockwave")]
-#endif
+        [Group("Shockwave")]
         public float force = 4f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Shockwave")]
-#endif
+        [Group("Shockwave")]
         public float upwardsModifier = 0f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Shockwave")]
-#endif
+        [Group("Shockwave")]
         public int shockwavePushLevel = 2;
-#if ODIN_INSPECTOR
-        [BoxGroup("Shockwave")]
-#endif
+        [Group("Shockwave")]
         public float distanceMult = 1f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Shockwave")]
-#endif
+        [Group("Shockwave")]
         public float shockwaveDamage = 30f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Shockwave"), ValueDropdown(nameof(GetAllEffectID))]
-#endif
+        [Group("Shockwave")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string shockwaveEffectId;
 
         protected EffectData shockwaveEffectData;
-        
-#if ODIN_INSPECTOR
-        [BoxGroup("Shockwave"), ValueDropdown(nameof(GetAllEffectID))]
-#endif
+
+        [Group("Shockwave")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string playerEffectId;
 
         protected EffectData playerEffectData;
-#if ODIN_INSPECTOR
-        [BoxGroup("Shockwave")]
-#endif
+        [Group("Shockwave")]
         public float radius = 4f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Shake")]
-#endif
+        [Group("Shake")]
         public bool shake = true;
-#if ODIN_INSPECTOR
-        [BoxGroup("Shake"), ShowIf(nameof(shake))]
-#endif
+        [Group("Shake")]
+        [ShowIf(nameof(shake))]
         public float shakeDuration = 0.5f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Shake"), ShowIf(nameof(shake))]
-#endif
+        [Group("Shake")]
+        [ShowIf(nameof(shake))]
         public float shakeIntensity = 1;
-#if ODIN_INSPECTOR
-        [BoxGroup("Shake"), ShowIf(nameof(shake)), MinMaxSlider(0, 0.1f)]
-#endif
-        public Vector2 minMaxShakeIntensity = new Vector2(0.005f, 0.01f);
-#if ODIN_INSPECTOR
-        [BoxGroup("Shake"), ShowIf(nameof(shake))]
-#endif
+        [Group("Shake")]
+        [ShowIf(nameof(shake))]
+        [MinMaxSlider(0, 0.1f)]
+        public Vector2 minMaxShakeIntensity = new(0.005f, 0.01f);
+        [Group("Shake")]
+        [ShowIf(nameof(shake))]
         public AnimationCurve shakeCurve = AnimationCurve.EaseInOut(0, 1, 1, 0);
     }
 }

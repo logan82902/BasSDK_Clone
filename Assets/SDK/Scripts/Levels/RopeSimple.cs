@@ -1,11 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
@@ -37,9 +33,7 @@ namespace ThunderRoad
         public Material material;
 
         [Header("Audio")]
-#if ODIN_INSPECTOR
-        [ValueDropdown(nameof(GetAllEffectID), AppendNextDrawer = true)]
-#endif
+        [Dropdown(nameof(GetAllEffectID))]
         [Tooltip("Depicts the Effect ID from JSON to make sounds when the rope moves")]
         public string effectId;
         [Tooltip("The minimum force required to play the Effect sound")]
@@ -62,12 +56,7 @@ namespace ThunderRoad
         private LightVolumeReceiver lightVolumeReceiver;
 
 
-#if ODIN_INSPECTOR
-        public List<ValueDropdownItem<string>> GetAllEffectID()
-        {
-            return Catalog.GetDropdownAllID(Category.Effect);
-        }
-#endif
+        public TriDropdownList<string> GetAllEffectID() => Catalog.GetDropdownAllID(Category.Effect);
 
         public void Awake()
         {

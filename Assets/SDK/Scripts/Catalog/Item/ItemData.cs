@@ -7,11 +7,9 @@ using System.Globalization;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.AddressableAssets;
 using UnityEngine.SceneManagement;
-
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
+#if UNITY_EDITOR
+using UnityEditor;
 #endif
 
 namespace ThunderRoad
@@ -28,147 +26,157 @@ namespace ThunderRoad
         Ricochet = 32,
         Piercing = 64,
         Electromagnetic = 128,
-        Blunt = 256
+        Blunt = 256,
+        NoChargeSapping = 512,
+        NoMoltenArc = 1024
     }
-    [Serializable]
-    public class ItemData : EntityData, IContainerLoadable<ItemData>
-    {
 
-#if ODIN_INSPECTOR
-        [HorizontalGroup("Split", marginRight: 5, LabelWidth = 200, Width = 700)]
-        [VerticalGroup("Split/Left")]
-        [BoxGroup("Split/Left/General")]
+    [Serializable]
+    [AutoLabelWidth(AddedWidth = 0f, MinWidth = 0f)]
+#if UNITY_EDITOR
+    [EditorLoadPriority(-10)]
+    [DeclareHorizontalGroup("Split")]
+    [DeclareVerticalGroup("Split/Left")]
+    [DeclareBoxGroup("Split/Left/General", Title = "General")]
+    [DeclareBoxGroup("Split/Left/Prefab", Title = "Addressables")]
+    [DeclareHorizontalGroup("Split/Left/Prefab/horiz", Sizes = new float[] { 0f, 18f * 9f })]
+    [DeclareVerticalGroup("Split/Left/Prefab/horiz/vert")]
+    [DeclareHorizontalGroup("Split/Left/Prefab/horiz/previews")]
+    [DeclareHorizontalGroup("Split/Left/Prefab/pooling")]
+    [DeclareBoxGroup("Split/Left/Inventory", Title = "Inventory")]
+    [DeclareHorizontalGroup("Split/Left/Inventory/Audiohoriz")]
+    [DeclareBoxGroup("Split/Left/Holder", Title = "Holder")]
+    [DeclareHorizontalGroup("Split/Left/Holder/Snaphoriz")]
+    [DeclareBoxGroup("Split/Left/Rigidbody", Title = "Rigidbody")]
+    [DeclareBoxGroup("Split/Left/Bonus", Title = "Bonus")]
+    [DeclareBoxGroup("Split/Left/Collisions", Title = "Collisions")]
+    [DeclareBoxGroup("Split/Left/Water", Title = "Water")]
+    [DeclareBoxGroup("Split/Left/Object", Title = "Object")]
+    [DeclareBoxGroup("Split/Left/Holder/Imbuing", Title = "Imbuing")]
+    [DeclareVerticalGroup("Split/Right")]
+    [DeclareBoxGroup("Split/Right/Modules", Title = "Modules")]
 #endif
+    public class ItemData : EntityData, IContainerLoadable<ItemData>, ILootTableDrop
+    {
+        [LabelWidth(200f)]
+        [Group("Split/Left/General")]
         public string localizationId;
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Left/General")]
-#endif
+        [Group("Split/Left/General")]
         public string displayName;
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Left/General"), TextArea(4, 14)]
-#endif
+        [Group("Split/Left/General")]
+        [TextArea(4, 14)]
         public string description;
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Left/General")]
-#endif
+        [Group("Split/Left/General")]
         public string author = "Unknown";
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Left/General")]
-        [ValueDropdown(nameof(GetAllValueTypes))]
-#endif
+        [Group("Split/Left/General")]
+        [Dropdown(nameof(GetAllValueTypes))]
         public string valueType = "Gold";
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Left/General")]
-#endif
+        [Group("Split/Left/General")]
         public float value;
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Left/General")]
-#endif
+        [Group("Split/Left/General")]
         public float rewardValue;
 
-        
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Left/General")]
-#endif
+        [Group("Split/Left/General")]
         public int tier;
+
         [NonSerialized]
         public string tierString;
+
         [NonSerialized]
         public string weight;
+
         [NonSerialized]
         public string size;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Left/General")]
-#endif
+        [Group("Split/Left/General")]
         public ItemFlags flags;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Left/General")]
-#endif
+        [Group("Split/Left/General")]
         public int levelRequired;
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Left/General"), ValueDropdown(nameof(GetCategories), IsUniqueList = true)]
-#endif
+        [Group("Split/Left/General")]
+        public Type type = Type.Misc;
+        [Group("Split/Left/General")]
+        [Dropdown(nameof(GetCategories))]
         public string category;
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Left/General")]
-#endif
+        [Group("Split/Left/General")]
         public string update = string.Empty;
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Left/General"), ValueDropdown(nameof(GetAllEffectID))]
-#endif
+        [Group("Split/Left/General")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string iconEffectId;
+
         [NonSerialized]
         public EffectData iconEffectData;
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Left/General")]
-#endif
+        [Group("Split/Left/General")]
         public CenterType preferredItemCenter = CenterType.Mass;
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Left/General")]
-#endif
+        [Group("Split/Left/General")]
         public bool drainImbueWhenIdle = true;
+
+        [Group("Split/Left/General")]
+        [Tooltip("Forces skills like Arcwire, Inferno Staff and Gravity Hammer to use a particular button (instead of what is configured as Alt Use)")]
+        public ImbueUseButton forceImbueUseButton = ImbueUseButton.None;
 
 
         // PREFAB
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Left/Prefab")]
-#endif
+        [Group("Split/Left/Prefab/horiz/vert")]
+        [LabelWidth(90f)]
         public string prefabAddress;
+
         [NonSerialized]
         public IResourceLocation prefabLocation;
-
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Left/Prefab"), ShowInInspector]
-#endif
+        [Group("Split/Left/Prefab/horiz/vert")]
+        [ShowInInspector]
+        [LabelWidth(90f)]
         public string iconAddress;
+
         [NonSerialized]
         public IResourceLocation iconLocation;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Left/Prefab"), ShowInInspector]
-#endif
+        [Group("Split/Left/Prefab/horiz/vert")]
+        [ShowInInspector]
+        [LabelWidth(110f)]
         public string closeUpIconAddress;
+
         [NonSerialized]
         public IResourceLocation closeUpIconLocation;
 
+        [Group("Split/Left/Prefab/horiz/previews")]
+        [NonSerialized]
+        [ShowInInspector]
+        [HideLabel]
+        [DisableInPlayMode]
 #if UNITY_EDITOR
-#if ODIN_INSPECTOR
-        [HorizontalGroup("Split/Left/Prefab/horiz"), LabelText("Prefab"), NonSerialized, ShowInInspector, DisableInPlayMode, OnValueChanged(nameof(EditorUpdatePrefabAddress)), PreviewField]
-#endif
+        [OnValueChanged(nameof(EditorUpdatePrefabAddress))]
+        [PreviewField(LinesHeight = 3)]
         public GameObject editorPrefab;
-#endif
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Left/Prefab"), NonSerialized, ShowInInspector, HorizontalGroup("Split/Left/Prefab/horiz"), PreviewField]
-#if UNITY_EDITOR        
+
+        [NonSerialized]
+        [ShowInInspector]
+        [Group("Split/Left/Prefab/horiz/previews")]
+        [HideLabel]
+        [PreviewField(LinesHeight = 3)]
         [OnValueChanged(nameof(EditorUpdateIconAddress))]
 #endif
-#endif
         public Sprite icon;
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Left/Prefab"), NonSerialized, ShowInInspector, HorizontalGroup("Split/Left/Prefab/horiz"), PreviewField]
-#if UNITY_EDITOR        
+
+        [NonSerialized]
+        [ShowInInspector]
+        [Group("Split/Left/Prefab/horiz/previews")]
+        [HideLabel]
+        [PreviewField(LinesHeight = 3)]
+#if UNITY_EDITOR
         [OnValueChanged(nameof(EditorUpdateCloseUpIconAddress))]
-#endif
 #endif
         public Sprite closeUpIcon;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Left/Prefab")]
-#endif
+        [Group("Split/Left/Prefab/pooling")]
+        [LabelWidth(120f)]
+        [LabelText("PCVR Pooled Count")]
         public int pooledCount;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Left/Prefab")]
-#endif
+        [Group("Split/Left/Prefab/pooling")]
+        [LabelWidth(125f)]
         public int androidPooledCount;
-
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Left/Prefab")]
-#endif
-        public Type type = Type.Misc;
 
         public enum Type
         {
@@ -195,63 +203,85 @@ namespace ThunderRoad
         {
             if (editorPrefab) prefabAddress = Catalog.GetAddressFromPrefab(editorPrefab);
         }
+
         protected void EditorUpdateIconAddress()
         {
             if (icon) iconAddress = Catalog.GetAddressFromPrefab(icon);
         }
+
         protected void EditorUpdateCloseUpIconAddress()
         {
             if (closeUpIcon) closeUpIconAddress = Catalog.GetAddressFromPrefab(closeUpIcon);
         }
+
+        public override string GetCatalogPath()
+        {
+            string result = $"Items/{type}";
+            if (!groupPath.IsNullOrEmptyOrWhitespace()) result += $"/{groupPath}";
+            if (result[result.Length - 1] == '/') result = result.Substring(0, result.Length - 1);
+            return result;
+        }
+
+        public override Texture2D Icon()
+        {
+            bool needIcon = allowedStorage.HasFlag(ItemData.Storage.Inventory) && !despawnOnStoredInInventory;
+            if (allowedStorage.HasFlag(ItemData.Storage.Container)) needIcon = true;
+            if (needIcon && icon != null)
+            {
+                return AssetPreview.GetAssetPreview(icon);
+            }
+            return null;
+        }
+
+        public override string GetFileNameString()
+        {
+            return base.GetFileNameString().Replace("_", $"_{type.ToString()}_");
+        }
 #endif
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Left/Prefab"), NonSerialized, ShowInInspector, ReadOnly]
-#endif
-        public List<Item.IconMarker> iconDamagerMarkers = new List<Item.IconMarker>();
+        [Group("Split/Left/Prefab")]
+        [NonSerialized]
+        [ShowInInspector]
+        [ReadOnly]
+        public List<Item.IconMarker> iconDamagerMarkers = new();
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Left/Inventory")]
-#endif
-        public ItemData.Storage allowedStorage;
+        [Group("Split/Left/Inventory")]
+        public Storage allowedStorage;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Left/Inventory")]
-#endif
+        [Group("Split/Left/Inventory")]
         public bool despawnOnStoredInInventory;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Left/Inventory")]
+        [Group("Split/Left/Inventory")]
         [Tooltip("If true, it can be stacked to an infinite amount")]
-#endif
         public bool isStackable;
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Left/Inventory")]
-#endif
+        [Group("Split/Left/Inventory")]
         public string consumableId;
+
         [NonSerialized]
         public int consumableHashId;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Left/Inventory"), HorizontalGroup("Split/Left/Inventory/Audiohoriz")]
-#endif
+        [Group("Split/Left/Inventory/Audiohoriz")]
         public string inventoryAudioContainerAddress;
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Left/Inventory")]
-#endif
+        [Group("Split/Left/Inventory")]
         public float inventoryAudioVolume_dB;
+
         [NonSerialized]
         public IResourceLocation inventoryAudioContainerLocation;
 
 #if UNITY_EDITOR
-#if ODIN_INSPECTOR
-        [HorizontalGroup("Split/Left/Inventory/Audiohoriz"), LabelWidth(50), HideLabel, NonSerialized, ShowInInspector, DisableInPlayMode, OnValueChanged(nameof(EditorUpdateInventoryAudioContainerAddress))]
-#endif
+        [Group("Split/Left/Inventory/Audiohoriz")]
+        [LabelWidth(50)]
+        [HideLabel]
+        [NonSerialized]
+        [ShowInInspector]
+        [DisableInPlayMode]
+        [OnValueChanged(nameof(EditorUpdateInventoryAudioContainerAddress))]
         public AudioContainer editorInventoryAudioContainer;
 
         protected void EditorUpdateInventoryAudioContainerAddress()
         {
-            if (editorInventoryAudioContainer) inventoryAudioContainerAddress = Catalog.GetAddressFromPrefab(editorInventoryAudioContainer);
+            if (editorInventoryAudioContainer)
+                inventoryAudioContainerAddress = Catalog.GetAddressFromPrefab(editorInventoryAudioContainer);
         }
 #endif
 
@@ -263,157 +293,102 @@ namespace ThunderRoad
             SandboxAllItems = 4,
         }
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Left/Holder"), ValueDropdown(nameof(GetAllHolderSlots))]
-#endif
+        [Group("Split/Left/Holder")]
+        [Dropdown(nameof(GetAllHolderSlots))]
         public string slot;
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Left/Holder"), HorizontalGroup("Split/Left/Holder/Snaphoriz")]
-#endif
+        [Group("Split/Left/Holder/Snaphoriz")]
         public string snapAudioContainerAddress;
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Left/Holder")]
-#endif
+        [Group("Split/Left/Holder")]
         public float snapAudioVolume_dB;
+
         [NonSerialized]
         public IResourceLocation snapAudioContainerLocation;
 
 #if UNITY_EDITOR
-#if ODIN_INSPECTOR
-        [HorizontalGroup("Split/Left/Holder/Snaphoriz"), LabelWidth(50), HideLabel, NonSerialized, ShowInInspector, DisableInPlayMode, OnValueChanged(nameof(EditorUpdateSnapAudioContainerAddress))]
-#endif
+        [Group("Split/Left/Holder/Snaphoriz")]
+        [LabelWidth(50)]
+        [HideLabel]
+        [NonSerialized]
+        [ShowInInspector]
+        [DisableInPlayMode]
+        [OnValueChanged(nameof(EditorUpdateSnapAudioContainerAddress))]
         public AudioContainer editorSnapAudioContainer;
 
         protected void EditorUpdateSnapAudioContainerAddress()
         {
-            if (editorSnapAudioContainer) snapAudioContainerAddress = Catalog.GetAddressFromPrefab(editorSnapAudioContainer);
+            if (editorSnapAudioContainer)
+                snapAudioContainerAddress = Catalog.GetAddressFromPrefab(editorSnapAudioContainer);
         }
 #endif
 
-#if ODIN_INSPECTOR
-        public List<ValueDropdownItem<string>> GetAllHolderSlots()
-        {
-            return Catalog.GetDropdownHolderSlots();
-        }
-#endif
+        public TriDropdownList<string> GetAllHolderSlots() => Catalog.GetDropdownHolderSlots();
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Left/Rigidbody")]
-#endif
+        [Group("Split/Left/Rigidbody")]
         public bool overrideMassAndDrag;
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Left/Rigidbody"), ShowIf("overrideMassAndDrag")]
-#endif
+        [Group("Split/Left/Rigidbody")]
+        [ShowIf("overrideMassAndDrag")]
         public float mass = 1;
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Left/Rigidbody"), ShowIf("overrideMassAndDrag")]
-#endif
+        [Group("Split/Left/Rigidbody")]
+        [ShowIf("overrideMassAndDrag")]
         public float drag = 1;
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Left/Rigidbody"), ShowIf("overrideMassAndDrag")]
-#endif
+        [Group("Split/Left/Rigidbody")]
+        [ShowIf("overrideMassAndDrag")]
         public float angularDrag = 1;
+        [Group("Split/Left/Rigidbody")]
+        [Tooltip("Density in kg/m3, water is 1000, human: 985 wood: 700, bone: 1500, brick: 1700, porcelain/stone: 2500, steel: 7900, lead: 11500")]
+        public float density = 1000;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Left/Bonus")]
-#endif
+        [Group("Split/Left/Bonus")]
         public float focusRegenMultiplier = 1;
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Left/Bonus")]
-#endif
+        [Group("Split/Left/Bonus")]
         public float spellChargeSpeedPlayerMultiplier = 1;
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Left/Bonus")]
-#endif
+        [Group("Split/Left/Bonus")]
         public float spellChargeSpeedNPCMultiplier = 1;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Left/Collisions")]
-#endif
+        [Group("Split/Left/Collisions")]
         public int collisionMaxOverride;
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Left/Collisions")]
-#endif
+        [Group("Split/Left/Collisions")]
         public bool collisionEnterOnly;
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Left/Collisions")]
-#endif
+        [Group("Split/Left/Collisions")]
         public bool collisionNoMinVelocityCheck;
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Left/Collisions")]
-#endif
+        [Group("Split/Left/Collisions")]
         public LayerName forceLayer = LayerName.None;
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Left/Collisions")]
-#endif
+        [Group("Split/Left/Collisions")]
         public bool diffForceLayerWhenHeld = false;
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Left/Collisions")]
-#endif
+        [Group("Split/Left/Collisions")]
         public LayerName forceLayerHeld = LayerName.None;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Left/Water")]
-#endif
+        [Group("Split/Left/Water")]
         public AnimationCurve waterHandSpringMultiplierCurve = AnimationCurve.EaseInOut(0, 0.3f, 1, 0.15f);
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Left/Water")]
-#endif
+        [Group("Split/Left/Water")]
         public AnimationCurve waterDragMultiplierCurve = AnimationCurve.EaseInOut(0, 1, 1, 10);
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Left/Water")]
-#endif
+        [Group("Split/Left/Water")]
         public float waterSampleMinRadius = 0.2f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Left/Object")]
-#endif
+        [Group("Split/Left/Object")]
         public float throwMultiplier = 1;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Left/Bonus")]
-#endif
+        [Group("Split/Left/Bonus")]
         public float runSpeedMultiplier = 1;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Left/Object")]
-#endif
+        [Group("Split/Left/Object")]
         public float flyRotationSpeed = 2;
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Left/Object")]
-#endif
+        [Group("Split/Left/Object")]
         public float flyThrowAngle = 0;
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Left/Object")]
-#endif
+        [Group("Split/Left/Object")]
         public bool allowFlyBackwards = false;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Left/Object")]
-#endif
+        [Group("Split/Left/Object")]
         public float telekinesisSafeDistance = 1;
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Left/Object")]
-#endif
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Left/Object")]
-#endif
+        [Group("Split/Left/Object")]
         public float telekinesisThrowRatio = 1;
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Left/Object")]
-#endif
+        [Group("Split/Left/Object")]
         public bool telekinesisAutoGrabAnyHandle;
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Left/Object")]
-#endif
+        [Group("Split/Left/Object")]
         public bool grippable = false;
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Left/Object")]
-#endif
+        [Group("Split/Left/Object")]
         public bool grabAndGripClimb = false;
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Left/Object")]
-#endif
+        [Group("Split/Left/Object")]
         [Tooltip("Change mesh and collider layer to MovingItem when grabbed or gripped")]
         public bool playerGrabAndGripChangeLayer = true;
 
@@ -424,87 +399,76 @@ namespace ThunderRoad
             None,
         }
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Left/Holder")]
-#endif
-        public List<CustomSnap> customSnaps = new List<CustomSnap>();
+        [Group("Split/Left/Holder")]
+        [HideReferencePicker]
+        public List<CustomSnap> customSnaps = new();
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Left/Holder/Imbuing")]
-#endif
+        [Group("Split/Left/Holder/Imbuing")]
         public bool drainImbueOnSnap = true;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Left/Holder/Imbuing")]
-#endif
+        [Group("Split/Left/Holder/Imbuing")]
         [Tooltip("X → Time (seconds). Y → Imbue value (normalized [0; 1])")]
         public AnimationCurve imbueEnergyOverTimeOnSnap
             = AnimationCurve.EaseInOut(0, 1, 3, 0);
-        
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Right/Modules"), ShowInInspector]
-#endif
-        public List<ItemModule> modules;
 
         [Serializable]
         public class CustomSnap
         {
             [JsonMergeKey]
             public string holderName;
+
             public Vector3 localPosition;
             public Vector3 localRotation;
         }
 
-#if ODIN_INSPECTOR
-        [VerticalGroup("Split/Right")]
-        [BoxGroup("Split/Right/ColliderGroups")]
-#endif
-        public List<ColliderGroup> colliderGroups = new List<ColliderGroup>();
+        [Group("Split/Right")]
+        [HideReferencePicker]
+        public List<ColliderGroup> colliderGroups = new();
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Right/Damagers")]
-#endif
-        public List<Damager> damagers = new List<Damager>();
+        [Group("Split/Right")]
+        [HideReferencePicker]
+        public List<Damager> damagers = new();
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Right/Interactables")]
-#endif
-        public List<Interactable> Interactables = new List<Interactable>();
+        [Group("Split/Right")]
+        [HideReferencePicker]
+        public List<Interactable> Interactables = new();
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Right/EffectHinge")]
-#endif
-        public List<EffectHinge> effectHinges = new List<EffectHinge>();
+        [Group("Split/Right")]
+        [HideReferencePicker]
+        public List<EffectHinge> effectHinges = new();
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Right/Whooshs")]
-#endif
-        public List<Whoosh> whooshs = new List<Whoosh>();
+        [Group("Split/Right")]
+        [HideReferencePicker]
+        public List<Whoosh> whooshs = new();
+
+        [Group("Split/Right")]
+        [ShowInInspector]
+        [SerializeReference]
+        [ReadOnlyReferencePicker]
+        [ListDrawerSettings(DontForceInline = true)]
+        public List<ItemModule> modules;
 
         [Serializable]
         public class ColliderGroup
         {
             [JsonMergeKey]
+            [LabelWidth(100f)]
             public string transformName = "Blades";
-#if ODIN_INSPECTOR
-            [ValueDropdown(nameof(GetAllColliderGroupID))]
-#endif
+            [Dropdown(nameof(GetAllColliderGroupID))]
+            [LabelWidth(100f)]
             public string colliderGroupId;
+
             [NonSerialized]
             public ColliderGroupData colliderGroupData;
 
-#if ODIN_INSPECTOR
-            public List<ValueDropdownItem<string>> GetAllColliderGroupID()
-            {
-                return Catalog.GetDropdownAllID(Category.ColliderGroup);
-            }
-#endif
+            public TriDropdownList<string> GetAllColliderGroupID() => Catalog.GetDropdownAllID(Category.ColliderGroup);
 
             public void OnCatalogRefresh(string itemId)
             {
                 if (!Catalog.TryGetData<ColliderGroupData>(colliderGroupId, out colliderGroupData))
                 {
-                    Debug.LogWarning($"ColliderGroupData not found for colliderGroupID {colliderGroupId} on transform {transformName} on item {itemId}");
+                    Debug.LogWarning(
+                        $"ColliderGroupData not found for colliderGroupID {colliderGroupId} on transform {transformName} on item {itemId}");
                 }
             }
         }
@@ -513,36 +477,26 @@ namespace ThunderRoad
         public class Interactable
         {
             [JsonMergeKey]
+            [LabelWidth(100f)]
             public string transformName = "Handle";
-#if ODIN_INSPECTOR
-            [ValueDropdown(nameof(GetAllInteractableID))]
-#endif
+            [Dropdown(nameof(GetAllInteractableID))]
+            [LabelWidth(100f)]
             public string interactableId;
 
-#if ODIN_INSPECTOR
-            public List<ValueDropdownItem<string>> GetAllInteractableID()
-            {
-                return Catalog.GetDropdownAllID(Category.Interactable);
-            }
-#endif
+            public TriDropdownList<string> GetAllInteractableID() => Catalog.GetDropdownAllID(Category.Interactable);
         }
 
         [Serializable]
         public class EffectHinge
         {
             [JsonMergeKey]
+            [LabelWidth(100f)]
             public string transformName = "EffectHinge";
-#if ODIN_INSPECTOR
-            [ValueDropdown(nameof(GetAllEffectID))]
-#endif
+            [Dropdown(nameof(GetAllEffectID))]
+            [LabelWidth(70f)]
             public string effectId;
 
-#if ODIN_INSPECTOR
-            public List<ValueDropdownItem<string>> GetAllEffectID()
-            {
-                return Catalog.GetDropdownAllID(Category.Effect);
-            }
-#endif
+            public TriDropdownList<string> GetAllEffectID() => Catalog.GetDropdownAllID(Category.Effect);
             public float minTorque = 5;
             public float maxTorque = 12;
         }
@@ -551,10 +505,10 @@ namespace ThunderRoad
         public class Whoosh
         {
             [JsonMergeKey]
+            [LabelWidth(100f)]
             public string transformName = "Whoosh";
-#if ODIN_INSPECTOR
-            [ValueDropdown(nameof(GetAllEffectID))]
-#endif
+            [Dropdown(nameof(GetAllEffectID))]
+            [LabelWidth(70f)]
             public string effectId;
 
             public WhooshPoint.Trigger trigger = WhooshPoint.Trigger.Always;
@@ -562,49 +516,37 @@ namespace ThunderRoad
             public float minVelocity = 5;
             public float maxVelocity = 12;
             public float dampening = 0.1f;
-#if ODIN_INSPECTOR
-            public List<ValueDropdownItem<string>> GetAllEffectID()
-            {
-                return Catalog.GetDropdownAllID(Category.Effect);
-            }
-#endif
+            public TriDropdownList<string> GetAllEffectID() => Catalog.GetDropdownAllID(Category.Effect);
         }
 
-#if ODIN_INSPECTOR
-        public List<ValueDropdownItem<string>> GetAllValueTypes()
+        public TriDropdownList<string> GetAllValueTypes()
         {
+            if (Catalog.gameData == null) return new TriDropdownList<string>() { needsValidation = false };
             return Catalog.gameData.GetAllValueTypes();
         }
 
-        public List<ValueDropdownItem<string>> GetCategories()
+        public TriDropdownList<string> GetCategories()
         {
+            if (Catalog.gameData == null) return new TriDropdownList<string>() { needsValidation = false };
             return Catalog.gameData.GetCategories();
         }
 
-        public List<ValueDropdownItem<string>> GetAllEffectID()
-        {
-            return Catalog.GetDropdownAllID(Category.Effect);
-        }
-#endif
+        public TriDropdownList<string> GetAllEffectID() => Catalog.GetDropdownAllID(Category.Effect);
 
         [Serializable]
         public class Damager
         {
             [JsonMergeKey]
+            [LabelWidth(100f)]
             public string transformName = "Damager";
-#if ODIN_INSPECTOR
-            [ValueDropdown(nameof(GetAllDamagerID))]
-#endif
+            [Dropdown(nameof(GetAllDamagerID))]
+            [LabelWidth(90f)]
             public string damagerID;
+
             [NonSerialized]
             public DamagerData damagerData;
 
-#if ODIN_INSPECTOR
-            public List<ValueDropdownItem<string>> GetAllDamagerID()
-            {
-                return Catalog.GetDropdownAllID(Category.Damager);
-            }
-#endif
+            public TriDropdownList<string> GetAllDamagerID() => Catalog.GetDropdownAllID(Category.Damager);
 
         }
 
@@ -625,6 +567,7 @@ namespace ThunderRoad
                     return true;
                 }
             }
+
             return false;
         }
 
@@ -637,6 +580,7 @@ namespace ThunderRoad
                     if (itemModule is T) return itemModule as T;
                 }
             }
+
             return null;
         }
 
@@ -649,6 +593,7 @@ namespace ThunderRoad
                     if (itemModule is T) return true;
                 }
             }
+
             return false;
         }
 

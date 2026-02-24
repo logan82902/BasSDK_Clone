@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
+  "groupPath": null,
   "type": "WIP",
   "rootNode": {
     "$type": "ThunderRoad.AI.Control.Sequence, ThunderRoad",
@@ -38,18 +39,12 @@
                   "weaponHandling": "None",
                   "checkAmmo": false,
                   "checkInHolder": false
-                },
-                "blackboard": null,
-                "creature": null,
-                "brainData": null
+                }
               },
               {
                 "$type": "ThunderRoad.AI.Action.SetStance, ThunderRoad",
                 "stance": "MeleeShield",
-                "onlyOnce": false,
-                "blackboard": null,
-                "creature": null,
-                "brainData": null
+                "onlyOnce": false
               }
             ]
           },
@@ -78,18 +73,12 @@
                   "weaponHandling": "None",
                   "checkAmmo": false,
                   "checkInHolder": false
-                },
-                "blackboard": null,
-                "creature": null,
-                "brainData": null
+                }
               },
               {
                 "$type": "ThunderRoad.AI.Action.SetStance, ThunderRoad",
                 "stance": "DualWield",
-                "onlyOnce": false,
-                "blackboard": null,
-                "creature": null,
-                "brainData": null
+                "onlyOnce": false
               }
             ]
           },
@@ -118,18 +107,12 @@
                   "weaponHandling": "None",
                   "checkAmmo": false,
                   "checkInHolder": false
-                },
-                "blackboard": null,
-                "creature": null,
-                "brainData": null
+                }
               },
               {
                 "$type": "ThunderRoad.AI.Action.SetStance, ThunderRoad",
                 "stance": "Melee1H",
-                "onlyOnce": false,
-                "blackboard": null,
-                "creature": null,
-                "brainData": null
+                "onlyOnce": false
               }
             ]
           },
@@ -158,18 +141,12 @@
                   "weaponHandling": "None",
                   "checkAmmo": false,
                   "checkInHolder": false
-                },
-                "blackboard": null,
-                "creature": null,
-                "brainData": null
+                }
               },
               {
                 "$type": "ThunderRoad.AI.Action.SetStance, ThunderRoad",
                 "stance": "Staff",
-                "onlyOnce": false,
-                "blackboard": null,
-                "creature": null,
-                "brainData": null
+                "onlyOnce": false
               }
             ]
           }
@@ -191,12 +168,8 @@
         "forceMaxRangeDelta": 0.25,
         "stopOnReset": false,
         "pickClipSequentialMaxIndex": 5,
-        "updateClipRange": false,
-        "blackboard": null,
-        "creature": null,
-        "brainData": null
+        "updateClipRange": false
       }
     ]
-  },
-  "groupPath": null
+  }
 }

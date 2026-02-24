@@ -1,7 +1,5 @@
 ﻿namespace ThunderRoad.Skill
 {
-    public class AISkillData : SpellSkillData
-    {
-        
-    }
+    public abstract class AISkillData : SpellSkillData
+    { }
 }

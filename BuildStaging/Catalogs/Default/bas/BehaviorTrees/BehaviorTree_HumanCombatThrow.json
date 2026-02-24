@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
+  "groupPath": null,
   "type": "SubTree",
   "rootNode": {
     "$type": "ThunderRoad.AI.Control.Selector, ThunderRoad",
@@ -36,10 +37,7 @@
             {
               "$type": "ThunderRoad.AI.Action.SetStance, ThunderRoad",
               "stance": "Melee1H",
-              "onlyOnce": false,
-              "blackboard": null,
-              "creature": null,
-              "brainData": null
+              "onlyOnce": false
             },
             {
               "$type": "ThunderRoad.AI.Action.AttackThrow, ThunderRoad",
@@ -59,12 +57,7 @@
                 "x": 0.0,
                 "y": 0.0,
                 "z": 0.0
-              },
-              "moduleThrow": null,
-              "moduleRanged": null,
-              "blackboard": null,
-              "creature": null,
-              "brainData": null
+              }
             }
           ]
         }
@@ -102,10 +95,7 @@
                       "weaponHandling": "OneHanded",
                       "checkAmmo": false,
                       "checkInHolder": true
-                    },
-                    "blackboard": null,
-                    "creature": null,
-                    "brainData": null
+                    }
                   },
                   {
                     "$type": "ThunderRoad.AI.Action.DrawItem, ThunderRoad",
@@ -128,10 +118,7 @@
                       "weaponHandling": "OneHanded",
                       "checkAmmo": false,
                       "checkInHolder": true
-                    },
-                    "blackboard": null,
-                    "creature": null,
-                    "brainData": null
+                    }
                   },
                   {
                     "$type": "ThunderRoad.AI.Action.DrawItem, ThunderRoad",
@@ -154,20 +141,14 @@
                       "weaponHandling": "None",
                       "checkAmmo": false,
                       "checkInHolder": false
-                    },
-                    "blackboard": null,
-                    "creature": null,
-                    "brainData": null
+                    }
                   }
                 ]
               },
               {
                 "$type": "ThunderRoad.AI.Action.SetStance, ThunderRoad",
                 "stance": "MeleeShield",
-                "onlyOnce": false,
-                "blackboard": null,
-                "creature": null,
-                "brainData": null
+                "onlyOnce": false
               },
               {
                 "$type": "ThunderRoad.AI.Decorator.AlwaysSuccess, ThunderRoad",
@@ -180,20 +161,14 @@
                       "target": "CurrentTarget",
                       "inputVariableName": "",
                       "checkShortestPath": false,
-                      "outputPositionVariableName": "ShootPosition",
-                      "blackboard": null,
-                      "creature": null,
-                      "brainData": null
+                      "outputPositionVariableName": "ShootPosition"
                     },
                     {
                       "$type": "ThunderRoad.AI.Get.GetShootPosition, ThunderRoad",
                       "target": "CurrentTarget",
                       "inputVariableName": "",
                       "checkShortestPath": false,
-                      "outputPositionVariableName": "ShootPosition",
-                      "blackboard": null,
-                      "creature": null,
-                      "brainData": null
+                      "outputPositionVariableName": "ShootPosition"
                     }
                   ]
                 }
@@ -220,12 +195,7 @@
                       "x": 0.0,
                       "y": 0.0,
                       "z": 0.0
-                    },
-                    "moduleThrow": null,
-                    "moduleRanged": null,
-                    "blackboard": null,
-                    "creature": null,
-                    "brainData": null
+                    }
                   },
                   {
                     "$type": "ThunderRoad.AI.Action.MoveTo, ThunderRoad",
@@ -262,10 +232,7 @@
                     "angleMode": "CheckAllies",
                     "changeAngleUntilUnobstructed": true,
                     "targetRadiusMinAngle": 20.0,
-                    "targetRadiusMaxAngle": 45.0,
-                    "blackboard": null,
-                    "creature": null,
-                    "brainData": null
+                    "targetRadiusMaxAngle": 45.0
                   },
                   {
                     "$type": "ThunderRoad.AI.Decorator.AlwaysSuccess, ThunderRoad",
@@ -300,18 +267,12 @@
                   "weaponHandling": "OneHanded",
                   "checkAmmo": false,
                   "checkInHolder": true
-                },
-                "blackboard": null,
-                "creature": null,
-                "brainData": null
+                }
               },
               {
                 "$type": "ThunderRoad.AI.Action.SetStance, ThunderRoad",
                 "stance": "Melee1H",
-                "onlyOnce": false,
-                "blackboard": null,
-                "creature": null,
-                "brainData": null
+                "onlyOnce": false
               },
               {
                 "$type": "ThunderRoad.AI.Decorator.AlwaysSuccess, ThunderRoad",
@@ -324,20 +285,14 @@
                       "target": "CurrentTarget",
                       "inputVariableName": "",
                       "checkShortestPath": false,
-                      "outputPositionVariableName": "ShootPosition",
-                      "blackboard": null,
-                      "creature": null,
-                      "brainData": null
+                      "outputPositionVariableName": "ShootPosition"
                     },
                     {
                       "$type": "ThunderRoad.AI.Get.GetShootPosition, ThunderRoad",
                       "target": "CurrentTarget",
                       "inputVariableName": "",
                       "checkShortestPath": false,
-                      "outputPositionVariableName": "ShootPosition",
-                      "blackboard": null,
-                      "creature": null,
-                      "brainData": null
+                      "outputPositionVariableName": "ShootPosition"
                     }
                   ]
                 }
@@ -364,12 +319,7 @@
                       "x": 0.0,
                       "y": 0.0,
                       "z": 0.0
-                    },
-                    "moduleThrow": null,
-                    "moduleRanged": null,
-                    "blackboard": null,
-                    "creature": null,
-                    "brainData": null
+                    }
                   },
                   {
                     "$type": "ThunderRoad.AI.Action.MoveTo, ThunderRoad",
@@ -406,10 +356,7 @@
                     "angleMode": "CheckAllies",
                     "changeAngleUntilUnobstructed": true,
                     "targetRadiusMinAngle": 20.0,
-                    "targetRadiusMaxAngle": 45.0,
-                    "blackboard": null,
-                    "creature": null,
-                    "brainData": null
+                    "targetRadiusMaxAngle": 45.0
                   },
                   {
                     "$type": "ThunderRoad.AI.Decorator.AlwaysSuccess, ThunderRoad",
@@ -422,6 +369,5 @@
         ]
       }
     ]
-  },
-  "groupPath": null
+  }
 }

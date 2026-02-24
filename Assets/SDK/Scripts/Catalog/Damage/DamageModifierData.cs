@@ -1,25 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
-
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#endif
+using TriInspector;
 
 namespace ThunderRoad
 {
     [Serializable]
+#if UNITY_EDITOR
+    [EditorLoadPriority(0)]
+#endif
+    [DeclareBoxGroup("General", Title = "General")]
+    [DeclareBoxGroup("Collision(s)", Title = "Collision(s)")]
     public class DamageModifierData : CatalogData
     {
-#if ODIN_INSPECTOR
-        [BoxGroup("General")]
-#endif
+        [Group("General")]
         public DamageType damageType = DamageType.Blunt;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Collision(s)")]
-#endif
-        public List<Collision> collisions = new List<Collision>();
+        [Group("Collision(s)")]
+        [HideReferencePicker]
+        public List<Collision> collisions = new();
 
         protected Modifier defaultModifier;
 
@@ -30,35 +29,28 @@ namespace ThunderRoad
 
 
         [Serializable]
+        [DeclareHorizontalGroup("Split")]
         public class Collision
         {
             [NonSerialized]
             public DamageModifierData damagerModifierData;
 
-#if ODIN_INSPECTOR
-            [HorizontalGroup("Split")]
-            [ValueDropdown("GetAllMaterialID", IsUniqueList = true)]
-#endif
-            public List<string> sourceMaterialIds = new List<string>();
+            [Group("Split")]
+            [DropdownList("GetAllMaterialID")]
+            public List<string> sourceMaterialIds = new();
             [NonSerialized]
             public List<MaterialData> sourceMaterials;
 
-#if ODIN_INSPECTOR
-            [HorizontalGroup("Split")]
-            [ValueDropdown("GetAllMaterialID", IsUniqueList = true)]
-#endif
-            public List<string> targetMaterialIds = new List<string>();
+            [Group("Split")]
+            [DropdownList("GetAllMaterialID")]
+            public List<string> targetMaterialIds = new();
             [NonSerialized]
             public List<MaterialData> targetMaterials;
 
-            public List<Modifier> modifiers = new List<Modifier>();
+            [HideReferencePicker]
+            public List<Modifier> modifiers = new();
 
-#if ODIN_INSPECTOR
-            public List<ValueDropdownItem<string>> GetAllMaterialID()
-            {
-                return Catalog.GetDropdownAllID(Category.Material);
-            }
-#endif
+            public TriDropdownList<string> GetAllMaterialID() => Catalog.GetDropdownAllID(Category.Material);
 
             public void OnCatalogRefresh()
             {
@@ -67,6 +59,12 @@ namespace ThunderRoad
         }
 
         [Serializable]
+        [DeclareHorizontalGroup("Split")]
+        [DeclareBoxGroup("Split/Filters", Title = "Filters")]
+        [DeclareBoxGroup("Split/General", Title = "General")]
+        [DeclareBoxGroup("Split/Knockout", Title = "Knockout")]
+        [DeclareBoxGroup("Split/Push", Title = "Push")]
+        [DeclareBoxGroup("Split/Penetration", Title = "Penetration")]
         public class Modifier
         {
             [NonSerialized]
@@ -74,10 +72,8 @@ namespace ThunderRoad
             [NonSerialized]
             public DamageModifierData damagerModifierData;
 
-#if ODIN_INSPECTOR
-            [HorizontalGroup("Split", width: 0.25f, LabelWidth = 150)]
-            [BoxGroup("Split/Filters")]
-#endif
+            [Group("Split/Filters")]
+            [LabelWidth(150f)]
             public TierFilter tierFilter;
 
             [Flags]
@@ -93,67 +89,59 @@ namespace ThunderRoad
             }
 
 
-#if ODIN_INSPECTOR  
-            [BoxGroup("Split/Filters")]
-#endif
+            [Group("Split/Filters")]
             public FilterLogic imbuesFilterLogic = FilterLogic.AnyExcept;
-#if ODIN_INSPECTOR
-            [BoxGroup("Split/Filters"), ValueDropdown("GetAllSpellCastChargeID", IsUniqueList = true)]
-#endif
+            [Group("Split/Filters")]
+            [DropdownList("GetAllSpellCastChargeID")]
             public string[] imbuesFilter = new string[0];
 
-#if ODIN_INSPECTOR
-            public List<ValueDropdownItem<string>> GetAllSpellCastChargeID()
-            {
-                return Catalog.GetDropdownAllID<SpellCastCharge>();
-            }
-#endif
+            public TriDropdownList<string> GetAllSpellCastChargeID() => Catalog.GetDropdownAllID<SpellCastCharge>();
 
-#if ODIN_INSPECTOR
-            [BoxGroup("Split/General"), LabelWidth(150)]
-#endif
+            [Group("Split/General")]
+            [LabelWidth(150)]
             public float minVelocity = 1;
-#if ODIN_INSPECTOR
-            [BoxGroup("Split/General"), LabelWidth(150)]
-#endif
+            [Group("Split/General")]
+            [LabelWidth(150)]
             public float damageMultiplier = 1;
-#if ODIN_INSPECTOR
-            [BoxGroup("Split/General"), LabelWidth(150)]
-#endif
+            [Group("Split/General")]
+            [LabelWidth(150)]
             public bool allowKnockout = false;
-#if ODIN_INSPECTOR
-            [BoxGroup("Split/General"), LabelWidth(150)]
-#endif
+            [Group("Split/General")]
+            [LabelWidth(150)]
             public bool allowPenetration = false;
-#if ODIN_INSPECTOR
-            [BoxGroup("Split/General"), LabelWidth(150), EnableIf("@allowPenetration && allowPenetration")]
-#endif
+            [Group("Split/General")]
+            [LabelWidth(150)]
+            [EnableIf(nameof(allowPenetration))]
             public bool pressureAllowed = false;
 
-#if ODIN_INSPECTOR
-            [BoxGroup("Split/Knockout"), LabelWidth(210), LabelText("Allowed min velocity"), EnableIf("allowKnockout")]
-#endif
+            [Group("Split/Knockout")]
+            [LabelWidth(210)]
+            [LabelText("Allowed min velocity")]
+            [EnableIf(nameof(allowKnockout))]
             public float knockoutAllowedMinVelocity = Mathf.Infinity;
-#if ODIN_INSPECTOR
-            [BoxGroup("Split/Knockout"), LabelWidth(210), LabelText("Forced min velocity"), EnableIf("allowKnockout")]
-#endif
+            [Group("Split/Knockout")]
+            [LabelWidth(210)]
+            [LabelText("Forced min velocity")]
+            [EnableIf(nameof(allowKnockout))]
             public float knockoutForcedMinVelocity = Mathf.Infinity;
-#if ODIN_INSPECTOR
-            [BoxGroup("Split/Knockout"), LabelWidth(210), LabelText("Allowed min velocity (Throw-Sliced)"), EnableIf("allowKnockout")]
-#endif
+            [Group("Split/Knockout")]
+            [LabelWidth(210)]
+            [LabelText("Allowed min velocity (Throw-Sliced)")]
+            [EnableIf(nameof(allowKnockout))]
             public float knockoutThrowAllowedMinVelocity = Mathf.Infinity;
-#if ODIN_INSPECTOR
-            [BoxGroup("Split/Knockout"), LabelWidth(210), LabelText("Forced min velocity (Throw-Sliced)"), EnableIf("allowKnockout")]
-#endif
+            [Group("Split/Knockout")]
+            [LabelWidth(210)]
+            [LabelText("Forced min velocity (Throw-Sliced)")]
+            [EnableIf(nameof(allowKnockout))]
             public float knockoutThrowForcedMinVelocity = Mathf.Infinity;
-#if ODIN_INSPECTOR
-            [BoxGroup("Split/Knockout"), LabelWidth(210), LabelText("Duration multiplier"), EnableIf("allowKnockout")]
-#endif
+            [Group("Split/Knockout")]
+            [LabelWidth(210)]
+            [LabelText("Duration multiplier")]
+            [EnableIf(nameof(allowKnockout))]
             public float knockoutDurationMultiplier = 1;
 
-#if ODIN_INSPECTOR
-            [BoxGroup("Split/Push"), TableList(ShowIndexLabels = true)] 
-#endif
+            [Group("Split/Push")]
+            [TableList(ShowElementLabels = true)]
             public PushLevel[] pushLevels;
 
             [Serializable]
@@ -163,26 +151,32 @@ namespace ThunderRoad
                 public float throwVelocity = Mathf.Infinity;
             }
 
-#if ODIN_INSPECTOR
-                [BoxGroup("Split/Penetration"), LabelWidth(150), LabelText("Min velocity"), EnableIf("allowPenetration")]
-#endif
+            [Group("Split/Penetration")]
+            [LabelWidth(150)]
+            [LabelText("Min velocity")]
+            [EnableIf(nameof(allowPenetration))]
             public float penetrationMinVelocity = 1;
-#if ODIN_INSPECTOR
-            [BoxGroup("Split/Penetration"), LabelWidth(150), LabelText("Damper multiplier"), EnableIf("allowPenetration")]
-#endif
+            [Group("Split/Penetration")]
+            [LabelWidth(150)]
+            [LabelText("Damper multiplier")]
+            [EnableIf(nameof(allowPenetration))]
             public float penetrationDamperMultiplier = 1;
-#if ODIN_INSPECTOR
-            [BoxGroup("Split/Penetration"), LabelWidth(150), LabelText("Velocity max depth"), EnableIf("allowPenetration")]
-#endif
+            [Group("Split/Penetration")]
+            [LabelWidth(150)]
+            [LabelText("Velocity max depth")]
+            [EnableIf(nameof(allowPenetration))]
             public bool penetrationVelocityMaxDepth;
-#if ODIN_INSPECTOR
-            [BoxGroup("Split/Penetration"), LabelWidth(150), LabelText("Velocity max depth curve"), EnableIf("@allowPenetration && penetrationVelocityMaxDepth")]
-#endif
+            [Group("Split/Penetration")]
+            [LabelWidth(150)]
+            [LabelText("Velocity max depth curve")]
+            [EnableIf(nameof(enablePenetrationVelocityMaxDepthCurve))]
             public AnimationCurve penetrationVelocityMaxDepthCurve;
-#if ODIN_INSPECTOR
-            [BoxGroup("Split/Penetration"), LabelWidth(150), EnableIf("@allowPenetration && pressureAllowed")]
-#endif
+            private bool enablePenetrationVelocityMaxDepthCurve => allowPenetration && penetrationVelocityMaxDepth;
+            [Group("Split/Penetration")]
+            [LabelWidth(150)]
+            [EnableIf(nameof(enablePressureForceMultiplier))]
             public float pressureForceMultiplier = 1;
+            private bool enablePressureForceMultiplier => allowPenetration && pressureAllowed;
         }
     }
 }

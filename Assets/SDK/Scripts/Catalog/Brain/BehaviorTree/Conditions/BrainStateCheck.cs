@@ -1,13 +1,9 @@
-using System.Collections.Generic;
-
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+﻿using System.Collections.Generic;
 using TriInspector;
-#endif
 
 namespace ThunderRoad.AI.Condition
 {
+    [AutoLabelWidth(AddedWidth = 5f, MinWidth = 0f)]
     public class BrainStateCheck : ConditionNode
     {
         public bool invert;

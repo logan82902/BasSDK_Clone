@@ -1,12 +1,9 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
@@ -22,8 +19,7 @@ namespace ThunderRoad
         public bool allowCrouch = true;
 
         public AnimationCurve moveForceMultiplierByAngleCurve;
-        public bool testMove;
-
+       
         public float forwardSpeed = 0.2f;
         public float backwardSpeed = 0.2f;
         public float strafeSpeed = 0.2f;
@@ -110,52 +106,43 @@ namespace ThunderRoad
         [NonSerialized]
         public Quaternion prevRotation;
         [NonSerialized]
-#if ODIN_INSPECTOR
-        [ShowInInspector, ReadOnly]
-#endif
+        [ShowInInspector]
+        [ReadOnly]
         public Vector3 velocity;
         [NonSerialized]
-#if ODIN_INSPECTOR
-        [ShowInInspector, ReadOnly]
-#endif
+        [ShowInInspector]
+        [ReadOnly]
         public float horizontalSpeed;
         [NonSerialized]
-#if ODIN_INSPECTOR
-        [ShowInInspector, ReadOnly]
-#endif
+        [ShowInInspector]
+        [ReadOnly]
         public float verticalSpeed;
         [NonSerialized]
-#if ODIN_INSPECTOR
-        [ShowInInspector, ReadOnly]
-#endif
+        [ShowInInspector]
+        [ReadOnly]
         public float angularSpeed;
 
-#if ODIN_INSPECTOR
-        [ShowInInspector, ReadOnly]
-#endif
+        [ShowInInspector]
+        [ReadOnly]
         [NonSerialized]
         public bool isCrouched;
 
-#if ODIN_INSPECTOR
-        [ShowInInspector, ReadOnly]
-#endif
+        [ShowInInspector]
+        [ReadOnly]
         [NonSerialized]
         public LayerMask groundMask;
 
-#if ODIN_INSPECTOR
-        [ShowInInspector, ReadOnly]
-#endif
+        [ShowInInspector]
+        [ReadOnly]
         [NonSerialized]
         public bool isGrounded;
-#if ODIN_INSPECTOR
-        [ShowInInspector, ReadOnly]
-#endif
+        [ShowInInspector]
+        [ReadOnly]
         [NonSerialized]
         public RaycastHit groundHit;
 
-#if ODIN_INSPECTOR
-        [ShowInInspector, ReadOnly]
-#endif
+        [ShowInInspector]
+        [ReadOnly]
         [NonSerialized]
         public float groundAngle;
 

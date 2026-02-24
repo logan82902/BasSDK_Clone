@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 4,
+  "groupPath": null,
   "localizationId": "ThrowablesRock",
   "displayName": "Rock",
   "description": "The simplest and most ancient weapon of all.",
@@ -14,16 +15,18 @@
   "tier": 0,
   "flags": "Jabbing, Ricochet",
   "levelRequired": 0,
+  "type": "Weapon",
   "category": "Blunt",
+  "update": "",
   "iconEffectId": null,
   "preferredItemCenter": "Mass",
   "drainImbueWhenIdle": true,
+  "forceImbueUseButton": "None",
   "prefabAddress": "Bas.Item.Throwables.Rock",
   "iconAddress": "Bas.Item.Throwables.Rock.Icon[wpn_TH00_Rock]",
   "closeUpIconAddress": null,
   "pooledCount": 20,
   "androidPooledCount": 10,
-  "type": "Weapon",
   "allowedStorage": "Container, SandboxAllItems",
   "despawnOnStoredInInventory": false,
   "isStackable": true,
@@ -37,6 +40,7 @@
   "mass": 1.0,
   "drag": 1.0,
   "angularDrag": 0.5,
+  "density": 2500.0,
   "focusRegenMultiplier": 1.0,
   "spellChargeSpeedPlayerMultiplier": 1.0,
   "spellChargeSpeedNPCMultiplier": 1.0,
@@ -150,6 +154,34 @@
     "preWrapMode": "ClampForever",
     "postWrapMode": "ClampForever"
   },
+  "colliderGroups": [],
+  "damagers": [
+    {
+      "$type": "ThunderRoad.ItemData+Damager, ThunderRoad",
+      "transformName": "Blunt",
+      "damagerID": "RockBlunt"
+    }
+  ],
+  "Interactables": [
+    {
+      "$type": "ThunderRoad.ItemData+Interactable, ThunderRoad",
+      "transformName": "Handle",
+      "interactableId": "ObjectHandleProp"
+    }
+  ],
+  "effectHinges": [],
+  "whooshs": [
+    {
+      "$type": "ThunderRoad.ItemData+Whoosh, ThunderRoad",
+      "transformName": "Whoosh",
+      "effectId": "WhooshPropLight",
+      "trigger": "Always",
+      "stopOnSnap": true,
+      "minVelocity": 5.0,
+      "maxVelocity": 12.0,
+      "dampening": 0.1
+    }
+  ],
   "modules": [
     {
       "$type": "ThunderRoad.ItemModuleAI, ThunderRoad",
@@ -158,7 +190,6 @@
       "weaponHandling": "OneHanded",
       "secondaryHandling": "None",
       "weaponAttackTypes": "None",
-      "ignoredByDefense": false,
       "alwaysPrimary": false,
       "defaultStanceInfo": null,
       "stanceInfosByOffhand": null,
@@ -189,6 +220,7 @@
         },
         "customRangedAttackAnimationData": "HumanThrowOverhand"
       },
+      "ignoredByDefense": false,
       "armResistanceMultiplier": 1.0,
       "allowDynamicHeight": false,
       "defenseHasPriority": false
@@ -247,34 +279,5 @@
       ]
     }
   ],
-  "colliderGroups": [],
-  "damagers": [
-    {
-      "$type": "ThunderRoad.ItemData+Damager, ThunderRoad",
-      "transformName": "Blunt",
-      "damagerID": "RockBlunt"
-    }
-  ],
-  "Interactables": [
-    {
-      "$type": "ThunderRoad.ItemData+Interactable, ThunderRoad",
-      "transformName": "Handle",
-      "interactableId": "ObjectHandleProp"
-    }
-  ],
-  "effectHinges": [],
-  "whooshs": [
-    {
-      "$type": "ThunderRoad.ItemData+Whoosh, ThunderRoad",
-      "transformName": "Whoosh",
-      "effectId": "WhooshPropLight",
-      "trigger": "Always",
-      "stopOnSnap": true,
-      "minVelocity": 5.0,
-      "maxVelocity": 12.0,
-      "dampening": 0.1
-    }
-  ],
-  "entityModules": [],
-  "groupPath": null
+  "entityModules": []
 }

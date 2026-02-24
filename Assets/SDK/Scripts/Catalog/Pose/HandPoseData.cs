@@ -1,22 +1,21 @@
 ﻿using System;
 using UnityEngine;
 using System.Collections.Generic;
-
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
-	[Serializable]
+    [Serializable]
+#if UNITY_EDITOR
+    [EditorLoadPriority(-5)]
+#endif
+    [DeclareBoxGroup("HandPose", Title = "HandPose")]
     public class HandPoseData : CatalogData
     {
-#if ODIN_INSPECTOR
-        [BoxGroup("HandPose")] 
-#endif
-        public List<Pose> poses = new List<Pose>();
+        [Group("HandPose")]
+        [ListDrawerSettings(AlwaysExpanded = true)]
+        [HideReferencePicker]
+        public List<Pose> poses = new();
 
         public enum FingerType
         {
@@ -51,16 +50,24 @@ namespace ThunderRoad
         }
 
         [Serializable]
+        [DeclareFoldoutGroup("Foldout", Expanded = false, Title = "Pose")]
+        [DeclareHorizontalGroup("Foldout/Horiz")]
+        [DeclareBoxGroup("Foldout/Horiz/Left", Title = "Left Fingers")]
+        [DeclareBoxGroup("Foldout/Horiz/Right", Title = "Right Fingers")]
         public class Pose
         {
-#if ODIN_INSPECTOR
-            [ValueDropdown(nameof(GetAllCreatureName))] 
-#endif
+            [Dropdown(nameof(GetAllCreatureName))]
             [JsonMergeKey]
             public string creatureName;
 
-            public Fingers leftFingers = new Fingers();
-            public Fingers rightFingers = new Fingers();
+            [Group("Foldout/Horiz/Left")]
+            [InlineProperty]
+            [HideLabel]
+            public Fingers leftFingers = new();
+            [Group("Foldout/Horiz/Right")]
+            [InlineProperty]
+            [HideLabel]
+            public Fingers rightFingers = new();
 
             MirrorParams mirrorParams = new MirrorParams();
 
@@ -80,16 +87,37 @@ namespace ThunderRoad
             }
 
             [Serializable]
+            [DeclareHorizontalGroup("FingerHoriz")]
+            [DeclareBoxGroup("FingerHoriz/Thumb", Title = "Thumb")]
+            [DeclareBoxGroup("FingerHoriz/Index", Title = "Index")]
+            [DeclareBoxGroup("FingerHoriz/Middle", Title = "Middle")]
+            [DeclareBoxGroup("FingerHoriz/Ring", Title = "Ring")]
+            [DeclareBoxGroup("FingerHoriz/Little", Title = "Little")]
             public class Fingers
             {
-                public Finger thumb = new Finger();
-                public Finger index = new Finger();
-                public Finger middle = new Finger();
-                public Finger ring = new Finger();
-                public Finger little = new Finger();
                 public Vector3 gripLocalPosition;
                 public Quaternion gripLocalRotation;
                 public Vector3 rootLocalPosition;
+                [Group("FingerHoriz/Thumb")]
+                [InlineProperty]
+                [HideLabel]
+                public Finger thumb = new Finger();
+                [Group("FingerHoriz/Index")]
+                [InlineProperty]
+                [HideLabel]
+                public Finger index = new Finger();
+                [Group("FingerHoriz/Middle")]
+                [InlineProperty]
+                [HideLabel]
+                public Finger middle = new Finger();
+                [Group("FingerHoriz/Ring")]
+                [InlineProperty]
+                [HideLabel]
+                public Finger ring = new Finger();
+                [Group("FingerHoriz/Little")]
+                [InlineProperty]
+                [HideLabel]
+                public Finger little = new Finger();
 
                 public Finger GetFinger(FingerType type)
                 {
@@ -108,14 +136,30 @@ namespace ThunderRoad
             [Serializable]
             public class Finger
             {
+                [Title("Proximal")]
+                [InlineProperty]
+                [HideLabel]
                 public Bone proximal = new Bone();
+                [Title("Intermediate")]
+                [InlineProperty]
+                [HideLabel]
                 public Bone intermediate = new Bone();
+                [Title("Distal")]
+                [InlineProperty]
+                [HideLabel]
                 public Bone distal = new Bone();
+                [Title("Tip Local Position")]
+                [HideLabel]
                 public Vector3 tipLocalPosition;
+
                 [Serializable]
                 public class Bone
                 {
+                    [HideLabel]
+                    [Header("Local Position")]
                     public Vector3 localPosition;
+                    [HideLabel]
+                    [Header("Local Rotation")]
                     public Quaternion localRotation;
                 }
             }
@@ -200,21 +244,19 @@ namespace ThunderRoad
                 return rotation;
             }
 
-#if ODIN_INSPECTOR
-            public List<ValueDropdownItem<string>> GetAllCreatureName()
+            public TriDropdownList<string> GetAllCreatureName()
             {
-                List<ValueDropdownItem<string>> dropdownList = new List<ValueDropdownItem<string>>();
+                TriDropdownList<string> dropdownList = new();
                 foreach (CreatureData creatureData in Catalog.GetDataList(Category.Creature))
                 {
                     if (dropdownList.Exists(d => d.Value == creatureData.name))
                     {
                         continue;
                     }
-                    dropdownList.Add(new ValueDropdownItem<string>(creatureData.name, creatureData.name));
+                    dropdownList.Add(creatureData.name, creatureData.name);
                 }
                 return dropdownList;
-            } 
-#endif
+            }
         }
 
         public override int GetCurrentVersion()

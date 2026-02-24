@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 4,
+  "groupPath": null,
   "localizationId": "ArrowPiercing",
   "displayName": "Bodkin Arrow",
   "description": "An arrow of war, designed to penetrate armor. Rather expensive but necessary to stop an approaching army.",
@@ -14,17 +15,19 @@
   "tier": 3,
   "flags": "Throwable, Jabbing, Piercing",
   "levelRequired": 0,
+  "type": "Weapon",
   "category": "Bows",
+  "update": "",
   "iconEffectId": null,
   "preferredItemCenter": "Mass",
   "drainImbueWhenIdle": true,
+  "forceImbueUseButton": "None",
   "prefabAddress": "Bas.Item.Ranged.ArrowPiercing",
-  "iconAddress": "",
-  "closeUpIconAddress": "",
+  "iconAddress": "Bas.Item.Ranged.ArrowPiercing.Icon",
+  "closeUpIconAddress": "Bas.Item.Ranged.ArrowPiercing.IconClose",
   "pooledCount": 75,
   "androidPooledCount": 50,
-  "type": "Weapon",
-  "allowedStorage": 0,
+  "allowedStorage": "SandboxAllItems",
   "despawnOnStoredInInventory": false,
   "isStackable": false,
   "consumableId": null,
@@ -37,6 +40,7 @@
   "mass": 0.2,
   "drag": 0.0,
   "angularDrag": 0.5,
+  "density": 1500.0,
   "focusRegenMultiplier": 1.0,
   "spellChargeSpeedPlayerMultiplier": 1.0,
   "spellChargeSpeedNPCMultiplier": 1.0,
@@ -150,6 +154,34 @@
     "preWrapMode": "ClampForever",
     "postWrapMode": "ClampForever"
   },
+  "colliderGroups": [
+    {
+      "$type": "ThunderRoad.ItemData+ColliderGroup, ThunderRoad",
+      "transformName": "Main",
+      "colliderGroupId": "Arrow"
+    }
+  ],
+  "damagers": [
+    {
+      "$type": "ThunderRoad.ItemData+Damager, ThunderRoad",
+      "transformName": "Pierce",
+      "damagerID": "Arrow"
+    }
+  ],
+  "Interactables": [
+    {
+      "$type": "ThunderRoad.ItemData+Interactable, ThunderRoad",
+      "transformName": "Handle",
+      "interactableId": "ObjectHandleArrowBack"
+    },
+    {
+      "$type": "ThunderRoad.ItemData+Interactable, ThunderRoad",
+      "transformName": "AxisHandle",
+      "interactableId": "ObjectHandleArrowAxis"
+    }
+  ],
+  "effectHinges": [],
+  "whooshs": [],
   "modules": [
     {
       "$type": "ThunderRoad.ItemModuleAI, ThunderRoad",
@@ -158,11 +190,11 @@
       "weaponHandling": "OneHanded",
       "secondaryHandling": "None",
       "weaponAttackTypes": "Thrust",
-      "ignoredByDefense": false,
       "alwaysPrimary": false,
       "defaultStanceInfo": null,
       "stanceInfosByOffhand": null,
       "rangedWeaponData": null,
+      "ignoredByDefense": false,
       "armResistanceMultiplier": 1.0,
       "allowDynamicHeight": false,
       "defenseHasPriority": false
@@ -221,34 +253,5 @@
       ]
     }
   ],
-  "colliderGroups": [
-    {
-      "$type": "ThunderRoad.ItemData+ColliderGroup, ThunderRoad",
-      "transformName": "Main",
-      "colliderGroupId": "Arrow"
-    }
-  ],
-  "damagers": [
-    {
-      "$type": "ThunderRoad.ItemData+Damager, ThunderRoad",
-      "transformName": "Pierce",
-      "damagerID": "Arrow"
-    }
-  ],
-  "Interactables": [
-    {
-      "$type": "ThunderRoad.ItemData+Interactable, ThunderRoad",
-      "transformName": "Handle",
-      "interactableId": "ObjectHandleArrowBack"
-    },
-    {
-      "$type": "ThunderRoad.ItemData+Interactable, ThunderRoad",
-      "transformName": "AxisHandle",
-      "interactableId": "ObjectHandleArrowAxis"
-    }
-  ],
-  "effectHinges": [],
-  "whooshs": [],
-  "entityModules": [],
-  "groupPath": null
+  "entityModules": []
 }

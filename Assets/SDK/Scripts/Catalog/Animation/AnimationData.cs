@@ -4,37 +4,30 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
+#if UNITY_EDITOR
+    [EditorLoadPriority(5)]
+#endif
     [Serializable]
+    [DeclareBoxGroup("Death Settings", Title = "Death Settings")]
+    [DeclareHorizontalGroup("Death Settings/Horiz")]
     public class AnimationData : CatalogData
     {
-#if ODIN_INSPECTOR
-        public List<ValueDropdownItem<string>> GetAllAnimationDataID()
-        {
-            return Catalog.GetDropdownAllID(Category.Animation);
-        }
-#endif
+        public TriDropdownList<string> GetAllAnimationDataID() => Catalog.GetDropdownAllID(Category.Animation);
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Animation"), OnValueChanged(nameof(CalculateWeight))] 
-#endif
-        public List<Clip> animationClips = new List<Clip>();
+        [HideReferencePicker]
+        [OnValueChanged(nameof(CalculateWeight))]
+        public List<Clip> animationClips = new();
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Death Settings"), HorizontalGroup("Death Settings/Horiz", Width = 125), LabelWidth(100)]
-#endif
+        [Group("Death Settings/Horiz")]
+        [LabelWidth(100)]
         public bool useDeathCurve = true;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Death Settings"), HorizontalGroup("Death Settings/Horiz", Width = 135), LabelWidth(110)]
-#endif
+        [Group("Death Settings/Horiz")]
+        [LabelWidth(110)]
         public bool allowRootMotion = false;
 
         private float probabilityRNGTotalWeight, probabilityDeltaTotalWeight;
@@ -42,70 +35,76 @@ namespace ThunderRoad
 
 
         [Serializable]
+        [DeclareHorizontalGroup("MasterHoriz")]
+        [DeclareBoxGroup("MasterHoriz/Default", Title = "Default")]
+        [DeclareHorizontalGroup("MasterHoriz/Default/Horiz")]
+        [DeclareBoxGroup("MasterHoriz/Config", Title = "Config")]
+        [DeclareHorizontalGroup("MasterHoriz/Config/Horiz1")]
+        [DeclareHorizontalGroup("MasterHoriz/Config/Horiz2")]
+        [DeclareBoxGroup("MasterHoriz/RNG", Title = "RNG")]
+        [DeclareHorizontalGroup("MasterHoriz/RNG/Horiz1")]
+        [DeclareHorizontalGroup("MasterHoriz/RNG/Horiz2")]
         public class Clip
         {
-#if ODIN_INSPECTOR
             [GUIColor(nameof(EditorGetColor))]
-            [HorizontalGroup("MasterHoriz"), BoxGroup("MasterHoriz/Default"), LabelWidth(50)] 
-#endif
+            [Group("MasterHoriz/Default")]
+            [LabelWidth(50)]
             [JsonMergeKey]
             public string address;
-#if ODIN_INSPECTOR
             [GUIColor(nameof(EditorGetColor))]
-            [HorizontalGroup("MasterHoriz/Default/Horiz"), LabelWidth(100), ShowInInspector, DisableInPlayMode]
+            [Group("MasterHoriz/Default/Horiz")]
+            [LabelWidth(100)]
+            [ShowInInspector]
+            [DisableInPlayMode]
 #if UNITY_EDITOR
             [OnValueChanged(nameof(EditorUpdateAddress))]
 #endif
-            
-#endif
+
             [NonSerialized]
             public AnimationClip animationClip;
-#if ODIN_INSPECTOR
-            [HorizontalGroup("MasterHoriz/Default/Horiz", Width = 110), LabelWidth(30)] 
-#endif
+            [Group("MasterHoriz/Default/Horiz")]
+            [LabelWidth(30)]
             public Step step = Step.Start;
-#if ODIN_INSPECTOR
-            [HorizontalGroup("MasterHoriz/Default/Horiz", Width = 110), LabelWidth(70), LabelText("Anim Speed")] 
-#endif
+            [Group("MasterHoriz/Default/Horiz")]
+            [LabelWidth(70)]
+            [LabelText("Anim Speed")]
             public float animationSpeed = 1;
 
-#if ODIN_INSPECTOR
-            [HorizontalGroup("MasterHoriz", MinWidth = 180), BoxGroup("MasterHoriz/Config"), HorizontalGroup("MasterHoriz/Config/Horiz1"), LabelWidth(100)] 
-#endif
+            [Group("MasterHoriz/Config/Horiz1")]
+            [LabelWidth(100)]
             public Direction moveDirection = Direction.None;
 
-#if ODIN_INSPECTOR
-            [HorizontalGroup("MasterHoriz/Config/Horiz1"), LabelWidth(80)] 
-#endif
+            [Group("MasterHoriz/Config/Horiz1")]
+            [LabelWidth(80)]
             public Direction aimDirection = Direction.None;
-#if ODIN_INSPECTOR
-            [HorizontalGroup("MasterHoriz/Config/Horiz2"), LabelWidth(70)] 
-#endif
+            [Group("MasterHoriz/Config/Horiz2")]
+            [LabelWidth(70)]
             public Height aimHeight = Height.None;
-#if ODIN_INSPECTOR
-            [HorizontalGroup("MasterHoriz/Config/Horiz2"), LabelWidth(80)]
-#endif
+            [Group("MasterHoriz/Config/Horiz2")]
+            [LabelWidth(80)]
             public float aimEndTime;
 
-#if ODIN_INSPECTOR
-            [HorizontalGroup("MasterHoriz", MinWidth = 180), BoxGroup("MasterHoriz/RNG"), HorizontalGroup("MasterHoriz/RNG/Horiz1"), LabelWidth(50)] 
+            [Group("MasterHoriz/RNG/Horiz1")]
+            [LabelWidth(50)]
 #if UNITY_EDITOR
             [OnValueChanged(nameof(EditorCalculateWeight))]
 #endif
-#endif
             public float weight = 1;
-#if ODIN_INSPECTOR
-            [HorizontalGroup("MasterHoriz/RNG/Horiz1"), LabelWidth(50)] 
-#endif
+            [Group("MasterHoriz/RNG/Horiz1")]
+            [LabelWidth(50)]
             public float chance = 1;
-#if ODIN_INSPECTOR
-            [HorizontalGroup("MasterHoriz/RNG/Horiz2"), HideLabel, ReadOnly, ShowInInspector, ProgressBar(0, 100)] 
-#endif
+            [Group("MasterHoriz/RNG/Horiz2")]
+            [HideLabel]
+            [ReadOnly]
+            [ShowInInspector]
+            //[ProgressBar(0, 100)]
             [NonSerialized]
             public float lastCalculatedProbabilityRNG;
-#if ODIN_INSPECTOR
-            [HorizontalGroup("MasterHoriz/RNG/Horiz2"), HideLabel, ReadOnly, ShowInInspector, ProgressBar(0, 100, 0.74f, 0.47f, 0.15f)] 
-#endif
+            [Group("MasterHoriz/RNG/Horiz2")]
+            [HideLabel]
+            [ReadOnly]
+            [ShowInInspector]
+            //[ProgressBar(0, 100, 0.74f, 0.47f, 0.15f)]
             [NonSerialized]
             public float probabilityDelta;
 

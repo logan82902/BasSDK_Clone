@@ -1,61 +1,41 @@
 ﻿using System;
 using UnityEngine;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
-	[Serializable]
+    [Serializable]
+    [DeclareBoxGroup("Wheel display", Title = "Wheel display")]
+    [DeclareBoxGroup("AI", Title = "AI")]
+    [DeclareBoxGroup("Mana", Title = "Mana")]
     public class SpellCastData : SpellData
     {
-#if ODIN_INSPECTOR
-        [BoxGroup("Wheel display")]
-#endif
+        [Group("Wheel display")]
         public string wheelDisplayName;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Wheel display")]
-#endif
+        [Group("Wheel display")]
         public bool hasOrder = false;
-#if ODIN_INSPECTOR
-        [BoxGroup("Wheel display")]
-#endif
+        [Group("Wheel display")]
         public int order;
-        
-#if ODIN_INSPECTOR
+
         [HideInInspector]
-#endif
         public int? Order => hasOrder ? order : null;
-#if ODIN_INSPECTOR
-        [BoxGroup("Wheel display"), ValueDropdown(nameof(GetAllEffectID))]
-#endif
+        [Group("Wheel display")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string iconEffectId;
         [NonSerialized]
         public EffectData iconEffectData;
-#if ODIN_INSPECTOR
-        [BoxGroup("AI")] 
-#endif
+        [Group("AI")]
         public CastType aiCastType;
-#if ODIN_INSPECTOR
-        [BoxGroup("AI")]
-        [EnableIf("aiCastType", CastType.CastLoop)] 
-#endif
+        [Group("AI")]
+        [EnableIf(nameof(aiCastType), CastType.CastLoop)]
         public float loopMaxDuration = 5f;
-#if ODIN_INSPECTOR
-        [BoxGroup("AI")] 
-#endif
+        [Group("AI")]
         public float aiCastMinDistance = 1;
-#if ODIN_INSPECTOR
-        [BoxGroup("AI")] 
-#endif
+        [Group("AI")]
         public float aiCastMaxDistance = 20;
-#if ODIN_INSPECTOR
-        [BoxGroup("AI")] 
-#endif
+        [Group("AI")]
         public float aiCastGestureLength = 0.7f;
 
         public enum CastType
@@ -64,9 +44,7 @@ namespace ThunderRoad
             CastLoop,
         }
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Mana")] 
-#endif
+        [Group("Mana")]
         public float minMana = 5;
 
         public new SpellCastData Clone()

@@ -1,26 +1,21 @@
 ﻿using UnityEngine;
-
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
 
 namespace ThunderRoad.AI.Condition
 {
+    [DeclareBoxGroup("Inputs", Title = "Inputs")]
+    [DeclareHorizontalGroup("Inputs/Horiz")]
+    [AutoLabelWidth(AddedWidth = 5f, MinWidth = 0f)]
     public class TargetHasMoved : ConditionNode
     {
-#if ODIN_INSPECTOR
-        [BoxGroup("Inputs")] 
-#endif
+        [Group("Inputs")]
         public bool flatDistance = false;
-#if ODIN_INSPECTOR
-        [BoxGroup("Inputs"), HorizontalGroup("Inputs/Horiz"), LabelWidth(100)] 
-#endif
+        [Group("Inputs/Horiz")]
+        [LabelWidth(100)]
         public Target target = Target.CurrentTarget;
-#if ODIN_INSPECTOR
-        [BoxGroup("Inputs"), HorizontalGroup("Inputs/Horiz"), ShowIf("target", optionalValue: Target.InputTransform), LabelWidth(200)] 
-#endif
+        [Group("Inputs/Horiz")]
+        [ShowIf("target", Target.InputTransform)]
+        [LabelWidth(200)]
         public string inputTransformVariableName = "";
 
         public enum Target
@@ -29,9 +24,7 @@ namespace ThunderRoad.AI.Condition
             InputTransform,
             None,
         }
-#if ODIN_INSPECTOR
-        [BoxGroup("Inputs")]
-#endif
+        [Group("Inputs")]
         public float distance = 3;
 
     }

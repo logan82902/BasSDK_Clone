@@ -19,15 +19,19 @@ namespace ThunderRoad
         [NonSerialized]
         public float playTime;
 
-        protected MaterialInstance materialInstance;
+        [NonSerialized]
+        public MaterialInstance materialInstance;
 
         protected static int colorPropertyID;
         protected static int emissionPropertyID;
         protected static int useEmissionPropertyID;
 
-        protected float currentValue;
-        protected Gradient currentMainGradient;
-        protected Gradient currentSecondaryGradient;
+        [NonSerialized]
+        public float currentValue;
+        [NonSerialized, GradientUsage(true)]
+        public Gradient currentMainGradient;
+        [NonSerialized, GradientUsage(true)]
+        public Gradient currentSecondaryGradient;
 
     }
 }

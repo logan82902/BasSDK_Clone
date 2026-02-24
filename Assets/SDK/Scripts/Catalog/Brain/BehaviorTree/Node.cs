@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System;
+using TriInspector;
 
 namespace ThunderRoad.AI
 {
@@ -10,14 +11,14 @@ namespace ThunderRoad.AI
         RUNNING
     }
 
-    public class Node
+    [AutoLabelWidth(AddedWidth = 5f, MinWidth = 0f)]
+    public abstract class Node
     {
         [NonSerialized]
         public State nodeState;
 
-        public Node() { }
-
-        public virtual void OnRun() { }
+        public virtual void OnRun()
+        { }
 
         public virtual void OnFail() { }
 

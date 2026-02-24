@@ -1,14 +1,10 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
 
 namespace ThunderRoad.AI.Get
 {
+    [AutoLabelWidth(AddedWidth = 5f, MinWidth = 0f)]
     public class GetTransform : ActionNode
     {
         public Target target = Target.NextWaypoint;
@@ -22,6 +18,8 @@ namespace ThunderRoad.AI.Get
             ClosestDungeonExit,
             RandomWayPoint,
         }
+
+        public GetTransform() { }
 
     }
 }

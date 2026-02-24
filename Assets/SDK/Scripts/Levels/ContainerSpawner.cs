@@ -1,87 +1,60 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#endif
+using TriInspector;
 
 namespace ThunderRoad
 {
     [HelpURL("https://kospy.github.io/BasSDK/Components/ThunderRoad/Levels/ContainerSpawner.html")]
+    [DeclareBoxGroup("Properties", Title = "Properties")]
+    [DeclareBoxGroup("Utilities", Title = "Utilities")]
     public class ContainerSpawner : MonoBehaviour
     {
         #region VARIABLES
-#if ODIN_INSPECTOR
-        [BoxGroup("Properties", true, true)]
-        [ValueDropdown(nameof(GetAllContainerId))]
-#endif
+
+        [Group("Properties")]
+        [Dropdown(nameof(GetAllContainerId))]
         public string containerId;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Properties", true, true)]
-#endif
-
-#if ODIN_INSPECTOR
-        [BoxGroup("Properties", true, true)]
-#endif
+        [Group("Properties")]
         public bool pooled;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Properties", true, true)]
-#endif
+        [Group("Properties")]
         public bool spawnAll = false;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Properties", true, true)]
-#endif
+        [Group("Properties")]
         public bool allowDuplicates = true;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Properties", true, true)]
-#endif
+        [Group("Properties")]
         public bool spawnOnStart = true;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Properties", true, true)]
-#endif
+        [Group("Properties")]
         public bool disallowDespawn;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Properties", true, true)]
-#endif
+        [Group("Properties")]
         public bool holderIsPivot = false;
 
-#if ODIN_INSPECTOR
         [PropertySpace(5, 20)]
-#endif
-        public List<Transform> spawnPoints = new List<Transform>();
+        public List<Transform> spawnPoints = new();
 
         public Item.Owner spawnOwner = Item.Owner.None;
 
         #endregion
 
-        #region ODIN / UTILITIES
 
-#if ODIN_INSPECTOR
         /// <summary>
         /// If the spawner isn't registering the files this will quickly allow the artist to do a one-click fix.
         /// </summary>
-        [BoxGroup("Utilities", true, true), Button("Reload JSON")]
-        private void ReloadJson()
-        {
-            Catalog.EditorLoadAllJson(true);
-        }
+        [Group("Utilities")]
+        [Button("Reload JSON")]
+        private void ReloadJson() => Catalog.EditorLoadAllJson(true);
 
-        private List<ValueDropdownItem<string>> GetAllContainerId()
+        private TriDropdownList<string> GetAllContainerId()
         {
-            List<ValueDropdownItem<string>> items = new List<ValueDropdownItem<string>>();
+            TriDropdownList<string> items = new();
             items.AddRange(Catalog.GetDropdownAllID<ContainerData>());
             items.AddRange(Catalog.GetDropdownAllID<LootTableBase>());
 
             return items;
         }
-
-#endif
-        #endregion
-
     }
 }

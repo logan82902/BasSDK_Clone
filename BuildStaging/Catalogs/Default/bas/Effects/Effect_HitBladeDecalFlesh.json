@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
+  "groupPath": null,
   "groupId": "Blade",
   "volumeDb": 0.0,
   "modules": [
@@ -53,6 +54,7 @@
           "overTimeSwizzleColorMask": "Red"
         }
       ],
+      "mergeKey": "6d8f5735",
       "step": "Start",
       "stepCustomId": null,
       "loopCustomStep": false,
@@ -70,37 +72,7 @@
       "colliderGroupFilterLogic": "AnyExcept",
       "colliderGroupsFilter": [],
       "damagersFilterLogic": "AnyExcept",
-      "damagersFilter": [],
-      "intensityCurve": {
-        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-        "keys": [
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 0.0,
-            "value": 0.0,
-            "inTangent": 0.0,
-            "outTangent": 1.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          },
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 1.0,
-            "value": 1.0,
-            "inTangent": 1.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          }
-        ],
-        "length": 2,
-        "preWrapMode": "ClampForever",
-        "postWrapMode": "ClampForever"
-      }
+      "damagersFilter": []
     },
     {
       "$type": "ThunderRoad.EffectModuleReveal, ThunderRoad",
@@ -162,6 +134,7 @@
           "overTimeSwizzleColorMask": "Red"
         }
       ],
+      "mergeKey": "44720071",
       "step": "Start",
       "stepCustomId": null,
       "loopCustomStep": false,
@@ -179,37 +152,7 @@
       "colliderGroupFilterLogic": "AnyExcept",
       "colliderGroupsFilter": [],
       "damagersFilterLogic": "AnyExcept",
-      "damagersFilter": [],
-      "intensityCurve": {
-        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-        "keys": [
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 0.0,
-            "value": 0.0,
-            "inTangent": 0.0,
-            "outTangent": 1.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          },
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 1.0,
-            "value": 1.0,
-            "inTangent": 1.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          }
-        ],
-        "length": 2,
-        "preWrapMode": "ClampForever",
-        "postWrapMode": "ClampForever"
-      }
+      "damagersFilter": []
     },
     {
       "$type": "ThunderRoad.EffectModuleReveal, ThunderRoad",
@@ -257,6 +200,7 @@
           "overTimeSwizzleColorMask": "Red"
         }
       ],
+      "mergeKey": "9724a4d9",
       "step": "Start",
       "stepCustomId": null,
       "loopCustomStep": false,
@@ -276,37 +220,7 @@
         "BladeRapier"
       ],
       "damagersFilterLogic": "AnyExcept",
-      "damagersFilter": [],
-      "intensityCurve": {
-        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-        "keys": [
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 0.0,
-            "value": 0.0,
-            "inTangent": 0.0,
-            "outTangent": 1.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          },
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 1.0,
-            "value": 1.0,
-            "inTangent": 1.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          }
-        ],
-        "length": 2,
-        "preWrapMode": "ClampForever",
-        "postWrapMode": "ClampForever"
-      }
+      "damagersFilter": []
     },
     {
       "$type": "ThunderRoad.EffectModuleReveal, ThunderRoad",
@@ -354,6 +268,7 @@
           "overTimeSwizzleColorMask": "Red"
         }
       ],
+      "mergeKey": "06bb39fc",
       "step": "Start",
       "stepCustomId": null,
       "loopCustomStep": false,
@@ -373,37 +288,7 @@
         "BladeRapier"
       ],
       "damagersFilterLogic": "AnyExcept",
-      "damagersFilter": [],
-      "intensityCurve": {
-        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-        "keys": [
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 0.0,
-            "value": 0.0,
-            "inTangent": 0.0,
-            "outTangent": 1.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          },
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 1.0,
-            "value": 1.0,
-            "inTangent": 1.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          }
-        ],
-        "length": 2,
-        "preWrapMode": "ClampForever",
-        "postWrapMode": "ClampForever"
-      }
+      "damagersFilter": []
     },
     {
       "$type": "ThunderRoad.EffectModuleReveal, ThunderRoad",
@@ -465,6 +350,7 @@
           "overTimeSwizzleColorMask": "Red"
         }
       ],
+      "mergeKey": "a093932f",
       "step": "Start",
       "stepCustomId": null,
       "loopCustomStep": false,
@@ -482,37 +368,7 @@
       "colliderGroupFilterLogic": "AnyExcept",
       "colliderGroupsFilter": [],
       "damagersFilterLogic": "AnyExcept",
-      "damagersFilter": [],
-      "intensityCurve": {
-        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-        "keys": [
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 0.0,
-            "value": 0.0,
-            "inTangent": 0.0,
-            "outTangent": 1.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          },
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 1.0,
-            "value": 1.0,
-            "inTangent": 1.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          }
-        ],
-        "length": 2,
-        "preWrapMode": "ClampForever",
-        "postWrapMode": "ClampForever"
-      }
+      "damagersFilter": []
     },
     {
       "$type": "ThunderRoad.EffectModuleReveal, ThunderRoad",
@@ -560,6 +416,7 @@
           "overTimeSwizzleColorMask": "Red"
         }
       ],
+      "mergeKey": "f05c6716",
       "step": "Start",
       "stepCustomId": null,
       "loopCustomStep": false,
@@ -577,37 +434,7 @@
       "colliderGroupFilterLogic": "AnyExcept",
       "colliderGroupsFilter": [],
       "damagersFilterLogic": "AnyExcept",
-      "damagersFilter": [],
-      "intensityCurve": {
-        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-        "keys": [
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 0.0,
-            "value": 0.0,
-            "inTangent": 0.0,
-            "outTangent": 1.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          },
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 1.0,
-            "value": 1.0,
-            "inTangent": 1.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          }
-        ],
-        "length": 2,
-        "preWrapMode": "ClampForever",
-        "postWrapMode": "ClampForever"
-      }
+      "damagersFilter": []
     },
     {
       "$type": "ThunderRoad.EffectModuleReveal, ThunderRoad",
@@ -669,6 +496,7 @@
           "overTimeSwizzleColorMask": "Red"
         }
       ],
+      "mergeKey": "67c5d43f",
       "step": "Start",
       "stepCustomId": null,
       "loopCustomStep": false,
@@ -686,37 +514,7 @@
       "colliderGroupFilterLogic": "AnyExcept",
       "colliderGroupsFilter": [],
       "damagersFilterLogic": "AnyExcept",
-      "damagersFilter": [],
-      "intensityCurve": {
-        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-        "keys": [
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 0.0,
-            "value": 0.0,
-            "inTangent": 0.0,
-            "outTangent": 1.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          },
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 1.0,
-            "value": 1.0,
-            "inTangent": 1.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          }
-        ],
-        "length": 2,
-        "preWrapMode": "ClampForever",
-        "postWrapMode": "ClampForever"
-      }
+      "damagersFilter": []
     },
     {
       "$type": "ThunderRoad.EffectModuleReveal, ThunderRoad",
@@ -778,6 +576,7 @@
           "overTimeSwizzleColorMask": "Red"
         }
       ],
+      "mergeKey": "58c9703a",
       "step": "Start",
       "stepCustomId": null,
       "loopCustomStep": false,
@@ -795,37 +594,7 @@
       "colliderGroupFilterLogic": "AnyExcept",
       "colliderGroupsFilter": [],
       "damagersFilterLogic": "AnyExcept",
-      "damagersFilter": [],
-      "intensityCurve": {
-        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-        "keys": [
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 0.0,
-            "value": 0.0,
-            "inTangent": 0.0,
-            "outTangent": 1.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          },
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 1.0,
-            "value": 1.0,
-            "inTangent": 1.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          }
-        ],
-        "length": 2,
-        "preWrapMode": "ClampForever",
-        "postWrapMode": "ClampForever"
-      }
+      "damagersFilter": []
     },
     {
       "$type": "ThunderRoad.EffectModuleReveal, ThunderRoad",
@@ -873,6 +642,7 @@
           "overTimeSwizzleColorMask": "Red"
         }
       ],
+      "mergeKey": "e99f528d",
       "step": "Start",
       "stepCustomId": null,
       "loopCustomStep": false,
@@ -888,38 +658,7 @@
       "colliderGroupFilterLogic": "AnyExcept",
       "colliderGroupsFilter": [],
       "damagersFilterLogic": "AnyExcept",
-      "damagersFilter": [],
-      "intensityCurve": {
-        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-        "keys": [
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 0.0,
-            "value": 0.0,
-            "inTangent": 0.0,
-            "outTangent": 1.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          },
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 1.0,
-            "value": 1.0,
-            "inTangent": 1.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          }
-        ],
-        "length": 2,
-        "preWrapMode": "ClampForever",
-        "postWrapMode": "ClampForever"
-      }
+      "damagersFilter": []
     }
-  ],
-  "groupPath": null
+  ]
 }

@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
+  "groupPath": "Outpost/XSTransi",
   "isUnique": true,
   "areaPrefabAddress": "Bas.Area.GL_XSTransi_xC&C_ForgottenEntrance",
   "lightingPresetAddress": "Bas.Area.GL_XSTransi_xC&C_ForgottenEntrance.LightingPreset",
@@ -68,6 +69,5 @@
       "fakeViewAddress": "Bas.Area.GL_XSTransi_xC&C_ForgottenEntrance.FakeView.1"
     }
   ],
-  "areaGlobalParameters": [],
-  "groupPath": "Outpost/XSTransi"
+  "areaGlobalParameters": []
 }

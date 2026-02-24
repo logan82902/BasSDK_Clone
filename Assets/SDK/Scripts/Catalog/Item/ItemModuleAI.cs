@@ -2,15 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Newtonsoft.Json;
-
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
+    [System.Serializable]
+    [DeclareBoxGroup("Weapon")]
+    [DeclareBoxGroup("Attack")]
+    [DeclareBoxGroup("Defense")]
     public class ItemModuleAI : ItemModule
     {
         public enum WeaponClass
@@ -49,36 +48,7 @@ namespace ThunderRoad
             TwoHanded,
         }
 
-        [Header("Weapon")]
-        public WeaponClass primaryClass = WeaponClass.None;
-        [JsonProperty("weaponClass")]
-        private WeaponClass primaryClassSetter
-        {
-            set
-            {
-                primaryClass = value;
-            }
-        }
-        public WeaponClass secondaryClass = WeaponClass.None;
-        public WeaponHandling weaponHandling = WeaponHandling.None;
-        public WeaponHandling secondaryHandling = WeaponHandling.None;
-
-        [Header("Attack")]
-        public AttackTypeFlags weaponAttackTypes = AttackTypeFlags.Swing | AttackTypeFlags.Thrust;
-        public bool ignoredByDefense = false;
-        [JsonProperty("attackIgnore")]
-        private bool ignoredByDefenseSetter
-        {
-            set
-            {
-                ignoredByDefense = value;
-            }
-        }
-        public bool alwaysPrimary = false;
-        public StanceInfo defaultStanceInfo;
-        public List<StanceInfo> stanceInfosByOffhand;
-
-        [System.Serializable]
+        [Serializable]
         public class StanceInfo
         {
             public enum Offhand
@@ -99,18 +69,44 @@ namespace ThunderRoad
             public string stanceDataID;
         }
 
-        public RangedWeaponData rangedWeaponData;
-        [JsonProperty("ammoType")]
-        private string dataAmmoTypeSetter
+        [Serializable]
+        public class RangedWeaponData
         {
-            set
-            {
-                if (rangedWeaponData == null) rangedWeaponData = new RangedWeaponData();
-                rangedWeaponData.ammoType = value;
-            }
+            public TriDropdownList<string> GetAllHolderSlots() => Catalog.GetDropdownHolderSlots();
+
+            [Dropdown(nameof(GetAllHolderSlots))]
+            public string ammoType = "";
+            public float tooCloseDistance = 5f;
+            public Vector2 spread = new(1f, 1f);
+            public float projectileSpeed = 20f;
+            public bool accountForGravity = true;
+            public Vector3 weaponAimAngleOffset = new();
+            public Vector3 weaponHoldPositionOffset = new();
+            public Vector3 weaponHoldAngleOffset = new();
+            public string customRangedAttackAnimationData = "";
         }
 
-        [Header("Defense")]
+        [GroupNext("Weapon")]
+        public WeaponClass primaryClass = WeaponClass.None;
+        public WeaponClass secondaryClass = WeaponClass.None;
+        public WeaponHandling weaponHandling = WeaponHandling.None;
+        public WeaponHandling secondaryHandling = WeaponHandling.None;
+
+        [GroupNext("Attack")]
+        public AttackTypeFlags weaponAttackTypes = AttackTypeFlags.Swing | AttackTypeFlags.Thrust;
+        public bool alwaysPrimary = false;
+        public StanceInfo defaultStanceInfo;
+        [HideReferencePicker]
+        [ListDrawerSettings]
+        public List<StanceInfo> stanceInfosByOffhand;
+        [NullCheckbox]
+        [InlineProperty]
+        [SerializeReference]
+        [HideReferencePicker]
+        public RangedWeaponData rangedWeaponData;
+
+        [GroupNext("Defense")]
+        public bool ignoredByDefense = false;
         public float armResistanceMultiplier = 3;
         public bool allowDynamicHeight;
         public bool defenseHasPriority;
@@ -167,27 +163,5 @@ namespace ThunderRoad
             }
         }
 
-
-        [System.Serializable]
-        public class RangedWeaponData
-        {
-#if ODIN_INSPECTOR
-            public List<ValueDropdownItem<string>> GetAllHolderSlots()
-            {
-                return Catalog.GetDropdownHolderSlots();
-            }
-
-            [ValueDropdown(nameof(GetAllHolderSlots))]
-#endif
-            public string ammoType = "";
-            public float tooCloseDistance = 5f;
-            public Vector2 spread = new Vector2(1f, 1f);
-            public float projectileSpeed = 20f;
-            public bool accountForGravity = true;
-            public Vector3 weaponAimAngleOffset = new Vector3();
-            public Vector3 weaponHoldPositionOffset = new Vector3();
-            public Vector3 weaponHoldAngleOffset = new Vector3();
-            public string customRangedAttackAnimationData = "";
-        }
     }
 }

@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
+  "groupPath": "DungeonRun/Dalgarian",
   "path": [
     {
       "$type": "ThunderRoad.AreaCollectionDungeon+PathGroup, ThunderRoad",
@@ -88,6 +89,5 @@
       },
       "maxCreature": 14.0
     }
-  ],
-  "groupPath": "DungeonRun/Dalgarian"
+  ]
 }

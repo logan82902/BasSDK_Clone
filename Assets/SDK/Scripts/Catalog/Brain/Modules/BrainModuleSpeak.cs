@@ -6,15 +6,13 @@ using Newtonsoft.Json;
 
 
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
     [System.Serializable]
+    [AutoLabelWidth(AddedWidth = 5f, MinWidth = 0f)]
     public class BrainModuleSpeak : BrainData.Module
     {
         public bool audioEnabled = true;
@@ -25,9 +23,7 @@ namespace ThunderRoad
         public float audioHitChance = 1;
         public float audioDeathChance = 1;
         public bool moveMouth = true;
-        public float audioLipSyncUpdateRate = 0.05f;
-        public float audioLipSyncMaxValue = 0.3f;
-        public int audioLipSampleDataLength = 1024; // 1024 samples, which is about 80 ms on a 44khz stereo clip
+        public float audioLipSyncMaxValue = 2f;
         public float lipSyncSpeed = 5f;
 
         public bool speakOnAttackMelee = true;

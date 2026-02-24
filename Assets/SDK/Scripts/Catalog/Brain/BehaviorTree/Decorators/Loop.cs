@@ -1,8 +1,10 @@
 ﻿using System.Collections;
+using TriInspector;
 
 namespace ThunderRoad.AI.Decorator
 {
-	public class Loop : DecoratorNode
+    [AutoLabelWidth(AddedWidth = 5f, MinWidth = 0f)]
+    public class Loop : DecoratorNode
     {
         public Node loopingNode;
         public Mode mode = Mode.LoopingNodeFirst;
@@ -11,5 +13,8 @@ namespace ThunderRoad.AI.Decorator
             LoopingNodeFirst,
             LoopingNodeLast,
         }
+
+        public Loop() : base() { }
+
     }
 }

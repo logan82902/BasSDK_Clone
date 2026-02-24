@@ -1,4 +1,4 @@
-﻿using TriInspectorUnityInternalBridge;
+using TriInspectorUnityInternalBridge;
 using UnityEditor;
 using UnityEngine;
 
@@ -22,7 +22,9 @@ namespace TriInspector.Elements
 
         public override float GetHeight(float width)
         {
-            return _propertyHandler.GetHeight(_serializedProperty, _property.DisplayNameContent, true);
+            GUIContent displayNameContent = _property.DisplayNameContent;
+            if (TriPropertyOverrideContext.Current != null && TriPropertyOverrideContext.Current.TryGetDisplayName(_property, out var overrideName)) displayNameContent = overrideName;
+            return _propertyHandler.GetHeight(_serializedProperty, displayNameContent, true);
         }
 
         public override void OnGUI(Rect position)
@@ -35,8 +37,9 @@ namespace TriInspector.Elements
             {
                 position.xMin += 12;
             }
-
-            _propertyHandler.OnGUI(position, _serializedProperty, _property.DisplayNameContent, true);
+            GUIContent displayNameContent = _property.DisplayNameContent;
+            if (TriPropertyOverrideContext.Current != null && TriPropertyOverrideContext.Current.TryGetDisplayName(_property, out var overrideName)) displayNameContent = overrideName;
+            _propertyHandler.OnGUI(position, _serializedProperty, displayNameContent, true);
 
             if (EditorGUI.EndChangeCheck())
             {

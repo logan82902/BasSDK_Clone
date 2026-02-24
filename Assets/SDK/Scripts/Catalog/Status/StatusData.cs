@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+
 using TriInspector;
-#endif
 using UnityEngine;
 
 namespace ThunderRoad
@@ -17,16 +14,26 @@ namespace ThunderRoad
         None,
         Infinite
     }
+
+#if UNITY_EDITOR
+    [EditorLoadPriority(10)]
+#endif
+    [DeclareBoxGroup("Status", Title = "Status")]
+    [DeclareBoxGroup("Conditions", Title = "Conditions")]
+    [DeclareBoxGroup("Effect", Title = "Effect")]
     public class StatusData : CatalogData
     {
         [ShowInInspector]
-        [BoxGroup("Status")]
+        [Group("Status")]
         public Type type;
 
-        [BoxGroup("Status")]
+        [Group("Status")]
         public CreatureType bypassImmunity;
 
-        [BoxGroup("Status")]
+        [Group("Status"), InfoBox("If true, this status will be ignored by ThunderEntity.ClearByType().")]
+        public bool ignoreClearByType;
+
+        [Group("Status")]
         public StackType stackType;
         
         public string StackTypeDescription => stackType switch
@@ -37,29 +44,23 @@ namespace ThunderRoad
             StackType.Infinite => "Never automatically expires.",
             _ => throw new ArgumentOutOfRangeException($"StackType out of range: {stackType}")
         };
-        
-#if ODIN_INSPECTOR
-        [BoxGroup("Conditions")]
-#endif
+
+        [Group("Conditions")]
         public bool forceAllowOnCreatures = false;
-        
-#if ODIN_INSPECTOR
-        [BoxGroup("Conditions")]
-#endif
+
+        [Group("Conditions")]
         public bool allowOnItems = true;
-        
-        
-#if ODIN_INSPECTOR
-        [BoxGroup("Effect"), ValueDropdown(nameof(GetAllEffectID))]
-#endif
+
+
+        [Group("Effect")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string creatureEffectId;
 
         [NonSerialized]
         public EffectData creatureEffectData;
-        
-#if ODIN_INSPECTOR
-        [BoxGroup("Effect"), ValueDropdown(nameof(GetAllEffectID))]
-#endif
+
+        [Group("Effect")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string itemEffectId;
 
         [NonSerialized]
@@ -69,36 +70,28 @@ namespace ThunderRoad
         public event StatusEvent OnFirstApplyEvent;
         public event StatusEvent OnFullRemoveEvent;
 
-        public void InvokeOnFirstApplyEvent(Status status)
-        {
-            OnFirstApplyEvent?.Invoke(status);
-        }
+        public void InvokeOnFirstApplyEvent(Status status) => OnFirstApplyEvent?.Invoke(status);
 
-        public void InvokeOnFullRemoveEvent(Status status)
-        {
-            OnFullRemoveEvent?.Invoke(status);
-        }
+        public void InvokeOnFullRemoveEvent(Status status) => OnFullRemoveEvent?.Invoke(status);
 
-#if ODIN_INSPECTOR
-        public List<ValueDropdownItem<Type>> GetStatusTypes()
+        public TriDropdownList<Type> GetStatusTypes()
         {
-            var dropdownList = new List<ValueDropdownItem<Type>> { new("None", null) };
-            
-            foreach (var statusType in AppDomain.CurrentDomain
+            TriDropdownList<Type> dropdownList = new() { new TriDropdownItem<Type>() { Text = "None", Value = null } };
+
+            foreach (Type statusType in AppDomain.CurrentDomain
                          .GetAssemblies()
                          .SelectMany(assembly => assembly.GetTypes())
                          .Where(type => typeof(IStatus).IsAssignableFrom(type)))
             {
-                dropdownList.Add(new ValueDropdownItem<Type>(statusType.ToString(), statusType));
+                dropdownList.Add(new TriDropdownItem<Type>() { Text = statusType.ToString(), Value = statusType });
             }
 
             return dropdownList;
         }
 
-        public List<ValueDropdownItem<string>> GetAllEffectID() => Catalog.GetDropdownAllID(Category.Effect);
-        public List<ValueDropdownItem<string>> GetAllAnimationID() => Catalog.GetDropdownAllID(Category.Animation);
-#endif
-        
+        public TriDropdownList<string> GetAllEffectID() => Catalog.GetDropdownAllID(Category.Effect);
+        public TriDropdownList<string> GetAllAnimationID() => Catalog.GetDropdownAllID(Category.Animation);
+
     }
 
     [Serializable]

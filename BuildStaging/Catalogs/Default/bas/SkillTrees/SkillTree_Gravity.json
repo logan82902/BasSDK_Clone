@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
+  "groupPath": null,
   "localizationGroupID": "Skills",
   "displayName": "{Gravity}",
   "description": "{GravityPathDescription}",
@@ -31,5 +32,9 @@
   "videoAddress": "Bas.Video.Infuser.Gravity",
   "iconEnabledAddress": "Bas.Ui.SkillTree.Icons[Gravity_ButtonColor]",
   "iconDisabledAddress": "Bas.Ui.SkillTree.Icons[Gravity_Button]",
-  "groupPath": null
+  "tierBlockers": [
+    "Gravity",
+    "BoostJump",
+    "GravityMerge"
+  ]
 }

@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 3,
+  "groupPath": null,
   "spawnItemID": "ThrowablesDagger",
   "spawnQuantity": 8,
   "allowInfiniteSupplyCheat": true,
@@ -42,6 +43,5 @@
   "referencePoint": "Grip",
   "localizationId": "ThrowablesDagger",
   "highlightDefaultTitle": "Throwing Dagger",
-  "highlightDefaultDesignation": "",
-  "groupPath": null
+  "highlightDefaultDesignation": ""
 }

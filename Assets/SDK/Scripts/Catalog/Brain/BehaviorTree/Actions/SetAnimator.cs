@@ -1,13 +1,9 @@
-﻿
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
-using TriInspector;
-#endif
+﻿using TriInspector;
 
 namespace ThunderRoad.AI.Action
 {
-	public class SetAnimator : ActionNode
+    [AutoLabelWidth(AddedWidth = 5f, MinWidth = 0f)]
+    public class SetAnimator : ActionNode
     {
         public string parameterID;
         public Parameter parameterType = Parameter.Trigger;
@@ -19,13 +15,9 @@ namespace ThunderRoad.AI.Action
             Float,
         }
 
-#if ODIN_INSPECTOR
-        [EnableIf("parameterType", Parameter.Bool)] 
-#endif
+        [EnableIf(nameof(parameterType), Parameter.Bool)]
         public bool boolValue;
-#if ODIN_INSPECTOR
-        [EnableIf("parameterType", Parameter.Float)] 
-#endif
+        [EnableIf(nameof(parameterType), Parameter.Float)]
         public float floatValue;
 
     }

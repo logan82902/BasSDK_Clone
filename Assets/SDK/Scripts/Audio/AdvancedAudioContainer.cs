@@ -12,19 +12,14 @@ using TriInspector;
 
 namespace ThunderRoad
 {
-    [DrawWithTriInspector]
-    [HideMonoScript]
     [HelpURL("https://kospy.github.io/BasSDK/Components/ThunderRoad/AdvancedAudioContainer")]
     [CreateAssetMenu(menuName = "ThunderRoad/Audio/Advanced audio container")]
-    [DeclareVerticalGroup("Vert1")]
-    [DeclareHorizontalGroup("Vert1/Horiz")]
-    [DeclareVerticalGroup("Vert2")]
-    [DeclareHorizontalGroup("Vert2/Horiz")]
     public class AdvancedAudioContainer : ScriptableObject
     {
         [Serializable]
         public class AudioClipData
         {
+            [ReadOnly]
             public AudioClip audio;
             public AnimationClip animation;
             public FaceAnimator.Expression dialogExpression;
@@ -35,7 +30,7 @@ namespace ThunderRoad
             public int weight = 1;
 # if UNITY_EDITOR
             [ShowInInspector]
-            public float percent => totalWeight > 0 ? Mathf.RoundToInt(1000f * ((float)weight / (Mathf.Approximately(totalWeight, 0f) ? weight : totalWeight))) / 10f : 0f;
+            public float percent => Mathf.RoundToInt(1000f * ((float)weight / (Mathf.Approximately(totalWeight, 0f) ? weight : totalWeight))) / 10f;
             [ShowInInspector]
             [ReadOnly]
             public string transcriptionText
@@ -63,19 +58,44 @@ namespace ThunderRoad
 
             public AudioClipData(AudioClip aud) => audio = aud;
         }
+#if UNITY_EDITOR
+        [Header("Classification")]
+        [Tooltip("If true, this audio container is considered diegetic (in-world sound source). If false, it's non-diegetic (UI or background sound).")]
+        public bool isDiagetic = false;
+#endif
 
-        [Group("Vert1/Horiz")]
+        [TableList(AlwaysExpanded = true, HideAddButton = true, HideRemoveButton = true)]
+        public List<AudioClipData> clips = new();
         public bool useShuffle;
-        [Group("Vert1/Horiz")]
         public bool showSubtitles = true;
 #if UNITY_EDITOR
-        [Group("Vert2")]
-        [TableList(AlwaysExpanded = true, Draggable = true)]
-        [OnValueChanged(nameof(UpdateWeights))]
+        public void UpdateAllExpressions(FaceAnimator.Expression exp)
+        {
+            foreach (AudioClipData clip in clips)
+            {
+                clip.dialogExpression = exp;
+            }
+        }
+
+        [NonSerialized]
+        [ShowInInspector]
+        [OnValueChanged(nameof(UpdateAllExpressions))]
+        public FaceAnimator.Expression setAllExpressions;
 #endif
-        public List<AudioClipData> clips = new();
+        [Header("Add clip")]
+        public AudioClip newClip;
 
 #if UNITY_EDITOR
+        [Button]
+        public void ApplyLabels()
+        {
+            foreach (var data in clips)
+            {
+                AudioContainer.SetLabels(data.audio, isDiagetic);
+            }
+
+        }
+        
         public void UpdateWeights()
         {
             int totalWeight = 0;
@@ -90,17 +110,22 @@ namespace ThunderRoad
             }
         }
 
-        [Group("Vert2")]
-        [Button]
-        public void SetAllExpressions(FaceAnimator.Expression exp)
+        public void RefreshDialogIDs()
         {
-            foreach (AudioClipData clip in clips)
+            foreach (AudioClipData data in clips)
             {
-                clip.dialogExpression = exp;
+                if (string.IsNullOrEmpty(data.transcriptionTextId))
+                {
+                    //set the transcription text id to the audio name
+                    string cleanedName = data.audio.name;
+                    cleanedName = cleanedName.Replace("_TRIMMED", "");
+                    //remove "Audio_" from the start of the name
+                    cleanedName = cleanedName.Replace("Audio_", "");
+                    data.transcriptionTextId = cleanedName;
+                }
             }
         }
 
-        [Group("Vert2/Horiz")]
         [Button]
         public void IDFindAndReplace(string find = "", string replace = "")
         {
@@ -119,7 +144,6 @@ namespace ThunderRoad
             }
         }
 
-        [Group("Vert2/Horiz")]
         [Button]
         public void AddTranscriptionIDsToTextJSON(string textID = "English", string groupID = "Dialog")
         {
@@ -140,6 +164,26 @@ namespace ThunderRoad
         private void OnValidate()
         {
             clips ??= new List<AudioClipData>();
+#if UNITY_EDITOR
+            UpdateWeights();
+            if (newClip != null)
+            {
+                foreach (AudioClipData data in clips)
+                {
+                    if (data.audio == newClip)
+                    {
+                        newClip = null;
+                        return;
+                    }
+                }
+                clips.Add(new AudioClipData(newClip));
+            }
+            newClip = null;
+            foreach (var clip in clips)
+            {
+                clip.weightUpdate = UpdateWeights;
+            }
+#endif
         }
 
         public AudioContainer audioContainer
@@ -252,22 +296,6 @@ namespace ThunderRoad
                 Debug.Log($"{newAudioPath}, {newAnimPath}");
                 AssetDatabase.CreateAsset(data.animation, newAnimPath);
                 AssetDatabase.DeleteAsset(animPath);
-            }
-        }
-
-        public void RefreshDialogIDs()
-        {
-            foreach (AudioClipData data in clips)
-            {
-                if (string.IsNullOrEmpty(data.transcriptionTextId))
-                {
-                    //set the transcription text id to the audio name
-                    string cleanedName = data.audio.name;
-                    cleanedName = cleanedName.Replace("_TRIMMED", "");
-                    //remove "Audio_" from the start of the name
-                    cleanedName = cleanedName.Replace("Audio_", "");
-                    data.transcriptionTextId = cleanedName;
-                }
             }
         }
 #endif

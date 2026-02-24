@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
+  "groupPath": null,
   "alternateAttackSides": false,
   "chainAttacksOnBody": "Disabled",
   "openingAttacks": [
@@ -1264,7 +1265,7 @@
       "animationSpeed": 1.0,
       "difficulty": 1,
       "allowPlayAndMove": false,
-      "weight": 4.0,
+      "weight": 3.0,
       "showDifficulty": true,
       "showWeight": true,
       "customID": true
@@ -1574,7 +1575,7 @@
       "animationSpeed": 1.0,
       "difficulty": 3,
       "allowPlayAndMove": false,
-      "weight": 4.0,
+      "weight": 3.0,
       "showDifficulty": true,
       "showWeight": true,
       "customID": true
@@ -1895,7 +1896,7 @@
       "animationSpeed": 1.0,
       "difficulty": 3,
       "allowPlayAndMove": false,
-      "weight": 4.0,
+      "weight": 3.0,
       "showDifficulty": true,
       "showWeight": true,
       "customID": true
@@ -2172,7 +2173,7 @@
       "animationSpeed": 1.0,
       "difficulty": 1,
       "allowPlayAndMove": false,
-      "weight": 4.0,
+      "weight": 3.0,
       "showDifficulty": true,
       "showWeight": true,
       "customID": true
@@ -2504,7 +2505,7 @@
       "animationSpeed": 1.0,
       "difficulty": 1,
       "allowPlayAndMove": false,
-      "weight": 4.0,
+      "weight": 3.0,
       "showDifficulty": true,
       "showWeight": true,
       "customID": true
@@ -2814,7 +2815,7 @@
       "animationSpeed": 1.0,
       "difficulty": 1,
       "allowPlayAndMove": false,
-      "weight": 4.0,
+      "weight": 3.0,
       "showDifficulty": true,
       "showWeight": true,
       "customID": true
@@ -3267,14 +3268,14 @@
       "animationSpeed": 1.0,
       "difficulty": 1,
       "allowPlayAndMove": false,
-      "weight": 4.0,
+      "weight": 3.0,
       "showDifficulty": true,
       "showWeight": true,
       "customID": true
     },
     {
       "$type": "ThunderRoad.AttackMotion, ThunderRoad",
-      "skipChance": 0.5,
+      "skipChance": 0.3,
       "rootZCurve": {
         "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
         "keys": [
@@ -3518,7 +3519,7 @@
     },
     {
       "$type": "ThunderRoad.AttackMotion, ThunderRoad",
-      "skipChance": 0.5,
+      "skipChance": 0.3,
       "rootZCurve": {
         "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
         "keys": [
@@ -3762,7 +3763,7 @@
     },
     {
       "$type": "ThunderRoad.AttackMotion, ThunderRoad",
-      "skipChance": 0.5,
+      "skipChance": 0.3,
       "rootZCurve": {
         "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
         "keys": [
@@ -4351,7 +4352,6 @@
     {
       "$type": "ThunderRoad.MeleeIdle, ThunderRoad",
       "requireThrustWeapon": false,
-      "nextIdles": null,
       "id": "SimpleStance",
       "address": "Bas.Animation.Shield.Stance1",
       "animationSpeed": 1.0,
@@ -4365,7 +4365,6 @@
     {
       "$type": "ThunderRoad.MeleeIdle, ThunderRoad",
       "requireThrustWeapon": true,
-      "nextIdles": null,
       "id": "ThrustingStance",
       "address": "Bas.Animation.Shield.Stance2",
       "animationSpeed": 1.0,
@@ -4379,7 +4378,6 @@
     {
       "$type": "ThunderRoad.MeleeIdle, ThunderRoad",
       "requireThrustWeapon": false,
-      "nextIdles": null,
       "id": "HighStance",
       "address": "Bas.Animation.Shield.Stance3",
       "animationSpeed": 1.0,
@@ -4391,6 +4389,5 @@
       "showWeight": false
     }
   ],
-  "baseStance": "MeleeShield",
-  "groupPath": null
+  "baseStance": "MeleeShield"
 }

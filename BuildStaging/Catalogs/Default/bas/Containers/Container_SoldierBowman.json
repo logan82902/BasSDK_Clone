@@ -4,9 +4,9 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 1,
+  "groupPath": "Factions/Soldier",
   "displayName": "Soldier Bowman",
   "description": null,
-  "contents": [],
   "containerContents": [
     {
       "$type": "ThunderRoad.TableContent, ThunderRoad",
@@ -16,6 +16,7 @@
         "holderName": "BackLeft"
       },
       "customDataList": [],
+      "mergeKey": "3f1e8cf9",
       "referenceID": "WeaponSoldierBow"
     },
     {
@@ -26,6 +27,7 @@
         "holderName": "BackRight"
       },
       "customDataList": [],
+      "mergeKey": "f788ed46",
       "referenceID": "QuiverNPC"
     },
     {
@@ -36,6 +38,7 @@
         "holderName": "HipsRight"
       },
       "customDataList": [],
+      "mergeKey": "107c564c",
       "referenceID": "WeaponSoldierFootman"
     },
     {
@@ -45,6 +48,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "eec3546e",
       "referenceID": "ApparelBanditGloveR"
     },
     {
@@ -54,6 +58,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "ee5b49f3",
       "referenceID": "ApparelBanditJacket"
     },
     {
@@ -63,6 +68,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "b02434e1",
       "referenceID": "ApparelCivilianLegs"
     },
     {
@@ -72,6 +78,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "1d066d97",
       "referenceID": "ApparelCivilianBoots"
     },
     {
@@ -81,6 +88,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "34407e2b",
       "referenceID": "HairsSoldier"
     },
     {
@@ -90,8 +98,8 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "96212d1c",
       "referenceID": "BeardsSoldier"
     }
-  ],
-  "groupPath": "Factions/Soldier"
+  ]
 }

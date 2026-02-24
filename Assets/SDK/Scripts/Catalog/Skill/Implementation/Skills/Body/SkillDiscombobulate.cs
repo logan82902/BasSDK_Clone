@@ -2,44 +2,31 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
-
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
 
 namespace ThunderRoad.Skill
 {
+    [DeclareBoxGroup("Impact Modifiers", Title = "Impact Modifiers")]
+    [DeclareBoxGroup("Bonk Effect", Title = "Bonk Effect")]
     public class SkillDiscombobulate : SkillData
     {
-#if ODIN_INSPECTOR
-        [BoxGroup("Impact Modifiers")]
-#endif
+        [Group("Impact Modifiers")]
         public float impactVelocity = 6f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Impact Modifiers")]
-#endif
+        [Group("Impact Modifiers")]
         public float headDamageMultiplier = 1f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Impact Modifiers")]
-#endif
+        [Group("Impact Modifiers")]
         public float stunTime = 6f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Impact Modifiers")]
-#endif
+        [Group("Impact Modifiers")]
         public bool ragdollDuringAttack = false;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Bonk Effect"), ValueDropdown(nameof(GetAllEffectID))]
-#endif
+        [Group("Bonk Effect")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string bonkEffectId;
 
         protected EffectData bonkEffectData;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Bonk Effect"), ValueDropdown(nameof(GetAllEffectID))]
-#endif
+        [Group("Bonk Effect")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string bonkAltEffectId;
 
         protected EffectData bonkAltEffectData;

@@ -1,12 +1,9 @@
-using System;
+﻿using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
@@ -16,16 +13,12 @@ namespace ThunderRoad
 
         [Tooltip("Adjust the position of the content if the auto-hide option is enabled for the vertical and/or the horizontal scrollbars.")]
         public bool adjustContentPosition;
-#if ODIN_INSPECTOR
         [ShowIf("adjustContentPosition")]
-#endif
         [Tooltip("Set the left/right values for the vertical scrollbar and the top/bottom values for the horizontal scrollbar.")]
         public RectOffset noScrollbarsPadding;
 
         public bool controlVerticalSpeed;
-#if ODIN_INSPECTOR
         [ShowIf("controlVerticalSpeed")]
-#endif
         [Tooltip("Max vertical scroll speed: Maximum vertical pixels that can be displaced in one frame.")]
         public float maxVerticalDisplacement = 30f;
 

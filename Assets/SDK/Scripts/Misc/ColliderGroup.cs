@@ -3,11 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
@@ -37,11 +33,11 @@ namespace ThunderRoad
         public bool allowImbueEffect = true;
 
         [Tooltip("(Optional) Load this collider group data. Useful when you have a collidergroup with no item.")]
-#if ODIN_INSPECTOR && UNITY_EDITOR
-        public List<ValueDropdownItem<string>> GetAllColliderGroupID()
+#if UNITY_EDITOR
+        public TriDropdownList<string> GetAllColliderGroupID()
             => Catalog.GetDropdownAllID(Category.ColliderGroup);
 
-        [ValueDropdown(nameof(GetAllColliderGroupID), AppendNextDrawer = true)]
+        [Dropdown(nameof(GetAllColliderGroupID))]
 #endif
         public string colliderGroupId;
 
@@ -51,21 +47,16 @@ namespace ThunderRoad
         [NonSerialized]
         public List<Collider> colliders;
 
-#if ODIN_INSPECTOR
         [ShowInInspector]
-#endif
-        [NonSerialized, HideInInspector]
+        [NonSerialized]
+        [HideInInspector]
         public ColliderGroupData data;
 
-#if ODIN_INSPECTOR
         [ShowInInspector]
-#endif
         [NonSerialized]
         public CollisionHandler collisionHandler;
 
-#if ODIN_INSPECTOR
         [ShowInInspector]
-#endif
         [NonSerialized]
         public ColliderGroupData.Modifier modifier;
 

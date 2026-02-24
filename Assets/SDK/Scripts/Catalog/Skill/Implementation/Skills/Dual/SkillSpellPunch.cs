@@ -1,96 +1,69 @@
-﻿#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#endif
+﻿using TriInspector;
 using UnityEngine;
 
 namespace ThunderRoad.Skill.Spell
 {
+    [DeclareBoxGroup("Punch", Title = "Punch")]
+    [DeclareBoxGroup("Spell", Title = "Spell")]
+    [DeclareBoxGroup("Status", Title = "Status")]
+    [DeclareBoxGroup("Effects", Title = "Effects")]
     public class SkillSpellPunch : SpellSkillData
     {
-#if ODIN_INSPECTOR
-        [BoxGroup("Punch"), ValueDropdown(nameof(GetAllEffectID))]
-#endif
+        [Group("Punch")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string baseImpactEffectId;
 
         protected EffectData baseImpactEffectData;
-#if ODIN_INSPECTOR
-        [BoxGroup("Punch"), ValueDropdown(nameof(GetAllEffectID))]
-#endif
+        [Group("Punch")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string spellImpactEffectId;
 
         protected EffectData spellImpactEffectData;
-        
-#if ODIN_INSPECTOR
-        [BoxGroup("Punch"), ValueDropdown(nameof(GetAllEffectID))]
-#endif
+
+        [Group("Punch")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string flourishEffectId;
 
         protected EffectData flourishEffectData;
-        
-#if ODIN_INSPECTOR
-        [BoxGroup("Punch")]
-#endif
+
+        [Group("Punch")]
         public float minPunchVelocity = 3;
-#if ODIN_INSPECTOR
-        [BoxGroup("Punch")]
-#endif
+        [Group("Punch")]
         public float cooldown = 0.3f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Spell"), ValueDropdown(nameof(GetAllSpellID))]
-#endif
+        [Group("Spell")]
+        [Dropdown(nameof(GetAllSpellID))]
         public string spellId;
         protected int spellHashId;
-        
-#if ODIN_INSPECTOR
-        [BoxGroup("Status"), ValueDropdown(nameof(GetAllStatusEffectID))]
-#endif
+
+        [Group("Status")]
+        [Dropdown(nameof(GetAllStatusEffectID))]
         public string statusId;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Status")]
-#endif
+        [Group("Status")]
         public float duration = 0;
-        
-#if ODIN_INSPECTOR
-        [BoxGroup("Status")]
-#endif
+
+        [Group("Status")]
         public float statusFloatParam;
         protected StatusData statusData;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Effects")]
-#endif
+        [Group("Effects")]
         public int pushLevel = 0;
-#if ODIN_INSPECTOR
-        [BoxGroup("Effects")]
-#endif
+        [Group("Effects")]
         public float damage = 0;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Effects")]
-#endif
+        [Group("Effects")]
         public float extraForce = 0;
-        
-#if ODIN_INSPECTOR
-        [BoxGroup("Effects")]
-#endif
+
+        [Group("Effects")]
         public bool playerKnockbackAirOnly = true;
-#if ODIN_INSPECTOR
-        [BoxGroup("Effects")]
-#endif
+        [Group("Effects")]
         public float playerKnockbackMultiplier = 0;
-#if ODIN_INSPECTOR
-        [BoxGroup("Effects")]
-#endif
+        [Group("Effects")]
         public float playerKnockbackUpMultiplier = 0;
-#if ODIN_INSPECTOR
-        [BoxGroup("Effects")]
-#endif
+        [Group("Effects")]
         public float maxPlayerKnockback = 10;
-        
-#if ODIN_INSPECTOR
-        [BoxGroup("Effects")]
-#endif
+
+        [Group("Effects")]
         public float playerDashForce = 0;
 
         protected float lastHit;

@@ -1,18 +1,12 @@
-﻿
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
-using TriInspector;
-#endif
+﻿using TriInspector;
 
 namespace ThunderRoad.AI.Action
 {
-	public class AttackSpell : ActionNode
+    [AutoLabelWidth(AddedWidth = 5f, MinWidth = 0f)]
+    public class AttackSpell : ActionNode
     {
         public Target target = Target.CurrentTarget;
-#if ODIN_INSPECTOR
-        [HideIf("target", optionalValue: Target.CurrentTarget)] 
-#endif
+        [HideIf("target", Target.CurrentTarget)]
         public string inputTransformVariableName = "";
 
         public enum Target

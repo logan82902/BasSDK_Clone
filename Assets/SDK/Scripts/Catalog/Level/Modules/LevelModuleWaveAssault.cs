@@ -1,70 +1,102 @@
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using ThunderRoad.Modules;
 using Object = UnityEngine.Object;
-
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
+using Newtonsoft.Json;
 
 namespace ThunderRoad
 {
-    public class LevelModuleWaveAssault : LevelModule
+    public class LevelModuleWaveAssault : LevelModule, ISurvivalModule
     {
         public string rewardPillarAddress;
 
         public int defaultLength = 3;
 
-#if ODIN_INSPECTOR
-        [ValueDropdown(nameof(GetAllTextGroupID))]
-#endif
+        [Dropdown(nameof(GetAllTextGroupID))]
         public string textFightGroupId;
-#if ODIN_INSPECTOR
-        [ValueDropdown(nameof(GetAllTextFightGroupId))]
-#endif
+        [Dropdown(nameof(GetAllTextFightGroupId))]
         public string textFightId;
 
-#if ODIN_INSPECTOR
-        [ValueDropdown(nameof(GetAllTextFightGroupId))]
-#endif
+        [Dropdown(nameof(GetAllTextFightGroupId))]
         public string textWaveId;
 
-#if ODIN_INSPECTOR
-        [ValueDropdown(nameof(GetAllTextGroupID))]
-#endif
+        [Dropdown(nameof(GetAllTextGroupID))]
         public string textReturnHomeGroupId;
-#if ODIN_INSPECTOR
-        [ValueDropdown(nameof(GetAllTextReturnHomeGroupId))]
-#endif
+        [Dropdown(nameof(GetAllTextReturnHomeGroupId))]
         public string textReturnHomeId;
+        
+        public string raiseSoundAudioContainerAddress = "Bas.AudioGroup.Survival.Pillar.Raise.Stone";
+        public string lowerSoundAudioContainerAddress = "Bas.AudioGroup.Survival.Pillar.Lower.Stone";
+        
+        [NonSerialized]
+        public AudioContainer raiseSound;
+        [NonSerialized]
+        public AudioContainer lowerSound;
+        
+        public bool useCustomTeleportPoint = false;
+        public Vector3 customTeleportPoint = Vector3.zero;
 
+        public bool TryGetTeleportPosition(out Vector3 position)
+        {
+            position = customTeleportPoint;
+            return useCustomTeleportPoint;
+        }
+
+        public bool TryGetPillarSounds(out AudioContainer raise, out AudioContainer lower)
+        {
+            raise = raiseSound;
+            lower = lowerSound;
+            return true;
+        }
+
+        [JsonIgnore]
+        [ShowInInspector]
+        public bool hasPillarZone
+        {
+            get
+            {
+                return pillarZone.HasValue;
+            }
+            set
+            {
+                if (value)
+                {
+                    pillarZone = new Bounds(Vector3.zero, Vector3.one);
+                }
+                else
+                {
+                    pillarZone = null;
+                }
+            }
+        }
+        [JsonIgnore]
+        [ShowInInspector]
+        [HideLabel]
+        [ShowIf(nameof(hasPillarZone))]
+        public Bounds pillarZoneBounds
+        {
+            get
+            {
+                return pillarZone.GetValueOrDefault();
+            }
+            set
+            {
+                pillarZone = value;
+            }
+        }
+        [HideInInspector]
         public Bounds? pillarZone;
         public float returnHomeFadeInDuration = 2.0f;
 
 
 
-        #region ODIN_METHODS
+        public TriDropdownList<string> GetAllTextGroupID() => Catalog.GetTextData().GetDropdownAllTextGroups();
 
-#if ODIN_INSPECTOR
-        public List<ValueDropdownItem<string>> GetAllTextGroupID()
-        {
-            return Catalog.GetTextData().GetDropdownAllTextGroups();
-        }
+        public TriDropdownList<string> GetAllTextFightGroupId() => Catalog.GetTextData().GetDropdownAllTexts(textFightGroupId);
 
-        public List<ValueDropdownItem<string>> GetAllTextFightGroupId()
-        {
-            return Catalog.GetTextData().GetDropdownAllTexts(textFightGroupId);
-        }
-
-        public List<ValueDropdownItem<string>> GetAllTextReturnHomeGroupId()
-        {
-            return Catalog.GetTextData().GetDropdownAllTexts(textReturnHomeGroupId);
-        }
-#endif
-
-        #endregion
+        public TriDropdownList<string> GetAllTextReturnHomeGroupId() => Catalog.GetTextData().GetDropdownAllTexts(textReturnHomeGroupId);
     }
 }

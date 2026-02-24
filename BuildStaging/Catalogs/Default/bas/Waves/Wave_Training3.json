@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 2,
+  "groupPath": "Sandbox",
   "category": "1Combat Practice",
   "localizationId": "Training3",
   "title": "3Archer Combat",
@@ -22,13 +23,13 @@
     {
       "$type": "ThunderRoad.WaveData+WaveFaction, ThunderRoad",
       "factionID": 3,
-      "factionHealthMultiplier": 1.0,
       "factionMaxAlive": 8
     }
   ],
   "groups": [
     {
       "$type": "ThunderRoad.WaveData+Group, ThunderRoad",
+      "mergeKey": "8a50386a",
       "reference": "Table",
       "referenceID": "Civilian",
       "overrideFaction": true,
@@ -50,6 +51,7 @@
     },
     {
       "$type": "ThunderRoad.WaveData+Group, ThunderRoad",
+      "mergeKey": "79d8a56f",
       "reference": "Table",
       "referenceID": "Civilian",
       "overrideFaction": true,
@@ -71,6 +73,7 @@
     },
     {
       "$type": "ThunderRoad.WaveData+Group, ThunderRoad",
+      "mergeKey": "d3f97d69",
       "reference": "Table",
       "referenceID": "Civilian",
       "overrideFaction": true,
@@ -92,6 +95,7 @@
     },
     {
       "$type": "ThunderRoad.WaveData+Group, ThunderRoad",
+      "mergeKey": "7f943b56",
       "reference": "Table",
       "referenceID": "Civilian",
       "overrideFaction": true,
@@ -113,6 +117,7 @@
     },
     {
       "$type": "ThunderRoad.WaveData+Group, ThunderRoad",
+      "mergeKey": "64933555",
       "reference": "Table",
       "referenceID": "Civilian",
       "overrideFaction": true,
@@ -133,5 +138,5 @@
       "prereqMaxRemainingAlive": 0
     }
   ],
-  "groupPath": "Sandbox"
+  "modules": null
 }

@@ -4,17 +4,17 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 1,
+  "groupPath": null,
   "displayName": "Torches",
   "description": "",
-  "contents": [],
   "containerContents": [
     {
       "$type": "ThunderRoad.ItemContent, ThunderRoad",
       "quantity": 1,
       "state": null,
       "customDataList": [],
+      "mergeKey": "82bf2ee6",
       "referenceID": "Torch"
     }
-  ],
-  "groupPath": null
+  ]
 }

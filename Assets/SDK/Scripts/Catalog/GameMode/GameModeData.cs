@@ -1,17 +1,18 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections.Generic;
 using System;
 using System.Collections;
 using ThunderRoad.Modules;
 using UnityEngine.ResourceManagement.ResourceLocations;
 using Newtonsoft.Json;
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#endif
+using TriInspector;
 
 namespace ThunderRoad
 {
     [Serializable]
+#if UNITY_EDITOR
+    [EditorLoadPriority(10)]
+#endif
     public class GameModeData : CatalogData
     {
         public string name = "Unknown";
@@ -61,9 +62,7 @@ namespace ThunderRoad
         public bool defaultInfiniteArrows = false;
         public bool defaultArmorDetection = true;
 
-#if ODIN_INSPECTOR
-        [ValueDropdown(nameof(GetAllLevelID))]
-#endif
+        [Dropdown(nameof(GetAllLevelID))]
         public string levelHome;
         public string levelHomeModeName;
         public string levelHomeTravelSpawnerId;
@@ -78,38 +77,31 @@ namespace ThunderRoad
         /// </summary>
         public List<InventoryStart> playerInventoryStart;
 
-#if ODIN_INSPECTOR
         [ShowInInspector]
-        [ValueDropdown(nameof(GetAllValueTypes))]
-#endif
+        [Dropdown(nameof(GetAllValueTypes))]
         public string mainCurrency = "Gold";
-#if ODIN_INSPECTOR
         [ShowInInspector]
-#endif
-        public List<string> otherCurrencies = new List<string>();
+        public List<string> otherCurrencies = new();
 
-#if ODIN_INSPECTOR
         [ShowInInspector]
-#endif
-        public List<GameModeModule> modules = new List<GameModeModule>();
+        [ListDrawerSettings(DontForceInline = true)]
+        [ReferencePickerScriptButton]
+        [ReadOnlyReferencePicker]
+        public List<GameModeModule> modules = new();
 
-#if ODIN_INSPECTOR
         [ShowInInspector]
-#endif
-        public List<string> characterStatPrefabAddresses = new List<string>();
-        
-#if ODIN_INSPECTOR
+        public List<string> characterStatPrefabAddresses = new();
+
         [ShowInInspector]
-#endif
         /// <summary>
         /// Difficulty options that are available for this gamemode to customise the difficulty (they have value from preset)
         /// </summary>
-        public List<OptionBase> difficultyOptions = new List<OptionBase>();
+        [ReadOnlyReferencePicker]
+        public List<OptionBase> difficultyOptions = new();
 
-#if ODIN_INSPECTOR
         [ShowInInspector]
-        [ListDrawerSettings(Expanded = true, HideAddButton = true, HideRemoveButton = true, ShowPaging = false), LabelText("Difficulty Presets")]
-#endif
+        //[ListDrawerSettings(ShowFoldout = true, HideAddButton = true, HideRemoveButton = true, ShowPaging = false)]
+        [LabelText("Difficulty Presets")]
         /// <summary>
         /// Presets of difficulty options for this gamemode to customise the difficulty
         /// </summary>
@@ -117,23 +109,16 @@ namespace ThunderRoad
         public int defaultDifficultyPreset = 0;
 
         [Header("WarningMessage")]
-#if ODIN_INSPECTOR
-        [ValueDropdown(nameof(GetAllTextGroupID))]
-#endif
+        [Dropdown(nameof(GetAllTextGroupID))]
         public string warningMessageGroupId;
-#if ODIN_INSPECTOR
-        [ValueDropdown(nameof(GetAllTextId))]
-#endif
+        [Dropdown(nameof(GetAllTextId))]
         public string warningMessageTextId;
 
 
-#if ODIN_INSPECTOR
-        [ValueDropdown(nameof(GetAllCheats))]
-#endif
+        [DropdownList(nameof(GetAllCheats))]
         [Header("MenuOption")]
         public List<string> cheatsAllowed;
 
-#if ODIN_INSPECTOR
 #if UNITY_EDITOR
         [Button]
         public void AddDifficultyPreset()
@@ -144,41 +129,24 @@ namespace ThunderRoad
         }
 #endif
 
-        public List<ValueDropdownItem<string>> GetAllValueTypes()
-        {
-            return Catalog.gameData.GetAllValueTypes();
-        }
+        public TriDropdownList<string> GetAllValueTypes() => Catalog.gameData.GetAllValueTypes();
 
-        public List<ValueDropdownItem<string>> GetAllContainerID()
-        {
-            return Catalog.GetDropdownAllID(Category.Container);
-        }
+        public TriDropdownList<string> GetAllContainerID() => Catalog.GetDropdownAllID(Category.Container);
 
-        public List<ValueDropdownItem<string>> GetAllLevelID()
-        {
-            return Catalog.GetDropdownAllID(Category.Level);
-        }
-        public List<ValueDropdownItem<string>> GetAllTextGroupID()
-        {
-            return Catalog.GetTextData().GetDropdownAllTextGroups();
-        }
+        public TriDropdownList<string> GetAllLevelID() => Catalog.GetDropdownAllID(Category.Level);
+        public TriDropdownList<string> GetAllTextGroupID() => Catalog.GetTextData().GetDropdownAllTextGroups();
 
-        public List<ValueDropdownItem<string>> GetAllTextId()
-        {
-            return Catalog.GetTextData().GetDropdownAllTexts(warningMessageGroupId);
-        }
+        public TriDropdownList<string> GetAllTextId() => Catalog.GetTextData().GetDropdownAllTexts(warningMessageGroupId);
 
-        public List<ValueDropdownItem<string>> GetAllCheats()
+        public TriDropdownList<string> GetAllCheats()
         {
-            List<ValueDropdownItem<string>> dropdownList = new List<ValueDropdownItem<string>>();
-            dropdownList.Add(new ValueDropdownItem<string>("Cheats", "Cheats"));
-            dropdownList.Add(new ValueDropdownItem<string>("Skills", "Skills"));
-            dropdownList.Add(new ValueDropdownItem<string>("Spawn", "Spawn"));
-            dropdownList.Add(new ValueDropdownItem<string>("Progression", "Progression"));
-
+            TriDropdownList<string> dropdownList = new();
+            dropdownList.Add("Cheats", "Cheats");
+            dropdownList.Add("Skills", "Skills");
+            dropdownList.Add("Spawn", "Spawn");
+            dropdownList.Add("Progression", "Progression");
             return dropdownList;
         }
-#endif
 
         /// <summary>
         /// This will return all difficulty options set in the data class, and also allow modders to override the options in code

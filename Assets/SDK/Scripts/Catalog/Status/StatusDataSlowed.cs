@@ -1,14 +1,12 @@
-﻿#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+﻿
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
+    [DeclareBoxGroup("Slow Effect", Title = "Slow Effect")]
     public class StatusDataSlowed : StatusData
     {
-        [BoxGroup("Slow Effect")]
+        [Group("Slow Effect")]
         public float baseSlowMult = 0.3f;
     }
 

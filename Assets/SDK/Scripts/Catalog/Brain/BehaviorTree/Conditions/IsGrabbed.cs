@@ -1,15 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
 
 namespace ThunderRoad.AI.Condition
 {
-	public class IsGrabbed : ConditionNode
+    [DeclareBoxGroup("Options", Title = "Options")]
+    [DeclareHorizontalGroup("Options/Horiz")]
+    [DeclareHorizontalGroup("Options/Horiz2")]
+    [DeclareHorizontalGroup("Options/Horiz3")]
+    [DeclareHorizontalGroup("Options/Horiz4")]
+    [AutoLabelWidth(AddedWidth = 5f, MinWidth = 0f)]
+    public class IsGrabbed : ConditionNode
     {
         [Flags]
         public enum HandleOptions
@@ -27,21 +28,20 @@ namespace ThunderRoad.AI.Condition
             BackOnly
         }
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Options"), HorizontalGroup("Options/Horiz"), LabelWidth(200)] 
-#endif
+        [Group("Options/Horiz")]
+        [LabelWidth(200)]
         public bool anyHandle = true;
-#if ODIN_INSPECTOR
-        [BoxGroup("Options"), HorizontalGroup("Options/Horiz2"), LabelWidth(200), DisableIf("anyHandle", optionalValue: true)] 
-#endif
+        [Group("Options/Horiz2")]
+        [LabelWidth(200)]
+        [DisableIf("anyHandle", true)]
         public HandleOptions handleSpecifiers = HandleOptions.SpecificHandle;
-#if ODIN_INSPECTOR
-        [BoxGroup("Options"), HorizontalGroup("Options/Horiz3"), LabelWidth(200), DisableIf("anyHandle", optionalValue: true), EnableIf("handleSpecifiers", optionalValue: HandleOptions.SpecificHandle)] 
-#endif
+        [Group("Options/Horiz3")]
+        [LabelWidth(200)]
+        [DisableIf("anyHandle", true)]
+        [EnableIf(nameof(handleSpecifiers), HandleOptions.SpecificHandle)]
         public string handleName = "None";
-#if ODIN_INSPECTOR
-        [BoxGroup("Options"), HorizontalGroup("Options/Horiz4"), LabelWidth(200)] 
-#endif
+        [Group("Options/Horiz4")]
+        [LabelWidth(200)]
         public FromDirection fromDirection = FromDirection.Either;
 
     }

@@ -1,15 +1,12 @@
-﻿#if ODIN_INSPECTOR
-#else
-using TriInspector;
-#endif
+﻿using TriInspector;
+using UnityEngine;
 
 namespace ThunderRoad.Skill
 {
+    [DeclareBoxGroup("Handles", Title = "Handles")]
     public class SkillGrappler : SpellSkillData
     {
         public static bool enabled;
-        // [BoxGroup("Handles")]
-        // public List<string> handlesToEnable;
 
     }
 }

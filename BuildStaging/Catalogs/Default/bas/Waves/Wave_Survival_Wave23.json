@@ -1,0 +1,70 @@
+{
+  "$type": "ThunderRoad.WaveData, ThunderRoad",
+  "id": "Survival_Wave23",
+  "sensitiveContent": "None",
+  "sensitiveFilterBehaviour": "Discard",
+  "version": 2,
+  "groupPath": "Survival",
+  "category": "Survival",
+  "localizationId": "-",
+  "title": "Wave 23",
+  "description": null,
+  "loopBehavior": "NoLoop",
+  "totalMaxAlive": 4,
+  "alwaysAvailable": false,
+  "waveSelectors": [],
+  "factions": [
+    {
+      "$type": "ThunderRoad.WaveData+WaveFaction, ThunderRoad",
+      "factionID": 3,
+      "factionMaxAlive": 4
+    }
+  ],
+  "groups": [
+    {
+      "$type": "ThunderRoad.WaveData+Group, ThunderRoad",
+      "mergeKey": "9e6d475f",
+      "reference": "Table",
+      "referenceID": "RaktaAlertMix",
+      "overrideFaction": true,
+      "factionID": 3,
+      "overrideContainer": false,
+      "overrideContainerID": null,
+      "overrideBrain": false,
+      "overrideBrainID": null,
+      "overrideMaxMelee": false,
+      "overrideMaxMeleeCount": 0,
+      "groupHealthMultiplier": 1.0,
+      "minMaxCount": {
+        "x": 5,
+        "y": 5
+      },
+      "spawnPointIndex": -1,
+      "prereqGroupIndex": -1,
+      "prereqMaxRemainingAlive": 0
+    },
+    {
+      "$type": "ThunderRoad.WaveData+Group, ThunderRoad",
+      "mergeKey": "56280c16",
+      "reference": "Table",
+      "referenceID": "CultistAlertMix",
+      "overrideFaction": true,
+      "factionID": 3,
+      "overrideContainer": false,
+      "overrideContainerID": null,
+      "overrideBrain": false,
+      "overrideBrainID": null,
+      "overrideMaxMelee": false,
+      "overrideMaxMeleeCount": 0,
+      "groupHealthMultiplier": 1.0,
+      "minMaxCount": {
+        "x": 5,
+        "y": 5
+      },
+      "spawnPointIndex": -1,
+      "prereqGroupIndex": -1,
+      "prereqMaxRemainingAlive": 0
+    }
+  ],
+  "modules": null
+}

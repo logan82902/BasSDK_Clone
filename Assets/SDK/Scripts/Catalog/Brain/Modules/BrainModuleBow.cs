@@ -2,9 +2,13 @@
 using System.Collections;
 using ThunderRoad.AI.Action;
 using System;
+using TriInspector;
+using Newtonsoft.Json;
 
 namespace ThunderRoad
 {
+    [System.Serializable]
+    [AutoLabelWidth(AddedWidth = 5f, MinWidth = 0f)]
     public class BrainModuleBow : BrainModuleRanged
     {
         public float maxShootAngle = 1;

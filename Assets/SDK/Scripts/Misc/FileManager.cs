@@ -8,10 +8,9 @@ namespace ThunderRoad
 {
     public class FileManager
     {
-        public static string defaultFolderName = "Default";
-        public static string modsFolderName = "Mods";
-        public static string logFolderName = "Logs";
-        public static bool useObb = false;
+        public const string defaultFolderName = "Default";
+        public const string modsFolderName = "Mods";
+        public const string logFolderName = "Logs";
 
         public class ReadFile
         {
@@ -39,40 +38,46 @@ namespace ThunderRoad
 
         // Mod builder use this paths for addressable (LocalLoadPath)
 
-        public static string aaDefaultPath
-        {
-            get { return GetFullPath(Type.AddressableAssets, Source.Default); }
-        }
+        public static string aaDefaultPath => GetFullPath(Type.AddressableAssets, Source.Default);
 
-        public static string aaModPath
-        {
-            get { return GetFullPath(Type.AddressableAssets, Source.Mods); }
-        }
+        public static string aaModPath => GetFullPath(Type.AddressableAssets, Source.Mods);
 
         ///////////////////////////////////////////////////////////
+        private static Dictionary<(Type, Source), string> cachedPaths = new Dictionary<(Type, Source), string>();
 
         public static string GetFullPath(Type type, Source source, string relativePath = "")
         {
+            // Check cache
+            var key = (type, source);
+            
+            if (cachedPaths.TryGetValue(key, out string cachedPath))
+            {
+                return Path.Combine(cachedPath, relativePath);
+            }
+            
+#if UNITY_EDITOR         
             if (Application.isEditor)
             {
                 if (source == Source.Default || source == Source.Mods)
                 {
                     if (type == Type.AddressableAssets)
                     {
-#if UNITY_EDITOR
+
                         if (UnityEditor.EditorUserBuildSettings.activeBuildTarget == UnityEditor.BuildTarget.Android)
                         {
                             string path = Path.Combine(Application.dataPath.Replace("/Assets", ""), Path.Combine(ThunderRoadSettings.current.addressableEditorPath, "Android"));
                             if (!Directory.Exists(path)) Directory.CreateDirectory(path);
+                            cachedPaths[key] = path;
                             return Path.Combine(path, relativePath);
                         }
                         else
                         {
                             string path = Path.Combine(Application.dataPath.Replace("/Assets", ""), Path.Combine(ThunderRoadSettings.current.addressableEditorPath, "Windows"));
                             if (!Directory.Exists(path)) Directory.CreateDirectory(path);
+                            cachedPaths[key] = path;
                             return Path.Combine(path, relativePath);
                         }
-#endif                  
+                
                     }
                     else if (type == Type.JSONCatalog)
                     {
@@ -80,23 +85,32 @@ namespace ThunderRoad
                         if (source == Source.Default) path = Path.Combine(path, defaultFolderName);
                         else if (source == Source.Mods) path = Path.Combine(path, ModManager.modFolderName);
                         if (!Directory.Exists(path)) Directory.CreateDirectory(path);
+                        cachedPaths[key] = path;
                         return Path.Combine(path, relativePath);
                     }
                 }
             }
-            else if (Application.platform == RuntimePlatform.Android)
+            else 
+#endif  
+            if (Application.platform == RuntimePlatform.Android)
             {
                 if (source == Source.Default)
                 {
-                    return Path.Combine("/sdcard/Android/obb/" + Application.identifier, relativePath);
+                    string sdcardAndroidObb = "/sdcard/Android/obb/" + Application.identifier;
+                    cachedPaths[key] = sdcardAndroidObb;
+                    return Path.Combine(sdcardAndroidObb, relativePath);
                 }
                 else if (source == Source.Mods)
                 {
-                    return Path.Combine(Application.persistentDataPath, ModManager.modFolderName, relativePath);
+                    string modPath = Path.Combine(Application.persistentDataPath, ModManager.modFolderName);
+                    cachedPaths[key] = modPath;
+                    return Path.Combine(modPath, relativePath);
                 }
                 else if (source == Source.Logs)
                 {
-                    return Path.Combine(Application.persistentDataPath, logFolderName, relativePath);
+                    string logPath = Path.Combine(Application.persistentDataPath, logFolderName);
+                    cachedPaths[key] = logPath;
+                    return Path.Combine(logPath, relativePath);
                 }
             }
             else
@@ -104,6 +118,7 @@ namespace ThunderRoad
                 if (source == Source.Default)
                 {
                     string pathFolder = Path.Combine(Application.streamingAssetsPath, defaultFolderName);
+                    cachedPaths[key] = pathFolder;
                     string path = Path.Combine(pathFolder, relativePath);
                     if (!Directory.Exists(path)) Directory.CreateDirectory(pathFolder);
                     return path;
@@ -112,11 +127,14 @@ namespace ThunderRoad
                 {
                     if (Application.platform == RuntimePlatform.PS5)
                     {
-                        return Path.Combine(Application.persistentDataPath, ModManager.modFolderName, relativePath);
+                        string modPath = Path.Combine(Application.persistentDataPath, ModManager.modFolderName);
+                        cachedPaths[key] = modPath;
+                        return Path.Combine(modPath, relativePath);
                     }
                     else
                     {
                         string pathFolder = Path.Combine(Application.streamingAssetsPath, ModManager.modFolderName);
+                        cachedPaths[key] = pathFolder;
                         string path = Path.Combine(pathFolder, relativePath);
                         if (!Directory.Exists(path)) Directory.CreateDirectory(pathFolder);
                         return path;
@@ -126,11 +144,14 @@ namespace ThunderRoad
                 {
                     if (Application.platform == RuntimePlatform.PS5)
                     {
-                        return Path.Combine(Application.persistentDataPath, logFolderName, relativePath);
+                        string logPath = Path.Combine(Application.persistentDataPath, logFolderName);
+                        cachedPaths[key] = logPath;
+                        return Path.Combine(logPath, relativePath);
                     }
                     else
                     {
                         string pathFolder = Path.Combine(Application.streamingAssetsPath, logFolderName);
+                        cachedPaths[key] = pathFolder;
                         string path = Path.Combine(pathFolder, relativePath);
                         if (!Directory.Exists(path)) Directory.CreateDirectory(pathFolder);
                         return path;
@@ -196,7 +217,7 @@ namespace ThunderRoad
             {
                 Debug.LogWarning($"Directory Not Found: {e}");
             }
-            return new string[0];
+            return Array.Empty<string>();
         }
 
         public static bool FileExist(Type type, Source source, string localPath)

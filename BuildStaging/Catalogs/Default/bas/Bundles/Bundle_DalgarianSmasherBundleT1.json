@@ -1,0 +1,23 @@
+{
+  "$type": "ThunderRoad.BundleData, ThunderRoad",
+  "id": "DalgarianSmasherBundleT2",
+  "sensitiveContent": "None",
+  "sensitiveFilterBehaviour": "Discard",
+  "version": 0,
+  "groupPath": "T1",
+  "localizationGroup": "Bundles",
+  "displayName": "BundleDalgarianSmasherBundleT2Name",
+  "description": null,
+  "altDescriptionTitle": "ContentsTitle",
+  "isArmorBundle": false,
+  "bundleItemId": "Bundle",
+  "items": [],
+  "skills": [
+    "Gravity",
+    "ImpactPulse"
+  ],
+  "lootTables": [
+    "DalgarianTools"
+  ],
+  "spriteAddress": "Ui.Icon.Unknown"
+}

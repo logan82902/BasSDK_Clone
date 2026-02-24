@@ -22,6 +22,13 @@ MonoBehaviour:
   game: {fileID: 11400000, guid: 9072208e35c019342931a425144d2f6a, type: 2}
   build: {fileID: 11400000, guid: 20d8f415ca922af45ab6a5b7baf8f97d, type: 2}
   audioMixer: {fileID: 24100000, guid: 3e7ceaad016e2b44ea341850ad1f6b64, type: 2}
+  snapshotDefault: {fileID: 24500006, guid: 3e7ceaad016e2b44ea341850ad1f6b64, type: 2}
+  snapshotMute: {fileID: -3469254161259775916, guid: 3e7ceaad016e2b44ea341850ad1f6b64,
+    type: 2}
+  snapshotSlowmo: {fileID: -2245853338629219098, guid: 3e7ceaad016e2b44ea341850ad1f6b64,
+    type: 2}
+  snapshotUnderwater: {fileID: 5638445203923222184, guid: 3e7ceaad016e2b44ea341850ad1f6b64,
+    type: 2}
   mirrorMaterial: {fileID: 2100000, guid: 7fef9fea59eec0b4d8f25dc024e975e8, type: 2}
   mirrorOutlineMaterial: {fileID: 2100000, guid: 0c0183b8823e4f2438c7465726129d66,
     type: 2}

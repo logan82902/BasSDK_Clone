@@ -1,0 +1,26 @@
+{
+  "$type": "ThunderRoad.BundleData, ThunderRoad",
+  "id": "ArmorRakta",
+  "sensitiveContent": "None",
+  "sensitiveFilterBehaviour": "Discard",
+  "version": 0,
+  "groupPath": "Armor",
+  "localizationGroup": "Bundles",
+  "displayName": "BundleArmorRaktaName",
+  "description": null,
+  "altDescriptionTitle": "ContentsTitle",
+  "isArmorBundle": true,
+  "bundleItemId": "Bundle",
+  "items": [
+    "ApparelRaktaFeet",
+    "ApparelRaktaLegs",
+    "ApparelRaktaChest",
+    "ApparelRaktaHandL",
+    "ApparelRaktaHandR",
+    "ApparelRaktaHelmet",
+    "ApparelRaktaShoulders"
+  ],
+  "skills": [],
+  "lootTables": [],
+  "spriteAddress": "Ui.Icon.Unknown"
+}

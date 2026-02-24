@@ -1,23 +1,19 @@
-﻿#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
-using TriInspector;
-#endif
+﻿using TriInspector;
 
 namespace ThunderRoad.Skill.Spell
 {
+    [DeclareBoxGroup("Status", Title = "Status")]
     public class SkillSlowingParry : SkillData
     {
-#if ODIN_INSPECTOR
-        [BoxGroup("Status"), ValueDropdown(nameof(GetAllStatusEffectID))]
-#endif
+        [Group("Status")]
+        [Dropdown(nameof(GetAllStatusEffectID))]
         public string statusId;
 
         protected StatusData statusData;
 
-        [BoxGroup("Status")]
+        [Group("Status")]
         public float duration = 1f;
-        [BoxGroup("Status")]
+        [Group("Status")]
         public float extraSlowMult = 0.3f;
     }
 }

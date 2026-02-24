@@ -1,20 +1,29 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using System;
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+using System.Reflection;
+
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
+    [SkipInTypeDropdown]
+#if UNITY_EDITOR
+    [EditorLoadPriority(0)]
+#endif
+    [DeclareBoxGroup("Display", Title = "Display")]
+    [DeclareBoxGroup("Category and sorting", Title = "Category and sorting")]
     public abstract class ModOptionData<T> : CustomData
     {
-        [System.Serializable]
+        [Serializable]
+        [DeclareHorizontalGroup("Horiz")]
         public class Option
         {
+            [Group("Horiz")]
+            [LabelWidth(40f)]
             public string text;
+            [Group("Horiz")]
+            [LabelWidth(40f)]
             public T value;
 
         }
@@ -26,42 +35,25 @@ namespace ThunderRoad
             Slider, // horizontal slider with left/right arrows
         }
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Display")]
-#endif
+        [Group("Display")]
         public InteractionType interactionType = InteractionType.ArrowList;
-#if ODIN_INSPECTOR
-        [BoxGroup("Display")]
-#endif
+        [Group("Display")]
         public string optionName;
-#if ODIN_INSPECTOR
-        [BoxGroup("Display")]
-#endif
+        [Group("Display")]
         public string optionLocalizationID;
-#if ODIN_INSPECTOR
-        [BoxGroup("Display")]
-#endif
+        [Group("Display")]
         public string tooltip = "";
-#if ODIN_INSPECTOR
-        [BoxGroup("Display")]
-#endif
+        [Group("Display")]
         public int defaultOptionIndex = -1;
-#if ODIN_INSPECTOR
-        [BoxGroup("Display")]
-#endif
+        [Group("Display")]
         public bool storeValueInSave = true;
-#if ODIN_INSPECTOR
-        [BoxGroup("Category and sorting")]
-#endif
+        [Group("Category and sorting")]
         public string category;
-#if ODIN_INSPECTOR
-        [BoxGroup("Category and sorting")]
-#endif
+        [Group("Category and sorting")]
         public int categoryOrder = int.MaxValue;
-#if ODIN_INSPECTOR
-        [BoxGroup("Category and sorting")]
-#endif
+        [Group("Category and sorting")]
         public int optionOrder = int.MaxValue;
+        [HideReferencePicker]
         public List<Option> options;
 
     }

@@ -3,32 +3,29 @@ using UnityEngine;
 using UnityEngine.ResourceManagement.ResourceLocations;
 using ThunderRoad.Manikin;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
     [HelpURL("https://kospy.github.io/BasSDK/Components/ThunderRoad/Items/Wearable.html")]
     [AddComponentMenu("ThunderRoad/Wearable")]
+    [DeclareBoxGroup("WARDROBE", Title = "WARDROBE")]
     public class Wearable : Interactable
     {
         public delegate void OnItemEquipped(Item item);
         public delegate void OnItemUnEquipped(string layer, Item item);
         public delegate void OnEditModeChanged(bool state);
 
-#if ODIN_INSPECTOR && UNITY_EDITOR
-        [PropertySpace(0, 10), BoxGroup("WARDROBE", true, true), ValueDropdown(nameof(GetAllChannels))]
+#if UNITY_EDITOR
+        [PropertySpace(0, 10)]
+        [Group("WARDROBE")]
+        [Dropdown(nameof(GetAllChannels))]
 #endif
         public string wardrobeChannel;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("WARDROBE", true, true)]
-        #if UNITY_EDITOR
-        [ValueDropdown(nameof(GetAllChannelLayers))]
-        #endif
+        [Group("WARDROBE")]
+#if UNITY_EDITOR
+        [Dropdown(nameof(GetAllChannelLayers))]
 #endif
         public WearableEntry[] wardrobeLayers;
 
@@ -37,28 +34,23 @@ namespace ThunderRoad
         [System.Serializable]
         public class WearableEntry
         {
-#if ODIN_INSPECTOR
             [ReadOnly]
-#endif
             public string layer;
-#if ODIN_INSPECTOR
             [ReadOnly]
-#endif
             public int layerIndex;
         }
 
-        #region EDITOR / ODIN
+        #region EDITOR
 
         ///////////////////////////////////////////////////////////////////////////////////////////////
         /// This is for QOL, no need to create an editor script since this will be stripped anyway. //
         //////////////////////////////////////////////////////////////////////////////////////////////
 
-#if UNITY_EDITOR && ODIN_INSPECTOR
-
+#if UNITY_EDITOR
         [Button("Reset Layers")]
         private void GetLayers()
         {
-            List<ValueDropdownItem<WearableEntry>> entries = GetAllChannelLayers();
+            TriDropdownList<WearableEntry> entries = GetAllChannelLayers();
             wardrobeLayers = new WearableEntry[entries.Count];
             for (int i = 0; i < entries.Count; i++)
             {
@@ -69,10 +61,10 @@ namespace ThunderRoad
         /// <summary>
         /// This will allow for easier channel selection instead of manually typing strings.
         /// </summary>
-        private List<ValueDropdownItem<string>> GetAllChannels()
+        private TriDropdownList<string> GetAllChannels()
         {
             // Cache.
-            List<ValueDropdownItem<string>> tmp = new List<ValueDropdownItem<string>>();
+            TriDropdownList<string> tmp = new();
 
             ManikinEditorLocationLabels manikinChannelLayers = ManikinEditorLocationLabels.Get();
             if (manikinChannelLayers != null)
@@ -83,16 +75,16 @@ namespace ThunderRoad
                 for (int i = 0; i < channelNames.Length; i++)
                 {
                     string channelName = channelNames[i];
-                    tmp.Add(new ValueDropdownItem<string>(channelName, channelName));
+                    tmp.Add(channelName, channelName);
                 }
             }
             return tmp;
         }
 
-        private List<ValueDropdownItem<WearableEntry>> GetAllChannelLayers()
+        private TriDropdownList<WearableEntry> GetAllChannelLayers()
         {
             // Cache.
-            List<ValueDropdownItem<WearableEntry>> tmp = new List<ValueDropdownItem<WearableEntry>>();
+            TriDropdownList<WearableEntry> tmp = new();
             //need a valid channel
             if (string.IsNullOrEmpty(wardrobeChannel))
                 return tmp;
@@ -107,12 +99,8 @@ namespace ThunderRoad
                 for (int i = 0; i < layers.Length; i++)
                 {
                     string layer = layers[i];
-                    WearableEntry entry = new WearableEntry()
-                    {
-                        layer = layer,
-                        layerIndex = i,
-                    };
-                    tmp.Add(new ValueDropdownItem<WearableEntry>(layer, entry));
+                    WearableEntry entry = new() { layer = layer, layerIndex = i };
+                    tmp.Add(layer, entry);
                 }
             }
             return tmp;

@@ -152,7 +152,7 @@
   "badAngleBluntFallback": true,
   "badAngleDamage": 1.0,
   "badAngleRecoilMultiplier": 0.0,
-  "badAngleMaterialDamageId": "BluntLight",
+  "badAngleMaterialDamageId": "BluntVeryLight",
   "dyingAnimationMaxVelocity": 18.0,
   "addForce": 0.0,
   "addForceState": "Handled",

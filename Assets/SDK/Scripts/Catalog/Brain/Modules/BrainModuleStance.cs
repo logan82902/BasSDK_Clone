@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using System;
 using Newtonsoft.Json;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
+    [System.Serializable]
+    [AutoLabelWidth(AddedWidth = 5f, MinWidth = 0f)]
     public class BrainModuleStance : BrainData.Module
     {
         public enum Stance
@@ -28,17 +27,15 @@ namespace ThunderRoad
         }
 
         public float subStanceSwitchTime = 0.25f;
-        public AnimationCurve switchCurve = new AnimationCurve(new Keyframe(0f, 0f), new Keyframe(1f, 1f));
-#if ODIN_INSPECTOR
-        [MinMaxSlider(0f, 20f, showFields: true)]
-#endif
-        public Vector2 minMaxTimeBetweenChangeSubStance = new Vector2();
+        public AnimationCurve switchCurve = new(new Keyframe(0f, 0f), new Keyframe(1f, 1f));
+        [MinMaxSlider(0f, 20f, true)]
+        public Vector2 minMaxTimeBetweenChangeSubStance = new();
         public bool forceHoldUpperOff = false;
 
-#if ODIN_INSPECTOR
-        [ShowInInspector, ReadOnly] 
-#endif
+        [ShowInInspector]
+        [ReadOnly]
         [NonSerialized]
+        [JsonIgnore]
         public Stance stance = Stance.Idle;
 
     }

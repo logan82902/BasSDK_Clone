@@ -1,8 +1,8 @@
-namespace ThunderRoad
+﻿namespace ThunderRoad
 {
-    using System;
-    using System.Collections.Generic;
-    using UnityEngine;
+using System;
+using System.Collections.Generic;
+using UnityEngine;
 
     public abstract class MusicStingerKillModule : MusicDynamicStingerModule
     {

@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 3,
+  "groupPath": null,
   "disableOnStart": false,
   "rotateAroundAxis": true,
   "forceHoldGripToGrab": false,
@@ -63,6 +64,5 @@
   "referencePoint": "Grip",
   "localizationId": "TrapDoor",
   "highlightDefaultTitle": "Trap Door",
-  "highlightDefaultDesignation": "",
-  "groupPath": null
+  "highlightDefaultDesignation": ""
 }

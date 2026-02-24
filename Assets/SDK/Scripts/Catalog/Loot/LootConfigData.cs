@@ -1,59 +1,52 @@
-using System;
+﻿using System;
 using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
-
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#endif
+using TriInspector;
 
 namespace ThunderRoad
 {
     [Serializable]
+#if UNITY_EDITOR
+    [EditorLoadPriority(5)]
+#endif
+    [DeclareBoxGroup("Data", Title = "Data")]
     public class LootConfigData : CatalogData
     {
-#if ODIN_INSPECTOR
-        [BoxGroup("Data"), ValueDropdown(nameof(GetAllLootTableID))]
-#endif
+        [Group("Data")]
+        [Dropdown(nameof(GetAllLootTableID))]
         public string sideRoomLootTableID;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Data"), ValueDropdown(nameof(GetAllLootTableID))]
-#endif
+        [Group("Data")]
+        [Dropdown(nameof(GetAllLootTableID))]
         public string enemyDropLootTableID;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Data"), ValueDropdown(nameof(GetAllLootTableID))]
-#endif
+        [Group("Data")]
+        [Dropdown(nameof(GetAllLootTableID))]
         public string treasureLootTableID;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Data"), ValueDropdown(nameof(GetAllLootTableID))]
-#endif
+        [Group("Data")]
+        [Dropdown(nameof(GetAllLootTableID))]
         public string rewardLootTableID;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Data"), ValueDropdown(nameof(GetAllLootTableID))]
-#endif
+        [Group("Data")]
+        [Dropdown(nameof(GetAllLootTableID))]
         public string altSideRoomLootTableID;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Data"), ValueDropdown(nameof(GetAllLootTableID))]
-#endif
+        [Group("Data")]
+        [Dropdown(nameof(GetAllLootTableID))]
         public string altTreasureLootTableID;
 
 
-#if ODIN_INSPECTOR
-        public List<ValueDropdownItem<string>> GetAllLootTableID()
+        public TriDropdownList<string> GetAllLootTableID()
         {
-            var dropdownList = new List<ValueDropdownItem<string>> {new("None", "")};
-            var creatureTableIds = Catalog.GetDataList(Category.LootTable).OfType<LootTableBase>().Select(x => x.id).ToList();
-            foreach (var id in creatureTableIds)
+            TriDropdownList<string> dropdownList = new() { new TriDropdownItem<string>() { Text = "None", Value = "" } };
+            List<string> creatureTableIds = Catalog.GetDataList(Category.LootTable).OfType<LootTableBase>().Select(x => x.id).ToList();
+            foreach (string id in creatureTableIds)
             {
-                dropdownList.Add(new ValueDropdownItem<string>(id, id));
+                dropdownList.Add(id, id);
             }
             return dropdownList;
         }
-#endif
     }
 }

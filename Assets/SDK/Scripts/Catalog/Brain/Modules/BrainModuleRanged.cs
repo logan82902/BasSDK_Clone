@@ -2,33 +2,30 @@
 using System;
 using System.Collections.Generic;
 using ThunderRoad.AI.Action;
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+
 using TriInspector;
-#endif
+using Newtonsoft.Json;
 
 namespace ThunderRoad
 {
+    [System.Serializable]
+    [AutoLabelWidth(AddedWidth = 5f, MinWidth = 0f)]
+    [DeclareBoxGroup("Speed", Title = "Speed")]
+    [DeclareBoxGroup("Force", Title = "Force")]
     public abstract class BrainModuleRanged : BrainModuleAttack
     {
         public float aimMaxAngleHorizontal = 30;
-#if ODIN_INSPECTOR
-        [BoxGroup("Speed")]
-#endif
+        [Group("Speed")]
         public float aimMoveSpeed = 10;
         public float turnSpeed = 1;
-        public Vector2 minMaxTimeToAttackFromAim = new Vector2(0, 4);
-#if ODIN_INSPECTOR
-        [BoxGroup("Force")]
-#endif
+        public Vector2 minMaxTimeToAttackFromAim = new(0, 4);
+        [Group("Force")]
         public float aimArmSpringMultiplier = 0.5f;
 
         public float aimTime { get; protected set; }
 
-#if ODIN_INSPECTOR
-        [ShowInInspector, ReadOnly]
-#endif
+        [ShowInInspector]
+        [ReadOnly]
         public AttackState state = AttackState.None;
 
         public enum AttackState

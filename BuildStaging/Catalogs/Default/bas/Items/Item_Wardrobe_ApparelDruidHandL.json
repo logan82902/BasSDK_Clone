@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 4,
+  "groupPath": "Druid/",
   "localizationId": "DruidHandLeft",
   "displayName": "Druidic Manchette (L)",
   "description": "Practical wrist garb originating from the Northern Tribes.",
@@ -14,16 +15,18 @@
   "tier": 1,
   "flags": "Spinnable",
   "levelRequired": 0,
+  "type": "Wardrobe",
   "category": "Mages",
+  "update": "",
   "iconEffectId": null,
   "preferredItemCenter": "Mass",
   "drainImbueWhenIdle": true,
+  "forceImbueUseButton": "None",
   "prefabAddress": "Bas.Item.Apparel.Druid_WristL",
   "iconAddress": "Bas.Item.Apparel.Druid_WristL.Icon[ArmorItemsMale_Druid_Hand_Left]",
   "closeUpIconAddress": null,
   "pooledCount": 0,
   "androidPooledCount": 0,
-  "type": "Wardrobe",
   "allowedStorage": "Inventory, Container, SandboxAllItems",
   "despawnOnStoredInInventory": false,
   "isStackable": false,
@@ -37,6 +40,7 @@
   "mass": 0.3,
   "drag": 1.0,
   "angularDrag": 1.0,
+  "density": 420.0,
   "focusRegenMultiplier": 0.97,
   "spellChargeSpeedPlayerMultiplier": 1.04,
   "spellChargeSpeedNPCMultiplier": 1.04,
@@ -150,22 +154,51 @@
     "preWrapMode": "ClampForever",
     "postWrapMode": "ClampForever"
   },
+  "colliderGroups": [],
+  "damagers": [
+    {
+      "$type": "ThunderRoad.ItemData+Damager, ThunderRoad",
+      "transformName": "Blunt",
+      "damagerID": "PropBlunt"
+    }
+  ],
+  "Interactables": [
+    {
+      "$type": "ThunderRoad.ItemData+Interactable, ThunderRoad",
+      "transformName": "Handle",
+      "interactableId": "ObjectHandleHeavy"
+    }
+  ],
+  "effectHinges": [],
+  "whooshs": [
+    {
+      "$type": "ThunderRoad.ItemData+Whoosh, ThunderRoad",
+      "transformName": "Whoosh",
+      "effectId": "WhooshPropLight",
+      "trigger": "Always",
+      "stopOnSnap": true,
+      "minVelocity": 5.0,
+      "maxVelocity": 12.0,
+      "dampening": 0.1
+    }
+  ],
   "modules": [
     {
       "$type": "ThunderRoad.ItemModuleWardrobe, ThunderRoad",
-      "castSpeedPerHand": null,
       "category": "Apparel",
       "castShadows": "PlayerAndNPC",
       "wardrobes": [
         {
           "$type": "ThunderRoad.ItemModuleWardrobe+CreatureWardrobe, ThunderRoad",
           "creatureName": "HumanMale",
-          "wardrobeDataAddress": "Bas.Creature.Wardrobe.HumanMale.Druid.HandL"
+          "wardrobeDataAddress": "Bas.Creature.Wardrobe.HumanMale.Druid.HandL",
+          "runtimeBlendshapeActivators": null
         },
         {
           "$type": "ThunderRoad.ItemModuleWardrobe+CreatureWardrobe, ThunderRoad",
           "creatureName": "HumanFemale",
-          "wardrobeDataAddress": "Bas.Creature.Wardrobe.HumanFemale_Druid_HandL"
+          "wardrobeDataAddress": "Bas.Creature.Wardrobe.HumanFemale_Druid_HandL",
+          "runtimeBlendshapeActivators": null
         }
       ],
       "isMetal": false,
@@ -208,34 +241,5 @@
       "strength": 1.0
     }
   ],
-  "colliderGroups": [],
-  "damagers": [
-    {
-      "$type": "ThunderRoad.ItemData+Damager, ThunderRoad",
-      "transformName": "Blunt",
-      "damagerID": "PropBlunt"
-    }
-  ],
-  "Interactables": [
-    {
-      "$type": "ThunderRoad.ItemData+Interactable, ThunderRoad",
-      "transformName": "Handle",
-      "interactableId": "ObjectHandleHeavy"
-    }
-  ],
-  "effectHinges": [],
-  "whooshs": [
-    {
-      "$type": "ThunderRoad.ItemData+Whoosh, ThunderRoad",
-      "transformName": "Whoosh",
-      "effectId": "WhooshPropLight",
-      "trigger": "Always",
-      "stopOnSnap": true,
-      "minVelocity": 5.0,
-      "maxVelocity": 12.0,
-      "dampening": 0.1
-    }
-  ],
-  "entityModules": [],
-  "groupPath": "Druid/"
+  "entityModules": []
 }

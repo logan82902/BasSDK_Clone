@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
+  "groupPath": "Dalgarian/Standard",
   "isUnique": true,
   "areaPrefabAddress": "Bas.Area.DA_Std_Museum",
   "lightingPresetAddress": "Bas.Area.DA_Std_Museum.LightingPreset",
@@ -110,6 +111,5 @@
       "isZeroIntensity": false,
       "visibleFromGate": true
     }
-  ],
-  "groupPath": "Dalgarian/Standard"
+  ]
 }

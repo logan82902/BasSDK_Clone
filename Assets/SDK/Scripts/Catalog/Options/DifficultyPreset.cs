@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif //ODIN_INSPECTOR
 
 namespace ThunderRoad
 {
@@ -17,35 +12,28 @@ namespace ThunderRoad
 	{
 		public string name;
 #if UNITY_EDITOR
-#if ODIN_INSPECTOR
-		[ValueDropdown(nameof(GetAllTextGroupID))]
+        [Dropdown(nameof(GetAllTextGroupID))]
 #endif
-#endif //ODIN_INSPECTOR
-		public string localizationGroupId;
+        public string localizationGroupId;
 
 #if UNITY_EDITOR
-#if ODIN_INSPECTOR
-		[ValueDropdown(nameof(GetAllTextId))]
+        [Dropdown(nameof(GetAllTextId))]
 #endif
-#endif //ODIN_INSPECTOR
-		public string localizationId;
+        public string localizationId;
 
 #if UNITY_EDITOR
-#if ODIN_INSPECTOR
-		[ValueDropdown(nameof(GetAllTextId))]
+        [Dropdown(nameof(GetAllTextId))]
 #endif
-#endif //ODIN_INSPECTOR
-		public string localizationDescriptionId;
+        public string localizationDescriptionId;
 
 		[NonSerialized]
 		public GameModeData gameModeData;
 
         //this needs to hold difficulty options, along with the value they should be set to
-#if ODIN_INSPECTOR
-        [DictionaryDrawerSettings(KeyLabel = "Option ID", ValueLabel = "Option Value")]
-		[ListDrawerSettings(Expanded = true, HideAddButton = true, HideRemoveButton = true, ShowPaging = false), LabelText("Drop Levels")]
-#endif
-        public OptionPresets optionPresets = new OptionPresets();
+        [LabelText("Drop Levels")]
+        [LabelWidth(0.0001f)]
+        [InlineProperty]
+        public OptionPresets optionPresets = new();
 
 		[Button]
 		public void Refresh()
@@ -77,22 +65,11 @@ namespace ThunderRoad
 		}
 
 #if UNITY_EDITOR
-#if ODIN_INSPECTOR
-		[Button]
-		public void RemoveThisLevel()
-		{
-			gameModeData.difficultyPresets.Remove(this);
-		}
-		public List<ValueDropdownItem<string>> GetAllTextGroupID()
-		{
-			return Catalog.GetTextData().GetDropdownAllTextGroups();
-		}
+        [Button]
+        public void RemoveThisLevel() => gameModeData.difficultyPresets.Remove(this);
+        public TriDropdownList<string> GetAllTextGroupID() => Catalog.GetTextData().GetDropdownAllTextGroups();
 
-		public List<ValueDropdownItem<string>> GetAllTextId()
-		{
-			return Catalog.GetTextData().GetDropdownAllTexts(localizationGroupId);
-		}
-#endif
+        public TriDropdownList<string> GetAllTextId() => Catalog.GetTextData().GetDropdownAllTexts(localizationGroupId);
 #endif
 	}
 }

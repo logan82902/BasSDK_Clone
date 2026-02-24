@@ -1,25 +1,22 @@
 ﻿using System.Collections;
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
 using ThunderRoad.Skill.SpellPower;
 using UnityEngine;
 
 namespace ThunderRoad.Skill.Spell
 {
+    [DeclareBoxGroup("Steal", Title = "Steal")]
+    [DeclareBoxGroup("Bolts", Title = "Bolts")]
     public class SkillWeaponTheft : SkillData
     {
-        [BoxGroup("Steal")]
+        [Group("Steal")]
         public float stealDelay;
 
-        [BoxGroup("Bolts")]
+        [Group("Bolts")]
         public Vector2 boltDelay = new(0.5f, 0.1f);
 
-        #if ODIN_INSPECTOR
-        [BoxGroup("Bolts"), ValueDropdown(nameof(GetAllEffectID))]
-        #endif
+        [Group("Bolts")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string boltEffectId;
         protected EffectData boltEffectData;
 

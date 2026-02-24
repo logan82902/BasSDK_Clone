@@ -1,0 +1,25 @@
+{
+  "$type": "ThunderRoad.BundleData, ThunderRoad",
+  "id": "ArmorBandit",
+  "sensitiveContent": "None",
+  "sensitiveFilterBehaviour": "Discard",
+  "version": 0,
+  "groupPath": "Armor",
+  "localizationGroup": "Bundles",
+  "displayName": "BundleArmorBanditName",
+  "description": null,
+  "altDescriptionTitle": "ContentsTitle",
+  "isArmorBundle": true,
+  "bundleItemId": "Bundle",
+  "items": [
+    "ApparelBanditBoots",
+    "ApparelBanditPants",
+    "ApparelBanditGloveL",
+    "ApparelBanditGloveR",
+    "ApparelBanditHelmet",
+    "ApparelBanditJacket"
+  ],
+  "skills": [],
+  "lootTables": [],
+  "spriteAddress": "Ui.Icon.Unknown"
+}

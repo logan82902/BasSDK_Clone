@@ -1,0 +1,72 @@
+{
+  "$type": "ThunderRoad.CreatureTable, ThunderRoad",
+  "id": "SentaraAlertMix",
+  "sensitiveContent": "None",
+  "sensitiveFilterBehaviour": "Discard",
+  "version": 1,
+  "groupPath": "Factions/Dungeon",
+  "description": null,
+  "linkedToGenderRatio": false,
+  "drops": [
+    {
+      "$type": "ThunderRoad.CreatureTable+Drop, ThunderRoad",
+      "mergeKey": "7c826414",
+      "reference": "Table",
+      "referenceID": "Sentara_Base_MeleeWeak",
+      "overrideFaction": false,
+      "factionID": 5,
+      "overrideContainer": false,
+      "overrideContainerID": "CultistDevotee",
+      "overrideBrain": false,
+      "overrideBrainID": "HumanHard",
+      "overrideEthnicity": false,
+      "overrideEthnicityID": null,
+      "probabilityWeight": 2.0
+    },
+    {
+      "$type": "ThunderRoad.CreatureTable+Drop, ThunderRoad",
+      "mergeKey": "e7e5a404",
+      "reference": "Table",
+      "referenceID": "Sentara_Base_MeleeStrong",
+      "overrideFaction": false,
+      "factionID": 5,
+      "overrideContainer": false,
+      "overrideContainerID": "CultistPartisan",
+      "overrideBrain": false,
+      "overrideBrainID": "HumanHard",
+      "overrideEthnicity": false,
+      "overrideEthnicityID": null,
+      "probabilityWeight": 4.0
+    },
+    {
+      "$type": "ThunderRoad.CreatureTable+Drop, ThunderRoad",
+      "mergeKey": "4ffcdd7f",
+      "reference": "Table",
+      "referenceID": "Sentara_Base_MeleeSpecial",
+      "overrideFaction": false,
+      "factionID": 5,
+      "overrideContainer": false,
+      "overrideContainerID": "CultistDuelist",
+      "overrideBrain": false,
+      "overrideBrainID": "HumanHard",
+      "overrideEthnicity": false,
+      "overrideEthnicityID": null,
+      "probabilityWeight": 2.0
+    },
+    {
+      "$type": "ThunderRoad.CreatureTable+Drop, ThunderRoad",
+      "mergeKey": "dc7c7ff5",
+      "reference": "Table",
+      "referenceID": "Sentara_Base_RangedWeak",
+      "overrideFaction": false,
+      "factionID": 0,
+      "overrideContainer": false,
+      "overrideContainerID": null,
+      "overrideBrain": false,
+      "overrideBrainID": null,
+      "overrideEthnicity": false,
+      "overrideEthnicityID": null,
+      "probabilityWeight": 1.0
+    }
+  ]
+}

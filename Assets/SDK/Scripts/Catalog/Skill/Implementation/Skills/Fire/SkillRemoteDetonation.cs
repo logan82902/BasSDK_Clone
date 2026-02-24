@@ -1,39 +1,35 @@
 ﻿using System;
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
 using UnityEngine;
 
 namespace ThunderRoad.Skill.Spell
 {
+    [DeclareBoxGroup("Detonation", Title = "Detonation")]
     public class SkillRemoteDetonation : SpellSkillData
     {
-#if ODIN_INSPECTOR
-        [BoxGroup("Detonation"), ValueDropdown(nameof(GetAllEffectID))]
-#endif
+        [Group("Detonation")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string explosionEffectId = "RemoteDetonation";
         [NonSerialized]
         public EffectData explosionEffectData;
 
-        [BoxGroup("Detonation")]
+        [Group("Detonation")]
         public float playerDamage = 10f;
-        [BoxGroup("Detonation")]
+        [Group("Detonation")]
         public float enemyDamage = 50f;
-        [BoxGroup("Detonation")]
+        [Group("Detonation")]
         public float radius = 2.5f;
-        [BoxGroup("Detonation")]
+        [Group("Detonation")]
         public float pushMinRadius = 1.5f;
-        [BoxGroup("Detonation")]
+        [Group("Detonation")]
         public float force = 10f;
-        [BoxGroup("Detonation")]
+        [Group("Detonation")]
         public float breakForce = 50f;
 
-        [BoxGroup("Detonation")]
+        [Group("Detonation")]
         public ForceMode forceMode = ForceMode.Impulse;
 
-        [BoxGroup("Detonation")]
+        [Group("Detonation")]
         public AnimationCurve hapticAnimationCurve;
         
         protected SkillBurning ignitionData;

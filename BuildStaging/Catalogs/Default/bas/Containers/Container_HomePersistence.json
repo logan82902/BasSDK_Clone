@@ -4,9 +4,9 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 1,
+  "groupPath": null,
   "displayName": "Unknown",
   "description": null,
-  "contents": [],
   "containerContents": [
     {
       "$type": "ThunderRoad.ItemContent, ThunderRoad",
@@ -29,6 +29,7 @@
         "lastSpawnTime": 0.0
       },
       "customDataList": null,
+      "mergeKey": "6e70c432",
       "referenceID": "AxeLongOldLumber"
     },
     {
@@ -52,6 +53,7 @@
         "lastSpawnTime": 0.0
       },
       "customDataList": null,
+      "mergeKey": "26b03c05",
       "referenceID": "Stool2"
     },
     {
@@ -75,8 +77,8 @@
         "lastSpawnTime": 0.0
       },
       "customDataList": null,
+      "mergeKey": "c8de3fa4",
       "referenceID": "WoodLog7"
     }
-  ],
-  "groupPath": null
+  ]
 }

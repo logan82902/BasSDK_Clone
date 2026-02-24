@@ -3,10 +3,12 @@ using System.Reflection;
 using UnityEditor;
 using UnityEngine;
 
+#pragma warning disable UDR0001 // Domain Reload Analyzer
 namespace ThunderRoad
 {
     public static class EditorCommon
     {
+
         public static void ShowCheckbox(ref bool variable, string title, string editorPrefName, string toolTip = "")
         {
             bool newVariable = GUILayout.Toggle(variable, new GUIContent(title, toolTip));

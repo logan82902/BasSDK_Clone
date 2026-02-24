@@ -3,50 +3,36 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
     [Serializable]
+    [DeclareBoxGroup("Container", Title = "Container")]
+    [DeclareBoxGroup("Music", Title = "Music")]
     public class MusicGroup : CatalogData
     {
-#if ODIN_INSPECTOR
-        [BoxGroup("Container")] 
-#endif
+        [Group("Container")]
+        [HideReferencePicker]
         public List<MusicSegment> musicSegments = null;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Container")] 
-#endif
+        [Group("Container")]
         public bool shuffleMode = true;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Container")] 
-#endif
+        [Group("Container")]
         public int restartSequenceIndex = 0;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Music")] 
-#endif
+        [Group("Music")]
         public float volumeDb = 0.0f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Music")] 
-#endif
+        [Group("Music")]
         public int BPM = 0;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Music")] 
-#endif
+        [Group("Music")]
         public int beatsPerBar = 0;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Music")] 
-#endif
+        [Group("Music")]
         public int barPerGrid = 0;
 
         private List<MusicSegment> _musicSegmentsOrder = null;

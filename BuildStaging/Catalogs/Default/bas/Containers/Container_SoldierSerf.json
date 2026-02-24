@@ -4,9 +4,9 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 1,
+  "groupPath": "Factions/Soldier",
   "displayName": "Soldier Serf",
   "description": null,
-  "contents": [],
   "containerContents": [
     {
       "$type": "ThunderRoad.TableContent, ThunderRoad",
@@ -16,22 +16,27 @@
         "holderName": "BackRight"
       },
       "customDataList": [],
+      "mergeKey": "5c604a56",
       "referenceID": "WeaponSoldierAxeman"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "2a5d9f33",
       "referenceID": "MeleeImbueFire"
     },
     {
       "$type": "ThunderRoad.SpellContent, ThunderRoad",
+      "mergeKey": "d9ad6214",
       "referenceID": "Lightning"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "5f3f9246",
       "referenceID": "ChargeSpeedBoost"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "67042338",
       "referenceID": "ModifierArmored"
     },
     {
@@ -41,6 +46,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "627bf76a",
       "referenceID": "ApparelMercenaryHeadband"
     },
     {
@@ -50,6 +56,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "1e461d81",
       "referenceID": "ApparelSoldierGloveR"
     },
     {
@@ -59,6 +66,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "2db9d1e2",
       "referenceID": "ApparelSoldierGloveL"
     },
     {
@@ -68,6 +76,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "c156ee7a",
       "referenceID": "ApparelSoldierJacket"
     },
     {
@@ -77,6 +86,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "9bc437a1",
       "referenceID": "ApparelSoldierPants"
     },
     {
@@ -86,6 +96,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "1083eb6a",
       "referenceID": "ApparelSoldierBoots"
     },
     {
@@ -95,6 +106,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "27e3c4af",
       "referenceID": "BeardsSoldier"
     },
     {
@@ -104,8 +116,8 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "5604c58c",
       "referenceID": "HairsSoldier"
     }
-  ],
-  "groupPath": "Factions/Soldier"
+  ]
 }

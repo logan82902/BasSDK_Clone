@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 4,
+  "groupPath": null,
   "localizationId": "SwordGreatDalgarian",
   "displayName": "Sword of Naa",
   "description": "Darkness and chaos! The endless war! Jikarazins! Oh Nar Kayosvam!\r\nWe Implore You, Grant Us Harmony!\r\nOh Khemenet, summon the Sword of Naa!",
@@ -14,16 +15,18 @@
   "tier": 5,
   "flags": "Spinnable, Jabbing",
   "levelRequired": 0,
+  "type": "Weapon",
   "category": "Greatswords",
+  "update": "",
   "iconEffectId": null,
   "preferredItemCenter": "Mass",
   "drainImbueWhenIdle": true,
+  "forceImbueUseButton": "None",
   "prefabAddress": "Bas.Item.Melee.Greatsword.Dalgarian",
   "iconAddress": "Bas.Item.Melee.Greatsword.Dalgarian.Icon[wpn_SD_DalgarianSword]",
   "closeUpIconAddress": "Bas.Item.Melee.Greatsword.Dalgarian.IconClose[wpn_SD_DalgarianSword-close-up]",
   "pooledCount": 0,
   "androidPooledCount": 0,
-  "type": "Weapon",
   "allowedStorage": "Container",
   "despawnOnStoredInInventory": false,
   "isStackable": false,
@@ -37,6 +40,7 @@
   "mass": 2.0,
   "drag": 1.0,
   "angularDrag": 0.05,
+  "density": 7500.0,
   "focusRegenMultiplier": 1.5,
   "spellChargeSpeedPlayerMultiplier": 1.7,
   "spellChargeSpeedNPCMultiplier": 1.7,
@@ -150,6 +154,50 @@
     "preWrapMode": "ClampForever",
     "postWrapMode": "ClampForever"
   },
+  "colliderGroups": [
+    {
+      "$type": "ThunderRoad.ItemData+ColliderGroup, ThunderRoad",
+      "transformName": "Blades",
+      "colliderGroupId": "BladeSwordCrystal"
+    }
+  ],
+  "damagers": [
+    {
+      "$type": "ThunderRoad.ItemData+Damager, ThunderRoad",
+      "transformName": "Pierce",
+      "damagerID": "SwordPierce"
+    },
+    {
+      "$type": "ThunderRoad.ItemData+Damager, ThunderRoad",
+      "transformName": "Slash",
+      "damagerID": "SwordSlash2H"
+    },
+    {
+      "$type": "ThunderRoad.ItemData+Damager, ThunderRoad",
+      "transformName": "Blunt",
+      "damagerID": "HandleHeavy"
+    }
+  ],
+  "Interactables": [
+    {
+      "$type": "ThunderRoad.ItemData+Interactable, ThunderRoad",
+      "transformName": "Handle",
+      "interactableId": "ObjectHandleHeavy"
+    }
+  ],
+  "effectHinges": [],
+  "whooshs": [
+    {
+      "$type": "ThunderRoad.ItemData+Whoosh, ThunderRoad",
+      "transformName": "Whoosh",
+      "effectId": "WhooshSwordLong",
+      "trigger": "Always",
+      "stopOnSnap": true,
+      "minVelocity": 3.0,
+      "maxVelocity": 14.0,
+      "dampening": 0.1
+    }
+  ],
   "modules": [
     {
       "$type": "ThunderRoad.ItemModuleAI, ThunderRoad",
@@ -158,7 +206,6 @@
       "weaponHandling": "TwoHanded",
       "secondaryHandling": "None",
       "weaponAttackTypes": "Swing, Thrust",
-      "ignoredByDefense": false,
       "alwaysPrimary": false,
       "defaultStanceInfo": {
         "$type": "ThunderRoad.ItemModuleAI+StanceInfo, ThunderRoad",
@@ -175,6 +222,7 @@
         }
       ],
       "rangedWeaponData": null,
+      "ignoredByDefense": false,
       "armResistanceMultiplier": 3.0,
       "allowDynamicHeight": false,
       "defenseHasPriority": false
@@ -708,50 +756,5 @@
       }
     }
   ],
-  "colliderGroups": [
-    {
-      "$type": "ThunderRoad.ItemData+ColliderGroup, ThunderRoad",
-      "transformName": "Blades",
-      "colliderGroupId": "BladeSwordCrystal"
-    }
-  ],
-  "damagers": [
-    {
-      "$type": "ThunderRoad.ItemData+Damager, ThunderRoad",
-      "transformName": "Pierce",
-      "damagerID": "SwordPierce"
-    },
-    {
-      "$type": "ThunderRoad.ItemData+Damager, ThunderRoad",
-      "transformName": "Slash",
-      "damagerID": "SwordSlash2H"
-    },
-    {
-      "$type": "ThunderRoad.ItemData+Damager, ThunderRoad",
-      "transformName": "Blunt",
-      "damagerID": "HandleHeavy"
-    }
-  ],
-  "Interactables": [
-    {
-      "$type": "ThunderRoad.ItemData+Interactable, ThunderRoad",
-      "transformName": "Handle",
-      "interactableId": "ObjectHandleHeavy"
-    }
-  ],
-  "effectHinges": [],
-  "whooshs": [
-    {
-      "$type": "ThunderRoad.ItemData+Whoosh, ThunderRoad",
-      "transformName": "Whoosh",
-      "effectId": "WhooshSwordLong",
-      "trigger": "Always",
-      "stopOnSnap": true,
-      "minVelocity": 3.0,
-      "maxVelocity": 14.0,
-      "dampening": 0.1
-    }
-  ],
-  "entityModules": [],
-  "groupPath": null
+  "entityModules": []
 }

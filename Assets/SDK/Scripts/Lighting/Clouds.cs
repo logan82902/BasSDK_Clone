@@ -13,6 +13,7 @@ namespace ThunderRoad
         }
         protected static Clouds _instance;
 
+
         void Awake()
         {
             if(!_instance) _instance = this;

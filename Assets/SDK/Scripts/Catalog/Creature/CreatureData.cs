@@ -9,42 +9,47 @@ using UnityEngine.SceneManagement;
 using ThunderRoad.Manikin;
 
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
     [Serializable]
+#if UNITY_EDITOR
+    [EditorLoadPriority(0)]
+#endif
+    [DeclareBoxGroup("Pooling", Title = "Pooling")]
+    [DeclareBoxGroup("General", Title = "General")]
+    [DeclareBoxGroup("Stats", Title = "Stats")]
+    [DeclareBoxGroup("Overlap sphere", Title = "Overlap sphere")]
+    [DeclareBoxGroup("AI", Title = "AI")]
+    [DeclareTabGroup("Tabs")]
     public class CreatureData : EntityData
     {
-#if ODIN_INSPECTOR
-        [BoxGroup("Pooling")]
-#endif
+        [Group("Pooling")]
         public int pooledCount;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Pooling")]
-#endif
+        [Group("Pooling")]
         public int androidPooledCount;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("General")]
-#endif
+        [Group("General")]
         public string name;
-#if ODIN_INSPECTOR
-        [BoxGroup("General")]
-#endif
+        private int _creatureNameHash = -1;
+        [JsonIgnore]
+        public int creatureNameHash {
+            get
+            {
+                if (_creatureNameHash == -1)
+                {
+                    _creatureNameHash = Animator.StringToHash(name);
+                }
+                return _creatureNameHash;
+            }
+        }
+        [Group("General")]
         public CreatureType type;
-#if ODIN_INSPECTOR
-        [BoxGroup("General")]
-#endif
+        [Group("General")]
         public string prefabAddress;
-#if ODIN_INSPECTOR
-        [BoxGroup("General")]
-#endif
+        [Group("General")]
         public string manikinChannelLayersAddress = "Bas.Manikin.ChannelLayers";
         [JsonIgnore]
         public ManikinEditorLocationLabels manikinChannelLayers
@@ -68,175 +73,121 @@ namespace ThunderRoad
             }
         }
         public static Dictionary<string, ManikinEditorLocationLabels> channelLayersByID;
-#if ODIN_INSPECTOR
-        [BoxGroup("General")]
-#endif
-#if ODIN_INSPECTOR
-        [BoxGroup("General")]
-#endif
+        [Group("General")]
         public string animatorBundleAddress;
-        [NonSerialized]
+        [JsonIgnore]
         public IResourceLocation prefabLocation;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("General")]
-#endif
+        [Group("General")]
         public bool removeMeshWhenPooled;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("General")]
-#endif
+        [Group("General")]
         public Gender gender = Gender.None;
+        [Group("General")]
+        [Tooltip("The density of the creatures body in KG/m³. Used to calculate mass of the ragdoll and for buoyancy calculations.")]
+        public float density = 985f; // for humans
 
-#if ODIN_INSPECTOR
-        [BoxGroup("General")]
-#endif
+        [Group("General")]
         public bool allowStatus = true;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Stats")]
-#endif
-        public short health = 50;
-#if ODIN_INSPECTOR
-        [BoxGroup("Stats")]
-#endif
+        [Group("Stats")]
+        public int health = 50;
+        [Group("Stats")]
         public float focus = 30f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Stats")]
-#endif
+        [Group("Stats")]
         public float focusRegen = 2;
-#if ODIN_INSPECTOR
-        [BoxGroup("Stats")]
-#endif
-        public int baseXP = 20;
-#if ODIN_INSPECTOR
-        [BoxGroup("Stats"), LabelText(@"@SkillPassiveLabel(""Max Focus"", maxFocusPerSkill)")]
-#endif
+        [Group("Stats")]
+        [LabelText("$" + nameof(MaxFocusLabel))]
         public float maxFocusPerSkill = 0.12f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Stats"), LabelText(@"@SkillPassiveLabel(""Focus Regen"", focusRegenPerSkill)")]
-#endif
+        [Group("Stats")]
+        [LabelText("$" + nameof(FocusRegenLabel))]
         public float focusRegenPerSkill = 0f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Stats"), LabelText("@MaxHealthLabel")]
-#endif
+        [Group("Stats")]
+        [LabelText("$" + nameof(MaxHealthLabel))]
         public float maxHealthPerSkill = 0.12f;
 
+        public string MaxFocusLabel() => SkillPassiveLabel("Max Focus", maxFocusPerSkill);
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Stats")]
-#endif
+        public string FocusRegenLabel() => SkillPassiveLabel("Focus Regen", focusRegenPerSkill);
+
+        public string SkillPassiveLabel(string name, float value)
+            => $"{name} Mult. per Skill (max +{value * 3 * 100}%)";
+
+        [JsonIgnore] public string MaxHealthLabel => $"Max Health Mult. per Skill (max {health * (1 + maxHealthPerSkill * 3)})";
+
+        [Group("Stats")]
         public float physicsOffDamageMult = 0.33f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Stats")]
-#endif
+        [Group("Stats")]
         public float heatGainMultiplier = 1;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Stats")]
-#endif
+        [Group("Stats")]
         public float heatLossMultiplier = 1;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Overlap sphere")]
-#endif
+        [Group("Overlap sphere")]
         public float overlapRadius = 5;
-#if ODIN_INSPECTOR
-        [BoxGroup("Overlap sphere")]
-#endif
+        [Group("Overlap sphere")]
         public float overlapMinDelay = 0.5f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Overlap sphere")]
-#endif
+        [Group("Overlap sphere")]
         public LayerMask overlapMask;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("General")]
-        [ValueDropdown(nameof(GetAllContainerID))]
-#endif
+        [Group("General")]
+        [Dropdown(nameof(GetAllContainerID))]
         public string containerID;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("General"), ValueDropdown(nameof(GetAllFactionID))]
-#endif
+        [Group("General")]
+        [Dropdown(nameof(GetAllFactionID), Searchable = false)]
         public int factionId;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("General"), ValueDropdown(nameof(GetAllEthnicityID))]
-#endif
+        [Group("General")]
+        [Dropdown(nameof(GetAllEthnicityID), Searchable = false)]
         public string ethnicityId = "Eradian";
-#if ODIN_INSPECTOR
-        [BoxGroup("General")]
-#endif
+        [Group("General")]
         public bool countTowardsMaxAlive = true;
-#if ODIN_INSPECTOR
-        [BoxGroup("General")]
-#endif
+        [Group("General")]
         public bool hasMetal = false;
-#if ODIN_INSPECTOR
-        [BoxGroup("AI"), ValueDropdown(nameof(GetAllBrainID))]
-#endif
+        [Group("AI")]
+        [Dropdown(nameof(GetAllBrainID))]
         public string brainId;
-#if ODIN_INSPECTOR
-        [BoxGroup("AI")]
-#endif
-        public int avoidancePriority = 10;
 
-#if ODIN_INSPECTOR
-        [TabGroup("Audio"), ValueDropdown(nameof(GetAllEffectID))]
-#endif
+        [Group("Tabs"), Tab("Audio")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string focusReadyEffectId;
-        [NonSerialized]
+        [NonSerialized, JsonIgnore]
         public EffectData focusReadyEffect;
-#if ODIN_INSPECTOR
-        [TabGroup("Audio"), ValueDropdown(nameof(GetAllEffectID))]
-#endif
+        [Group("Tabs"), Tab("Audio")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string focusFullEffectId;
-        [NonSerialized]
+        [NonSerialized, JsonIgnore]
         public EffectData focusFullEffect;
-#if ODIN_INSPECTOR
-        [TabGroup("Audio"), ValueDropdown(nameof(GetAllEffectID))]
-#endif
+        [Group("Tabs"), Tab("Audio")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string jumpEffectId;
-        [NonSerialized]
+        [NonSerialized, JsonIgnore]
         public EffectData jumpEffectData;
-#if ODIN_INSPECTOR
-        [TabGroup("Audio"), ValueDropdown(nameof(GetAllEffectID))]
-#endif
+        [Group("Tabs"), Tab("Audio")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string kickEffectId;
-        [NonSerialized]
+        [NonSerialized, JsonIgnore]
         public EffectData kickEffectData;
-#if ODIN_INSPECTOR
-        [TabGroup("Audio"), ValueDropdown(nameof(GetAllEffectID))]
-#endif
+        [Group("Tabs"), Tab("Audio")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string playerFallDamageEffectId;
-        [NonSerialized]
+        [NonSerialized, JsonIgnore]
         public EffectData playerFallDamageEffectData;
-#if ODIN_INSPECTOR
-        [TabGroup("Audio"), ValueDropdown(nameof(GetAllVoiceID))]
-#endif
+        [Group("Tabs"), Tab("Audio")]
+        [DropdownList(nameof(GetAllVoiceID))]
         public List<string> voices;
 
-#if ODIN_INSPECTOR
-        [TabGroup("Customization")]
-#endif
+        [Group("Tabs"), Tab("Customization")]
         public float randomMinHeight;
-#if ODIN_INSPECTOR
-        [TabGroup("Customization")]
-#endif
+        [Group("Tabs"), Tab("Customization")]
         public float randomMaxHeight;
-#if ODIN_INSPECTOR
-        [TabGroup("Customization")]
-#endif
+        [Group("Tabs"), Tab("Customization")]
         public bool adjustHeightToPlayer;
-#if ODIN_INSPECTOR
-        [TabGroup("Customization")]
-#endif
+        [Group("Tabs"), Tab("Customization")]
         public float adjustHeightToPlayerDelta = 0.05f;
-#if ODIN_INSPECTOR
-        [TabGroup("Customization")]
-#endif
+        [Group("Tabs"), Tab("Customization")]
         public PossesionScaling possesionScaling = PossesionScaling.ScaleCreature;
 
         public enum PossesionScaling
@@ -245,97 +196,65 @@ namespace ThunderRoad
             ScalePlayer,
         }
 
-#if ODIN_INSPECTOR
-        [TabGroup("Customization"), TableList]
-#endif
+        [Group("Tabs"), Tab("Customization")]
+        [TableList]
         public List<EthnicGroup> ethnicGroups;
 
-#if ODIN_INSPECTOR
-        [TabGroup("Customization")]
-#endif
+        [Group("Tabs"), Tab("Customization")]
         public List<Color> hairColorsPrimaryShared;
-#if ODIN_INSPECTOR
-        [TabGroup("Customization")]
-#endif
+        [Group("Tabs"), Tab("Customization")]
         public List<Color> hairColorsSecondaryShared;
-#if ODIN_INSPECTOR
-        [TabGroup("Customization")]
-#endif
+        [Group("Tabs"), Tab("Customization")]
         public List<Color> hairColorsSpecularShared;
-#if ODIN_INSPECTOR
-        [TabGroup("Customization")]
-#endif
+        [Group("Tabs"), Tab("Customization")]
         public List<Color> eyesColorsIrisShared;
-#if ODIN_INSPECTOR
-        [TabGroup("Customization")]
-#endif
+        [Group("Tabs"), Tab("Customization")]
         public List<Color> eyesColorsScleraShared;
-#if ODIN_INSPECTOR
-        [TabGroup("Customization")]
-#endif
+        [Group("Tabs"), Tab("Customization")]
         public List<Color> skinColorsShared;
 
         [Serializable]
+        [DeclareBoxGroup("Custom Materials", Title = "Custom Materials")]
+        [DeclareBoxGroup("Custom Parts", Title = "Custom Parts")]
+        [DeclareBoxGroup("Colors", Title = "Colors")]
+        [DeclareBoxGroup("Colors/Hair", Title = "Hair")]
+        [DeclareBoxGroup("Colors/Eyes", Title = "Eyes")]
+        [DeclareBoxGroup("Colors/Skin", Title = "Skin")]
         public class EthnicGroup
         {
             [JsonMergeKey]
             public string id;
-            public string loreTextId;
-
-#if ODIN_INSPECTOR
-            [BoxGroup("Custom Materials")]
-#endif
+            
+            [Group("Custom Materials")]
             public string bodyMaterialAddressLod0;
-#if ODIN_INSPECTOR
-            [BoxGroup("Custom Materials")]
-#endif
+            [Group("Custom Materials")]
             public string bodyMaterialAddressLod1;
-#if ODIN_INSPECTOR
-            [BoxGroup("Custom Materials")]
-#endif
+            [Group("Custom Materials")]
             public string handsMaterialAddressLod0;
-#if ODIN_INSPECTOR
-            [BoxGroup("Custom Materials")]
-#endif
+            [Group("Custom Materials")]
             public string handsMaterialAddressLod1;
 
 
-#if ODIN_INSPECTOR
-            [BoxGroup("Custom Parts")]
-            [ValueDropdown(nameof(GetAllHeadsId))]
-#endif
+            [Group("Custom Parts")]
+            [DropdownList(nameof(GetAllHeadsId))]
             public List<string> allowedHeadsIDs;
 
-#if ODIN_INSPECTOR
-            [BoxGroup("Colors")]
-            [BoxGroup("Colors/Hair")]
-#endif
+            [Group("Colors/Hair")]
             public List<Color> hairColorsPrimary;
-#if ODIN_INSPECTOR
-            [BoxGroup("Colors/Hair")]
-#endif
+            [Group("Colors/Hair")]
             public List<Color> hairColorsSecondary;
-#if ODIN_INSPECTOR
-            [BoxGroup("Colors/Hair")]
-#endif
+            [Group("Colors/Hair")]
             public List<Color> hairColorsSpecular;
-#if ODIN_INSPECTOR
-            [BoxGroup("Colors/Eyes")]
-#endif
+            [Group("Colors/Eyes")]
             public List<Color> eyesColorsIris;
-#if ODIN_INSPECTOR
-            [BoxGroup("Colors/Eyes")]
-#endif
+            [Group("Colors/Eyes")]
             public List<Color> eyesColorsSclera;
-#if ODIN_INSPECTOR
-            [BoxGroup("Colors/Skin")]
-#endif
+            [Group("Colors/Skin")]
             public List<Color> skinColors;
         }
 
-#if ODIN_INSPECTOR
-        [TabGroup("Ragdoll")]
-#endif
+        [Group("Tabs"), Tab("Ragdoll")]
+        [InlineProperty]
         public RagdollData ragdollData;
 
         [Serializable]
@@ -345,7 +264,6 @@ namespace ThunderRoad
             public float handledMass = 65f;
             public float ragdolledMass = 65f;
             public bool meshRaycast = true;
-            public bool meshRaycastAdjustContactPoint = false;
             public float destabilizedSpringRotationMultiplier = 0.5f;
             public float destabilizedDamperRotationMultiplier = 0.1f;
             public float destabilizedGroundSpringRotationMultiplier = 0.2f;
@@ -355,91 +273,57 @@ namespace ThunderRoad
             public float groundStabilizationMinDuration = 3;
 
             public float gripMaxCloseWeight = 0.9f;
-#if ODIN_INSPECTOR
-            [ValueDropdown(nameof(GetAllEffectID))]
-#endif
+            [Dropdown(nameof(GetAllEffectID))]
             public string gripEffectId;
-            [NonSerialized]
+            [NonSerialized, JsonIgnore]
             public EffectData gripEffectData;
-
-#if ODIN_INSPECTOR
-            [ValueDropdown(nameof(GetAllItemID))]
-#endif
-            public string footItemId;
-#if ODIN_INSPECTOR
-            [ValueDropdown(nameof(GetAllItemID))]
-#endif
-            public string footTrackedItemId;
-
+            
             public float fingerSpeed = 5;
 
-#if ODIN_INSPECTOR
-            [ValueDropdown(nameof(GetAllDamagerID))]
-#endif
+            [Dropdown(nameof(GetAllDamagerID))]
             public string bodyDefaultDamagerID;
-            [NonSerialized]
+            [NonSerialized, JsonIgnore]
             public DamagerData bodyDefaultDamagerData;
 
-#if ODIN_INSPECTOR
-            [ValueDropdown(nameof(GetAllEffectID))]
-#endif
+            [Dropdown(nameof(GetAllEffectID))]
             public string penetrationEffectId;
-            [NonSerialized]
+            [NonSerialized, JsonIgnore]
             public EffectData penetrationEffectData;
             public float penetrationEffectRepeatDistance = 0.05f;
-            [NonSerialized]
+            [NonSerialized, JsonIgnore]
             public bool hasPenetrationEffect;
 
             public List<PartData> parts = new List<PartData>();
 
-#if ODIN_INSPECTOR
-            public List<ValueDropdownItem<string>> GetAllDamagerID()
-            {
-                return Catalog.GetDropdownAllID(Category.Damager);
-            }
+            public TriDropdownList<string> GetAllDamagerID() => Catalog.GetDropdownAllID(Category.Damager);
 
-            public List<ValueDropdownItem<string>> GetAllItemID()
-            {
-                return Catalog.GetDropdownAllID(Category.Item);
-            }
+            public TriDropdownList<string> GetAllItemID() => Catalog.GetDropdownAllID(Category.Item);
 
-            public List<ValueDropdownItem<string>> GetAllEffectID()
-            {
-                return Catalog.GetDropdownAllID(Category.Effect);
-            }
-#endif
+            public TriDropdownList<string> GetAllEffectID() => Catalog.GetDropdownAllID(Category.Effect);
         }
 
         [Serializable]
         public class PartData
         {
             public RagdollPart.Type bodyPartTypes;
-#if ODIN_INSPECTOR
-            [ValueDropdown(nameof(GetAllDamagerID))]
-#endif
+            [Dropdown(nameof(GetAllDamagerID))]
             public string bodyDamagerID;
-            [NonSerialized]
+            [NonSerialized, JsonIgnore]
             public DamagerData bodyDamagerData;
 
-#if ODIN_INSPECTOR
-            [ValueDropdown(nameof(GetAllDamagerID))]
-#endif
+            [Dropdown(nameof(GetAllDamagerID))]
             public string bodyAttackDamagerID;
-            [NonSerialized]
+            [NonSerialized, JsonIgnore]
             public DamagerData bodyAttackDamagerData;
 
-#if ODIN_INSPECTOR
-            [ValueDropdown(nameof(GetAllEffectID))]
-#endif
+            [Dropdown(nameof(GetAllEffectID))]
             public string sliceParentEffectid;
-            [NonSerialized]
+            [NonSerialized, JsonIgnore]
             public EffectData sliceParentEffectData;
 
-#if ODIN_INSPECTOR
-            [ValueDropdown(nameof(GetAllEffectID))]
-#endif
+            [Dropdown(nameof(GetAllEffectID))]
             public string sliceChildEffectId;
-            [NonSerialized]
+            [NonSerialized, JsonIgnore]
             public EffectData sliceChildEffectData;
 
             public float damageMultiplier = 1;
@@ -450,11 +334,9 @@ namespace ThunderRoad
             public float penetrationSlashDamageMultiplier = 1;
             public float penetrationSkewerDamageMultiplier = 1;
 
-#if ODIN_INSPECTOR
-            [ValueDropdown(nameof(GetAllEffectID))]
-#endif
+            [Dropdown(nameof(GetAllEffectID))]
             public string penetrationDeepEffectId;
-            [NonSerialized]
+            [NonSerialized, JsonIgnore]
             public EffectData penetrationDeepEffectData;
 
             public bool sliceForceKill = true;
@@ -463,62 +345,43 @@ namespace ThunderRoad
 
             public float locomotionVelocityCorrection = 130;
 
-#if ODIN_INSPECTOR
-            public List<ValueDropdownItem<string>> GetAllDamagerID()
-            {
-                return Catalog.GetDropdownAllID(Category.Damager);
-            }
+            public TriDropdownList<string> GetAllDamagerID() => Catalog.GetDropdownAllID(Category.Damager);
 
-            public List<ValueDropdownItem<string>> GetAllEffectID()
-            {
-                return Catalog.GetDropdownAllID(Category.Effect);
-            }
-#endif
+            public TriDropdownList<string> GetAllEffectID() => Catalog.GetDropdownAllID(Category.Effect);
         }
 
 
-#if ODIN_INSPECTOR
-        [TabGroup("Expression"), ValueDropdown(nameof(GetAllExpressionId))]
-#endif
+        [Group("Tabs"), Tab("Expression")]
+        [Dropdown(nameof(GetAllExpressionId))]
         public string expressionAttackId;
-        [NonSerialized]
+        [NonSerialized, JsonIgnore]
         public ExpressionData expressionAttackData;
-#if ODIN_INSPECTOR
-        [TabGroup("Expression"), ValueDropdown(nameof(GetAllExpressionId))]
-#endif
+        [Group("Tabs"), Tab("Expression")]
+        [Dropdown(nameof(GetAllExpressionId))]
         public string expressionPainId;
-        [NonSerialized]
+        [NonSerialized, JsonIgnore]
         public ExpressionData expressionPainData;
-#if ODIN_INSPECTOR
-        [TabGroup("Expression"), ValueDropdown(nameof(GetAllExpressionId))]
-#endif
+        [Group("Tabs"), Tab("Expression")]
+        [Dropdown(nameof(GetAllExpressionId))]
         public string expressionDeathId;
-        [NonSerialized]
+        [NonSerialized, JsonIgnore]
         public ExpressionData expressionDeathData;
-#if ODIN_INSPECTOR
-        [TabGroup("Expression"), ValueDropdown(nameof(GetAllExpressionId))]
-#endif
+        [Group("Tabs"), Tab("Expression")]
+        [Dropdown(nameof(GetAllExpressionId))]
         public string expressionChokeId;
-        [NonSerialized]
+        [NonSerialized, JsonIgnore]
         public ExpressionData expressionChokeData;
-#if ODIN_INSPECTOR
-        [TabGroup("Expression"), ValueDropdown(nameof(GetAllExpressionId))]
-#endif
+        [Group("Tabs"), Tab("Expression")]
+        [Dropdown(nameof(GetAllExpressionId))]
         public string expressionAngryId;
-        [NonSerialized]
+        [NonSerialized, JsonIgnore]
         public ExpressionData expressionAngryData;
-#if ODIN_INSPECTOR
-        [TabGroup("Expression")]
-#endif
-        public Vector2 eyeVerticalAngleClamps = new Vector2(-10f, 15f);
-#if ODIN_INSPECTOR
-        [TabGroup("Expression")]
-#endif
-        public Vector2 eyeHorizontalAngleClamps = new Vector2(-20f, 20f);
-#if ODIN_INSPECTOR
-        [TabGroup("Expression")]
-#endif
-        public List<EyeClip> eyeClips = new List<EyeClip>();
+        [Group("Tabs"), Tab("Expression")]
+        public Vector2 eyeVerticalAngleClamps = new(-10f, 15f);
+        [Group("Tabs"), Tab("Expression")]
+        public Vector2 eyeHorizontalAngleClamps = new(-20f, 20f);
+        [Group("Tabs"), Tab("Expression")]
+        public List<EyeClip> eyeClips = new();
 
         [Serializable]
         public class EyeClip
@@ -526,42 +389,33 @@ namespace ThunderRoad
             public string clipName = "";
             public string eyeTagFilter = "";
             public float duration = 0.33f;
-#if ODIN_INSPECTOR
             [MinMaxSlider(0f, 5f)]
-#endif
-            public Vector2 minMaxDelayPerEye = new Vector2(0f, 0f);
-            public AnimationCurve openCurve = new AnimationCurve(new Keyframe(0f, 1f), new Keyframe(0.5f, 0f), new Keyframe(1f, 1f));
+            public Vector2 minMaxDelayPerEye = new(0f, 0f);
+            public AnimationCurve openCurve = new(new Keyframe(0f, 1f), new Keyframe(0.5f, 0f), new Keyframe(1f, 1f));
             public bool playAutomaticallyWhileAlive = false;
-#if ODIN_INSPECTOR
             [MinMaxSlider(0f, 120f)]
-#endif
-            public Vector2 minMaxBetweenPlays = new Vector2(2.5f, 5f);
-#if ODIN_INSPECTOR
-            [ReadOnly, ShowInInspector]
-#endif
-            [NonSerialized]
+            public Vector2 minMaxBetweenPlays = new(2.5f, 5f);
+            [ReadOnly]
+            [ShowInInspector]
+            [NonSerialized, JsonIgnore]
             public bool active = false;
-#if ODIN_INSPECTOR
-            [ReadOnly, ShowInInspector]
-#endif
-            [NonSerialized]
+            [ReadOnly]
+            [ShowInInspector]
+            [NonSerialized, JsonIgnore]
             public float lastStartTime = -1f;
-#if ODIN_INSPECTOR
-            [ReadOnly, ShowInInspector]
-#endif
-            [NonSerialized]
+            [ReadOnly]
+            [ShowInInspector]
+            [NonSerialized, JsonIgnore]
             public float lastEndTime = -1f;
-#if ODIN_INSPECTOR
-            [ReadOnly, ShowInInspector]
-#endif
-            [NonSerialized]
+            [ReadOnly]
+            [ShowInInspector]
+            [NonSerialized, JsonIgnore]
             public float maxIndividualDelay = 0f;
-#if ODIN_INSPECTOR
-            [ReadOnly, ShowInInspector]
-#endif
-            [NonSerialized]
+            [ReadOnly]
+            [ShowInInspector]
+            [NonSerialized, JsonIgnore]
             public float nextPlayDelay = -1f;
-            [NonSerialized]
+            [NonSerialized, JsonIgnore]
             public Dictionary<CreatureEye, float> affectedEyes = new Dictionary<CreatureEye, float>();
 
             public EyeClip Clone()
@@ -585,216 +439,122 @@ namespace ThunderRoad
             Female,
         }
 
-#if ODIN_INSPECTOR
-        [TabGroup("Force")]
-#endif
+        [Group("Tabs"), Tab("Force")]
         public float forceMaxPosition = 3000;
-#if ODIN_INSPECTOR
-        [TabGroup("Force")]
-#endif
+        [Group("Tabs"), Tab("Force")]
         public float forceMaxRotation = 250;
-#if ODIN_INSPECTOR
-        [TabGroup("Force")]
-#endif
-        public Vector2 forcePositionSpringDamper = new Vector2(5000, 100);
-#if ODIN_INSPECTOR
-        [TabGroup("Force")]
-#endif
-        public Vector2 forceRotationSpringDamper = new Vector2(1000, 50);
-#if ODIN_INSPECTOR
-        [TabGroup("Force")]
-#endif
+        [Group("Tabs"), Tab("Force")]
+        public Vector2 forcePositionSpringDamper = new(5000, 100);
+        [Group("Tabs"), Tab("Force")]
+        public Vector2 forceRotationSpringDamper = new(1000, 50);
+        [Group("Tabs"), Tab("Force")]
         [Header("2Handed")]
         public Vector2 forcePositionSpringDamper2HMult = Vector2.one;
-#if ODIN_INSPECTOR
-        [TabGroup("Force")]
-#endif
+        [Group("Tabs"), Tab("Force")]
         public Vector2 forceSpringDamper2HNoDomMult = Vector2.one;
-#if ODIN_INSPECTOR
-        [TabGroup("Force")]
-#endif
+        [Group("Tabs"), Tab("Force")]
         public Vector2 forceRotationSpringDamper2HMult = Vector2.one;
-#if ODIN_INSPECTOR
-        [TabGroup("Force")]
-#endif
+        [Group("Tabs"), Tab("Force")]
         [Header("Climbing")]
         public float climbingForceMaxPosition = 3000;
-#if ODIN_INSPECTOR
-        [TabGroup("Force")]
-#endif
+        [Group("Tabs"), Tab("Force")]
         public float climbingForceMaxRotation = 100;
-#if ODIN_INSPECTOR
-        [TabGroup("Force")]
-#endif
-        public Vector2 climbingForcePositionSpringDamperMult = new Vector2(1, 3);
-#if ODIN_INSPECTOR
-        [TabGroup("Force")]
-#endif
+        [Group("Tabs"), Tab("Force")]
+        public Vector2 climbingForcePositionSpringDamperMult = new(1, 3);
+        [Group("Tabs"), Tab("Force")]
         [Header("Grip")]
         public float gripForceMaxPosition = 3000;
-#if ODIN_INSPECTOR
-        [TabGroup("Force")]
-#endif
+        [Group("Tabs"), Tab("Force")]
         public float gripForceMaxRotation = 100;
-#if ODIN_INSPECTOR
-        [TabGroup("Force")]
-#endif
-        public Vector2 gripForcePositionSpringDamperMult = new Vector2(1, 1);
-#if ODIN_INSPECTOR
-        [TabGroup("Force")]
-#endif
-        public Vector2 gripForceRotationSpringDamperMult = new Vector2(0.5f, 1);
+        [Group("Tabs"), Tab("Force")]
+        public Vector2 gripForcePositionSpringDamperMult = new(1, 1);
+        [Group("Tabs"), Tab("Force")]
+        public Vector2 gripForceRotationSpringDamperMult = new(0.5f, 1);
 
-#if ODIN_INSPECTOR
-        [TabGroup("Locomotion")]
-#endif
+        [Group("Tabs"), Tab("Locomotion")]
         public bool overrideGroundMask = false;
-#if ODIN_INSPECTOR
-        [TabGroup("Locomotion")]
-#endif
+        [Group("Tabs"), Tab("Locomotion")]
         public LayerMask groundMask;
-#if ODIN_INSPECTOR
-        [TabGroup("Locomotion")]
-#endif
+        [Group("Tabs"), Tab("Locomotion")]
         public bool destabilizeOnFall = true;
-#if ODIN_INSPECTOR
-        [TabGroup("Locomotion")]
-#endif
+        [Group("Tabs"), Tab("Locomotion")]
         public float locomotionMass = 70f;
-#if ODIN_INSPECTOR
-        [TabGroup("Locomotion")]
-#endif
+        [Group("Tabs"), Tab("Locomotion")]
         public float locomotionForwardSpeed = 0.2f;
-#if ODIN_INSPECTOR
-        [TabGroup("Locomotion")]
-#endif
+        [Group("Tabs"), Tab("Locomotion")]
         public float locomotionBackwardSpeed = 0.2f;
-#if ODIN_INSPECTOR
-        [TabGroup("Locomotion")]
-#endif
+        [Group("Tabs"), Tab("Locomotion")]
         public float locomotionStrafeSpeed = 0.2f;
-#if ODIN_INSPECTOR
-        [TabGroup("Locomotion")]
-#endif
+        [Group("Tabs"), Tab("Locomotion")]
         public float locomotionRunSpeedAdd = 0.1f;
-#if ODIN_INSPECTOR
-        [TabGroup("Locomotion")]
-#endif
+        [Group("Tabs"), Tab("Locomotion")]
         public float locomotionCrouchSpeed = 0.1f;
-#if ODIN_INSPECTOR
-        [TabGroup("Locomotion")]
-#endif
+        [Group("Tabs"), Tab("Locomotion")]
         public float locomotionAirSpeed = 150f;
-#if ODIN_INSPECTOR
-        [TabGroup("Locomotion")]
-#endif
+        [Group("Tabs"), Tab("Locomotion")]
         public float locomotionJumpForce = 0.3f;
-#if ODIN_INSPECTOR
-        [TabGroup("Locomotion")]
-#endif
+        [Group("Tabs"), Tab("Locomotion")]
         public float locomotionJumpClimbVerticalMultiplier = 1f;
-#if ODIN_INSPECTOR
-        [TabGroup("Locomotion")]
-#endif
+        [Group("Tabs"), Tab("Locomotion")]
         public float locomotionJumpClimbHorizontalMultiplier = 0.4f;
-#if ODIN_INSPECTOR
-        [TabGroup("Locomotion")]
-#endif
+        [Group("Tabs"), Tab("Locomotion")]
         public float jumpClimbVerticalMaxVelocityRatio = 20f;
-#if ODIN_INSPECTOR
-        [TabGroup("Locomotion")]
-#endif
+        [Group("Tabs"), Tab("Locomotion")]
         public float locomotionJumpMaxDuration = 0.6f;
-#if ODIN_INSPECTOR
-        [TabGroup("Locomotion")]
-#endif
+        [Group("Tabs"), Tab("Locomotion")]
         public float locomotionGroundDrag = 3f;
-#if ODIN_INSPECTOR
-        [TabGroup("Locomotion")]
-#endif
+        [Group("Tabs"), Tab("Locomotion")]
         public float locomotionFlyDrag = 0.3f;
-#if ODIN_INSPECTOR
-        [TabGroup("Locomotion")]
-#endif
+        [Group("Tabs"), Tab("Locomotion")]
         public AnimationCurve playerFallDamageCurve = AnimationCurve.Linear(12, 0, 20, 200);
-#if ODIN_INSPECTOR
-        [TabGroup("Locomotion")]
-#endif
+        [Group("Tabs"), Tab("Locomotion")]
         public AnimationCurve playerHortizontalFallDamageCurve = AnimationCurve.Linear(0, 0, 0, 0);
-#if ODIN_INSPECTOR
-        [TabGroup("Locomotion")]
-#endif
+        [Group("Tabs"), Tab("Locomotion")]
         public float gripRecoverTime = 0.5f;
 
-#if ODIN_INSPECTOR
-        [TabGroup("Water")]
-#endif
-        public AnimationCurve waterLocomotionDragMultiplierCurve = AnimationCurve.EaseInOut(0, 1, 1, 12);
-#if ODIN_INSPECTOR
-        [TabGroup("Water")]
-#endif
+        [Group("Tabs"), Tab("Water")]
+        public float waterLocomotionDragMultiplier = 3f;
+        [Group("Tabs"), Tab("Water")]
+        public float waterRagdollDragMultiplier = 6f;
+        [Group("Tabs"), Tab("Water")]
         public AnimationCurve waterHandSpringMultiplierCurve = AnimationCurve.EaseInOut(0, 0.3f, 1, 0.1f);
-#if ODIN_INSPECTOR
-        [TabGroup("Water")]
-#endif
+        [Group("Tabs"), Tab("Water")]
         public float waterHandLocomotionVelocityCorrectionMultiplier = 0.7f;
-#if ODIN_INSPECTOR
-        [TabGroup("Water")]
-#endif
+        [Group("Tabs"), Tab("Water")]
         public AnimationCurve waterJumpForceMutiplierCurve = AnimationCurve.EaseInOut(0, 1f, 1, 0.25f);
-#if ODIN_INSPECTOR
-        [TabGroup("Water")]
-#endif
+        [Group("Tabs"), Tab("Water")]
         public float waterSwimUpForce = 10f;
-#if ODIN_INSPECTOR
-        [TabGroup("Water")]
-#endif
+        [Group("Tabs"), Tab("Water")]
         public float waterHandMovementForce = 10f;
-#if ODIN_INSPECTOR
-        [TabGroup("Water")]
-#endif
+        [Group("Tabs"), Tab("Water")]
         public float waterHandMovementMaxMagnitude = 10f;
-#if ODIN_INSPECTOR
-        [TabGroup("Water")]
-#endif
+        [Group("Tabs"), Tab("Water")]
         public AnimationCurve waterHandMovementForceCurve = AnimationCurve.EaseInOut(0, 0f, 1, 1f);
-#if ODIN_INSPECTOR
-        [TabGroup("Water")]
-#endif
+        [Group("Tabs"), Tab("Water")]
         public float waterMaxPlayerVelocityMagnitude = 3f;
-#if ODIN_INSPECTOR
-        [TabGroup("Water")]
-#endif
+        [Group("Tabs"), Tab("Water")]
         public float waterDrowningStartTime = 40f;
-#if ODIN_INSPECTOR
-        [TabGroup("Water")]
-#endif
+        [Group("Tabs"), Tab("Water")]
         public float waterDrowningWarningRatio = 0.7f;
-#if ODIN_INSPECTOR
-        [TabGroup("Water")]
-#endif
+        [Group("Tabs"), Tab("Water")]
         public float waterDrowningDamage = 10f;
-#if ODIN_INSPECTOR
-        [TabGroup("Water")]
-#endif
+        [Group("Tabs"), Tab("Water")]
         public float waterDrowningDamageInterval = 4f;
 
-#if ODIN_INSPECTOR
-        [TabGroup("Water"), ValueDropdown(nameof(GetAllEffectID))]
-#endif
+        [Group("Tabs"), Tab("Water")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string drownEffectId;
-        [NonSerialized]
+        [NonSerialized, JsonIgnore]
         public EffectData drownEffectData;
 
         protected static int index;
 
-#if ODIN_INSPECTOR
-        #region ODIN
+        #region TriInspector
 
-        public List<ValueDropdownItem<string>> GetAllHeadsId()
+        public TriDropdownList<string> GetAllHeadsId()
         {
-            var heads = new List<ValueDropdownItem<string>>();
-            foreach (var catalogData in Catalog.GetDataList(Category.Item).Where(i => i is ItemData))
+            TriDropdownList<string> heads = new();
+            foreach (CatalogData catalogData in Catalog.GetDataList(Category.Item).Where(i => i is ItemData))
             {
                 var itemData = (ItemData)catalogData;
                 var itemModuleWardrobe = itemData.GetModule<ItemModuleWardrobe>();
@@ -808,8 +568,7 @@ namespace ThunderRoad
                             && creatureWardrobe.manikinWardrobeData.channels.Contains("Head")
                             && creatureWardrobe.manikinWardrobeData.layers.Contains(GetLayer("Head", "Body")))
                         {
-                            heads.Add(new ValueDropdownItem<string>(itemModuleWardrobe.itemData.id,
-                                itemModuleWardrobe.itemData.id));
+                            heads.Add(itemModuleWardrobe.itemData.id, itemModuleWardrobe.itemData.id);
                         }
                     }
                 }
@@ -817,67 +576,36 @@ namespace ThunderRoad
 
             return heads;
         }
-        public List<ValueDropdownItem<string>> GetAllVoiceID()
-        {
-            return Catalog.GetDropdownAllID(Category.Voice);
-        }
+        public TriDropdownList<string> GetAllVoiceID() => Catalog.GetDropdownAllID(Category.Voice);
 
-        public List<ValueDropdownItem<string>> GetAllDamagerID()
-        {
-            return Catalog.GetDropdownAllID(Category.Damager);
-        }
+        public TriDropdownList<string> GetAllDamagerID() => Catalog.GetDropdownAllID(Category.Damager);
 
-        public List<ValueDropdownItem<string>> GetAllItemID()
-        {
-            return Catalog.GetDropdownAllID(Category.Item);
-        }
+        public TriDropdownList<string> GetAllItemID() => Catalog.GetDropdownAllID(Category.Item);
 
-        public List<ValueDropdownItem<string>> GetAllContainerID()
-        {
-            return Catalog.GetDropdownAllID(Category.Container);
-        }
+        public TriDropdownList<string> GetAllContainerID() => Catalog.GetDropdownAllID(Category.Container);
 
-        public List<ValueDropdownItem<string>> GetAllBrainID()
-        {
-            return Catalog.GetDropdownAllID(Category.Brain);
-        }
+        public TriDropdownList<string> GetAllBrainID() => Catalog.GetDropdownAllID(Category.Brain);
 
-        public List<ValueDropdownItem<int>> GetAllFactionID()
-        {
-            return Catalog.gameData.GetFactions();
-        }
+        public TriDropdownList<int> GetAllFactionID() => Catalog.GetDropdownAllFactionID();
 
-        public List<ValueDropdownItem<string>> GetAllEthnicityID()
+        public TriDropdownList<string> GetAllEthnicityID()
         {
             //hardcode a list of IDs for now
-            List<ValueDropdownItem<string>> list = new List<ValueDropdownItem<string>>();
-            list.Add(new ValueDropdownItem<string>("Eradian", "Eradian"));
-            list.Add(new ValueDropdownItem<string>("Madene", "Madene"));
-            list.Add(new ValueDropdownItem<string>("Sentari", "Sentari"));
-            list.Add(new ValueDropdownItem<string>("Kharese", "Kharese"));
-            list.Add(new ValueDropdownItem<string>("Raike", "Raike"));
+            TriDropdownList<string> list = new();
+            list.Add("Eradian", "Eradian");
+            list.Add("Madene", "Madene");
+            list.Add("Sentari", "Sentari");
+            list.Add("Kharese", "Kharese");
+            list.Add("Raike", "Raike");
             return list;
         }
-        public List<ValueDropdownItem<string>> GetAllSpellID()
-        {
-            return Catalog.GetDropdownAllID<SpellData>();
-        }
+        public TriDropdownList<string> GetAllSpellID() => Catalog.GetDropdownAllID<SpellData>();
 
-        public List<ValueDropdownItem<string>> GetAllEffectID()
-        {
-            return Catalog.GetDropdownAllID(Category.Effect);
-        }
-        public List<ValueDropdownItem<string>> GetAllExpressionId()
-        {
-            return Catalog.GetDropdownAllID(Category.Expression);
-        }
-        public List<ValueDropdownItem<string>> GetAllHandPoseId()
-        {
-            return Catalog.GetDropdownAllID(Category.HandPose);
-        }
+        public TriDropdownList<string> GetAllEffectID() => Catalog.GetDropdownAllID(Category.Effect);
+        public TriDropdownList<string> GetAllExpressionId() => Catalog.GetDropdownAllID(Category.Expression);
+        public TriDropdownList<string> GetAllHandPoseId() => Catalog.GetDropdownAllID(Category.HandPose);
 
         #endregion
-#endif
 
         public override int GetCurrentVersion()
         {
@@ -915,13 +643,23 @@ namespace ThunderRoad
                 partData.penetrationDeepEffectData = Catalog.GetData<EffectData>(partData.penetrationDeepEffectId);
             }
         }
+
         public int GetLayer(string channel, string layer)
         {
-                if (manikinChannelLayers != null)
-                {
-                        return manikinChannelLayers.GetLayer(channel, layer);
-                }
-                return -1;
+            if (manikinChannelLayers != null)
+            {
+                return manikinChannelLayers.GetLayer(channel, layer);
+            }
+            return -1;
+        }
+
+        public string GetLayerName(string channel, int layer)
+        {
+            if (manikinChannelLayers != null)
+            {
+                return manikinChannelLayers.GetLayerName(channel, layer);
+            }
+            return string.Empty;
         }
     }
 

@@ -3,25 +3,25 @@ using System.Collections;
 using UnityEngine;
 using ThunderRoad.AI;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
-	public class BehaviorTreeData : CatalogData
-    {
-#if ODIN_INSPECTOR
-        [BoxGroup("General")] 
+#if UNITY_EDITOR
+    [EditorLoadPriority(5)]
 #endif
+    [DeclareBoxGroup("General", Title = "General")]
+    public class BehaviorTreeData : CatalogData
+    {
+        [Group("General")]
+        [LabelWidth(30f)]
         public Type type = Type.Misc;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("General"), ShowInInspector, ListDrawerSettings(Expanded = true)] 
-#endif
-        public Node rootNode = new Node();
+        [Group("General")]
+        [ShowInInspector]
+        [AutoLabelWidth(AddedWidth = 5f)]
+        public Node rootNode = null;
 
         [NonSerialized]
         public Blackboard blackboard;

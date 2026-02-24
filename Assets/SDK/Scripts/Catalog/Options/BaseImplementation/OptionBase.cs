@@ -1,45 +1,39 @@
 ﻿using System;
-using System.Collections.Generic;
-
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#endif
+using TriInspector;
 
 namespace ThunderRoad
 {
 	[Serializable]
-	public abstract class OptionBase
+    [SkipInTypeDropdown]
+    [AutoLabelWidth(MinWidth = 0f)]
+    public abstract class OptionBase
 	{
 		[JsonMergeKey]
 		public string name; //id of the option
 
-#if ODIN_INSPECTOR
-		[ValueDropdown(nameof(GetAllTextId))]
-#endif
-		public string displayName;
-#if ODIN_INSPECTOR
-		[ValueDropdown(nameof(GetAllTextId))]
-#endif
-		public string description;
+        [Dropdown(nameof(GetAllTextGroupId))]
+        public string localizationGroup = TextData.DEFAULT_TEXT_GROUP;
+        [Dropdown(nameof(GetAllTextId))]
+        public string displayName;
+        [Dropdown(nameof(GetAllTextId))]
+        public string description;
 
         public virtual bool IsHidden() => false;
 		public virtual bool IsLevelOption() => false;
 		public abstract OptionValue DefaultValue();
 		public abstract OptionValue CurrentValue();
 		public abstract void SetValue(OptionValue preset);
+		public virtual void SetDescription() {}
 		public abstract string GetCurrentValueLabel();
 		public abstract string GetDefaultValueLabel();
 
+        public TriDropdownList<string> GetAllTextGroupId() => Catalog.GetTextData().GetDropdownAllTextGroups();
 
-#if ODIN_INSPECTOR
-        public List<ValueDropdownItem<string>> GetAllTextId()
-		{
-			return Catalog.GetTextData().GetDropdownAllTexts(TextData.DEFAULT_TEXT_GROUP);
-		}
-#endif
-	}
+        public TriDropdownList<string> GetAllTextId() => Catalog.GetTextData().GetDropdownAllTexts(TextData.DEFAULT_TEXT_GROUP);
+    }
 
-	public abstract class OptionBase<T> : OptionBase, IEquatable<OptionBase<T>> where T : OptionValue, new()
+    [Serializable]
+    public abstract class OptionBase<T> : OptionBase, IEquatable<OptionBase<T>> where T : OptionValue, new()
     {
         public bool Equals(OptionBase<T> other)
 		{

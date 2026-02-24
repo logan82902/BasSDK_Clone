@@ -2,93 +2,76 @@
 using System;
 using System.Collections.Generic;
 
-#if ODIN_INSPECTOR
 using System.Collections;
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
-	[Serializable]
+    [Serializable]
+#if UNITY_EDITOR
+    [EditorLoadPriority(5)]
+#endif
+    [DeclareBoxGroup("General", Title = "General")]
+    [DeclareBoxGroup("Collision(s)", Title = "Collision(s)")]
     public class MaterialData : CatalogData
     {
-#if ODIN_INSPECTOR
-        [BoxGroup("General"), ReadOnly] 
-#endif
+        [Group("General")]
+        [ReadOnly]
+        [NonSerialized]
         public int physicMaterialHash;
-#if ODIN_INSPECTOR
-        [BoxGroup("General")] 
-#endif
+        [Group("General")]
         public int apparelProtectionLevel = 0;
-#if ODIN_INSPECTOR
-        [BoxGroup("General")]
+        [Group("General")]
         [ShowInInspector]
         [ReadOnly]
-#endif
         [NonSerialized]
         [Tooltip("The color of the material in the ID map")]
-        public List<Color> idMapColors = new List<Color>();
-#if ODIN_INSPECTOR
-	    public IEnumerable GetAllIDMapColors()
-	    {
-		    ValueDropdownList<int> list = new ValueDropdownList<int>();
-		    var idmaps = Catalog.gameData.physicMaterialIDMapColours;
-		    foreach (var idmap in idmaps)
-		    {
-			    list.Add(new ValueDropdownItem<int>(idmap.label, idmap.id));
-		    }
-		    return list;
-	    }
-	    [BoxGroup("General")]
-	    [ValueDropdown(nameof(GetAllIDMapColors))]
-#endif
-	    public List<int> idMapColorIds = new List<int>();
-	    
-#if ODIN_INSPECTOR
-        [BoxGroup("General")] 
-#endif
-        public List<EffectBundle> defaultEffects = new List<EffectBundle>();
+        public List<Color> idMapColors = new();
+        public IEnumerable GetAllIDMapColors()
+        {
+            TriDropdownList<int> list = new();
+            List<GameData.IDMapColors> idmaps = Catalog.gameData.physicMaterialIDMapColours;
+            foreach (GameData.IDMapColors idmap in idmaps)
+            {
+                list.Add(idmap.label, idmap.id);
+            }
+            return list;
+        }
+        [Group("General")]
+        [DropdownList(nameof(GetAllIDMapColors))]
+        public List<int> idMapColorIds = new();
+
+        [Group("General")]
+        public List<EffectBundle> defaultEffects = new();
         protected Collision defaultCollision;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("General")] 
-#endif
+        [Group("General")]
         public bool isMetal;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Collision(s)")] 
-#endif
-        public List<Collision> collisions = new List<Collision>();
+        [Group("Collision(s)")]
+        public List<Collision> collisions = new();
 
         [Serializable]
+        [DeclareHorizontalGroup("Split")]
+        [DeclareBoxGroup("Split/Materials", Title = "Materials")]
+        [DeclareBoxGroup("Split/Effect(s)", Title = "Effect(s)")]
         public class Collision
         {
             [NonSerialized]
             public MaterialData sourceMaterialData;
 
-#if ODIN_INSPECTOR
-            [HorizontalGroup("Split", 400)]
-            [BoxGroup("Split/Materials")]
-            [ValueDropdown(nameof(GetAllMaterialID), IsUniqueList = true), LabelText("Target")] 
-#endif
-            public List<string> targetMaterialIds = new List<string>();
+            [Group("Split/Materials")]
+            [DropdownList(nameof(GetAllMaterialID))]
+            [LabelText("Target")]
+            public List<string> targetMaterialIds = new();
             [NonSerialized]
             public List<MaterialData> targetMaterials = new List<MaterialData>();
 
-#if ODIN_INSPECTOR
-            [BoxGroup("Split/Effect(s)")]
-            [LabelText("EffectID / Ignored modules")] 
-#endif
-            public List<EffectBundle> effects = new List<EffectBundle>();
+            [Group("Split/Effect(s)")]
+            [LabelText("EffectID / Ignored modules")]
+            public List<EffectBundle> effects = new();
 
-#if ODIN_INSPECTOR
-            public List<ValueDropdownItem<string>> GetAllMaterialID()
-            {
-                return Catalog.GetDropdownAllID(Category.Material, "Default");
-            } 
-#endif
+            public TriDropdownList<string> GetAllMaterialID() => Catalog.GetDropdownAllID(Category.Material, "Default");
 
             public enum Parenting
             {

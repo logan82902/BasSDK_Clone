@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 4,
+  "groupPath": "Civilian/",
   "localizationId": "RuggedTrousers",
   "displayName": "Worn Trousers",
   "description": "Trousers no longer suitable for a hard day’s work, but can still keep you modest.",
@@ -14,16 +15,18 @@
   "tier": 0,
   "flags": "Spinnable",
   "levelRequired": 0,
+  "type": "Wardrobe",
   "category": "Clothes",
+  "update": "",
   "iconEffectId": null,
   "preferredItemCenter": "Mass",
   "drainImbueWhenIdle": true,
+  "forceImbueUseButton": "None",
   "prefabAddress": "Bas.Item.Apparel.RaggedTrousers",
   "iconAddress": "Bas.Item.Apparel.RaggedTrousers.Icon[ArmorItems_RaggedTrousers]",
   "closeUpIconAddress": null,
   "pooledCount": 0,
   "androidPooledCount": 0,
-  "type": "Wardrobe",
   "allowedStorage": "Inventory, Container, SandboxAllItems",
   "despawnOnStoredInInventory": false,
   "isStackable": false,
@@ -37,6 +40,7 @@
   "mass": 0.3,
   "drag": 1.0,
   "angularDrag": 1.0,
+  "density": 420.0,
   "focusRegenMultiplier": 1.0,
   "spellChargeSpeedPlayerMultiplier": 1.0,
   "spellChargeSpeedNPCMultiplier": 1.0,
@@ -150,22 +154,40 @@
     "preWrapMode": "ClampForever",
     "postWrapMode": "ClampForever"
   },
+  "colliderGroups": [],
+  "damagers": [
+    {
+      "$type": "ThunderRoad.ItemData+Damager, ThunderRoad",
+      "transformName": "Blunt",
+      "damagerID": "PropBlunt"
+    }
+  ],
+  "Interactables": [
+    {
+      "$type": "ThunderRoad.ItemData+Interactable, ThunderRoad",
+      "transformName": "Handle",
+      "interactableId": "ObjectHandleProp"
+    }
+  ],
+  "effectHinges": [],
+  "whooshs": [],
   "modules": [
     {
       "$type": "ThunderRoad.ItemModuleWardrobe, ThunderRoad",
-      "castSpeedPerHand": null,
       "category": "Apparel",
       "castShadows": "PlayerAndNPC",
       "wardrobes": [
         {
           "$type": "ThunderRoad.ItemModuleWardrobe+CreatureWardrobe, ThunderRoad",
           "creatureName": "HumanMale",
-          "wardrobeDataAddress": "Bas.Creature.Wardrobe.HumanMale.RuggedTrousers"
+          "wardrobeDataAddress": "Bas.Creature.Wardrobe.HumanMale.RuggedTrousers",
+          "runtimeBlendshapeActivators": null
         },
         {
           "$type": "ThunderRoad.ItemModuleWardrobe+CreatureWardrobe, ThunderRoad",
           "creatureName": "HumanFemale",
-          "wardrobeDataAddress": "Bas.Creature.Wardrobe.HumanFemale.RaggedTrousers"
+          "wardrobeDataAddress": "Bas.Creature.Wardrobe.HumanFemale.RaggedTrousers",
+          "runtimeBlendshapeActivators": null
         }
       ],
       "isMetal": false,
@@ -202,23 +224,5 @@
       ]
     }
   ],
-  "colliderGroups": [],
-  "damagers": [
-    {
-      "$type": "ThunderRoad.ItemData+Damager, ThunderRoad",
-      "transformName": "Blunt",
-      "damagerID": "PropBlunt"
-    }
-  ],
-  "Interactables": [
-    {
-      "$type": "ThunderRoad.ItemData+Interactable, ThunderRoad",
-      "transformName": "Handle",
-      "interactableId": "ObjectHandleProp"
-    }
-  ],
-  "effectHinges": [],
-  "whooshs": [],
-  "entityModules": [],
-  "groupPath": "Rogue/"
+  "entityModules": []
 }

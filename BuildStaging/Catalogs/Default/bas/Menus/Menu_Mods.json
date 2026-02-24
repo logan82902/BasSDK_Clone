@@ -4,12 +4,12 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 1,
+  "groupPath": null,
   "order": 3.0,
   "isDefault": false,
   "nameId": "Mods",
   "iconAddress": "Bas.Icon.MenuMods[ui_MenuMods]",
   "iconRollhoverAddress": "Bas.Icon.MenuMods_Rollhover[ui_MenuMods_Rollhover]",
   "prefabAddress": "Bas.Menu.Mods",
-  "module": null,
-  "groupPath": null
+  "module": null
 }

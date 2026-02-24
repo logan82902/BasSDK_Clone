@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
+  "groupPath": null,
   "type": "SubTree",
   "rootNode": {
     "$type": "ThunderRoad.AI.Control.Sequence, ThunderRoad",
@@ -11,16 +12,12 @@
     "childs": [
       {
         "$type": "ThunderRoad.AI.Action.SetBrainState, ThunderRoad",
-        "brainState": "Alert",
-        "blackboard": null,
-        "creature": null,
-        "brainData": null
+        "brainState": "Alert"
       },
       {
         "$type": "ThunderRoad.AI.Decorator.AlwaysFailure, ThunderRoad",
         "child": null
       }
     ]
-  },
-  "groupPath": null
+  }
 }

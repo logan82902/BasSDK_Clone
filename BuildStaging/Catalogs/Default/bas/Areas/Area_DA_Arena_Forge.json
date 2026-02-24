@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
+  "groupPath": "Dalgarian/Arena",
   "isUnique": true,
   "areaPrefabAddress": "Bas.Area.DA_Arena_Forge",
   "lightingPresetAddress": "Bas.Area.DA_Arena_Forge.LightingPreset",
@@ -100,6 +101,5 @@
       "fakeViewAddress": "Bas.Area.DA_Arena_Forge.FakeView.2"
     }
   ],
-  "areaGlobalParameters": [],
-  "groupPath": "Dalgarian/Arena"
+  "areaGlobalParameters": []
 }

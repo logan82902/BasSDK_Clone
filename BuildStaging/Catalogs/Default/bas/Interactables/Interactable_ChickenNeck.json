@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 3,
+  "groupPath": null,
   "behaviour": "Choke",
   "scaleDuringCombat": 1.0,
   "tkActiveCondition": "Always",
@@ -118,6 +119,5 @@
   "referencePoint": "Grip",
   "localizationId": "Chicken",
   "highlightDefaultTitle": "Chicken",
-  "highlightDefaultDesignation": "",
-  "groupPath": null
+  "highlightDefaultDesignation": ""
 }

@@ -1,6 +1,4 @@
-﻿using System;
-using UnityEngine;
-using UnityEditor;
+﻿using UnityEditor;
 
 namespace ThunderRoad
 {
@@ -9,26 +7,27 @@ namespace ThunderRoad
     {
         ParryTarget parry;
 
-        public override void OnInspectorGUI()
+        protected override void OnCreateGUIPreCoreElement()
         {
             script = parry = (ParryTarget)target;
 
             PointToPointButton(parry.GetLineStart(), parry.GetLineEnd());
+        }
 
-            base.OnInspectorGUI();
-
+        protected override void OnCreateGUIPostCoreElement()
+        {
             if (parry.length < 0)
             {
                 EditorGUILayout.HelpBox("Parry Length can not be a negative number.", MessageType.Error);
             }
-
         }
 
-        private void OnEnable()
+        protected override void OnEnablePostCore()
         {
             script = parry = (ParryTarget)target;
             ResetPoints(parry.GetLineStart(), parry.GetLineEnd());
         }
+
         private void OnSceneGUI()
         {
             script = parry = (ParryTarget)target;

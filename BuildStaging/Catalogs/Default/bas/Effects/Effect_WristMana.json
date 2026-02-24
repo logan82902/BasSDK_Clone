@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
+  "groupPath": null,
   "groupId": "UI",
   "volumeDb": 0.0,
   "modules": [
@@ -75,7 +76,6 @@
       "scaleCurve": null,
       "usePointCache": true,
       "pointCacheSkinnedMeshUpdate": false,
-      "pointCacheMapSize": 512,
       "pointCachePointCount": 4096,
       "pointCacheSeed": 0,
       "pointCacheDistribution": "RandomUniformArea",
@@ -108,6 +108,7 @@
           "name": "MuliplyPosition"
         }
       ],
+      "mergeKey": "c011407c",
       "step": "Loop",
       "stepCustomId": null,
       "loopCustomStep": false,
@@ -202,6 +203,7 @@
       "collisionMaxIntensity": 1.0,
       "collisionUseMainGradient": false,
       "collisionUseSecondaryGradient": false,
+      "mergeKey": "74bcc993",
       "step": "Loop",
       "stepCustomId": null,
       "loopCustomStep": false,
@@ -219,6 +221,5 @@
       "damagersFilterLogic": "AnyExcept",
       "damagersFilter": []
     }
-  ],
-  "groupPath": null
+  ]
 }

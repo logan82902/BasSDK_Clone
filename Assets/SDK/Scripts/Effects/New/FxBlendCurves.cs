@@ -1,11 +1,8 @@
 ﻿using UnityEngine;
 using System;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
@@ -13,19 +10,14 @@ namespace ThunderRoad
     public class FxBlendCurves
     {
         public bool useIntensityCurve;
-#if ODIN_INSPECTOR
         [ShowIf("useIntensityCurve")]
-#endif
         public AnimationCurve intensityCurve;
 
         public bool useSpeedCurve;
-#if ODIN_INSPECTOR
         [ShowIf("useSpeedCurve")]
-#endif
         public AnimationCurve speedCurve;
-#if ODIN_INSPECTOR
-        [ShowIf("useIntensityCurve"), ShowIf("useSpeedCurve")] 
-#endif
+        [ShowIf("useIntensityCurve")]
+        [ShowIf("useSpeedCurve")]
         public BlendMode blendMode = BlendMode.Min;
 
         public FxBlendCurves()

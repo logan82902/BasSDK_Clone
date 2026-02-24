@@ -1,4 +1,5 @@
-﻿using TriInspector;
+using System.Collections.Generic;
+using TriInspector;
 using TriInspector.Resolvers;
 using TriInspector.Validators;
 
@@ -24,7 +25,9 @@ namespace TriInspector.Validators
 
         public override TriValidationResult Validate(TriProperty property)
         {
-            foreach (var item in _valuesResolver.GetDropdownItems(property))
+            var items = _valuesResolver.GetDropdownItems(property);
+            if (!_valuesResolver.needsValidation) return TriValidationResult.Valid;
+            foreach (var item in items)
             {
                 if (property.Comparer.Equals(item.Value, property.Value))
                 {

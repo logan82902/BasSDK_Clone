@@ -1,16 +1,11 @@
-﻿#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
-using TriInspector;
-#endif
+﻿using TriInspector;
 
 namespace ThunderRoad.AI.Control
 {
-	public class Selector : ControlNode
+    [AutoLabelWidth(AddedWidth = 5f, MinWidth = 0f)]
+    public class Selector : ControlNode
     {
-#if ODIN_INSPECTOR
-        [PropertyOrder(0)] 
-#endif
+        [PropertyOrder(0)]
         public bool evaluateAllNodesOnCycle;
 
     }

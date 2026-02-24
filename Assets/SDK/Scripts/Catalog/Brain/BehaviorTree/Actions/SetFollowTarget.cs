@@ -1,11 +1,9 @@
-﻿#if ODIN_INSPECTOR
-#else
-using TriInspector;
-#endif
+﻿using TriInspector;
 
 namespace ThunderRoad.AI.Action
 {
-	public class SetFollowTarget : ActionNode
+    [AutoLabelWidth(AddedWidth = 5f, MinWidth = 0f)]
+    public class SetFollowTarget : ActionNode
     {
         public enum Action
         {

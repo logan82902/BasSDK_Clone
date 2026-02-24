@@ -23,9 +23,7 @@ namespace ThunderRoad.Manikin
         SerializedProperty occlusionIDHash;
         SerializedProperty occlusionBitmaskProperty;
         SerializedProperty occlusionBitmask;
-
-        SerializedProperty applyBitmaskEveryUpdate;
-
+        
         private void OnEnable()
         {
             autoUpdate = EditorPrefs.GetBool("Manikin_PropertiesAutoUpdate", true);
@@ -47,8 +45,6 @@ namespace ThunderRoad.Manikin
             occlusionIDHash = serializedObject.FindProperty("occlusionIDHash");
             occlusionBitmaskProperty = serializedObject.FindProperty("occlusionBitmaskProperty");
             occlusionBitmask = serializedObject.FindProperty("occlusionBitmask");
-
-            applyBitmaskEveryUpdate = serializedObject.FindProperty("applyBitmaskEveryUpdate");
         }
 
         private float ElementHeight(int index)
@@ -82,7 +78,6 @@ namespace ThunderRoad.Manikin
             EditorGUILayout.EndVertical();
 
             EditorGUILayout.PropertyField(useSRPBatcher);
-            EditorGUILayout.PropertyField(applyBitmaskEveryUpdate);
             EditorGUILayout.PropertyField(occlusionBitmaskProperty);
             EditorGUILayout.PropertyField(occlusionID);
             EditorGUI.BeginDisabledGroup(true);

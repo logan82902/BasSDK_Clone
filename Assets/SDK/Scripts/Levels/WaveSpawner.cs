@@ -4,11 +4,7 @@ using UnityEngine;
 using System;
 using UnityEngine.Events;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
@@ -41,9 +37,7 @@ namespace ThunderRoad
         public static List<WaveSpawner> instances = new List<WaveSpawner>();
 
         public ReferenceType referenceType = ReferenceType.EnemyConfig;
-#if ODIN_INSPECTOR
-        [ShowIf("referenceType", Value = ReferenceType.EnemyConfig)]
-#endif
+        [ShowIf("referenceType", ReferenceType.EnemyConfig)]
         public EnemyConfigType enemyConfigType;
 
         [Tooltip("When ticked, the wave spawner will ignore the dungeon limits and spawn NPCs regardless of the dungeon limit. This is useful for playing a dungeon room in sandbox mode")]
@@ -58,16 +52,12 @@ namespace ThunderRoad
         [Tooltip("Delay of Wave activation on start.")]
         public float beginWaveOnStartDelay;
         [Tooltip("ID of wave that begins on start")]
-#if ODIN_INSPECTOR        
-        [ShowIf("referenceType", true, Value = ReferenceType.None)]
-#endif        
+        [ShowIf("referenceType", ReferenceType.None)]
         public string startWaveId;
         [Tooltip("When ticked, items and dead bodies will despawn when the wave starts. When disabled, bodies and items do not despawn on start.")]
         public bool cleanBodiesAndItemsOnWaveStart = true;
 
-#if ODIN_INSPECTOR
-        [ValueDropdown(nameof(GetAllFactionID))]
-#endif
+        [Dropdown(nameof(GetAllFactionID))]
         [Tooltip("ID of the faction that is ignored by the NPCs of this wave.")]
         public int ignoredFactionId = -1;
         [Tooltip("Determines how often the spawner checks to see if it can spawn a new creature.")]
@@ -91,6 +81,7 @@ namespace ThunderRoad
         public static UnityEvent<WaveSpawner> OnWaveSpawnerStartRunningEvent = new UnityEvent<WaveSpawner>();
         public static UnityEvent<WaveSpawner> OnWaveSpawnerStopRunningEvent = new UnityEvent<WaveSpawner>();
 
+
         #region Exposed SDK methods
         public void StartWave(string waveId)
         {
@@ -109,17 +100,12 @@ namespace ThunderRoad
         }
         #endregion
 
-#if ODIN_INSPECTOR
-        public List<ValueDropdownItem<int>> GetAllFactionID()
+        public TriDropdownList<int> GetAllFactionID()
         {
             if (Catalog.gameData == null) return null;
             return Catalog.gameData.GetFactions();
         }
 
-        public List<ValueDropdownItem<string>> GetAllWaveID()
-        {
-            return Catalog.GetDropdownAllID(Category.Wave);
-        }
-#endif
+        public TriDropdownList<string> GetAllWaveID() => Catalog.GetDropdownAllID(Category.Wave);
     }
 }

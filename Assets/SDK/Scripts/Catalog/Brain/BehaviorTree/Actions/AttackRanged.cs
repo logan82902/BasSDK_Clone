@@ -1,47 +1,31 @@
 ﻿using System;
+using Newtonsoft.Json;
 using UnityEngine;
-
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
 
 namespace ThunderRoad.AI.Action
 {
-	public abstract class AttackRanged : ActionNode
+    [DeclareBoxGroup("Inputs", Title = "Inputs")]
+    [DeclareBoxGroup("Overrides", Title = "Overrides")]
+    [AutoLabelWidth(AddedWidth = 5f, MinWidth = 0f)]
+    public abstract class AttackRanged : ActionNode
     {
-#if ODIN_INSPECTOR
-        [BoxGroup("Inputs")] 
-#endif
+        [Group("Inputs")]
         public string inputTransformVariableName = "";
-#if ODIN_INSPECTOR
-        [BoxGroup("Inputs")] 
-#endif
+        [Group("Inputs")]
         public bool useCurrentTargetIfNullTransform = true;
-#if ODIN_INSPECTOR
-        [BoxGroup("Overrides")] 
-#endif
+        [Group("Overrides")]
         public bool overrideSpread = false;
-#if ODIN_INSPECTOR
-        [BoxGroup("Overrides"), EnableIf("overrideSpread")] 
-#endif
+        [Group("Overrides")]
+        [EnableIf(nameof(overrideSpread))]
         public Vector2 spreadOverride = Vector2.zero;
-#if ODIN_INSPECTOR
-        [BoxGroup("Overrides")] 
-#endif
+        [Group("Overrides")]
         public bool overrideWeaponRotationX = false;
-#if ODIN_INSPECTOR
-        [BoxGroup("Overrides")] 
-#endif
+        [Group("Overrides")]
         public bool overrideWeaponRotationY = false;
-#if ODIN_INSPECTOR
-        [BoxGroup("Overrides")] 
-#endif
+        [Group("Overrides")]
         public bool overrideWeaponRotationZ = false;
-#if ODIN_INSPECTOR
-        [BoxGroup("Overrides")] 
-#endif
+        [Group("Overrides")]
         public Vector3 weaponRotationOverride = Vector3.zero;
 
     }

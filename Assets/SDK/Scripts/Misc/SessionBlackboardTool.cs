@@ -2,11 +2,8 @@
 using UnityEngine;
 using UnityEngine.Events;
 using System;
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
@@ -57,7 +54,8 @@ namespace ThunderRoad
             public string originalOperation = "";
             public bool onlyIfMissing = false;
         }
-        
+
+
         public void BoolOperation(string input)
         {
         }

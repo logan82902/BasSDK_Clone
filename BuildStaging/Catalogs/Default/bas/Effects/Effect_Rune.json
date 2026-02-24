@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
+  "groupPath": null,
   "groupId": "Misc",
   "volumeDb": 0.0,
   "modules": [
@@ -75,7 +76,6 @@
       "scaleCurve": null,
       "usePointCache": true,
       "pointCacheSkinnedMeshUpdate": false,
-      "pointCacheMapSize": 512,
       "pointCachePointCount": 4096,
       "pointCacheSeed": 0,
       "pointCacheDistribution": "RandomUniformArea",
@@ -83,6 +83,7 @@
       "useMesh": false,
       "meshAddress": null,
       "materialProperties": [],
+      "mergeKey": "37275ed8",
       "step": "Loop",
       "stepCustomId": null,
       "loopCustomStep": false,
@@ -100,6 +101,5 @@
       "damagersFilterLogic": "AnyExcept",
       "damagersFilter": []
     }
-  ],
-  "groupPath": null
+  ]
 }

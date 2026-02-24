@@ -1,15 +1,11 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
 using System;
 using UnityEditor;
 using UnityEngine.Events;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
@@ -38,12 +34,8 @@ namespace ThunderRoad
             Stage,
         }
 
-#if ODIN_INSPECTOR
-        public List<ValueDropdownItem<string>> GetAllContainerID()
-        {
-            return Catalog.GetDropdownAllID(Category.Container);
-        }
-#endif
+
+        public TriDropdownList<string> GetAllContainerID() => Catalog.GetDropdownAllID(Category.Container);
 
         
 #if UNITY_EDITOR

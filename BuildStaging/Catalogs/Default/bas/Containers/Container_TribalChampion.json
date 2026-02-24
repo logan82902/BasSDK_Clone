@@ -4,9 +4,9 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 1,
+  "groupPath": "Factions/Tribal",
   "displayName": "Tribal Champion",
   "description": null,
-  "contents": [],
   "containerContents": [
     {
       "$type": "ThunderRoad.TableContent, ThunderRoad",
@@ -16,18 +16,22 @@
         "holderName": "BackRight"
       },
       "customDataList": [],
+      "mergeKey": "790defd0",
       "referenceID": "WeaponTribalWarrior"
     },
     {
       "$type": "ThunderRoad.SpellContent, ThunderRoad",
+      "mergeKey": "97f23c77",
       "referenceID": "Gravity"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "a6d83595",
       "referenceID": "MeleeImbueGravity"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "94da5ce5",
       "referenceID": "ChargeSpeedBoost"
     },
     {
@@ -37,6 +41,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "ab32d14a",
       "referenceID": "ApparelGladiatorHeadband"
     },
     {
@@ -46,6 +51,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "0f48f8d1",
       "referenceID": "ApparelGladiatorJacket"
     },
     {
@@ -55,6 +61,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "063fad41",
       "referenceID": "ApparelGladiatorShoulderR"
     },
     {
@@ -64,6 +71,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "22b78140",
       "referenceID": "GladiatorHandR"
     },
     {
@@ -73,6 +81,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "07b6e2fa",
       "referenceID": "ApparelDruidHandL"
     },
     {
@@ -82,6 +91,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "c38c2fd6",
       "referenceID": "ApparelGladiatorBoots"
     },
     {
@@ -91,6 +101,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "c5e0a476",
       "referenceID": "HairsTribal"
     },
     {
@@ -100,8 +111,8 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "a6e18148",
       "referenceID": "BeardsTribal"
     }
-  ],
-  "groupPath": "Factions/Tribal"
+  ]
 }

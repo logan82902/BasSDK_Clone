@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 4,
+  "groupPath": null,
   "localizationId": "AppleCore",
   "displayName": "Apple Core",
   "description": "",
@@ -14,16 +15,18 @@
   "tier": 0,
   "flags": "Spinnable",
   "levelRequired": 0,
+  "type": "Food",
   "category": "Consumables",
+  "update": "",
   "iconEffectId": null,
   "preferredItemCenter": "Mass",
   "drainImbueWhenIdle": true,
+  "forceImbueUseButton": "None",
   "prefabAddress": "Bas.Item.Food.AppleCore",
   "iconAddress": "Bas.Item.Food.AppleCore.Icon[Food_AppleCore]",
   "closeUpIconAddress": null,
   "pooledCount": 0,
   "androidPooledCount": 0,
-  "type": "Food",
   "allowedStorage": 0,
   "despawnOnStoredInInventory": false,
   "isStackable": true,
@@ -37,6 +40,7 @@
   "mass": 0.6,
   "drag": 0.3,
   "angularDrag": 0.05,
+  "density": 200.0,
   "focusRegenMultiplier": 1.0,
   "spellChargeSpeedPlayerMultiplier": 1.0,
   "spellChargeSpeedNPCMultiplier": 1.0,
@@ -150,19 +154,6 @@
     "preWrapMode": "ClampForever",
     "postWrapMode": "ClampForever"
   },
-  "modules": [
-    {
-      "$type": "ThunderRoad.ItemModuleStats, ThunderRoad",
-      "stats": [
-        {
-          "$type": "ThunderRoad.ItemStatInt, ThunderRoad",
-          "value": 0,
-          "useStarIcons": true,
-          "name": "Healing"
-        }
-      ]
-    }
-  ],
   "colliderGroups": [
     {
       "$type": "ThunderRoad.ItemData+ColliderGroup, ThunderRoad",
@@ -197,6 +188,18 @@
       "dampening": 0.1
     }
   ],
-  "entityModules": [],
-  "groupPath": null
+  "modules": [
+    {
+      "$type": "ThunderRoad.ItemModuleStats, ThunderRoad",
+      "stats": [
+        {
+          "$type": "ThunderRoad.ItemStatInt, ThunderRoad",
+          "value": 0,
+          "useStarIcons": true,
+          "name": "Healing"
+        }
+      ]
+    }
+  ],
+  "entityModules": []
 }

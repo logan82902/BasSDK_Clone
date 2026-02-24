@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using TriInspector.Utilities;
 using UnityEditor;
 using UnityEngine;
@@ -10,6 +10,8 @@ namespace TriInspector.Elements
         private readonly Props _props;
         private readonly TriProperty _property;
         private readonly bool _showReferencePicker;
+        private readonly bool _referencePickerReadonly;
+        private readonly bool _referencePickerScriptButton;
         private readonly bool _skipReferencePickerExtraLine;
 
         private Type _referenceType;
@@ -27,6 +29,8 @@ namespace TriInspector.Elements
             _property = property;
             _props = props;
             _showReferencePicker = !property.TryGetAttribute(out HideReferencePickerAttribute _);
+            _referencePickerReadonly = property.TryGetAttribute(out ReadOnlyReferencePickerAttribute _);
+            _referencePickerScriptButton = property.TryGetAttribute(out ReferencePickerScriptButtonAttribute _);
             _skipReferencePickerExtraLine = !_showReferencePicker && _props.inline;
         }
 
@@ -34,13 +38,9 @@ namespace TriInspector.Elements
         {
             var dirty = false;
 
-            if (_props.inline || _property.IsExpanded)
+            if (ChildrenCount == 0)
             {
-                dirty |= GenerateChildren();
-            }
-            else
-            {
-                dirty |= ClearChildren();
+                GenerateChildren();
             }
 
             dirty |= base.Update();
@@ -64,10 +64,16 @@ namespace TriInspector.Elements
         {
             if (_props.drawPrefixLabel)
             {
-                var controlId = GUIUtility.GetControlID(FocusType.Passive);
-                position = EditorGUI.PrefixLabel(position, controlId, _property.DisplayNameContent);
+                //var controlId = GUIUtility.GetControlID(FocusType.Passive);
+                //position = EditorGUI.PrefixLabel(position, controlId, _property.DisplayNameContent);
             }
 
+            float labelWidth = EditorGUIUtility.labelWidth;
+            GUIContent displayNameContent = GUIContent.none;
+            if (TriPropertyOverrideContext.Current?.TryGetDisplayName(_property, out displayNameContent) == true && string.IsNullOrEmpty(displayNameContent.text))
+            {
+                labelWidth = 0f;
+            }
             var headerRect = new Rect(position)
             {
                 height = _skipReferencePickerExtraLine ? 0f : EditorGUIUtility.singleLineHeight,
@@ -75,12 +81,12 @@ namespace TriInspector.Elements
             var headerLabelRect = new Rect(position)
             {
                 height = headerRect.height,
-                width = EditorGUIUtility.labelWidth,
+                width = labelWidth + 15f,
             };
             var headerFieldRect = new Rect(position)
             {
                 height = headerRect.height,
-                xMin = headerRect.xMin + EditorGUIUtility.labelWidth,
+                xMin = headerRect.xMin + labelWidth + 15f,
             };
             var contentRect = new Rect(position)
             {
@@ -101,11 +107,38 @@ namespace TriInspector.Elements
             }
             else
             {
-                TriEditorGUI.Foldout(headerLabelRect, _property);
+                if (_property.ChildrenProperties.Count != 0) TriEditorGUI.Foldout(headerLabelRect, _property);
 
                 if (_showReferencePicker)
                 {
+                    bool showScriptButton = _referencePickerScriptButton && _property.Value != null;
+                    GUIContent openScriptButton = new GUIContent("Open Script");
+                    float buttonWidth = GUI.skin.button.CalcSize(openScriptButton).x;
+                    if (showScriptButton)
+                    {
+                        headerFieldRect.width -= 2f + buttonWidth;
+                    }
+                    bool wasEnabled = GUI.enabled;
+                    if (_referencePickerReadonly) GUI.enabled = false;
                     TriManagedReferenceGui.DrawTypeSelector(headerFieldRect, _property);
+                    GUI.enabled = wasEnabled;
+                    if (showScriptButton)
+                    {
+                        Rect buttonRect = new Rect(headerFieldRect) { x = headerFieldRect.x + headerFieldRect.width + 2f, width = buttonWidth };
+                        if (GUI.Button(buttonRect, openScriptButton))
+                        {
+                            Type propertyType = _property.Value.GetType();
+                            string fileName = propertyType.Name;
+                            foreach (string guid in AssetDatabase.FindAssets(fileName))
+                            {
+                                string path = AssetDatabase.GUIDToAssetPath(guid);
+                                if (string.IsNullOrEmpty(path)) continue;
+                                MonoScript scriptAsset = AssetDatabase.LoadAssetAtPath<MonoScript>(path);
+                                if (scriptAsset?.GetClass() != propertyType) continue;
+                                AssetDatabase.OpenAsset(scriptAsset);
+                            }
+                        }
+                    }
                 }
 
                 if (_property.IsExpanded)

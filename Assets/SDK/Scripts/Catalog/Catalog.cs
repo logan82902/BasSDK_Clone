@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System;
 using System.Linq;
+using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
@@ -15,22 +16,20 @@ using Ionic.Crc;
 using Newtonsoft.Json.UnityConverters.Geometry;
 using Newtonsoft.Json.UnityConverters.Math;
 using Newtonsoft.Json.UnityConverters.Scripting;
-using UnityEditor;
 using UnityEngine.AddressableAssets.ResourceLocators;
 using UnityEngine.Profiling;
 using static ThunderRoad.AddressLocationCache;
 
 #if UNITY_EDITOR
+using UnityEditor;
 using UnityEditor.AddressableAssets;
 using UnityEditor.AddressableAssets.Settings;
 using System.Text;
 #endif
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+
 using TriInspector;
-#endif
+using static ThunderRoad.ModManager;
 
 namespace ThunderRoad
 {
@@ -43,16 +42,15 @@ namespace ThunderRoad
 
         public static GameData gameData;
 
-        public static bool loadMods = true;
-        public static bool checkFileVersion = true;
+        public const bool checkFileVersion = true;
 
-        public static JsonSerializerSettings jsonSerializerSettings;
-        public static JsonSerializer jsonSerializer;
+        private static JsonSerializerSettings _jsonSerializerSettings;
+        private static JsonSerializer _jsonSerializer;
 
         /// <summary>
         /// A mapping of all of the base types to their catalog Categories
         /// </summary>
-        public static (Type Type, Category Category)[] baseTypeCategories = new (Type Type, Category Category)[] {
+        public readonly static (Type Type, Category Category)[] baseTypeCategories = new (Type Type, Category Category)[] {
             (typeof(WaveData), Category.Wave),
             (typeof(CreatureData), Category.Creature),
             (typeof(ItemData), Category.Item),
@@ -94,6 +92,8 @@ namespace ThunderRoad
             (typeof(SkillTreeData), Category.SkillTree),
             (typeof(EnemyConfig), Category.EnemyConfig),
             (typeof(LootConfigData), Category.LootConfig),
+            (typeof(MapData), Category.Custom),
+            (typeof(BundleData), Category.Bundle),
         };
 
         // A map of all types and subtypes to their catalog category
@@ -121,7 +121,9 @@ namespace ThunderRoad
             {
                 (Type Type, Category Category) tuple = baseTypeCategories[i];
                 if (!IsSameOrSubclass(tuple.Type, type))
+                {
                     continue;
+                }
                 typeCategories.Add(type, tuple.Category);
                 category = tuple.Category;
                 return true;
@@ -131,78 +133,53 @@ namespace ThunderRoad
 
         public static Category GetCategory(Type type)
         {
-            if (typeCategories.TryGetValue(type, out Category category))
-            {
-                return category;
-            }
-
-            if (!IsSameOrSubclass(typeof(CatalogData), type))
-            {
-                Debug.LogError($"Type: {type} is not a subclass of CatalogData!");
-                return Category.Custom;
-            }
-
-            for (int i = 0; i < baseTypeCategories.Length; i++)
-            {
-                (Type Type, Category Category) tuple = baseTypeCategories[i];
-                if (!IsSameOrSubclass(tuple.Type, type))
-                    continue;
-                typeCategories.Add(type, tuple.Category);
-                return tuple.Category;
-            }
-            //If we dont know what category it is, default to the custom one
-            //Really TryGetCategory should be used
+            if (TryGetCategory(type, out Category category)) return category;
             return Category.Custom;
         }
 
-        public static bool IsSameOrSubclass(Type baseClass, Type subClass)
-        {
-            return subClass.IsSubclassOf(baseClass) || subClass == baseClass;
-        }
+        public static bool IsSameOrSubclass(Type baseClass, Type subClass) => subClass.IsSubclassOf(baseClass) || subClass == baseClass;
 
         #region JSON
 
         //create a reusable serializer
-        public static JsonSerializer GetJsonNetSerializer() => jsonSerializer ??= JsonSerializer.CreateDefault(GetJsonNetSerializerSettings());
+        public static JsonSerializer GetJsonNetSerializer() => _jsonSerializer ??= JsonSerializer.CreateDefault(GetJsonNetSerializerSettings());
 
         public static JsonSerializerSettings GetJsonNetSerializerSettings()
         {
-            if (jsonSerializerSettings != null)
-                return jsonSerializerSettings;
-            jsonSerializerSettings = new JsonSerializerSettings();
-            jsonSerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
-            jsonSerializerSettings.TypeNameHandling = TypeNameHandling.Objects;
-            jsonSerializerSettings.Formatting = Formatting.Indented;
-            jsonSerializerSettings.MaxDepth = 50;
-            jsonSerializerSettings.ContractResolver = JsonSerializer.CreateDefault().ContractResolver;
-            jsonSerializerSettings.Converters.Add(new StringEnumConverter());
-            jsonSerializerSettings.Converters.Add(new Vector2Converter());
-            jsonSerializerSettings.Converters.Add(new Vector2IntConverter());
-            jsonSerializerSettings.Converters.Add(new Vector3Converter());
-            jsonSerializerSettings.Converters.Add(new Vector3IntConverter());
-            jsonSerializerSettings.Converters.Add(new Vector4Converter());
-            jsonSerializerSettings.Converters.Add(new QuaternionConverter());
-            jsonSerializerSettings.Converters.Add(new ColorConverter());
-            jsonSerializerSettings.Converters.Add(new LayerMaskConverter());
-            jsonSerializerSettings.Converters.Add(new ThunderRoad.BoundsConverter());
-            jsonSerializerSettings.Converters.Add(new BoundsIntConverter());
-            jsonSerializerSettings.Converters.Add(new KeyedListMergeConverter(jsonSerializerSettings.ContractResolver));
-            return jsonSerializerSettings;
+            if (_jsonSerializerSettings != null)
+                return _jsonSerializerSettings;
+            _jsonSerializerSettings = new JsonSerializerSettings {
+                ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+                TypeNameHandling = TypeNameHandling.Objects,
+                Formatting = Formatting.Indented,
+                MaxDepth = 50,
+                ContractResolver = JsonSerializer.CreateDefault().ContractResolver
+            };
+            _jsonSerializerSettings.Converters.Add(new StringEnumConverter());
+            _jsonSerializerSettings.Converters.Add(new Vector2Converter());
+            _jsonSerializerSettings.Converters.Add(new Vector2IntConverter());
+            _jsonSerializerSettings.Converters.Add(new Vector3Converter());
+            _jsonSerializerSettings.Converters.Add(new Vector3IntConverter());
+            _jsonSerializerSettings.Converters.Add(new Vector4Converter());
+            _jsonSerializerSettings.Converters.Add(new QuaternionConverter());
+            _jsonSerializerSettings.Converters.Add(new ColorConverter());
+            _jsonSerializerSettings.Converters.Add(new LayerMaskConverter());
+            _jsonSerializerSettings.Converters.Add(new ThunderRoad.BoundsConverter());
+            _jsonSerializerSettings.Converters.Add(new BoundsIntConverter());
+            _jsonSerializerSettings.Converters.Add(new KeyedListMergeConverter(_jsonSerializerSettings.ContractResolver));
+            return _jsonSerializerSettings;
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // LOAD JSON
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        public static bool IsJsonLoaded()
-        {
-            return gameData != null;
-        }
+        public static bool IsJsonLoaded() => gameData != null;
 
-        private static void LoadJsonDbFile(string zipPath, string folderName, ModManager.ModData modData = null)
+        private static void LoadJsonDbFile(string zipPath, string folderName, ModData modData = null)
         {
             string logTag = modData != null ? $"[ModManager][Catalog][{folderName}]" : $"[Catalog][{folderName}]";
-            FileInfo fileInfo = new FileInfo(zipPath);
+            FileInfo fileInfo = new(zipPath);
             string localPathFile = $"{fileInfo.Directory.Name}/{fileInfo.Name}";
             Debug.Log($"{logTag} Loading file: {localPathFile}");
 
@@ -216,11 +193,11 @@ namespace ThunderRoad
                 Debug.LogError($"{logTag} Error: Exception reading .jsondb file: {localPathFile}");
                 if (modData != null)
                 {
-                    modData.errors.Add(new ModManager.ModData.Error(ModManager.ModData.ErrorType.JSON,
+                    modData.errors.Add(new ModData.Error(ModData.ErrorType.JSON,
                         "Exception reading .jsondb file", "ModErrorExceptionReadingJSONDB", string.Empty,
                         ex.Message, localPathFile));
                     //add it to the loaded mods, even though we never really loaded it, this is to show it has been processed, but there is an error with it
-                    ModManager.loadedMods.Add(modData);
+                    loadedMods.Add(modData);
                 }
                 return;
             }
@@ -230,31 +207,37 @@ namespace ThunderRoad
                 Debug.LogError($"{logTag} Error: Can't read .jsondb file: {localPathFile}");
                 if (modData != null)
                 {
-                    modData.errors.Add(new ModManager.ModData.Error(ModManager.ModData.ErrorType.JSON, 
+                    modData.errors.Add(new ModData.Error(ModData.ErrorType.JSON,
                         "Can't read .jsondb file", "ModErrorCantReadJSONDB", string.Empty,
                         "", localPathFile));
                     //add it to the loaded mods, even though we never really loaded it, this is to show it has been processed, but there is an error with it
-                    ModManager.loadedMods.Add(modData);
+                    loadedMods.Add(modData);
                 }
                 return;
             }
 
             int zipCount = zip.Count;
-            List<string> inputJsons = new List<string>(zipCount);
-            List<string> inputJsonPaths = new List<string>(zipCount);
+            List<string> inputJsons = new(zipCount);
+            List<string> inputJsonPaths = new(zipCount);
 
             for (int i = 0; i < zipCount; i++)
             {
                 ZipEntry zipEntry = zip[i];
                 if (Path.GetExtension(zipEntry.FileName) != ".json")
+                {
                     continue;
+                }
                 if (zipEntry.FileName.Contains("catalog_", StringComparison.OrdinalIgnoreCase))
+                {
                     continue;
+                }
                 if (zipEntry.FileName.Equals("manifest.json", StringComparison.OrdinalIgnoreCase))
+                {
                     continue;
+                }
 
                 CrcCalculatorStream stream = zipEntry.OpenReader();
-                StreamReader streamReader = new StreamReader(stream);
+                StreamReader streamReader = new(stream);
                 string jsonText = streamReader.ReadToEnd();
                 string entryName = $"{localPathFile}/{zipEntry.FileName}";
                 inputJsons.Add(jsonText);
@@ -266,32 +249,37 @@ namespace ThunderRoad
             Debug.Log($"{logTag}- Loaded file: {localPathFile}");
         }
 
-        private static void LoadJsonLooseFiles(string folderName, List<string> inputJsons, List<string> inputJsonPaths, ModManager.ModData modData = null)
+        // determines whether or not we should load override JSONs separately from the JSONs they're overriding; always false except when the catalog editor is loading with mods
+        public static bool loadOverridesSeparately = false;
+        private static void LoadJsonLooseFiles(string folderName, List<string> inputJsons, List<string> inputJsonPaths, ModData modData = null)
         {
             string basePath = modData != null ? FileManager.GetFullPath(FileManager.Type.JSONCatalog, FileManager.Source.Mods) : FileManager.GetFullPath(FileManager.Type.JSONCatalog, FileManager.Source.Default);
             basePath = Path.Combine(basePath, folderName);
             string logTag = modData != null ? $"[ModManager][Catalog][{folderName}]" : $"[Catalog][{folderName}]";
             object[] deserializedObjects = DeserializeJsons(inputJsons, inputJsonPaths, modData);
+#if UNITY_EDITOR
+            int jsonCount = deserializedObjects.Length;
+#endif
             //loop over the objects and load them
             for (int i = 0; i < deserializedObjects.Length; i++)
             {
                 object catalogObject = deserializedObjects[i];
                 if (catalogObject is null)
-                    continue;
-                // skip if the file isnt a catalog or game data
-                if (catalogObject is not CatalogData && catalogObject is not GameData)
-                    continue;
-
-                FileInfo fileInfo = new FileInfo(inputJsonPaths[i]);
-                if (fileInfo.Directory == null)
                 {
-                    Debug.LogError($"{logTag} Failed to load file: {inputJsonPaths[i]}");
                     continue;
                 }
-
-                string localPath = Path.GetRelativePath(basePath, inputJsonPaths[i]);
+                // skip if the file isnt a catalog or game data
+                if (catalogObject is not CatalogData && catalogObject is not GameData)
+                {
+                    continue;
+                }
+#if UNITY_EDITOR
+                OnJSONLoadProgress?.Invoke(jsonCount, i);
+#endif
+                
                 if (!LoadJson(catalogObject, inputJsons[i], inputJsonPaths[i], folderName, modData))
                 {
+                    string localPath = Path.GetRelativePath(basePath, inputJsonPaths[i]);
                     Debug.LogError($"{logTag} Failed to load file: {localPath}");
                 }
             }
@@ -303,51 +291,61 @@ namespace ThunderRoad
             string[] paths = FileManager.GetFullFilePaths(FileManager.Type.JSONCatalog, fileSource, folder, "*.json");
             inputJsons = new List<string>(paths.Length);
             inputJsonPaths = new List<string>(paths.Length);
+#if UNITY_EDITOR
+            int totalJsons = paths.Length;
+            int jsonsAdded = 0;
+#endif
             for (int i = 0; i < paths.Length; i++)
             {
-                var path = paths[i];
+#if UNITY_EDITOR
+                OnJSONOpenProgress?.Invoke(totalJsons, i, jsonsAdded);
+#endif
+                string path = paths[i];
                 if (path.Contains("catalog_", StringComparison.OrdinalIgnoreCase) || path.Contains("manifest.json", StringComparison.OrdinalIgnoreCase))
+                {
                     continue;
+                }
 
                 //read the file
                 string json = File.ReadAllText(path);
                 inputJsons.Add(json);
                 inputJsonPaths.Add(path);
+#if UNITY_EDITOR
+                jsonsAdded++;
+#endif
             }
         }
 
-        public static bool LoadJson(object jsonObj, string jsonText, string jsonPath, string folder, ModManager.ModData modData = null)
+        public static bool LoadJson(object jsonObj, string jsonText, string jsonPath, string folder, ModData modData = null)
         {
             string logTag = modData != null ? $"[ModManager][Catalog][{folder}]" : $"[Catalog][{folder}]";
             Profiler.BeginSample("LoadJson");
             switch (jsonObj)
             {
                 // Load CatalogData
-                case CatalogData catalogData when !DoesCatalogVersionMatch(catalogData):
-                {
+                case CatalogData catalogData when !DoesCatalogVersionMatch(catalogData): {
                     Debug.LogWarning($"{logTag} Version mismatch (file {catalogData.version}, current {catalogData.GetCurrentVersion()}) ignoring file: {jsonPath}");
                     if (modData != null)
                     {
-                            modData.errors.Add(new ModManager.ModData.Error(ModManager.ModData.ErrorType.JSON,
-                                "Catalog version incompatible", "ModErrorIncompatibleCatalogVersion", string.Empty,
-                                $"[{folder}] Version mismatch (file {catalogData.version}, current {catalogData.GetCurrentVersion()}) ignoring file: {jsonPath}", jsonPath));
+                        modData.errors.Add(new ModData.Error(ModData.ErrorType.JSON,
+                            "Catalog version incompatible", "ModErrorIncompatibleCatalogVersion", string.Empty,
+                            $"[{folder}] Version mismatch (file {catalogData.version}, current {catalogData.GetCurrentVersion()}) ignoring file: {jsonPath}", jsonPath));
                         //add it to the loaded mods, even though we never really loaded it, this is to show it has been processed, but there is an error with it
-                        ModManager.loadedMods.Add(modData);
+                        loadedMods.Add(modData);
                     }
                     Profiler.EndSample();
                     return false;
                 }
                 case CatalogData catalogData:
-                bool result = LoadCatalogData(catalogData, jsonText, jsonPath, folder, modData);
-                Profiler.EndSample();
-                return result;
+                    bool result = LoadCatalogData(catalogData, jsonText, jsonPath, folder, modData);
+                    Profiler.EndSample();
+                    return result;
                 case GameData newGameData:
-                // Load GameData
-                LoadGameData(newGameData, jsonText, jsonPath, folder, modData);
-                Profiler.EndSample();
-                return true;
-                default:
-                {
+                    // Load GameData
+                    LoadGameData(newGameData, jsonText, jsonPath, folder, modData);
+                    Profiler.EndSample();
+                    return true;
+                default: {
                     Debug.LogWarning($"{logTag} Custom Json File or malformed CatalogData skipped: {jsonPath}");
                     Profiler.EndSample();
                     return false;
@@ -356,33 +354,55 @@ namespace ThunderRoad
 
         }
 
-        public static void LoadGameData(GameData newGameData, string jsonText, string jsonPath, string folder, ModManager.ModData modData = null)
+        public static void LoadGameData(GameData newGameData, string jsonText, string jsonPath, string folder, ModData modData = null)
         {
             // Load GameData
-            if (gameData != null)
+            if (gameData != null && !loadOverridesSeparately)
             {
                 if (!ThunderRoadSettings.current.overrideData)
+                {
                     return;
-                JsonConvert.PopulateObject(jsonText, gameData, jsonSerializerSettings);
+                }
+                JsonConvert.PopulateObject(jsonText, gameData, _jsonSerializerSettings);
                 if (modData != null)
                 {
                     string relativePath = jsonPath.Substring(jsonPath.IndexOf(folder, StringComparison.Ordinal));
                     Debug.Log($"[ModManager][Catalog][{folder}] Overriding: [GameData] with: {relativePath}");
                 }
                 if (Application.isEditor)
+                {
                     gameData.sourceFolders += $"+{folder}";
+                }
             }
             else
             {
-                gameData = newGameData;
-                if (Application.isEditor)
-                    gameData.sourceFolders = folder;
+                if (gameData == null)
+                {
+                    gameData = newGameData;
+#if UNITY_EDITOR
+                    gameData.filePath = jsonPath;
+                    if (Application.isEditor)
+                    {
+                        gameData.sourceFolders = folder;
+                    }
+                }
+                else
+                {
+                    newGameData = gameData.CloneJson();
+                    JsonConvert.PopulateObject(jsonText, newGameData, GetJsonNetSerializerSettings());
+                    if (gameData.overriders == null) gameData.overriders = new List<GameData>();
+                    newGameData.editorId = $"OVERRIDE_{gameData.overriders.Count}";
+                    newGameData.filePath = jsonPath;
+                    gameData.overriders.Add(newGameData);
+#endif
+                }
             }
         }
 
-        public static bool LoadCatalogData(CatalogData catalogData, string jsonText, string jsonPath, string folder, ModManager.ModData modData = null)
+        public static bool LoadCatalogData(CatalogData catalogData, string jsonText, string jsonPath, string folder, ModData modData = null)
         {
-            string logTag = modData != null ? $"[ModManager][Catalog][{folder}]" : $"[Catalog][{folder}]";
+            bool isMod = modData is not null;
+            string logTag = isMod ? $"[ModManager][Catalog][{folder}]" : $"[Catalog][{folder}]";
             if (!TryGetCategory(catalogData.GetType(), out Category category))
             {
                 Debug.LogError($"{logTag} CatalogData: [{catalogData.GetType()}][{catalogData.id}] JSON: {jsonPath} does not map to a valid category. Please subclass CustomData to extend catalog data types");
@@ -390,22 +410,24 @@ namespace ThunderRoad
             }
 
             CatalogData existingData = GetData(category, catalogData.id, false);
-            if (existingData != null)
+            if (existingData != null && !loadOverridesSeparately)
             {
                 if (!ThunderRoadSettings.current.overrideData)
+                {
                     return false;
-                if (modData != null)
+                }
+                if (isMod)
                 {
                     string relativePath = jsonPath.Substring(jsonPath.IndexOf(folder, StringComparison.Ordinal));
                     Debug.Log($"{logTag} Overriding: [{category.ToString()}][{existingData.GetType()}][{existingData.id}] with: {relativePath}");
                 }
-                JsonConvert.PopulateObject(jsonText, existingData, jsonSerializerSettings);
+                JsonConvert.PopulateObject(jsonText, existingData, _jsonSerializerSettings);
                 if (Application.isEditor)
                 {
-                    Debug.LogWarning($"WARNING: Catalog Data {existingData.id} ({existingData.filePath}) is being overridden by file {jsonPath}!");
+                    Debug.LogWarning($"{logTag} Overriding: [{category.ToString()}][{existingData.GetType()}][{existingData.id}] with: {jsonPath}!");
                     existingData.sourceFolders += $"+{folder}";
                 }
-                if (modData != null)
+                if (isMod)
                 {
                     existingData.changers.Add(modData);
 
@@ -413,11 +435,28 @@ namespace ThunderRoad
             }
             else
             {
-                //Debug.Log("[Catalog] Add data: " + catalogData.id + " | " + catalogData.GetType());
+#if UNITY_EDITOR
+                if (existingData != null)
+                {
+                    catalogData = existingData.CloneJson();
+                    JsonConvert.PopulateObject(jsonText, catalogData, GetJsonNetSerializerSettings());
+                    catalogData.editorGuid = GUID.Generate().ToString();
+                    catalogData.overrideID = existingData.id;
+                    if (existingData.overriderDatas == null) existingData.overriderDatas = new List<CatalogData>();
+                    existingData.overriderDatas.Add(catalogData);
+                    Debug.Log($"{logTag} Loading override JSON as standalone: {catalogData.id} ({catalogData.editorGuid.Substring(0, 4)})");
+                }
+                else
+                {
+                    catalogData.editorGuid = GUID.Generate().ToString();
+                }
+#endif
+
 
                 if (Application.isEditor)
                 {
                     catalogData.sourceFolders = folder;
+                    catalogData.realFilePath = jsonPath;
                     catalogData.filePath = jsonPath;
                 }
                 catalogData.Init();
@@ -434,96 +473,39 @@ namespace ThunderRoad
 
             }
             return true;
-            //Debug.Log($"[Catalog] loading {catalogData.id} | {catalogData.GetType()} - Category: {category}");
         }
 
-        public static object[] DeserializeJsons(List<string> jsons, List<string> jsonPaths, ModManager.ModData modData = null)
+        public static object[] DeserializeJsons(List<string> jsons, List<string> jsonPaths, ModData modData = null)
         {
             int jsonsCount = jsons.Count;
             object[] outputs = new object[jsonsCount];
             object lockObj = new object();
-#if ENABLE_IL2CPP
-            for (int index = 0; index < jsonsCount; ++index) // Il2Cpp Scripting don't support multithreading yet
-#else
+
             Parallel.For(0, jsonsCount, index =>
-#endif
             {
                 object obj = null;
                 try
                 {
-                    obj = JsonConvert.DeserializeObject(jsons[index], jsonSerializerSettings);
+                    obj = JsonConvert.DeserializeObject(jsons[index], _jsonSerializerSettings);
                 }
                 catch (Exception ex)
                 {
-                    Debug.LogError($"[Catalog] Error loading json: {jsonPaths[index]}. {ex.Message}");
-                    bool isExperimentalJSON = false;
-#if UNITY_EDITOR
-                    if (modData == null)
-                    {
-                        if (ex.InnerException?.Message.Contains("Could not find type") == true)
-                        {
-                            string notFoundType = ex.InnerException.Message.Split("Could not find type '")[1].Split('\'')[0];
-                            if (jsons[index].Contains($"\"{notFoundType}, ThunderRoad.Experimental\"") && ex.InnerException.Message.Contains("ThunderRoad.Experimental"))
-                            {
-                                string nonExperimentalJSON = jsons[index].Replace($"\"{notFoundType}, ThunderRoad.Experimental\"", $"\"{notFoundType}, ThunderRoad\"");
-                                try
-                                {
-                                    obj = JsonConvert.DeserializeObject(nonExperimentalJSON, jsonSerializerSettings);
-                                    isExperimentalJSON = true;
-                                }
-                                catch (Exception newEx)
-                                {
-                                    ex = newEx;
-                                }
-                            }
-                            if (!isExperimentalJSON)
-                            {
-                                string experimentalJSON = jsons[index];
-                                while (ex.InnerException?.Message.Contains("Could not find type") == true)
-                                {
-                                    notFoundType = ex.InnerException.Message.Split("Could not find type '")[1].Split('\'')[0];
-                                    if (experimentalJSON.Contains($"\"{notFoundType}, ThunderRoad.Experimental\""))
-                                    {
-                                        Debug.LogError($"LoadJson EDITOR ONLY : Could not convert [ {jsonPaths[index]} ] to experimental JSON, must be wrong type, not wrong assembly:\n{experimentalJSON}");
-                                        break;
-                                    }
-                                    try
-                                    {
-                                        experimentalJSON = experimentalJSON.Replace($"\"{notFoundType}, ThunderRoad\"", $"\"{notFoundType}, ThunderRoad.Experimental\"");
-                                        obj = JsonConvert.DeserializeObject(experimentalJSON, jsonSerializerSettings);
-                                        isExperimentalJSON = true;
-                                        break;
-                                    }
-                                    catch (Exception newEx)
-                                    {
-                                        ex = newEx;
-                                    }
-                                }
-                            }
-                        }
-                    }
-#endif
-                    if (!isExperimentalJSON)
-                    {
-                        Debug.LogError($"LoadJson : Cannot read json file {jsonPaths[index]} ({ex.Message}) \n ({ex.InnerException?.Message})");
-                    }
+                    Debug.LogError($"[Catalog] Error loading json: {jsonPaths[index]}. {ex.Message} || {ex.InnerException?.Message} || {ex.StackTrace}");
                     if (modData != null)
                     {
                         lock (lockObj)
                         {
-                            modData.errors.Add(new ModManager.ModData.Error(ModManager.ModData.ErrorType.JSON,
+                            modData.errors.Add(new ModData.Error(ModData.ErrorType.JSON,
                                 $"Cannot read json file: {ex.Message}", "ModErrorCantReadJSON", ex.Message,
                                 ex.InnerException?.Message, jsonPaths[index]));
                             //add it to the loaded mods, even though we never really loaded it, this is to show it has been processed, but there is an error with it
-                            ModManager.loadedMods.Add(modData);
+                            loadedMods.Add(modData);
                         }
                     }
                 }
                 outputs[index] = obj;
-            }
-#if !ENABLE_IL2CPP
-            );
-#endif
+            });
+
             return outputs;
         }
 
@@ -531,11 +513,12 @@ namespace ThunderRoad
         // SAVE JSON
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+#if UNITY_EDITOR
         public static void SaveAllJson()
         {
             if (!Application.isPlaying)
             {
-                jsonSerializerSettings = GetJsonNetSerializerSettings();
+                _jsonSerializerSettings = GetJsonNetSerializerSettings();
             }
 
             foreach (Category category in (Category[])Enum.GetValues(typeof(Category)))
@@ -563,15 +546,16 @@ namespace ThunderRoad
         public static void SaveToJson(CatalogData catalogData)
         {
             catalogData.OnEditorSave();
-            string fileName = "";
-            if (!Application.isPlaying && File.Exists(catalogData.filePath))
+            string fileName = catalogData.filePath;
+            if (!Application.isPlaying && File.Exists(catalogData.realFilePath))
             {
-                fileName = catalogData.filePath;
-                File.Delete(catalogData.filePath);
+                File.Delete(catalogData.realFilePath);
             }
             string savePath = FileManager.GetFullPath(FileManager.Type.JSONCatalog, FileManager.Source.Default, catalogData.GetLatestOverrideFolder());
             if (!Directory.Exists(savePath))
+            {
                 Directory.CreateDirectory(savePath);
+            }
             if (TryGetCategory(catalogData.GetType(), out Category category))
             {
                 string saveCategoryPath = $"{savePath}/{category}s/";
@@ -579,21 +563,45 @@ namespace ThunderRoad
                 string[] splitType = type.Split('.');
                 type = splitType[splitType.Length - 1];
                 if (category == Category.AreaCollection)
-                    saveCategoryPath = $"{savePath}/{type}s/"; // AreaCollection can be different type
-                if (!Directory.Exists(saveCategoryPath))
-                    Directory.CreateDirectory(saveCategoryPath);
-                if (fileName == "")
                 {
-                    fileName = $"{saveCategoryPath}{category}_{catalogData.id}.json";
-                    if (catalogData is ItemData)
-                        fileName = $"{savePath}/{category}s/{category}_{(catalogData as ItemData).type.ToString() + "_" + catalogData.id}.json";
+                    saveCategoryPath = $"{savePath}/{type}s/"; // AreaCollection can be different type
                 }
-                File.WriteAllText(fileName, JsonConvert.SerializeObject(catalogData, typeof(CatalogData), jsonSerializerSettings));
+                if (!Directory.Exists(saveCategoryPath))
+                {
+                    Directory.CreateDirectory(saveCategoryPath);
+                }
+                if (fileName.IsNullOrEmptyOrWhitespace())
+                {
+                    fileName = $"{saveCategoryPath}{catalogData.GetFileNameString()}.json";
+                }
+                catalogData.filePath = fileName;
+                catalogData.realFilePath = fileName;
+                File.WriteAllText(fileName, ConvertDataToJson(catalogData));
             }
             else
             {
                 Debug.Log($"Cannot get valid category for CatalogData: [{catalogData.id}][{catalogData.GetType()}]. Unable to save to json");
             }
+        }
+
+        private static string ConvertDataToStrippedJson(CatalogData catalogData, CatalogData baseData)
+        {
+            var jCatalogData = JObject.FromObject(catalogData, _jsonSerializer);
+            var jBaseData = JObject.FromObject(baseData, _jsonSerializer);
+            JObject strippedCatalogData = JsonObjectStripper.StripMatchingRecursive(jCatalogData, jBaseData);
+            return JsonConvert.SerializeObject(strippedCatalogData, strippedCatalogData.GetType(), GetJsonNetSerializerSettings());
+        }
+#endif
+
+        public static string ConvertDataToJson(CatalogData catalogData)
+        {
+#if UNITY_EDITOR
+            if (catalogData.isOverrider && GetData(GetCategory(catalogData.GetType()), catalogData.overrideID) is CatalogData baseData)
+            {
+                return ConvertDataToStrippedJson(catalogData, baseData);
+            }
+#endif
+            return JsonConvert.SerializeObject(catalogData, catalogData.GetType(), GetJsonNetSerializerSettings());
         }
 
         #endregion
@@ -615,7 +623,7 @@ namespace ThunderRoad
                 }
             }
             gameData = null;
-            jsonSerializerSettings = GetJsonNetSerializerSettings();
+            _jsonSerializerSettings = GetJsonNetSerializerSettings();
         }
 
         #region LOAD CATALOG
@@ -624,17 +632,21 @@ namespace ThunderRoad
         {
 #if UNITY_EDITOR
             if (gameData != null && !force)
+            {
                 return;
+            }
             LoadDefaultCatalogs();
 
             if (includeMods)
-                ModManager.Load(true);
+            {
+                Load(true);
+            }
 
             if (requiresRefresh)
             {
                 Refresh();
             }
-#endif                      
+#endif
         }
 
         public static void LoadDefaultCatalogs()
@@ -658,7 +670,7 @@ namespace ThunderRoad
                     LoadJsonDbFile(jsondbPath, defaultFolder);
                 }
 #if UNITY_EDITOR
-                // Load json loose files (avoid this, seem that loose file remain after steam update for some people) 
+                // Load json loose files (avoid this, seem that loose file remain after steam update for some people)
                 ReadCatalogJsonFiles(FileManager.Source.Default, defaultFolder, out List<string> inputJsons, out List<string> inputJsonPaths);
                 LoadJsonLooseFiles(defaultFolder, inputJsons, inputJsonPaths);
 #endif
@@ -669,10 +681,12 @@ namespace ThunderRoad
             Profiler.EndSample();
         }
 
-        public static void LoadModCatalog(ModManager.ModData mod)
+        public static void LoadModCatalog(ModData mod)
         {
             if (mod.Incompatible)
+            {
                 return;
+            }
             // Load json archive file if any
             foreach (string jsondbPath in FileManager.GetFullFilePaths(FileManager.Type.JSONCatalog, FileManager.Source.Mods, mod.folderName, "*.jsondb"))
             {
@@ -685,10 +699,7 @@ namespace ThunderRoad
 
         #endregion
 
-        public static bool DoesCatalogVersionMatch(CatalogData catalogData)
-        {
-            return !checkFileVersion || catalogData.version == catalogData.GetCurrentVersion();
-        }
+        public static bool DoesCatalogVersionMatch(CatalogData catalogData) => !checkFileVersion || catalogData.version == catalogData.GetCurrentVersion();
 
         #region REFRESH
 
@@ -697,9 +708,15 @@ namespace ThunderRoad
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 #if UNITY_EDITOR
-        //events so we can  get the progress of the refresh
+        //events so we can  get the loading progress
+        public delegate void JSONReadProgress(int total, int current, int count);
+        public static event JSONReadProgress OnJSONOpenProgress;
+        public delegate void JSONDeserializeProgress(int total, int deserialized);
+        public static event JSONDeserializeProgress OnJSONDeserializeProgress;
+        public delegate void JSONLoadProgressDelegate(int total, int current);
+        public static event JSONLoadProgressDelegate OnJSONLoadProgress;
         public delegate void RefreshProgressDelegate(int total, int current, string currentLabel);
-        public static event Catalog.RefreshProgressDelegate OnRefreshProgress;
+        public static event RefreshProgressDelegate OnRefreshProgress;
 #endif
         public static void Refresh()
         {
@@ -707,7 +724,10 @@ namespace ThunderRoad
             for (int i = 0; i < data.Length; i++)
             {
                 List<CatalogData> catalogDatas = data[i].catalogDatas;
-                if (catalogDatas == null) continue;
+                if (catalogDatas == null)
+                {
+                    continue;
+                }
                 for (int d = 0; d < catalogDatas.Count; d++)
                 {
                     CatalogData catalogData = catalogDatas[d];
@@ -715,7 +735,7 @@ namespace ThunderRoad
                 }
             }
         }
-        
+
         public static bool RefreshingCatalog;
         public static IEnumerator RefreshCoroutine()
         {
@@ -726,17 +746,20 @@ namespace ThunderRoad
 
             yield return gameData.OnCatalogRefreshCoroutine();
             Debug.Log($"[Catalog] Game data refreshed in {Time.realtimeSinceStartup - gameDataTimer:F2} sec");
-            
+
             int totalCount = 0;
-            List<IEnumerator> coroutines = new List<IEnumerator>();
+            List<IEnumerator> coroutines = new();
             for (int i = 0; i < data.Length; i++)
             {
                 float timer = Time.realtimeSinceStartup;
                 //get the category
                 Category category = (Category)i;
                 List<CatalogData> catalogDatas = data[i].catalogDatas;
-                if (catalogDatas == null) continue;
-                
+                if (catalogDatas == null)
+                {
+                    continue;
+                }
+
                 int catalogDatasCount = catalogDatas.Count;
                 coroutines.Clear();
                 for (int d = 0; d < catalogDatasCount; d++)
@@ -751,7 +774,7 @@ namespace ThunderRoad
                 OnRefreshProgress?.Invoke(data.Length, i + 1, categoryName);
 #endif
 
-                Debug.Log($"[Catalog] {categoryName} refreshed {catalogDatasCount} entries in {(Time.realtimeSinceStartup - timer):F2} sec");
+                Debug.Log($"[Catalog] {categoryName} refreshed {catalogDatasCount} entries in {Time.realtimeSinceStartup - timer:F2} sec");
             }
         }
 
@@ -778,7 +801,9 @@ namespace ThunderRoad
             {
                 CatalogCategory catalogCategory = data[i];
                 if (catalogCategory == null)
+                {
                     continue;
+                }
                 int catalogDatasCount = catalogCategory.catalogDatas.Count;
                 for (int j = 0; j < catalogDatasCount; j++)
                 {
@@ -789,7 +814,9 @@ namespace ThunderRoad
         public static TextData GetTextData()
         {
             if (!IsJsonLoaded())
+            {
                 return null;
+            }
             return GetData<TextData>(SystemLanguage.English.ToString());
         }
 
@@ -811,7 +838,9 @@ namespace ThunderRoad
         {
             outputData = null;
             if (string.IsNullOrEmpty(id))
+            {
                 return false;
+            }
             outputData = GetData<T>(id, logWarning);
             return outputData != null;
         }
@@ -819,7 +848,9 @@ namespace ThunderRoad
         public static T GetData<T>(string id, bool logWarning = true) where T : CatalogData
         {
             if (string.IsNullOrEmpty(id))
+            {
                 return null;
+            }
             if (TryGetCategory<T>(out Category category))
             {
                 CatalogData catalogData = GetData(category, id, logWarning);
@@ -830,7 +861,9 @@ namespace ThunderRoad
             }
 #if !TESTINGLOCALLY
             if (logWarning)
+            {
                 Debug.LogWarning($"Data [{id} | {Animator.StringToHash(id.ToLower())}] of type [{typeof(T)} | {category}] cannot be found in catalog or is not the correct type");
+            }
 #endif
             return null;
         }
@@ -838,14 +871,18 @@ namespace ThunderRoad
         public static CatalogData GetData(Category category, string id, bool logWarning = true)
         {
             if (string.IsNullOrEmpty(id))
+            {
                 return null;
+            }
             if (TryGetCategoryData(category, out CatalogCategory categoryData) && categoryData.TryGetCatalogData(id, out CatalogData catalogData))
             {
                 return catalogData;
             }
 #if !TESTINGLOCALLY
             if (logWarning)
+            {
                 Debug.LogWarning($"Data [{id} | {Animator.StringToHash(id.ToLower())}] of type [{category}] cannot be found in catalog");
+            }
 #endif
             return null;
         }
@@ -856,9 +893,11 @@ namespace ThunderRoad
             foreach (Category category in categories)
             {
                 if (!TryGetCategoryData(category, out CatalogCategory catalogCategory))
+                {
                     continue;
+                }
                 int catalogDatasCount = catalogCategory.catalogDatas.Count;
-                for (var i = 0; i < catalogDatasCount; i++)
+                for (int i = 0; i < catalogDatasCount; i++)
                 {
                     CatalogData catalogData = catalogCategory.catalogDatas[i];
                     yield return catalogData;
@@ -869,14 +908,18 @@ namespace ThunderRoad
         public static List<CatalogData> GetDataList(Category category)
         {
             if (!TryGetCategoryData(category, out CatalogCategory categoryData))
+            {
                 return new List<CatalogData>();
+            }
             return categoryData.catalogDatas;
         }
 
         public static List<T> GetDataList<T>() where T : CatalogData
         {
             if (!TryGetCategory<T>(out Category category))
+            {
                 return new List<T>(0);
+            }
             return (
                 from catalogData in GetDataList(category)
                 where catalogData is T
@@ -886,59 +929,93 @@ namespace ThunderRoad
         public static IEnumerable<T> GetDataEnumerable<T>() where T : CatalogData
         {
             if (!TryGetCategory<T>(out Category category))
+            {
                 return new T[0];
+            }
             return from catalogData in GetDataList(category)
-                   where catalogData is T
-                   select (T)catalogData;
+                where catalogData is T
+                select (T)catalogData;
         }
 
 
-#if ODIN_INSPECTOR
-        #region ODIN
+        #region TriInspector
 
-        public static List<ValueDropdownItem<string>> GetDropdownAllID(Category category, string noneText = "None")
+        public static TriDropdownList<string> GetDropdownAllID(Category category, string noneText = "None")
         {
-            List<ValueDropdownItem<string>> dropdownList = new List<ValueDropdownItem<string>>();
+            TriDropdownList<string> dropdownList = new();
+            dropdownList.needsValidation = Catalog.IsJsonLoaded();
             if (noneText != null)
-                dropdownList.Add(new ValueDropdownItem<string>(noneText, ""));
+            {
+                dropdownList.Add(noneText, "");
+            }
             foreach (string id in GetAllID(category))
             {
-                dropdownList.Add(new ValueDropdownItem<string>(id, id));
+                dropdownList.Add(id, id);
             }
             return dropdownList;
         }
 
-        public static List<ValueDropdownItem<string>> GetDropdownAllID<T>(string noneText = "None") where T : CatalogData
+        public static TriDropdownList<string> GetDropdownAllID<T>(string noneText = "None") where T : CatalogData
         {
-            List<ValueDropdownItem<string>> dropdownList = new List<ValueDropdownItem<string>>();
+            TriDropdownList<string> dropdownList = new();
+            dropdownList.needsValidation = Catalog.IsJsonLoaded();
             if (noneText != null)
-                dropdownList.Add(new ValueDropdownItem<string>(noneText, ""));
+            {
+                dropdownList.Add(noneText, "");
+            }
             foreach (string id in GetAllID<T>())
             {
-                dropdownList.Add(new ValueDropdownItem<string>(id, id));
+                dropdownList.Add(id, id);
             }
             return dropdownList;
         }
 
-        public static List<ValueDropdownItem<string>> GetDropdownHolderSlots(string noneText = "None")
+        public static TriDropdownList<string> GetDropdownHolderSlots(string noneText = "None")
         {
-            List<ValueDropdownItem<string>> dropdownList = new List<ValueDropdownItem<string>>();
+            TriDropdownList<string> dropdownList = new();
+            dropdownList.needsValidation = Catalog.IsJsonLoaded();
             if (noneText != null)
-                dropdownList.Add(new ValueDropdownItem<string>(noneText, ""));
+            {
+                dropdownList.Add(noneText, "");
+            }
+            if (!Catalog.IsJsonLoaded()) return dropdownList;
             foreach (string id in gameData.holderSlots)
             {
-                dropdownList.Add(new ValueDropdownItem<string>(id, id));
+                dropdownList.Add(id, id);
             }
             return dropdownList;
         }
 
+        public static TriDropdownList<int> GetDropdownAllFactionID()
+        {
+            if (gameData == null) return new TriDropdownList<int>() { needsValidation = false };
+            return gameData.GetFactions();
+        }
 
         #endregion
-#endif
 
         public static List<string> GetAllID(Category category)
         {
-            return GetDataList(category).Select(x => x.id).ToList();
+            // Try get all data for the type
+            List<CatalogData> dataList = GetDataList(category);
+
+            // Does the category have any data?
+            if (dataList.IsNullOrEmpty())
+            {
+                // No, return empty.
+                return new List<string>(0);
+            }
+
+            // Select all data in the list and obtain their IDs.
+            List<string> results = new();
+            for (int i = 0; i < dataList.Count; i++)
+            {
+#if UNITY_EDITOR
+                if (dataList[i].isOverrider) continue;
+#endif
+                results.Add(dataList[i].id);
+            }
+            return results;
         }
 
         public static List<string> GetAllID<T>() where T : CatalogData
@@ -954,12 +1031,14 @@ namespace ThunderRoad
             }
 
             // Select all data in the list and obtain their IDs.
-            List<string> results = new List<string>();
+            List<string> results = new();
             for (int i = 0; i < dataList.Count; i++)
             {
+#if UNITY_EDITOR
+                if (dataList[i].isOverrider) continue;
+#endif
                 results.Add(dataList[i].id);
             }
-
             return results;
         }
 
@@ -971,12 +1050,14 @@ namespace ThunderRoad
         //Load single location
         public static void LoadLocationAsync<T>(string address, Action<IResourceLocation> result, string requestName)
         {
-            var operation = LoadResourceLocationsAsync<T>(address);
+            AsyncOperationHandle<IList<IResourceLocation>> operation = LoadResourceLocationsAsync<T>(address);
             if (operation.Status == AsyncOperationStatus.Failed)
             {
                 Debug.LogError($"Addressable operation failed load location for address: {address} - Please check the bundles have been built correctly. {operation.OperationException}");
                 if (operation.OperationException == null)
-                    Catalog.ReleaseAsset(operation);
+                {
+                    ReleaseAsset(operation);
+                }
             }
             operation.Completed += operationHandle => OnLoadResourceLocations<T>(address, result, operationHandle, requestName);
         }
@@ -999,7 +1080,9 @@ namespace ThunderRoad
             {
                 Debug.LogError($"Addressable operation failed load location for address: {address} - Please check the bundles have been built correctly. {handle.OperationException}");
                 if (handle.OperationException == null)
-                    Catalog.ReleaseAsset(handle);
+                {
+                    ReleaseAsset(handle);
+                }
                 result?.Invoke(null);
                 yield break;
             }
@@ -1011,10 +1094,7 @@ namespace ThunderRoad
         }
 
         //Load possibly multiple locations
-        private static AsyncOperationHandle<IList<IResourceLocation>> LoadResourceLocationsAsync<T>(string address)
-        {
-            return LoadResourceLocationsAsync(address, typeof(T));
-        }
+        private static AsyncOperationHandle<IList<IResourceLocation>> LoadResourceLocationsAsync<T>(string address) => LoadResourceLocationsAsync(address, typeof(T));
 
         private static AsyncOperationHandle<IList<IResourceLocation>> LoadResourceLocationsAsync(string address, Type type = null)
         {
@@ -1043,7 +1123,7 @@ namespace ThunderRoad
                 var labels = new string[] { address, Common.GetQualityLevel().ToString() };
                 IEnumerable enumerable = labels;
                 //when using "Use asset database" for addressables, When this is called the very first time, it is incredibly slow and loads everything in the editor when:
-                //  filtering by multiple keys or  with one key but a null type 
+                //  filtering by multiple keys or  with one key but a null type
                 //But it is perfectly fine in the build, thanks Unity
                 return Addressables.LoadResourceLocationsAsync(enumerable, Addressables.MergeMode.Intersection, type);
             }
@@ -1068,12 +1148,9 @@ namespace ThunderRoad
 
         //Callbacks to handle filtering resource locations
 #if UNITY_EDITOR
-        private static Dictionary<string, List<AddressableAssetEntry>> AddressableAssetEntriesCache = new Dictionary<string, List<AddressableAssetEntry>>();
+        private static Dictionary<string, List<AddressableAssetEntry>> AddressableAssetEntriesCache = new();
 #endif
-        private static void OnLoadResourceLocations<T>(string address, Action<IResourceLocation> callback, AsyncOperationHandle<IList<IResourceLocation>> handle, string requestName)
-        {
-            OnLoadResourceLocations(address, callback, handle, requestName, typeof(T));
-        }
+        private static void OnLoadResourceLocations<T>(string address, Action<IResourceLocation> callback, AsyncOperationHandle<IList<IResourceLocation>> handle, string requestName) => OnLoadResourceLocations(address, callback, handle, requestName, typeof(T));
 
         private static void OnLoadResourceLocations(string address, Action<IResourceLocation> callback, AsyncOperationHandle<IList<IResourceLocation>> handle, string requestName, Type type)
         {
@@ -1091,16 +1168,16 @@ namespace ThunderRoad
                     //In the build, we just have to take the first one because there is not much else we can do to determine the correct one
                     //In editor we can lookup the AddressableGroupData to find the address, then check labels to see if we can get the platform specific one
 
-                    List<IResourceLocation> found = new List<IResourceLocation>();
+                    List<IResourceLocation> found = new();
                     if (AddressableAssetEntriesCache.TryGetValue(address, out List<AddressableAssetEntry> AddressableAssetEntries))
                     {
                         int entriesCount = AddressableAssetEntries.Count;
-                        for (var i = 0; i < entriesCount; i++)
+                        for (int i = 0; i < entriesCount; i++)
                         {
                             AddressableAssetEntry addressableAssetEntry = AddressableAssetEntries[i];
                             //then check if the assetPath matches
                             int locationsCount = locations.Count;
-                            for (var j = 0; j < locationsCount; j++)
+                            for (int j = 0; j < locationsCount; j++)
                             {
                                 IResourceLocation resourceLocation = locations[j];
                                 if (addressableAssetEntry.AssetPath.Equals(resourceLocation.InternalId))
@@ -1117,7 +1194,7 @@ namespace ThunderRoad
                             break;
                         //if we found more than 1, then there must be a duplicate address, with the same label AND prefab, seems unlikely
                         case > 1: {
-                            StringBuilder sb = new StringBuilder();
+                            StringBuilder sb = new();
                             foreach (IResourceLocation resourceLocation in found)
                             {
                                 sb.Append(resourceLocation.PrimaryKey).Append("@").Append(resourceLocation.InternalId).Append(", ");
@@ -1211,12 +1288,13 @@ namespace ThunderRoad
             {
                 Debug.LogError($"Addressable operation failed load location for handlerName: {handlerName} - Please check the bundles have been built correctly. {handle.OperationException}");
                 if (handle.OperationException == null)
-                    Catalog.ReleaseAsset(handle);
+                {
+                    ReleaseAsset(handle);
+                }
                 callback?.Invoke(null);
                 return;
             }
-            handle.Completed += (operationHandle) =>
-            {
+            handle.Completed += (operationHandle) => {
                 if (operationHandle.Status == AsyncOperationStatus.Succeeded)
                 {
                     callback?.Invoke(operationHandle.Result);
@@ -1226,7 +1304,9 @@ namespace ThunderRoad
                 Debug.LogWarning($"Unable to find asset at resource location [{typeof(T).Name}][{resourceLocation?.ResourceType}][{resourceLocation?.PrimaryKey}] for object [{handlerName}]");
 #endif
                 if (handle.OperationException == null)
-                    Catalog.ReleaseAsset(operationHandle);
+                {
+                    ReleaseAsset(operationHandle);
+                }
                 callback?.Invoke(null);
             };
         }
@@ -1272,7 +1352,9 @@ namespace ThunderRoad
             {
                 Debug.LogError($"Addressable operation failed load location for handlerName: {handlerName} - Please check the bundles have been built correctly. {handle.OperationException}");
                 if (handle.OperationException == null)
-                    Catalog.ReleaseAsset(handle);
+                {
+                    ReleaseAsset(handle);
+                }
                 callback?.Invoke(null);
                 yield break;
             }
@@ -1286,7 +1368,9 @@ namespace ThunderRoad
 
             Debug.LogWarning($"Unable to find asset at resource location [{typeof(T).Name}][{location.ResourceType}][{location.PrimaryKey}] for object [{handlerName}]");
             if (handle.OperationException == null)
-                Catalog.ReleaseAsset(handle);
+            {
+                ReleaseAsset(handle);
+            }
             callback?.Invoke(null);
         }
 
@@ -1353,12 +1437,13 @@ namespace ThunderRoad
             {
                 Debug.LogError($"Addressable operation failed InstantiateAsync for handlerName: {handlerName} - Please check the bundles have been built correctly. {handle.OperationException}");
                 if (handle.OperationException == null)
-                    Catalog.ReleaseAsset(handle);
+                {
+                    ReleaseAsset(handle);
+                }
                 callback?.Invoke(null);
                 return;
             }
-            handle.Completed += (operationHandle) =>
-            {
+            handle.Completed += (operationHandle) => {
                 if (operationHandle.Status == AsyncOperationStatus.Succeeded)
                 {
                     callback?.Invoke(operationHandle.Result);
@@ -1367,7 +1452,9 @@ namespace ThunderRoad
                 {
                     Debug.LogWarning($"Unable to instantiate gameObject from location {resourceLocation?.PrimaryKey} for object {handlerName}");
                     if (handle.OperationException == null)
+                    {
                         Addressables.ReleaseInstance(operationHandle);
+                    }
                     callback?.Invoke(null);
                 }
             };
@@ -1381,7 +1468,7 @@ namespace ThunderRoad
                 callback?.Invoke(null);
                 yield break;
             }
-            
+
             //Load location type here is always a gameobject, since were instantiating a prefab instance
             //try to get the result from the cache first, this avoid an extra yield and the callback
             if (!TryGetAddressLocation<T>(address, out IResourceLocation location))
@@ -1423,7 +1510,9 @@ namespace ThunderRoad
             {
                 Debug.LogError($"Addressable operation failed InstantiateAsync for handlerName: {handlerName} - Please check the bundles have been built correctly. {handle.OperationException}");
                 if (handle.OperationException == null)
-                    Catalog.ReleaseAsset(handle);
+                {
+                    ReleaseAsset(handle);
+                }
                 callback?.Invoke(null);
                 yield break;
             }
@@ -1453,7 +1542,9 @@ namespace ThunderRoad
 #if UNITY_EDITOR
             // Prevents errors being thrown while in editor and not playing
             if (!Application.isPlaying)
+            {
                 return;
+            }
 #endif
             Addressables.Release(handle);
         }
@@ -1463,12 +1554,10 @@ namespace ThunderRoad
 #if UNITY_EDITOR
             // Prevents errors being thrown while in editor and not playing
             if (!Application.isPlaying)
-                return;
-#endif
-            if (obj != null)
             {
-                Addressables.Release(obj);
+                return;
             }
+#endif
         }
 
         public static void ReleaseAsset(AsyncOperationHandle handle)
@@ -1476,9 +1565,10 @@ namespace ThunderRoad
 #if UNITY_EDITOR
             // Prevents errors being thrown while in editor and not playing
             if (!Application.isPlaying)
+            {
                 return;
+            }
 #endif
-            Addressables.Release(handle);
         }
 
 #if UNITY_EDITOR
@@ -1497,17 +1587,19 @@ namespace ThunderRoad
         {
             Auto,
             Windows,
-            Android,
+            Android
         }
 
         public static T EditorLoad<T>(string address, PlatformSelection platformSelection = PlatformSelection.Auto) where T : UnityEngine.Object
         {
             if (string.IsNullOrEmpty(address))
+            {
                 return null;
+            }
 #if UNITY_EDITOR
 
             GetAddressAndSubAddress(address, out address, out string subAddress);
-            if (Catalog.allEntries == null || Catalog.allEntries.Count == 0)
+            if (allEntries == null || allEntries.Count == 0)
             {
                 RefreshAddressableEntries();
             }
@@ -1519,25 +1611,35 @@ namespace ThunderRoad
 
             QualityLevel platform = Common.GetQualityLevel();
             if (platformSelection == PlatformSelection.Windows)
+            {
                 platform = QualityLevel.Windows;
+            }
             if (platformSelection == PlatformSelection.Android)
+            {
                 platform = QualityLevel.Android;
+            }
 
             string platformLabel = platform.ToString();
-            for (var index = 0; index < allEntries.Count; index++)
+            for (int index = 0; index < allEntries.Count; index++)
             {
                 AddressableAssetEntry entry = allEntries[index];
                 if (entry.address != address)
+                {
                     continue;
+                }
 
                 if (!entry.labels.Contains(platformLabel))
+                {
                     continue;
+                }
                 if (subAddress != null)
                 {
                     UnityEngine.Object[] objects = UnityEditor.AssetDatabase.LoadAllAssetRepresentationsAtPath(entry.AssetPath); //loads all sub-assets from one asset
 
                     if (objects.Length <= 0)
+                    {
                         continue;
+                    }
                     for (int i = 0; i < objects.Length; i++) // loop on all sub-assets loaded
                     {
                         if (objects[i].name == subAddress && objects[i].GetType() == typeof(T)) // if the name AND the type match we found it
@@ -1562,7 +1664,9 @@ namespace ThunderRoad
         public static bool EditorExist<T>(string address)
         {
             if (string.IsNullOrEmpty(address))
+            {
                 return false;
+            }
 #if UNITY_EDITOR
             AddressableAssetSettings settings = AddressableAssetSettingsDefaultObject.Settings;
             string qualityLevel = Common.GetQualityLevel().ToString();
@@ -1571,9 +1675,13 @@ namespace ThunderRoad
                 foreach (AddressableAssetEntry entry in addressableAssetGroup.entries)
                 {
                     if (entry.address != address)
+                    {
                         continue;
+                    }
                     if (!entry.labels.Contains(qualityLevel))
+                    {
                         continue;
+                    }
                     return true;
                 }
             }
@@ -1587,7 +1695,7 @@ namespace ThunderRoad
 #if UNITY_EDITOR
         public static string GetAddressFromPrefab(UnityEngine.Object target)
         {
-
+            if (target == null) return null;
             string path = UnityEditor.AssetDatabase.GetAssetPath(target);
             string guid = UnityEditor.AssetDatabase.AssetPathToGUID(path);
             AddressableAssetEntry assetEntry = AddressableAssetSettingsDefaultObject.Settings.FindAssetEntry(guid);
@@ -1609,6 +1717,22 @@ namespace ThunderRoad
             }
 
             return assetEntry.address;
+        }
+
+        public static string GetAssetPathFromAddress(string address)
+        {
+            if (Catalog.allEntries == null || Catalog.allEntries.Count == 0)
+            {
+                RefreshAddressableEntries();
+            }
+            foreach (AddressableAssetEntry entry in allEntries)
+            {
+                if (entry.address == address)
+                {
+                    return entry.AssetPath;
+                }
+            }
+            return null;
         }
 #endif
     }

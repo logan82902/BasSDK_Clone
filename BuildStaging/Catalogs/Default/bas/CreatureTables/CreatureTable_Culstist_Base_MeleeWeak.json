@@ -4,11 +4,13 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 1,
+  "groupPath": "Factions/Base",
   "description": "Base tables for factions contain the settings used for each unit type, so we only have to edit them from one place. These should be used in other creature tables and waves instead of overriding containers.",
   "linkedToGenderRatio": false,
   "drops": [
     {
       "$type": "ThunderRoad.CreatureTable+Drop, ThunderRoad",
+      "mergeKey": "c2437a9c",
       "reference": "Table",
       "referenceID": "Humans",
       "overrideFaction": true,
@@ -23,6 +25,7 @@
     },
     {
       "$type": "ThunderRoad.CreatureTable+Drop, ThunderRoad",
+      "mergeKey": "a935789c",
       "reference": "Table",
       "referenceID": "Humans",
       "overrideFaction": true,
@@ -37,6 +40,7 @@
     },
     {
       "$type": "ThunderRoad.CreatureTable+Drop, ThunderRoad",
+      "mergeKey": "55864252",
       "reference": "Table",
       "referenceID": "Humans",
       "overrideFaction": true,
@@ -49,6 +53,5 @@
       "overrideEthnicityID": null,
       "probabilityWeight": 3.0
     }
-  ],
-  "groupPath": "Factions/Base"
+  ]
 }

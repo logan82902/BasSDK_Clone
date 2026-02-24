@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
+  "groupPath": null,
   "path": [
     {
       "$type": "ThunderRoad.AreaCollectionDungeon+PathGroup, ThunderRoad",
@@ -32,6 +33,5 @@
       },
       "maxCreature": 4.0
     }
-  ],
-  "groupPath": null
+  ]
 }

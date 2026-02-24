@@ -3,11 +3,10 @@
 using UnityEditor;
 #endif
 using UnityEngine;
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
+using TriInspector;
+
 
 [InlineEditor]
-#endif
 [CreateAssetMenu(fileName = "OceanFogAsset", menuName = "ThunderRoad/Ocean/OceanFogAsset")]
 public class OceanFogAsset : ScriptableObject
 {

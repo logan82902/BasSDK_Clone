@@ -1,15 +1,10 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
-
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -38,50 +33,43 @@ public static class AudioClipVolumeExtension
 namespace ThunderRoad
 {
 #if UNITY_EDITOR
+    [DeclareHorizontalGroup("CollectButtons")]
+    [DeclareHorizontalGroup("TestButtons")]
     public class CaptureAudioSyncer : MonoBehaviour
     {
-        [System.Serializable]
+        [Serializable]
+        [DeclareBoxGroup("$indexedName", Title = "$indexedName")]
+        [DeclareHorizontalGroup("$indexedName/Pair")]
+        [DeclareBoxGroup("$indexedName/Pair/Animation", Title = "Animation")]
+        [DeclareBoxGroup("$indexedName/Pair/Audio", Title = "Audio")]
+        [DeclareBoxGroup("$indexedName/Timing", Title = "Timing")]
+        [DeclareBoxGroup("$indexedName/Clipping", Title = "Clipping")]
+        [DeclareHorizontalGroup("$indexedName/Clipping/Horiz")]
+        [DeclareBoxGroup("$indexedName/Testing", Title = "Testing")]
         public class Pair
         {
-#if ODIN_INSPECTOR
-            [BoxGroup("$indexedName")]
-            [HorizontalGroup("$indexedName/Pair")]
-            [BoxGroup("$indexedName/Pair/Animation", Order = 0)]
+            [Group("$indexedName/Pair/Animation")]
             [LabelWidth(100)]
-#endif
             public AnimationClip animation;
-#if ODIN_INSPECTOR
-            [BoxGroup("$indexedName/Pair/Audio", Order = 1)]
+            [Group("$indexedName/Pair/Audio")]
             [LabelWidth(100)]
-#endif
             public AudioClip audio;
             [Range(0f, 1f)]
-#if ODIN_INSPECTOR
-            [BoxGroup("$indexedName/Pair/Animation")]
+            [Group("$indexedName/Pair/Animation")]
             [LabelWidth(100)]
-#endif
             public float animStartTime = 0f;
             [Range(0f, 1f)]
-#if ODIN_INSPECTOR
-            [BoxGroup("$indexedName/Pair/Audio")]
+            [Group("$indexedName/Pair/Audio")]
             [LabelWidth(100)]
-#endif
             public float audStartTime = 0f;
-#if ODIN_INSPECTOR
-            [BoxGroup("$indexedName/Timing", Order = 2)]
+            [Group("$indexedName/Timing")]
             [MinMaxSlider("pairMinMaxMax", ShowFields = true)]
-#endif
-            public Vector2 startEndTimes = new Vector2(0f, 1f);
-#if ODIN_INSPECTOR
-            [BoxGroup("$indexedName/Clipping", Order = 4)]
-            [HorizontalGroup("$indexedName/Clipping/Horiz", Width = 0.5f, MarginRight = 2.5f)]
+            public Vector2 startEndTimes = new(0f, 1f);
+            [Group("$indexedName/Clipping/Horiz")]
             [LabelWidth(100f)]
-#endif
             public float silenceBetween = 0.6f;
-#if ODIN_INSPECTOR
-            [HorizontalGroup("$indexedName/Clipping/Horiz", Width = 0.5f, MarginLeft = 2.5f)]
+            [Group("$indexedName/Clipping/Horiz")]
             [LabelWidth(60f)]
-#endif
             public float clipTails = 0.1f;
             public ClipFlag clipFlag = ClipFlag.None;
 
@@ -123,17 +111,13 @@ namespace ThunderRoad
                 audio = aud;
             }
 
-#if ODIN_INSPECTOR
-            [BoxGroup("$indexedName/Testing", Order = 3)]
-            [EnableIf("showButton")]
-#endif
+            [Group("$indexedName/Testing")]
+            [EnableIf(nameof(showButton))]
             [Button("Play (Raw)")]
             public void PlayFromFileStart() => Play(0f, 0f);
 
-#if ODIN_INSPECTOR
-            [BoxGroup("$indexedName/Testing")]
-            [EnableIf("showButton")]
-#endif
+            [Group("$indexedName/Testing")]
+            [EnableIf(nameof(showButton))]
             [Button("Play (Using configs)")]
             public void PlaySyncStart() => Play(animStartTime, audStartTime);
 
@@ -179,10 +163,8 @@ namespace ThunderRoad
                 container.playingPair = null;
             }
 
-#if ODIN_INSPECTOR
-            [BoxGroup("$indexedName/Timing")]
-            [EnableIf("canSync")]
-#endif
+            [Group("$indexedName/Timing")]
+            [EnableIf(nameof(canSync))]
             [Button]
             public void SyncPair()
             {
@@ -190,10 +172,8 @@ namespace ThunderRoad
                 PlaySyncStart();
             }
 
-#if ODIN_INSPECTOR
-            [BoxGroup("$indexedName/Clipping")]
-            [EnableIf("showButton")]
-#endif
+            [Group("$indexedName/Clipping")]
+            [EnableIf(nameof(showButton))]
             [Button]
             public void SplitToSubClips()
             {
@@ -217,7 +197,7 @@ namespace ThunderRoad
                 {
                     float volume = audio.GetRMSVolumeAtTime(time, 512, 0, samples);
                     bool above = volume >= container.clapSilenceThreshold;
-                    //Debug.Log($"{audio.name}: {samples[i]}");
+                    
                     if (above)
                     {
                         if (waitFirstVolume)
@@ -266,7 +246,6 @@ namespace ThunderRoad
                 Debug.Log($"Done finding! ({name})");
             }
 
-            //[Button]
             public void TrimFiles()
             {
                 if (animation == null || audio == null)
@@ -378,7 +357,7 @@ namespace ThunderRoad
                 {
                     float volume = audio.GetRMSVolumeAtTime(time, 512, 0);
                     bool above = volume >= container.clapSilenceThreshold;
-                    //Debug.Log($"{audio.name}: {samples[i]}");
+                    
                     if (waitBreak && above)
                     {
                         waitBreak = false;
@@ -404,20 +383,13 @@ namespace ThunderRoad
             }
         }
 
-#if ODIN_INSPECTOR
         [Title("Results")]
-        [ListDrawerSettings(CustomAddFunction = "AddNewPair")]
-#endif
-        public List<Pair> pairs = new List<Pair>();
+        public List<Pair> pairs = new();
 
-#if ODIN_INSPECTOR
         [Title("Config")]
-#endif
         public string searchDirectory = "";
         public AnimationClip sampleAnim;
-#if ODIN_INSPECTOR
-        [ValueDropdown(nameof(GetOptions))]
-#endif
+        [Dropdown(nameof(GetOptions))]
         public string clapPropertyName = "";
         public float clapPropertyThreshold = 40f;
         public AudioClip sampleAudio;
@@ -437,9 +409,7 @@ namespace ThunderRoad
 
         public void AddNewPair() => pairs.Add(new Pair(this, null, null));
 
-#if ODIN_INSPECTOR
         [Title("Utilities")]
-#endif
         [Button]
         public void SampleClipVolumes(int samples = 512)
         {
@@ -452,15 +422,11 @@ namespace ThunderRoad
         }
 
         [Button]
-#if ODIN_INSPECTOR
-        [HorizontalGroup("CollectButtons")]
-#endif
+        [Group("CollectButtons")]
         public void CollectPairs() => PairCollection(true);
 
         [Button]
-#if ODIN_INSPECTOR
-        [HorizontalGroup("CollectButtons")]
-#endif
+        [Group("CollectButtons")]
         public void ForceCollectPairs() => PairCollection(false);
 
         private void PairCollection(bool skipMismatch)
@@ -491,9 +457,7 @@ namespace ThunderRoad
                 for (int i = 0; i < Mathf.Min(animations.Count, audios.Count); i++)
                 {
                     var animClip = AssetDatabase.LoadAssetAtPath<AnimationClip>(animations[i]);
-                    //Debug.Log(animations[i] + "  / " + animClip);
                     var audioClip = AssetDatabase.LoadAssetAtPath<AudioClip>(audios[i]);
-                    //Debug.Log(audios[i] + "  / " + audioClip);
                     pairs.Add(new Pair(this, animClip, audioClip));
                 }
             }
@@ -501,7 +465,6 @@ namespace ThunderRoad
 
         private void CollectRecursive(string folder, Action<string> noSubAction)
         {
-            //Debug.Log(folder);
             var folders = AssetDatabase.GetSubFolders(folder);
             if (folders.Length == 0)
             {
@@ -524,9 +487,7 @@ namespace ThunderRoad
         }
 
         [Button]
-#if ODIN_INSPECTOR
-        [EnableIf("sequentialTest")]
-#endif
+        [EnableIf(nameof(sequentialTest))]
         public void SubClipAll()
         {
             StartCoroutine(SubClipCoroutine());
@@ -543,7 +504,6 @@ namespace ThunderRoad
         }
 
         [Button("Trim Pairs (Make sure everything is perfectly synced up before proceeding!)")]
-#if ODIN_INSPECTOR
         [HideIf("canConfirm")]
         public void TrimPairsInitiate()
         {
@@ -552,7 +512,6 @@ namespace ThunderRoad
 
         [Button("CONFIRM: This will create duplicates of all paired files!")]
         [ShowIf("canConfirm")]
-#endif
         public void TrimPairs()
         {
             confirmTime = 0f;
@@ -566,27 +525,21 @@ namespace ThunderRoad
         }
 
         [Button]
-#if ODIN_INSPECTOR
-        [HorizontalGroup("TestButtons")]
-#endif
+        [Group("TestButtons")]
         public void TestPairSync(int index)
         {
             PlayPair(pairs[index], true);
         }
 
         [Button]
-#if ODIN_INSPECTOR
-        [HorizontalGroup("TestButtons")]
-#endif
+        [Group("TestButtons")]
         public void TestPairStarts(int index)
         {
             PlayPair(pairs[index], true);
         }
 
         [Button]
-#if ODIN_INSPECTOR
-        [EnableIf("sequentialTest")]
-#endif
+        [EnableIf(nameof(sequentialTest))]
         public void TestAllInOrder(bool sync = true, bool waitForAssignment = true, float waitExtraTime = 1f)
         {
             if (sequenceTestText == null)
@@ -726,25 +679,23 @@ namespace ThunderRoad
             else pair.PlayFromFileStart();
         }
 
-#if ODIN_INSPECTOR
-        private List<ValueDropdownItem<string>> GetOptions()
+        private TriDropdownList<string> GetOptions()
         {
-            List<ValueDropdownItem<string>> options = new List<ValueDropdownItem<string>>();
+            TriDropdownList<string> options = new();
             if (sampleAnim == null)
             {
                 Debug.LogError("Need a clip in the clip field to provide property name options!");
-                options.Add(new ValueDropdownItem<string>("None", ""));
+                options.Add("None", "");
                 return options;
             }
             EditorCurveBinding[] bindings = AnimationUtility.GetCurveBindings(sampleAnim);
             for (int b = bindings.Length - 1; b >= 0; b--)
             {
                 EditorCurveBinding binding = bindings[b];
-                options.Add(new ValueDropdownItem<string>(binding.propertyName, binding.propertyName));
+                options.Add(binding.propertyName, binding.propertyName);
             }
             return options;
         }
-#endif
     }
 #endif
 }

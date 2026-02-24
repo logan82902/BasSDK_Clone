@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 397a116051d408644a26af70bd50e0e8, type: 3}
+  m_Name: HumanFemale_Sentari_Head01_Android
+  m_EditorClassIdentifier: 
+  editorLocationLabels: {fileID: 11400000, guid: 132ead709673199439726850d9484f91,
+    type: 2}
+  assetPrefab:
+    m_AssetGUID: 83079dc3e2b220f44bcbbf22bc1914bb
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  channels:
+  - Head
+  layers: 0c000000
+  fullyOccludedLayers: 00000000
+  partialOccludedLayers: 00000000
+  partialOccludedMasks: 00000000
+  occlusionID: 
+  occlusionIDHash: 0
+  tags: []
+  dependencies:
+  - {fileID: 11400000, guid: 79915adbd43eb56498dbc75c1ee96ebe, type: 2}
+  - {fileID: 11400000, guid: 76cd10d79b449604f89de07871e6a1fd, type: 2}
+  - {fileID: 11400000, guid: c917c22f4bc4e01478b56631aeea2bf8, type: 2}

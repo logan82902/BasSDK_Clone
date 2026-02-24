@@ -4,38 +4,39 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 2,
+  "groupPath": "Survival",
   "category": "Survival",
   "localizationId": "-",
   "title": "Wave 4",
-  "description": null,
+  "description": "",
   "loopBehavior": "NoLoop",
-  "totalMaxAlive": 3,
+  "totalMaxAlive": 6,
   "alwaysAvailable": false,
   "waveSelectors": [],
   "factions": [
     {
       "$type": "ThunderRoad.WaveData+WaveFaction, ThunderRoad",
-      "factionID": 8,
-      "factionHealthMultiplier": 1.0,
-      "factionMaxAlive": 8
+      "factionID": 3,
+      "factionMaxAlive": 4
     }
   ],
   "groups": [
     {
       "$type": "ThunderRoad.WaveData+Group, ThunderRoad",
+      "mergeKey": "b70a188a",
       "reference": "Table",
-      "referenceID": "SoldierPatrolMelee",
-      "overrideFaction": false,
-      "factionID": 0,
+      "referenceID": "ScavengerAlertMix",
+      "overrideFaction": true,
+      "factionID": 3,
       "overrideContainer": false,
-      "overrideContainerID": null,
+      "overrideContainerID": "",
       "overrideBrain": false,
-      "overrideBrainID": null,
+      "overrideBrainID": "",
       "overrideMaxMelee": false,
       "overrideMaxMeleeCount": 0,
       "groupHealthMultiplier": 1.0,
       "minMaxCount": {
-        "x": 2,
+        "x": 4,
         "y": 4
       },
       "spawnPointIndex": -1,
@@ -44,19 +45,20 @@
     },
     {
       "$type": "ThunderRoad.WaveData+Group, ThunderRoad",
+      "mergeKey": "9c6a6243",
       "reference": "Table",
-      "referenceID": "SoldierRareMelee",
-      "overrideFaction": false,
-      "factionID": 0,
+      "referenceID": "SoldierAlertMix",
+      "overrideFaction": true,
+      "factionID": 3,
       "overrideContainer": false,
-      "overrideContainerID": null,
+      "overrideContainerID": "",
       "overrideBrain": false,
-      "overrideBrainID": null,
+      "overrideBrainID": "",
       "overrideMaxMelee": false,
       "overrideMaxMeleeCount": 0,
       "groupHealthMultiplier": 1.0,
       "minMaxCount": {
-        "x": 1,
+        "x": 2,
         "y": 2
       },
       "spawnPointIndex": -1,
@@ -65,19 +67,20 @@
     },
     {
       "$type": "ThunderRoad.WaveData+Group, ThunderRoad",
+      "mergeKey": "80b5dfd1",
       "reference": "Table",
-      "referenceID": "SoldierPatrolMelee",
-      "overrideFaction": false,
-      "factionID": 0,
+      "referenceID": "ScavengerAlertMix",
+      "overrideFaction": true,
+      "factionID": 3,
       "overrideContainer": false,
-      "overrideContainerID": null,
+      "overrideContainerID": "",
       "overrideBrain": false,
-      "overrideBrainID": null,
+      "overrideBrainID": "",
       "overrideMaxMelee": false,
       "overrideMaxMeleeCount": 0,
       "groupHealthMultiplier": 1.0,
       "minMaxCount": {
-        "x": 2,
+        "x": 4,
         "y": 4
       },
       "spawnPointIndex": -1,
@@ -86,61 +89,20 @@
     },
     {
       "$type": "ThunderRoad.WaveData+Group, ThunderRoad",
+      "mergeKey": "891fb665",
       "reference": "Table",
-      "referenceID": "SoldierRareMelee",
-      "overrideFaction": false,
-      "factionID": 0,
+      "referenceID": "SoldierAlertMix",
+      "overrideFaction": true,
+      "factionID": 3,
       "overrideContainer": false,
-      "overrideContainerID": null,
+      "overrideContainerID": "",
       "overrideBrain": false,
-      "overrideBrainID": null,
-      "overrideMaxMelee": false,
-      "overrideMaxMeleeCount": 0,
-      "groupHealthMultiplier": 1.0,
-      "minMaxCount": {
-        "x": 1,
-        "y": 2
-      },
-      "spawnPointIndex": -1,
-      "prereqGroupIndex": -1,
-      "prereqMaxRemainingAlive": 0
-    },
-    {
-      "$type": "ThunderRoad.WaveData+Group, ThunderRoad",
-      "reference": "Table",
-      "referenceID": "SoldierAlertMelee",
-      "overrideFaction": false,
-      "factionID": 0,
-      "overrideContainer": false,
-      "overrideContainerID": null,
-      "overrideBrain": false,
-      "overrideBrainID": null,
+      "overrideBrainID": "",
       "overrideMaxMelee": false,
       "overrideMaxMeleeCount": 0,
       "groupHealthMultiplier": 1.0,
       "minMaxCount": {
         "x": 2,
-        "y": 4
-      },
-      "spawnPointIndex": -1,
-      "prereqGroupIndex": -1,
-      "prereqMaxRemainingAlive": 0
-    },
-    {
-      "$type": "ThunderRoad.WaveData+Group, ThunderRoad",
-      "reference": "Table",
-      "referenceID": "SoldierRareMelee",
-      "overrideFaction": false,
-      "factionID": 0,
-      "overrideContainer": false,
-      "overrideContainerID": null,
-      "overrideBrain": false,
-      "overrideBrainID": null,
-      "overrideMaxMelee": false,
-      "overrideMaxMeleeCount": 0,
-      "groupHealthMultiplier": 1.0,
-      "minMaxCount": {
-        "x": 1,
         "y": 2
       },
       "spawnPointIndex": -1,
@@ -148,5 +110,5 @@
       "prereqMaxRemainingAlive": 0
     }
   ],
-  "groupPath": "Survival"
+  "modules": null
 }

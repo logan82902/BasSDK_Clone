@@ -1,4 +1,4 @@
-﻿using TriInspector;
+using TriInspector;
 using TriInspector.Drawers;
 using TriInspector.Elements;
 using TriInspector.Resolvers;
@@ -25,7 +25,11 @@ namespace TriInspector.Drawers
 
         public override TriElement CreateElement(TriProperty property, TriElement next)
         {
-            return new TriDropdownElement(property, _valuesResolver.GetDropdownItems);
+            if (Attribute.AppendToField)
+            {
+                return new TriAppendedDropdownElement(property, _valuesResolver.GetDropdownItems, Attribute.Searchable, next);
+            }
+            return new TriDropdownElement(property, _valuesResolver.GetDropdownItems, Attribute.Searchable);
         }
     }
 }

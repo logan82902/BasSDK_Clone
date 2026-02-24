@@ -4,8 +4,8 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
+  "groupPath": null,
   "groupId": "Lightning",
   "volumeDb": 0.0,
-  "modules": [],
-  "groupPath": null
+  "modules": []
 }

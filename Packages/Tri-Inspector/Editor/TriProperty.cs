@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -99,54 +99,58 @@ namespace TriInspector
         public IEqualityComparer Comparer => TriEqualityComparer.Of(ValueType);
 
         [PublicAPI]
-        public GUIContent DisplayNameContent
+        public GUIContent DisplayNameContent => GetDisplayNameContent();
+
+        [PublicAPI]
+        public GUIContent GetDisplayNameContent(bool gettingParent = false)
         {
-            get
+            if (!gettingParent && TriPropertyOverrideContext.Current != null &&
+                TriPropertyOverrideContext.Current.TryGetDisplayName(this, out var overrideName))
             {
-                if (TriPropertyOverrideContext.Current != null &&
-                    TriPropertyOverrideContext.Current.TryGetDisplayName(this, out var overrideName))
-                {
-                    return overrideName;
-                }
+                return overrideName;
+            }
 
-                if (_displayNameBackingField == null)
+            if (_displayNameBackingField == null)
+            {
+                if (TryGetAttribute(out UseParentLabelAttribute _))
                 {
-                    if (TryGetAttribute(out HideLabelAttribute _) || IsArrayElement)
-                    {
-                        _displayNameBackingField = new GUIContent("");
-                    }
-                    else
-                    {
-                        _displayNameBackingField = new GUIContent(ObjectNames.NicifyVariableName(_definition.Name));
-                    }
+                    _displayNameBackingField = this.Parent?.GetDisplayNameContent(true);
                 }
-
-                if (IsArrayElement)
+                else if (TryGetAttribute(out HideLabelAttribute _) || IsArrayElement)
                 {
-                    if (TriUnityInspectorUtilities.TryGetSpecialArrayElementName(this, out var specialName))
-                    {
-                        _displayNameBackingField.text = specialName;
-                    }
-                    else
-                    {
-                        _displayNameBackingField.text = TriUnityInspectorUtilities.GetStandardArrayElementName(this);
-                    }
+                    _displayNameBackingField = new GUIContent("");
                 }
                 else
                 {
-                    if (_definition.CustomLabel != null)
-                    {
-                        _displayNameBackingField.text = _definition.CustomLabel.GetValue(this, "");
-                    }
+                    _displayNameBackingField = new GUIContent(ObjectNames.NicifyVariableName(_definition.Name));
+                }
+            }
 
-                    if (_definition.CustomTooltip != null)
-                    {
-                        _displayNameBackingField.tooltip = _definition.CustomTooltip.GetValue(this, "");
-                    }
+            if (IsArrayElement)
+            {
+                if (TriUnityInspectorUtilities.TryGetSpecialArrayElementName(this, out var specialName))
+                {
+                    _displayNameBackingField.text = specialName;
+                }
+                else
+                {
+                    _displayNameBackingField.text = TriUnityInspectorUtilities.GetStandardArrayElementName(this);
+                }
+            }
+            else
+            {
+                if (_definition.CustomLabel != null)
+                {
+                    _displayNameBackingField.text = _definition.CustomLabel.GetValue(this, "");
                 }
 
-                return _displayNameBackingField;
+                if (_definition.CustomTooltip != null)
+                {
+                    _displayNameBackingField.tooltip = _definition.CustomTooltip.GetValue(this, "");
+                }
             }
+
+            return _displayNameBackingField;
         }
 
         [PublicAPI]

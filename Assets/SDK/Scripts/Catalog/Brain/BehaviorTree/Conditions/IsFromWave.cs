@@ -1,6 +1,9 @@
-﻿namespace ThunderRoad.AI.Condition
+﻿using TriInspector;
+
+namespace ThunderRoad.AI.Condition
 {
-	public class IsFromWave : ConditionNode
+    [AutoLabelWidth(AddedWidth = 5f, MinWidth = 0f)]
+    public class IsFromWave : ConditionNode
     {
     }
 }

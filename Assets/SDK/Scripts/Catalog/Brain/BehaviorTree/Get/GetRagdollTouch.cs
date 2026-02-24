@@ -1,13 +1,11 @@
 ﻿using UnityEngine;
-
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
 
 namespace ThunderRoad.AI.Get
 {
+    [DeclareBoxGroup("Outputs", Title = "Outputs")]
+    [DeclareHorizontalGroup("Outputs/Horiz", Sizes = new float[] { 215f, 0f })]
+    [AutoLabelWidth(AddedWidth = 5f, MinWidth = 0f)]
     public class GetRagdollTouch : ActionNode
     {
         const string SkulkerSkillId = "Skulker";
@@ -47,18 +45,18 @@ namespace ThunderRoad.AI.Get
         public TouchType typeCondition = TouchType.AnyTouch;
         public BodyState bodyStateCondition = BodyState.StandingAlive;
         public float rememberDuration = 20f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Outputs"), HorizontalGroup("Outputs/Horiz", MinWidth = 300), LabelWidth(200)] 
-#endif
+        [Group("Outputs/Horiz")]
+        [LabelWidth(200)]
         public bool outputCreatureAsCurrentTarget = true;
-#if ODIN_INSPECTOR
-        [BoxGroup("Outputs"), HorizontalGroup("Outputs/Horiz"), LabelWidth(200), DisableIf("outputCreatureAsCurrentTarget")] 
-#endif
+        [Group("Outputs/Horiz")]
+        [LabelWidth(200)]
+        [DisableIf(nameof(outputCreatureAsCurrentTarget))]
         public string outputCreatureVariableName = "";
-#if ODIN_INSPECTOR
-        [BoxGroup("Outputs"), HorizontalGroup("Outputs/Horiz"), LabelWidth(200)] 
-#endif
+        [Group("Outputs/Horiz")]
+        [LabelWidth(200)]
         public string outputPartTransformVariableName = "";
+
+        public GetRagdollTouch() { }
 
     }
 }

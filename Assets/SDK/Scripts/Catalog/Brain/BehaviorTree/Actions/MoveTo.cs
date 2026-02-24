@@ -1,22 +1,32 @@
 ﻿using UnityEngine;
-
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
 
 namespace ThunderRoad.AI.Action
 {
-	public class MoveTo : ActionNode
+    [DeclareBoxGroup("Inputs", Title = "Inputs")]
+    [DeclareHorizontalGroup("Inputs/Horiz")]
+    [DeclareHorizontalGroup("Inputs/Horiz2")]
+    [DeclareHorizontalGroup("Inputs/Horiz3")]
+    [DeclareBoxGroup("Approach", Title = "Approach")]
+    [DeclareHorizontalGroup("Approach/Horiz")]
+    [DeclareBoxGroup("Strafe", Title = "Strafe")]
+    [DeclareHorizontalGroup("Strafe/Horiz2")]
+    [DeclareHorizontalGroup("Strafe/Horiz")]
+    [DeclareBoxGroup("Path", Title = "Path")]
+    [DeclareHorizontalGroup("Path/Horiz")]
+    [DeclareBoxGroup("Radius", Title = "Radius")]
+    [DeclareHorizontalGroup("Radius/Horiz")]
+    [DeclareHorizontalGroup("Radius/Horiz2")]
+    [DeclareBoxGroup("Instance", Title = "Instance")]
+    [AutoLabelWidth(AddedWidth = 5f, MinWidth = 0f)]
+    public class MoveTo : ActionNode
     {
-#if ODIN_INSPECTOR
-        [BoxGroup("Inputs"), HorizontalGroup("Inputs/Horiz"), LabelWidth(100)] 
-#endif
+        [Group("Inputs/Horiz")]
+        [LabelWidth(100)]
         public MoveTarget moveTarget = MoveTarget.CurrentTarget;
-#if ODIN_INSPECTOR
-        [BoxGroup("Inputs"), DisableIf("moveTarget", optionalValue: MoveTarget.CurrentTarget), HorizontalGroup("Inputs/Horiz"), LabelWidth(200)] 
-#endif
+        [DisableIf("moveTarget", MoveTarget.CurrentTarget)]
+        [Group("Inputs/Horiz")]
+        [LabelWidth(200)]
         public string inputMoveTargetVariableName = "";
 
         public enum MoveTarget
@@ -27,30 +37,30 @@ namespace ThunderRoad.AI.Action
             InputPosition,
         }
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Inputs"), HorizontalGroup("Inputs/Horiz2"), LabelWidth(100)] 
-#endif
+        [Group("Inputs/Horiz2")]
+        [LabelWidth(100)]
         public TurnTarget turnTarget = TurnTarget.CurrentTarget;
-#if ODIN_INSPECTOR
-        [BoxGroup("Inputs"), HorizontalGroup("Inputs/Horiz2"), EnableIf("@this.turnTarget == TurnTarget.InputTransform || this.turnTarget == TurnTarget.InputCreature"), LabelWidth(100)]
-#endif
+        [Group("Inputs/Horiz2")]
+        [EnableIf(nameof(enableTurnTargetDir))]
+        [LabelWidth(100)]
         public TurnTargetDirection turnTargetDirection = TurnTargetDirection.Position;
-#if ODIN_INSPECTOR
-        [BoxGroup("Inputs"), HorizontalGroup("Inputs/Horiz2"), EnableIf("@this.turnTarget == TurnTarget.InputTransform || this.turnTarget == TurnTarget.InputCreature"), LabelWidth(200)] 
-#endif
+        private bool enableTurnTargetDir => turnTarget == TurnTarget.InputTransform || turnTarget == TurnTarget.InputCreature;
+        [Group("Inputs/Horiz2")]
+        [EnableIf(nameof(enableTurntargetVarName))]
+        [LabelWidth(200)]
         public string inputTurnTargetVariableName = "";
+        private bool enableTurntargetVarName => turnTarget == TurnTarget.InputTransform || turnTarget == TurnTarget.InputCreature;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Inputs"), HorizontalGroup("Inputs/Horiz3"), LabelWidth(270)] 
-#endif
+        [Group("Inputs/Horiz3")]
+        [LabelWidth(270)]
         public bool forceTurnToUseMoveDirectionAtDistance = true;
-#if ODIN_INSPECTOR
-        [BoxGroup("Inputs"), HorizontalGroup("Inputs/Horiz3"), EnableIf("forceTurnToUseMoveDirectionAtDistance"), LabelWidth(200)] 
-#endif
+        [Group("Inputs/Horiz3")]
+        [EnableIf(nameof(forceTurnToUseMoveDirectionAtDistance))]
+        [LabelWidth(200)]
         public float turnMoveDirectionDistance = 10;
-#if ODIN_INSPECTOR
-        [BoxGroup("Inputs"), HorizontalGroup("Inputs/Horiz3"), EnableIf("forceTurnToUseMoveDirectionAtDistance"), LabelWidth(200)] 
-#endif
+        [Group("Inputs/Horiz3")]
+        [EnableIf(nameof(forceTurnToUseMoveDirectionAtDistance))]
+        [LabelWidth(200)]
         public float turnMoveDirectionSpeed = 1;
 
         public enum TurnTarget
@@ -67,100 +77,100 @@ namespace ThunderRoad.AI.Action
             Forward,
         }
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Approach"), HorizontalGroup("Approach/Horiz"), LabelWidth(120), LabelText("Move speed ratio")] 
-#endif
+        [Group("Approach/Horiz")]
+        [LabelWidth(120)]
+        [LabelText("Move speed ratio")]
         [Range(0f, 1f)]
         public float approachMoveSpeedRatio = 1;
-#if ODIN_INSPECTOR
-        [BoxGroup("Approach"), HorizontalGroup("Approach/Horiz"), LabelWidth(120), LabelText("Turn speed ratio")] 
-#endif
+        [Group("Approach/Horiz")]
+        [LabelWidth(120)]
+        [LabelText("Turn speed ratio")]
         [Range(0f, 1f)]
         public float approachTurnSpeedRatio = 1;
-#if ODIN_INSPECTOR
-        [BoxGroup("Approach"), HorizontalGroup("Approach/Horiz"), LabelWidth(120), LabelText("Run speed ratio")] 
-#endif
+        [Group("Approach/Horiz")]
+        [LabelWidth(120)]
+        [LabelText("Run speed ratio")]
         [Range(0f, 1f)]
         public float approachRunSpeedRatio = 1;
-#if ODIN_INSPECTOR
-        [BoxGroup("Approach"), HorizontalGroup("Approach/Horiz"), LabelWidth(150)] 
-#endif
+        [Group("Approach/Horiz")]
+        [LabelWidth(150)]
         public bool moveCloserIfNoSight;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Strafe"), DisableIf("moveTarget", optionalValue: MoveTarget.InputTransform), HideLabel] 
-#endif
+        [Group("Strafe")]
+        [DisableIf("moveTarget", MoveTarget.InputTransform)]
+        [HideLabel]
         public bool strafeAroundTarget = false;
-#if ODIN_INSPECTOR
-        [BoxGroup("Strafe"), HorizontalGroup("Strafe/Horiz2"), EnableIf("strafeAroundTarget"), LabelWidth(120), LabelText("Move speed ratio")] 
-#endif
+        [Group("Strafe/Horiz2")]
+        [EnableIf(nameof(strafeAroundTarget))]
+        [LabelWidth(120)]
+        [LabelText("Move speed ratio")]
         public float strafeMoveSpeedRatio = 0.75f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Strafe"), HorizontalGroup("Strafe/Horiz2"), EnableIf("strafeAroundTarget"), LabelWidth(120), LabelText("Turn speed ratio")] 
-#endif
+        [Group("Strafe/Horiz2")]
+        [EnableIf(nameof(strafeAroundTarget))]
+        [LabelWidth(120)]
+        [LabelText("Turn speed ratio")]
         public float strafeTurnSpeedRatio = 1;
-#if ODIN_INSPECTOR
-        [BoxGroup("Strafe"), HorizontalGroup("Strafe/Horiz2"), EnableIf("strafeAroundTarget"), LabelWidth(120), LabelText("Run speed ratio")] 
-#endif
+        [Group("Strafe/Horiz2")]
+        [EnableIf(nameof(strafeAroundTarget))]
+        [LabelWidth(120)]
+        [LabelText("Run speed ratio")]
         public float strafeRunSpeedRatio = 0;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Strafe"), HorizontalGroup("Strafe/Horiz"), EnableIf("strafeAroundTarget"), LabelWidth(130)] 
-#endif
+        [Group("Strafe/Horiz")]
+        [EnableIf(nameof(strafeAroundTarget))]
+        [LabelWidth(130)]
         public bool checkMaxAllies = false;
-#if ODIN_INSPECTOR
-        [BoxGroup("Strafe"), HorizontalGroup("Strafe/Horiz"), EnableIf("checkMaxAllies"), LabelWidth(150)] 
-#endif
+        [Group("Strafe/Horiz")]
+        [EnableIf(nameof(checkMaxAllies))]
+        [LabelWidth(150)]
         public float safeRangeOffset = 0.25f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Strafe"), HorizontalGroup("Strafe/Horiz"), EnableIf("checkMaxAllies"), LabelWidth(150)] 
-#endif
+        [Group("Strafe/Horiz")]
+        [EnableIf(nameof(checkMaxAllies))]
+        [LabelWidth(150)]
         public float safeRangeThickness = 2f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Path"), HorizontalGroup("Path/Horiz"), LabelWidth(150)] 
-#endif
+        [Group("Path/Horiz")]
+        [LabelWidth(150)]
         public bool reportUnreachable = false;
-#if ODIN_INSPECTOR
-        [BoxGroup("Path"), HorizontalGroup("Path/Horiz"), EnableIf("strafeAroundTarget"), LabelWidth(150)] 
-#endif
+        [Group("Path/Horiz")]
+        [EnableIf(nameof(strafeAroundTarget))]
+        [LabelWidth(150)]
         public bool useModuleStrafeDelay = false;
-#if ODIN_INSPECTOR
-        [BoxGroup("Path"), HorizontalGroup("Path/Horiz"), DisableIf("useModuleStrafeDelay"), LabelWidth(150)] 
-#endif
+        [Group("Path/Horiz")]
+        [DisableIf(nameof(useModuleStrafeDelay))]
+        [LabelWidth(150)]
         public float repathMinDelay = 0;
-#if ODIN_INSPECTOR
-        [BoxGroup("Path"), HorizontalGroup("Path/Horiz"), DisableIf("useModuleStrafeDelay"), LabelWidth(150)] 
-#endif
+        [Group("Path/Horiz")]
+        [DisableIf(nameof(useModuleStrafeDelay))]
+        [LabelWidth(150)]
         public float repathMaxDelay = 0;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Radius"), HorizontalGroup("Radius/Horiz", MinWidth = 250), LabelWidth(100)] 
-#endif
+        [Group("Radius/Horiz")]
+        [LabelWidth(100)]
         public AutoRadius autoRadius = AutoRadius.None;
-#if ODIN_INSPECTOR
-        [BoxGroup("Radius"), EnableIf("autoRadius", optionalValue: AutoRadius.None), HorizontalGroup("Radius/Horiz"), LabelWidth(150)] 
-#endif
+        [EnableIf(nameof(autoRadius), AutoRadius.None)]
+        [Group("Radius/Horiz")]
+        [LabelWidth(150)]
         public float targetMinRadius = 0f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Radius"), EnableIf("autoRadius", optionalValue: AutoRadius.None), HorizontalGroup("Radius/Horiz"), LabelWidth(150)] 
-#endif
+        [EnableIf(nameof(autoRadius), AutoRadius.None)]
+        [Group("Radius/Horiz")]
+        [LabelWidth(150)]
         public float targetMaxRadius = 0.1f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Radius"), EnableIf("autoRadius", optionalValue: AutoRadius.MeleeRange), HorizontalGroup("Radius/Horiz"), LabelWidth(160)]
-#endif
+        [EnableIf(nameof(autoRadius), AutoRadius.MeleeRange)]
+        [Group("Radius/Horiz")]
+        [LabelWidth(160)]
         public float keepWeaponDistance = 0.6f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Radius"), EnableIf("autoRadius", optionalValue: AutoRadius.MeleeRange), HorizontalGroup("Radius/Horiz"), LabelWidth(160)]
-#endif
+        [EnableIf(nameof(autoRadius), AutoRadius.MeleeRange)]
+        [Group("Radius/Horiz")]
+        [LabelWidth(160)]
         public bool advanceToMelee = true;
-#if ODIN_INSPECTOR
-        [BoxGroup("Radius"), EnableIf("autoRadius", optionalValue: AutoRadius.FromBlackboard), HorizontalGroup("Radius/Horiz", MinWidth = 300), LabelWidth(150)]
-#endif
+        [EnableIf(nameof(autoRadius), AutoRadius.FromBlackboard)]
+        [Group("Radius/Horiz")]
+        [LabelWidth(150)]
         public string blackboardMinName;
-#if ODIN_INSPECTOR
-        [BoxGroup("Radius"), EnableIf("autoRadius", optionalValue: AutoRadius.FromBlackboard), HorizontalGroup("Radius/Horiz", MinWidth = 300), LabelWidth(150)]
-#endif
+        [EnableIf(nameof(autoRadius), AutoRadius.FromBlackboard)]
+        [Group("Radius/Horiz")]
+        [LabelWidth(150)]
         public string blackboardMaxName;
 
 
@@ -172,21 +182,19 @@ namespace ThunderRoad.AI.Action
             FromBlackboard,
         }
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Radius"), HorizontalGroup("Radius/Horiz2", MinWidth = 250), LabelWidth(100)] 
-#endif
+        [Group("Radius/Horiz2")]
+        [LabelWidth(100)]
         public AngleMode angleMode = AngleMode.None;
-#if ODIN_INSPECTOR
-        [BoxGroup("Radius"), HorizontalGroup("Radius/Horiz2", MinWidth = 300), LabelWidth(200)] 
-#endif
+        [Group("Radius/Horiz2")]
+        [LabelWidth(200)]
         public bool changeAngleUntilUnobstructed;
-#if ODIN_INSPECTOR
-        [BoxGroup("Radius"), DisableIf("angleMode", optionalValue: AngleMode.None), HorizontalGroup("Radius/Horiz2", MinWidth = 300), LabelWidth(150)] 
-#endif
+        [DisableIf("angleMode", AngleMode.None)]
+        [Group("Radius/Horiz2")]
+        [LabelWidth(150)]
         public float targetRadiusMinAngle = 0f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Radius"), DisableIf("angleMode", optionalValue: AngleMode.None), HorizontalGroup("Radius/Horiz2", MinWidth = 300), LabelWidth(150)] 
-#endif
+        [DisableIf("angleMode", AngleMode.None)]
+        [Group("Radius/Horiz2")]
+        [LabelWidth(150)]
         public float targetRadiusMaxAngle = 0f;
 
         public enum AngleMode

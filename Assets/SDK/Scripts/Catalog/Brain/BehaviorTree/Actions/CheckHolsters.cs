@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using UnityEngine;
+using TriInspector;
 
 namespace ThunderRoad.AI.Action
 {
-	public class CheckHolsters : ActionNode
+    [AutoLabelWidth(AddedWidth = 5f, MinWidth = 0f)]
+    public class CheckHolsters : ActionNode
     {
         const string SkulkerSkillId = "Skulker";
 

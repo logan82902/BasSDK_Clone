@@ -3,6 +3,8 @@ using UnityEngine;
 using System.IO;
 using System.Text;
 using UnityEditor.AddressableAssets.Settings;
+
+
 using TriInspector;
 using UnityEditor;
 
@@ -27,6 +29,8 @@ namespace ThunderRoad
         
         [HideInInspector]
         public bool isMod => !isDefault;
+        [HideInInspector]
+        public bool zipCatalogFiles = false;
         
         [ShowIf("isMod")]
         public string modDescription = "Unknown";

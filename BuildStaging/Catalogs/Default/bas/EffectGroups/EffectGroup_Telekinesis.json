@@ -4,9 +4,9 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
+  "groupPath": null,
   "groupId": "Spells",
   "globalVolumeDb": 0.0,
   "globalMinPitch": 1.0,
-  "globalMaxPitch": 1.0,
-  "groupPath": null
+  "globalMaxPitch": 1.0
 }

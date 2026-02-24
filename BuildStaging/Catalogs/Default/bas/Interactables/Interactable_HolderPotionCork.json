@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 3,
+  "groupPath": null,
   "spawnItemID": "PotionCork",
   "spawnQuantity": 1,
   "allowInfiniteSupplyCheat": false,
@@ -42,6 +43,5 @@
   "referencePoint": "Grip",
   "localizationId": "Cork",
   "highlightDefaultTitle": "Cork",
-  "highlightDefaultDesignation": "",
-  "groupPath": null
+  "highlightDefaultDesignation": ""
 }

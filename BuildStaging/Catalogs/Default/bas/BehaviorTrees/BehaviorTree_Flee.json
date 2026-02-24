@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
+  "groupPath": null,
   "type": "SubTree",
   "rootNode": {
     "$type": "ThunderRoad.AI.Control.Sequence, ThunderRoad",
@@ -17,19 +18,13 @@
             "$type": "ThunderRoad.AI.Get.GetTransform, ThunderRoad",
             "target": "ClosestDungeonExit",
             "prioritizeShortestPath": true,
-            "outputTransformVariableName": "FleePoint",
-            "blackboard": null,
-            "creature": null,
-            "brainData": null
+            "outputTransformVariableName": "FleePoint"
           },
           {
             "$type": "ThunderRoad.AI.Get.GetTransform, ThunderRoad",
             "target": "ClosestFleePoint",
             "prioritizeShortestPath": true,
-            "outputTransformVariableName": "FleePoint",
-            "blackboard": null,
-            "creature": null,
-            "brainData": null
+            "outputTransformVariableName": "FleePoint"
           }
         ]
       },
@@ -72,10 +67,7 @@
             "angleMode": "None",
             "changeAngleUntilUnobstructed": false,
             "targetRadiusMinAngle": 0.0,
-            "targetRadiusMaxAngle": 0.0,
-            "blackboard": null,
-            "creature": null,
-            "brainData": null
+            "targetRadiusMaxAngle": 0.0
           },
           {
             "$type": "ThunderRoad.AI.Action.MoveTo, ThunderRoad",
@@ -112,10 +104,7 @@
             "angleMode": "None",
             "changeAngleUntilUnobstructed": false,
             "targetRadiusMinAngle": 0.0,
-            "targetRadiusMaxAngle": 0.0,
-            "blackboard": null,
-            "creature": null,
-            "brainData": null
+            "targetRadiusMaxAngle": 0.0
           }
         ]
       },
@@ -138,13 +127,9 @@
         ],
         "ifNotConditions": null,
         "child": {
-          "$type": "ThunderRoad.AI.Action.Despawn, ThunderRoad",
-          "blackboard": null,
-          "creature": null,
-          "brainData": null
+          "$type": "ThunderRoad.AI.Action.Despawn, ThunderRoad"
         }
       }
     ]
-  },
-  "groupPath": null
+  }
 }

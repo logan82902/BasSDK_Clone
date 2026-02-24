@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
+  "groupPath": null,
   "burnDelay": 0.5,
   "damagePerTick": 2.0,
   "damagePerTickPlayer": 0.7,
@@ -56,11 +57,11 @@
   "burningLimbEffectId": "BurningLimbs",
   "type": "ThunderRoad.Burning, ThunderRoad, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
   "bypassImmunity": 0,
+  "ignoreClearByType": false,
   "stackType": "Infinite",
   "forceAllowOnCreatures": false,
   "allowOnItems": false,
   "creatureEffectId": "",
   "itemEffectId": "",
-  "groupPath": null,
   "StackTypeDescription": "Never automatically expires."
 }

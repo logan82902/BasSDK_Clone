@@ -2,11 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
@@ -25,21 +22,13 @@ namespace ThunderRoad
             }
 
             public StringMethod method;
-#if ODIN_INSPECTOR
             [ShowIf("method", StringMethod.Split)]
-#endif
             public char splitChar;
-#if ODIN_INSPECTOR
             [ShowIf("method", StringMethod.Split)]
-#endif
             public Side splitSide;
-#if ODIN_INSPECTOR
             [ShowIf("method", StringMethod.Replace)]
-#endif
             public string stringToReplace;
-#if ODIN_INSPECTOR
             [ShowIf("method", StringMethod.Replace)]
-#endif
             public string replacement;
 
             public string Clean(string input)
@@ -55,32 +44,25 @@ namespace ThunderRoad
             }
         }
 
-#if ODIN_INSPECTOR
         [TableList()]
-#endif
-        public List<ShapeNameCleaner> selfNameCleaning = new List<ShapeNameCleaner>();
+        public List<ShapeNameCleaner> selfNameCleaning = new();
         public SkinnedMeshRenderer driverSMR;
-#if ODIN_INSPECTOR
         [TableList()]
-#endif
-        public List<ShapeNameCleaner> driverNameCleaning = new List<ShapeNameCleaner>();
+        public List<ShapeNameCleaner> driverNameCleaning = new();
 
         public override ManagedLoops EnabledManagedLoops => ManagedLoops.FixedUpdate;
 
         private SkinnedMeshRenderer skinnedMeshRenderer;
 
 
-#if ODIN_INSPECTOR
-        [ShowInInspector, ReadOnly]
-#endif
+        [ShowInInspector]
+        [ReadOnly]
         private List<string> selfCleanedNames;
-#if ODIN_INSPECTOR
-        [ShowInInspector, ReadOnly]
-#endif
+        [ShowInInspector]
+        [ReadOnly]
         private List<string> driverCleanedNames;
-#if ODIN_INSPECTOR
-        [ShowInInspector, ReadOnly]
-#endif
+        [ShowInInspector]
+        [ReadOnly]
         private Dictionary<int, int> blendShapeDictionary;
 
         private void Start()

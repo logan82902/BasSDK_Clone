@@ -1,10 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-#if ODIN_INSPECTOR
-#else
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
@@ -29,6 +26,7 @@ namespace ThunderRoad
         [System.Serializable]
         public class HolderUnityEvent
         {
+            [AutoLabelWidth(AddedWidth = 5f)]
             public HolderEvent holderEvent;
             public UnityEvent<Holder> onActivate;
         }

@@ -10,11 +10,8 @@ using UnityEngine.VFX;
 using Quaternion = UnityEngine.Quaternion;
 using Random = UnityEngine.Random;
 using Vector3 = UnityEngine.Vector3;
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
@@ -31,41 +28,25 @@ namespace ThunderRoad
         public float timeVfxTransitionMin = 0.5f;
 
         [FormerlySerializedAs("mergeVfx")]
-#if ODIN_INSPECTOR
-        [TabGroup("Windows VFX")]
-#endif        
+        [Group("Tabs"), Tab("Windows VFX")]
         public VisualEffect mergeVfxWindows;
         [FormerlySerializedAs("mergeVfxTarget")]
-#if ODIN_INSPECTOR
-        [TabGroup("Windows VFX")]
-#endif
+        [Group("Tabs"), Tab("Windows VFX")]
         public Transform mergeVfxTargetWindows;
 
         [FormerlySerializedAs("linkVfx")]
-#if ODIN_INSPECTOR
-        [TabGroup("Windows VFX")]
-#endif
+        [Group("Tabs"), Tab("Windows VFX")]
         public VisualEffect linkVfxWindows;
         [FormerlySerializedAs("linkVfxTarget")]
-#if ODIN_INSPECTOR
-        [TabGroup("Windows VFX")]
-#endif
+        [Group("Tabs"), Tab("Windows VFX")]
         public Transform linkVfxTargetWindows;
-#if ODIN_INSPECTOR
-        [TabGroup("Android VFX")]
-#endif
+        [Group("Tabs"), Tab("Android VFX")]
         public VisualEffect mergeVfxAndroid;
-#if ODIN_INSPECTOR
-        [TabGroup("Android VFX")]
-#endif
+        [Group("Tabs"), Tab("Android VFX")]
         public Transform mergeVfxTargetAndroid;
-#if ODIN_INSPECTOR
-        [TabGroup("Android VFX")]
-#endif
+        [Group("Tabs"), Tab("Android VFX")]
         public VisualEffect linkVfxAndroid;
-#if ODIN_INSPECTOR
-        [TabGroup("Android VFX")]
-#endif
+        [Group("Tabs"), Tab("Android VFX")]
         public Transform linkVfxTargetAndroid;
         
         public delegate void LinkEvent(SkillTreeCrystal crystal, SkillTreeCrystal other, bool linked);
@@ -110,38 +91,31 @@ namespace ThunderRoad
 
 
         [Header("Skill tree")]
-#if ODIN_INSPECTOR
-        [ValueDropdown(nameof(GetAllSkillTreeID), AppendNextDrawer = true)]
-#endif
+        [Dropdown(nameof(GetAllSkillTreeID))]
         public string treeName;
 
-        [ColorUsage(true, true)]
+        [ColorPickerField(Alpha = true, HDR = true)]
         public Color skillTreeEmissionColor = Color.white;
 
 
         [Header("Custom")]
         public bool overrideCrystalColors = false;
 
-        [ColorUsage(true, true), ShowIf("overrideCrystalColors")]
+        [ColorPickerField(Alpha = true, HDR = true), ShowIf("overrideCrystalColors")]
         public Color baseColor;
-        [ColorUsage(true, true), ShowIf("overrideCrystalColors")]
+        [ColorPickerField(Alpha = true, HDR = true), ShowIf("overrideCrystalColors")]
         public Color internalColor;
-        [ColorUsage(true, true), ShowIf("overrideCrystalColors")]
+        [ColorPickerField(Alpha = true, HDR = true), ShowIf("overrideCrystalColors")]
         public Color animatedColor;
-        [ColorUsage(true, true), ShowIf("overrideCrystalColors")]
+        [ColorPickerField(Alpha = true, HDR = true), ShowIf("overrideCrystalColors")]
         public Color emissionColor;
-        [ColorUsage(true, true), ShowIf("overrideCrystalColors")]
+        [ColorPickerField(Alpha = true, HDR = true), ShowIf("overrideCrystalColors")]
         public Color linkVfxColor;
-        [ColorUsage(true, true), ShowIf("overrideCrystalColors")]
+        [ColorPickerField(Alpha = true, HDR = true), ShowIf("overrideCrystalColors")]
         public Color mergeVfxColor;
 
 
 
-#if ODIN_INSPECTOR
-        public List<ValueDropdownItem<string>> GetAllSkillTreeID()
-        {
-            return Catalog.gameData == null ? new List<ValueDropdownItem<string>>() : Catalog.GetDropdownAllID(Category.SkillTree);
-        }
-#endif
+        public TriDropdownList<string> GetAllSkillTreeID() => Catalog.gameData == null ? new TriDropdownList<string>() : Catalog.GetDropdownAllID(Category.SkillTree);
     }
 }

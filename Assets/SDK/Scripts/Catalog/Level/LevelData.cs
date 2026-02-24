@@ -11,140 +11,84 @@ using System.Linq;
 using UnityEditor;
 #endif
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
 	[Serializable]
-	public class LevelData : CatalogData
+	[DeclareBoxGroup("Level")]
+    [DeclareBoxGroup("Map")]
+    [DeclareBoxGroup("Map location")]
+	[DeclareBoxGroup("Modes")]
+	[DeclareBoxGroup("Cameras")]
+	[DeclareBoxGroup("AI")]
+    public class LevelData : CatalogData
 	{
-#if ODIN_INSPECTOR
-		[BoxGroup("Level")]
-#endif
+		[Group("Level")]
 		public string name;
-#if ODIN_INSPECTOR
-		[BoxGroup("Level")]
-#endif
+		[Group("Level")]
 		[TextArea]
 		public string description;
-#if ODIN_INSPECTOR
-		[BoxGroup("Level")]
-#endif
+		[Group("Level")]
 		public string descriptionLocalizationId;
-#if ODIN_INSPECTOR
-		[BoxGroup("Level")]
-#endif
+		[Group("Level")]
 		public string sceneAddress;
 		[NonSerialized]
 		public IResourceLocation sceneLocation;
-#if ODIN_INSPECTOR
-		[BoxGroup("Level")]
-#endif
+		[Group("Level")]
 		public bool showOnlyDevMode = false;
 
-#if ODIN_INSPECTOR
-		[BoxGroup("Level")]
-#endif
+		[Group("Level")]
 		public bool showInLevelSelection = true;
 
-#if ODIN_INSPECTOR
-		[BoxGroup("Map")]
-#endif
-		public string worldmapPrefabAddress = "Bas.Image.Map.Default";
-#if ODIN_INSPECTOR
-		[BoxGroup("Map")]
-#endif
-		public string worldmapTextureAddress = "Bas.Worldmap.Eraden";
-#if ODIN_INSPECTOR
-		[BoxGroup("Map")]
-#endif
-		public string worldmapLabel;
-#if ODIN_INSPECTOR
-        [BoxGroup("Map")]
-#endif
+		[Group("Map")]
+		public string worldMapId = "Eraden";
+
+        [Group("Map")]
         [Tooltip("The audio container that will play when the player clicks to travel to this location from the worldmap")]
         public string worldMapTravelAudioContainerAddress = "Bas.AudioGroup.UI.LightClick";  
         [NonSerialized] public IResourceLocation worldMapTravelAudioContainerLocation;
         
-		[NonSerialized]
-		public IResourceLocation worldmapPrefabLocation;
-		[NonSerialized]
-		public GameObject worldmapPrefab;
-		[NonSerialized]
-		public IResourceLocation worldmapTextureLocation;
-		[NonSerialized]
-		public Texture2D worldmapTexture2D;
-		[NonSerialized]
-		public int worldmapHash;
 
-#if ODIN_INSPECTOR
-		[BoxGroup("Map location")]
-#endif
+		[Group("Map location")]
 		public int mapLocationIndex;
 
-#if ODIN_INSPECTOR
-		[BoxGroup("Map location")]
-#endif
+		[Group("Map location")]
 		public bool showOnMap = true;
 
-#if ODIN_INSPECTOR
-		[BoxGroup("Map location")]
-#endif
+		[Group("Map location")]
 		public bool hideOnAndroid;
 
-#if ODIN_INSPECTOR
-		[BoxGroup("Map location")]
-#endif
+		[Group("Map location")]
 		public string mapLocationIconAddress = "Bas.Icon.Location.Default";
 		[NonSerialized]
 		public IResourceLocation mapLocationIconLocation;
 		[NonSerialized]
 		public Sprite mapLocationIcon;
 
-#if ODIN_INSPECTOR
-		[BoxGroup("Map location")]
-#endif
+		[Group("Map location")]
 		public string mapLocationIconHoverAddress = "Bas.Icon.Location.DefaultHover";
 		[NonSerialized]
 		public IResourceLocation mapLocationIconHoverLocation;
 		[NonSerialized]
 		public Sprite mapLocationIconHover;
 
-#if ODIN_INSPECTOR
-		[BoxGroup("Map location")]
-#endif
+		[Group("Map location")]
 		public string mapPreviewImageAddress;
 		[NonSerialized]
 		public IResourceLocation mapPreviewImageLocation;
 		[NonSerialized]
 		public Sprite mapPreviewImage;
 
-#if ODIN_INSPECTOR
-		[BoxGroup("Modes"), ShowInInspector]
-#endif
+		[Group("Modes"), ShowInInspector]
 		public List<Mode> modes;
 
-#if ODIN_INSPECTOR
-		[BoxGroup("Modes")]
-#endif
-		public int modePickCountPerRank = 2;
-
-#if ODIN_INSPECTOR
-		[BoxGroup("Cameras")]
-#endif
+		[Group("Cameras")]
 		public List<CustomCameras> customCameras;
 
-#if ODIN_INSPECTOR
-		[BoxGroup("AI")]
-#endif
+		[Group("AI")]
 		public ThrowableReference throwableRefType = ThrowableReference.Item;
-#if ODIN_INSPECTOR
-		[BoxGroup("AI")]
-#endif
+		[Group("AI")]
 		public string improvisedThrowableID = null;
 
 		public enum ThrowableReference
@@ -171,14 +115,12 @@ namespace ThunderRoad
 			[TextArea]
 			public string description = "{NoDescription}";
 
-#if ODIN_INSPECTOR
-			public List<ValueDropdownItem<string>> GetAllGameModeID()
+			public TriDropdownList<string> GetAllGameModeID()
 			{
 				return Catalog.GetDropdownAllID(Category.GameMode);
 			}
 
-			[ValueDropdown(nameof(GetAllGameModeID))]
-#endif
+			[DropdownList(nameof(GetAllGameModeID))]
 			public List<string> allowGameModes;
 
 			public int mapOrder;
@@ -194,13 +136,9 @@ namespace ThunderRoad
 				PermaDeath,
             }
 
-#if ODIN_INSPECTOR
             [ShowInInspector]
-#endif
 			public List<LevelModule> modules = new List<LevelModule>();
-#if ODIN_INSPECTOR
 			[ShowInInspector]
-#endif
 			public List<OptionBase> availableOptions = new List<OptionBase>();
 
 		}

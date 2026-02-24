@@ -1,10 +1,7 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-#if ODIN_INSPECTOR
-#else
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
@@ -27,6 +24,7 @@ namespace ThunderRoad
         [System.Serializable]
         public class ImbueUnityEvent
         {
+            [AutoLabelWidth(AddedWidth = 5f)]
             public ImbueEvent imbueEvent;
             public UnityEvent onActivate;
         }

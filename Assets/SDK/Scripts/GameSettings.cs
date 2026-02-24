@@ -1,11 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -13,28 +9,28 @@ using UnityEditor;
 
 namespace ThunderRoad
 {
+    [DeclareBoxGroup("Version", Title = "Version")]
+    [DeclareHorizontalGroup("Version/Default")]
+    [DeclareBoxGroup("Info", Title = "Info")]
+    [DeclareBoxGroup("Main Menu", Title = "Main Menu")]
+    [DeclareBoxGroup("Game Mode", Title = "Game Mode")]
+    [DeclareBoxGroup("UI", Title = "UI")]
+    [DeclareBoxGroup("Prefabs", Title = "Prefabs")]
+    [DeclareBoxGroup("Telemetry", Title = "Telemetry")]
     public class GameSettings : ScriptableObject
     {
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Version")]
-#endif
+        [Group("Version")]
         public string minModVersion;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Info")]
-#endif
+        [Group("Info")]
         public string productName;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Info")]
-#endif
+        [Group("Info")]
         public string appIdentifier;
 
 
-#if ODIN_INSPECTOR
-        [ValueDropdown(nameof(GetJsonFolders))]
-#endif
+        [DropdownList(nameof(GetJsonFolders))]
         public List<string> editorLoadDefaultFolders;
 
         public static List<string> loadDefaultFolders
@@ -65,17 +61,18 @@ namespace ThunderRoad
             return $"0.0.0.0";
         }
 
-#if ODIN_INSPECTOR
-        public List<ValueDropdownItem<string>> GetJsonFolders()
+        public TriDropdownList<string> GetJsonFolders()
         {
-            List<ValueDropdownItem<string>> dropdownList = new List<ValueDropdownItem<string>>();
+            TriDropdownList<string> dropdownList = new();
             foreach (string folderName in FileManager.GetFolderNames(FileManager.Type.JSONCatalog, FileManager.Source.Default))
             {
-                if (folderName == ".git") continue;
-                dropdownList.Add(new ValueDropdownItem<string>(folderName, folderName));
+                if (folderName == ".git")
+                {
+                    continue;
+                }
+                dropdownList.Add(folderName, folderName);
             }
             return dropdownList;
         }
-#endif
     }
 }

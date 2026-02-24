@@ -3,11 +3,8 @@ using System.Collections.Generic;
 using System;
 using ThunderRoad.Manikin;
 using UnityEditor;
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {

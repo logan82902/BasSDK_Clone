@@ -1,6 +1,9 @@
-﻿namespace ThunderRoad.AI.Condition
+﻿using TriInspector;
+
+namespace ThunderRoad.AI.Condition
 {
-	public class IsUnarmed : ConditionNode
+    [AutoLabelWidth(AddedWidth = 5f, MinWidth = 0f)]
+    public class IsUnarmed : ConditionNode
     {
         public bool isMainHandCheck = false;
     }

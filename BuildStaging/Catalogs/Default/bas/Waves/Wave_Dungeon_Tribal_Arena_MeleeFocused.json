@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 2,
+  "groupPath": "Dungeon",
   "category": "Dungeon Arena Room",
   "localizationId": "-",
   "title": "Tribal Arena Melee Focused",
@@ -16,13 +17,13 @@
     {
       "$type": "ThunderRoad.WaveData+WaveFaction, ThunderRoad",
       "factionID": 7,
-      "factionHealthMultiplier": 1.0,
       "factionMaxAlive": 8
     }
   ],
   "groups": [
     {
       "$type": "ThunderRoad.WaveData+Group, ThunderRoad",
+      "mergeKey": "4fa49468",
       "reference": "Table",
       "referenceID": "TribalPatrolMelee",
       "overrideFaction": false,
@@ -44,6 +45,7 @@
     },
     {
       "$type": "ThunderRoad.WaveData+Group, ThunderRoad",
+      "mergeKey": "f201739c",
       "reference": "Table",
       "referenceID": "TribalAlertMix",
       "overrideFaction": false,
@@ -65,6 +67,7 @@
     },
     {
       "$type": "ThunderRoad.WaveData+Group, ThunderRoad",
+      "mergeKey": "35f737bb",
       "reference": "Table",
       "referenceID": "TribalAlertMelee",
       "overrideFaction": false,
@@ -86,6 +89,7 @@
     },
     {
       "$type": "ThunderRoad.WaveData+Group, ThunderRoad",
+      "mergeKey": "c90f16de",
       "reference": "Table",
       "referenceID": "TribalAlertMix",
       "overrideFaction": false,
@@ -107,6 +111,7 @@
     },
     {
       "$type": "ThunderRoad.WaveData+Group, ThunderRoad",
+      "mergeKey": "39ded32c",
       "reference": "Table",
       "referenceID": "TribalAlertMelee",
       "overrideFaction": false,
@@ -128,6 +133,7 @@
     },
     {
       "$type": "ThunderRoad.WaveData+Group, ThunderRoad",
+      "mergeKey": "52eccca0",
       "reference": "Table",
       "referenceID": "TribalRareMix",
       "overrideFaction": false,
@@ -148,5 +154,5 @@
       "prereqMaxRemainingAlive": 0
     }
   ],
-  "groupPath": "Dungeon"
+  "modules": null
 }

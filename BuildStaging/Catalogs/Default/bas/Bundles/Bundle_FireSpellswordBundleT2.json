@@ -1,0 +1,23 @@
+{
+  "$type": "ThunderRoad.BundleData, ThunderRoad",
+  "id": "FireSpellswordBundleT2",
+  "sensitiveContent": "None",
+  "sensitiveFilterBehaviour": "Discard",
+  "version": 0,
+  "groupPath": "T2",
+  "localizationGroup": "Bundles",
+  "displayName": "BundleFireSpellswordBundleT2Name",
+  "description": null,
+  "altDescriptionTitle": "ContentsTitle",
+  "isArmorBundle": false,
+  "bundleItemId": "Bundle",
+  "items": [],
+  "skills": [
+    "MoltenArc",
+    "Conflagration"
+  ],
+  "lootTables": [
+    "1HMeleeT2"
+  ],
+  "spriteAddress": "Ui.Icon.Unknown"
+}

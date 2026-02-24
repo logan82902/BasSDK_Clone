@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 4,
+  "groupPath": "Bandits/",
   "localizationId": "BanditHelmet",
   "displayName": "Leather Helmet",
   "description": "A protective combat helmet effective at softening blows and mitigating cuts. Though not crafted from the best of materials, protecting one’s head is a must in combat.",
@@ -14,16 +15,18 @@
   "tier": 2,
   "flags": "Spinnable",
   "levelRequired": 0,
+  "type": "Wardrobe",
   "category": "Leather",
+  "update": "",
   "iconEffectId": null,
   "preferredItemCenter": "Mass",
   "drainImbueWhenIdle": true,
+  "forceImbueUseButton": "None",
   "prefabAddress": "Bas.Item.Apparel.Bandit.Helmet",
   "iconAddress": "Bas.Item.Apparel.Bandit.Helmet.Icon[ArmorItems_Bandit_Helmet]",
   "closeUpIconAddress": null,
   "pooledCount": 0,
   "androidPooledCount": 0,
-  "type": "Wardrobe",
   "allowedStorage": "Inventory, Container, SandboxAllItems",
   "despawnOnStoredInInventory": false,
   "isStackable": false,
@@ -37,6 +40,7 @@
   "mass": 0.7,
   "drag": 1.0,
   "angularDrag": 1.0,
+  "density": 860.0,
   "focusRegenMultiplier": 0.91,
   "spellChargeSpeedPlayerMultiplier": 0.91,
   "spellChargeSpeedNPCMultiplier": 1.0,
@@ -150,58 +154,6 @@
     "preWrapMode": "ClampForever",
     "postWrapMode": "ClampForever"
   },
-  "modules": [
-    {
-      "$type": "ThunderRoad.ItemModuleWardrobe, ThunderRoad",
-      "castSpeedPerHand": null,
-      "category": "Apparel",
-      "castShadows": "PlayerAndNPC",
-      "wardrobes": [
-        {
-          "$type": "ThunderRoad.ItemModuleWardrobe+CreatureWardrobe, ThunderRoad",
-          "creatureName": "HumanMale",
-          "wardrobeDataAddress": "Bas.Creature.Wardrobe.HumanMale.Bandit.Helmet"
-        },
-        {
-          "$type": "ThunderRoad.ItemModuleWardrobe+CreatureWardrobe, ThunderRoad",
-          "creatureName": "HumanFemale",
-          "wardrobeDataAddress": "Bas.Creature.Wardrobe.HumanFemale.Bandit.Helmet"
-        }
-      ],
-      "isMetal": false,
-      "armorSoundEffectPriority": 1,
-      "armorSoundEffectID": "ArmorSFX(Leather)"
-    },
-    {
-      "$type": "ThunderRoad.ItemModuleStats, ThunderRoad",
-      "stats": [
-        {
-          "$type": "ThunderRoad.ItemStatInt, ThunderRoad",
-          "value": 2,
-          "useStarIcons": true,
-          "name": "Defense"
-        },
-        {
-          "$type": "ThunderRoad.ItemStatInt, ThunderRoad",
-          "value": 5,
-          "useStarIcons": true,
-          "name": "Mobility"
-        },
-        {
-          "$type": "ThunderRoad.ItemStatInt, ThunderRoad",
-          "value": 2,
-          "useStarIcons": true,
-          "name": "SpellCasting"
-        },
-        {
-          "$type": "ThunderRoad.ItemStatInt, ThunderRoad",
-          "value": 2,
-          "useStarIcons": true,
-          "name": "FocusRegen"
-        }
-      ]
-    }
-  ],
   "colliderGroups": [],
   "damagers": [
     {
@@ -245,6 +197,58 @@
       "dampening": 0.1
     }
   ],
-  "entityModules": [],
-  "groupPath": "Bandits/"
+  "modules": [
+    {
+      "$type": "ThunderRoad.ItemModuleWardrobe, ThunderRoad",
+      "category": "Apparel",
+      "castShadows": "PlayerAndNPC",
+      "wardrobes": [
+        {
+          "$type": "ThunderRoad.ItemModuleWardrobe+CreatureWardrobe, ThunderRoad",
+          "creatureName": "HumanMale",
+          "wardrobeDataAddress": "Bas.Creature.Wardrobe.HumanMale.Bandit.Helmet",
+          "runtimeBlendshapeActivators": null
+        },
+        {
+          "$type": "ThunderRoad.ItemModuleWardrobe+CreatureWardrobe, ThunderRoad",
+          "creatureName": "HumanFemale",
+          "wardrobeDataAddress": "Bas.Creature.Wardrobe.HumanFemale.Bandit.Helmet",
+          "runtimeBlendshapeActivators": null
+        }
+      ],
+      "isMetal": false,
+      "armorSoundEffectPriority": 1,
+      "armorSoundEffectID": "ArmorSFX(Leather)"
+    },
+    {
+      "$type": "ThunderRoad.ItemModuleStats, ThunderRoad",
+      "stats": [
+        {
+          "$type": "ThunderRoad.ItemStatInt, ThunderRoad",
+          "value": 2,
+          "useStarIcons": true,
+          "name": "Defense"
+        },
+        {
+          "$type": "ThunderRoad.ItemStatInt, ThunderRoad",
+          "value": 5,
+          "useStarIcons": true,
+          "name": "Mobility"
+        },
+        {
+          "$type": "ThunderRoad.ItemStatInt, ThunderRoad",
+          "value": 2,
+          "useStarIcons": true,
+          "name": "SpellCasting"
+        },
+        {
+          "$type": "ThunderRoad.ItemStatInt, ThunderRoad",
+          "value": 2,
+          "useStarIcons": true,
+          "name": "FocusRegen"
+        }
+      ]
+    }
+  ],
+  "entityModules": []
 }

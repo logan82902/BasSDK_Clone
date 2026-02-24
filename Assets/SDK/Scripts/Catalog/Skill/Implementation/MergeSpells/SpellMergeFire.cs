@@ -4,101 +4,75 @@ using System.Collections.Generic;
 using ThunderRoad.Skill.Spell;
 using UnityEngine;
 using Random = UnityEngine.Random;
-
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
 
 namespace ThunderRoad.Skill.SpellMerge
 {
-	[Serializable]
+    [Serializable]
+    [DeclareBoxGroup("Meteor", Title = "Meteor")]
+    [DeclareBoxGroup("Status Effect", Title = "Status Effect")]
     public class SpellMergeFire : SpellMergeData
     {
-#if ODIN_INSPECTOR
-        [BoxGroup("Meteor"), ValueDropdown(nameof(GetAllEffectID))] 
-#endif
+        [Group("Meteor")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string meteorEffectId;
 
         protected EffectData meteorEffectData;
         [NonSerialized]
         public EffectData overrideMeteorEffect;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Meteor"), ValueDropdown(nameof(GetAllEffectID))] 
-#endif
+        [Group("Meteor")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string meteorExplosionEffectId;
 
         protected EffectData meteorExplosionEffectData;
         [NonSerialized]
         public EffectData overrideExplosionEffect;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Meteor"), ValueDropdown(nameof(GetAllItemID))] 
-#endif
+        [Group("Meteor")]
+        [Dropdown(nameof(GetAllItemID))]
         public string meteorItemId;
 
         protected ItemData meteorItemData;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Meteor")] 
-#endif
+        [Group("Meteor")]
         public float meteorVelocity = 7;
-        
-#if ODIN_INSPECTOR
-        [BoxGroup("Meteor")] 
-#endif
+
+        [Group("Meteor")]
         public bool meteorUseGravity = true;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Meteor")] 
-#endif
+        [Group("Meteor")]
         public float meteorExplosionForce = 20;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Meteor")] 
-#endif
+        [Group("Meteor")]
         public float meteorExplosionPlayerForce = 5f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Meteor")] 
-#endif
+        [Group("Meteor")]
         public float meteorExplosionDamage = 20;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Meteor")] 
-#endif
+        [Group("Meteor")]
         public float meteorExplosionPlayerDamage = 20;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Meteor")] 
-#endif
+        [Group("Meteor")]
         public float meteorExplosionRadius = 10;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Meteor")] 
-#endif
+        [Group("Meteor")]
         public LayerMask explosionLayerMask;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Meteor"), ValueDropdown(nameof(GetAllSpellID))] 
-#endif
+        [Group("Meteor")]
+        [Dropdown(nameof(GetAllSpellID))]
         public string meteorImbueSpellId;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Meteor")] 
-#endif
+        [Group("Meteor")]
         public AnimationCurve meteorIntensityCurve = AnimationCurve.EaseInOut(0, 0, 0.5f, 1);
-        
-        #if ODIN_INSPECTOR
-        [BoxGroup("Status Effect"), ValueDropdown(nameof(GetAllStatusEffectID))]
-        #endif
+
+        [Group("Status Effect")]
+        [Dropdown(nameof(GetAllStatusEffectID))]
         public string statusEffectId;
         [NonSerialized]
         public StatusData statusEffect;
-        
-        [BoxGroup("Status Effect")]
+
+        [Group("Status Effect")]
         public float statusDuration = 5;
 
         protected SpellCastProjectile fire;

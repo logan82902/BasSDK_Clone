@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using ThunderRoad.Skill;
 using ThunderRoad.Skill.SpellPower;
 using UnityEngine;
 using UnityEngine.Profiling;
@@ -10,16 +9,27 @@ using Random = UnityEngine.Random;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.AddressableAssets;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
-using TriInspector;
+#if UNITY_EDITOR
+using UnityEditor;
 #endif
+using TriInspector;
+using UnityEngine.UIElements;
 
 namespace ThunderRoad
 {
     [HelpURL("https://kospy.github.io/BasSDK/Components/ThunderRoad/Items/Item.html")]
     [AddComponentMenu("ThunderRoad/Items/Item")]
+    [DeclareTabGroup("Tabs")]
+    [DeclareBoxGroup("Tabs/General", Title = "General")]
+    [DeclareHorizontalGroup("Tabs/General/Handles")]
+    [DeclareHorizontalGroup("Tabs/General/WorldParenting")]
+    [DeclareBoxGroup("Tabs/Physics", Title = "Physics")]
+    [DeclareHorizontalGroup("Tabs/Physics/CustomCoM", Sizes = new float[] { 190f, 0f, 15f })]
+    [DeclareHorizontalGroup("Tabs/Physics/CustomInertia", Sizes = new float[] { 190f, 0f })]
+    [DeclareBoxGroup("Tabs/Storage", Title = "Storage")]
+    [DeclareBoxGroup("Tabs/Handling", Title = "Handling")]
+    [DeclareHorizontalGroup("Tabs/Handling/FlyBools")]
+    [DeclareHorizontalGroup("Tabs/Handling/FlySettings")]
     public class Item : ThunderEntity
     {
         public static List<Item> all = new List<Item>();
@@ -30,69 +40,143 @@ namespace ThunderRoad
         public static List<Item> allWorldAttached = new List<Item>();
         public static List<ItemContent> potentialLostItems = new List<ItemContent>(); //items that were destoyed but were not despawned to be returned to player stash if needed
 
-#if ODIN_INSPECTOR
-        public List<ValueDropdownItem<string>> GetAllItemID()
-        {
-            return Catalog.GetDropdownAllID(Category.Item);
-        }
+        public TriDropdownList<string> GetAllItemID() => Catalog.GetDropdownAllID(Category.Item);
 
-        [ValueDropdown(nameof(GetAllItemID), AppendNextDrawer = true)]
-#endif
+        [Dropdown(nameof(GetAllItemID), AppendToField = true)]
         [Tooltip("The Item ID of the item specified in the Catalog")]
+        [Group("Tabs/General"), Tab("General")]
         public string itemId;
-        [Tooltip("Specifies the Holder Point of the item. This specifies the position and rotation of the item when held in a holder, such as on player hips and back. The Z axis/blue arrow specifies towards the floor.")]
-#if ODIN_INSPECTOR        
-        [InlineButton(nameof(SetHolderPointToCenterOfMass), "To COM")]
-#endif        
-        public Transform holderPoint;
         [Tooltip("Specifies the spawn point of the item. This specifies the position and rotation of the item when spawned, it's mostly used for itemSpawner and spawning the item via an item book")]
+        [Group("Tabs/General"), Tab("General")]
         public Transform spawnPoint;
-        [Tooltip("Can add additional holderpoints for different interactables.\n \nFor Items on the Item Rack, the anchor must be named HolderRackTopAnchor, or alternatively for the bow rack, HolderRackTopAnchorBow, and HolderRackSideAnchor for Shield rack")]
-        public List<HolderPoint> additionalHolderPoints = new List<HolderPoint>();
         [Tooltip("Shows the point that AI will try to block with when they are holding the item.")]
+        [Group("Tabs/General"), Tab("General")]
         public Transform parryPoint;
-        [Tooltip("Specifies what handle is grabbed by default for the Right Hand")]
-        public Handle mainHandleRight;
         [Tooltip("Specifies what handle is grabbed by default for the Left Hand")]
+        [Group("Tabs/General/Handles"), Tab("General")]
+        [AutoLabelWidth(AddedWidth = 2f)]
         public Handle mainHandleLeft;
-        [Tooltip("Used to point in direction when thrown.\nZ-Axis/Blue Arrow points forwards.")]
-        public Transform flyDirRef;
+        [Tooltip("Specifies what handle is grabbed by default for the Right Hand")]
+        [Group("Tabs/General/Handles"), Tab("General")]
+        [AutoLabelWidth(AddedWidth = 2f)]
+        public Handle mainHandleRight;
         [Tooltip("States the Preview for the item.")]
+        [Group("Tabs/General"), Tab("General")]
         public Preview preview;
+        [Group("Tabs/General"), Tab("General")]
+        public AudioSource audioSource;
+        [Group("Tabs/General"), Tab("General")]
+        public float snapPitchRange = 0.05f;
+        [Tooltip("If ticked, this item won't despawn. Tick at your own risk!")]
+        [Group("Tabs/General/WorldParenting"), Tab("General")]
+        [AutoLabelWidth(AddedWidth = 2f)]
+        public bool DisallowDespawn;
         [Tooltip("Tick if the item is attached to the world and not spawned via item spawner or item book.")]
+        [Group("Tabs/General/WorldParenting"), Tab("General")]
+        [AutoLabelWidth(AddedWidth = 2f)]
         public bool worldAttached;
         [Tooltip("Tick if the item should keep its parent when it loads into the scene.")]
+        [Group("Tabs/General/WorldParenting"), Tab("General")]
+        [AutoLabelWidth(AddedWidth = 2f)]
         public bool keepParent;
+        [Tooltip("Forces layer of mesh when an item is spawned.\n\n(Items will have their layer automatically applied when spawned, unless this is set)")]
+        [Group("Tabs/General"), Tab("General")]
+        public int forceMeshLayer = -1;
+        [Tooltip("Allows a custom reference to be able to reference specific gameobjects and scripts in External code.")]
+        [Group("Tabs/General"), Tab("General")]
+        public List<CustomReference> customReferences = new();
+
+        [Tooltip("Specifies the Holder Point of the item. This specifies the position and rotation of the item when held in a holder, such as on player hips and back. The Z axis/blue arrow specifies towards the floor.")]
+        [InlineButton(nameof(SetHolderPointToCenterOfMass), "To COM")]
+        [Group("Tabs/Storage"), Tab("General")]
+        public Transform holderPoint;
+        [Tooltip("Can add additional holderpoints for different interactables.\n \nFor Items on the Item Rack, the anchor must be named HolderRackTopAnchor, or alternatively for the bow rack, HolderRackTopAnchorBow, and HolderRackSideAnchor for Shield rack")]
+        [Group("Tabs/Storage"), Tab("General")]
+        public List<HolderPoint> additionalHolderPoints = new();
+        [Header("Holder")]
+        [Group("Tabs/Storage"), Tab("General")]
+        public List<ItemData.CustomSnap> customSnaps = new();
+        [Group("Tabs/Storage"), Tab("General")]
+        public AudioContainer audioContainerSnap;
+        [Group("Tabs/Storage"), Tab("General")]
+        public AudioContainer audioContainerInventory;
+
         [Tooltip("Radius to depict how close this item needs to be to a creature before the creatures' collision is enabled.")]
+        [Group("Tabs/Physics"), Tab("General")]
         public float creaturePhysicToggleRadius = 2;
         [Tooltip("Allows user to adjust the center of mass on an object.\nIf unticked, this is automatically adjusted. When ticked, adds a custom gizmo to adjust.\n \nUse this if weight on the item is acting strange.")]
+        [Group("Tabs/Physics/CustomCoM"), Tab("General")]
+        [LabelWidth(175f)]
         public bool useCustomCenterOfMass;
         [Tooltip("Position of Center of Mass (if ticked)")]
+        [Group("Tabs/Physics/CustomCoM"), Tab("General")]
+        [EnableIf(nameof(useCustomCenterOfMass))]
+        [HideLabel]
+#if UNITY_EDITOR
+        [InlineButton(nameof(ToggleCenterOfMassHandle))]
+#endif
         public Vector3 customCenterOfMass;
+#if UNITY_EDITOR
+        [NonSerialized]
+        [ShowInInspector]
+        [Group("Tabs/Physics/CustomCoM"), Tab("General")]
+        [HideLabel]
+        [ReadOnly]
+        public bool showCoMHandle = false;
+
+        public void ToggleCenterOfMassHandle() => showCoMHandle = !showCoMHandle;
+#endif
         [Tooltip("Used for balance adjustment on a weapon.\n \nUse this if swinging weapons are strange. Adjust the Capsule collider to the width of the weapon.")]
+        [Group("Tabs/Physics/CustomInertia"), Tab("General")]
+        [LabelWidth(175f)]
         public bool customInertiaTensor;
         [Tooltip("Collider of the Custom Inertia Tensor")]
+        [Group("Tabs/Physics/CustomInertia"), Tab("General")]
+        [EnableIf(nameof(customInertiaTensor))]
+        [HideLabel]
         public CapsuleCollider customInertiaTensorCollider;
-        [Tooltip("Allows a custom reference to be able to reference specific gameobjects and scripts in External code.")]
-        public List<CustomReference> customReferences = new List<CustomReference>();
+        [Tooltip("Oriented bounding box")]
+        [Group("Tabs/Physics"), Tab("General")]
+        public Transform obbPoint;
+        [Tooltip("World Oriented transforms for a bounding box around the item.")]
+        [Group("Tabs/Physics"), Tab("General")]
+        [SerializeField]
+        public Transform[] orientedBoundsPoints;
+
+        [Title("Throw/Fly")]
+        [Tooltip("Used to point in direction when thrown.\nZ-Axis/Blue Arrow points forwards.")]
+        [Group("Tabs/Handling"), Tab("General")]
+        [AutoLabelWidth]
+        public Transform flyDirRef;
         [Tooltip("When ticked, item is automatically set as \"Thrown\" when spawned.")]
+        [Group("Tabs/Handling/FlyBools"), Tab("General")]
         public bool forceThrown;
+        [Tooltip("When ticked, item is automatically set as \"Thrown\" when spawned.")]
+        [Group("Tabs/Handling/FlyBools"), Tab("General")]
+        public bool flyFromThrow;
+        [Tooltip("Speed of which the item rotates when thrown")]
+        [Group("Tabs/Handling/FlySettings"), Tab("General")]
+        public float flyRotationSpeed = 2;
+        [Tooltip("Angle offset of the z-axis arrow when thrown.")]
+        [Group("Tabs/Handling/FlySettings"), Tab("General")]
+        public float flyThrowAngle = 0;
+        [Title("Telekinesis")]
+        [Group("Tabs/Handling"), Tab("General")]
+        public float distantGrabSafeDistance = 1;
+        [Group("Tabs/Handling"), Tab("General")]
+        public bool distantGrabSpinEnabled = true;
+        [Group("Tabs/Handling"), Tab("General")]
+        public float distantGrabThrowRatio = 1;
 
-        [Tooltip("Forces layer of mesh when an item is spawned.\n\n(Items will have their layer automatically applied when spawned, unless this is set)")]
-        public int forceMeshLayer = -1;
 
-        [Tooltip("Determines the owner of the item. This is generally set at runtime to work with the shop and buying items.")]
-        public Owner owner { get { return _owner; } }
-#if ODIN_INSPECTOR
+        public Owner owner => _owner;
+        [Group("Tabs"), Tab("Runtime")]
         [ShowInInspector]
-#endif
         private Owner _owner;
 
-
+        [Group("Tabs"), Tab("Runtime")]
         [NonSerialized]
-#if ODIN_INSPECTOR
         [ShowInInspector]
-#endif
         public bool isUsed = true;
 
         public enum Owner
@@ -101,7 +185,7 @@ namespace ThunderRoad
             Player,
             Shopkeeper,
         }
-
+        
         [NonSerialized]
         public List<Renderer> renderers = new List<Renderer>();
         [NonSerialized]
@@ -121,15 +205,14 @@ namespace ThunderRoad
         public List<WhooshPoint> whooshPoints = new List<WhooshPoint>();
         [HideInInspector]
         public LightVolumeReceiver lightVolumeReceiver;
-        public AudioSource audioSource;
         [NonSerialized]
         public List<CollisionHandler> collisionHandlers = new List<CollisionHandler>();
         [NonSerialized]
         public List<Handle> handles = new List<Handle>();
         [NonSerialized]
-#if ODIN_INSPECTOR
-        [ShowInInspector, ReadOnly]
-#endif
+        [ShowInInspector]
+        [Group("Tabs"), Tab("Runtime")]
+        [ReadOnly]
         public PhysicBody physicBody;
         [NonSerialized]
         public Breakable breakable;
@@ -148,22 +231,32 @@ namespace ThunderRoad
         public bool hasMetal;
         [NonSerialized]
         public List<ColliderGroup> metalColliderGroups;
-
+        [NonSerialized]
+        public Vector3 centreOfBuoyancy;
+        [NonSerialized]
+        public float submergedVolume;
+        [NonSerialized]
+        public float submergedPhysicVolume;
+        
         [NonSerialized]
         public FloatHandler sliceAngleMultiplier;
+        [NonSerialized]
         public FloatHandler damageMultiplier;
+        [NonSerialized]
         public IntAddHandler pushLevelMultiplier;
 
-#if ODIN_INSPECTOR
         [ShowInInspector]
-#endif
+        [Group("Tabs"), Tab("Runtime")]
         [NonSerialized]
         public Container linkedContainer;
-#if ODIN_INSPECTOR
         [ShowInInspector]
-#endif
+        [Group("Tabs"), Tab("Runtime")]
         [NonSerialized]
         public List<ContentCustomData> contentCustomData;
+
+        [Tooltip("The real geometric volume of the item used for water submersion calculations. Calculated from the prefabs Oriented Bounding Box")]
+        [ReadOnly]
+        public float itemVolume = 0;
 
 
         [Serializable]
@@ -191,17 +284,14 @@ namespace ThunderRoad
         }
 
 
-        [Button]
         public void AddNonStorableModifierInvokable(UnityEngine.Object handler)
         {
         }
 
-        [Button]
         public void RemoveNonStorableModifierInvokable(UnityEngine.Object handler)
         {
         }
 
-        [Button]
         public void ClearNonStorableModifiers()
         {
         }
@@ -216,13 +306,171 @@ namespace ThunderRoad
 
             if (!this.InPrefabScene())
                 return;
-#endif            
+#endif      
             if (!gameObject.activeInHierarchy)
                 return;
+            
             SetupDefaultComponents();
+            
+        }
+        
+#if UNITY_EDITOR
+        private float CalculateOBBVolume(Transform[] orientedBoundsPoints)
+        {
+            if (orientedBoundsPoints == null || orientedBoundsPoints.Length != 8)
+                return 0f;
+
+            // Get the 8 corner positions
+            Vector3[] pts = new Vector3[8];
+            for (int i = 0; i < 8; i++)
+                pts[i] = orientedBoundsPoints[i].position;
+
+            // Calculate the three edge vectors from point 0
+            // Bottom face: 0->1, 0->3, 0->4
+            Vector3 width = pts[1] - pts[0]; // X-axis
+            Vector3 depth = pts[3] - pts[0]; // Z-axis  
+            Vector3 height = pts[4] - pts[0]; // Y-axis
+
+            // Volume = |width| * |depth| * |height| for axis-aligned
+            // For oriented box: use scalar triple product to handle rotation
+            float volume = Mathf.Abs(Vector3.Dot(Vector3.Cross(width, depth), height));
+
+            return volume;
+        }
+        
+        [Button]
+        public void SetupBoundsPoints()
+        {
+            var root = GetItemRoot();
+            if (root == null)
+            {
+                Debug.LogError("Root object not found.");
+                return;
+            }
+
+            // Get all colliders in children (excluding inertia tensor colliders)
+            Collider[] colliders = root.GetComponentsInChildren<Collider>(true);
+            List<Collider> inertiaTensorColliders = new List<Collider>();
+            Item[] items = root.GetComponentsInChildren<Item>(true);
+            foreach (var item in items)
+            {
+                if (item.customInertiaTensor && item.customInertiaTensorCollider != null)
+                    inertiaTensorColliders.Add(item.customInertiaTensorCollider);
+            }
+
+            if (colliders.Length == 0)
+            {
+                Debug.LogWarning($"[DefaultComponents] No colliders found under {root.name}");
+                return;
+            }
+
+            // --- Step 1: Compute combined bounds in LOCAL SPACE ---
+            bool started = false;
+            Bounds localBounds = new Bounds();
+            Matrix4x4 worldToLocal = root.transform.worldToLocalMatrix;
+
+            foreach (var col in colliders)
+            {
+                if (inertiaTensorColliders.Contains(col))
+                    continue;
+
+                Bounds worldBounds = col.bounds;
+                Vector3 min = worldBounds.min;
+                Vector3 max = worldBounds.max;
+
+                // Convert all 8 corners to local space and encapsulate
+                for (int x = 0; x <= 1; x++)
+                for (int y = 0; y <= 1; y++)
+                for (int z = 0; z <= 1; z++)
+                {
+                    Vector3 corner = new Vector3(
+                        x == 0 ? min.x : max.x,
+                        y == 0 ? min.y : max.y,
+                        z == 0 ? min.z : max.z
+                    );
+                    Vector3 localCorner = worldToLocal.MultiplyPoint3x4(corner);
+                    if (!started)
+                    {
+                        localBounds = new Bounds(localCorner, Vector3.zero);
+                        started = true;
+                    }
+                    else
+                    {
+                        localBounds.Encapsulate(localCorner);
+                    }
+                }
+            }
+
+            // --- Step 2: Ensure there’s an OBB holder GameObject ---
+            if (!obbPoint)
+            {
+                obbPoint = root.Find("obb");
+                if (!obbPoint)
+                {
+                    Debug.LogWarning($"[DefaultComponents] Adding obbPoint to {this.itemId}");
+                    obbPoint = new GameObject("obb").transform;
+                    obbPoint.SetParent(root, false);
+                }
+            }
+            
+            // Reset transform so it inherits root orientation properly
+            obbPoint.localPosition = Vector3.zero;
+            obbPoint.localRotation = Quaternion.identity;
+            obbPoint.localScale = Vector3.one;
+
+            // Step 4: Create or update point transforms
+            if (orientedBoundsPoints == null || orientedBoundsPoints.Length != 8)
+                orientedBoundsPoints = new Transform[8];
+            Vector3 localMin = localBounds.min;
+            Vector3 localMax = localBounds.max;
+            
+            for (int i = 0; i < 8; i++)
+            {
+                Transform point = orientedBoundsPoints[i];
+                if (point == null)
+                {
+                    GameObject p = new GameObject($"obb{i+1}");
+                    point = p.transform;
+                    point.SetParent(obbPoint, false);
+                    orientedBoundsPoints[i] = point;
+                }
+
+                // Step 5: Assign local positions (not world!)
+                point.localPosition = i switch
+                {
+                    0 => new Vector3(localMin.x, localMin.y, localMin.z),
+                    1 => new Vector3(localMax.x, localMin.y, localMin.z),
+                    2 => new Vector3(localMax.x, localMin.y, localMax.z),
+                    3 => new Vector3(localMin.x, localMin.y, localMax.z),
+                    4 => new Vector3(localMin.x, localMax.y, localMin.z),
+                    5 => new Vector3(localMax.x, localMax.y, localMin.z),
+                    6 => new Vector3(localMax.x, localMax.y, localMax.z),
+                    7 => new Vector3(localMin.x, localMax.y, localMax.z),
+                    _ => Vector3.zero
+                };
+                orientedBoundsPoints[i] = point;
+            }
+            itemVolume = CalculateOBBVolume(orientedBoundsPoints);
+        }
+#endif
+
+        /// <summary>
+        /// Get the root transform to use to search for child components for this item. Takes into account breakables
+        /// </summary>
+        /// <returns></returns>
+        public Transform GetItemRoot()
+        {
+            //The root to use to search for child components
+            Transform root = this.transform;
+            //If this is a breakable item, the unbreakable parts handles/whooshpoints etc will be under the unbrokenObjectHolder. Otherwise its just under this item
+            if (this.TryGetComponent(out Breakable breakableComponent))
+            {
+                root = breakableComponent.unbrokenObjectsHolder.transform;
+            }
+            return root;
         }
 
-
+        [Group("Tabs/General"), Tab("General")]
         [Button]
         public void SetupDefaultComponents()
         {
@@ -335,11 +583,31 @@ namespace ThunderRoad
                 customInertiaTensorCollider.isTrigger = true;
                 customInertiaTensorCollider.gameObject.layer = 2;
             }
-            if (!this.TryGetComponent<LightVolumeReceiver>(out lightVolumeReceiver))
+            if (!this.TryGetComponent(out lightVolumeReceiver))
                 lightVolumeReceiver = this.gameObject.AddComponent<LightVolumeReceiver>();
-            if (!audioSource)
+            //get all the audiosources on this gameobject, if theres more than 1 warn
+            var audioSources = this.GetComponents<AudioSource>();
+            if (audioSources.Length > 1)
+            {
+                Debug.LogWarning($"[DefaultComponents] More than 1 AudioSource found on {this.itemId}, using the first one.");
+                audioSource = audioSources[0];
+            }
+            if (!this.TryGetComponent(out audioSource))
                 audioSource = gameObject.AddComponent<AudioSource>();
+            
+            //Find all the Breakable components and enable the Broken Objects holder so the generation works
+            var breakableChildren = this.gameObject.GetComponentsInChildren<Breakable>(true);
+            var breakableParents = this.gameObject.GetComponentsInParent<Breakable>(true);
+#if UNITY_EDITOR
+            foreach (var prefabBreakable in breakableChildren) prefabBreakable.brokenObjectsHolder?.SetActive(true);
+            foreach (var prefabBreakable in breakableParents) prefabBreakable.brokenObjectsHolder?.SetActive(true);
+            SetupBoundsPoints(); // this cant be done at runtime
+#endif
+            // disable the broken objects holder again
+            foreach (var prefabBreakable in breakableChildren) prefabBreakable.brokenObjectsHolder?.SetActive(false);
+            foreach (var prefabBreakable in breakableParents) prefabBreakable.brokenObjectsHolder?.SetActive(false);
         }
+        
 #if UNITY_EDITOR
         public static void DrawGizmoArrow(Vector3 pos, Vector3 direction, Vector3 upwards, Color color, float arrowHeadLength = 0.25f, float arrowHeadAngle = 20.0f)
         {
@@ -353,6 +621,26 @@ namespace ThunderRoad
 
         protected virtual void OnDrawGizmosSelected()
         {
+
+
+            //draw lines between the oriented bounds points
+            Gizmos.color = Color.yellow;
+            for (int i = 0; i < orientedBoundsPoints.Length; i++)
+            {
+                //skip if null
+                if (orientedBoundsPoints[i] == null) continue;
+                for (int j = 0; j < orientedBoundsPoints.Length; j++)
+                {
+                    //skip self
+                    if (i == j) continue;
+                    //draw line between points
+                    Gizmos.DrawLine(orientedBoundsPoints[i].position, orientedBoundsPoints[j].position);
+                }
+            }
+            
+            Gizmos.color = Color.cyan;
+            Gizmos.DrawSphere(centreOfBuoyancy, 0.05f);
+            
             PhysicBody physicBodyInParent = gameObject.GetPhysicBodyInParent();
             if (physicBodyInParent != null)
                 Gizmos.DrawWireSphere(transform.TransformPoint(physicBodyInParent.centerOfMass), 0.01f);
@@ -374,12 +662,10 @@ namespace ThunderRoad
 #endif
 
 
-        [Button]
         public void SwapWith(string itemID)
         {
         }
 
-        [Button]
         public void ForceUngrabAll()
         {
         }
@@ -435,13 +721,11 @@ namespace ThunderRoad
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         // Keep these method signatures outside so modders can call these events using Unity events
-        [Button]
         public void Despawn(float delay)
         {
         }
 
         [ContextMenu("Despawn")]
-        [Button]
         public override void Despawn()
         {
         }
@@ -499,15 +783,14 @@ namespace ThunderRoad
         }
 
 #if UNITY_EDITOR
-#if ODIN_INSPECTOR
         [Button]
+        [Group("Tabs/General"), Tab("General")]
         public void AlignTransforms(Transform transformA, Transform transformB)
         {
             Transform childTransform = transformA.GetComponentInParent<Item>() == this ? transformA : transformB;
             Transform otherTransform = childTransform == transformA ? transformB : transformA;
             childTransform.SetPositionAndRotation(otherTransform.position, otherTransform.rotation);
         }
-#endif
 #endif
 
         /// <summary>
@@ -522,29 +805,5 @@ namespace ThunderRoad
         {
         }
     }
-
-
-#if UNITY_EDITOR
-
-    public class ItemPostprocessor : UnityEditor.AssetPostprocessor
-    {
-        private void OnPostprocessPrefab(GameObject gameObject)
-        {
-
-
-            if (!gameObject.TryGetComponent<Item>(out Item item))
-                return;
-
-            Debug.Log("AP: ItemPostprocessor: OnPostprocessPrefab: " + gameObject.name);
-
-            if (!item.spawnPoint)
-                item.spawnPoint = item.transform.Find("SpawnPoint");
-            if (!item.spawnPoint)
-            {
-                item.spawnPoint = new GameObject("SpawnPoint").transform;
-                item.spawnPoint.SetParent(item.transform, false);
-            }
-        }
-    }
-#endif
+    
 }

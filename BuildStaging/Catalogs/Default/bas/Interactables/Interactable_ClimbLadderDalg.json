@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 3,
+  "groupPath": null,
   "disableOnStart": false,
   "rotateAroundAxis": false,
   "forceHoldGripToGrab": true,
@@ -63,6 +64,5 @@
   "referencePoint": "Grip",
   "localizationId": "Ladder",
   "highlightDefaultTitle": "Ladder",
-  "highlightDefaultDesignation": "",
-  "groupPath": null
+  "highlightDefaultDesignation": ""
 }

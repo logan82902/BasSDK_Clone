@@ -3,14 +3,13 @@ using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
+    [System.Serializable]
+    [AutoLabelWidth(AddedWidth = 5f, MinWidth = 0f)]
     public class BrainModuleFear : BrainData.Module
     {
         public bool receiving = true;
@@ -19,18 +18,17 @@ namespace ThunderRoad
         public string cowerAnimationID = "HumanCower";
 
         [NonSerialized]
+        [JsonIgnore]
         public AnimationData cowerAnimation;
         [JsonIgnore]
         public bool isCowering => Time.time <= cowerEndTime;
         [NonSerialized]
-#if ODIN_INSPECTOR
-        [ShowInInspector, ReadOnly]
-#endif
+        [ShowInInspector]
+        [ReadOnly]
         public float cowerEndTime = -1f;
         [NonSerialized]
-#if ODIN_INSPECTOR
-        [ShowInInspector, ReadOnly]
-#endif
+        [ShowInInspector]
+        [ReadOnly]
         public float endPanicBrainActiveTime = -1f;
 
     }

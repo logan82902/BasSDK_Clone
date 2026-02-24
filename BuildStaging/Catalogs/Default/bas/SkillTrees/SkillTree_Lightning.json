@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
+  "groupPath": null,
   "localizationGroupID": "Skills",
   "displayName": "{Lightning}",
   "description": "{LightningPathDescription}",
@@ -31,5 +32,9 @@
   "videoAddress": "Bas.Video.Infuser.Lightning",
   "iconEnabledAddress": "Bas.Ui.SkillTree.Icons[Lightning_ButtonColor]",
   "iconDisabledAddress": "Bas.Ui.SkillTree.Icons[Lightning_Button]",
-  "groupPath": null
+  "tierBlockers": [
+    "Lightning",
+    "ChargeSapping",
+    "LightningMerge"
+  ]
 }

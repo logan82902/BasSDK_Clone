@@ -2,26 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Collections;
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
 	public class EffectSpawner : MonoBehaviour
     {
-#if ODIN_INSPECTOR
-        [ValueDropdown(nameof(GetAllEffectID))]
-#endif
+        [Dropdown(nameof(GetAllEffectID))]
         public string effectId;
 
         public bool autoIntensity;
-#if ODIN_INSPECTOR
         [ShowIf("autoIntensity")]
-#endif
-        public AnimationCurve intensityCurve = new AnimationCurve(new Keyframe(0, 0), new Keyframe(1, 1));
+        public AnimationCurve intensityCurve = new(new Keyframe(0, 0), new Keyframe(1, 1));
         protected float playTime;
 
         public bool spawnOnStart = true;
@@ -50,15 +42,10 @@ namespace ThunderRoad
 #pragma warning disable 0109 // unity this.collider is obsolete
         public new Collider collider;
 #pragma warning restore 0109
-        
-        
-#if ODIN_INSPECTOR
-        public List<ValueDropdownItem<string>> GetAllEffectID()
-        {
-            return Catalog.GetDropdownAllID(Category.Effect);
-        }
-#endif
-        
+
+
+        public TriDropdownList<string> GetAllEffectID() => Catalog.GetDropdownAllID(Category.Effect);
+
  // ProjectCore
         
         [Button]

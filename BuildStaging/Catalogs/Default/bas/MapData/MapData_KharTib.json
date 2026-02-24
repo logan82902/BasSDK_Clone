@@ -1,0 +1,25 @@
+{
+  "$type": "ThunderRoad.MapData, ThunderRoad",
+  "id": "KharTib",
+  "sensitiveContent": "None",
+  "sensitiveFilterBehaviour": "Discard",
+  "version": 0,
+  "groupPath": null,
+  "worldmapPrefabAddress": "Bas.Image.Map.Default",
+  "worldmapTextureAddress": "Bas.Worldmap.KharTib",
+  "worldmapLocalisationId": "KharTibMap",
+  "bookmarkIconAddress": "Bas.Icon.Location.KharTib",
+  "bookmarkColor": {
+    "r": 0.807843149,
+    "g": 0.5647059,
+    "b": 0.298039228,
+    "a": 1.0
+  },
+  "iconColor": {
+    "r": 0.1254902,
+    "g": 0.1254902,
+    "b": 0.1254902,
+    "a": 1.0
+  },
+  "order": 4
+}

@@ -1,0 +1,25 @@
+{
+  "$type": "ThunderRoad.BundleData, ThunderRoad",
+  "id": "ArmorWarMage",
+  "sensitiveContent": "None",
+  "sensitiveFilterBehaviour": "Discard",
+  "version": 0,
+  "groupPath": "Armor",
+  "localizationGroup": "Bundles",
+  "displayName": "BundleArmorWarMageName",
+  "description": null,
+  "altDescriptionTitle": "ContentsTitle",
+  "isArmorBundle": true,
+  "bundleItemId": "Bundle",
+  "items": [
+    "ApparelWarMageFeet",
+    "ApparelWarMageLegs",
+    "ApparelWarMageChest",
+    "ApparelWarMageHandL",
+    "ApparelWarMageHandR",
+    "ApparelWarMageHeadShoulders"
+  ],
+  "skills": [],
+  "lootTables": [],
+  "spriteAddress": "Ui.Icon.Unknown"
+}

@@ -1,49 +1,34 @@
-﻿
-using System;
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#endif
+﻿using System;
+using TriInspector;
 using UnityEngine;
 
 namespace ThunderRoad.Skill.Spell
 {
+    [DeclareBoxGroup("Conditions", Title = "Conditions")]
+    [DeclareBoxGroup("Ignition", Title = "Ignition")]
     public class SkillRevengeIgnition : SkillData
     {
         public static bool loaded = false;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Conditions")]
-#endif
+        [Group("Conditions")]
         public bool ignoreMagic = true;
-#if ODIN_INSPECTOR
-        [BoxGroup("Conditions")]
-#endif
+        [Group("Conditions")]
         public bool meleeOnly = true;
-#if ODIN_INSPECTOR
-        [BoxGroup("Conditions")]
-#endif
+        [Group("Conditions")]
         public float triggerMinDamage = 0f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Ignition"), ValueDropdown(nameof(GetAllStatusEffectID))]
-#endif
+        [Group("Ignition")]
+        [Dropdown(nameof(GetAllStatusEffectID))]
         public string burnEffectID = "Burning";
 
         public StatusData burnEffect;
-#if ODIN_INSPECTOR
-        [BoxGroup("Ignition")]
-#endif
+        [Group("Ignition")]
         public float burnTime = 3f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Ignition")]
-#endif
+        [Group("Ignition")]
         public float heatAmount = 20f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Ignition")]
-#endif
+        [Group("Ignition")]
         public float burstDamage = 5f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Ignition"), ValueDropdown(nameof(GetAllEffectID))]
-#endif
+        [Group("Ignition")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string burstEffectID;
 
         [NonSerialized]

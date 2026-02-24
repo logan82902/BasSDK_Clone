@@ -1,16 +1,19 @@
 ﻿using UnityEngine;
 using System;
 using ThunderRoad.Skill.SpellPower;
-
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
 
 namespace ThunderRoad.AI.Get
 {
-	public class GetGrabber : ActionNode
+    [DeclareBoxGroup("Options", Title = "Options")]
+    [DeclareHorizontalGroup("Options/Horiz")]
+    [DeclareHorizontalGroup("Options/Horiz2")]
+    [DeclareHorizontalGroup("Options/Horiz3")]
+    [DeclareHorizontalGroup("Options/Horiz4")]
+    [DeclareBoxGroup("Outputs", Title = "Outputs")]
+    [DeclareHorizontalGroup("Outputs/Horiz", Sizes = new float[] { 215f, 0f })]
+    [AutoLabelWidth(AddedWidth = 5f, MinWidth = 0f)]
+    public class GetGrabber : ActionNode
     {
         [Flags]
         public enum HandleOptions
@@ -37,31 +40,31 @@ namespace ThunderRoad.AI.Get
         }
 
         public Faction factionCondition = Faction.OnlyEnemy;
-#if ODIN_INSPECTOR
-        [BoxGroup("Options"), HorizontalGroup("Options/Horiz"), LabelWidth(200)] 
-#endif
+        [Group("Options/Horiz")]
+        [LabelWidth(200)]
         public bool anyHandle = true;
-#if ODIN_INSPECTOR
-        [BoxGroup("Options"), HorizontalGroup("Options/Horiz2"), LabelWidth(200), DisableIf("anyHandle", optionalValue: true)] 
-#endif
+        [Group("Options/Horiz2")]
+        [LabelWidth(200)]
+        [DisableIf("anyHandle", true)]
         public HandleOptions handleSpecifiers = HandleOptions.SpecificHandle;
-#if ODIN_INSPECTOR
-        [BoxGroup("Options"), HorizontalGroup("Options/Horiz3"), LabelWidth(200), DisableIf("anyHandle", optionalValue: true), EnableIf("handleSpecifiers", optionalValue: HandleOptions.SpecificHandle)] 
-#endif
+        [Group("Options/Horiz3")]
+        [LabelWidth(200)]
+        [DisableIf("anyHandle", true)]
+        [EnableIf(nameof(handleSpecifiers), HandleOptions.SpecificHandle)]
         public string handleName = "None";
-#if ODIN_INSPECTOR
-        [BoxGroup("Options"), HorizontalGroup("Options/Horiz4"), LabelWidth(200)] 
-#endif
+        [Group("Options/Horiz4")]
+        [LabelWidth(200)]
         public FromDirection fromDirection = FromDirection.Either;
         public float rememberDuration = 20f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Outputs"), HorizontalGroup("Outputs/Horiz", MinWidth = 300), LabelWidth(200)] 
-#endif
+        [Group("Outputs/Horiz")]
+        [LabelWidth(200)]
         public bool outputCreatureAsCurrentTarget = true;
-#if ODIN_INSPECTOR
-        [BoxGroup("Outputs"), HorizontalGroup("Outputs/Horiz"), LabelWidth(200), DisableIf("outputCreatureAsCurrentTarget")] 
-#endif
+        [Group("Outputs/Horiz")]
+        [LabelWidth(200)]
+        [DisableIf(nameof(outputCreatureAsCurrentTarget))]
         public string outputCreatureVariableName = "";
+
+        public GetGrabber() { }
 
     }
 }

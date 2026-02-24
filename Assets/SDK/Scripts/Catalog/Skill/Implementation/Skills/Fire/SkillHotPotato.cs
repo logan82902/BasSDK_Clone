@@ -1,18 +1,14 @@
-﻿#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
-using TriInspector;
-#endif
+﻿using TriInspector;
 
 namespace ThunderRoad.Skill.Spell
 {
+    [DeclareBoxGroup("Status", Title = "Status")]
     public class SkillHotPotato : SkillHeldImbue
     {
-        [BoxGroup("Status")]
+        [Group("Status")]
         public float speedMultiplier = 1.5f;
-        #if ODIN_INSPECTOR
-        [BoxGroup("Status"), ValueDropdown(nameof(GetAllStatusEffectID))]
-        #endif
+        [Group("Status")]
+        [Dropdown(nameof(GetAllStatusEffectID))]
         public string statusEffectId;
         public StatusData statusEffect;
 

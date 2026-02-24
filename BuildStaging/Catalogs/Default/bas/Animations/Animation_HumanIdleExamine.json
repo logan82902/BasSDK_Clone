@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
+  "groupPath": null,
   "animationClips": [
     {
       "$type": "ThunderRoad.AnimationData+Clip, ThunderRoad",
@@ -16,6 +17,5 @@
     }
   ],
   "useDeathCurve": true,
-  "allowRootMotion": false,
-  "groupPath": null
+  "allowRootMotion": false
 }

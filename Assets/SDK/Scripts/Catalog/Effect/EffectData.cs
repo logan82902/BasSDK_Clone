@@ -3,45 +3,51 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
+#if UNITY_EDITOR
+    [EditorLoadPriority(-5)]
+#endif
+    [DeclareBoxGroup("Group", Title = "Group")]
+    [DeclareBoxGroup("Audio", Title = "Audio")]
+    [DeclareBoxGroup("Effects", Title = "Effects")]
     public class EffectData : CatalogData
     {
-#if ODIN_INSPECTOR
-        [BoxGroup("Group"), ValueDropdown(nameof(GetAllEffectGroupID))]
-#endif
+        [Group("Group")]
+        [Dropdown(nameof(GetAllEffectGroupID))]
         public string groupId;
-#if ODIN_INSPECTOR
-        [BoxGroup("Group")]
-#endif
+        [Group("Group")]
         [NonSerialized]
         public EffectGroupData effectGroupData;
-#if ODIN_INSPECTOR
-        [BoxGroup("Group"), ShowInInspector, InlineButton("RefreshGroupParents")]
-#endif
+        [Group("Group")]
+        [ShowInInspector]
+        [InlineButton(nameof(RefreshGroupParents))]
         [NonSerialized]
         public List<EffectGroupData> groupParents;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Audio")]
-#endif
+        [Group("Audio")]
         public float volumeDb = 0;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Effects"), ShowInInspector]
-#endif
-        public List<EffectModule> modules = new List<EffectModule>();
+        [Group("Effects")]
+        [ShowInInspector]
+        [ListDrawerSettings(DontForceInline = true)]
+        [ReadOnlyReferencePicker]
+        [ReferencePickerScriptButton]
+        public List<EffectModule> modules = new();
 
-#if ODIN_INSPECTOR
-        public List<ValueDropdownItem<string>> GetAllEffectGroupID()
+        public TriDropdownList<string> GetAllEffectGroupID() => Catalog.GetDropdownAllID(Category.EffectGroup);
+
+#if UNITY_EDITOR
+        public override string GetCatalogPath()
         {
-            return Catalog.GetDropdownAllID(Category.EffectGroup);
+            string categoryName = Catalog.GetCategory(GetType()).ToString();
+            if (categoryName.ToLowerInvariant()[^1] == 's') categoryName += "e";
+            string result = $"{categoryName}s/{groupId}";
+            if (!groupPath.IsNullOrEmptyOrWhitespace()) result += $"/{groupPath}";
+            if (result[result.Length - 1] == '/') result = result.Substring(0, result.Length - 1);
+            return result;
         }
 #endif
 

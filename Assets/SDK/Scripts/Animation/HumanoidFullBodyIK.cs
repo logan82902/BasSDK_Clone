@@ -8,6 +8,8 @@ namespace ThunderRoad
 {
 	public class HumanoidFullBodyIK : ThunderBehaviour
 	{
+		
+		
 		public Vector3 lookAtPoint;
 		public Transform lookAtTarget;
 

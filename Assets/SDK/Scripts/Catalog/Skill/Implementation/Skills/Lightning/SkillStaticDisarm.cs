@@ -1,20 +1,16 @@
 ﻿using System.Collections.Generic;
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#endif
+
 using UnityEngine;
+using TriInspector;
 
 namespace ThunderRoad.Skill.Spell
 {
+    [DeclareBoxGroup("Bolts", Title = "Bolts")]
     public class SkillStaticDisarm : SpellSkillData
     {
-#if ODIN_INSPECTOR
-        [BoxGroup("Bolts")] 
-#endif
+        [Group("Bolts")]
         public float disarmChanceNPC = 0.8f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Bolts")] 
-#endif
+        [Group("Bolts")]
         public float disarmChancePlayer = 0.3f;
 
     }

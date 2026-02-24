@@ -4,14 +4,15 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
+  "groupPath": null,
   "baseSlowMult": 0.2,
   "type": "ThunderRoad.Slowed, ThunderRoad, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
   "bypassImmunity": 0,
+  "ignoreClearByType": false,
   "stackType": "Refresh",
   "forceAllowOnCreatures": true,
   "allowOnItems": true,
   "creatureEffectId": "Slowed",
   "itemEffectId": null,
-  "groupPath": null,
   "StackTypeDescription": "Refreshes the duration every time you apply a status."
 }

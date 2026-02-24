@@ -1,7 +1,12 @@
-﻿namespace ThunderRoad.AI.Decorator
+﻿using TriInspector;
+
+namespace ThunderRoad.AI.Decorator
 {
-	public class AlwaysSuccess : DecoratorNode
+    [AutoLabelWidth(AddedWidth = 5f, MinWidth = 0f)]
+    public class AlwaysSuccess : DecoratorNode
     {
+        public AlwaysSuccess() : base() { }
+
     }
 
 }

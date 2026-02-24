@@ -1,28 +1,20 @@
 ﻿using UnityEngine;
 using UnityEngine.Profiling;
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#endif
+using TriInspector;
+
 
 namespace ThunderRoad.Skill.Spell
 {
+    [DeclareBoxGroup("Detection", Title = "Detection")]
     public class SkillFocusedReflexes : SkillData
     {
-#if ODIN_INSPECTOR
-        [BoxGroup("Detection")]
-#endif
+        [Group("Detection")]
         public float radius = 3f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Detection")]
-#endif
+        [Group("Detection")]
         public float minimumVelocity = 3f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Detection")]
-#endif
+        [Group("Detection")]
         public float velocityThreatAngle = 40;
-#if ODIN_INSPECTOR
-        [BoxGroup("Detection")]
-#endif
+        [Group("Detection")]
         public bool noOwnerIsThreat = false;
 
     }

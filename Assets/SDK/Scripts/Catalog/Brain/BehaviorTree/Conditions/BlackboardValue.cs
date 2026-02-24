@@ -1,19 +1,13 @@
-﻿
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
-using TriInspector;
-#endif
+﻿using TriInspector;
 
 namespace ThunderRoad.AI.Condition
 {
-	public class BlackboardValue : ConditionNode
+    [AutoLabelWidth(AddedWidth = 5f, MinWidth = 0f)]
+    public class BlackboardValue : ConditionNode
     {
         public string variableName;
         public VariableType variableType;
-#if ODIN_INSPECTOR
-        [EnableIf("variableType", optionalValue: VariableType.Float)]
-#endif
+        [EnableIf(nameof(variableType), VariableType.Float)]
         public Comparator variableComparator;
         public float comparedValue;
 

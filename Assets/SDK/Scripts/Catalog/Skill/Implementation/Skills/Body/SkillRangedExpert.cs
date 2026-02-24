@@ -1,74 +1,51 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
 
 namespace ThunderRoad.Skill
 {
+    [DeclareBoxGroup("Piercing", Title = "Piercing")]
+    [DeclareBoxGroup("Effect", Title = "Effect")]
+    [DeclareBoxGroup("Ricochet", Title = "Ricochet")]
+    [DeclareBoxGroup("Aim Assist", Title = "Aim Assist")]
     public class SkillRangedExpert : SkillData
     {
-#if ODIN_INSPECTOR
-        [BoxGroup("Piercing")]
-#endif
+        [Group("Piercing")]
         public float penetrationVelocity = 0.3f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Piercing")]
-#endif
+        [Group("Piercing")]
         public float penetrationMaxVelocity = 30;
-#if ODIN_INSPECTOR
-        [BoxGroup("Piercing")]
-#endif
+        [Group("Piercing")]
         public bool pierceOnlyRigidbodies = true;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Effect"), ValueDropdown("GetAllEffectID")]
-#endif
+        [Group("Effect")]
+        [Dropdown("GetAllEffectID")]
         public string pierceEffectId = "RangedExpertisePierce";
         protected EffectData pierceEffectData;
-        
-#if ODIN_INSPECTOR
-        [BoxGroup("Ricochet")]
-#endif
+
+        [Group("Ricochet")]
         public bool bounceOffTerrain = true;
-#if ODIN_INSPECTOR
-        [BoxGroup("Ricochet")]
-#endif
+        [Group("Ricochet")]
         public float maxRicochetVelocity = 20;
-#if ODIN_INSPECTOR
-        [BoxGroup("Ricochet")]
-#endif
+        [Group("Ricochet")]
         public float velocityHitMultiplier = 0.9f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Ricochet")]
-#endif
+        [Group("Ricochet")]
         public float nonAimAssistVelocityMult = 0.8f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Aim Assist")]
-#endif
+        [Group("Aim Assist")]
         public float maxAngle = 30;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Aim Assist")]
-#endif
+        [Group("Aim Assist")]
         public float maxDistance = 12;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Aim Assist")]
-#endif
+        [Group("Aim Assist")]
         public bool aimAssistOnThrow = false;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Aim Assist"), ShowIf(nameof(aimAssistOnThrow))]
-#endif
+        [Group("Aim Assist")]
+        [ShowIf(nameof(aimAssistOnThrow))]
         public float aimAssistMaxDistance = 5;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Aim Assist"), ShowIf(nameof(aimAssistOnThrow))]
-#endif
+        [Group("Aim Assist")]
+        [ShowIf(nameof(aimAssistOnThrow))]
         public float aimAssistMaxAngle = 20;
 
     }

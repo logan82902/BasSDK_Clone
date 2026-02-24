@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
+  "groupPath": "Outpost/Transi",
   "isUnique": true,
   "areaPrefabAddress": "Bas.Area.GL_Transi_Castle_TwoFloorsCorridor",
   "lightingPresetAddress": "Bas.Area.GL_Transi_Castle_TwoFloorsCorridor.LightingPreset",
@@ -96,6 +97,5 @@
       "fakeViewAddress": "Bas.Area.GL_Transi_Castle_TwoFloorsCorridor.FakeView.2"
     }
   ],
-  "areaGlobalParameters": [],
-  "groupPath": "Outpost/Transi"
+  "areaGlobalParameters": []
 }

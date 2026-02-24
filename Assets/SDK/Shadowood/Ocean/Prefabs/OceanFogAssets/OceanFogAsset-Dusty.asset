@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: OceanFogAsset-Dusty
   m_EditorClassIdentifier: 
   settings:
-    _topColor: {r: 1, g: 0.9009434, b: 0.8349056, a: 1}
+    _topColor: {r: 0.5, g: 0.30096132, b: 0.23349056, a: 1}
     _bottomColor: {r: 0.254717, g: 0.20485495, b: 0.15499288, a: 1}
-    _underWaterTint: {r: 0.8113208, g: 0.76194036, b: 0.71564615, a: 1}
+    _underWaterTint: {r: 0.6415094, g: 0.50995857, b: 0.46297613, a: 1}
     _exponent: 10
-    _intensity: 0.04
-    _fogDensity2: 0.02
-    _oceanFogDensity: 0.06
+    _intensity: 0.029
+    _fogDensity2: 0.127
+    _oceanFogDensity: 0.15
     _fogOffset: 0

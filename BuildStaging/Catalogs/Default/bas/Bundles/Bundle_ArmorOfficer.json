@@ -1,0 +1,27 @@
+{
+  "$type": "ThunderRoad.BundleData, ThunderRoad",
+  "id": "ArmorOfficer",
+  "sensitiveContent": "None",
+  "sensitiveFilterBehaviour": "Discard",
+  "version": 0,
+  "groupPath": "Armor",
+  "localizationGroup": "Bundles",
+  "displayName": "BundleArmorOfficerName",
+  "description": null,
+  "altDescriptionTitle": "ContentsTitle",
+  "isArmorBundle": true,
+  "bundleItemId": "Bundle",
+  "items": [
+    "ApparelOfficerLegs",
+    "ApparelOfficerBoots",
+    "ApparelOfficerChest",
+    "ApparelOfficerHandL",
+    "ApparelOfficerHandR",
+    "ApparelOfficerHelmet",
+    "ApparelOfficerShoulders1",
+    "ApparelOfficerShoulders2"
+  ],
+  "skills": [],
+  "lootTables": [],
+  "spriteAddress": "Ui.Icon.Unknown"
+}

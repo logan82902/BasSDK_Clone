@@ -22,8 +22,11 @@ namespace ThunderRoad
 
         private void OnEnable()
         {
+            // warning suppressed due to it being unsubscribed in OnDisable()/ManagedOnDisable()
+#pragma warning disable UDR0005 // Domain Reload Analyzer
             LightProbeVolumeGenerator.OnGenerationStarted += OnVolumeGenerationStarted;
             LightProbeVolumeGenerator.OnGenerationEnded += OnVolumeGenerationEnded;
+#pragma warning restore UDR0005 // Domain Reload Analyzer
         }
 
         private void OnDisable()

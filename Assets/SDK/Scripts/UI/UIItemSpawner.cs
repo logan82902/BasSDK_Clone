@@ -5,12 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine.Events;
 using TMPro;
-
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
@@ -138,7 +133,6 @@ namespace ThunderRoad
         {
         }
 
-
         [Button]
         public void RefreshItems()
         {
@@ -213,9 +207,7 @@ namespace ThunderRoad
         public UICustomisableButton AddCustomButton(string textGroupId, string textKey, UnityAction call)
         {
     return null;
-
         }
-
         #endregion
 
     }

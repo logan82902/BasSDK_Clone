@@ -9,6 +9,7 @@ namespace ThunderRoad
     {
         public static List<FleePoint> list = new List<FleePoint>();
 
+
         protected virtual void OnEnable()
         {
             list.Add(this);

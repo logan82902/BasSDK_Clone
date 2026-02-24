@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
+  "groupPath": null,
   "type": "WIP",
   "rootNode": {
     "$type": "ThunderRoad.AI.Control.Sequence, ThunderRoad",
@@ -30,21 +31,14 @@
           "weaponHandling": "None",
           "checkAmmo": false,
           "checkInHolder": false
-        },
-        "blackboard": null,
-        "creature": null,
-        "brainData": null
+        }
       },
       {
         "$type": "ThunderRoad.AI.Action.HolsterItem, ThunderRoad",
         "holsterRight": true,
         "holsterLeft": true,
-        "waitForFinished": false,
-        "blackboard": null,
-        "creature": null,
-        "brainData": null
+        "waitForFinished": false
       }
     ]
-  },
-  "groupPath": null
+  }
 }

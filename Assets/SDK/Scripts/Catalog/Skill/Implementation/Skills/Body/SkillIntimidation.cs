@@ -1,92 +1,103 @@
 ﻿using System;
 using UnityEngine;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+
 using TriInspector;
-#endif
 
 namespace ThunderRoad.Skill
 {
+    [DeclareBoxGroup("Intimidating kills", Title = "Intimidating kills")]
+    [DeclareHorizontalGroup("Intimidating kills/Horiz1")]
+    [DeclareHorizontalGroup("Intimidating kills/Horiz2")]
+    [DeclareHorizontalGroup("Intimidating kills/Horiz3")]
+    [DeclareHorizontalGroup("Intimidating kills/Horiz4")]
     public class SkillIntimidation : SkillData
     {
         // to be used to temporarily add a modifier to a fear value
         public static Vector2Int scareModifier = new Vector2Int();
 
-#if ODIN_INSPECTOR && UNITY_EDITOR
-        [BoxGroup("Intimidating kills")]
+#if UNITY_EDITOR
+        [Group("Intimidating kills")]
 #endif
         public float intimidateRadius = 6f;
 
-#if ODIN_INSPECTOR && UNITY_EDITOR
-        [HorizontalGroup("Intimidating kills/Horiz1", Width = 0.5f, PaddingRight = 10f)]
+#if UNITY_EDITOR
+        [Group("Intimidating kills/Horiz1")]
         [InlineProperty]
         [HideLabel]
+        [HideReferencePicker]
         [Title("Generic kill")]
 #endif
-        public FearAction genericKill = new FearAction();
-#if ODIN_INSPECTOR && UNITY_EDITOR
-        [HorizontalGroup("Intimidating kills/Horiz1", Width = 0.5f)]
+        public FearAction genericKill = new();
+#if UNITY_EDITOR
+        [Group("Intimidating kills/Horiz1")]
         [InlineProperty]
         [HideLabel]
+        [HideReferencePicker]
         [Title("Dismember kill")]
 #endif
-        public FearAction dismember = new FearAction();
-#if ODIN_INSPECTOR && UNITY_EDITOR
-        [HorizontalGroup("Intimidating kills/Horiz2", Width = 0.5f, PaddingRight = 10f)]
+        public FearAction dismember = new();
+#if UNITY_EDITOR
+        [Group("Intimidating kills/Horiz2")]
         [InlineProperty]
         [HideLabel]
+        [HideReferencePicker]
         [Title("Decapitate kill")]
 #endif
-        public FearAction decapitate = new FearAction();
-#if ODIN_INSPECTOR && UNITY_EDITOR
-        [HorizontalGroup("Intimidating kills/Horiz2", Width = 0.5f)]
+        public FearAction decapitate = new();
+#if UNITY_EDITOR
+        [Group("Intimidating kills/Horiz2")]
         [InlineProperty]
         [HideLabel]
+        [HideReferencePicker]
         [Title("Burn kill")]
 #endif
-        public FearAction burnKill = new FearAction();
-#if ODIN_INSPECTOR && UNITY_EDITOR
-        [HorizontalGroup("Intimidating kills/Horiz3", Width = 0.5f, PaddingRight = 10f)]
+        public FearAction burnKill = new();
+#if UNITY_EDITOR
+        [Group("Intimidating kills/Horiz3")]
         [InlineProperty]
         [HideLabel]
+        [HideReferencePicker]
         [Title("Electrocution kill")]
 #endif
-        public FearAction electrocutionKill = new FearAction();
-#if ODIN_INSPECTOR && UNITY_EDITOR
-        [HorizontalGroup("Intimidating kills/Horiz3", Width = 0.5f)]
+        public FearAction electrocutionKill = new();
+#if UNITY_EDITOR
+        [Group("Intimidating kills/Horiz3")]
         [InlineProperty]
         [HideLabel]
+        [HideReferencePicker]
         [Title("Impact kill")]
 #endif
-        public FearAction impactKill = new FearAction();
-#if ODIN_INSPECTOR && UNITY_EDITOR
-        [HorizontalGroup("Intimidating kills/Horiz4", Width = 0.5f, PaddingRight = 10f)]
+        public FearAction impactKill = new();
+#if UNITY_EDITOR
+        [Group("Intimidating kills/Horiz4")]
         [InlineProperty]
         [HideLabel]
+        [HideReferencePicker]
         [Title("Impale kill")]
 #endif
-        public FearAction impaleKill = new FearAction();
-#if ODIN_INSPECTOR && UNITY_EDITOR
-        [HorizontalGroup("Intimidating kills/Horiz4", Width = 0.5f)]
+        public FearAction impaleKill = new();
+#if UNITY_EDITOR
+        [Group("Intimidating kills/Horiz4")]
         [InlineProperty]
         [HideLabel]
+        [HideReferencePicker]
         [Title("Limb tear kill")]
 #endif
         public FearAction ripping = new FearAction();
 
-        [System.Serializable]
+        [Serializable]
+        [DeclareHorizontalGroup("Fields")]
         public class FearAction
         {
-#if ODIN_INSPECTOR && UNITY_EDITOR
-            [HorizontalGroup("Fields", PaddingLeft = 20f, PaddingRight = 10f)]
+#if UNITY_EDITOR
+            [Group("Fields")]
             [MinMaxSlider(0, 10, ShowFields = true)]
             [LabelWidth(165f)]
 #endif
-            public Vector2Int minMaxCreaturesScared = new Vector2Int(1, 2);
-#if ODIN_INSPECTOR && UNITY_EDITOR
-            [HorizontalGroup("Fields")]
+            public Vector2Int minMaxCreaturesScared = new(1, 2);
+#if UNITY_EDITOR
+            [Group("Fields")]
             [LabelWidth(65f)]
 #endif
             public bool alliesOnly = true;

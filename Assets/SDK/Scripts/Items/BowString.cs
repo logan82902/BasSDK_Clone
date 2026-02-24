@@ -8,11 +8,8 @@ using ThunderRoad.Skill.SpellPower;
 using UnityEditor;
 #endif
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {

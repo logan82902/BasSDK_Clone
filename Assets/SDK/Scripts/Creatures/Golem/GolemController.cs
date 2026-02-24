@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,300 +7,167 @@ using UnityEngine.VFX;
 using ThunderRoad.Skill.SpellPower;
 using ThunderRoad.Modules;
 using UnityEngine.Events;
-
-
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
+
 
 namespace ThunderRoad
 {
+    [DeclareTabGroup("GroupTabs")]
+    [DeclareFoldoutGroup("GroupTabs/General/Events", Expanded = false)]
     public class GolemController : ThunderEntity
     {
         [Header("References")]
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "General", TabLayouting = TabLayouting.MultiRow, Order = 0)]
-#endif
         public Animator animator;
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "General")]
-#endif
+        [Group("GroupTabs"), Tab("General")]
         public CharacterController characterController;
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "General")]
-#endif
+        [Group("GroupTabs"), Tab("General")]
         public GolemAnimatorEvent animatorEvent;
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "General")]
-#endif
-        public List<CollisionListener> headListeners = new List<CollisionListener>();
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "General")]
-#endif
-        public List<Rigidbody> bodyParts = new List<Rigidbody>();
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "General")]
-#endif
-        public List<Collider> bodyPartColliders = new List<Collider>();
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "General")]
-#endif
-        public List<SkinnedMeshRenderer> skinnedMeshRenderers = new List<SkinnedMeshRenderer>();
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "General")]
-#endif
-        public List<Collider> ignoreCollisionColliders = new List<Collider>();
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "General")]
-#endif
-        public List<Transform> magicSprayPoints = new List<Transform>();
+        [Group("GroupTabs"), Tab("General")]
+        public List<CollisionListener> headListeners = new();
+        [Group("GroupTabs"), Tab("General")]
+        public List<Rigidbody> bodyParts = new();
+        [Group("GroupTabs"), Tab("General")]
+        public List<Collider> bodyPartColliders = new();
+        [Group("GroupTabs"), Tab("General")]
+        public List<SkinnedMeshRenderer> skinnedMeshRenderers = new();
+        [Group("GroupTabs"), Tab("General")]
+        public List<Collider> ignoreCollisionColliders = new();
+        [Group("GroupTabs"), Tab("General")]
+        public List<Transform> magicSprayPoints = new();
 
         [Header("Global")]
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "General")]
-#endif
+        [Group("GroupTabs"), Tab("General")]
         public bool awakeOnStart = false;
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "General")]
-#endif
+        [Group("GroupTabs"), Tab("General")]
         public float moveSpeedMultiplier = 1.1f;
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "General")]
-#endif
+        [Group("GroupTabs"), Tab("General")]
         public float hitDamageMultiplier = 1f;
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "General")]
-#endif
+        [Group("GroupTabs"), Tab("General")]
         public float hitForceMultiplier = 1.1f;
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "General")]
-#endif
+        [Group("GroupTabs"), Tab("General")]
         public Renderer headRenderer;
 
         [Header("Head look")]
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "General")]
-#endif
+        [Group("GroupTabs"), Tab("General")]
         public MultiAimConstraint headAimConstraint;
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "General")]
-#endif
+        [Group("GroupTabs"), Tab("General")]
         public Transform headIktarget;
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "General")]
-#endif
+        [Group("GroupTabs"), Tab("General")]
         public float headLookSpeed = 3;
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "General")]
-#endif
+        [Group("GroupTabs"), Tab("General")]
         public LookMode lookMode = LookMode.Follow;
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "General")]
-#endif
+        [Group("GroupTabs"), Tab("General")]
         public LayerMask sightLayer = 1 << 0;
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "General")]
-#endif
+        [Group("GroupTabs"), Tab("General")]
         public float headLookSpeedMultiplier = 1;
 
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "General")]
-#endif
+        [Group("GroupTabs"), Tab("General")]
         public Transform eyeTransform;
 
         [Header("Face plate")]
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "General")]
-#endif
+        [Group("GroupTabs"), Tab("General")]
         public Rigidbody facePlateBody;
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "General")]
-#endif
+        [Group("GroupTabs"), Tab("General")]
         public SimpleBreakable facePlateBreakable;
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "General")]
-#endif
+        [Group("GroupTabs"), Tab("General")]
         public ConfigurableJoint facePlateJoint;
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "General")]
-#endif
+        [Group("GroupTabs"), Tab("General")]
         public float facePlateUnlockAngle = 5;
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "General")]
-#endif
+        [Group("GroupTabs"), Tab("General")]
         public float facePlateOpenAngle = 110;
 
         [Header("Head crystal")]
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "General")]
-#endif
+        [Group("GroupTabs"), Tab("General")]
         public ConfigurableJoint headCrystalJoint;
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "General")]
-#endif
+        [Group("GroupTabs"), Tab("General")]
         public VisualEffect headCrystalLinkVfx;
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "General")]
-#endif
+        [Group("GroupTabs"), Tab("General")]
         public ParticleSystem headCrystalParticle;
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "General")]
-#endif
+        [Group("GroupTabs"), Tab("General")]
         public FxController headCrystalEffectController;
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "General")]
-#endif
+        [Group("GroupTabs"), Tab("General")]
         public AudioSource headCrystalAudioSourceLoop;
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "General")]
-#endif
+        [Group("GroupTabs"), Tab("General")]
         public AudioSource headCrystalTearingAudioSource;
 
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "General")]
-#endif
+        [Group("GroupTabs"), Tab("General")]
         public AnimationCurve headCrystalLoopAudioPitchCurve;
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "General")]
-#endif
+        [Group("GroupTabs"), Tab("General")]
         public AnimationCurve headCrystalTearingAudioPitchCurve;
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "General")]
-#endif
+        [Group("GroupTabs"), Tab("General")]
         public AnimationCurve headCrystalTearingAudioVolumeCurve;
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "General")]
-#endif
+        [Group("GroupTabs"), Tab("General")]
         public Rigidbody headCrystalBody;
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "General")]
-#endif
+        [Group("GroupTabs"), Tab("General")]
         public Handle headCrystalHandle;
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "General")]
-#endif
+        [Group("GroupTabs"), Tab("General")]
         public float headCrystalGrabMass = 5f;
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "General")]
-#endif
+        [Group("GroupTabs"), Tab("General")]
         public float headCrystalGrabDrag = 100f;
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "General")]
-#endif
+        [Group("GroupTabs"), Tab("General")]
         public float headCrystalShutdownDuration = 8f;
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "General")]
-#endif
+        [Group("GroupTabs"), Tab("General")]
         public float headCrystalTearingDistance = 1;
 
         [Header("Death")]
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "General")]
-#endif
-        public Vector2 stunCheckCapsuleHeights = new Vector2(1f, 2f);
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "General")]
-#endif
-        public Vector3 radiusMinMaxCapsuleCast = new Vector3(1.5f, 3.5f, 6f);
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "General")]
-#endif
+        [Group("GroupTabs"), Tab("General")]
+        public Vector2 stunCheckCapsuleHeights = new(1f, 2f);
+        [Group("GroupTabs"), Tab("General")]
+        public Vector3 radiusMinMaxCapsuleCast = new(1.5f, 3.5f, 6f);
+        [Group("GroupTabs"), Tab("General")]
         public AudioSource killAudioSource;
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "General")]
-#endif
+        [Group("GroupTabs"), Tab("General")]
         public ParticleSystem killparticle;
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "General")]
-#endif
+        [Group("GroupTabs"), Tab("General")]
         public float killExplosionForce = 5;
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "General")]
-#endif
+        [Group("GroupTabs"), Tab("General")]
         public float killExplosionRadius = 5;
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "General")]
-#endif
+        [Group("GroupTabs"), Tab("General")]
         public float killExplosionUpward = 0.5f;
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "General")]
-#endif
+        [Group("GroupTabs"), Tab("General")]
         public ForceMode killExplosionForceMode = ForceMode.VelocityChange;
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "General")]
-#endif
+        [Group("GroupTabs"), Tab("General")]
         public Transform killExplosionSourceTransform;
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "General")]
-#endif
+        [Group("GroupTabs"), Tab("General")]
         public List<Transform> colliderResizeOnDeath;
 
-#if ODIN_INSPECTOR
-        [FoldoutGroup("GroupTabs/General/Events")]
-#endif
+        [Group("GroupTabs/General/Events")]
         public UnityEvent wakeEvent;
-#if ODIN_INSPECTOR
-        [FoldoutGroup("GroupTabs/General/Events")]
-#endif
+        [Group("GroupTabs/General/Events")]
         public UnityEvent startStunEvent;
-#if ODIN_INSPECTOR
-        [FoldoutGroup("GroupTabs/General/Events")]
-#endif
+        [Group("GroupTabs/General/Events")]
         public UnityEvent endStunEvent;
-#if ODIN_INSPECTOR
-        [FoldoutGroup("GroupTabs/General/Events")]
-#endif
+        [Group("GroupTabs/General/Events")]
         public UnityEvent crystalBreakEvent;
-#if ODIN_INSPECTOR
-        [FoldoutGroup("GroupTabs/General/Events")]
-#endif
+        [Group("GroupTabs/General/Events")]
         public UnityEvent defeatEvent;
-#if ODIN_INSPECTOR
-        [FoldoutGroup("GroupTabs/General/Events")]
-#endif
+        [Group("GroupTabs/General/Events")]
         public UnityEvent killEvent;
 
         [Header("Swing")]
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "Abilities", Order = 2), MinMaxSlider(0, 50, showFields: true)]
-#endif
+        [MinMaxSlider(0, 50, true)]
         public Vector2 swingVelocity = new(2, 5);
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "Abilities"), ValueDropdown(nameof(GetAllEffectID), AppendNextDrawer = true)]
-#endif
+        [Group("GroupTabs"), Tab("Abilities")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string swingEffectId = "GolemSwingArm";
         protected EffectData swingEffectData;
 
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "Abilities")]
-#endif
+        [Group("GroupTabs"), Tab("Abilities")]
         public VelocityTracker[] swingTrackers = new VelocityTracker[2];
-
-
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "Abilities")]
-#endif
+        
+        [Group("GroupTabs"), Tab("Abilities")]
         public Transform handLeft;
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "Abilities")]
-#endif
+        [Group("GroupTabs"), Tab("Abilities")]
         public Transform handRight;
 
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "Abilities")]
-#endif
+        [Group("GroupTabs"), Tab("Abilities")]
         public Rigidbody[] armRigidbodies = new Rigidbody[2];
 
         [Header("Powers")]
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "Abilities")]
-#endif
+        [Group("GroupTabs"), Tab("Abilities")]
         public Golem.Tier tier;
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "Abilities"), ListDrawerSettings(Expanded = true), InlineEditor(InlineEditorObjectFieldModes.Foldout)]
-#endif
+        [Group("GroupTabs"), Tab("Abilities")]
+        [InlineEditor]
         public List<GolemAbility> abilities = new();
         
         private static readonly int EmissionColor = Shader.PropertyToID("_EmissionColor");
@@ -381,95 +248,102 @@ namespace ThunderRoad
             _ => AttackSide.None
         };
 
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "Debug", Order = 3)]
-        [ShowInInspector, ReadOnly]
-#endif
+        //[TabGroup("GroupTabs", "Debug", Order = 3)]
+        [ShowInInspector]
+        [ReadOnly]
         public bool animatorIsRoot { get; protected set; }
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "Debug")]
-        [ShowInInspector, ReadOnly]
-#endif
+        [Group("GroupTabs"), Tab("Debug")]
+        [ShowInInspector]
+        [ReadOnly]
         public State state { get; protected set; } = State.Inactive;
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "Debug")]
-        [ShowInInspector, ReadOnly]
-#endif
+        [Group("GroupTabs"), Tab("Debug")]
+        [ShowInInspector]
+        [ReadOnly]
         public bool isDefeated { get; protected set; }
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "Debug")]
-        [ShowInInspector, ReadOnly]
-#endif
+        [Group("GroupTabs"), Tab("Debug")]
+        [ShowInInspector]
+        [ReadOnly]
         public bool isKilled { get; protected set; }
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "Debug")]
-        [ShowInInspector, ReadOnly]
-#endif
+        [Group("GroupTabs"), Tab("Debug")]
+        [ShowInInspector]
+        [ReadOnly]
         public bool isLooking { get; protected set; }
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "Debug")]
-        [ShowInInspector, ReadOnly]
-#endif
+        [Group("GroupTabs"), Tab("Debug")]
+        [ShowInInspector]
+        [ReadOnly]
         public Transform lookingTarget { get; protected set; }
 
         // Animator states
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "Debug")]
-        [ShowInInspector, Range(0, 2)]
-#endif
+        [Group("GroupTabs"), Tab("Debug")]
+        [ShowInInspector]
+        [Range(0, 2)]
         protected int wakeMotion = 0;
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "Debug")]
-        [ShowInInspector, ReadOnly]
-#endif
-        public bool isAwake { get { return animator.GetBool(awakeHash); } set { animator.SetBool(awakeHash, value); } }
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "Debug")]
-        [ShowInInspector, ReadOnly]
-#endif
-        public bool isBusy { get { return animator.GetBool(isBusyHash); } set { animator.SetBool(isBusyHash, value); } }
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "Debug")]
-        [ShowInInspector, ReadOnly]
-#endif
-        public bool inMovement { get { return animator.GetBool(inMovementHash); } }
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "Debug")]
-        [ShowInInspector, ReadOnly]
-#endif
-        public bool inAttackMotion { get { return animator.GetBool(inAttackMotionHash); } set { animator.SetBool(inAttackMotionHash, value); } }
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "Debug")]
-        [ShowInInspector, ReadOnly]
-#endif
+        [Group("GroupTabs"), Tab("Debug")]
+        [ShowInInspector]
+        [ReadOnly]
+        public bool isAwake
+        {
+            get { return animator.GetBool(awakeHash); }
+            set { animator.SetBool(awakeHash, value); }
+        }
+        [Group("GroupTabs"), Tab("Debug")]
+        [ShowInInspector]
+        [ReadOnly]
+        public bool isBusy
+        {
+            get { return animator.GetBool(isBusyHash); }
+            set { animator.SetBool(isBusyHash, value); }
+        }
+        [Group("GroupTabs"), Tab("Debug")]
+        [ShowInInspector]
+        [ReadOnly]
+        public bool inMovement
+        {
+            get { return animator.GetBool(inMovementHash); }
+        }
+        [Group("GroupTabs"), Tab("Debug")]
+        [ShowInInspector]
+        [ReadOnly]
+        public bool inAttackMotion
+        {
+            get { return animator.GetBool(inAttackMotionHash); }
+            set { animator.SetBool(inAttackMotionHash, value); }
+        }
+        [Group("GroupTabs"), Tab("Debug")]
+        [ShowInInspector]
+        [ReadOnly]
         public bool isDeployed
         {
             get => animator.GetBool(isDeployedHash);
             protected set => animator.SetBool(isDeployedHash, value);
         }
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "Debug")]
-        [ShowInInspector, ReadOnly]
-#endif
-        public bool deployInProgress { get { return animator.GetBool(isDeployedHash) || animator.GetBool(deployStartedHash); } }
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "Debug")]
-        [ShowInInspector, ReadOnly]
-#endif
-        public bool isStunned { get { return animator.GetBool(isStunnedHash); } }
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "Debug")]
-        [ShowInInspector, ReadOnly]
-#endif
-        public bool stunInProgress { get { return animator.GetBool(isStunnedHash) || animator.GetBool(stunStartedHash); } }
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "Debug")]
-        [ShowInInspector, ReadOnly]
-#endif
+        [Group("GroupTabs"), Tab("Debug")]
+        [ShowInInspector]
+        [ReadOnly]
+        public bool deployInProgress
+        {
+            get { return animator.GetBool(isDeployedHash) || animator.GetBool(deployStartedHash); }
+        }
+        [Group("GroupTabs"), Tab("Debug")]
+        [ShowInInspector]
+        [ReadOnly]
+        public bool isStunned
+        {
+            get { return animator.GetBool(isStunnedHash); }
+        }
+        [Group("GroupTabs"), Tab("Debug")]
+        [ShowInInspector]
+        [ReadOnly]
+        public bool stunInProgress
+        {
+            get { return animator.GetBool(isStunnedHash) || animator.GetBool(stunStartedHash); }
+        }
+        [Group("GroupTabs"), Tab("Debug")]
+        [ShowInInspector]
+        [ReadOnly]
         public bool isActiveState => isBusy || inAttackMotion || deployInProgress || stunInProgress;
-#if ODIN_INSPECTOR
-        [ShowInInspector, TabGroup("GroupTabs", "Debug")]
-#endif
+        [ShowInInspector]
+        [Group("GroupTabs"), Tab("Debug")]
 
 
         public Color HeadEmissionColor
@@ -513,41 +387,35 @@ namespace ThunderRoad
             Dead = 5,
         }
 
-#if ODIN_INSPECTOR
-        protected List<ValueDropdownItem<string>> GetAllEffectID() => Catalog.GetDropdownAllID(Category.Effect);
-#endif
 
-#if ODIN_INSPECTOR
-        [Button, TabGroup("GroupTabs", "Debug")]
-#endif
+        protected TriDropdownList<string> GetAllEffectID() => Catalog.GetDropdownAllID(Category.Effect);
+
+        [Button]
+        [Group("GroupTabs"), Tab("Debug")]
         private void GetBodyParts()
         {
         }
 
-#if ODIN_INSPECTOR
-        [Button, TabGroup("GroupTabs", "Debug")]
-#endif
+        [Button]
+        [Group("GroupTabs"), Tab("Debug")]
         private void GetBodyPartColliders()
         {
         }
 
-#if ODIN_INSPECTOR
-        [Button, TabGroup("GroupTabs", "Debug")]
-#endif
+        [Button]
+        [Group("GroupTabs"), Tab("Debug")]
         public virtual void LookAt(Transform target)
         {
         }
 
-#if ODIN_INSPECTOR
-        [Button, TabGroup("GroupTabs", "Debug")]
-#endif
+        [Button]
+        [Group("GroupTabs"), Tab("Debug")]
         public virtual void UnlockFacePlate(bool open)
         {
         }
 
-#if ODIN_INSPECTOR
-        [Button("Kill (SKIPS DEFEAT)"), TabGroup("GroupTabs", "Debug")]
-#endif
+        [Button("Kill (SKIPS DEFEAT)")]
+        [Group("GroupTabs"), Tab("Debug")]
         public virtual void Kill()
         {
             this.StartCoroutine(KillCoroutine());
@@ -556,30 +424,26 @@ namespace ThunderRoad
             yield break;
         }
 
-#if ODIN_INSPECTOR
-        [Button, TabGroup("GroupTabs", "Debug")]
-#endif
+        [Button]
+        [Group("GroupTabs"), Tab("Debug")]
         public virtual void Resurrect()
         {
         }
 
-#if ODIN_INSPECTOR
-        [Button, TabGroup("GroupTabs", "Debug")]
-#endif
+        [Button]
+        [Group("GroupTabs"), Tab("Debug")]
         public virtual void SetAwake(bool awake)
         {
         }
 
-#if ODIN_INSPECTOR
-        [Button, TabGroup("GroupTabs", "Debug")]
-#endif
+        [Button]
+        [Group("GroupTabs"), Tab("Debug")]
         public void Stun(float duration)
         {
         }
 
-#if ODIN_INSPECTOR
-        [Button, TabGroup("GroupTabs", "Debug")]
-#endif
+        [Button]
+        [Group("GroupTabs"), Tab("Debug")]
         public virtual void StopStun()
         {
         }
@@ -590,30 +454,26 @@ namespace ThunderRoad
 
         public virtual void Stagger(float lateral, float axial) => Stagger(new Vector2(lateral, axial));
 
-#if ODIN_INSPECTOR
-        [Button, TabGroup("GroupTabs", "Debug")]
-#endif
+        [Button]
+        [Group("GroupTabs"), Tab("Debug")]
         public virtual void Stagger(Vector2 direction)
         {
         }
 
-#if ODIN_INSPECTOR
-        [Button, TabGroup("GroupTabs", "Debug")]
-#endif
+        [Button]
+        [Group("GroupTabs"), Tab("Debug")]
         public virtual void ResistPush(bool active)
         {
         }
 
-#if ODIN_INSPECTOR
-        [Button, TabGroup("GroupTabs", "Debug")]
-#endif
+        [Button]
+        [Group("GroupTabs"), Tab("Debug")]
         public virtual void PerformAttackMotion(AttackMotion meleeAttack, Action onMeleeEnd = null)
         {
         }
 
-#if ODIN_INSPECTOR
-        [Button, TabGroup("GroupTabs", "Debug")]
-#endif
+        [Button]
+        [Group("GroupTabs"), Tab("Debug")]
         public virtual void UseAbility(int index)
         {
         }

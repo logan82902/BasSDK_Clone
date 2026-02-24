@@ -4,33 +4,24 @@ using System.Collections;
 using System.Collections.Generic;
 using ThunderRoad.Reveal;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
+    [DeclareBoxGroup("Reveal", Title = "Reveal")]
     public class EffectModuleReveal : EffectModule
     {
-        
-#if ODIN_INSPECTOR
-        [BoxGroup("Reveal")] 
-#endif
+        [Group("Reveal")]
         public string maskTextureContainerAddress;
         [NonSerialized]
         public TextureContainer textureContainer;
         
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Reveal")] 
-#endif
+        [Group("Reveal")]
         public EffectReveal.Direction applyOn = EffectReveal.Direction.Target;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Reveal")] 
-#endif
+        [Group("Reveal")]
         public TypeFilter typeFilter = TypeFilter.Default | TypeFilter.Body | TypeFilter.Outfit;
 
         [Flags]
@@ -41,52 +32,30 @@ namespace ThunderRoad
             Outfit = 4,
         }
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Reveal")] 
-#endif
+        [Group("Reveal")]
         public float depth = 1.2f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Reveal")] 
-#endif
+        [Group("Reveal")]
         public float minSize = 0.05f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Reveal")] 
-#endif
+        [Group("Reveal")]
         public float maxSize = 0.1f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Reveal")] 
-#endif
+        [Group("Reveal")]
         public float penetrationSize = 0.1f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Reveal")] 
-#endif
+        [Group("Reveal")]
         public Vector4 minChannelMultiplier = Vector4.one;
-#if ODIN_INSPECTOR
-        [BoxGroup("Reveal")] 
-#endif
+        [Group("Reveal")]
         public Vector4 maxChannelMultiplier = Vector4.one;
-#if ODIN_INSPECTOR
-        [BoxGroup("Reveal")] 
-#endif
+        [Group("Reveal")]
         public Vector4 penetrationChannelMultiplier = Vector4.one;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Reveal")] 
-#endif
+        [Group("Reveal")]
         public float offsetDistance = 0.05f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Reveal")] 
-#endif
+        [Group("Reveal")]
         public bool allowItem = false;
-#if ODIN_INSPECTOR
-        [BoxGroup("Reveal")] 
-#endif
+        [Group("Reveal")]
         public bool allowRagdollPart = false;
-#if ODIN_INSPECTOR
-        [BoxGroup("Reveal")] 
-#endif
+        [Group("Reveal")]
         public RevealData[] revealData;
 
         public static List<EffectReveal> pool = new List<EffectReveal>();

@@ -1,9 +1,6 @@
 ﻿using System;
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+
 using TriInspector;
-#endif
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -60,9 +57,8 @@ namespace ThunderRoad.AssetSorcery
         [Tooltip("Instruction count")] [HideInInspector]
         public float instructions;
 
-#if ODIN_INSPECTOR
-        [MultiLineProperty(6)] [HideInInspector]
-#endif
+        [Multiline(6)]
+        [HideInInspector]
         public string mali;
 
         //

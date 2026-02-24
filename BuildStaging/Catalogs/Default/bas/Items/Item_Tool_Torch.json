@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 4,
+  "groupPath": null,
   "localizationId": "Torch",
   "displayName": "Torch",
   "description": "A light source that can be ignited by fire.",
@@ -14,16 +15,18 @@
   "tier": 0,
   "flags": "Spinnable",
   "levelRequired": 0,
+  "type": "Tool",
   "category": "Utilities",
+  "update": "",
   "iconEffectId": null,
   "preferredItemCenter": "Mass",
   "drainImbueWhenIdle": true,
+  "forceImbueUseButton": "None",
   "prefabAddress": "Bas.Item.Misc.Torch",
   "iconAddress": "Bas.Item.Misc.Torch.Icon[Item_Torch]",
   "closeUpIconAddress": null,
   "pooledCount": 0,
   "androidPooledCount": 0,
-  "type": "Tool",
   "allowedStorage": "Inventory, Container, SandboxAllItems",
   "despawnOnStoredInInventory": false,
   "isStackable": false,
@@ -37,6 +40,7 @@
   "mass": 1.0,
   "drag": 1.0,
   "angularDrag": 0.05,
+  "density": 750.0,
   "focusRegenMultiplier": 1.0,
   "spellChargeSpeedPlayerMultiplier": 1.0,
   "spellChargeSpeedNPCMultiplier": 1.0,
@@ -150,52 +154,6 @@
     "preWrapMode": "ClampForever",
     "postWrapMode": "ClampForever"
   },
-  "modules": [
-    {
-      "$type": "ThunderRoad.ItemModuleAI, ThunderRoad",
-      "primaryClass": "Melee",
-      "secondaryClass": "None",
-      "weaponHandling": "OneHanded",
-      "secondaryHandling": "None",
-      "weaponAttackTypes": "Swing",
-      "ignoredByDefense": false,
-      "alwaysPrimary": false,
-      "defaultStanceInfo": {
-        "$type": "ThunderRoad.ItemModuleAI+StanceInfo, ThunderRoad",
-        "offhand": "Anything",
-        "grabAIHandleRadius": 0.0,
-        "stanceDataID": "HumanMelee1hStance"
-      },
-      "stanceInfosByOffhand": [
-        {
-          "$type": "ThunderRoad.ItemModuleAI+StanceInfo, ThunderRoad",
-          "offhand": "Empty",
-          "grabAIHandleRadius": 0.0,
-          "stanceDataID": "HumanMelee1hStance"
-        },
-        {
-          "$type": "ThunderRoad.ItemModuleAI+StanceInfo, ThunderRoad",
-          "offhand": "AnyShield",
-          "grabAIHandleRadius": 0.0,
-          "stanceDataID": "HumanMeleeShieldStance"
-        },
-        {
-          "$type": "ThunderRoad.ItemModuleAI+StanceInfo, ThunderRoad",
-          "offhand": "AnyMelee",
-          "grabAIHandleRadius": 0.0,
-          "stanceDataID": "HumanMeleeDualWieldStance"
-        }
-      ],
-      "rangedWeaponData": null,
-      "armResistanceMultiplier": 3.0,
-      "allowDynamicHeight": false,
-      "defenseHasPriority": false
-    },
-    {
-      "$type": "ThunderRoad.ItemModuleStats, ThunderRoad",
-      "stats": []
-    }
-  ],
   "colliderGroups": [
     {
       "$type": "ThunderRoad.ItemData+ColliderGroup, ThunderRoad",
@@ -224,6 +182,51 @@
   ],
   "effectHinges": [],
   "whooshs": [],
-  "entityModules": [],
-  "groupPath": null
+  "modules": [
+    {
+      "$type": "ThunderRoad.ItemModuleAI, ThunderRoad",
+      "primaryClass": "Melee",
+      "secondaryClass": "None",
+      "weaponHandling": "OneHanded",
+      "secondaryHandling": "None",
+      "weaponAttackTypes": "Swing",
+      "alwaysPrimary": false,
+      "defaultStanceInfo": {
+        "$type": "ThunderRoad.ItemModuleAI+StanceInfo, ThunderRoad",
+        "offhand": "Anything",
+        "grabAIHandleRadius": 0.0,
+        "stanceDataID": "HumanMelee1hStance"
+      },
+      "stanceInfosByOffhand": [
+        {
+          "$type": "ThunderRoad.ItemModuleAI+StanceInfo, ThunderRoad",
+          "offhand": "Empty",
+          "grabAIHandleRadius": 0.0,
+          "stanceDataID": "HumanMelee1hStance"
+        },
+        {
+          "$type": "ThunderRoad.ItemModuleAI+StanceInfo, ThunderRoad",
+          "offhand": "AnyShield",
+          "grabAIHandleRadius": 0.0,
+          "stanceDataID": "HumanMeleeShieldStance"
+        },
+        {
+          "$type": "ThunderRoad.ItemModuleAI+StanceInfo, ThunderRoad",
+          "offhand": "AnyMelee",
+          "grabAIHandleRadius": 0.0,
+          "stanceDataID": "HumanMeleeDualWieldStance"
+        }
+      ],
+      "rangedWeaponData": null,
+      "ignoredByDefense": false,
+      "armResistanceMultiplier": 3.0,
+      "allowDynamicHeight": false,
+      "defenseHasPriority": false
+    },
+    {
+      "$type": "ThunderRoad.ItemModuleStats, ThunderRoad",
+      "stats": []
+    }
+  ],
+  "entityModules": []
 }

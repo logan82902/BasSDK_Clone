@@ -1,13 +1,10 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
 using System;
 using System.Collections.Generic;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
@@ -20,13 +17,9 @@ namespace ThunderRoad
         public List<ParticleSystem> particleSystems = null;
 
         [Header("Feet")]
-#if ODIN_INSPECTOR
         [ReadOnly]
-#endif
         public bool rightFootPlanted;
-#if ODIN_INSPECTOR
         [ReadOnly]
-#endif
         public bool leftFootPlanted;
 
         [Header("Events")]
@@ -39,6 +32,7 @@ namespace ThunderRoad
 
         protected Dictionary<string, AudioSource> keyedAudios = new Dictionary<string, AudioSource>();
         protected Dictionary<string, ParticleSystem> keyedParticles = new Dictionary<string, ParticleSystem>();
+
 
         private void OnValidate()
         {
@@ -143,34 +137,28 @@ namespace ThunderRoad
 
         void StartTurnTo(UnityEngine.AnimationEvent e)
         {
-            //Debug.Log("StartTurnTo");
         }
 
         void StopTurnTo(UnityEngine.AnimationEvent e)
         {
-            //Debug.Log("StopTurnTo");
         }
 
         void EnableHitbox(UnityEngine.AnimationEvent e)
         {
-            //Debug.Log("EnableHitbox");
             onEnableHitbox?.Invoke(true);
         }
 
         void DisableHitbox(UnityEngine.AnimationEvent e)
         {
-            //Debug.Log("DisableHitbox");
             onEnableHitbox?.Invoke(false);
         }
 
         void EffectOn(UnityEngine.AnimationEvent e)
         {
-            //Debug.Log("EffectOn");
         }
 
         void EffectOff(UnityEngine.AnimationEvent e)
         {
-            Debug.Log("EffectOff");
         }
 
         void PlayAudioSource(UnityEngine.AnimationEvent e)
@@ -180,7 +168,6 @@ namespace ThunderRoad
 
         void PlayParticleEffect(UnityEngine.AnimationEvent e)
         {
-            //Debug.Log($"{(e.intParameter == 0 ? "Stopping" : "Playing")} particle effect {e.stringParameter}");
             if (!keyedParticles.TryGetValue(e.stringParameter, out ParticleSystem system))
             {
                 Debug.LogWarning($"Golem attempted to {(e.intParameter == 0 ? "stop" : "play")} particle"

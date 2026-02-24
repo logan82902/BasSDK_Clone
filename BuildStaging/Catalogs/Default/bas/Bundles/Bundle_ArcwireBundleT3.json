@@ -1,0 +1,22 @@
+{
+  "$type": "ThunderRoad.BundleData, ThunderRoad",
+  "id": "ArcwireBundleT3",
+  "sensitiveContent": "None",
+  "sensitiveFilterBehaviour": "Discard",
+  "version": 0,
+  "groupPath": "T3",
+  "localizationGroup": "Bundles",
+  "displayName": "BundleArcwireBundleT3Name",
+  "description": null,
+  "altDescriptionTitle": "ContentsTitle",
+  "isArmorBundle": false,
+  "bundleItemId": "Bundle",
+  "items": [
+    "StaffRaktaBoStaff"
+  ],
+  "skills": [
+    "Arcwire"
+  ],
+  "lootTables": [],
+  "spriteAddress": "Ui.Icon.Unknown"
+}

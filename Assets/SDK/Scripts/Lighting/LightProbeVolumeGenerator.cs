@@ -45,6 +45,7 @@ namespace ThunderRoad
         public static event Action OnGenerationStarted;
         public static event Action OnGenerationEnded;
 
+
         private void OnValidate()
         {
             if (!this.InPrefabScene()) return;
@@ -76,6 +77,11 @@ namespace ThunderRoad
             {
                 UnityEditor.EditorApplication.delayCall += OnValidateDelayed;
             }
+        }
+
+        private void OnDestroy()
+        {
+            UnityEditor.EditorApplication.delayCall -= OnValidateDelayed;
         }
 
         private void OnValidateDelayed()

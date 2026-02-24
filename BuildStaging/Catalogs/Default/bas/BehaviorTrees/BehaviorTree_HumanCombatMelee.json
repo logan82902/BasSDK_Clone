@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
+  "groupPath": null,
   "type": "SubTree",
   "rootNode": {
     "$type": "ThunderRoad.AI.Control.Sequence, ThunderRoad",
@@ -33,10 +34,7 @@
           "child": {
             "$type": "ThunderRoad.AI.Action.SetDefenseState, ThunderRoad",
             "parry": true,
-            "dodge": true,
-            "blackboard": null,
-            "creature": null,
-            "brainData": null
+            "dodge": true
           }
         }
       },
@@ -60,10 +58,7 @@
             "forceMaxRangeDelta": 0.0,
             "stopOnReset": false,
             "pickClipSequentialMaxIndex": 0,
-            "updateClipRange": false,
-            "blackboard": null,
-            "creature": null,
-            "brainData": null
+            "updateClipRange": false
           },
           {
             "$type": "ThunderRoad.AI.Control.Sequence, ThunderRoad",
@@ -75,20 +70,14 @@
                 "selectionMode": "ByDistance",
                 "spellID": "",
                 "target": "CurrentTarget",
-                "inputTransformVariableName": "",
-                "blackboard": null,
-                "creature": null,
-                "brainData": null
+                "inputTransformVariableName": ""
               },
               {
                 "$type": "ThunderRoad.AI.Action.AttackSpell, ThunderRoad",
                 "target": "CurrentTarget",
                 "inputTransformVariableName": "",
                 "castLeft": true,
-                "castRight": false,
-                "blackboard": null,
-                "creature": null,
-                "brainData": null
+                "castRight": false
               }
             ]
           },
@@ -131,10 +120,7 @@
                 "angleMode": "CheckAllies",
                 "changeAngleUntilUnobstructed": true,
                 "targetRadiusMinAngle": 20.0,
-                "targetRadiusMaxAngle": 45.0,
-                "blackboard": null,
-                "creature": null,
-                "brainData": null
+                "targetRadiusMaxAngle": 45.0
               },
               {
                 "$type": "ThunderRoad.AI.Control.Sequence, ThunderRoad",
@@ -168,10 +154,7 @@
                             "minRadius": 3.0,
                             "maxRadius": 8.0,
                             "attempts": 3,
-                            "outputPositionVariableName": "GroundPosition",
-                            "blackboard": null,
-                            "creature": null,
-                            "brainData": null
+                            "outputPositionVariableName": "GroundPosition"
                           }
                         },
                         {
@@ -182,10 +165,7 @@
                               "$type": "ThunderRoad.AI.Action.Wait, ThunderRoad",
                               "startWaiting": false,
                               "minDuration": 30.0,
-                              "maxDuration": 40.0,
-                              "blackboard": null,
-                              "creature": null,
-                              "brainData": null
+                              "maxDuration": 40.0
                             },
                             {
                               "$type": "ThunderRoad.AI.Get.GetRandomPositionAround, ThunderRoad",
@@ -196,10 +176,7 @@
                               "minRadius": 3.0,
                               "maxRadius": 8.0,
                               "attempts": 3,
-                              "outputPositionVariableName": "GroundPosition",
-                              "blackboard": null,
-                              "creature": null,
-                              "brainData": null
+                              "outputPositionVariableName": "GroundPosition"
                             }
                           ]
                         }
@@ -241,10 +218,7 @@
                     "angleMode": "None",
                     "changeAngleUntilUnobstructed": false,
                     "targetRadiusMinAngle": 0.0,
-                    "targetRadiusMaxAngle": 0.0,
-                    "blackboard": null,
-                    "creature": null,
-                    "brainData": null
+                    "targetRadiusMaxAngle": 0.0
                   },
                   {
                     "$type": "ThunderRoad.AI.Action.AttackThrow, ThunderRoad",
@@ -264,12 +238,7 @@
                       "x": 0.0,
                       "y": 0.0,
                       "z": 0.0
-                    },
-                    "moduleThrow": null,
-                    "moduleRanged": null,
-                    "blackboard": null,
-                    "creature": null,
-                    "brainData": null
+                    }
                   }
                 ]
               },
@@ -282,6 +251,5 @@
         ]
       }
     ]
-  },
-  "groupPath": null
+  }
 }

@@ -5,229 +5,199 @@ using Newtonsoft.Json;
 using ThunderRoad.Skill.SpellMerge;
 using UnityEngine;
 using Object = UnityEngine.Object;
-
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
 
 namespace ThunderRoad.Skill.Spell
 {
+    [DeclareBoxGroup("Misc", Title = "Misc")]
+    [DeclareBoxGroup("Throw", Title = "Throw")]
+    [DeclareBoxGroup("Dual Push", Title = "Dual Push")]
+    [DeclareBoxGroup("Push Status Effect", Title = "Push Status Effect")]
+    [DeclareBoxGroup("Imbue", Title = "Imbue")]
+    [DeclareBoxGroup("Imbue hit", Title = "Imbue hit")]
+    [DeclareBoxGroup("Staff Slam", Title = "Staff Slam")]
+    [DeclareBoxGroup("Musket")]
     public class SpellCastGravity : SpellCastCharge
     {
         public const string LastPushTimeVariable = "LastPushTime";
         public const string LastPushDirection = "LastPushDirection";
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Misc")]
-#endif
+        [Group("Misc")]
         public bool enableCreatureControl = false;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Throw")]
-#endif
+        [Group("Throw")]
         public float halfSphereRadius = 2;
-#if ODIN_INSPECTOR
-        [BoxGroup("Throw"), MinMaxSlider(0, 4f, true)]
-#endif
+        [Group("Throw")]
+        [MinMaxSlider(0, 4f, true)]
         public Vector2 pushLevel = new(1, 3);
-#if ODIN_INSPECTOR
-        [BoxGroup("Throw")]
-#endif
+        [Group("Throw")]
         public float pushMaxForce = 10;
-#if ODIN_INSPECTOR
-        [BoxGroup("Throw")]
-#endif
+        [Group("Throw")]
         public float pushForceOnPlayer = 0.3f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Throw")]
-#endif
+        [Group("Throw")]
         public float upwardsForceLerpOnPlayer = 0.3f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Throw")]
-#endif
+        [Group("Throw")]
         public float playerLocomotionDeactivate = 0.2f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Throw")]
-#endif
+        [Group("Throw")]
         public bool pushUseExplosionForce = true;
-#if ODIN_INSPECTOR
-        [BoxGroup("Throw"), ShowIf("pushUseExplosionForce")]
-#endif
+        [Group("Throw")]
+        [ShowIf("pushUseExplosionForce")]
         public float pushExplosionUpwardModifier = 1f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Throw")]
-#endif
+        [Group("Throw")]
         public ForceMode pushForceMode = ForceMode.Impulse;
-#if ODIN_INSPECTOR
-        [BoxGroup("Throw")]
-#endif
+        [Group("Throw")]
         public LayerMask pushLayerMask;
-#if ODIN_INSPECTOR
-        [BoxGroup("Throw")]
-#endif
+        [Group("Throw")]
         public float minChargeToPushCreature = 0.5f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Throw"), LabelText(@"@SkillPassiveLabel(""Push Force"", intensityPerSkill)")]
-#endif
+        [Group("Throw")]
+        [LabelText("$" + nameof(IntensityPerSkillLabel))]
         public float intensityPerSkill = 0.05f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Throw")]
-#endif
+        [JsonIgnore]
+        public string IntensityPerSkillLabel => SkillPassiveLabel("Push Force", intensityPerSkill);
+
+        [Group("Throw")]
         public float pushStatusExtension = 3f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Throw")]
-#endif
+        [Group("Throw")]
         public float pushStatusForce = 1.3f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Dual Push")]
-#endif
+        [Group("Dual Push")]
         public float dualPushIntensityMultiplier = 0.4f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Dual Push")]
-#endif
+        [Group("Dual Push")]
         public float dualPushTimeWindow = 0.3f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Dual Push")]
-#endif
+        [Group("Dual Push")]
         public float dualPushAngleWindow = 50;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Dual Push"), Range(0, 3)]
-#endif
+        [Group("Dual Push")]
+        [Range(0, 3)]
         public float dualPushLevelReduction = 0.5f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Dual Push"), ValueDropdown(nameof(GetAllEffectID))]
-#endif
+        [Group("Dual Push")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string dualPushEffectId;
         protected EffectData dualPushEffectData;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Throw"), ValueDropdown(nameof(GetAllEffectID))]
-#endif
+        [Group("Throw")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string pushEffectId;
         protected EffectData pushEffectData;
-        
-#if ODIN_INSPECTOR
-        [BoxGroup("Push Status Effect"), ValueDropdown(nameof(GetAllStatusEffectID))]
-#endif
+
+        [Group("Push Status Effect")]
+        [Dropdown(nameof(GetAllStatusEffectID))]
         public string pushStatusEffectId = "Floating";
         
         [NonSerialized]
         public StatusData pushStatusEffect;
-#if ODIN_INSPECTOR
-        [BoxGroup("Push Status Effect")]
-#endif
+        [Group("Push Status Effect")]
         public float pushStatusDuration = 2;
-#if ODIN_INSPECTOR
-        [BoxGroup("Imbue")]
-#endif
+        [Group("Imbue")]
         public float imbueGravityRatio = 0;
-#if ODIN_INSPECTOR
-        [BoxGroup("Imbue")]
-#endif
+        [Group("Imbue")]
         public float imbueDrag = -1;
-#if ODIN_INSPECTOR
-        [BoxGroup("Imbue")]
-#endif
+        [Group("Imbue")]
         public float imbueAngularDrag = -1;
-#if ODIN_INSPECTOR
-        [BoxGroup("Imbue")]
-#endif
+        [Group("Imbue")]
         public float imbueGravityFalloffThreshold = 0.3f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Imbue hit"), ValueDropdown(nameof(GetAllEffectID))]
-#endif
+        [Group("Imbue hit")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string imbueHitEffectId;
         protected EffectData imbueHitEffectData;
-#if ODIN_INSPECTOR
-        [BoxGroup("Imbue hit"), ValueDropdown(nameof(GetAllEffectID))]
-#endif
+        [Group("Imbue hit")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string imbueHitItemEffectId;
         protected EffectData imbueHitItemEffectData;
-#if ODIN_INSPECTOR
-        [BoxGroup("Imbue hit"), ValueDropdown(nameof(GetAllEffectID))]
-#endif
+        [Group("Imbue hit")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string imbueHitRagdollEffectId;
         protected EffectData imbueHitRagdollEffectData;
-        
-#if ODIN_INSPECTOR
-        [BoxGroup("Imbue hit"), ValueDropdown(nameof(GetAllStatusEffectID))]
-#endif
+
+        [Group("Imbue hit")]
+        [Dropdown(nameof(GetAllStatusEffectID))]
         public string imbueStatusEffectId = "Floating";
         
         [NonSerialized]
         public StatusData imbueStatusEffect;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Imbue hit")]
-#endif
+        [Group("Imbue hit")]
         public float imbueHitItemZeroGravityDuration = 5;
-#if ODIN_INSPECTOR
-        [BoxGroup("Imbue hit")]
-#endif
+        [Group("Imbue hit")]
         public float imbueHitRagdollZeroGravityDuration = 5;
-#if ODIN_INSPECTOR
-        [BoxGroup("Imbue hit")]
-#endif
+        [Group("Imbue hit")]
         public float imbueHitGravityRatio = 0.1f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Imbue hit")]
-#endif
+        [Group("Imbue hit")]
         public float imbueHitMassRatio = 0.5f;
 
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Staff Slam")]
-#endif
+        [Group("Staff Slam")]
         public int staffSlamPushLevel = 2;
-#if ODIN_INSPECTOR
-        [BoxGroup("Staff Slam")]
-#endif
+        [Group("Staff Slam")]
         public float staffSlamExplosionUpwardModifier = 1f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Staff Slam")]
-#endif
+        [Group("Staff Slam")]
         public float staffSlamWaveSpeed = 12f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Staff Slam")]
-#endif
+        [Group("Staff Slam")]
         public float staffSlamWaveUpdateRate = 0.05f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Staff Slam")]
-#endif
+        [Group("Staff Slam")]
         public float staffSlamMinRadius = 2f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Staff Slam")]
-#endif
+        [Group("Staff Slam")]
         public float staffSlamMaxRadius = 8f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Staff Slam")]
-#endif
+        [Group("Staff Slam")]
         public float staffSlamMinForce = 10f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Staff Slam")]
-#endif
+        [Group("Staff Slam")]
         public float staffSlamMaxForce = 15f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Staff Slam")]
-#endif
+        [Group("Staff Slam")]
         public ForceMode staffSlamForceMode = ForceMode.VelocityChange;
-#if ODIN_INSPECTOR
-        [BoxGroup("Staff Slam")]
-#endif
+        [Group("Staff Slam")]
         public float staffSlamStatusDuration = 5;
-#if ODIN_INSPECTOR
-        [BoxGroup("Staff Slam")]
-#endif
+        [Group("Staff Slam")]
         public EffectOnPlayer staffSlamPlayerEffect = EffectOnPlayer.PushWhenJumping;
+
+        [Group("Musket")]
+        public float musketRadius = 2;
+
+        [Group("Musket")]
+        public LayerMask musketDecapitateLayerMask;
+
+        [Group("Musket")]
+        public float musketForce = 50;
+
+        [Group("Musket")]
+        public float musketExplosionRadius = 5;
+
+        [Group("Musket")]
+        public float musketExplosionForce = 2;
+
+        [Group("Musket")]
+        public float musketHitCrystalDamage = 60;
+
+        [Group("Musket")]
+        public float musketExplosionCrystalDamage = 15;
+
+        [Group("Musket")]
+        [Dropdown(nameof(GetAllItemID))]
+        public string musketProjectileId;
+        protected ItemData musketProjectileData;
+
+        [Group("Musket")]
+        [Dropdown(nameof(GetAllDamagerID))]
+        public string musketProjectileDamagerId;
+        protected DamagerData musketProjectileDamagerData;
+
+        [Group("Musket")]
+        public float musketShootSpeed = 40;
+
+        [Group("Musket")]
+        public float musketPlayerForce = 10f;
+
+        [Group("Musket")]
+        public string musketProjectileExplosionEffectId;
+        protected EffectData musketProjectileExplosionEffectData;
+
+        [Group("Musket")]
+        public string musketProjectileEffectId;
+        protected EffectData musketProjectileEffectData;
 
         [NonSerialized]
         protected float lastImbueFalloffAmount;
@@ -258,6 +228,10 @@ namespace ThunderRoad.Skill.Spell
             imbueHitEffectData = Catalog.GetData<EffectData>(imbueHitEffectId);
             imbueHitItemEffectData = Catalog.GetData<EffectData>(imbueHitItemEffectId);
             imbueHitRagdollEffectData = Catalog.GetData<EffectData>(imbueHitRagdollEffectId);
+            musketProjectileData = Catalog.GetData<ItemData>(musketProjectileId);
+            musketProjectileDamagerData = Catalog.GetData<DamagerData>(musketProjectileDamagerId);
+            musketProjectileEffectData = Catalog.GetData<EffectData>(musketProjectileEffectId);
+            musketProjectileExplosionEffectData = Catalog.GetData<EffectData>(musketProjectileExplosionEffectId);
         }
 
     }

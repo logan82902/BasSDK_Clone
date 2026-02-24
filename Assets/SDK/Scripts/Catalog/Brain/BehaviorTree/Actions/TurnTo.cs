@@ -1,19 +1,13 @@
 ﻿using UnityEngine;
-
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
 
 namespace ThunderRoad.AI.Action
 {
-	public class TurnTo : ActionNode
+    [AutoLabelWidth(AddedWidth = 5f, MinWidth = 0f)]
+    public class TurnTo : ActionNode
     {
         public Target target = Target.CurrentTarget;
-#if ODIN_INSPECTOR
-        [HideIf("target", optionalValue: Target.CurrentTarget)] 
-#endif
+        [HideIf("target", Target.CurrentTarget)]
         public string inputVariableName = "TurnTarget";
 
         public bool successIfAngleReached;

@@ -1,9 +1,5 @@
-using Newtonsoft.Json;
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+﻿using Newtonsoft.Json;
 using TriInspector;
-#endif
 using ThunderRoad;
 using ThunderRoadVRKBSharedData;
 using UnityEngine;

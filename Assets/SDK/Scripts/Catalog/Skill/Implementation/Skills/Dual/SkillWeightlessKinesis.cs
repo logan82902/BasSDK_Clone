@@ -1,38 +1,29 @@
-﻿#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#endif
+﻿using TriInspector;
 using ThunderRoad.Skill.SpellPower;
 using UnityEngine;
 
 namespace ThunderRoad.Skill.Spell
 {
+    [DeclareBoxGroup("Status Effect", Title = "Status Effect")]
+    [DeclareBoxGroup("Telekinesis", Title = "Telekinesis")]
     public class SkillWeightlessKinesis : TkSkillData
     {
-#if ODIN_INSPECTOR
-        [BoxGroup("Status Effect"), ValueDropdown(nameof(GetAllStatusEffectID))]
-#endif
+        [Group("Status Effect")]
+        [Dropdown(nameof(GetAllStatusEffectID))]
         public string statusId;
         protected StatusData statusData;
-#if ODIN_INSPECTOR
-        [BoxGroup("Status Effect"), ShowInInspector]
-#endif
+        [Group("Status Effect")]
+        [ShowInInspector]
         public FloatingParams itemParams = FloatingParams.Identity;
-#if ODIN_INSPECTOR
-        [BoxGroup("Status Effect"), ShowInInspector]
-#endif
+        [Group("Status Effect")]
+        [ShowInInspector]
         public FloatingParams creatureParams = FloatingParams.Identity;
-#if ODIN_INSPECTOR
-        [BoxGroup("Status Effect")]
-#endif
+        [Group("Status Effect")]
         public float throwEffectDuration = 2f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Telekinesis")]
-#endif
+        [Group("Telekinesis")]
         public float strengthMult = 2f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Telekinesis")]
-#endif
+        [Group("Telekinesis")]
         public bool allowCreature = false;
 
     }

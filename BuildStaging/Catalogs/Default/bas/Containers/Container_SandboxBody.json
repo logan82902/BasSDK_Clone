@@ -4,9 +4,9 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 1,
+  "groupPath": "Player",
   "displayName": "Sandbox Player",
   "description": null,
-  "contents": [],
   "containerContents": [
     {
       "$type": "ThunderRoad.TableContent, ThunderRoad",
@@ -16,10 +16,20 @@
         "holderName": "BackRight"
       },
       "customDataList": null,
+      "mergeKey": "82de681a",
       "referenceID": "WeaponCivilian"
     },
     {
+      "$type": "ThunderRoad.ItemContent, ThunderRoad",
+      "quantity": 1,
+      "state": null,
+      "customDataList": null,
+      "mergeKey": "793e0f0a",
+      "referenceID": "ZiplineWheel01"
+    },
+    {
       "$type": "ThunderRoad.SpellContent, ThunderRoad",
+      "mergeKey": "f8ccc77f",
       "referenceID": "Telekinesis"
     },
     {
@@ -30,6 +40,7 @@
         "holderName": "HipsLeft"
       },
       "customDataList": null,
+      "mergeKey": "7eb16f3e",
       "referenceID": "WeaponCivilianDagger"
     },
     {
@@ -37,6 +48,7 @@
       "quantity": 1,
       "state": null,
       "customDataList": null,
+      "mergeKey": "2266c840",
       "referenceID": "CrystalBodyT3"
     },
     {
@@ -44,6 +56,7 @@
       "quantity": 1,
       "state": null,
       "customDataList": null,
+      "mergeKey": "993aa139",
       "referenceID": "CrystalMindT3"
     },
     {
@@ -53,6 +66,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": null,
+      "mergeKey": "9e37210b",
       "referenceID": "ApparelCivilianChest"
     },
     {
@@ -62,6 +76,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": null,
+      "mergeKey": "b8d6fe55",
       "referenceID": "ApparelCivilianHandL"
     },
     {
@@ -71,6 +86,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": null,
+      "mergeKey": "32e6965f",
       "referenceID": "ApparelCivilianHandR"
     },
     {
@@ -80,6 +96,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": null,
+      "mergeKey": "9e00d83c",
       "referenceID": "ApparelCivilianLegs"
     },
     {
@@ -89,60 +106,73 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": null,
+      "mergeKey": "14ec2236",
       "referenceID": "ApparelCivilianBoots"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "6993b25d",
       "referenceID": "DiveStrike"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "c88b0905",
       "referenceID": "Flykick"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "85fbeec6",
       "referenceID": "RangedExpertise"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "d0347286",
       "referenceID": "Skulker"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "90827680",
       "referenceID": "SecondWind"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "3889503c",
       "referenceID": "Boomerang"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "4632f909",
       "referenceID": "Discombobulate"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "499e0ba5",
       "referenceID": "Wrestler"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "e5ff918c",
       "referenceID": "BruteForce"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "fab26871",
       "referenceID": "Intimidation"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "0f59064a",
       "referenceID": "Juggernaut"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "2e0f18ff",
       "referenceID": "MightyKick"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "e057553e",
       "referenceID": "TemporalRiposte"
     }
-  ],
-  "groupPath": "Player"
+  ]
 }

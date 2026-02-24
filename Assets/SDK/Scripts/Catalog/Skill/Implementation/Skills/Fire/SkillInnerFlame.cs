@@ -3,46 +3,33 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#endif
+using TriInspector;
 
 namespace ThunderRoad.Skill.Spell
 {
+    [DeclareBoxGroup("Explosion", Title = "Explosion")]
     public class SkillInnerFlame : SpellSkillData
     {
-#if ODIN_INSPECTOR
-        [BoxGroup("Explosion")]
-#endif
+        [Group("Explosion")]
         public float explosionRadius = 3;
-#if ODIN_INSPECTOR
-        [BoxGroup("Explosion")]
-#endif
+        [Group("Explosion")]
         public LayerMask explosionLayerMask;
-#if ODIN_INSPECTOR
-        [BoxGroup("Explosion"), ValueDropdown(nameof(GetAllStatusEffectID))]
-#endif
+        [Group("Explosion")]
+        [Dropdown(nameof(GetAllStatusEffectID))]
         public string explosionStatusId;
 
         [NonSerialized]
         public StatusData explosionStatus;
-#if ODIN_INSPECTOR
-        [BoxGroup("Explosion")]
-#endif
+        [Group("Explosion")]
         public float explosionStatusDuration = 5;
-#if ODIN_INSPECTOR
-        [BoxGroup("Explosion"), ValueDropdown(nameof(GetAllEffectID))]
-#endif
+        [Group("Explosion")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string explosionEffectId;
         [NonSerialized]
         public EffectData explosionEffectData;
-#if ODIN_INSPECTOR
-        [BoxGroup("Explosion")]
-#endif
+        [Group("Explosion")]
         public float explosionForce = 10f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Explosion")]
-#endif
+        [Group("Explosion")]
         public float explosionPlayerForce = 5f;
     }
 }

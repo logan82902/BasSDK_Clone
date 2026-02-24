@@ -1,13 +1,10 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Newtonsoft.Json;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
@@ -76,6 +73,8 @@ namespace ThunderRoad
             public int indexArea;
             public int indexConnection;
 
+            public ExternalConnection() { }
+
             public ExternalConnection(int indexArea, int indexConnection)
             {
                 this.indexArea = indexArea;
@@ -85,9 +84,13 @@ namespace ThunderRoad
         #endregion InternalClass
 
         #region Data
+        
         public List<AreaRotationHelper.Rotation> allowedRotation;
+        [HideReferencePicker]
         public AreaLayout[] layout;
+        [HideReferencePicker]
         public InternalLink[] internalLinks;
+        [HideReferencePicker]
         public List<ExternalConnection> externalConnections;
 
         public float distanceBetweenConnectionMax = 0.01f;

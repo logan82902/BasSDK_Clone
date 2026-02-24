@@ -17,6 +17,167 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 19c3f1f9494ae7a41ba178c1321905b5
   m_SerializeEntries:
+  - m_GUID: bebbba69405d7234f838704cd638c950
+    m_Address: Bas.Texture.RevealMask.BladeBloodSparce
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: de65a341a70f625478c203024d632af6
+    m_Address: Bas.Texture.RevealMask.BladeBloodDense
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: adb9159d6e39e0642997bed473110d24
+    m_Address: Bas.Texture.RevealMask.WeaponBlood_Mask
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a2ba01e0dbf6cdd40971e69b6c0eaacf
+    m_Address: Bas.Texture.RevealMask.PlateSlashBurn
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8e21e2433e2a35f42bdee668c9539601
+    m_Address: Bas.Texture.RevealMask.PlateSlash
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1c1e3395764f7ca479f964cb03237f11
+    m_Address: Bas.Texture.RevealMask.PlateBurn
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7d03e2ada1b2f834d8ebec6bb5523f26
+    m_Address: Bas.Texture.RevealMask.PlateBlunt
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: eb151250553142548be95d7b923c8b42
+    m_Address: Bas.Texture.RevealMask.LeatherBlunt
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3410cfe7590276e4787fc3e59acaeebf
+    m_Address: Bas.Texture.RevealMask.FleshSlashBurn
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7280185e4b8d7074c9b66cda60ff69ca
+    m_Address: Bas.Texture.RevealMask.FleshSlash
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d730fdfabaedb3e4c9ef78b50bbafa10
+    m_Address: Bas.Texture.RevealMask.FleshProjectile
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 29b48deb783ffdd40bb6749b2fc15afa
+    m_Address: Bas.Texture.RevealMask.FleshPierce
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fdfbb41ceb0d20e4fb60d37b871c087b
+    m_Address: Bas.Texture.RevealMask.FleshBurn
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 946d5cdaac749db4abe1925a3fc34154
+    m_Address: Bas.Texture.RevealMask.FleshBlunt3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6f570eb52c548404eb1c5e6ed6847513
+    m_Address: Bas.Texture.RevealMask.FleshBlunt2
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3b855d69f8cc8e149ad69dcccac4ec6b
+    m_Address: Bas.Texture.RevealMask.FleshBlunt
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 31989d9d28125674bb963c9a74352ea6
+    m_Address: Bas.Texture.RevealMask.BloodSpray
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 544b8cf68c0c4be48914675aa5f07fe8
+    m_Address: Bas.Texture.RevealMask.Burn_c
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c6ea3ecb0fd23144d9bf4386188edb0a
+    m_Address: Bas.Texture.RevealMask.Burn_n
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 04b165cd1370dac4ba57253b07a6de06
+    m_Address: Bas.Texture.RevealMask.BurnFlesh_c
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e0b7fb4fe076f2843b31c38c39e31a19
+    m_Address: Bas.Texture.RevealMask.Flesh_c
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0ce06c84e61d0564fb0f23a6f22ac947
+    m_Address: Bas.Texture.RevealMask.Flesh_MOES
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5f9846fb415e17c4782852606ca149a3
+    m_Address: Bas.Texture.RevealMask.Flesh_n
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: dbcf7d54374dbda47a5c2049da0d8d5b
     m_Address: Bas.Texture.RevealMask.WeaponBlood_Mask
     m_ReadOnly: 0
@@ -40,6 +201,125 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 04cb432c4e21cde4c89654ee7d0c5fc4
     m_Address: Bas.Texture.RevealMask.Revealed_Burn_c
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8a45abaa49dcfee4d99896e73fab27d9
+    m_Address: Bas.Texture.RevealMask.WeaponBlood_c
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2d898a33216a397418d0ccbcd008e053
+    m_Address: Bas.TextureContainer.RevealMask.BladeBloodSparce
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Windows
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2a3eecd3bc8991f419988ee640180a78
+    m_Address: Bas.TextureContainer.RevealMask.FleshPierce
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: eed2fe57d326a234ca5c7e94a8271e55
+    m_Address: Bas.TextureContainer.RevealMask.FleshBlunt
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f59d6576df9aae045b91dcc5b9c756ed
+    m_Address: Bas.TextureContainer.RevealMask.FleshBurn
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Windows
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 193a7dcb77924fb459591730be8e5d20
+    m_Address: Bas.TextureContainer.RevealMask.FleshProjectile
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Windows
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 47408b11f9d75b34ca3d93e567586a4c
+    m_Address: Bas.TextureContainer.RevealMask.FleshSlash
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Windows
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0ebba69ef0b6bd44f9b363b871e9aa03
+    m_Address: Bas.TextureContainer.RevealMask.FleshSlashBurn
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Windows
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 272525461288b4042b2509117c31a22a
+    m_Address: Bas.TextureContainer.RevealMask.LeatherBlunt
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Windows
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: be1b7b79a057a0840a476318dafd039f
+    m_Address: Bas.TextureContainer.RevealMask.LeatherBluntNoBlood
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Windows
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9ef9bfd0cfd8fd1499b5e84ba9f706f1
+    m_Address: Bas.TextureContainer.RevealMask.LeatherSlash
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Windows
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bafc4036b24c4b442b63724efe80ba95
+    m_Address: Bas.TextureContainer.RevealMask.PlateBlunt
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Windows
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 208bb509192d9784da3c9a0ae0ef6174
+    m_Address: Bas.TextureContainer.RevealMask.PlateBurn
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Windows
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 27d48bf6d86c4714683f170c0cc7fd67
+    m_Address: Bas.TextureContainer.RevealMask.PlateSlash
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Windows
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 323766a5ca1d17a459369fef21904481
+    m_Address: Bas.TextureContainer.RevealMask.PlateSlashBurn
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Windows
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 94e10a63590cbab4a9ff963a5769e2aa
+    m_Address: Bas.TextureContainer.RevealMask.GolemStoneBlunt
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 42ba6f70361d99d4f8ed3b125bce588a
+    m_Address: Bas.TextureContainer.RevealMask.GolemStoneSlash
     m_ReadOnly: 0
     m_SerializedLabels:
     - Windows

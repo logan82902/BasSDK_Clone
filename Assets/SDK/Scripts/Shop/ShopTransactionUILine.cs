@@ -1,12 +1,9 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System;
 using TMPro;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+
 using TriInspector;
-#endif
 
 
 public class ShopTransactionUILine : MonoBehaviour

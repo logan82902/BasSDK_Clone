@@ -1,38 +1,23 @@
-﻿#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#endif
+﻿using TriInspector;
 using UnityEngine;
 
 namespace ThunderRoad.Skill.Spell
 {
-
+    [DeclareBoxGroup("Hover", Title = "Hover")]
     public class SkillFeatherFall : SpellSkillData
     {
-#if ODIN_INSPECTOR
-        [BoxGroup("Hover")]
-#endif
+        [Group("Hover")]
         public float hoverVelocityThreshold = -0.5f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Hover")]
-#endif
+        [Group("Hover")]
         public float hoverForce = 0.46f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Hover"), ValueDropdown(nameof(GetAllEffectID))]
-#endif
+        [Group("Hover")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string hoverEffectId;
-#if ODIN_INSPECTOR
-        [BoxGroup("Hover")]
-#endif
+        [Group("Hover")]
         public float groundEffectDistance = 3f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Hover")]
-#endif
+        [Group("Hover")]
         public float groundEffectMinDistance = 1.2f;
-//#if ODIN_INSPECTOR
-//        [BoxGroup("Hover"), ValueDropdown(nameof(GetAllEffectID))]
-//#endif
-        //public float groundEffectMinVelocity = -2f;
-
+        [Group("Hover")]
         protected EffectData hoverEffectData;
 
     }

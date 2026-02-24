@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
+  "groupPath": "Outpost/Standard",
   "isUnique": true,
   "areaPrefabAddress": "Bas.Area.GL_Std_Castle_ViaductZipline",
   "lightingPresetAddress": "Bas.Area.GL_Std_Castle_ViaductZipline.LightingPreset",
@@ -98,6 +99,5 @@
       "isZeroIntensity": false,
       "visibleFromGate": true
     }
-  ],
-  "groupPath": "Outpost/Standard"
+  ]
 }

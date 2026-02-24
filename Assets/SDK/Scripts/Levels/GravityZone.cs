@@ -1,6 +1,7 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using Object = UnityEngine.Object;
+using TriInspector;
 
 namespace ThunderRoad
 {
@@ -35,22 +36,17 @@ namespace ThunderRoad
 
         [Header("HeadLocomotion")]
         public bool useHeadLocomotion;
-#if ODIN_INSPECTOR
-        [Sirenix.OdinInspector.ShowIf("useHeadLocomotion")]
-#endif //ODIN_INSPECTOR*
+        [ShowIf("useHeadLocomotion")]
         public Vector3 headLocomotionLocalDirection;
-#if ODIN_INSPECTOR
-        [Sirenix.OdinInspector.ShowIf("useHeadLocomotion")]
-#endif //ODIN_INSPECTOR
+        [ShowIf("useHeadLocomotion")]
         public AnimationCurve headLocomotionDotCurve;
-#if ODIN_INSPECTOR
-        [Sirenix.OdinInspector.ShowIf("useHeadLocomotion")]
-#endif //ODIN_INSPECTOR
+        [ShowIf("useHeadLocomotion")]
         public float headLocomotionVelocity;
 
         [Header("Item")]
         public bool useGravityMultiplierForItem;
         public float gravityMultiplierToApplyToItem = 1;
+
 
 #if UNITY_EDITOR
         private void OnValidate()

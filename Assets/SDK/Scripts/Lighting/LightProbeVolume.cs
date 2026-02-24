@@ -1,14 +1,11 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 using System.IO;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
@@ -44,6 +41,8 @@ namespace ThunderRoad
             }
             Exists = true;
         }
+
+
         public static void Unregister(LightProbeVolume lightProbeVolume)
         {
             list.Remove(lightProbeVolume);
@@ -225,7 +224,11 @@ namespace ThunderRoad
         {
             Register(this);
 #if UNITY_EDITOR
+            // warning suppressed due to it being unsubscribed in OnDisable()/ManagedOnDisable()
+#pragma warning disable UDR0004 // Domain Reload Analyzer
+            LightmapBakeHelper.onBakeCompleted -= OnBakeCompleted;
             LightmapBakeHelper.onBakeCompleted += OnBakeCompleted;
+#pragma warning restore UDR0004 // Domain Reload Analyzer
 #endif
         }
 

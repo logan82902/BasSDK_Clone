@@ -1,11 +1,11 @@
+﻿using Newtonsoft.Json;
+using System;
+using TriInspector;
+
 namespace ThunderRoad
 {
-    using Newtonsoft.Json;
-    using System;
-#if ODIN_INSPECTOR
-    using Sirenix.OdinInspector;
-#endif //ODIN_INSPECTOR
-
+    [Serializable]
+    [AutoLabelWidth(MinWidth = 0f)]
     public abstract class MusicDynamicModule
     {
         [JsonMergeKey, JsonProperty("$type"), JsonIgnore]
@@ -17,10 +17,8 @@ namespace ThunderRoad
 
         public bool isDefault = true;
 
-#if ODIN_INSPECTOR
         [ShowInInspector]
         [ReadOnly]
-#endif
         [NonSerialized]
         protected bool _isConnected = false;
 

@@ -3,25 +3,19 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.ResourceManagement.ResourceLocations;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
     [Serializable]
+    [DeclareBoxGroup("Music", Title = "Music")]
     public class MusicSegment
     {
-#if ODIN_INSPECTOR
-        [BoxGroup("Music")] 
-#endif
+        [Group("Music")]
         public float volumeDb = 0.0f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Music")] 
-#endif
+        [Group("Music")]
         public string musicAddress = "";
 
         public int timesPlayedInSerie = 1;

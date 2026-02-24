@@ -1,21 +1,18 @@
-﻿#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
-using TriInspector;
-#endif
+﻿using TriInspector;
 
 namespace ThunderRoad.Skill.Spell
 {
+    [DeclareBoxGroup("Spell", Title = "Spell")]
+    [DeclareBoxGroup("Damage", Title = "Damage")]
     public class GripCastSkillData : SpellSkillData
     {
-#if ODIN_INSPECTOR
-        [BoxGroup("Spell"), ValueDropdown(nameof(GetAllSpellID))]
-#endif
+        [Group("Spell")]
+        [Dropdown(nameof(GetAllSpellID))]
         public string spellId;
         protected SpellCastCharge spellData;
-        [BoxGroup("Damage")]
+        [Group("Damage")]
         public float gripCastDamageInterval = 0.5f;
-        [BoxGroup("Damage")]
+        [Group("Damage")]
         public float gripCastDamageAmount = 4f;
 
         public override void OnCatalogRefresh()

@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 3,
+  "groupPath": null,
   "behaviour": "Muffle",
   "scaleDuringCombat": 0.4,
   "tkActiveCondition": "Always",
@@ -118,6 +119,5 @@
   "referencePoint": "Grip",
   "localizationId": "Mouth",
   "highlightDefaultTitle": "Mouth",
-  "highlightDefaultDesignation": null,
-  "groupPath": null
+  "highlightDefaultDesignation": null
 }

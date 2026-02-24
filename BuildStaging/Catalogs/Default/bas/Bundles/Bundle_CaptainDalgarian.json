@@ -1,0 +1,22 @@
+{
+  "$type": "ThunderRoad.BundleData, ThunderRoad",
+  "id": "CaptainDalgarianBundleT2",
+  "sensitiveContent": "None",
+  "sensitiveFilterBehaviour": "Discard",
+  "version": 0,
+  "groupPath": "T2",
+  "localizationGroup": "Bundles",
+  "displayName": "BundleCaptainDalgarianBundleT2Name",
+  "description": null,
+  "altDescriptionTitle": "ContentsTitle",
+  "isArmorBundle": false,
+  "bundleItemId": "Bundle",
+  "items": [
+    "ShieldRound"
+  ],
+  "skills": [
+    "Boomerang"
+  ],
+  "lootTables": [],
+  "spriteAddress": "Ui.Icon.Unknown"
+}

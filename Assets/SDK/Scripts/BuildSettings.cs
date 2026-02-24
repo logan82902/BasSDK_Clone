@@ -1,14 +1,20 @@
 using UnityEngine;
 using UnityEditor;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
+    [DeclareBoxGroup("XRLoader", Title = "XR Loader")]
+    [DeclareBoxGroup("Store", Title = "Store")]
+    [DeclareBoxGroup("Player", Title = "Player")]
+    [DeclareBoxGroup("Logging", Title = "Logging")]
+    [DeclareBoxGroup("Debug", Title = "Debug")]
+    [DeclareBoxGroup("Mods", Title = "Mods")]
+    [DeclareBoxGroup("Sensitive Content", Title = "Sensitive Content")]
+    [DeclareFoldoutGroup("Sensitive Content/Desecration filter", Expanded = false)]
+    [DeclareBoxGroup("Beta", Title = "Beta")]
+    [DeclareBoxGroup("Dynamic Resolution", Title = "Dynamic Resolution")]
     public class BuildSettings : ScriptableObject
     {
 

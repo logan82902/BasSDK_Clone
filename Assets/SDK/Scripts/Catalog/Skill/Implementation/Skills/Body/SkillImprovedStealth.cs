@@ -1,7 +1,4 @@
-﻿#if ODIN_INSPECTOR
-#else
-using TriInspector;
-#endif
+﻿using TriInspector;
 
 namespace ThunderRoad.Skill
 {

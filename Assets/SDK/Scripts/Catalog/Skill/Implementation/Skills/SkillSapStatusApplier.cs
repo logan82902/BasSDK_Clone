@@ -1,35 +1,32 @@
 ﻿using System;
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
 using UnityEngine;
 
 namespace ThunderRoad.Skill.Spell
 {
+    [DeclareBoxGroup("Imbue", Title = "Imbue")]
+    [DeclareBoxGroup("Bolts", Title = "Bolts")]
+    [DeclareBoxGroup("Status Effect", Title = "Status Effect")]
     public class SkillSapStatusApplier : SpellSkillData
     {
-        #if ODIN_INSPECTOR
-        [BoxGroup("Imbue"), ValueDropdown(nameof(GetAllSpellID))]
-        #endif
+        [Group("Imbue")]
+        [Dropdown(nameof(GetAllSpellID))]
         public string spellId;
 
-        [BoxGroup("Imbue")]
+        [Group("Imbue")]
         public Gradient sapGradient;
 
-        [BoxGroup("Bolts")]
+        [Group("Bolts")]
         public Gradient boltGradient;
 
-        #if ODIN_INSPECTOR
-        [BoxGroup("Status Effect"), ValueDropdown(nameof(GetAllStatusEffectID))]
-        #endif
+        [Group("Status Effect")]
+        [Dropdown(nameof(GetAllStatusEffectID))]
         public string statusEffectId;
 
         [NonSerialized]
         public StatusData statusData;
 
-        [BoxGroup("Status Effect")]
+        [Group("Status Effect")]
         public float statusDuration = 2f;
 
         protected int spellHashId;

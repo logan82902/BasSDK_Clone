@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
+  "groupPath": "Dalgarian/Arena",
   "isUnique": true,
   "areaPrefabAddress": "Bas.Area.DA_Arena_TownSquare",
   "lightingPresetAddress": "Bas.Area.DA_Arena_TownSquare.LightingPreset",
@@ -124,6 +125,5 @@
       "fakeViewAddress": "Bas.Area.DA_Arena_TownSquare.FakeView.3"
     }
   ],
-  "areaGlobalParameters": [],
-  "groupPath": "Dalgarian/Arena"
+  "areaGlobalParameters": []
 }

@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using ThunderRoadVRKBSharedData;
@@ -7,63 +7,50 @@ using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.ResourceManagement.ResourceLocations;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
     [Serializable]
+#if UNITY_EDITOR
+    [EditorLoadPriority(15)]
+#endif
+    [DeclareBoxGroup("Prefab", Title = "Prefab")]
+    [DeclareBoxGroup("Supported Languages", Title = "Supported Languages")]
+    [DeclareBoxGroup("Keyboard Configuration", Title = "Keyboard Configuration")]
     public class KeyboardData : CatalogData
     {
-#if ODIN_INSPECTOR
-        public List<ValueDropdownItem<string>> GetAllTextId()
-        {
-            return Catalog.GetDropdownAllID(Category.Text);
-        }
-#endif
+        public TriDropdownList<string> GetAllTextId() => Catalog.GetDropdownAllID(Category.Text);
         // PREFAB
-#if ODIN_INSPECTOR
-        [BoxGroup("Prefab")]
-#endif
+        [Group("Prefab")]
         public string prefabAddress;
         [NonSerialized]
         public IResourceLocation prefabLocation;
 #if UNITY_EDITOR
-#if ODIN_INSPECTOR
-        [BoxGroup("Prefab"), LabelText("EditorPrefab"), NonSerialized, ShowInInspector, DisableInPlayMode, OnValueChanged(nameof(EditorUpdatePrefabAddress)), PreviewField]
-#endif
+        [Group("Prefab")]
+        [LabelText("EditorPrefab")]
+        [NonSerialized]
+        [ShowInInspector]
+        [DisableInPlayMode]
+        [OnValueChanged(nameof(EditorUpdatePrefabAddress))]
+        //[PreviewField]
         public GameObject editorPrefab;
 #endif
-#if ODIN_INSPECTOR
-        [BoxGroup("Supported Languages"), ValueDropdown(nameof(GetAllTextId))]
-#endif
+        [Group("Supported Languages")]
+        [Dropdown(nameof(GetAllTextId))]
         public HashSet<string> localizationIds;
-#if ODIN_INSPECTOR
-        [BoxGroup("Keyboard Configuration")]
-#endif
+        [Group("Keyboard Configuration")]
         public int RepeatDelayMilliseconds = 500;
-#if ODIN_INSPECTOR
-        [BoxGroup("Keyboard Configuration")]
-#endif
+        [Group("Keyboard Configuration")]
         public int RepeatRatePerSecond = 15;
-#if ODIN_INSPECTOR
-        [BoxGroup("Keyboard Configuration")]
-#endif
+        [Group("Keyboard Configuration")]
         public bool AllowSimultaneousKeyPresses = false;
-#if ODIN_INSPECTOR
-        [BoxGroup("Keyboard Configuration")]
-#endif
+        [Group("Keyboard Configuration")]
         public string placeholderText = "Enter Text..";
-#if ODIN_INSPECTOR
-        [BoxGroup("Keyboard Configuration")]
-#endif
+        [Group("Keyboard Configuration")]
         public bool PasswordMode = false;
-#if ODIN_INSPECTOR
-        [BoxGroup("Keyboard Configuration")]
-#endif
+        [Group("Keyboard Configuration")]
         public KeyboardConfiguration keyboardConfig;
 #if UNITY_EDITOR
         public override void CatalogEditorRefresh()

@@ -1,19 +1,20 @@
 ﻿using UnityEngine;
 using System;
 using System.Collections.Generic;
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+using Newtonsoft.Json;
+
+
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
+    [System.Serializable]
+    [AutoLabelWidth(AddedWidth = 5f, MinWidth = 0f)]
     public class BrainModuleDetection : BrainData.Module
     {
         public static bool showDetectionDebugs = false;
-        public static Color undetectedColor = new(0, 1, 0, 0.5f);
-        public static Color detectedColor = new(1, 0, 0, 0.5f);
+        public readonly static Color undetectedColor = new(0, 1, 0, 0.5f);
+        public readonly static Color detectedColor = new(1, 0, 0, 0.5f);
         [Header("Sight")]
         public float sightDetectionVerticalFov = 130;
         public float sightDetectionHorizontalFov = 190;

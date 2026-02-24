@@ -4,10 +4,18 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 1,
+  "groupPath": "Player",
   "displayName": "Sandbox Player",
   "description": null,
-  "contents": [],
   "containerContents": [
+    {
+      "$type": "ThunderRoad.ItemContent, ThunderRoad",
+      "quantity": 1,
+      "state": null,
+      "customDataList": null,
+      "mergeKey": "793e0f0a",
+      "referenceID": "ZiplineWheel01"
+    },
     {
       "$type": "ThunderRoad.ItemContent, ThunderRoad",
       "quantity": 1,
@@ -16,6 +24,7 @@
         "holderName": "BackRight"
       },
       "customDataList": null,
+      "mergeKey": "2f42ba3a",
       "referenceID": "StaffScholar"
     },
     {
@@ -26,6 +35,7 @@
         "holderName": "HipsLeft"
       },
       "customDataList": null,
+      "mergeKey": "84a72c7a",
       "referenceID": "WeaponCivilianDagger"
     },
     {
@@ -36,6 +46,7 @@
         "holderName": "BackLeft"
       },
       "customDataList": null,
+      "mergeKey": "32fe04dd",
       "referenceID": "WeaponSoldierBow"
     },
     {
@@ -46,6 +57,7 @@
         "holderName": "HipsRight"
       },
       "customDataList": null,
+      "mergeKey": "7c59b11d",
       "referenceID": "Quiver"
     },
     {
@@ -53,6 +65,7 @@
       "quantity": 1,
       "state": null,
       "customDataList": null,
+      "mergeKey": "377856d3",
       "referenceID": "CrystalMindT3"
     },
     {
@@ -60,6 +73,7 @@
       "quantity": 1,
       "state": null,
       "customDataList": null,
+      "mergeKey": "cfa5a55d",
       "referenceID": "CrystalBodyT3"
     },
     {
@@ -67,6 +81,7 @@
       "quantity": 1,
       "state": null,
       "customDataList": null,
+      "mergeKey": "0551ec00",
       "referenceID": "CrystalFireT3"
     },
     {
@@ -74,6 +89,7 @@
       "quantity": 1,
       "state": null,
       "customDataList": null,
+      "mergeKey": "4aedd7d6",
       "referenceID": "CrystalLightningT3"
     },
     {
@@ -81,6 +97,7 @@
       "quantity": 1,
       "state": null,
       "customDataList": null,
+      "mergeKey": "1396c0b9",
       "referenceID": "CrystalGravityT3"
     },
     {
@@ -90,6 +107,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": null,
+      "mergeKey": "307633dc",
       "referenceID": "ApparelCivilianChest"
     },
     {
@@ -99,6 +117,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": null,
+      "mergeKey": "adf9e6a2",
       "referenceID": "ApparelCivilianHandL"
     },
     {
@@ -108,6 +127,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": null,
+      "mergeKey": "d26a519f",
       "referenceID": "ApparelCivilianHandR"
     },
     {
@@ -117,6 +137,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": null,
+      "mergeKey": "c3913b26",
       "referenceID": "ApparelCivilianLegs"
     },
     {
@@ -126,324 +147,403 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": null,
+      "mergeKey": "e9364d68",
       "referenceID": "ApparelCivilianBoots"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "107a2dcf",
       "referenceID": "DiveStrike"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "4efa54d2",
       "referenceID": "Skulker"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "427e043e",
       "referenceID": "RangedExpertise"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "f92081d1",
       "referenceID": "Flykick"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "bee6d50e",
       "referenceID": "Wrestler"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "08f8dbf5",
       "referenceID": "Discombobulate"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "aca2542c",
       "referenceID": "Boomerang"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "417cad5b",
       "referenceID": "SecondWind"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "6ca60c8d",
       "referenceID": "MightyKick"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "bc5e2055",
       "referenceID": "Juggernaut"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "d0085b9c",
       "referenceID": "Intimidation"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "1877f668",
       "referenceID": "BruteForce"
     },
     {
       "$type": "ThunderRoad.SpellContent, ThunderRoad",
+      "mergeKey": "70b21f2c",
       "referenceID": "Fire"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "5664fadd",
       "referenceID": "Conflagration"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "e3991c70",
       "referenceID": "FireballRicochet"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "f863c839",
       "referenceID": "MoltenArc"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "3f845243",
       "referenceID": "IgnitionBurst"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "9a45af54",
       "referenceID": "HeavyFirepower"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "c7627ebc",
       "referenceID": "Heatwave"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "9ad7b89b",
       "referenceID": "RemoteDetonation"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "414d8298",
       "referenceID": "TwinFlame"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "00349ba8",
       "referenceID": "InfernoStaff"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "8e92b544",
       "referenceID": "DetonationSwarm"
     },
     {
       "$type": "ThunderRoad.SpellContent, ThunderRoad",
+      "mergeKey": "36162b5b",
       "referenceID": "FireMerge"
     },
     {
       "$type": "ThunderRoad.SpellContent, ThunderRoad",
+      "mergeKey": "70631968",
       "referenceID": "GravityMerge"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "55fdd243",
       "referenceID": "DilationBubble"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "53ec20b3",
       "referenceID": "GravityHammer"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "e5f464dc",
       "referenceID": "ImpulseSpike"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "9114c726",
       "referenceID": "BoostJump"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "855f7037",
       "referenceID": "Airstrike"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "0694d88c",
       "referenceID": "Riptide"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "99db6dc5",
       "referenceID": "WeightlessBoost"
     },
     {
       "$type": "ThunderRoad.SpellContent, ThunderRoad",
+      "mergeKey": "f5539745",
       "referenceID": "Gravity"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "35bd95a8",
       "referenceID": "FeatherFall"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "75fb1173",
       "referenceID": "ImpactPulse"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "a03e44cb",
       "referenceID": "Lithobrake"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "c8a6caa1",
       "referenceID": "MassReduction"
     },
     {
       "$type": "ThunderRoad.SpellContent, ThunderRoad",
+      "mergeKey": "44c85b65",
       "referenceID": "LightningMerge"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "8623cb87",
       "referenceID": "Arcwire"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "66b4e8b8",
       "referenceID": "TeslaWires"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "3ee29074",
       "referenceID": "Thunderbolt"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "62e4081a",
       "referenceID": "ChargeSapping"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "29a5d4fc",
       "referenceID": "ChainLightning"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "e0b2d73d",
       "referenceID": "Overcharge"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "9fa1e540",
       "referenceID": "ShockParry"
     },
     {
       "$type": "ThunderRoad.SpellContent, ThunderRoad",
+      "mergeKey": "aed72088",
       "referenceID": "Lightning"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "eb185c04",
       "referenceID": "Electromagnetism"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "5603cac1",
       "referenceID": "ShockTrip"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "f68c6998",
       "referenceID": "StaticDisarm"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "bcaad22a",
       "referenceID": "Marionette"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "b176370b",
       "referenceID": "ForceChoke"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "fd0d56d1",
       "referenceID": "RipAndTear"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "f511a221",
       "referenceID": "StaggerThrow"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "8b68784c",
       "referenceID": "HyperFocus"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "ca113d69",
       "referenceID": "EmergencyExit"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "e9a483b4",
       "referenceID": "FocusedReflexes"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "329382c2",
       "referenceID": "PrecisionFocus"
     },
     {
       "$type": "ThunderRoad.SpellContent, ThunderRoad",
+      "mergeKey": "2159a332",
       "referenceID": "SlowTime"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "11a3a0f1",
       "referenceID": "CombatFocus"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "0dd5031b",
       "referenceID": "Telespin"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "96c16b16",
       "referenceID": "Telethrow"
     },
     {
       "$type": "ThunderRoad.SpellContent, ThunderRoad",
+      "mergeKey": "4436ad33",
       "referenceID": "PlasmaBeam"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "c974608a",
       "referenceID": "FireSapping"
     },
     {
       "$type": "ThunderRoad.SpellContent, ThunderRoad",
+      "mergeKey": "113ffe6e",
       "referenceID": "SpellMergeGravnado"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "8793ed45",
       "referenceID": "GravitySapping"
     },
     {
       "$type": "ThunderRoad.SpellContent, ThunderRoad",
+      "mergeKey": "5b26eb70",
       "referenceID": "Supernova"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "f23fd661",
       "referenceID": "RepellingBurst"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "c4e53c18",
       "referenceID": "FanTheFlames"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "d1b5b5ee",
       "referenceID": "WeaponTheft"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "709a5bf9",
       "referenceID": "AchronalBolts"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "4c2b6e84",
       "referenceID": "ForcePunch"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "a52b5567",
       "referenceID": "FloatingGrasp"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "1a94c1f9",
       "referenceID": "RocketPunch"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "512fcb32",
       "referenceID": "BurningGrasp"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "11487bca",
       "referenceID": "ThunderPunch"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "3656b8e4",
       "referenceID": "ShockingGrasp"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "925bde65",
       "referenceID": "HomingRedirection"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "5dbaca3c",
       "referenceID": "TemporalRiposte"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "d2326451",
       "referenceID": "WeightlessKinesis"
     }
-  ],
-  "groupPath": "Player"
+  ]
 }

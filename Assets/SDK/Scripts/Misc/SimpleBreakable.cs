@@ -1,13 +1,10 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
@@ -24,6 +21,8 @@ namespace ThunderRoad
         [Tooltip("Minimum mass for a rigidbody to deal damage on collision.")]
         public float minHitMass = 0f;
         public List<DamageOverride> damageOverrides = new List<DamageOverride>();
+
+        public float delayOnAwake = 0;
         
         [Header("Damage Fallback")]
         public AnimationCurve velocityCurve = AnimationCurve.Linear(5f, 1f, 15f, 2f);
@@ -37,15 +36,14 @@ namespace ThunderRoad
         public bool forceReleaseOnBreak = true;
 
         [NonSerialized]
-#if ODIN_INSPECTOR
-        [ShowInInspector, ReadOnly]
-#endif
+        [ShowInInspector]
+        [ReadOnly]
         public float health;
-#if ODIN_INSPECTOR
-        [ShowInInspector, ReadOnly]
-#endif
+        [ShowInInspector]
+        [ReadOnly]
         private bool isBroken;
         private float lastCollision;
+        private float awakeTime;
 
         [System.Flags]
         public enum DamageType

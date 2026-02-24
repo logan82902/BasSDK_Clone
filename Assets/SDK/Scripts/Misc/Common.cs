@@ -10,8 +10,6 @@ using System.IO;
 using UnityEngine.Audio;
 using Object = UnityEngine.Object;
 
-
-
 #if UNITY_EDITOR
 using UnityEditor;
 using UnityEditor.AddressableAssets;
@@ -20,35 +18,13 @@ using UnityEditor.AddressableAssets.Settings;
 
 namespace ThunderRoad
 {
-    public enum Tristate
-    {
-        False,
-        Partial,
-        True,
-    }
 
     public enum Side
     {
         Right,
         Left,
     }
-
-    public enum LayerType
-    {
-        Touch,
-        Body,
-        Ragdoll,
-        Object,
-        Stair,
-        Avatar,
-        AvatarObject,
-        FloatingHand,
-        Damage,
-        Creature,
-        UI,
-        Player,
-    }
-
+    
     public enum AxisDirection
     {
         None,
@@ -169,29 +145,6 @@ namespace ThunderRoad
         Speed,
     }
 
-    public enum SavedValueID
-    {
-        LevelCastThrow,
-        LevelCastSpray,
-        LevelCharge,
-        LevelImbue,
-        LevelMergeAppart,
-        LevelMergeUp,
-        LevelMergeForward,
-        LevelMergeDown,
-        LevelCrystalShockwave,
-        LevelCrystalForward,
-        LevelCrystalFire,
-    }
-
-    public enum Finger
-    {
-        Thumb,
-        Index,
-        Middle,
-        Ring,
-        Little,
-    }
 
     public enum EventTime
     {
@@ -211,24 +164,23 @@ namespace ThunderRoad
         UnBlockable
     }
 
+    public enum ImbueUseButton
+    {
+        None,
+        Use,
+        AltUse
+    }
+
     public enum QualityLevel
     {
         Windows,
         Android,
     }
-
-    [Flags]
-    public enum LevelSaveOptions
-    {
-        PlayerHolsters = 1,
-        PlayerGrabbedItems = 2,
-        PlayerRacks = 4,
-        LevelCreatures = 8,
-        PlayerGrabbedCreatures = 16,
-    }
+    
 
     public static class LevelOptionExtensions
     {
+        
         private static Dictionary<LevelOption, string> _cache;
 
         public static string Get(this LevelOption option)
@@ -266,6 +218,9 @@ namespace ThunderRoad
         EnemyDamageMultiplier,
         DynamicMusicId,
         GolemTier,
+        SurvivalWaves,
+        SurvivalRewards,
+        SurvivalRestriction,
     }
 
     [Flags]
@@ -337,6 +292,8 @@ namespace ThunderRoad
 
     public static class Common
     {
+
+
 #if UNITY_EDITOR
         public static bool TryGetMoveOrCreateAddressableEntry(Object obj, AddressableAssetGroup assetGroup, out AddressableAssetEntry entry)
         {
@@ -939,7 +896,7 @@ return true;
                 GameObject.DestroyImmediate(root.gameObject);
         }
 
-        private static Hashtable hueColourValues = new Hashtable {
+        private readonly static Hashtable hueColourValues = new Hashtable {
             {HueColorName.Lime, new Color32(166, 254, 0, 255)},
             {HueColorName.Green, new Color32(0, 254, 111, 255)},
             {HueColorName.Aqua, new Color32(0, 201, 254, 255)},
@@ -1126,6 +1083,36 @@ return true;
             return new Vector3(x, y, z);
         }
 
+        /// <summary>
+        /// Calculate the velocity of a point on an object given its linear and angular velocity.
+        /// </summary>
+        /// <param name="hitPoint"></param>
+        /// <param name="lastLinearVelocity"></param>
+        /// <param name="lastAngularVelocity"></param>
+        /// <param name="centerOfMass"></param>
+        /// <param name="transform"></param>
+        /// <returns></returns>
+        public static Vector3 CalculatePointVelocity(Vector3 hitPoint, Vector3 lastLinearVelocity, Vector3 lastAngularVelocity, Vector3 centerOfMass, Transform transform)
+        {
+            Vector3 lhs = lastAngularVelocity;
+            Vector3 inverseTransformPoint = transform.InverseTransformPoint(hitPoint);
+            
+            // Vector3 centerToPoint = inverseTransformPoint - physicBodyCenterOfMass;
+            float rhsX = inverseTransformPoint.x - centerOfMass.x;
+            float rhsY = inverseTransformPoint.y - centerOfMass.y;
+            float rhsZ = inverseTransformPoint.z - centerOfMass.z;
+            
+            //Vector3.Cross(angularVelocity, centerToPoint)
+            float crossX = lhs.y * rhsZ - lhs.z * rhsY;
+            float crossY = lhs.z * rhsX - lhs.x * rhsZ;
+            float crossZ = lhs.x * rhsY - lhs.y * rhsX;
+            
+            // return linearVelocity + Vector3.Cross(angularVelocity, centerToPoint);
+            float x = lastLinearVelocity.x + crossX;
+            float y = lastLinearVelocity.y + crossY;
+            float z = lastLinearVelocity.z + crossZ;
+            return new Vector3(x, y, z);
+        }
 #if UNITY_EDITOR
         public static T EditorCreateOrReplaceAsset<T>(T asset, string path) where T : UnityEngine.Object
         {

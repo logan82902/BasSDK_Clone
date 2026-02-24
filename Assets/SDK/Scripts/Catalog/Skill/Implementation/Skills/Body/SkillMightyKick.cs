@@ -1,28 +1,21 @@
 ﻿using UnityEngine;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
 
 namespace ThunderRoad.Skill
 {
+    [DeclareBoxGroup("Kick", Title = "Kick")]
+    [DeclareBoxGroup("Force", Title = "Force")]
     public class SkillMightyKick : SkillData
     {
-#if ODIN_INSPECTOR
-        [BoxGroup("Kick"), ValueDropdown(nameof(GetAllEffectID))]
-#endif
+        [Group("Kick")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string kickEffectId;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Force")]
-#endif
+        [Group("Force")]
         public float forceMultiplierRagdolls = 1.3f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Force")]
-#endif
+        [Group("Force")]
         public float forceMultiplierItems = 3f;
 
     }

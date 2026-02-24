@@ -1,11 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.Playables;
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+
 using TriInspector;
-#endif
 
 #if !TESTINGLOCALLY
 namespace ThunderRoad

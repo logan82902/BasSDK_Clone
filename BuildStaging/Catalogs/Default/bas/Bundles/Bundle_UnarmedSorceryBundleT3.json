@@ -1,0 +1,22 @@
+{
+  "$type": "ThunderRoad.BundleData, ThunderRoad",
+  "id": "UnarmedSorceryBundleT3",
+  "sensitiveContent": "None",
+  "sensitiveFilterBehaviour": "Discard",
+  "version": 0,
+  "groupPath": "T3",
+  "localizationGroup": "Bundles",
+  "displayName": "BundleUnarmedSorceryBundleT3Name",
+  "description": null,
+  "altDescriptionTitle": "ContentsTitle",
+  "isArmorBundle": false,
+  "bundleItemId": "Bundle",
+  "items": [],
+  "skills": [
+    "MightyKick",
+    "BruteForce",
+    "Wrestler"
+  ],
+  "lootTables": [],
+  "spriteAddress": "Ui.Icon.Unknown"
+}

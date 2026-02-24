@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
+  "groupPath": "Outpost/Transi",
   "isUnique": true,
   "areaPrefabAddress": "Bas.Area.GL_Transi_Castle_Sewer1",
   "lightingPresetAddress": "Bas.Area.GL_Transi_Castle_Sewer1.LightingPreset",
@@ -120,6 +121,5 @@
       "fakeViewAddress": "Bas.Area.GL_Transi_Castle_Sewer1.FakeView.3"
     }
   ],
-  "areaGlobalParameters": [],
-  "groupPath": "Outpost/Transi"
+  "areaGlobalParameters": []
 }

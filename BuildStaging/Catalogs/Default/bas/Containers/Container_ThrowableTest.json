@@ -4,9 +4,9 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 1,
+  "groupPath": "Factions/Civilian",
   "displayName": "",
   "description": null,
-  "contents": [],
   "containerContents": [
     {
       "$type": "ThunderRoad.TableContent, ThunderRoad",
@@ -16,6 +16,7 @@
         "holderName": "HipsRight"
       },
       "customDataList": [],
+      "mergeKey": "557234e3",
       "referenceID": "WeaponCultistPartisan"
     },
     {
@@ -25,6 +26,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "99c8b82c",
       "referenceID": "ApparelMercenaryHeadband"
     },
     {
@@ -34,6 +36,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "35086333",
       "referenceID": "ApparelRogueHandL"
     },
     {
@@ -43,6 +46,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "efeb7794",
       "referenceID": "ApparelRogueHandR"
     },
     {
@@ -52,6 +56,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "ab399fde",
       "referenceID": "ApparelRogueChestplate"
     },
     {
@@ -61,6 +66,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "8fb266cb",
       "referenceID": "ApparelRoguePants"
     },
     {
@@ -70,6 +76,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "3d7d2bb2",
       "referenceID": "ApparelRogueBoots"
     },
     {
@@ -79,6 +86,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "bea82f99",
       "referenceID": "HairsSoldier"
     },
     {
@@ -89,8 +97,8 @@
         "holderName": "HipsLeft"
       },
       "customDataList": [],
+      "mergeKey": "44605af9",
       "referenceID": "DaggerQuiver"
     }
-  ],
-  "groupPath": "Factions/Civilian"
+  ]
 }

@@ -1,29 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using TriInspector;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#endif
 
 namespace ThunderRoad
 {
     public class DatetimeActive : MonoBehaviour
     {
-        [System.Serializable]
+        [Serializable]
+        [DeclareHorizontalGroup("SimpleTime")]
         public class SimpleDateTime
         {
-#if ODIN_INSPECTOR
-            [HorizontalGroup("SimpleTime", Width = 75)]
+            [Group("SimpleTime")]
             [LabelWidth(40)]
-#endif
             public int month;
-#if ODIN_INSPECTOR
-            [HorizontalGroup("SimpleTime", Width = 60)]
+            [Group("SimpleTime")]
             [LabelWidth(25)]
-#endif
             public int day;
-#if ODIN_INSPECTOR
             private string hourMinuteString
             {
                 get
@@ -35,8 +29,7 @@ namespace ThunderRoad
 
             [LabelText("$hourMinuteString")]
             [LabelWidth(75)]
-            [HorizontalGroup("SimpleTime")]
-#endif
+            [Group("SimpleTime")]
             [Range(0, 48)]
             public int time;
 
@@ -60,22 +53,16 @@ namespace ThunderRoad
             }
         }
 
-#if ODIN_INSPECTOR
         [InlineProperty]
         [HideLabel]
         [Header("From")]
-#endif
-        public SimpleDateTime activeStart = new SimpleDateTime(6, 17, 36);
-#if ODIN_INSPECTOR
+        public SimpleDateTime activeStart = new(6, 17, 36);
         [InlineProperty]
         [HideLabel]
         [Header("Until")]
-#endif
-        public SimpleDateTime activeEnd = new SimpleDateTime(10, 28, 36);
+        public SimpleDateTime activeEnd = new(10, 28, 36);
 
-#if ODIN_INSPECTOR
         [Button]
-#endif
         public bool CheckWithinRange()
         {
             DateTime now = DateTime.Now;

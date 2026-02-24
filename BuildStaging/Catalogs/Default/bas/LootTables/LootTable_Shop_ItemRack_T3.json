@@ -4,12 +4,12 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 1,
+  "groupPath": "Shop",
   "levelledDrops": [
     {
       "$type": "ThunderRoad.LootTable+DropLevel, ThunderRoad",
       "dropLevel": 0,
       "drops": []
     }
-  ],
-  "groupPath": "Shop"
+  ]
 }

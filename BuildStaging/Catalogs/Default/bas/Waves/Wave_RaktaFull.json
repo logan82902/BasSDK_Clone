@@ -1,0 +1,76 @@
+{
+  "$type": "ThunderRoad.WaveData, ThunderRoad",
+  "id": "RaktaFull",
+  "sensitiveContent": "None",
+  "sensitiveFilterBehaviour": "Discard",
+  "version": 2,
+  "groupPath": "Sandbox",
+  "category": "7Rakta",
+  "localizationId": "RaktaFull",
+  "title": "1Standard",
+  "description": "",
+  "loopBehavior": "NoLoop",
+  "totalMaxAlive": 4,
+  "alwaysAvailable": false,
+  "waveSelectors": [
+    "Arena",
+    "Ruins",
+    "Market",
+    "Canyon",
+    "Citadel"
+  ],
+  "factions": [
+    {
+      "$type": "ThunderRoad.WaveData+WaveFaction, ThunderRoad",
+      "factionID": 5,
+      "factionMaxAlive": 4
+    }
+  ],
+  "groups": [
+    {
+      "$type": "ThunderRoad.WaveData+Group, ThunderRoad",
+      "mergeKey": "5c1926a1",
+      "reference": "Table",
+      "referenceID": "RaktaAlertMix",
+      "overrideFaction": false,
+      "factionID": 0,
+      "overrideContainer": false,
+      "overrideContainerID": "Rakta Elite",
+      "overrideBrain": false,
+      "overrideBrainID": "",
+      "overrideMaxMelee": false,
+      "overrideMaxMeleeCount": 2,
+      "groupHealthMultiplier": 1.0,
+      "minMaxCount": {
+        "x": 10,
+        "y": 10
+      },
+      "spawnPointIndex": -1,
+      "prereqGroupIndex": -1,
+      "prereqMaxRemainingAlive": 0
+    },
+    {
+      "$type": "ThunderRoad.WaveData+Group, ThunderRoad",
+      "mergeKey": "ff2474f8",
+      "reference": "Table",
+      "referenceID": "RaktaAlertMix",
+      "overrideFaction": false,
+      "factionID": 0,
+      "overrideContainer": false,
+      "overrideContainerID": "Rakta Elite",
+      "overrideBrain": false,
+      "overrideBrainID": "",
+      "overrideMaxMelee": false,
+      "overrideMaxMeleeCount": 2,
+      "groupHealthMultiplier": 1.0,
+      "minMaxCount": {
+        "x": 10,
+        "y": 10
+      },
+      "spawnPointIndex": -1,
+      "prereqGroupIndex": -1,
+      "prereqMaxRemainingAlive": 0
+    }
+  ],
+  "modules": null
+}

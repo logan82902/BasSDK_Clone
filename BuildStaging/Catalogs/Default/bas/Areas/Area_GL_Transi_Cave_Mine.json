@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
+  "groupPath": "Outpost/Transi",
   "isUnique": true,
   "areaPrefabAddress": "Bas.Area.GL_Transi_Cave_Mine",
   "lightingPresetAddress": "Bas.Area.GL_Transi_Cave_Mine.LightingPreset",
@@ -92,6 +93,5 @@
       "fakeViewAddress": "Bas.Area.GL_Transi_Cave_Mine.FakeView.2"
     }
   ],
-  "areaGlobalParameters": [],
-  "groupPath": "Outpost/Transi"
+  "areaGlobalParameters": []
 }

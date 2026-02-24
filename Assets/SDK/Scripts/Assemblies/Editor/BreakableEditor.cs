@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using static UnityEditor.EditorGUILayout;
 
+#pragma warning disable UDR0001 // Domain Reload Analyzer
 namespace ThunderRoad
 {
     [CustomEditor(typeof(Breakable))]
@@ -13,6 +14,7 @@ namespace ThunderRoad
         private Breakable breakable;
         private static bool a = true;
         private static Material mat;
+
 
         public override void OnInspectorGUI()
         {

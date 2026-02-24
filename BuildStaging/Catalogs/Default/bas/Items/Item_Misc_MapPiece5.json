@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 4,
+  "groupPath": null,
   "localizationId": "MapPiece",
   "displayName": "Partial Map",
   "description": "A map with partial information locating a Dalgarian Ruin. ",
@@ -14,16 +15,18 @@
   "tier": 0,
   "flags": "Spinnable",
   "levelRequired": 0,
+  "type": "Note",
   "category": "Consumables",
+  "update": "",
   "iconEffectId": null,
   "preferredItemCenter": "Mass",
   "drainImbueWhenIdle": true,
+  "forceImbueUseButton": "None",
   "prefabAddress": "Bas.Item.MapPiece5",
   "iconAddress": "",
   "closeUpIconAddress": null,
   "pooledCount": 0,
   "androidPooledCount": 0,
-  "type": "Note",
   "allowedStorage": "Inventory",
   "despawnOnStoredInInventory": true,
   "isStackable": false,
@@ -37,6 +40,7 @@
   "mass": 1.0,
   "drag": 1.0,
   "angularDrag": 1.0,
+  "density": 200.0,
   "focusRegenMultiplier": 1.0,
   "spellChargeSpeedPlayerMultiplier": 1.0,
   "spellChargeSpeedNPCMultiplier": 1.0,
@@ -150,15 +154,6 @@
     "preWrapMode": "ClampForever",
     "postWrapMode": "ClampForever"
   },
-  "modules": [
-    {
-      "$type": "ThunderRoad.ItemModuleNote, ThunderRoad",
-      "isCustomNote": true,
-      "contentPrefabAddress": "Bas.UI.NoteContentMapPiece5",
-      "groupTextId": "",
-      "textId": ""
-    }
-  ],
   "colliderGroups": [],
   "damagers": [
     {
@@ -187,6 +182,14 @@
       "dampening": 0.1
     }
   ],
-  "entityModules": [],
-  "groupPath": null
+  "modules": [
+    {
+      "$type": "ThunderRoad.ItemModuleNote, ThunderRoad",
+      "isCustomNote": true,
+      "contentPrefabAddress": "Bas.UI.NoteContentMapPiece5",
+      "groupTextId": "",
+      "textId": ""
+    }
+  ],
+  "entityModules": []
 }

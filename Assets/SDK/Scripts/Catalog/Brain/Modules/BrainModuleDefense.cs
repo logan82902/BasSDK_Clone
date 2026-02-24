@@ -4,31 +4,17 @@ using UnityEngine;
 using UnityEngine.AI;
 using System;
 using System.Collections;
-
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
+    [System.Serializable]
+    [AutoLabelWidth(AddedWidth = 5f, MinWidth = 0f)]
     public class BrainModuleDefense : BrainData.Module
     {
         public bool enabled = true;
 
         public bool parryEnabled = true;
-#if ODIN_INSPECTOR
-        protected void CopyTime()
-        {
-            foreach (BrainData bd in Catalog.GetDataList<BrainData>())
-            {
-                if (bd.GetModule<BrainModuleDefense>(false) is BrainModuleDefense defenseModule) defenseModule.aboutToBeHitTiming = this.aboutToBeHitTiming;
-            }
-        }
-
-        [CustomContextMenu("Copy to other brains", nameof(CopyTime))]
-#endif
         public float aboutToBeHitTiming = 0.6f;
         public float waitDodgeTime = 0.06f;
         public float dangerLevelDecreaseTime = 0.5f;
@@ -66,7 +52,6 @@ namespace ThunderRoad
 
         [Header("Dodge")]
         public bool dodgeEnabled = true;
-#if ODIN_INSPECTOR
         protected void CopyCurveAcrossBrains()
         {
             foreach (BrainData bd in Catalog.GetDataList<BrainData>())
@@ -75,8 +60,6 @@ namespace ThunderRoad
             }
         }
 
-        [CustomContextMenu("Copy to other brains", nameof(CopyCurveAcrossBrains))]
-#endif
         public AnimationCurve dodgeChanceCurve;
         public Vector2 minMaxDodgeCooldown = new Vector2(0.5f, 1f);
         public float dodgeSpeed = 1f;

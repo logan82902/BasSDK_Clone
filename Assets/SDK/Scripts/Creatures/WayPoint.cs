@@ -2,12 +2,10 @@
 using UnityEngine.AI;
 using System.Collections.Generic;
 using System;
-
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
-using TriInspector;
+#if UNITY_EDITOR
+using UnityEditor.SceneManagement;
 #endif
+using TriInspector;
 
 namespace ThunderRoad
 {
@@ -27,9 +25,7 @@ namespace ThunderRoad
         [Header("Animation")]
         [Tooltip("When enabled, the creature will play the listed animation when at the waypoint")]
         public bool playAnimation;
-#if ODIN_INSPECTOR
-        [ValueDropdown(nameof(GetAllAnimationID), AppendNextDrawer = true)]
-#endif
+        [Dropdown(nameof(GetAllAnimationID))]
         [Tooltip("ID of the animation you want the creature to play")]
         public string animationId;
         [Tooltip("The minimum angle of which the creature turns during the animation")]
@@ -66,12 +62,8 @@ namespace ThunderRoad
         public UnityEditor.SceneManagement.StageHandle activeScene;
 #endif
 
-#if ODIN_INSPECTOR
-        public List<ValueDropdownItem<string>> GetAllAnimationID()
-        {
-            return Catalog.GetDropdownAllID(Category.Animation);
-        }
-#endif
+
+        public TriDropdownList<string> GetAllAnimationID() => Catalog.GetDropdownAllID(Category.Animation);
 
 
         private void OnValidate()

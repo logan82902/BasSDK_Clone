@@ -1,33 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#endif
+using TriInspector;
 using UnityEngine;
 
 namespace ThunderRoad.Skill.Spell
 {
+    [DeclareBoxGroup("Effect", Title = "Effect")]
+    [DeclareBoxGroup("Status Effect", Title = "Status Effect")]
     public class SkillFanTheFlames : SpellSkillData
     {
-#if ODIN_INSPECTOR
-        [BoxGroup("Effect"), ValueDropdown(nameof(GetAllEffectID))]
-#endif
+        [Group("Effect")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string effectId;
-#if ODIN_INSPECTOR
-        [BoxGroup("Status Effect"), ValueDropdown(nameof(GetAllStatusEffectID))]
-#endif
+        [Group("Status Effect")]
+        [Dropdown(nameof(GetAllStatusEffectID))]
         public string statusEffectId = "Burning";
-#if ODIN_INSPECTOR
-        [BoxGroup("Status Effect")]
-#endif
+        [Group("Status Effect")]
         public float duration = 3f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Status Effect")]
-#endif
+        [Group("Status Effect")]
         public float heatTransferRatio = 0.4f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Status Effect")]
-#endif
+        [Group("Status Effect")]
         public float radius = 3f;
         [NonSerialized]
         public EffectData effectData;

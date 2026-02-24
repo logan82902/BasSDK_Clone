@@ -1,19 +1,21 @@
 ﻿using System.Collections.Generic;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
+    [DeclareBoxGroup("Stance basics", Title = "Stance basics")]
     public abstract class StanceIdlesData<T> : StanceData where T : IdlePose
     {
-#if ODIN_INSPECTOR
-        [BoxGroup("Stance basics"), ListDrawerSettings(Expanded = true)]
-#endif
-        public List<T> idles = new List<T>();
+        [Group("Stance basics")]
+        [HideReferencePicker]
+        public List<T> idles = new();
+
+        public override IEnumerable<StanceNode> AllStanceNodes()
+        {
+            for (int i = 0; i < idles.Count; i++) yield return idles[i];
+        }
 
     }
 }

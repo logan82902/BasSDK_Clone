@@ -4,9 +4,9 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 1,
+  "groupPath": "Factions/Cultist",
   "displayName": "Cultist Arbiter",
   "description": "",
-  "contents": [],
   "containerContents": [
     {
       "$type": "ThunderRoad.TableContent, ThunderRoad",
@@ -16,18 +16,22 @@
         "holderName": "HipsRight"
       },
       "customDataList": [],
+      "mergeKey": "f2660c27",
       "referenceID": "WeaponCultistDevotee"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "10c80d93",
       "referenceID": "MeleeImbueFire"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "76b0d77d",
       "referenceID": "MoltenArc"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "2896150f",
       "referenceID": "ModifierArmored"
     },
     {
@@ -37,6 +41,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "e3e80606",
       "referenceID": "ApparelBattlemageCloak"
     },
     {
@@ -46,6 +51,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "5e531b63",
       "referenceID": "ApparelDruidHeadband"
     },
     {
@@ -55,6 +61,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "6d153fcf",
       "referenceID": "ApparelOfficerHandR"
     },
     {
@@ -64,6 +71,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "3579726b",
       "referenceID": "ApparelImprovisedMageWristR"
     },
     {
@@ -73,6 +81,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "33f5d705",
       "referenceID": "ApparelOfficerChest"
     },
     {
@@ -82,6 +91,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "faf16491",
       "referenceID": "ApparelOfficerLegs"
     },
     {
@@ -91,6 +101,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "44b73857",
       "referenceID": "ApparelOfficerBoots"
     },
     {
@@ -100,8 +111,8 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "ac1acfbf",
       "referenceID": "HairsSoldier"
     }
-  ],
-  "groupPath": "Factions/Cultist"
+  ]
 }

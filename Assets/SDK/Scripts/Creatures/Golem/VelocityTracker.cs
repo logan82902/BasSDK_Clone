@@ -1,22 +1,15 @@
-using UnityEngine;
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+﻿using UnityEngine;
+
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
     public class VelocityTracker : ThunderBehaviour
     {
-#if ODIN_INSPECTOR
         [ReadOnly]
-#endif
         public Vector3 velocity;
-        
-#if ODIN_INSPECTOR
+
         [ReadOnly]
-#endif
         public Vector3 angularVelocity;
         private Vector3 lastPos;
         private Vector3 lastRot;

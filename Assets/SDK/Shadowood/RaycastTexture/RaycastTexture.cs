@@ -1,3 +1,7 @@
+﻿#if UNITY_EDITOR
+#define DEBUGVISUALS
+#endif
+
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -9,17 +13,10 @@ using Fluxy;
 using Fragilem17.MirrorsAndPortals;
 #endif
 using Shadowood.RaycastTexture;
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
 #if UNITY_EDITOR
 #if DYNAMICBLITPASS
 using Shadowood.DynamicBlitPass;
-#endif
-#if ODIN_INSPECTOR && UNITY_EDITOR
-using Sirenix.OdinInspector.Editor;
 #endif
 using UnityEditor;
 #endif
@@ -28,9 +25,12 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using ThunderRoad.Splines;
 
+
+
 namespace Shadowood.RaycastTexture
 {
     [ExecuteInEditMode]
+    [DeclareFoldoutGroup("Advanced Settings", Expanded = false)]
     public class RaycastTexture : MonoBehaviour
     {
         internal const string FOLDER_PATH = "Assets/SDK/Shadowood";
@@ -43,36 +43,100 @@ namespace Shadowood.RaycastTexture
         public bool debugColliders;
         public bool debugCollidersDepth;
 
-        [InlineButton("DebugVisualsToggle", "@debugVisuals ? \"DebugVisuals: On\" : \"DebugVisuals: Off\"")]
+#if DEBUGVISUALS
+        // Fails to hide the original checkbox so you get checkbox and a button
+        [HideInInspector]
         public bool debugVisuals;
 
         private bool debugAboveAll;
 
-        [EnumToggleButtons, HideLabel]
-        [ShowIf("@debugVisuals && mode == eMode.Ocean")] //
-        [GUIColor("@debugVisuals ? Color.cyan : Color.white")]
-        //
-        //[InlineButton("DebugVisualsToggle", "@debugVisuals ? \"DebugVisuals: On\" : \"DebugVisuals: Off\"")]
-        //[InlineButton("DebugAboveAllToggle", "@debugAboveAll ? \"DebugAbove: On\" : \"DebugAbove: Off\"")]
+        [InlineButton(nameof(DebugVisualsToggle), "$DebugVisualsInlineButtonText", NewLine = true)]
+        [InlineButton(nameof(DebugAboveAllToggle), "$DebugAboveAllInlineButtonText", NewLine = true)]
+        [EnumToggleButtons(Columns = 3)]
+        [HideLabel]
+        [ShowIf("IsDebugVisualsOcean")] //
+        [GUIColor("$DebugVisualsGuiColor")]
+        [OnValueChanged(nameof(OnValidate))]
         public eDebugModes debugMode = eDebugModes.Waves_Foam;
 
-        [EnumToggleButtons, HideLabel]
-        [ShowIf("@debugVisuals && mode == eMode.River")] //
-        [GUIColor("@debugVisuals ? Color.cyan : Color.white")]
-        //
-        //[InlineButton("DebugVisualsToggle", "@debugVisuals ? \"DebugVisuals: On\" : \"DebugVisuals: Off\"")]
-        //[InlineButton("DebugAboveAllToggle", "@debugAboveAll ? \"DebugAbove: On\" : \"DebugAbove: Off\"")]
+        [InlineButton(nameof(DebugVisualsToggle), "$DebugVisualsInlineButtonText", NewLine = true)]
+        [InlineButton(nameof(DebugAboveAllToggle), "$DebugAboveAllInlineButtonText", NewLine = true)]
+        [EnumToggleButtons(Columns = 3)]
+        [HideLabel]
+        [ShowIf("IsDebugVisualsRiver")] //
+        [GUIColor("$DebugVisualsGuiColor")]
+        [OnValueChanged(nameof(OnValidate))]
         public eDebugModesRiver debugModeRiver = eDebugModesRiver.Flow_Mix;
+
+        private bool IsDebugVisualsOcean =>  mode == eMode.Ocean;
+        private bool IsDebugVisualsRiver =>  mode == eMode.River;
+        private string DebugVisualsInlineButtonText => debugVisuals ? "DebugVisuals: On" : "DebugVisuals: Off";
+        private string DebugAboveAllInlineButtonText => debugAboveAll ? "DebugAbove: On" : "DebugAbove: Off";
+        private Color DebugVisualsGuiColor => debugVisuals ? Color.cyan : Color.white * 0.8F;
+#endif
+
+        // TriInspector workarounds as we ditched ODIN
+#if UNITY_EDITOR
+        private bool IsModeOcean => mode == eMode.Ocean;
+        private bool IsModeRiver => mode == eMode.River;
+
+        private Color SurfaceMaterialGuiColor => SurfaceMaterialValid() ? Color.white : Color.red;
+        private Color PathGuiColor => PathValid() ? Color.white : Color.red;
+        private Color TargetCollidersGuiColor => (mode == eMode.Ocean) || (targetColliders != null && targetColliders.Count > 0) ? Color.white : Color.red;
+        private Color TargetMeshColliderGuiColor => targetMeshCollider != null && targetMeshCollider.sharedMesh != null ? Color.white : Color.red;
+        private Color RiverMeshGuiColor => riverMesh != null && riverMesh.GetComponent<MeshFilter>() != null && riverMesh.GetComponent<MeshFilter>().sharedMesh != null ? Color.white : Color.red;
+
+        private bool HasOceanBakeQuad => oceanBakeQuad != null;
+        private Color OceanBakeQuadGuiColor => OceanBakeQuadValid() ? Color.red : Color.white;
+        private Color OceanBakeLightmapGuiColor => oceanbakeLM != null ? Color.white : Color.red;
+        private Color MainLightGuiColor => mainLight != null ? Color.white : Color.red;
+#if OCEANHEIGHTSAMPLER
+        private Color OceanHeightSampleManagerGuiColor => oceanHeightSampleManager != null ? Color.white : Color.red;
+#endif
+        private Color GlobalSkyCubeGuiColor => globalSkyCube != null ? Color.white : Color.red;
+        private Color ToneMappingGuiColor => toneMapping != null ? Color.white : Color.red;
+        private Color OceanRendererGuiColor => oceanRenderer != null ? Color.white : Color.red;
+        private Color OceanFogControllerGuiColor => oceanFogController != null ? Color.white : Color.red;
+        private Color OceanSplineMaskGuiColor => oceanSplineMask != null ? Color.white : Color.red;
+        private Color WaveCenterGuiColor => waveCenter != null ? Color.white : Color.red;
+        private Color CausticsGuiColor => caustics != null ? Color.white : Color.red;
+        private Color ReflectionCaptureGuiColor => reflectionCapture != null ? Color.white : Color.red;
+        private Color ReflectionCubemapGuiColor => reflectionCubemap != null ? Color.white : Color.red;
+        private bool HasFluxyContainer
+        {
+            get
+            {
+#if FLUXY
+                return fluxyContainer != null;
+#else
+                return false;
+#endif
+            }
+        }
+
+        private bool HasFluxyTargetAndContainer
+        {
+            get
+            {
+#if FLUXY
+                return fluxyTarget != null && fluxyContainer != null;
+#else
+                return false;
+#endif
+            }
+        }
+
+#if FLUXY
+        private Color FluxyContainerGuiColor => fluxyContainer != null ? Color.white : Color.red;
+        private Color FluxyTargetGuiColor => fluxyTarget != null ? Color.white : Color.red;
+#endif
+        private string ToggleColliderCopiesButtonName => hideCopies ? "Show Collider Copies" : "Hide Collider Copies";
+#endif
 
 
         private Shader restoreShader;
 
-        [Button]
-        public void DebugAboveAllToggle()
-        {
-            debugAboveAll = !debugAboveAll;
-            DebugVisualsType();
-        }
+  
 
         public bool TryGetWaterHeight(Vector3 point, out float waterHeight)
         {
@@ -93,7 +157,17 @@ namespace Shadowood.RaycastTexture
             return foundObject != null;
         }
 #endif
-        void DebugVisualsToggle()
+
+        #if DEBUGVISUALS
+        [Button("$DebugAboveAllInlineButtonText")]
+        public void DebugAboveAllToggle()
+        {
+            debugAboveAll = !debugAboveAll;
+            DebugVisualsType();
+        }
+
+        [Button("$DebugVisualsInlineButtonText")]
+        private void DebugVisualsToggle()
         {
 #if UNITY_EDITOR
             if (!surfaceMaterial) return;
@@ -172,14 +246,14 @@ namespace Shadowood.RaycastTexture
 
         public enum eDebugModes
         {
-            Color_ColorCache_RGB,
-            Depth_ColorCache_A,
-            Direction_DepthCache_RG,
-            Distance_DepthCache_B,
-            Depth_DepthCache_A,
-            Waves_Raw,
-            Waves_Foam,
-            Reflection_Raw,
+            [InspectorName("Color (RGB)")] Color_ColorCache_RGB,
+            [InspectorName("Depth (A)")] Depth_ColorCache_A,
+            [InspectorName("Direction (RG)")] Direction_DepthCache_RG,
+            [InspectorName("Distance (B)")] Distance_DepthCache_B,
+            [InspectorName("Depth (A)")] Depth_DepthCache_A,
+            [InspectorName("Waves Raw")] Waves_Raw,
+            [InspectorName("Waves Foam")] Waves_Foam,
+            [InspectorName("Reflection Raw")] Reflection_Raw,
             DepthTint,
             Lightmap,
             ShadowMask
@@ -187,23 +261,24 @@ namespace Shadowood.RaycastTexture
 
         public enum eDebugModesRiver
         {
-            Color_ColorCache_RGB = 0,
-            Depth_ColorCache_A = 1,
+            [InspectorName("Color (RGB)")] Color_ColorCache_RGB = 0,
+            [InspectorName("Depth (A)")] Depth_ColorCache_A = 1,
 
-            Direction_DepthCache_RG = 2,
-            Distance_DepthCache_B = 3,
-            Depth_DepthCache_A = 4,
+            [InspectorName("Direction (RG)")] Direction_DepthCache_RG = 2,
+            [InspectorName("Distance (B)")] Distance_DepthCache_B = 3,
+            [InspectorName("Depth (A)")] Depth_DepthCache_A = 4,
 
             //Fluid_Color_RGB = 5,
-            Flow_Rainbow = 6,
-            Flow_Mix = 7,
-            Fluid_Color_A = 8,
+            [InspectorName("Flow Rainbow")] Flow_Rainbow = 6,
+            [InspectorName("Flow Mix")] Flow_Mix = 7,
+            [InspectorName("Fluid Color (A)")] Fluid_Color_A = 8
             //Fluid_Vel_A = 9,
         }
-
+#endif
 
         [Space] //
         [EnumToggleButtons]
+        [OnValueChanged(nameof(OnValidate))]
         public eMode mode = eMode.Ocean;
 
         public enum eMode
@@ -215,7 +290,7 @@ namespace Shadowood.RaycastTexture
         [NonSerialized]
         [Space]
         [GUIColor("@planarReflection ? Color.cyan : Color.white")] //
-        [InlineButton("PlanarReflectionToggle", "@planarReflection ? \"Planar Reflection: Turn Off\" : \"Planar Reflection: Turn On\"")]
+        [InlineButton(nameof(PlanarReflectionToggle), "@planarReflection ? \"Planar Reflection: Turn Off\" : \"Planar Reflection: Turn On\"")]
         public bool planarReflection = false;
 
         private bool planarReflectionLast;
@@ -244,8 +319,10 @@ namespace Shadowood.RaycastTexture
         [Space(10)]
         [Header("File Settings")] //
         //
-        [GUIColor("@SurfaceMaterialValid() ? Color.white : Color.red")] //
-        [InlineButton("CreateNew", "Create New")]
+        [GUIColor("$SurfaceMaterialGuiColor")] //
+#if UNITY_EDITOR
+        [InlineButton(nameof(CreateNew), "Create New")]
+#endif
         public Material surfaceMaterial;
 
         private Matrix4x4 waveCenterMatrix;
@@ -344,7 +421,7 @@ namespace Shadowood.RaycastTexture
 
         //[InfoBox("fileName doesnt match material name", InfoMessageType.Warning, "FileNameWarn")]
         //[GUIColor("@FileNameWarn() ? Color.yellow : Color.white")] //
-        [InlineButton("AutoSetFileName", "AutoSet")]
+        [InlineButton(nameof(AutoSetFileName), "AutoSet")]
         public string fileName;
 
         public void AutoSetFileName()
@@ -355,7 +432,7 @@ namespace Shadowood.RaycastTexture
         //private bool FileNameWarn() => surfaceMaterial && fileName != surfaceMaterial.name;
 
 
-        [GUIColor("@PathValid() ? Color.white : Color.red")] //
+        [GUIColor("$PathGuiColor")]
         [InlineButton("SetPathToMaterialFolder", "AutoSet")]
         public string path = "";
 
@@ -397,11 +474,11 @@ namespace Shadowood.RaycastTexture
         //[GUIColor("@targetColliderBounds ? Color.white : Color.red")] //
         //[Tooltip("Used to restrict search for FindAllRenderers to within the bounds to raycast against")]
         //public BoxCollider targetColliderBounds;
-        [GUIColor("@(mode == eMode.Ocean) || targetColliders.Count > 0 ? Color.white : Color.red")] //
+        [GUIColor("$TargetCollidersGuiColor")] //
         [Tooltip("Used to restrict search for FindAllRenderers to within the bounds to raycast against")]
-        [InlineButton("CreateBoxCollider", "Create Collider")]
-        //[InlineButton("ToggleDebugTargetColliders", "Debug")]
-        public List<BoxCollider> targetColliders = new List<BoxCollider>();
+        [InlineButton(nameof(CreateBoxCollider), "Create Collider")]
+        //[InlineButton(nameof(ToggleDebugTargetColliders), "Debug")]
+        public List<BoxCollider> targetColliders = new();
 
         public void CreateBoxCollider()
         {
@@ -426,18 +503,18 @@ namespace Shadowood.RaycastTexture
         //public BoxCollider genCollider;
 
         //[GUIColor("@debugTargetColliders ? Color.cyan : Color.white")] //
-        //[InlineButton("ToggleDebugTargetColliders", "Debug")]
+        //[InlineButton(nameof(ToggleDebugTargetColliders), "Debug")]
         //public bool debugTargetColliders;
 
         //TODO show found colliders stuff here
 
-        [GUIColor("@targetMeshCollider && targetMeshCollider.sharedMesh !=null ? Color.white : Color.red")] //
+        [GUIColor("$TargetMeshColliderGuiColor")] //
         [Tooltip("Used for water surface raycast, uses its uv's for the texture capture, and passed to fluXY fluid sim")]
         //
         public MeshCollider targetMeshCollider;
 
-        [GUIColor("@(riverMesh != null) && (riverMesh.GetComponent<MeshFilter>() != null) && (riverMesh.GetComponent<MeshFilter>().sharedMesh != null) ? Color.white : Color.red")] //
-        [ShowIf("@mode == eMode.River")]
+        [GUIColor("$RiverMeshGuiColor")] //
+        [ShowIf("IsModeRiver")]
         //
         public MeshRenderer riverMesh;
 
@@ -465,15 +542,13 @@ namespace Shadowood.RaycastTexture
         [Header("Feature Links")] //
 
         //
-#if ODIN_INSPECTOR
         //tri inspector doesnt support this
-        [InfoBox("@OceanBakeInvalidReason()", "OceanBakeQuadValid")]
-#endif
-        [GUIColor("@OceanBakeQuadValid() ? Color.red : Color.white")] //
+        [InfoBox("$OceanBakeInvalidReason", TriMessageType.Info, "OceanBakeQuadValid")]
+        [GUIColor("$OceanBakeQuadGuiColor")] //
 #if UNITY_EDITOR
         [InlineButton(nameof(FindOceanBakeQuad))]
 #endif
-        [ShowIf("@mode == eMode.Ocean")]
+        [ShowIf("IsModeOcean")]
         public MeshRenderer oceanBakeQuad;
 
         public bool OceanBakeQuadValid()
@@ -491,18 +566,21 @@ namespace Shadowood.RaycastTexture
             return "";
         }
 
-        [GUIColor("@oceanbakeLM ? Color.white : Color.red")] //
-        [ShowIf("@oceanBakeQuad")]
+        [GUIColor("$OceanBakeLightmapGuiColor")] //
+        [ShowIf("HasOceanBakeQuad")]
         public Texture oceanbakeLM;
 
-        [ShowIf("@oceanBakeQuad")] public Texture oceanbakeLMSM;
-        [ShowIf("@oceanBakeQuad")] public Vector4 oceanBakeST;
-        [HideInInspector] public Matrix4x4 oceanBakeMatrix;
+        [ShowIf("HasOceanBakeQuad")]
+        public Texture oceanbakeLMSM;
+        [ShowIf("HasOceanBakeQuad")]
+        public Vector4 oceanBakeST;
+        [HideInInspector]
+        public Matrix4x4 oceanBakeMatrix;
 
         //
 
         [PropertySpace]
-        [GUIColor("@mainLight ? Color.white : Color.red")] //
+        [GUIColor("$MainLightGuiColor")] //
 #if UNITY_EDITOR
         [InlineButton(nameof(FindMainLight))]
 #endif
@@ -562,9 +640,9 @@ namespace Shadowood.RaycastTexture
         //
 
 #if OCEANHEIGHTSAMPLER
-        [GUIColor("@oceanHeightSampleManager ? Color.white : Color.red")] //
+        [GUIColor("$OceanHeightSampleManagerGuiColor")] //
         [InlineButton(nameof(FindOceanHeightSampleManager))] //
-        [ShowIf("@mode == eMode.Ocean")]
+        [ShowIf("IsModeOcean")]
         public OceanHeightSampleManager oceanHeightSampleManager;
 
 #if UNITY_EDITOR
@@ -588,9 +666,7 @@ namespace Shadowood.RaycastTexture
 #if UNITY_EDITOR
         [InlineButton(nameof(FindPlanarReflection))]
 #endif
-#if ODIN_INSPECTOR
-        [InfoBox("Reflecting EVERYTHING", InfoMessageType.Warning, "PlanarWarning")]
-#endif
+        [InfoBox("Reflecting EVERYTHING", TriMessageType.Warning, "PlanarWarning")]
         //
         public MirrorRenderer mirrorRenderer;
 
@@ -674,7 +750,7 @@ namespace Shadowood.RaycastTexture
         //
 
         [Tooltip("Only needed if you have any materials (like FogSpriteSkybox) using SpriteFoggedSkybox shader")]
-        [GUIColor("@globalSkyCube ? Color.white : Color.red")] // Todo only go red if items need it
+        [GUIColor("$GlobalSkyCubeGuiColor")] // Todo only go red if items need it
 #if UNITY_EDITOR
         [InlineButton(nameof(FindGlobalSkyCube))]
 #endif
@@ -699,7 +775,7 @@ namespace Shadowood.RaycastTexture
 #endif
 
         //
-        [GUIColor("@toneMapping ? Color.white : Color.red")] //
+        [GUIColor("$ToneMappingGuiColor")] //
 #if UNITY_EDITOR
         [InlineButton(nameof(FindToneMappinInlineButtong))]
 #endif
@@ -741,8 +817,8 @@ namespace Shadowood.RaycastTexture
 
         [PropertySpace]
         [Tooltip("Link to OceanRenderer")]
-        [GUIColor("@oceanRenderer ? Color.white : Color.red")] //
-        [ShowIf("@mode == eMode.Ocean")] //
+        [GUIColor("$OceanRendererGuiColor")] //
+        [ShowIf("IsModeOcean")] //
 #if UNITY_EDITOR
         [InlineButton(nameof(FindOceanRenderer))]
 #endif
@@ -782,7 +858,7 @@ namespace Shadowood.RaycastTexture
 #if UNITY_EDITOR
         [InlineButton(nameof(FindOceanFogController))] //
 #endif
-        [GUIColor("@oceanFogController ? Color.white : Color.red")]
+        [GUIColor("$OceanFogControllerGuiColor")]
         public OceanFogController oceanFogController;
 
 #if UNITY_EDITOR
@@ -824,8 +900,8 @@ namespace Shadowood.RaycastTexture
 
 
         [Tooltip("Mask spline to hide water surface")] //
-        [GUIColor("@oceanSplineMask ? Color.white : Color.red")] //
-        [ShowIf("@mode == eMode.Ocean")] //
+        [GUIColor("$OceanSplineMaskGuiColor")] //
+        [ShowIf("IsModeOcean")] //
 #if UNITY_EDITOR
         [InlineButton(nameof(FindOceanSplineMask))]
 #endif
@@ -871,8 +947,8 @@ namespace Shadowood.RaycastTexture
 
         [PropertySpace]
         [Tooltip("Sets the XZ center for where ocean waves emanate")] //
-        [GUIColor("@waveCenter ? Color.white : Color.red")] //
-        [ShowIf("@mode == eMode.Ocean")] //
+        [GUIColor("$WaveCenterGuiColor")] //
+        [ShowIf("IsModeOcean")] //
 #if UNITY_EDITOR
         [InlineButton(nameof(FindWaveCenter))]
 #endif
@@ -904,7 +980,7 @@ namespace Shadowood.RaycastTexture
 #endif
 
         [Tooltip("Water caustics")] //
-        [GUIColor("@caustics ? Color.white : Color.red")] //
+        [GUIColor("$CausticsGuiColor")] //
 #if UNITY_EDITOR
         [InlineButton(nameof(FindCaustics))]
 #endif
@@ -932,19 +1008,17 @@ namespace Shadowood.RaycastTexture
         }
 #endif
         //
-
         [PropertySpace]
-        [ShowIf("@mode == eMode.Ocean")]
-        [Tooltip("Reflection probe to capture cubemap for ocean reflections fallback when no planar reflections")] //
-        [GUIColor("@reflectionCapture ? Color.white : Color.red")] //
-        //[InlineButton("ReflectionCapture", "Capture")] //
+        [ShowIf("IsModeRiver")]
+        [Tooltip("Reflection probe to capture cubemap for ocean reflections fallback when no planar reflections")]
+        [GUIColor("$ReflectionCaptureGuiColor")]
+        [InlineButton("ReflectionCapture", "Capture")]
         [InlineButton("FindReflectionCapture", "Find Ref Probe")]
         public ReflectionProbe reflectionCapture;
 
-        [ShowIf("@mode == eMode.Ocean")]
-        [GUIColor("@reflectionCubemap ? Color.white : Color.red")] //
+        [ShowIf("IsModeOcean")]
+        [GUIColor("$ReflectionCubemapGuiColor")]
         [InlineButton("ReflectionCapture", "Capture")]
-        //
         public Texture reflectionCubemap;
 
 #if UNITY_EDITOR
@@ -1113,8 +1187,8 @@ namespace Shadowood.RaycastTexture
         [Header("Fluidsim (FluXY)")] //
         //
         [Tooltip("Link to Fluxy container")] //
-        [GUIColor("@fluxyContainer ? Color.white : Color.red")] //
-        [ShowIf("@mode==eMode.River")] //
+        [GUIColor("$FluxyContainerGuiColor")] //
+        [ShowIf("IsModeRiver")] //
 #if UNITY_EDITOR
         [InlineButton(nameof(FindFluxyContainer))]
 #endif
@@ -1130,8 +1204,8 @@ namespace Shadowood.RaycastTexture
         //
 
         [Tooltip("Link to Fluxy Target ( for collision with depth mask/shore )")] //
-        [GUIColor("@fluxyTarget ? Color.white : Color.red")] //
-        [ShowIf("@mode==eMode.River")] //
+        [GUIColor("$FluxyTargetGuiColor")] //
+        [ShowIf("IsModeRiver")] //
 #if UNITY_EDITOR
         [InlineButton(nameof(FindFluxyTarget))]
 #endif
@@ -1144,7 +1218,7 @@ namespace Shadowood.RaycastTexture
             if (fluxyTarget == null) fluxyTarget = FindObjectOfType<FluxyTarget>(true);
         }
 
-        [ShowIf("@fluxyTarget && fluxyContainer")]
+        [ShowIf("HasFluxyTargetAndContainer")]
 #if UNITY_EDITOR
         [InlineButton(nameof(UpdateFluid))]
 #endif
@@ -1186,18 +1260,29 @@ namespace Shadowood.RaycastTexture
         }
 */
 
-        private static int[] TextureSizes = new int[] {8, 32, 64, 128, 256, 512, 1024, 2048, 4096};
+        private TriDropdownList<int> TextureSizes = new TriDropdownList<int>()
+        {
+            { 8.ToString(), 8 },
+            { 32.ToString(), 32 },
+            { 64.ToString(), 64 },
+            { 128.ToString(), 128 },
+            { 256.ToString(), 256 },
+            { 512.ToString(), 512 },
+            { 1024.ToString(), 1024 },
+            { 2048.ToString(), 2048 },
+            { 4096.ToString(), 4096 },
+        };
 
         [Space]
-        [Header("Intersection Settings")] //
-        [ValueDropdown("TextureSizes")]
-        //
+        [Header("Intersection Settings")]
+        [Dropdown(nameof(TextureSizes))]
         public int resolution = 512;
 
-        [ValueDropdown("TextureSizes")] //
+        [Dropdown(nameof(TextureSizes))]
         public int resolutionColor = 1024;
 
-        [ShowIf("@fluxyContainer != null")] [ValueDropdown("TextureSizes")]
+        [ShowIf("HasFluxyContainer")]
+        [Dropdown(nameof(TextureSizes))]
         public int fluidRes = 512;
 
         [Space] //
@@ -1205,72 +1290,80 @@ namespace Shadowood.RaycastTexture
         //[Header("Advanced Settings")]
         //
         [Tooltip("Use material property block, wont alter original material")]
-        [FoldoutGroup("Advanced Settings")]
+        [Group("Advanced Settings")]
         public bool useMatProps = true;
 
-        [FoldoutGroup("Advanced Settings")] public float depthOffset = 0.0f;
+        [Group("Advanced Settings")]
+        public float depthOffset = 0.0f;
 
-        [FoldoutGroup("Advanced Settings")] public bool useLightmaps = true;
+        [Group("Advanced Settings")]
+        public bool useLightmaps = true;
 
-        //[FoldoutGroup("Advanced Settings")] public bool useCaptureTexture = true;
-        [FoldoutGroup("Advanced Settings")] public bool useNewCapture = true;
+        ////[FoldoutGroup("Advanced Settings")] public bool useCaptureTexture = true;
+        [Group("Advanced Settings")]
+        public bool useNewCapture = true;
 
-        [FoldoutGroup("Advanced Settings")] public bool captureFakeTransparency = true;
+        [Group("Advanced Settings")]
+        public bool captureFakeTransparency = true;
 
-        //[ValueDropdown("TextureSizes")] [FoldoutGroup("Advanced Settings")]
+        ////[Dropdown("TextureSizes")] //[FoldoutGroup("Advanced Settings")]
         //public int captureTextureRes = 512;
 
 
-        [FoldoutGroup("Advanced Settings")] public int rays = 4;
-        [FoldoutGroup("Advanced Settings")] public float rayDistance = 0.1f;
+        [Group("Advanced Settings")]
+        public int rays = 4;
+        [Group("Advanced Settings")]
+        public float rayDistance = 0.1f;
 
-        [FoldoutGroup("Advanced Settings")] public float bias = 1e-05f;
+        [Group("Advanced Settings")]
+        public float bias = 1e-05f;
         //[Tooltip("Baking extend")] public int spreadSamples = 15;
 
-        //[FoldoutGroup("Advanced Settings")] public bool bilinearSample = true;
+        ////[FoldoutGroup("Advanced Settings")] public bool bilinearSample = true;
 
-        [FoldoutGroup("Advanced Settings")] [UnityEngine.Range(1, 8)]
+        [Group("Advanced Settings")]
+        [Range(1, 8)]
         public int mipLevel = 1;
 
         [Space] //
         //[Header("Distance Field Settings")]
-        [ShowIf("@mode == eMode.River")] //
-        [FoldoutGroup("Advanced Settings")]
+        [ShowIf("IsModeRiver")] //
+        [Group("Advanced Settings")]
         public JumpFlood jumpFlood;
 
         [Space] //
-        [ShowIf("@mode == eMode.River")] //
-        [FoldoutGroup("Advanced Settings")]
+        [ShowIf("IsModeRiver")] //
+        [Group("Advanced Settings")]
         //
         public string fluidColorTexName = "_FluidColor";
 
-        [FoldoutGroup("Advanced Settings")] //
-        [ShowIf("@mode == eMode.River")]
+        [Group("Advanced Settings")]
+        [ShowIf("IsModeRiver")]
         //
         public string fluidVelocityTexName = "_FluidVelocity";
 
         [Space] //
         [Header("Texture Results")] //
-        [FoldoutGroup("Advanced Settings")]
+        [Group("Advanced Settings")]
         public Texture2D depthCacheTex;
 
-        [FoldoutGroup("Advanced Settings")] //
+        [Group("Advanced Settings")]
         public Texture2D depthCacheTexTemp;
 
-        [FoldoutGroup("Advanced Settings")] //
+        [Group("Advanced Settings")]
         public Texture2D colorCacheTex;
 
-        [FoldoutGroup("Advanced Settings")] //
+        [Group("Advanced Settings")]
         public Texture2D colorCacheTexTemp;
 
         [Space] //
-        [ShowIf("@mode == eMode.River")] //
-        [FoldoutGroup("Advanced Settings")]
+        [ShowIf("IsModeRiver")] //
+        [Group("Advanced Settings")]
         public Texture2D fluidVelCacheTex;
         //public Texture2D fluidVelCacheTexTemp;
 
-        [ShowIf("@mode == eMode.River")] //
-        [FoldoutGroup("Advanced Settings")]
+        [ShowIf("IsModeRiver")] //
+        [Group("Advanced Settings")]
         //
         public Texture2D fluidColCacheTex;
         //public Texture2D fluidColCacheTexTemp;
@@ -1278,25 +1371,28 @@ namespace Shadowood.RaycastTexture
 
         [Space] //
         //[ShowIf("@mode == eMode.River")] //
-        [FoldoutGroup("Advanced Settings")]
+        [Group("Advanced Settings")]
         public RenderTexture dilationResult;
 
         [Space] //
-        [FoldoutGroup("Advanced Settings")]
+        [Group("Advanced Settings")]
         public Texture intersectionTexture;
 
         [Space] //
-        [FoldoutGroup("Advanced Settings")]
+        [Group("Advanced Settings")]
         public Texture colorDepthTexture;
 
         [Space] //
         [Header("Blur")] //
-        [FoldoutGroup("Advanced Settings")]
+        [Group("Advanced Settings")]
         public Shader blurShader;
 
-        [FoldoutGroup("Advanced Settings")] public Shader blurMixShader;
-        [FoldoutGroup("Advanced Settings")] public RenderTexture blurredColorRT;
-        [FoldoutGroup("Advanced Settings")] public RenderTexture blurredDepthRT;
+        [Group("Advanced Settings")]
+        public Shader blurMixShader;
+        [Group("Advanced Settings")]
+        public RenderTexture blurredColorRT;
+        [Group("Advanced Settings")]
+        public RenderTexture blurredDepthRT;
 
         //public Shader dilationShader;
         //public Material dilationMat;
@@ -1322,16 +1418,18 @@ namespace Shadowood.RaycastTexture
             Setup(true);
             //SetTransparencyColor();
 
+#if DEBUGVISUALS
             DebugVisualsType();
-
+#endif
             ApplyTexture();
         }
 
         private void OnEnable()
         {
+#if DEBUGVISUALS
             if (debugVisuals) DebugVisualsToggle();
             debugVisuals = false;
-            planarReflectionLast = !planarReflection;
+#endif
             //AutoSetFileName();
             Setup();
 #if UNITY_EDITOR
@@ -1995,7 +2093,8 @@ namespace Shadowood.RaycastTexture
 #if UNITY_EDITOR
 
         [PropertySpace]
-        [ContextMenu("Find Colliders"), Button("@FindCollidersName()")]
+        [ContextMenu("Find Colliders")]
+        [Button("$FindCollidersName")]
         public void FindCollidersButton()
         {
             meshColliders.Clear();
@@ -2203,7 +2302,7 @@ namespace Shadowood.RaycastTexture
 
         [PropertySpace]
         [Button("Render Now (desktop only)")]
-        [GUIColor("@SurfaceMaterialValid() ? Color.white : Color.red")]
+        [GUIColor("$SurfaceMaterialGuiColor")]
         public void RenderNowDesktop()
         {
             captureFakeTransparency = false;
@@ -2211,7 +2310,7 @@ namespace Shadowood.RaycastTexture
         }
 
         [Button("Render Now (old fast)")]
-        [GUIColor("@SurfaceMaterialValid() ? Color.white : Color.red")]
+        [GUIColor("$SurfaceMaterialGuiColor")]
         public void RenderNowOld()
         {
             captureFakeTransparency = true;
@@ -2219,8 +2318,8 @@ namespace Shadowood.RaycastTexture
             RenderNow();
         }
 
-        [Button("@RenderNowName()")]
-        [GUIColor("@SurfaceMaterialValid() ? Color.white : Color.red")]
+        [Button("$RenderNowName")]
+        [GUIColor("$SurfaceMaterialGuiColor")]
         public void RenderNowNew()
         {
             captureFakeTransparency = true;
@@ -2324,7 +2423,8 @@ namespace Shadowood.RaycastTexture
 #if FLUXY
         [PropertySpace]
         [ContextMenu("UpdateFluid")]
-        [Button, ShowIf("@fluxyContainer != null")]
+        [Button]
+        [ShowIf("HasFluxyContainer")]
         private void UpdateFluid()
         {
             if (fluxyContainer)
@@ -2662,7 +2762,9 @@ namespace Shadowood.RaycastTexture
 
         private void OnDisable()
         {
-            if (debugVisuals) DebugVisualsToggle();
+#if DEBUGVISUALS
+            if (debugVisuals) DebugVisualsToggle(); // Debug Visuals Disabled
+#endif
             DestroyCopies();
             meshCollidersCopies.Clear();
             meshCollidersDepthCopies.Clear();
@@ -2709,7 +2811,8 @@ namespace Shadowood.RaycastTexture
         }
 
 
-        [ContextMenu("ToggleColliderCopies"), Button("@hideCopies ? \"Show Collider Copies\" : \"Hide Collider Copies\"")]
+        [ContextMenu("ToggleColliderCopies")]
+        [Button("$ToggleColliderCopiesButtonName")]
         public void ToggleColliderCopies()
         {
             hideCopies = !hideCopies;
@@ -3138,8 +3241,9 @@ namespace Shadowood.RaycastTexture
 
 namespace UnityEditor
 {
-    [CustomEditor(typeof(RaycastTexture)), CanEditMultipleObjects]
-    public class RaycastTextureEditor : OdinEditor
+    [CustomEditor(typeof(RaycastTexture))]
+    [CanEditMultipleObjects]
+    public class RaycastTextureEditor : TriInspector.Editors.TriEditor
     {
         private MaterialEditor materialEditor;
 
@@ -3213,20 +3317,18 @@ namespace UnityEditor
 
         public override void OnInspectorGUI()
         {
-            DrawDefaultInspector();
+            base.OnInspectorGUI();
 
             var targ = target as RaycastTexture;
 
             if (!targ.surfaceMaterial) return;
 
-#if !ODIN_INSPECTOR
             GUI.color = targ.SurfaceMaterialValid() ? Color.white : Color.red;
             if (GUILayout.Button(targ.RenderNowName()))
             {
                 targ.RenderNow();
             }
             GUI.color = Color.white;
-#endif
 
             GUILayout.Space(10);
 
@@ -3426,7 +3528,11 @@ namespace UnityEditor
 
         protected override void OnDisable()
         {
-            if (materialEditor != null) DestroyImmediate(materialEditor); // Free the memory used by default MaterialEditor.
+            base.OnDisable();
+            if (materialEditor != null)
+            {
+                DestroyImmediate(materialEditor); // Free the memory used by default MaterialEditor.
+            }
         }
     }
 }

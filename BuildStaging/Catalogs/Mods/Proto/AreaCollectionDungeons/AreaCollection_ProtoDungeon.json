@@ -51,7 +51,5 @@
   "retry_previous_area_allowed": 10000,
   "bounds_margin": 0.1,
   "backupList": [],
-  "StatsResultFileFolderPath": "BuildStaging/DungeonsResults",
-  "numberTest": 0,
-  "plateformTypes": []
+  "groupPath": null
 }

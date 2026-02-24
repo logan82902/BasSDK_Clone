@@ -9,11 +9,7 @@ using UnityEngine.Events;
 using UnityEditor;
 #endif
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
@@ -21,10 +17,8 @@ namespace ThunderRoad
     [AddComponentMenu("ThunderRoad/Levels/Spawners/Item Spawner")]
     public class ItemSpawner : MonoBehaviour, ICheckAsset, IToolControllable
     {
-#if ODIN_INSPECTOR
-        [ValueDropdown(nameof(GetAllItemOrLootTableID), AppendNextDrawer = true)]
+        [Dropdown(nameof(GetAllItemOrLootTableID))]
         [ShowIf("spawnerType", SpawnerType.UseReferenceId)]
-#endif
         [Tooltip("The ID of the item/table specified in the Catelog")]
         [FormerlySerializedAs("itemId")]
         public string referenceId;
@@ -36,9 +30,7 @@ namespace ThunderRoad
         }
 
         [Tooltip("When \"Item\" is selected, only Items in the catelog appear in the Reference Id.\nWhen \"LootTable\" is selected, LootTables appear in the catelog.")]
-#if ODIN_INSPECTOR        
         [ShowIf("spawnerType", SpawnerType.UseReferenceId)]
-#endif        
         public ReferenceType referenceType = ReferenceType.Item;
 
         [Tooltip("Mainly used for Dungeons, depicts how the item order is picked.\n\nMandatory: Will ALWAYS spawn no matter the limiter.\nDefault: Will be used by the limiter, and can be removed if not chosen by the limiter.\n\nIgnore on Android: Is default for PCVR, but will never spawn on Android.")]
@@ -144,8 +136,7 @@ namespace ThunderRoad
         [Tooltip("Use this field to prevent the spawned item(s) from colliding with specific parts of the player body.")]
         public RagdollPart.Type ignoredPlayerParts = (RagdollPart.Type)(0);
 
-#if ODIN_INSPECTOR
-        public List<ValueDropdownItem<string>> GetAllItemOrLootTableID()
+        public TriDropdownList<string> GetAllItemOrLootTableID()
         {
             if (referenceType == ReferenceType.Item)
             {
@@ -156,7 +147,6 @@ namespace ThunderRoad
                 return Catalog.GetDropdownAllID(Category.LootTable);
             }
         }
-#endif
 
         public bool IsCopyable() => false;
 

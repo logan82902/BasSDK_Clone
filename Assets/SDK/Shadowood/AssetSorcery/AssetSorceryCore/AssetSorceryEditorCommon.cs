@@ -1,14 +1,12 @@
-using System.Collections.Generic;
-using System.IO;
+﻿using System.IO;
 using UnityEditor;
 using UnityEditor.AssetImporters;
 using UnityEngine;
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector.Editor;
-#endif
+using TriInspector;
+
 namespace ThunderRoad.AssetSorcery
 {
-    //[CustomEditor(typeof (ScriptedImporter), true)]
+    [CustomEditor(typeof (ScriptedImporter), true)]
     public class AssetSorceryEditorCommon<T, TT, EntryCommon> : ScriptedImporterEditor where T : AssetSorceryAssetCommon<EntryCommon,TT> where TT : Object where EntryCommon : AFilterCommon<TT>
     {
         private SerializedProperty shaderSettingsProps;
@@ -17,10 +15,9 @@ namespace ThunderRoad.AssetSorcery
         private int lastHash;
 
         protected override System.Type extraDataType => typeof(T);
-        
-#if ODIN_INSPECTOR
-        private PropertyTree myObjectTree;
-#endif
+
+        private TriPropertyTree myObjectTree;
+
         protected override void InitializeExtraDataInstance(Object extraTarget, int targetIndex)
         {
             var stack = (T) extraTarget;
@@ -97,14 +94,17 @@ namespace ThunderRoad.AssetSorcery
 
             EditorGUI.BeginChangeCheck();
 
-            //if (entryProperties != null) EditorGUILayout.PropertyField(entryProperties);
-            //if (shaderSettingsProps != null) EditorGUILayout.PropertyField(shaderSettingsProps);
-            
-#if ODIN_INSPECTOR
-            // Use ODIN to draw inspector
-            if (myObjectTree == null) myObjectTree = PropertyTree.Create(extraDataSerializedObject);
-            myObjectTree.Draw(false);
-#endif            
+
+            if (myObjectTree == null)
+            {
+                myObjectTree = new TriPropertyTreeForSerializedObject(extraDataSerializedObject);
+            }
+            if (myObjectTree != null)
+            {
+                myObjectTree.Draw();
+            }
+            if (entryProperties != null) EditorGUILayout.PropertyField(entryProperties);
+            if (shaderSettingsProps != null) EditorGUILayout.PropertyField(shaderSettingsProps);
 
             asset.DrawCustomInspector(extraDataSerializedObject);
             //if (textureProps != null)

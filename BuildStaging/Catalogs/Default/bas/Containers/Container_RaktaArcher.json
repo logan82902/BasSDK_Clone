@@ -1,0 +1,115 @@
+{
+  "$type": "ThunderRoad.ContainerData, ThunderRoad",
+  "id": "RaktaArcher",
+  "sensitiveContent": "None",
+  "sensitiveFilterBehaviour": "Discard",
+  "version": 1,
+  "groupPath": "Factions/Rakta",
+  "displayName": "Rakta Elite",
+  "description": "",
+  "containerContents": [
+    {
+      "$type": "ThunderRoad.TableContent, ThunderRoad",
+      "quantity": 1,
+      "state": {
+        "$type": "ThunderRoad.ContentStateHolder, ThunderRoad",
+        "holderName": "BackLeft"
+      },
+      "customDataList": null,
+      "mergeKey": "ffcc885b",
+      "referenceID": "WeaponCultistBow"
+    },
+    {
+      "$type": "ThunderRoad.ItemContent, ThunderRoad",
+      "quantity": 1,
+      "state": {
+        "$type": "ThunderRoad.ContentStateHolder, ThunderRoad",
+        "holderName": "HipsRight"
+      },
+      "customDataList": [],
+      "mergeKey": "54f37fb3",
+      "referenceID": "QuiverLargeNPC"
+    },
+    {
+      "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "2bc4d825",
+      "referenceID": "ArrowImbueRandom"
+    },
+    {
+      "$type": "ThunderRoad.ItemContent, ThunderRoad",
+      "quantity": 1,
+      "state": {
+        "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
+      },
+      "customDataList": [],
+      "mergeKey": "1da3c458",
+      "referenceID": "ApparelRaktaLegs"
+    },
+    {
+      "$type": "ThunderRoad.ItemContent, ThunderRoad",
+      "quantity": 1,
+      "state": {
+        "$type": "ThunderRoad.ContentStateHolder, ThunderRoad",
+        "holderName": "HipsLeft"
+      },
+      "customDataList": [],
+      "mergeKey": "d29f6bb7",
+      "referenceID": "SwordRaktaKatana"
+    },
+    {
+      "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "d16d02bb",
+      "referenceID": "ModifierArmored"
+    },
+    {
+      "$type": "ThunderRoad.ItemContent, ThunderRoad",
+      "quantity": 1,
+      "state": {
+        "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
+      },
+      "customDataList": [],
+      "mergeKey": "5b6f3fb2",
+      "referenceID": "ApparelRaktaHandL"
+    },
+    {
+      "$type": "ThunderRoad.ItemContent, ThunderRoad",
+      "quantity": 1,
+      "state": {
+        "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
+      },
+      "customDataList": [],
+      "mergeKey": "6d6c76df",
+      "referenceID": "ApparelRaktaHandR"
+    },
+    {
+      "$type": "ThunderRoad.TableContent, ThunderRoad",
+      "quantity": 1,
+      "state": {
+        "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
+      },
+      "customDataList": [],
+      "mergeKey": "fb893592",
+      "referenceID": "HairsSoldier"
+    },
+    {
+      "$type": "ThunderRoad.ItemContent, ThunderRoad",
+      "quantity": 1,
+      "state": {
+        "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
+      },
+      "customDataList": [],
+      "mergeKey": "12f969bd",
+      "referenceID": "ApparelRaktaFeet"
+    },
+    {
+      "$type": "ThunderRoad.ItemContent, ThunderRoad",
+      "quantity": 1,
+      "state": {
+        "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
+      },
+      "customDataList": [],
+      "mergeKey": "c76c7943",
+      "referenceID": "ApparelRaktaChest"
+    }
+  ]
+}

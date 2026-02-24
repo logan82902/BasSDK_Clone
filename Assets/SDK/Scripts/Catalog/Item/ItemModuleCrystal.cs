@@ -1,123 +1,86 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
-
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#endif
+using TriInspector;
 
 namespace ThunderRoad
 {
+    [System.Serializable]
     public class ItemModuleCrystal : ItemModule
     {
-        [NonSerialized]
-        public static float mergeEffectDelay = 2f;
-        public static float glowMultiplier = 3f;
+        public const float mergeEffectDelay = 2f;
+        public const float glowMultiplier = 3f;
         
         [Header("skill tree")]
-#if ODIN_INSPECTOR
-        [ValueDropdown(nameof(GetAllSkillTreeID))]
-#endif
+        [Dropdown(nameof(GetAllSkillTreeID))]
         public string treeName;
         
         [Header("Custom")]
         public bool overrideCrystalColors = false;
 
-        [ColorUsage(true, true)]
-#if ODIN_INSPECTOR
+        [ColorPickerField(Alpha = true, HDR = true)]
         [ShowIf("overrideCrystalColors")]
-#endif
         public Color baseColor;
-        [ColorUsage(true, true)]
-#if ODIN_INSPECTOR
+        [ColorPickerField(Alpha = true, HDR = true)]
         [ShowIf("overrideCrystalColors")]
-#endif
         public Color internalColor;
-        [ColorUsage(true, true)]
-#if ODIN_INSPECTOR
+        [ColorPickerField(Alpha = true, HDR = true)]
         [ShowIf("overrideCrystalColors")]
-#endif
         public Color animatedColor;
-        [ColorUsage(true, true)]
-#if ODIN_INSPECTOR
+        [ColorPickerField(Alpha = true, HDR = true)]
         [ShowIf("overrideCrystalColors")]
-#endif
         public Color emissionColor;
-        [ColorUsage(true, true)]
-#if ODIN_INSPECTOR
+        [ColorPickerField(Alpha = true, HDR = true)]
         [ShowIf("overrideCrystalColors")]
-#endif
         public Color linkVfxColor;
-        [ColorUsage(true, true)]
-#if ODIN_INSPECTOR
+        [ColorPickerField(Alpha = true, HDR = true)]
         [ShowIf("overrideCrystalColors")]
-#endif
         public Color mergeVfxColor;
 
         [Header("Merge")]
-#if ODIN_INSPECTOR
-        [ValueDropdown(nameof(GetAllCrystalId))]
-#endif
+        [Dropdown(nameof(GetAllCrystalId))]
         public string higherTierCrystalId;
-#if ODIN_INSPECTOR
-        [ValueDropdown(nameof(GetAllShardsId))]
-#endif
+        [Dropdown(nameof(GetAllShardsId))]
         public string shardId;
 
-#if ODIN_INSPECTOR
-        [ValueDropdown(nameof(GetAllEffectId))]
-#endif
+        [Dropdown(nameof(GetAllEffectId))]
         public string mergeBeginEffectId = "CrystalMergeBegin";
         [NonSerialized]
         public EffectData mergeBeginEffectData;
 
-#if ODIN_INSPECTOR
-        [ValueDropdown(nameof(GetAllEffectId))]
-#endif
+        [Dropdown(nameof(GetAllEffectId))]
         public string sparkleEffectId = "CrystalSparkle";
         [NonSerialized]
         public EffectData sparkleEffectData;
 
-#if ODIN_INSPECTOR
-        [ValueDropdown(nameof(GetAllEffectId))]
-#endif
+        [Dropdown(nameof(GetAllEffectId))]
         public string hoverEffectId = "CrystalCoreHover";
         [NonSerialized]
         public EffectData hoverEffectData;
-        
-#if ODIN_INSPECTOR
-        [ValueDropdown(nameof(GetAllEffectId))]
-#endif
+
+        [Dropdown(nameof(GetAllEffectId))]
         public string mergeEffectId = "CrystalMerge";
         [NonSerialized]
         public EffectData mergeEffectData;
 
-#if ODIN_INSPECTOR
-        [ValueDropdown(nameof(GetAllEffectId))]
-#endif
+        [Dropdown(nameof(GetAllEffectId))]
         public string mergeCrystalEffectAndroidId = "CrystalMergeGlow";
         [NonSerialized]
         public EffectData mergeCrystalEffectAndroidData;
 
-#if ODIN_INSPECTOR
-        [ValueDropdown(nameof(GetAllEffectId))]
-#endif
+        [Dropdown(nameof(GetAllEffectId))]
         public string mergeStartEffectId = "CrystalMergeStart";
         [NonSerialized]
         public EffectData mergeStartEffectData;
 
-#if ODIN_INSPECTOR
-        [ValueDropdown(nameof(GetAllEffectId))]
-#endif
+        [Dropdown(nameof(GetAllEffectId))]
         public string mergeCompleteEffectId = "CrystalMergeNewTier";
         [NonSerialized]
         public EffectData mergeCompleteEffectData;
 
         public float endMergeTime = 1;
 
-#if ODIN_INSPECTOR
-        [ValueDropdown(nameof(GetAllEffectId))]
-#endif
+        [Dropdown(nameof(GetAllEffectId))]
         public string activateEffectId = "CrystalActivate";
         [NonSerialized]
         public EffectData activateEffectData;
@@ -130,16 +93,11 @@ namespace ThunderRoad
 
 
 
-
-#if ODIN_INSPECTOR
-        public List<ValueDropdownItem<string>> GetAllSkillTreeID()
+        public TriDropdownList<string> GetAllSkillTreeID() => Catalog.GetDropdownAllID(Category.SkillTree);
+        public TriDropdownList<string> GetAllCrystalId()
         {
-            return Catalog.GetDropdownAllID(Category.SkillTree);
-        }
-        public List<ValueDropdownItem<string>> GetAllCrystalId()
-        {
-            List<ValueDropdownItem<string>> dropdownList = new List<ValueDropdownItem<string>>();
-            dropdownList.Add(new ValueDropdownItem<string>("None", ""));
+            TriDropdownList<string> dropdownList = new();
+            dropdownList.Add("None", "");
             List<CatalogData> allItems = Catalog.GetDataList(Category.Item);
             for (int i = 0; i < allItems.Count; i++)
             {
@@ -147,28 +105,27 @@ namespace ThunderRoad
                     && item.TryGetModule<ItemModuleCrystal>(out ItemModuleCrystal module)
                     && string.Equals(module.treeName, treeName))
                 {
-                    dropdownList.Add(new ValueDropdownItem<string>(item.id, item.id));
+                    dropdownList.Add(item.id, item.id);
                 }
             }
 
             return dropdownList;
         }
 
-        public List<ValueDropdownItem<string>> GetAllShardsId()
+        public TriDropdownList<string> GetAllShardsId()
         {
-            List<ValueDropdownItem<string>> dropdownList = new List<ValueDropdownItem<string>>();
-            dropdownList.Add(new ValueDropdownItem<string>("None", ""));
+            TriDropdownList<string> dropdownList = new();
+            dropdownList.Add("None", "");
             foreach (string id in Catalog.GetAllID(Category.Item))
             {
                 if (id.Contains("Shard"))
                 {
-                    dropdownList.Add(new ValueDropdownItem<string>(id, id));
+                    dropdownList.Add(id, id);
                 }
             }
             return dropdownList;
         }
-        
-        public List<ValueDropdownItem<string>> GetAllEffectId() => Catalog.GetDropdownAllID(Category.Effect);
-#endif
+
+        public TriDropdownList<string> GetAllEffectId() => Catalog.GetDropdownAllID(Category.Effect);
     }
 }

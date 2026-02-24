@@ -1,22 +1,16 @@
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Video;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
     public class EventMessage : MonoBehaviour
     {
-        
-#if ODIN_INSPECTOR
-        [HideLabel] 
-#endif
+        [HideLabel]
         [TextArea(0, 20)]
         public string text;
         public string localizationGroupId;

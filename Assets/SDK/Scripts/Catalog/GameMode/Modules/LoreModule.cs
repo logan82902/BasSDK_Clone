@@ -1,11 +1,8 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 using UnityEngine;
-
-
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#endif
+using TriInspector;
 
 namespace ThunderRoad.Modules
 {
@@ -68,42 +65,28 @@ namespace ThunderRoad.Modules
         public float LoreLookThreshold = 0.95f;
         public Color LoreOutlineColor;
         // Text
-#if ODIN_INSPECTOR
-        [ValueDropdown(nameof(GetAllTextGroupID))]
-#endif
+        [Dropdown(nameof(GetAllTextGroupID))]
         public string loreAquiredTextGroupId;
 
-#if ODIN_INSPECTOR
-        [ValueDropdown(nameof(GetAllTextId))]
-#endif
+        [Dropdown(nameof(GetAllTextId))]
         public string textLoreAquired;
 
 
         public string loreAquiredText;
 
+        [JsonIgnore]
         public List<LoreScriptableObject> allLoreSO;
-
+        [JsonIgnore]
         public Dictionary<int, LoreState> loreNotRead;
+        [JsonIgnore]
         public List<int> availableLore;
 
 
         public string LoreFoundSfxID = "LoreFound";
  //ProjectCore
 
-        #region ODIN_METHODS
+        public TriDropdownList<string> GetAllTextGroupID() => Catalog.GetTextData().GetDropdownAllTextGroups();
 
-#if ODIN_INSPECTOR
-        public List<ValueDropdownItem<string>> GetAllTextGroupID()
-        {
-            return Catalog.GetTextData().GetDropdownAllTextGroups();
-        }
-
-        public List<ValueDropdownItem<string>> GetAllTextId()
-        {
-            return Catalog.GetTextData().GetDropdownAllTexts(loreAquiredTextGroupId);
-        }
-
-#endif //ODIN_INSPECTOR
-        #endregion ODIN_METHODS
+        public TriDropdownList<string> GetAllTextId() => Catalog.GetTextData().GetDropdownAllTexts(loreAquiredTextGroupId);
     }
 }

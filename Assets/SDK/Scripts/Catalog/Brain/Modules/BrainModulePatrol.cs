@@ -1,15 +1,14 @@
 ﻿using UnityEngine;
 using System;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
-	public class BrainModulePatrol : BrainData.Module
+    [System.Serializable]
+    [AutoLabelWidth(AddedWidth = 5f, MinWidth = 0f)]
+    public class BrainModulePatrol : BrainData.Module
     {
         public float distanceChangePoint = 1;
         public float viewRadius;
@@ -17,13 +16,13 @@ namespace ThunderRoad
         public LayerMask targetMask;
         public LayerMask obstacleMask;
         public float runSpeedRatio;
-#if ODIN_INSPECTOR
-        [NonSerialized, ShowInInspector, ReadOnly]
-#endif
+        [NonSerialized]
+        [ShowInInspector]
+        [ReadOnly]
         public int targetWaypointIndex;
-#if ODIN_INSPECTOR
-        [NonSerialized, ShowInInspector, ReadOnly]
-#endif
+        [NonSerialized]
+        [ShowInInspector]
+        [ReadOnly]
         public WayPoint[] waypoints;
     }
 }

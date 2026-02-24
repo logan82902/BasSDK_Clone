@@ -2,181 +2,133 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
+using Newtonsoft.Json;
 
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
+    [DeclareBoxGroup("Particle", Title = "Particle")]
+    [DeclareBoxGroup("Color", Title = "Color")]
+    [DeclareBoxGroup("Color (HDR)", Title = "Color (HDR)")]
+    [DeclareHorizontalGroup("Color (HDR)/MainColor")]
+    [DeclareHorizontalGroup("Color (HDR)/SecondaryColor")]
+    [DeclareBoxGroup("Color (Non HDR)", Title = "Color (Non HDR)")]
+    [DeclareHorizontalGroup("Color (Non HDR)/MainNoHdr")]
+    [DeclareHorizontalGroup("Color (Non HDR)/SecondaryNoHdr")]
+    [DeclareBoxGroup("Scale", Title = "Scale")]
+    [DeclareBoxGroup("Rotation", Title = "Rotation")]
+    [DeclareBoxGroup("Collision", Title = "Collision")]
     public class EffectModuleParticle : EffectModule
     {
-#if ODIN_INSPECTOR
-        [BoxGroup("Particle")] 
-#endif
+        [Group("Particle")]
         public EffectLink effectLink = EffectLink.Intensity;
-#if ODIN_INSPECTOR
-        [BoxGroup("Particle")]
-#endif
+        [Group("Particle")]
         public float insideParticleRadius = 0f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Particle")]
-#endif
+        [Group("Particle")]
         public float cullMinIntensity = 0.05f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Particle")]
-#endif
-        public float cullMinSpeed = 0.05f;        
-#if ODIN_INSPECTOR
-        [BoxGroup("Particle")] 
-#endif
+        [Group("Particle")]
+        public float cullMinSpeed = 0.05f;
+        [Group("Particle")]
         public string effectParticleAddress;
         [NonSerialized]
         public EffectParticle effectParticlePrefab;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Particle")] 
-#endif
-        public new AnimationCurve intensityCurve;
-#if ODIN_INSPECTOR
-        [BoxGroup("Particle")] 
-#endif
+        [Group("Particle")]
+        public AnimationCurve intensityCurve;
+        [Group("Particle")]
         public bool renderInLateUpdate;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Color")] 
-#endif
-        [NonSerialized, GradientUsage(true)]
+        [Group("Color")]
+        [NonSerialized]
+        [JsonIgnore]
+        [GradientUsage(true)]
         private Gradient mainGradient;
 
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Color")] 
-#endif
-        [NonSerialized, GradientUsage(true)]
+        [Group("Color")]
+        [NonSerialized]
+        [JsonIgnore]
+        [GradientUsage(true)]
         private Gradient secondaryGradient;
 
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Color")] 
-#endif
+        [Group("Color")]
         [NonSerialized]
+        [JsonIgnore]
         private Gradient mainGradientNoHdr;
 
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Color")] 
-#endif
+        [Group("Color")]
         [NonSerialized]
+        [JsonIgnore]
         private Gradient secondaryGradientNoHdr;
 
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Color (HDR)")]
-        [HorizontalGroup("Color (HDR)/MainColor")] 
-#endif
-        [ColorUsage(true, true), SerializeField]
+        [Group("Color (HDR)/MainColor")]
+        [ColorPickerField(Alpha = true, HDR = true)]
+        [SerializeField]
         public Color mainColorStart;
-#if ODIN_INSPECTOR
-        [HorizontalGroup("Color (HDR)/MainColor")] 
-#endif
-        [ColorUsage(true, true), SerializeField]
+        [Group("Color (HDR)/MainColor")]
+        [ColorPickerField(Alpha = true, HDR = true)]
+        [SerializeField]
         public Color mainColorEnd;
-#if ODIN_INSPECTOR
-        [HorizontalGroup("Color (HDR)/SecondaryColor")] 
-#endif
-        [ColorUsage(true, true), SerializeField]
+        [Group("Color (HDR)/SecondaryColor")]
+        [ColorPickerField(Alpha = true, HDR = true)]
+        [SerializeField]
         public Color secondaryColorStart;
-#if ODIN_INSPECTOR
-        [HorizontalGroup("Color (HDR)/SecondaryColor")] 
-#endif
-        [ColorUsage(true, true), SerializeField]
+        [Group("Color (HDR)/SecondaryColor")]
+        [ColorPickerField(Alpha = true, HDR = true)]
+        [SerializeField]
         public Color secondaryColorEnd;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Color (Non HDR)")]
-        [HorizontalGroup("Color (Non HDR)/MainNoHdr")] 
-#endif
+        [Group("Color (Non HDR)/MainNoHdr")]
         [SerializeField]
         public Color mainNoHdrColorStart;
-#if ODIN_INSPECTOR
-        [HorizontalGroup("Color (Non HDR)/MainNoHdr")] 
-#endif
+        [Group("Color (Non HDR)/MainNoHdr")]
         [SerializeField]
         public Color mainNoHdrColorEnd;
-#if ODIN_INSPECTOR
-        [HorizontalGroup("Color (Non HDR)/SecondaryNoHdr")] 
-#endif
+        [Group("Color (Non HDR)/SecondaryNoHdr")]
         [SerializeField]
         public Color secondaryNoHdrColorStart;
-#if ODIN_INSPECTOR
-        [HorizontalGroup("Color (Non HDR)/SecondaryNoHdr")] 
-#endif
+        [Group("Color (Non HDR)/SecondaryNoHdr")]
         [SerializeField]
         public Color secondaryNoHdrColorEnd;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Scale")] 
-#endif
+        [Group("Scale")]
         public Vector3 localScale = Vector3.one;
-#if ODIN_INSPECTOR
-        [BoxGroup("Scale")] 
-#endif
+        [Group("Scale")]
         public bool useScaleCurve;
-#if ODIN_INSPECTOR
-        [BoxGroup("Scale"), ShowIf("useScaleCurve")] 
-#endif
+        [Group("Scale")]
+        [ShowIf("useScaleCurve")]
         public AnimationCurve scaleCurve;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Rotation")] 
-#endif
+        [Group("Rotation")]
         public Vector3 localRotation = Vector3.zero;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Collision"), ValueDropdown(nameof(GetAllEffectID))] 
-#endif
+        [Group("Collision")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string collisionEffectId;
         [NonSerialized]
         public EffectData collisionEffectData;
-#if ODIN_INSPECTOR
-        [BoxGroup("Collision")] 
-#endif
+        [Group("Collision")]
         public LayerMask collisionLayerMask = ~0;
-#if ODIN_INSPECTOR
-        [BoxGroup("Collision")] 
-#endif
+        [Group("Collision")]
         public float collisionMaxGroundAngle = 45;
-#if ODIN_INSPECTOR
-        [BoxGroup("Collision")] 
-#endif
+        [Group("Collision")]
         public float collisionEmitRate = 0.2f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Collision")] 
-#endif
+        [Group("Collision")]
         public float collisionMinIntensity = 0;
-#if ODIN_INSPECTOR
-        [BoxGroup("Collision")] 
-#endif
+        [Group("Collision")]
         public float collisionMaxIntensity = 1;
-#if ODIN_INSPECTOR
-        [BoxGroup("Collision")] 
-#endif
+        [Group("Collision")]
         public bool collisionUseMainGradient;
-#if ODIN_INSPECTOR
-        [BoxGroup("Collision")] 
-#endif
+        [Group("Collision")]
         public bool collisionUseSecondaryGradient;
 
-#if ODIN_INSPECTOR
-        public List<ValueDropdownItem<string>> GetAllEffectID()
-        {
-            return Catalog.GetDropdownAllID(Category.Effect);
-        } 
-#endif
+        public TriDropdownList<string> GetAllEffectID() => Catalog.GetDropdownAllID(Category.Effect);
 
 
         public override void CopyHDRToNonHDR()

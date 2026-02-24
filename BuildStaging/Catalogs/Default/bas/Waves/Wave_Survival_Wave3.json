@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 2,
+  "groupPath": "Survival",
   "category": "Survival",
   "localizationId": "-",
   "title": "Wave 3",
@@ -15,18 +16,18 @@
   "factions": [
     {
       "$type": "ThunderRoad.WaveData+WaveFaction, ThunderRoad",
-      "factionID": 7,
-      "factionHealthMultiplier": 1.0,
-      "factionMaxAlive": 8
+      "factionID": 3,
+      "factionMaxAlive": 2
     }
   ],
   "groups": [
     {
       "$type": "ThunderRoad.WaveData+Group, ThunderRoad",
+      "mergeKey": "2d143994",
       "reference": "Table",
-      "referenceID": "TribalPatrolMelee",
-      "overrideFaction": false,
-      "factionID": 0,
+      "referenceID": "ScavengerAlertMix",
+      "overrideFaction": true,
+      "factionID": 3,
       "overrideContainer": false,
       "overrideContainerID": null,
       "overrideBrain": false,
@@ -35,8 +36,8 @@
       "overrideMaxMeleeCount": 0,
       "groupHealthMultiplier": 1.0,
       "minMaxCount": {
-        "x": 2,
-        "y": 4
+        "x": 3,
+        "y": 3
       },
       "spawnPointIndex": -1,
       "prereqGroupIndex": -1,
@@ -44,73 +45,11 @@
     },
     {
       "$type": "ThunderRoad.WaveData+Group, ThunderRoad",
-      "reference": "Table",
-      "referenceID": "TribalRareMix",
-      "overrideFaction": false,
-      "factionID": 0,
-      "overrideContainer": false,
-      "overrideContainerID": null,
-      "overrideBrain": false,
-      "overrideBrainID": null,
-      "overrideMaxMelee": false,
-      "overrideMaxMeleeCount": 0,
-      "groupHealthMultiplier": 1.0,
-      "minMaxCount": {
-        "x": 1,
-        "y": 2
-      },
-      "spawnPointIndex": -1,
-      "prereqGroupIndex": -1,
-      "prereqMaxRemainingAlive": 0
-    },
-    {
-      "$type": "ThunderRoad.WaveData+Group, ThunderRoad",
-      "reference": "Table",
-      "referenceID": "TribalPatrolMix",
-      "overrideFaction": false,
-      "factionID": 0,
-      "overrideContainer": false,
-      "overrideContainerID": null,
-      "overrideBrain": false,
-      "overrideBrainID": null,
-      "overrideMaxMelee": false,
-      "overrideMaxMeleeCount": 0,
-      "groupHealthMultiplier": 1.0,
-      "minMaxCount": {
-        "x": 2,
-        "y": 4
-      },
-      "spawnPointIndex": -1,
-      "prereqGroupIndex": -1,
-      "prereqMaxRemainingAlive": 0
-    },
-    {
-      "$type": "ThunderRoad.WaveData+Group, ThunderRoad",
-      "reference": "Table",
-      "referenceID": "TribalRareMix",
-      "overrideFaction": false,
-      "factionID": 0,
-      "overrideContainer": false,
-      "overrideContainerID": null,
-      "overrideBrain": false,
-      "overrideBrainID": null,
-      "overrideMaxMelee": false,
-      "overrideMaxMeleeCount": 0,
-      "groupHealthMultiplier": 1.0,
-      "minMaxCount": {
-        "x": 1,
-        "y": 2
-      },
-      "spawnPointIndex": -1,
-      "prereqGroupIndex": -1,
-      "prereqMaxRemainingAlive": 0
-    },
-    {
-      "$type": "ThunderRoad.WaveData+Group, ThunderRoad",
+      "mergeKey": "c2db4fb1",
       "reference": "Table",
       "referenceID": "TribalAlertMix",
-      "overrideFaction": false,
-      "factionID": 0,
+      "overrideFaction": true,
+      "factionID": 3,
       "overrideContainer": false,
       "overrideContainerID": null,
       "overrideBrain": false,
@@ -120,27 +59,6 @@
       "groupHealthMultiplier": 1.0,
       "minMaxCount": {
         "x": 2,
-        "y": 4
-      },
-      "spawnPointIndex": -1,
-      "prereqGroupIndex": -1,
-      "prereqMaxRemainingAlive": 0
-    },
-    {
-      "$type": "ThunderRoad.WaveData+Group, ThunderRoad",
-      "reference": "Table",
-      "referenceID": "TribalRareMelee",
-      "overrideFaction": false,
-      "factionID": 0,
-      "overrideContainer": false,
-      "overrideContainerID": null,
-      "overrideBrain": false,
-      "overrideBrainID": null,
-      "overrideMaxMelee": false,
-      "overrideMaxMeleeCount": 0,
-      "groupHealthMultiplier": 1.0,
-      "minMaxCount": {
-        "x": 1,
         "y": 2
       },
       "spawnPointIndex": -1,
@@ -148,5 +66,5 @@
       "prereqMaxRemainingAlive": 0
     }
   ],
-  "groupPath": "Survival"
+  "modules": null
 }

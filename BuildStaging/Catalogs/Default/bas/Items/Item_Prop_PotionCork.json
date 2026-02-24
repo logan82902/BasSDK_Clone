@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 4,
+  "groupPath": null,
   "localizationId": "Cork",
   "displayName": "Cork",
   "description": "No description",
@@ -14,16 +15,18 @@
   "tier": 0,
   "flags": "None",
   "levelRequired": 0,
+  "type": "Prop",
   "category": "Food",
+  "update": "",
   "iconEffectId": null,
   "preferredItemCenter": "Mass",
   "drainImbueWhenIdle": true,
+  "forceImbueUseButton": "None",
   "prefabAddress": "Bas.Item.Potion.Cork",
   "iconAddress": "Bas.Item.Potion.Cork.Icon[PotionCork]",
   "closeUpIconAddress": null,
   "pooledCount": 0,
   "androidPooledCount": 0,
-  "type": "Prop",
   "allowedStorage": "Inventory, Container",
   "despawnOnStoredInInventory": false,
   "isStackable": true,
@@ -37,6 +40,7 @@
   "mass": 0.1,
   "drag": 1.0,
   "angularDrag": 0.05,
+  "density": 100.0,
   "focusRegenMultiplier": 1.0,
   "spellChargeSpeedPlayerMultiplier": 1.0,
   "spellChargeSpeedNPCMultiplier": 1.0,
@@ -150,9 +154,14 @@
     "preWrapMode": "ClampForever",
     "postWrapMode": "ClampForever"
   },
-  "modules": null,
   "colliderGroups": [],
-  "damagers": [],
+  "damagers": [
+    {
+      "$type": "ThunderRoad.ItemData+Damager, ThunderRoad",
+      "transformName": "Blunt",
+      "damagerID": "HandleLight"
+    }
+  ],
   "Interactables": [
     {
       "$type": "ThunderRoad.ItemData+Interactable, ThunderRoad",
@@ -162,6 +171,6 @@
   ],
   "effectHinges": [],
   "whooshs": [],
-  "entityModules": [],
-  "groupPath": null
+  "modules": null,
+  "entityModules": []
 }

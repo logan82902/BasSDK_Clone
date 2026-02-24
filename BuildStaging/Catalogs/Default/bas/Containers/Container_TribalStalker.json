@@ -4,9 +4,9 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 1,
+  "groupPath": "Factions/Tribal",
   "displayName": "Tribal Stalker",
   "description": "",
-  "contents": [],
   "containerContents": [
     {
       "$type": "ThunderRoad.TableContent, ThunderRoad",
@@ -16,6 +16,7 @@
         "holderName": "BackLeft"
       },
       "customDataList": [],
+      "mergeKey": "552d957e",
       "referenceID": "WeaponTribalBow"
     },
     {
@@ -26,10 +27,12 @@
         "holderName": "BackRight"
       },
       "customDataList": [],
+      "mergeKey": "534e681c",
       "referenceID": "QuiverSmallNPC"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "98b0bb74",
       "referenceID": "ArrowImbueLightning"
     },
     {
@@ -40,6 +43,7 @@
         "holderName": "HipsRight"
       },
       "customDataList": [],
+      "mergeKey": "11d356aa",
       "referenceID": "WeaponTribalGladiator"
     },
     {
@@ -49,6 +53,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "6e851a23",
       "referenceID": "ApparelGladiatorHeadband"
     },
     {
@@ -58,6 +63,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "d7f7278d",
       "referenceID": "ApparelGladiatorJacket"
     },
     {
@@ -67,6 +73,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "0e99ca7c",
       "referenceID": "ApparelGladiatorBoots"
     },
     {
@@ -76,6 +83,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "1c5bed34",
       "referenceID": "HairsTribal"
     },
     {
@@ -85,8 +93,8 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "13f3993e",
       "referenceID": "BeardsTribal"
     }
-  ],
-  "groupPath": "Factions/Tribal"
+  ]
 }

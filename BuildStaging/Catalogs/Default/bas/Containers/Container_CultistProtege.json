@@ -4,9 +4,9 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 1,
+  "groupPath": "Factions/Cultist",
   "displayName": "Cultist Protege",
   "description": "",
-  "contents": [],
   "containerContents": [
     {
       "$type": "ThunderRoad.TableContent, ThunderRoad",
@@ -16,22 +16,27 @@
         "holderName": "HipsRight"
       },
       "customDataList": [],
+      "mergeKey": "3524ed4c",
       "referenceID": "WeaponCultistDuelist"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "50265acd",
       "referenceID": "MeleeImbueLightning"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "116ff2e5",
       "referenceID": "StaticDisarm"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "3ff9877b",
       "referenceID": "ChargeSpeedBoost"
     },
     {
       "$type": "ThunderRoad.SpellContent, ThunderRoad",
+      "mergeKey": "4a211347",
       "referenceID": "Lightning"
     },
     {
@@ -41,6 +46,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "98720a2d",
       "referenceID": "ApparelDruidHeadband"
     },
     {
@@ -50,6 +56,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "086f16a4",
       "referenceID": "ApparelRogueHandL"
     },
     {
@@ -59,6 +66,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "5f669a38",
       "referenceID": "ApparelRogueHandR"
     },
     {
@@ -68,6 +76,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "6ccbda6b",
       "referenceID": "ApparelRogueChestplate"
     },
     {
@@ -77,6 +86,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "5cc11831",
       "referenceID": "ApparelRoguePants"
     },
     {
@@ -86,6 +96,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "2ee5819c",
       "referenceID": "ApparelRogueBoots"
     },
     {
@@ -95,8 +106,8 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "0f8b9236",
       "referenceID": "HairsSoldier"
     }
-  ],
-  "groupPath": "Factions/Cultist"
+  ]
 }

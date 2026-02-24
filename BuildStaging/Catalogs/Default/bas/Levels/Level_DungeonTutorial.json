@@ -4,15 +4,14 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 3,
+  "groupPath": "Dungeon Biomes",
   "name": "Outpost",
   "description": "An old, repurposed outpost in the land of Eraden, occupied by hostile forces. Reach the end and steal their loot.",
   "descriptionLocalizationId": "OutpostDescription",
   "sceneAddress": "Level.Areas",
   "showOnlyDevMode": false,
   "showInLevelSelection": true,
-  "worldmapPrefabAddress": "Bas.Image.Map.Default",
-  "worldmapTextureAddress": "Bas.Worldmap.Eraden",
-  "worldmapLabel": null,
+  "worldMapId": "Eraden",
   "worldMapTravelAudioContainerAddress": "Bas.AudioGroup.Dungeon.Start",
   "mapLocationIndex": 12,
   "showOnMap": true,
@@ -63,6 +62,7 @@
           "defaultValue": 1,
           "stepValue": 1,
           "name": "Difficulty",
+          "localizationGroup": "Default",
           "displayName": "Difficulty",
           "description": "DifficultyDescription"
         },
@@ -73,15 +73,14 @@
           "defaultValue": 1,
           "stepValue": 1,
           "name": "EnemyTier",
+          "localizationGroup": "Default",
           "displayName": "Enemy Tier",
           "description": "EnemyTier"
         }
       ]
     }
   ],
-  "modePickCountPerRank": 2,
   "customCameras": [],
   "throwableRefType": "Item",
-  "improvisedThrowableID": null,
-  "groupPath": "Dungeon Biomes"
+  "improvisedThrowableID": null
 }

@@ -1,29 +1,32 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+
 using TriInspector;
-#endif
 
 namespace ThunderRoad
-{[System.Serializable]
+{
+    [SkipInTypeDropdown]
+    [System.Serializable]
+    [DeclareHorizontalGroup("Fields", Sizes = new float[] { 150f, 200f, 70f, 0f, 0f })]
+    [DeclareBoxGroup("Fields/Quantity", Title = "Quantity")]
+    [DeclareBoxGroup("Fields/State", Title = "State")]
+    [DeclareBoxGroup("Fields/Custom data", Title = "Custom data")]
     public abstract class ItemOrTableContent<J, K> : ContainerContent<J, K> where J : CatalogData, IContainerLoadable<J> where K : ItemOrTableContent<J, K>
     {
-#if ODIN_INSPECTOR
-        [HorizontalGroup("Fields", Width = 70), BoxGroup("Fields/Quantity"), HideLabel, PropertyOrder(10)]
-#endif
+        [Group("Fields/Quantity")]
+        [HideLabel]
+        [PropertyOrder(10)]
         public int quantity = 1;
 
-#if ODIN_INSPECTOR
-        [HorizontalGroup("Fields"), BoxGroup("Fields/State"), HideLabel, PropertyOrder(11)]
-#endif
+        [Group("Fields/State")]
+        [HideLabel]
+        [PropertyOrder(11)]
         public ContentState state;
 
-#if ODIN_INSPECTOR
-        [HorizontalGroup("Fields"), BoxGroup("Fields/Custom data"), HideLabel, PropertyOrder(12)]
-#endif
+        [Group("Fields/Custom data")]
+        [HideLabel]
+        [PropertyOrder(12)]
         public List<ContentCustomData> customDataList;
 
     }

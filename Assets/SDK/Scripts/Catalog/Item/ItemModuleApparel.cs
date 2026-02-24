@@ -10,6 +10,8 @@
         Feet,
         Global
     }
+
+    [System.Serializable]
     public class ItemModuleApparel : ItemModule
     {
         public virtual void OnEquip(Creature creature, ApparelModuleType equippedOn, ItemModuleWardrobe.CreatureWardrobe wardrobeData) {}

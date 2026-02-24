@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
+  "groupPath": null,
   "curve": {
     "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
     "keys": [
@@ -80,6 +81,5 @@
   "browsIn": 1.0,
   "leftBrowUp_Down": 0.0,
   "rightBrowUp_Down": 0.0,
-  "midBrowUp_Down": -1.0,
-  "groupPath": null
+  "midBrowUp_Down": -1.0
 }

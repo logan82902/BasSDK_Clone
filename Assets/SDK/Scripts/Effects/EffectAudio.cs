@@ -43,7 +43,6 @@ namespace ThunderRoad
         public int speedSmoothingIndex;
         public float[] speedSmoothingBuffer;
 
-
         [NonSerialized]
         public float playTime;
 
@@ -52,7 +51,6 @@ namespace ThunderRoad
         [Header("Dynamic Music")]
         public bool onDynamicMusic = false;
         public Music.MusicTransition.TransitionType dynamicMusicTiming = Music.MusicTransition.TransitionType.OnBeat;
-
 
         [Header("Random play")]
         public bool randomPlay;

@@ -1,20 +1,16 @@
 ﻿using System;
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#endif
+using TriInspector;
 
 namespace ThunderRoad.Skill.Spell
 {
+    [DeclareBoxGroup("Status Effect", Title = "Status Effect")]
     public class SkillShockParry : SkillData
     {
-#if ODIN_INSPECTOR
-        [BoxGroup("Status Effect"), ValueDropdown(nameof(GetAllStatusEffectID))]
-#endif
+        [Group("Status Effect")]
+        [Dropdown(nameof(GetAllStatusEffectID))]
         public string statusId = "Electrocute";
-        
-#if ODIN_INSPECTOR
-        [BoxGroup("Status Effect")]
-#endif
+
+        [Group("Status Effect")]
         public float duration = 3f;
 
         [NonSerialized]

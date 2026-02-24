@@ -1,11 +1,10 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-#if ODIN_INSPECTOR
-#else
 using TriInspector;
-#endif
 
+// event linkers are already set up to unsubscribe from named events + static events when they're destroyed
+#pragma warning disable UDR0005 // Domain Reload Analyzer
 namespace ThunderRoad
 {
     [HelpURL("https://kospy.github.io/BasSDK/Components/ThunderRoad/Event-Linkers/CollisionEventLinker.html")]
@@ -26,6 +25,7 @@ namespace ThunderRoad
         [System.Serializable]
         public class CollisionUnityEvent
         {
+            [AutoLabelWidth(AddedWidth = 5f)]
             public CollisionEvent collisionEvent;
             public UnityEvent<ColliderGroup> onActivate;
         }

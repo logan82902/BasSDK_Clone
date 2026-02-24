@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
+  "groupPath": null,
   "type": "SubTree",
   "rootNode": {
     "$type": "ThunderRoad.AI.Control.Sequence, ThunderRoad",
@@ -26,25 +27,16 @@
                 "rememberDuration": 1.0,
                 "outputCreatureAsCurrentTarget": false,
                 "outputCreatureVariableName": "Player",
-                "outputPartTransformVariableName": "",
-                "blackboard": null,
-                "creature": null,
-                "brainData": null
+                "outputPartTransformVariableName": ""
               },
               {
                 "$type": "ThunderRoad.AI.Action.SetFollowTarget, ThunderRoad",
                 "action": "Clear",
-                "creatureVariableName": "FollowTarget",
-                "blackboard": null,
-                "creature": null,
-                "brainData": null
+                "creatureVariableName": "FollowTarget"
               },
               {
                 "$type": "ThunderRoad.AI.Action.SetBrainState, ThunderRoad",
-                "brainState": "Idle",
-                "blackboard": null,
-                "creature": null,
-                "brainData": null
+                "brainState": "Idle"
               }
             ]
           },
@@ -67,10 +59,7 @@
                   "outputCreatureAsCurrentTarget": false,
                   "outputCreatureVariableName": "FollowTarget",
                   "outputTransform": "None",
-                  "outputTransformVariableName": "",
-                  "blackboard": null,
-                  "creature": null,
-                  "brainData": null
+                  "outputTransformVariableName": ""
                 },
                 {
                   "$type": "ThunderRoad.AI.Get.GetRagdollTouch, ThunderRoad",
@@ -81,10 +70,7 @@
                   "rememberDuration": 1.0,
                   "outputCreatureAsCurrentTarget": false,
                   "outputCreatureVariableName": "FollowTarget",
-                  "outputPartTransformVariableName": "",
-                  "blackboard": null,
-                  "creature": null,
-                  "brainData": null
+                  "outputPartTransformVariableName": ""
                 }
               ]
             }
@@ -94,17 +80,11 @@
       {
         "$type": "ThunderRoad.AI.Action.SetFollowTarget, ThunderRoad",
         "action": "Set",
-        "creatureVariableName": "FollowTarget",
-        "blackboard": null,
-        "creature": null,
-        "brainData": null
+        "creatureVariableName": "FollowTarget"
       },
       {
         "$type": "ThunderRoad.AI.Action.SetBrainState, ThunderRoad",
-        "brainState": "Follow",
-        "blackboard": null,
-        "creature": null,
-        "brainData": null
+        "brainState": "Follow"
       },
       {
         "$type": "ThunderRoad.AI.Decorator.AlwaysSuccess, ThunderRoad",
@@ -117,10 +97,7 @@
               "target": "InputCreature",
               "inputCreatureVariableName": "FollowTarget",
               "targetPart": "RagdollEyes",
-              "outputTransformVariableName": "FollowEyes",
-              "blackboard": null,
-              "creature": null,
-              "brainData": null
+              "outputTransformVariableName": "FollowEyes"
             },
             {
               "$type": "ThunderRoad.AI.Action.SetLookAt, ThunderRoad",
@@ -132,10 +109,7 @@
                 "x": 0.0,
                 "y": 0.0,
                 "z": 0.0
-              },
-              "blackboard": null,
-              "creature": null,
-              "brainData": null
+              }
             }
           ]
         }
@@ -151,10 +125,7 @@
               "target": "InputCreature",
               "inputCreatureVariableName": "FollowTarget",
               "targetPart": "CreatureRoot",
-              "outputTransformVariableName": "FollowRoot",
-              "blackboard": null,
-              "creature": null,
-              "brainData": null
+              "outputTransformVariableName": "FollowRoot"
             },
             {
               "$type": "ThunderRoad.AI.Action.TurnTo, ThunderRoad",
@@ -162,10 +133,7 @@
               "inputVariableName": "FollowRoot",
               "successIfAngleReached": false,
               "successAngle": 0.0,
-              "becomeExclusiveHandler": false,
-              "blackboard": null,
-              "creature": null,
-              "brainData": null
+              "becomeExclusiveHandler": false
             }
           ]
         }
@@ -207,13 +175,9 @@
           "angleMode": "CheckAllies",
           "changeAngleUntilUnobstructed": true,
           "targetRadiusMinAngle": 20.0,
-          "targetRadiusMaxAngle": 45.0,
-          "blackboard": null,
-          "creature": null,
-          "brainData": null
+          "targetRadiusMaxAngle": 45.0
         }
       }
     ]
-  },
-  "groupPath": null
+  }
 }

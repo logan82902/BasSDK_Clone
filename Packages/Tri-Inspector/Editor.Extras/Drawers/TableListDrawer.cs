@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using TriInspector;
 using TriInspector.Drawers;
@@ -167,7 +167,7 @@ namespace TriInspector.Drawers
 
             protected override TriElement CreateItemElement(TriProperty property)
             {
-                return new TableRowElement(property);
+                return new TableRowElement(property, _property.TryGetAttribute<HideReferencePickerAttribute>(out _));
             }
 
             private void SelectionChangedCallback(int index)
@@ -336,13 +336,14 @@ namespace TriInspector.Drawers
 
         public class TableRowElement : TriPropertyCollectionBaseElement
         {
-            public TableRowElement(TriProperty property)
+            public TableRowElement(TriProperty property, bool hiddenRefPicker = false)
             {
                 DeclareGroups(property.ValueType);
 
                 Elements = new List<KeyValuePair<TriElement, GUIContent>>();
 
-                if (property.PropertyType == TriPropertyType.Generic)
+                bool referenceNoPicker = property.PropertyType == TriPropertyType.Reference && hiddenRefPicker;
+                if (property.PropertyType == TriPropertyType.Generic || referenceNoPicker)
                 {
                     foreach (var childProperty in property.ChildrenProperties)
                     {

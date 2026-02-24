@@ -1,11 +1,9 @@
-﻿#if ODIN_INSPECTOR
-#else
-using TriInspector;
-#endif
+﻿using TriInspector;
 
 namespace ThunderRoad.AI.Condition
 {
-	public class IsManualControl : ConditionNode
+    [AutoLabelWidth(AddedWidth = 5f, MinWidth = 0f)]
+    public class IsManualControl : ConditionNode
     {
     }
 }

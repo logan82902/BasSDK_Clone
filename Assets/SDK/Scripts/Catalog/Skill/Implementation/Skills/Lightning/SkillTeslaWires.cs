@@ -1,25 +1,20 @@
 ﻿using System.Collections;
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#endif
+using TriInspector;
 using UnityEngine;
 namespace ThunderRoad.Skill.Spell
 {
+    [DeclareBoxGroup("Wire", Title = "Wire")]
     public class SkillTeslaWires : SpellSkillData
     {
-#if ODIN_INSPECTOR
-        [BoxGroup("Wire")]
-#endif
+        [Group("Wire")]
         public float duration = 3f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Wire"), ValueDropdown(nameof(GetAllEffectID))]
-#endif
+        [Group("Wire")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string arcLoopEffectId = "LightningArcLoop";
         protected EffectData arcLoopEffectData;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Wire"), ValueDropdown(nameof(GetAllSkillID))]
-#endif
+        [Group("Wire")]
+        [Dropdown(nameof(GetAllSkillID))]
         public string skillArcwireId = "Arcwire";
 
         protected SkillArcwire arcwireData;

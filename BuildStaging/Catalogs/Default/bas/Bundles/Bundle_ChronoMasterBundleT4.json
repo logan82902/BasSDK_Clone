@@ -1,0 +1,25 @@
+{
+  "$type": "ThunderRoad.BundleData, ThunderRoad",
+  "id": "ChronoMasterBundleT4",
+  "sensitiveContent": "None",
+  "sensitiveFilterBehaviour": "Discard",
+  "version": 0,
+  "groupPath": "T4",
+  "localizationGroup": "Bundles",
+  "displayName": "BundleChronoMasterBundleT4Name",
+  "description": null,
+  "altDescriptionTitle": "ContentsTitle",
+  "isArmorBundle": false,
+  "bundleItemId": "Bundle",
+  "items": [],
+  "skills": [
+    "FocusedReflexes",
+    "HyperFocus",
+    "CombatFocus",
+    "PrecisionFocus",
+    "AchronalBolts",
+    "TemporalRiposte"
+  ],
+  "lootTables": [],
+  "spriteAddress": "Ui.Icon.Unknown"
+}

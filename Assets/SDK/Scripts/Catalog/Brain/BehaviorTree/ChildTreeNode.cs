@@ -1,17 +1,13 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
-
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
 
 namespace ThunderRoad.AI
 {
-	public class ChildTreeNode : Node
+    [AutoLabelWidth(AddedWidth = 5f)]
+    [DeclareHorizontalGroup("Reference")]
+    public class ChildTreeNode : Node
     {
         public enum ChildNodeRef
         {
@@ -19,25 +15,17 @@ namespace ThunderRoad.AI
             DynamicID,
         }
 
-#if ODIN_INSPECTOR
-        [HorizontalGroup("Reference"), EnumToggleButtons, HideLabel] 
-#endif
+        [Group("Reference")]
+        [EnumToggleButtons]
+        [HideLabel]
         public ChildNodeRef reference = ChildNodeRef.ForceID;
-#if ODIN_INSPECTOR
-        [EnableIf("reference", ChildNodeRef.ForceID), ValueDropdown(nameof(GetAllBehaviorTreeID))] 
-#endif
+        [EnableIf(nameof(reference), ChildNodeRef.ForceID)]
+        [Dropdown(nameof(GetAllBehaviorTreeID))]
         public string childTreeID;
-#if ODIN_INSPECTOR
-        [EnableIf("reference", ChildNodeRef.DynamicID)] 
-#endif
+        [EnableIf(nameof(reference), ChildNodeRef.DynamicID)]
         public string childTreeName;
 
-#if ODIN_INSPECTOR
-        public List<ValueDropdownItem<string>> GetAllBehaviorTreeID()
-        {
-            return Catalog.GetDropdownAllID(Category.BehaviorTree);
-        } 
-#endif
+        public TriDropdownList<string> GetAllBehaviorTreeID() => Catalog.GetDropdownAllID(Category.BehaviorTree);
 
     }
 

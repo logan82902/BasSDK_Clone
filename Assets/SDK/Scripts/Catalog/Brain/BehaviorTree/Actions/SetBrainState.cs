@@ -1,11 +1,9 @@
-﻿#if ODIN_INSPECTOR
-#else
-using TriInspector;
-#endif
+﻿using TriInspector;
 
 namespace ThunderRoad.AI.Action
 {
-	public class SetBrainState : ActionNode
+    [AutoLabelWidth(AddedWidth = 5f, MinWidth = 0f)]
+    public class SetBrainState : ActionNode
     {
         public Brain.State brainState = Brain.State.Idle;
     }

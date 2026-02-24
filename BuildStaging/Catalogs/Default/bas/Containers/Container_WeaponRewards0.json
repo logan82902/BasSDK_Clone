@@ -4,17 +4,17 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 1,
+  "groupPath": "Survival",
   "displayName": "Unknown",
   "description": null,
-  "contents": [],
   "containerContents": [
     {
       "$type": "ThunderRoad.TableContent, ThunderRoad",
       "quantity": 1,
       "state": null,
       "customDataList": [],
+      "mergeKey": "9aee33b0",
       "referenceID": "SurvivalRewards0"
     }
-  ],
-  "groupPath": "Survival"
+  ]
 }

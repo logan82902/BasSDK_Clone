@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 3,
+  "groupPath": null,
   "behaviour": "None",
   "scaleDuringCombat": 1.0,
   "tkActiveCondition": "Always",
@@ -118,6 +119,5 @@
   "referencePoint": "Grip",
   "localizationId": "Wrist",
   "highlightDefaultTitle": "Wrist",
-  "highlightDefaultDesignation": "",
-  "groupPath": null
+  "highlightDefaultDesignation": ""
 }

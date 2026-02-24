@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
+  "groupPath": null,
   "iconAddress": "Bas.Icon.EnemyConfig.The_Eye",
   "customIconColor": true,
   "iconColor": {
@@ -36,17 +37,16 @@
   "rareMixId": "CultistRareMix",
   "rareMeleeId": "CultistRareMelee",
   "rareRangedId": "CultistRareRanged",
+  "mixedStd": "Dungeon_Cultist_Std_Mixed",
   "meleeOnlyStd": "Dungeon_Cultist_Std_MeleeOnly",
   "meleeFocusedStd": "Dungeon_Cultist_Std_MeleeFocused",
-  "mixedStd": "Dungeon_Cultist_Std_Mixed",
   "rangedFocusedStd": "Dungeon_Cultist_Std_RangedFocused",
+  "mixedArena": "Dungeon_Cultist_Arena_Mixed",
   "meleeOnlyArena": "Dungeon_Cultist_Arena_MeleeOnly",
   "meleeFocusedArena": "Dungeon_Cultist_Arena_MeleeFocused",
-  "mixedArena": "Dungeon_Cultist_Arena_Mixed",
   "rangedFocusedArena": "Dungeon_Cultist_Arena_RangedFocused",
+  "mixedEnd": "Dungeon_Cultist_End_Mixed",
   "meleeOnlyEnd": "Dungeon_Cultist_End_MeleeOnly",
   "meleeFocusedEnd": "Dungeon_Cultist_End_MeleeFocused",
-  "mixedEnd": "Dungeon_Cultist_End_Mixed",
-  "rangedFocusedEnd": "Dungeon_Cultist_End_RangedFocused",
-  "groupPath": null
+  "rangedFocusedEnd": "Dungeon_Cultist_End_RangedFocused"
 }

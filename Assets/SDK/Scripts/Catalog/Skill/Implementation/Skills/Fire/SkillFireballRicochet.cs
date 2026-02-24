@@ -1,41 +1,32 @@
-﻿#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
-using TriInspector;
-#endif
+﻿using TriInspector;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace ThunderRoad.Skill.Spell
 {
+    [DeclareBoxGroup("General", Title = "General")]
+    [DeclareBoxGroup("Aim Assist", Title = "Aim Assist")]
+    [DeclareBoxGroup("Ricochet", Title = "Ricochet")]
     public class SkillFireballRicochet : SpellSkillData
     {
-#if ODIN_INSPECTOR
-        [BoxGroup("General")]
-#endif
+        [Group("General")]
         public string spellId = "Fire";
         protected int spellHashId;
-#if ODIN_INSPECTOR
-        [BoxGroup("Aim Assist")]
-#endif
+        [Group("Aim Assist")]
         public bool aimAssist = true;
-#if ODIN_INSPECTOR
-        [BoxGroup("Aim Assist"), ShowIf("aimAssist")]
-#endif
+        [Group("Aim Assist")]
+        [ShowIf("aimAssist")]
         public float maxDistance = 10;
-#if ODIN_INSPECTOR
-        [BoxGroup("Aim Assist"), ShowIf("aimAssist")]
-#endif
+        [Group("Aim Assist")]
+        [ShowIf("aimAssist")]
         public float maxAngle = 40;
-#if ODIN_INSPECTOR
-        [BoxGroup("Aim Assist"), ShowIf("aimAssist")]
-#endif
+        [Group("Aim Assist")]
+        [ShowIf("aimAssist")]
         public float targetMoveBias = 1f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Ricochet"), ValueDropdown(nameof(GetAllEffectID))]
-#endif
+        [Group("Ricochet")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string effectId = "SpellFireballRicochet";
         protected EffectData effectData;
     }

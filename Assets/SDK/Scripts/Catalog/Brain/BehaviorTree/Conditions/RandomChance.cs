@@ -1,10 +1,9 @@
 ﻿using UnityEngine;
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#endif
+using TriInspector;
 
 namespace ThunderRoad.AI.Condition
 {
+    [AutoLabelWidth(AddedWidth = 5f, MinWidth = 0f)]
     public class RandomChance : ConditionNode
     {
         [Range(0.01f, 0.99f)]

@@ -2,11 +2,8 @@
 using UnityEngine;
 using System;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
@@ -27,9 +24,8 @@ namespace ThunderRoad
         [Header("Detected Modules")]
         public List<FxModule> modules;
 
-#if ODIN_INSPECTOR
-        [ShowInInspector, ReadOnly] 
-#endif
+        [ShowInInspector]
+        [ReadOnly]
         [NonSerialized]
         public object source;
 

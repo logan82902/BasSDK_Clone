@@ -4,12 +4,12 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 1,
+  "groupPath": null,
   "order": 2.0,
   "isDefault": false,
   "nameId": "Sandbox",
   "iconAddress": "Bas.Icon.MenuSandbox[ui_MenuSandbox]",
   "iconRollhoverAddress": "Bas.Icon.MenuSandbox_Rollhover[ui_MenuSandbox_Rollhover]",
   "prefabAddress": "Bas.Menu.Sandbox",
-  "module": null,
-  "groupPath": null
+  "module": null
 }

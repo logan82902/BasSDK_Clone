@@ -1,16 +1,14 @@
 ﻿using System.Collections.Generic;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#endif
+using TriInspector;
 
 namespace ThunderRoad.Skill.Spell
 {
+    [DeclareBoxGroup("Spell", Title = "Spell")]
     public class SkillHeldImbue : SkillData
     {
-#if ODIN_INSPECTOR
-        [BoxGroup("Spell"), ValueDropdown(nameof(GetAllSpellID))]
-#endif
+        [Group("Spell")]
+        [Dropdown(nameof(GetAllSpellID))]
         public string spellId;
 
 

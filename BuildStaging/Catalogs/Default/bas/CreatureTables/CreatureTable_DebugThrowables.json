@@ -4,11 +4,13 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 1,
+  "groupPath": "Factions/Testing",
   "description": null,
   "linkedToGenderRatio": false,
   "drops": [
     {
       "$type": "ThunderRoad.CreatureTable+Drop, ThunderRoad",
+      "mergeKey": "ef032dbd",
       "reference": "Table",
       "referenceID": "Humans",
       "overrideFaction": true,
@@ -21,6 +23,5 @@
       "overrideEthnicityID": null,
       "probabilityWeight": 1.0
     }
-  ],
-  "groupPath": "Factions/Testing"
+  ]
 }

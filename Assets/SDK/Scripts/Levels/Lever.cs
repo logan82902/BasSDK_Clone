@@ -1,12 +1,9 @@
-using System;
+﻿using System;
 using UnityEngine;
 using UnityEngine.Events;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
@@ -17,9 +14,8 @@ namespace ThunderRoad
         [Range(0f, 1f)] public float deadZone = 0.8f;
         public bool invertOutput = true;
 
-#if ODIN_INSPECTOR
-        [ShowInInspector, ReadOnly]
-#endif
+        [ShowInInspector]
+        [ReadOnly]
         [NonSerialized]
         public State state = State.InBetween;
 

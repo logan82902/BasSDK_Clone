@@ -4,15 +4,16 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 1,
+  "groupPath": null,
   "displayName": "",
   "description": null,
-  "contents": [],
   "containerContents": [
     {
       "$type": "ThunderRoad.ItemContent, ThunderRoad",
       "quantity": 1,
       "state": null,
       "customDataList": null,
+      "mergeKey": "c906ab11",
       "referenceID": "FoodApple"
     },
     {
@@ -20,8 +21,8 @@
       "quantity": 1,
       "state": null,
       "customDataList": null,
+      "mergeKey": "c0984684",
       "referenceID": "Torch"
     }
-  ],
-  "groupPath": null
+  ]
 }

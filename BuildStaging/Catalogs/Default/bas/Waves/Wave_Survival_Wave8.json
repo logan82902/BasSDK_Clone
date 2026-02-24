@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 2,
+  "groupPath": "Survival",
   "category": "Survival",
   "localizationId": "-",
   "title": "Wave 8",
@@ -15,18 +16,40 @@
   "factions": [
     {
       "$type": "ThunderRoad.WaveData+WaveFaction, ThunderRoad",
-      "factionID": 5,
-      "factionHealthMultiplier": 1.0,
-      "factionMaxAlive": 8
+      "factionID": 3,
+      "factionMaxAlive": 4
     }
   ],
   "groups": [
     {
       "$type": "ThunderRoad.WaveData+Group, ThunderRoad",
+      "mergeKey": "184ae5b8",
       "reference": "Table",
-      "referenceID": "CultistPatrolMelee",
-      "overrideFaction": false,
-      "factionID": 0,
+      "referenceID": "TribalAlertMix",
+      "overrideFaction": true,
+      "factionID": 3,
+      "overrideContainer": false,
+      "overrideContainerID": null,
+      "overrideBrain": false,
+      "overrideBrainID": null,
+      "overrideMaxMelee": false,
+      "overrideMaxMeleeCount": 0,
+      "groupHealthMultiplier": 1.0,
+      "minMaxCount": {
+        "x": 4,
+        "y": 4
+      },
+      "spawnPointIndex": -1,
+      "prereqGroupIndex": -1,
+      "prereqMaxRemainingAlive": 0
+    },
+    {
+      "$type": "ThunderRoad.WaveData+Group, ThunderRoad",
+      "mergeKey": "0b34926b",
+      "reference": "Table",
+      "referenceID": "SoldierAlertMix",
+      "overrideFaction": true,
+      "factionID": 3,
       "overrideContainer": false,
       "overrideContainerID": null,
       "overrideBrain": false,
@@ -36,111 +59,6 @@
       "groupHealthMultiplier": 1.0,
       "minMaxCount": {
         "x": 2,
-        "y": 4
-      },
-      "spawnPointIndex": -1,
-      "prereqGroupIndex": -1,
-      "prereqMaxRemainingAlive": 0
-    },
-    {
-      "$type": "ThunderRoad.WaveData+Group, ThunderRoad",
-      "reference": "Table",
-      "referenceID": "CultistRareMix",
-      "overrideFaction": false,
-      "factionID": 0,
-      "overrideContainer": false,
-      "overrideContainerID": null,
-      "overrideBrain": false,
-      "overrideBrainID": null,
-      "overrideMaxMelee": false,
-      "overrideMaxMeleeCount": 0,
-      "groupHealthMultiplier": 1.0,
-      "minMaxCount": {
-        "x": 1,
-        "y": 2
-      },
-      "spawnPointIndex": -1,
-      "prereqGroupIndex": -1,
-      "prereqMaxRemainingAlive": 0
-    },
-    {
-      "$type": "ThunderRoad.WaveData+Group, ThunderRoad",
-      "reference": "Table",
-      "referenceID": "CultistPatrolMix",
-      "overrideFaction": false,
-      "factionID": 0,
-      "overrideContainer": false,
-      "overrideContainerID": null,
-      "overrideBrain": false,
-      "overrideBrainID": null,
-      "overrideMaxMelee": false,
-      "overrideMaxMeleeCount": 0,
-      "groupHealthMultiplier": 1.0,
-      "minMaxCount": {
-        "x": 2,
-        "y": 4
-      },
-      "spawnPointIndex": -1,
-      "prereqGroupIndex": -1,
-      "prereqMaxRemainingAlive": 0
-    },
-    {
-      "$type": "ThunderRoad.WaveData+Group, ThunderRoad",
-      "reference": "Table",
-      "referenceID": "CultistRareMix",
-      "overrideFaction": false,
-      "factionID": 0,
-      "overrideContainer": false,
-      "overrideContainerID": null,
-      "overrideBrain": false,
-      "overrideBrainID": null,
-      "overrideMaxMelee": false,
-      "overrideMaxMeleeCount": 0,
-      "groupHealthMultiplier": 1.0,
-      "minMaxCount": {
-        "x": 1,
-        "y": 2
-      },
-      "spawnPointIndex": -1,
-      "prereqGroupIndex": -1,
-      "prereqMaxRemainingAlive": 0
-    },
-    {
-      "$type": "ThunderRoad.WaveData+Group, ThunderRoad",
-      "reference": "Table",
-      "referenceID": "CultistAlertMix",
-      "overrideFaction": false,
-      "factionID": 0,
-      "overrideContainer": false,
-      "overrideContainerID": null,
-      "overrideBrain": false,
-      "overrideBrainID": null,
-      "overrideMaxMelee": false,
-      "overrideMaxMeleeCount": 0,
-      "groupHealthMultiplier": 1.0,
-      "minMaxCount": {
-        "x": 2,
-        "y": 4
-      },
-      "spawnPointIndex": -1,
-      "prereqGroupIndex": -1,
-      "prereqMaxRemainingAlive": 0
-    },
-    {
-      "$type": "ThunderRoad.WaveData+Group, ThunderRoad",
-      "reference": "Table",
-      "referenceID": "CultistRareMelee",
-      "overrideFaction": false,
-      "factionID": 0,
-      "overrideContainer": false,
-      "overrideContainerID": null,
-      "overrideBrain": false,
-      "overrideBrainID": null,
-      "overrideMaxMelee": false,
-      "overrideMaxMeleeCount": 0,
-      "groupHealthMultiplier": 1.0,
-      "minMaxCount": {
-        "x": 1,
         "y": 2
       },
       "spawnPointIndex": -1,
@@ -148,5 +66,5 @@
       "prereqMaxRemainingAlive": 0
     }
   ],
-  "groupPath": "Survival"
+  "modules": null
 }

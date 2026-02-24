@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
+  "groupPath": "Outpost/Transi",
   "isUnique": true,
   "areaPrefabAddress": "Bas.Area.GL_Transi_xC&C_03",
   "lightingPresetAddress": "Bas.Area.GL_Transi_xC&C_03.LightingPreset",
@@ -88,6 +89,5 @@
       "fakeViewAddress": "Bas.Area.GL_Transi_xC&C_03.FakeView.2"
     }
   ],
-  "areaGlobalParameters": [],
-  "groupPath": "Outpost/Transi"
+  "areaGlobalParameters": []
 }

@@ -1,4 +1,6 @@
-﻿namespace ThunderRoad
+﻿using UnityEngine;
+
+namespace ThunderRoad
 {
     public class Electrocute : Status
     {

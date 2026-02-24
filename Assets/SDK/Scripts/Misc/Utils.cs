@@ -13,12 +13,6 @@ using UnityEngine.Rendering.Universal;
 using Component = UnityEngine.Component;
 using Random = UnityEngine.Random;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
-using TriInspector;
-#endif
-
 namespace ThunderRoad
 {
     public static class Utils
@@ -54,14 +48,47 @@ namespace ThunderRoad
             Side.Right => Side.Left,
             _ => throw new ArgumentOutOfRangeException($"Side out of range: {side}")
         };
+
+        public static Axis LargestAxis(this Vector3 vector)
+        {
+            return vector.x > vector.y
+                ? vector.z > vector.x
+                    ? Axis.Z
+                    : Axis.X
+                : Axis.Y;
+        }
+
+        public static Axis SmallestAxis(this Vector3 vector)
+        {
+            return vector.x < vector.y
+                ? vector.z < vector.x
+                    ? Axis.Z
+                    : Axis.X
+                : Axis.Y;
+        }
+
+        public static float GetAxis(this Vector3 vector, Axis axis) => axis switch
+        {
+            Axis.X => vector.x,
+            Axis.Y => vector.y,
+            Axis.Z => vector.z
+        };
+
+        public static float SetAxis(this Vector3 vector, Axis axis, float value) => axis switch
+        {
+            Axis.X => vector.x = value,
+            Axis.Y => vector.y = value,
+            Axis.Z => vector.z = value
+        };
+
         public static Vector3 WithX(this Vector3 vector, float x) => new(x, vector.y, vector.z);
         public static Vector3 WithY(this Vector3 vector, float y) => new(vector.x, y, vector.z);
         public static Vector3 WithZ(this Vector3 vector, float z) => new(vector.x, vector.y, z);
         
-        static Vector3[] cardinalXYZ = new Vector3[] { Vector3.left, Vector3.right, Vector3.forward, Vector3.back, Vector3.up, Vector3.down };
-        static Vector3[] cardinalXZ = new Vector3[] { Vector3.left, Vector3.right, Vector3.forward, Vector3.back };
-        static Vector3[] cardinalX = new Vector3[] { Vector3.left, Vector3.right };
-        static Vector3[] cardinalZ = new Vector3[] { Vector3.forward, Vector3.back };
+        static readonly Vector3[] cardinalXYZ = { Vector3.left, Vector3.right, Vector3.forward, Vector3.back, Vector3.up, Vector3.down };
+        static readonly Vector3[] cardinalXZ = { Vector3.left, Vector3.right, Vector3.forward, Vector3.back };
+        static readonly Vector3[] cardinalX = { Vector3.left, Vector3.right };
+        static readonly Vector3[] cardinalZ = { Vector3.forward, Vector3.back };
 
         /// <summary>
         /// Shuffle the first <c>length</c> elements of an array using the Fisher-Yates shuffle
@@ -184,9 +211,9 @@ namespace ThunderRoad
 
         public static bool CountEquals(this Array array, int count) => array.CountCheck(c => c == count);
 
-        public static bool IsNullAndEmpty(this AnimationCurve animationCurve)
+        public static bool IsNullOrEmpty(this AnimationCurve animationCurve)
         {
-            return animationCurve != null && animationCurve.keys.Length == 0;
+            return animationCurve == null || animationCurve.keys.Length == 0;
         }
 
         public static void SetAndApplyGamma(this Texture2D tex, float gamma = 2.2f)
@@ -821,11 +848,7 @@ namespace ThunderRoad
 
             return LayerMask.GetMask(layerNames);
         }
-
-        public static LayerMask GetLayer(LayerType layerType)
-        {
-            return LayerMask.NameToLayer(layerType.ToString());
-        }
+        
 
         public static void SetPositiveLocalScale(Transform transform)
         {
@@ -986,10 +1009,8 @@ namespace ThunderRoad
             {
                 if (publicOnly && !fieldValue.Key.IsPublic)
                     continue;
-#if ODIN_INSPECTOR
-                if (readOnlyAttribute && Attribute.IsDefined(fieldValue.Key, typeof(ReadOnlyAttribute)))
+                if (readOnlyAttribute && Attribute.IsDefined(fieldValue.Key, typeof(TriInspector.ReadOnlyAttribute)))
                     continue; 
-#endif
                 fieldValue.Key.SetValue(destinationComponent, fieldValue.Value);
             }
         }
@@ -1384,6 +1405,7 @@ namespace ThunderRoad
             yield return realtime ? new WaitForSecondsRealtime(delay) : new WaitForSeconds(delay);
             action?.Invoke();
         }
+        
     } 
 
     public abstract class ValueHandler<T>
@@ -1671,5 +1693,10 @@ namespace ThunderRoad
                 b3 = p3;
             }
         }
+    }
+
+    public enum Axis
+    {
+        X, Y, Z
     }
 }

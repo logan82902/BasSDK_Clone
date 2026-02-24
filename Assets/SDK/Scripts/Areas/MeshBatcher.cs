@@ -54,9 +54,22 @@ namespace ThunderRoad
             }
             public void StaticBatch()
             {
+                if (gameObjects.Count == 0)
+                {
+
 #if UNITY_EDITOR
-                Debug.Log($"[ThunderBatcher] Static batching [Obj:{gameObjects.Count}][Vert:{vertexCount}]");
+                    Debug.LogWarning($"[ThunderBatcher] No objects to static batch in this group!");
+                    
 #endif
+                    return;
+                }
+#if UNITY_EDITOR
+                if (!Application.isBatchMode)
+                {
+                    Debug.Log($"[ThunderBatcher] Static batching [Obj:{gameObjects.Count}][Vert:{vertexCount}]");
+                }
+#endif
+
                 GameObject[] gameObjectsArray = gameObjects.ToArray();
                 StaticBatchingUtility.Combine(gameObjectsArray, gameObjectsArray[0]);
             }

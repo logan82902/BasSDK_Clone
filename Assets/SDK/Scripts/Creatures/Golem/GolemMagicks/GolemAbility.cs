@@ -1,41 +1,28 @@
-using System;
+﻿using System;
 using UnityEngine;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
+    [DeclareBoxGroup("General", Title = "General")]
     public abstract class GolemAbility : ScriptableObject
     {
-#if ODIN_INSPECTOR
-        [BoxGroup("General")]
-#endif
+        [Group("General")]
         public GolemAbilityType type = GolemAbilityType.Ranged;
-#if ODIN_INSPECTOR
-        [BoxGroup("General")]
-#endif
+        [Group("General")]
         public float weight = 1f;
-#if ODIN_INSPECTOR
-        [BoxGroup("General")]
-#endif
+        [Group("General")]
         public RampageType rampageType;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("General")]
-#endif
+        [Group("General")]
         public Golem.Tier abilityTier = Golem.Tier.Any;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("General")]
-#endif
+        [Group("General")]
         public bool stunOnExit;
-#if ODIN_INSPECTOR
-        [BoxGroup("General"), ShowIf(nameof(stunOnExit))]
-#endif
+        [Group("General")]
+        [ShowIf(nameof(stunOnExit))]
         public float stunDuration = 0;
 
     }

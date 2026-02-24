@@ -5,12 +5,15 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
+using UnityEngine;
 
 namespace ThunderRoad
 {
     [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property, AllowMultiple = false)]
     public class JsonMergeKeyAttribute : System.Attribute
     {
+        public string MergeKeyValueProvider { get; set; }
     }
 
     public class KeyedListMergeConverter : JsonConverter
@@ -24,21 +27,24 @@ namespace ThunderRoad
             this.contractResolver = contractResolver;
         }
 
-        static bool CanConvert(IContractResolver contractResolver, Type objectType, out Type elementType, out JsonProperty keyProperty)
+        static bool CanConvert(IContractResolver contractResolver, Type objectType, out Type elementType, out JsonProperty keyProperty, out JsonMergeKeyAttribute keyAttribute)
         {
             elementType = objectType.GetListType();
             if (elementType == null)
             {
                 keyProperty = null;
+                keyAttribute = null;
                 return false;
             }
             var contract = contractResolver.ResolveContract(elementType) as JsonObjectContract;
             if (contract == null)
             {
                 keyProperty = null;
+                keyAttribute = null;
                 return false;
             }
             keyProperty = contract.Properties.Where(p => p.AttributeProvider.GetAttributes(typeof(JsonMergeKeyAttribute), true).Count > 0).SingleOrDefault();
+            keyAttribute = (JsonMergeKeyAttribute)(keyProperty?.AttributeProvider.GetAttributes(typeof(JsonMergeKeyAttribute), true).SingleOrDefault());
             return keyProperty != null;
         }
 
@@ -46,7 +52,7 @@ namespace ThunderRoad
         {
             Type elementType;
             JsonProperty keyProperty;
-            return CanConvert(contractResolver, objectType, out elementType, out keyProperty);
+            return CanConvert(contractResolver, objectType, out elementType, out keyProperty, out _);
         }
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
@@ -55,7 +61,8 @@ namespace ThunderRoad
                 throw new InvalidOperationException("Inconsistent contract resolvers");
             Type elementType;
             JsonProperty keyProperty;
-            if (!CanConvert(contractResolver, objectType, out elementType, out keyProperty))
+            JsonMergeKeyAttribute keyAttribute;
+            if (!CanConvert(contractResolver, objectType, out elementType, out keyProperty, out keyAttribute))
                 throw new JsonSerializationException(string.Format("Invalid input type {0}", objectType));
 
             if (reader.TokenType == JsonToken.Null)
@@ -72,10 +79,41 @@ namespace ThunderRoad
                 var jArray = JArray.Load(reader);
                 var comparer = new KeyedListMergeComparer();
 
-                // Custom change to throw error if JsonMergeKey do not exist in the JSON
-                if (jArray.FirstOrDefault(i => i[keyProperty.PropertyName] != null) == null)
+                // Try to get the key not set handler method so we can run this and get a key for it when reading JSON if it's missing from the JSON, or is null/default
+                MethodInfo keyNotSetHandlerMethod = null;
+                if (!keyAttribute.MergeKeyValueProvider.IsNullOrEmptyOrWhitespace())
                 {
-                    throw new InvalidOperationException("JsonMergeKey [" + keyProperty.PropertyName + "] is missing");
+                    keyNotSetHandlerMethod = keyProperty.DeclaringType.GetMethod(keyAttribute.MergeKeyValueProvider, BindingFlags.Public | BindingFlags.Static);
+                }
+
+                // Custom change to throw error if JsonMergeKey do not exist in the JSON
+                JToken jToken = jArray.FirstOrDefault(i => i[keyProperty.PropertyName] != null);
+                if (jToken == null)
+                {
+                    if (keyNotSetHandlerMethod != null)
+                    {
+                        object keyValue = keyNotSetHandlerMethod.Invoke(null, null);
+                        jToken = new JProperty(keyProperty.PropertyName, keyValue);
+                        jArray.Children().Append(jToken);
+                        Debug.LogWarning($"JSON loaded with missing JsonMergeKey [\"{keyProperty.PropertyName}\"] but was automatically populated during read: {keyValue.ToString()}");
+                    }
+                    else
+                    {
+                        throw new InvalidOperationException($"JsonMergeKey [\"{keyProperty.PropertyName}\"] is missing");
+                    }
+                }
+                else if (jToken is JProperty jProperty && jProperty.Value.Type == JTokenType.Null)
+                {
+                    if (keyNotSetHandlerMethod != null)
+                    {
+                        object keyValue = keyNotSetHandlerMethod.Invoke(null, null);
+                        jProperty.Value.Replace(JValue.FromObject(keyValue));
+                        Debug.LogWarning($"JSON loaded with null JsonMergeKey [\"{keyProperty.PropertyName}\"] but was automatically populated during read: {keyValue.ToString()}");
+                    }
+                    else
+                    {
+                        throw new InvalidOperationException($"JsonMergeKey [\"{keyProperty.PropertyName}\"] is null");
+                    }
                 }
 
                 var lookup = jArray.ToLookup(i => i[keyProperty.PropertyName]?.ToObject(keyProperty.PropertyType, serializer), comparer);
@@ -148,4 +186,5 @@ namespace ThunderRoad
             return null;
         }
     }
+
 }

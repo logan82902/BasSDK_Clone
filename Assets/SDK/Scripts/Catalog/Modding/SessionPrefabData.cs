@@ -1,16 +1,19 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
-
-#if ODIN_INSPECTOR
-#else
-using TriInspector;
-#endif
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.ResourceLocations;
 
 namespace ThunderRoad
 {
+#if UNITY_EDITOR
+    [EditorLoadPriority(5)]
+#endif
     public class SessionPrefabData : CustomData
     {
         public string prefabAddress;
-
+        [NonSerialized]
+        private IResourceLocation prefabLocation;
+        private GameObject prefab;
     }
 }

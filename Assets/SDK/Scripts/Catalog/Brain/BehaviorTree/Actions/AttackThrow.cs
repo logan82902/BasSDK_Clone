@@ -1,8 +1,11 @@
-﻿using UnityEngine;
+﻿using Newtonsoft.Json;
+using UnityEngine;
+using TriInspector;
 
 namespace ThunderRoad.AI.Action
 {
-	public class AttackThrow : AttackRanged
+    [AutoLabelWidth(AddedWidth = 5f, MinWidth = 0f)]
+    public class AttackThrow : AttackRanged
     {
         public SidePref preferredThrowHand = SidePref.PreferRight;
 

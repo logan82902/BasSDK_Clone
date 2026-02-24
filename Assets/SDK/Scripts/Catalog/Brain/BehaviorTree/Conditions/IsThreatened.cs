@@ -1,16 +1,13 @@
 ﻿using UnityEngine;
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#endif
+using TriInspector;
 
 namespace ThunderRoad.AI.Condition
 {
-	public class IsThreatened : ConditionNode
+    [AutoLabelWidth(AddedWidth = 5f, MinWidth = 0f)]
+    public class IsThreatened : ConditionNode
     {
         public Target target = Target.CurrentTarget;
-#if ODIN_INSPECTOR
         [ShowIf("target", Target.InputCreature)]
-#endif
         public string inputCreatureVariableName = "";
 
         public enum Target

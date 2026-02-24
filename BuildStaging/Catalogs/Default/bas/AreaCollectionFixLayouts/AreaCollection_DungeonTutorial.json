@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
+  "groupPath": null,
   "allowedRotation": [
     "Front",
     "Back",
@@ -159,6 +160,5 @@
     }
   ],
   "externalConnections": [],
-  "distanceBetweenConnectionMax": 0.01,
-  "groupPath": null
+  "distanceBetweenConnectionMax": 0.01
 }

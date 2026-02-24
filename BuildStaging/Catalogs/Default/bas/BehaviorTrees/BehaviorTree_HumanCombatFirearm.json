@@ -4,10 +4,10 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
+  "groupPath": null,
   "type": "SubTree",
   "rootNode": {
     "$type": "ThunderRoad.AI.Decorator.AlwaysFailure, ThunderRoad",
     "child": null
-  },
-  "groupPath": null
+  }
 }

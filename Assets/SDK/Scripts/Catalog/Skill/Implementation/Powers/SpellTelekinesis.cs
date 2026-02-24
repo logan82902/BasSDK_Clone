@@ -5,15 +5,13 @@ using UnityEngine;
 using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
 
 namespace ThunderRoad.Skill.SpellPower
 {
     [Serializable]
+    [DeclareBoxGroup("Hand pose", Title = "Hand pose")]
+    [DeclareBoxGroup("Throw", Title = "Throw")]
     public class SpellTelekinesis : SpellData
     {
         public static bool holdGrip;
@@ -62,34 +60,24 @@ namespace ThunderRoad.Skill.SpellPower
         public bool enabled { get; protected set; } = true;
         protected HashSet<object> disablers;
 
-#if ODIN_INSPECTOR
-        [ValueDropdown(nameof(GetAllEffectID))]
-#endif
+        [Dropdown(nameof(GetAllEffectID))]
         public string defaultHandEffectId;
         protected EffectData defaultHandEffectData;
 
 
-#if ODIN_INSPECTOR
-        [ValueDropdown(nameof(GetAllEffectID))]
-#endif
+        [Dropdown(nameof(GetAllEffectID))]
         public string ragdollHandEffectId;
         protected EffectData ragdollHandEffectData;
 
-#if ODIN_INSPECTOR
-        [ValueDropdown(nameof(GetAllEffectID))]
-#endif
+        [Dropdown(nameof(GetAllEffectID))]
         public string ragdollGripEffectId;
         protected EffectData ragdollGripEffectData;
 
 
-#if ODIN_INSPECTOR
-        [ValueDropdown(nameof(GetAllSkillID))]
-#endif
+        [Dropdown(nameof(GetAllSkillID))]
         public string teleSpinId;
-        
-#if ODIN_INSPECTOR
-        [ValueDropdown(nameof(GetAllEffectID))]
-#endif
+
+        [Dropdown(nameof(GetAllEffectID))]
         public string spinEffectId;
         protected EffectData spinEffectData;
 
@@ -139,9 +127,7 @@ namespace ThunderRoad.Skill.SpellPower
         public float pushDefaultForce = 20;
         public float pushRagdollForce = 30;
         public float pushRagdollOtherPartsForce = 5;
-#if ODIN_INSPECTOR
-        [ValueDropdown(nameof(GetAllEffectID))]
-#endif
+        [Dropdown(nameof(GetAllEffectID))]
         public string pushEffectId;
         protected EffectData pushEffectData;
         public float minVelocity = 0f;
@@ -151,23 +137,19 @@ namespace ThunderRoad.Skill.SpellPower
         public bool allowDismemberment = true;
         public float dismembermentBreakForceMultiplier = 1f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Hand pose"), ValueDropdown(nameof(GetAllHandPoseID))]
-#endif
+        [Group("Hand pose")]
+        [Dropdown(nameof(GetAllHandPoseID))]
         public string closeHandPoseId;
         [NonSerialized]
         public HandPoseData closeHandPoseData;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Hand pose"), ValueDropdown(nameof(GetAllHandPoseID))]
-#endif
+        [Group("Hand pose")]
+        [Dropdown(nameof(GetAllHandPoseID))]
         public string openHandPoseId;
         [NonSerialized]
         public HandPoseData openHandPoseData;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Throw")]
-#endif
+        [Group("Throw")]
         public bool clearFloatingOnThrow = false;
 
         protected RaycastHit[] handRayHits;

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -78,11 +78,34 @@ namespace TriInspector
             IsArrayElement = isArrayElement;
 
             _attributes = attributes ?? new List<Attribute>();
+            if (OwnerType != null)
+            {
+                foreach (var ownerAttribute in OwnerType.GetCustomAttributes())
+                {
+                    if (ownerAttribute is ApplyToChildsAttribute applyToChildsAttribute)
+                    {
+                        bool add = true;
+                        if (ownerAttribute.GetType().GetCustomAttribute<AttributeUsageAttribute>() is AttributeUsageAttribute attributeUsageAttribute
+                            && !attributeUsageAttribute.AllowMultiple)
+                        {
+                            foreach (Attribute existing in _attributes)
+                            {
+                                if (existing.GetType() == ownerAttribute.GetType())
+                                {
+                                    add = false;
+                                    break;
+                                }
+                            }
+                        }
+                        if (add) _attributes.Add(applyToChildsAttribute);
+                    }
+                }
+            }
             _memberInfo = memberInfo;
             _valueGetter = valueGetter;
             _valueSetter = valueSetter;
 
-            _skipNullValuesFix = memberInfo != null && memberInfo.GetCustomAttribute<SerializeReference>() != null;
+            _skipNullValuesFix = memberInfo != null && memberInfo.GetCustomAttribute<NullValueFixAttribute>() == null;
 
             Order = order;
             IsReadOnly = _valueSetter == null || Attributes.TryGet(out ReadOnlyAttribute _);

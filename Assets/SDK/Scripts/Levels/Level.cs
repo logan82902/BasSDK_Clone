@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System;
 using System.Collections.Generic;
 using System.Collections;
@@ -8,11 +8,8 @@ using UnityEngine.Events;
 #if DUNGEN
 #endif
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
@@ -28,10 +25,8 @@ namespace ThunderRoad
         [Tooltip("Container of the player when the player loads in to this level.")]
         public string playerSpawnerId = "default";
 
-        [System.NonSerialized]
-#if ODIN_INSPECTOR
+        [NonSerialized]
         [ShowInInspector]
-#endif
         public LightingPreset currentLightingPreset;
 
         public List<CustomReference> customReferences;
@@ -45,9 +40,7 @@ namespace ThunderRoad
         [NonSerialized]
         public bool loaded;
 
-#if ODIN_INSPECTOR
         [ShowInInspector]
-#endif
         public static int seed
         {
             get
@@ -83,6 +76,7 @@ namespace ThunderRoad
         }
 
         public UnityEvent loadedEvent;
+
 
         [Button]
         public static void CheckLightMapMode()

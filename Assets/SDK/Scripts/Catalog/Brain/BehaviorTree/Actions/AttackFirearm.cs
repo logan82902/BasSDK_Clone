@@ -1,6 +1,10 @@
-﻿namespace ThunderRoad.AI.Action
+﻿using Newtonsoft.Json;
+using TriInspector;
+
+namespace ThunderRoad.AI.Action
 {
-	public class AttackFirearm : AttackRanged
+    [AutoLabelWidth(AddedWidth = 5f, MinWidth = 0f)]
+    public class AttackFirearm : AttackRanged
     {
         public enum FirearmOptions
         {

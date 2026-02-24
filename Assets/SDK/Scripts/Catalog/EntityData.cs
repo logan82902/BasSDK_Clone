@@ -1,23 +1,16 @@
 ﻿using System.Collections.Generic;
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#endif
+using TriInspector;
 
 namespace ThunderRoad
 {
+    [SkipInTypeDropdown]
     public class EntityData : CatalogData
     {
-#if ODIN_INSPECTOR
-        [BoxGroup("Entity Modules"), ShowInInspector, ValueDropdown(nameof(GetAllEntityModuleIDs))]
-#endif
+        [ShowInInspector]
+        [DropdownList(nameof(GetAllEntityModuleIDs))]
         public List<string> entityModules;
 
-#if ODIN_INSPECTOR
-        public List<ValueDropdownItem<string>> GetAllEntityModuleIDs()
-        {
-            return Catalog.GetDropdownAllID(Category.EntityModule);
-        }
-#endif
+        public TriDropdownList<string> GetAllEntityModuleIDs() => Catalog.GetDropdownAllID(Category.EntityModule);
 
         public override void OnCatalogRefresh()
         {

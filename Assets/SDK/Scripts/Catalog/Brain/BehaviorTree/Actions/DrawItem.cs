@@ -1,20 +1,15 @@
-﻿#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
-using TriInspector;
-#endif
+﻿using TriInspector;
 
 namespace ThunderRoad.AI.Action
 {
-	public class DrawItem : CanDrawItem
+    [AutoLabelWidth(AddedWidth = 5f, MinWidth = 0f)]
+    public class DrawItem : CanDrawItem
     {
-#if ODIN_INSPECTOR
-        [DisableIf("drawRightWeapon"), LabelWidth(130)]
-#endif
+        [DisableIf(nameof(drawRightWeapon))]
+        [LabelWidth(130)]
         public bool holsterRightItem = true;
-#if ODIN_INSPECTOR
-        [DisableIf("drawLeftWeapon"), LabelWidth(130)]
-#endif
+        [DisableIf(nameof(drawLeftWeapon))]
+        [LabelWidth(130)]
         public bool holsterLeftItem = false;
         public bool waitForFinished = false;
     }

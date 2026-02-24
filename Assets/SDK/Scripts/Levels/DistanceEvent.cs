@@ -1,9 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#endif
+
 
 namespace ThunderRoad
 {

@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
+  "groupPath": null,
   "localizationGroupID": "Skills",
   "displayName": "{Body}",
   "description": "{BodyPathDescription}",
@@ -31,5 +32,9 @@
   "videoAddress": "Bas.Video.Infuser.Body",
   "iconEnabledAddress": "Bas.Ui.SkillTree.Icons[Body_ButtonColor]",
   "iconDisabledAddress": "Bas.Ui.SkillTree.Icons[Body_Button]",
-  "groupPath": null
+  "tierBlockers": [
+    "DiveStrike",
+    "SecondWind",
+    "BruteForce"
+  ]
 }

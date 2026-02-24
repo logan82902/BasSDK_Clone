@@ -1,28 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#endif
+using TriInspector;
 using ThunderRoad.Skill.Spell;
 using UnityEngine;
 
 namespace ThunderRoad.Skill
 {
+    [DeclareBoxGroup("Imbue", Title = "Imbue")]
+    [DeclareBoxGroup("Spell", Title = "Spell")]
     public class SkillArcherImbue : AISkillData
     {
-#if ODIN_INSPECTOR
-        [BoxGroup("Imbue")]
-#endif
+        [Group("Imbue")]
         public float autoImbueTime = 1f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Spell"), ValueDropdown(nameof(GetAllSpellID))]
-#endif
+        [Group("Spell")]
+        [Dropdown(nameof(GetAllSpellID))]
         public string spellId;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Spell"), ValueDropdown(nameof(GetAllSpellID))]
-#endif
+        [Group("Spell")]
+        [DropdownList(nameof(GetAllSpellID))]
         public List<string> randomSpells;
 
     }

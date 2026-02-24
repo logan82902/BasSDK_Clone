@@ -14,7 +14,6 @@ using UnityEngine;
 namespace ThunderRoad
 {
     [DrawWithTriInspector]
-    [HideMonoScript]
     [DeclareVerticalGroup("Top")]
     [DeclareHorizontalGroup("Top/Defaults")]
     [DeclareHorizontalGroup("Top/Addressables")]
@@ -49,24 +48,26 @@ namespace ThunderRoad
 
         [System.Serializable]
         [InlineProperty]
-        [DeclareHorizontalGroup("PartHoriz")]
+        [DeclareFoldoutGroup("ArmorPart", Title = "$" + nameof(name), Expanded = true)]
+        [DeclareHorizontalGroup("ArmorPart/PartHoriz")]
         public class LODsArmorPart
         {
-            [HideLabel]
-            [ReadOnly]
+            [HideInInspector]
             public string name;
-            [Group("PartHoriz")]
+            [Group("ArmorPart/PartHoriz")]
             [LabelText("Part SMR LOD")]
-            [LabelWidth(85f)]
+            [AutoLabelWidth]
             [Dropdown(nameof(GetLODOptions))]
             public int partSMRlod = 1;
-            [Group("PartHoriz")]
-            [LabelWidth(95f)]
+            [Group("ArmorPart/PartHoriz")]
+            [AutoLabelWidth]
             public PhysicMaterial defaultMaterial;
-            [LabelWidth(90f)]
+            [Group("ArmorPart")]
+            [AutoLabelWidth]
             public ManikinWardrobeData wardrobeData;
-            [ListDrawerSettings(AlwaysExpanded = true)]
-            [LabelWidth(60f)]
+            [Group("ArmorPart")]
+            [ListDrawerSettings(AlwaysExpanded = true, ShowElementLabels = true)]
+            [AutoLabelWidth(AddedWidth = 30f)]
             public List<LOD> lods = new List<LOD>();
 
             [NonSerialized]
@@ -242,7 +243,7 @@ namespace ThunderRoad
                 string assetPath = string.Empty;
                 string assetAddress = string.Empty;
                 HashSet<string> labels = new HashSet<string>();
-                if (armorPart.wardrobeData != null && armorPart.wardrobeData.assetPrefab != null)
+                if (armorPart.wardrobeData != null && armorPart.wardrobeData.assetPrefab.IsValid())
                 {
                     string existingAssetGUID = armorPart.wardrobeData.assetPrefab.AssetGUID;
                     AddressableAssetEntry existingAssetEntry = settings.FindAssetEntry(existingAssetGUID);
@@ -256,7 +257,7 @@ namespace ThunderRoad
                 else
                 {
                     string partsFolderFromMesh = AssetDatabase.GetAssetPath(armorPart.lods[0].renderer.sharedMesh);
-                    partsFolderFromMesh = partsFolderFromMesh.Substring(0, partsFolderFromMesh.LastIndexOf('/')) + "/Parts";
+                    partsFolderFromMesh = partsFolderFromMesh.Substring(0, partsFolderFromMesh.LastIndexOf('/')) + "/Parts/";
                     assetPath = partsFolderFromMesh + armorPart.name + ".prefab";
                     assetAddress = addressPrefix + armorPart.name;
                     foreach (string label in defaultLabels.Split(','))
@@ -268,14 +269,23 @@ namespace ThunderRoad
                 {
                     AssetDatabase.DeleteAsset(assetPath);
                 }
-                PrefabUtility.SaveAsPrefabAssetAndConnect(armorPart.root, assetPath, InteractionMode.UserAction);
+                // not sure how this can happen, but if the armor part root is unassigned or was never assigned, crawl up the hierarchy from the first of the LODs until we find this component
+                if (armorPart.root == null)
+                {
+                    armorPart.root = armorPart.lods[0].renderer.gameObject;
+                    while (armorPart.root.transform.parent.GetComponent<ArmorPartWizard>() != this)
+                    {
+                        armorPart.root = armorPart.root.transform.parent.gameObject;
+                    }
+                }
+                GameObject prefab = PrefabUtility.SaveAsPrefabAssetAndConnect(armorPart.root, assetPath, InteractionMode.UserAction);
                 if (armorPart.wardrobeData != null)
                 {
                     armorPart.wardrobeData.assetPrefab = new AssetReferenceManikinPart(AssetDatabase.AssetPathToGUID(assetPath));
                 }
 
                 //make this asset addressable in the Default group and with the address "Achievements/{name}" and the label "achievement"
-                if (Common.TryGetMoveOrCreateAddressableEntry(this, partAddressables, out AddressableAssetEntry entry))
+                if (Common.TryGetMoveOrCreateAddressableEntry(prefab, partAddressables, out AddressableAssetEntry entry))
                 {
                     entry.address = assetAddress;
                     entry.labels.Clear();

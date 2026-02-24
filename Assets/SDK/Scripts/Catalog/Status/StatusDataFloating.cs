@@ -1,103 +1,68 @@
-﻿#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#endif
+﻿
 using System;
 using System.Collections.Generic;
 using ThunderRoad.Skill.Spell;
 using UnityEngine;
+using TriInspector;
 
 namespace ThunderRoad
 {
+    [DeclareBoxGroup("Physic Modifier", Title = "Physic Modifier")]
+    [DeclareBoxGroup("Force", Title = "Force")]
+    [DeclareBoxGroup("Torque", Title = "Torque")]
+    [DeclareBoxGroup("Options", Title = "Options")]
+    [DeclareBoxGroup("Slam", Title = "Slam")]
     public class StatusDataFloating : StatusData
     {
-#if ODIN_INSPECTOR
-        [BoxGroup("Physic Modifier")]
-#endif
-        public float gravityMult = 0; 
-#if ODIN_INSPECTOR
-        [BoxGroup("Physic Modifier")]
-#endif
-        public float dragRatio = 2f; 
-#if ODIN_INSPECTOR
-        [BoxGroup("Physic Modifier")]
-#endif
-        public float gravityMultPlayer = 0.3f; 
-#if ODIN_INSPECTOR
-        [BoxGroup("Physic Modifier")]
-#endif
-        public float dragRatioPlayer = 3f; 
-#if ODIN_INSPECTOR
-        [BoxGroup("Physic Modifier")]
-#endif
-        public float massRatio = -1f; 
-#if ODIN_INSPECTOR
-        [BoxGroup("Physic Modifier")]
-#endif
-        public float angularDragRatio = 2f; 
-#if ODIN_INSPECTOR
-        [BoxGroup("Force")]
-#endif
-        public float upwardsForceCreature = 30f; 
-#if ODIN_INSPECTOR
-        [BoxGroup("Force")]
-#endif
-        public float upwardsForceItem = 3f; 
+        [Group("Physic Modifier")]
+        public float gravityMult = 0;
+        [Group("Physic Modifier")]
+        public float dragRatio = 2f;
+        [Group("Physic Modifier")]
+        public float gravityMultPlayer = 0.3f;
+        [Group("Physic Modifier")]
+        public float dragRatioPlayer = 3f;
+        [Group("Physic Modifier")]
+        public float massRatio = -1f;
+        [Group("Physic Modifier")]
+        public float angularDragRatio = 2f;
+        [Group("Force")]
+        public float upwardsForceCreature = 30f;
+        [Group("Force")]
+        public float upwardsForceItem = 3f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Force")]
-#endif
+        [Group("Force")]
         public float upwardsForcePlayer = 3f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Force")]
-#endif
+        [Group("Force")]
         public ForceMode upwardsForceMode = ForceMode.VelocityChange;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Torque")]
-#endif
+        [Group("Torque")]
         public float creatureTorqueMult = 60;
-#if ODIN_INSPECTOR
-        [BoxGroup("Torque")]
-#endif
+        [Group("Torque")]
         public float itemTorqueMult = 20;
-#if ODIN_INSPECTOR
-        [BoxGroup("Torque")]
-#endif
+        [Group("Torque")]
         public ForceMode torqueForceMode = ForceMode.VelocityChange;
-#if ODIN_INSPECTOR
-        [BoxGroup("Options")]
+        [Group("Torque")]
+        public bool constantTorque = false;
+        [Group("Options")]
         public bool destabilizeCreatures = false;
-#endif
-#if ODIN_INSPECTOR
-        [BoxGroup("Options")]
+        [Group("Options")]
         public float environmentDamageMult = 0.1f;
-#endif
-#if ODIN_INSPECTOR
-        [BoxGroup("Slam")]
+        [Group("Slam")]
         public bool allowSlamOnEnd = false;
-#endif
-#if ODIN_INSPECTOR
-        [BoxGroup("Slam")]
+        [Group("Slam")]
         public float nonRootSlamMultiplier = 0.2f;
-#endif
-#if ODIN_INSPECTOR
-        [BoxGroup("Slam"), ValueDropdown(nameof(GetAllEffectID))]
-#endif
+        [Group("Slam")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string slamEffectId;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Slam"), ValueDropdown(nameof(GetAllSkillID))]
-#endif
+        [Group("Slam")]
+        [Dropdown(nameof(GetAllSkillID))]
         public string lithobrakeId = "Lithobrake";
         [NonSerialized]
         public SkillHoverSlam lithobrakeData;
-        
-#if ODIN_INSPECTOR
-        public List<ValueDropdownItem<string>> GetAllSkillID()
-        {
-            return Catalog.GetDropdownAllID(Category.Skill);
-        }
-#endif
+
+        public TriDropdownList<string> GetAllSkillID() => Catalog.GetDropdownAllID(Category.Skill);
 
 
         [NonSerialized]

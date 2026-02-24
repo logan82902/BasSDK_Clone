@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using UnityEditor;
 using UnityEngine;
 
@@ -59,7 +59,16 @@ namespace TriInspector.Elements
 
             using (TriPropertyOverrideContext.BeginProperty())
             {
-                base.OnGUI(position);
+                if (_property.TryGetSerializedProperty(out var serialProp))
+                {
+                    EditorGUI.BeginProperty(position, GUIContent.none, serialProp);
+                    base.OnGUI(position);
+                    EditorGUI.EndProperty();
+                }
+                else
+                {
+                    base.OnGUI(position);
+                }
             }
 
             EditorGUI.showMixedValue = oldShowMixedValue;

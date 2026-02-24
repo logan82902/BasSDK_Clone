@@ -1,13 +1,9 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Newtonsoft.Json;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
@@ -15,23 +11,21 @@ namespace ThunderRoad
     public class DataIdContainer<T> where T : CatalogData
     {
         #region Data
-#if ODIN_INSPECTOR
-        [ValueDropdown(nameof(GetAllCategoryTypeId))]
-#endif //ODIN_INSPECTOR
+
+        [Dropdown(nameof(GetAllCategoryTypeId))]
         public string dataId;
         #endregion Data
 
         #region Properties
         protected virtual bool ShowDataInInspector => true;
-#if ODIN_INSPECTOR
-        [ShowInInspector] 
-#endif
-        [JsonIgnore]
-        public ThunderRoad.Category Category { get { return Catalog.GetCategory(typeof(T)); } }
-#if ODIN_INSPECTOR
         [ShowInInspector]
-        [ShowIf("ShowDataInInspector")] 
-#endif
+        [JsonIgnore]
+        public Category Category
+        {
+            get { return Catalog.GetCategory(typeof(T)); }
+        }
+        [ShowInInspector]
+        [ShowIf("ShowDataInInspector")]
         [JsonIgnore]
         public T Data
         {
@@ -85,16 +79,10 @@ namespace ThunderRoad
             return false;
         }
 
-        public override int GetHashCode()
-        {
-            return HashCode.Combine(dataId, ShowDataInInspector, Category, Data);
-        }
-#if ODIN_INSPECTOR
-        public List<ValueDropdownItem<string>> GetAllCategoryTypeId()
-        {
-            return Catalog.GetDropdownAllID(Category);
-        }
-#endif
+        public TriDropdownList<string> GetAllCategoryTypeId() => Catalog.GetDropdownAllID(Category);
+
+        public override int GetHashCode() => HashCode.Combine(dataId, ShowDataInInspector, Category, Data);
+
         #endregion Methods
     }
 
@@ -103,24 +91,20 @@ namespace ThunderRoad
     public abstract class DataIdContainerChoice
     {
         #region Data
-#if ODIN_INSPECTOR
-        [ValueDropdown(nameof(GetAllCategoryTypeId))]
-#endif //ODIN_INSPECTOR
+
+        [Dropdown(nameof(GetAllCategoryTypeId))]
         public string dataId;
 
-#if ODIN_INSPECTOR
-        [ValueDropdown(nameof(GetAllowedCategoryType))]
-#endif //ODIN_INSPECTOR
-        public ThunderRoad.Category category;
+        [Dropdown(nameof(GetAllowedCategoryType))]
+        public Category category;
+
         #endregion Data
 
         #region Properties
         protected virtual bool ShowDataInInspector => true;
 
-#if ODIN_INSPECTOR
         [ShowInInspector]
         [ShowIf("ShowDataInInspector")]
-#endif
         [JsonIgnore]
         public CatalogData Data
         {
@@ -156,26 +140,20 @@ namespace ThunderRoad
 
         public abstract ThunderRoad.Category[] GetCategoryAllowed ();
 
-#if ODIN_INSPECTOR
-        public List<ValueDropdownItem<string>> GetAllCategoryTypeId()
-        {
-            return Catalog.GetDropdownAllID(category);
-        }
-#endif
+        public TriDropdownList<string> GetAllCategoryTypeId() => Catalog.GetDropdownAllID(category);
 
-#if ODIN_INSPECTOR
-        public List<ValueDropdownItem<ThunderRoad.Category>> GetAllowedCategoryType()
+        public TriDropdownList<Category> GetAllowedCategoryType()
         {
-            List<ValueDropdownItem<ThunderRoad.Category>> list = new List<ValueDropdownItem<ThunderRoad.Category>>();
-            ThunderRoad.Category[] allowed = GetCategoryAllowed();
+            TriDropdownList<Category> list = new();
+            Category[] allowed = GetCategoryAllowed();
             for (int i = 0; i < allowed.Length; i++)
             {
-                list.Add(new ValueDropdownItem<ThunderRoad.Category>(allowed[i].ToString(), allowed[i]));
+                list.Add(allowed[i].ToString(), allowed[i]);
             }
 
             return list;
         }
-#endif
+
         #endregion Methods
     }
 }

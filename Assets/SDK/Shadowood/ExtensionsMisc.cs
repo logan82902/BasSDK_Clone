@@ -420,13 +420,12 @@ public static class ExtensionsMisc
 #if UNITY_EDITOR
     /* Example:
 
-	using UnityEditor;
-	public static class SetDefineUniRX {
-		[InitializeOnLoadMethod]
-		public static void Init() {
-			ExtensionsMisc.SetDefineSymbolOnBuildTarget( EditorUserBuildSettings.selectedBuildTargetGroup, "UNIRX" );
-		}
-	}
+    public static class SetDefineUniRX {
+        [InitializeOnLoadMethod]
+        public static void Init() {
+            ExtensionsMisc.SetDefineSymbolOnBuildTarget( EditorUserBuildSettings.selectedBuildTargetGroup, "UNIRX" );
+        }
+    }
 
 	*/
     public static void SetDefineSymbolOnBuildTarget(UnityEditor.BuildTargetGroup targetGroup, string defineStr)

@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 3,
+  "groupPath": null,
   "spawnItemID": null,
   "spawnQuantity": 0,
   "allowInfiniteSupplyCheat": false,
@@ -40,6 +41,5 @@
   "referencePoint": "Grip",
   "localizationId": "Holster",
   "highlightDefaultTitle": "Holster",
-  "highlightDefaultDesignation": "",
-  "groupPath": null
+  "highlightDefaultDesignation": ""
 }

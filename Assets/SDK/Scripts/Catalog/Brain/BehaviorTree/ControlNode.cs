@@ -1,19 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
 
 namespace ThunderRoad.AI
 {
-	public class ControlNode : Node
+    [AutoLabelWidth(AddedWidth = 5f, MinWidth = 0f)]
+    public abstract class ControlNode : Node
     {
-#if ODIN_INSPECTOR
-        [ListDrawerSettings(Expanded = true), PropertyOrder(10)] 
-#endif
-        public List<Node> childs = new List<Node>();
+        [ShowInInspector]
+        [ListDrawerSettings(ShowElementLabels = false, DontForceInline = true)]
+        public List<Node> childs = new();
     }
 }

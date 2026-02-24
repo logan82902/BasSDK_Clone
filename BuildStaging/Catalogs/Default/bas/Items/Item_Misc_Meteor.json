@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 4,
+  "groupPath": null,
   "localizationId": "-",
   "displayName": "Meteor",
   "description": null,
@@ -14,16 +15,18 @@
   "tier": 0,
   "flags": "Throwable, Spinnable",
   "levelRequired": 0,
+  "type": "Misc",
   "category": null,
+  "update": "",
   "iconEffectId": null,
   "preferredItemCenter": "Mass",
   "drainImbueWhenIdle": true,
+  "forceImbueUseButton": "None",
   "prefabAddress": "Bas.Item.Misc.Projectile",
   "iconAddress": null,
   "closeUpIconAddress": null,
   "pooledCount": 6,
   "androidPooledCount": 3,
-  "type": "Misc",
   "allowedStorage": 0,
   "despawnOnStoredInInventory": false,
   "isStackable": false,
@@ -37,6 +40,7 @@
   "mass": 1.0,
   "drag": 0.0,
   "angularDrag": 0.0,
+  "density": 7500.0,
   "focusRegenMultiplier": 1.0,
   "spellChargeSpeedPlayerMultiplier": 1.0,
   "spellChargeSpeedNPCMultiplier": 1.0,
@@ -150,11 +154,6 @@
     "preWrapMode": "ClampForever",
     "postWrapMode": "ClampForever"
   },
-  "modules": [
-    {
-      "$type": "ThunderRoad.ItemModuleAreaProjectile, ThunderRoad"
-    }
-  ],
   "colliderGroups": [],
   "damagers": [
     {
@@ -172,6 +171,10 @@
   ],
   "effectHinges": [],
   "whooshs": [],
-  "entityModules": [],
-  "groupPath": null
+  "modules": [
+    {
+      "$type": "ThunderRoad.ItemModuleAreaProjectile, ThunderRoad"
+    }
+  ],
+  "entityModules": []
 }

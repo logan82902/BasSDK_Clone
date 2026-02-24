@@ -4,9 +4,9 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 1,
+  "groupPath": "Factions/Cultist",
   "displayName": "Cultist Duelist",
   "description": "",
-  "contents": [],
   "containerContents": [
     {
       "$type": "ThunderRoad.TableContent, ThunderRoad",
@@ -16,6 +16,7 @@
         "holderName": "HipsRight"
       },
       "customDataList": [],
+      "mergeKey": "cc795b66",
       "referenceID": "WeaponCultistDuelist"
     },
     {
@@ -26,6 +27,7 @@
         "holderName": "HipsLeft"
       },
       "customDataList": [],
+      "mergeKey": "04e1dab4",
       "referenceID": "ShieldCultistBuckler"
     },
     {
@@ -35,6 +37,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "7f992d4d",
       "referenceID": "ApparelMercenaryHeadband"
     },
     {
@@ -44,6 +47,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "9a1376e7",
       "referenceID": "ApparelRogueHandL"
     },
     {
@@ -53,6 +57,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "b1d35b50",
       "referenceID": "ApparelRogueHandR"
     },
     {
@@ -62,6 +67,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "229acdb4",
       "referenceID": "ApparelRogueChestplate"
     },
     {
@@ -71,6 +77,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "0368db74",
       "referenceID": "ApparelRoguePants"
     },
     {
@@ -80,6 +87,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "ac51f4af",
       "referenceID": "ApparelRogueBoots"
     },
     {
@@ -89,8 +97,8 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "4256d2a6",
       "referenceID": "HairsSoldier"
     }
-  ],
-  "groupPath": "Factions/Cultist"
+  ]
 }

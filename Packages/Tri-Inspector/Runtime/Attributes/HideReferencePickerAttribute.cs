@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 
 namespace TriInspector
 {
     [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property)]
-    public class HideReferencePickerAttribute : Attribute
+    public class HideReferencePickerAttribute : ReferencePickerStyleAttribute
     {
     }
 }

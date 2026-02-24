@@ -7,10 +7,10 @@ namespace ThunderRoad
 {
     public class UISelectionListButtons : MonoBehaviour
     {
-        [SerializeField] protected UICustomisableButton nextButton;
-        [SerializeField] protected UICustomisableButton previousButton;
-        [SerializeField] protected TextMeshProUGUI title;
-        [SerializeField] protected TextMeshProUGUI value;
+        [SerializeField] public UICustomisableButton nextButton;
+        [SerializeField] public UICustomisableButton previousButton;
+        [SerializeField] public TextMeshProUGUI title;
+        [SerializeField] public TextMeshProUGUI value;
 
         public event Action<UISelectionListButtons> onUpdateValueEvent;
 

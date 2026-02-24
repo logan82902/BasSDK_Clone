@@ -3,11 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using ThunderRoad.Modules;
 using static ThunderRoad.Modules.CrystalHuntLevelInstancesModule;
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
@@ -23,9 +19,7 @@ namespace ThunderRoad
 		//This is a loot table which is essentially a wrapper for a list of loot tables
 		//They get split up based on the CrystalHunt level LootType
 		
-#if ODIN_INSPECTOR
-		[ListDrawerSettings(Expanded = true, HideAddButton = true, HideRemoveButton = true, ShowPaging = false), LabelText("Crystal Hunt Level Loot Types")]
-#endif
+		[ListDrawerSettings(AlwaysExpanded = true, HideAddButton = true, HideRemoveButton = true), LabelText("Crystal Hunt Level Loot Types")]
 		public LootTypeStringDictionary lootTypes = new LootTypeStringDictionary
 		{
 			{ LootType.Loot, null },
@@ -35,9 +29,10 @@ namespace ThunderRoad
 		};
 		
 		private LootTypeLootTableDictionary lootTypeLootTables = new LootTypeLootTableDictionary();
-		
-		public override IEnumerator OnCatalogRefreshCoroutine()
+
+		public override void OnCatalogRefresh()
 		{
+			base.OnCatalogRefresh();
 			foreach (var lootType in lootTypes)
 			{
 				if(string.IsNullOrEmpty(lootType.Value)) continue;
@@ -45,11 +40,9 @@ namespace ThunderRoad
 				{
 					lootTypeLootTables[lootType.Key] = lootTable;
 				}
-				
 			}
-			return base.OnCatalogRefreshCoroutine();
 		}
-
+		
 		public override int GetCurrentVersion()
 		{
 			return 1;
@@ -104,6 +97,16 @@ namespace ThunderRoad
 				}
 			}
 			return base.GetAll(level, pickCount);
+		}
+
+		public override int Count(int level = -1)
+		{
+			if (TryGetCurrentLootType(out var lootType))
+			{
+				if (lootTypeLootTables.TryGetValue(lootType, out LootTableBase lootTable))
+					return lootTable.Count();
+			}
+			return base.Count(level);
 		}
 
 		private bool TryGetCurrentLootType(out LootType lootType)

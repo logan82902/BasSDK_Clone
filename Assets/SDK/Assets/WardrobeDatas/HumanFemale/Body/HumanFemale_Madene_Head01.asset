@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 397a116051d408644a26af70bd50e0e8, type: 3}
+  m_Name: HumanFemale_Madene_Head01
+  m_EditorClassIdentifier: 
+  editorLocationLabels: {fileID: 11400000, guid: 132ead709673199439726850d9484f91,
+    type: 2}
+  assetPrefab:
+    m_AssetGUID: d51776fb45c72474fb7a03731547ebce
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  channels:
+  - Head
+  layers: 0c000000
+  fullyOccludedLayers: 00000000
+  partialOccludedLayers: 00000000
+  partialOccludedMasks: 00000000
+  occlusionID: 
+  occlusionIDHash: 0
+  tags: []
+  dependencies:
+  - {fileID: 11400000, guid: 28ae207c09baeec4ab8c23da31a042a0, type: 2}
+  - {fileID: 11400000, guid: 3da7312297e23aa4d83f1419c35fd45d, type: 2}
+  - {fileID: 11400000, guid: 297223e8d438448498198db5297b11c4, type: 2}

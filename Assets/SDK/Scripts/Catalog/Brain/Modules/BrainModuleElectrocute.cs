@@ -1,14 +1,13 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-#if ODIN_INSPECTOR
-#else
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
-	public class BrainModuleElectrocute : BrainData.Module
+    [System.Serializable]
+    [AutoLabelWidth(AddedWidth = 5f, MinWidth = 0f)]
+    public class BrainModuleElectrocute : BrainData.Module
     {
         public bool electrocutionImmune;
 

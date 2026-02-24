@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
+  "groupPath": null,
   "type": "SubTree",
   "rootNode": {
     "$type": "ThunderRoad.AI.Control.Sequence, ThunderRoad",
@@ -11,18 +12,12 @@
     "childs": [
       {
         "$type": "ThunderRoad.AI.Action.SetBrainState, ThunderRoad",
-        "brainState": "Patrol",
-        "blackboard": null,
-        "creature": null,
-        "brainData": null
+        "brainState": "Patrol"
       },
       {
         "$type": "ThunderRoad.AI.Action.SetStance, ThunderRoad",
         "stance": "Idle",
-        "onlyOnce": false,
-        "blackboard": null,
-        "creature": null,
-        "brainData": null
+        "onlyOnce": false
       },
       {
         "$type": "ThunderRoad.AI.Action.SetLookAt, ThunderRoad",
@@ -34,28 +29,19 @@
           "x": 0.0,
           "y": 0.0,
           "z": 0.0
-        },
-        "blackboard": null,
-        "creature": null,
-        "brainData": null
+        }
       },
       {
         "$type": "ThunderRoad.AI.Action.HolsterItem, ThunderRoad",
         "holsterRight": true,
         "holsterLeft": true,
-        "waitForFinished": false,
-        "blackboard": null,
-        "creature": null,
-        "brainData": null
+        "waitForFinished": false
       },
       {
         "$type": "ThunderRoad.AI.Get.GetTransform, ThunderRoad",
         "target": "NextWaypoint",
         "prioritizeShortestPath": true,
-        "outputTransformVariableName": "Waypoint",
-        "blackboard": null,
-        "creature": null,
-        "brainData": null
+        "outputTransformVariableName": "Waypoint"
       },
       {
         "$type": "ThunderRoad.AI.Action.MoveTo, ThunderRoad",
@@ -92,21 +78,14 @@
         "angleMode": "None",
         "changeAngleUntilUnobstructed": false,
         "targetRadiusMinAngle": 0.0,
-        "targetRadiusMaxAngle": 0.0,
-        "blackboard": null,
-        "creature": null,
-        "brainData": null
+        "targetRadiusMaxAngle": 0.0
       },
       {
         "$type": "ThunderRoad.AI.Action.WayPointTask, ThunderRoad",
         "inputTransformVariableName": "Waypoint",
         "outputTargetVariableName": "WaypointTarget",
-        "resetInteruptAnimation": false,
-        "blackboard": null,
-        "creature": null,
-        "brainData": null
+        "resetInteruptAnimation": false
       }
     ]
-  },
-  "groupPath": null
+  }
 }

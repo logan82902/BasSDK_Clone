@@ -2,15 +2,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
+using Newtonsoft.Json;
 
 namespace ThunderRoad
 {
+    [System.Serializable]
+    [AutoLabelWidth(AddedWidth = 5f, MinWidth = 0f)]
     public class BrainModuleLookAt : BrainData.Module
     {
         [Header("Blending")]
@@ -57,10 +55,9 @@ namespace ThunderRoad
         [System.Serializable]
         public class IKWeight
         {
-#if ODIN_INSPECTOR
-            [ShowInInspector] 
-#endif
-            [Range(0f, 1f), NonSerialized]
+            [ShowInInspector]
+            [Range(0f, 1f)]
+            [NonSerialized]
             public float currentWeight;
             [Range(0f, 1f)]
             public float clampWeight;

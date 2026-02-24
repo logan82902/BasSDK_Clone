@@ -1,0 +1,52 @@
+{
+  "$type": "ThunderRoad.EnemyConfig, ThunderRoad",
+  "id": "DalgarianEnemyConfigSentara",
+  "sensitiveContent": "None",
+  "sensitiveFilterBehaviour": "Discard",
+  "version": 0,
+  "groupPath": "",
+  "iconAddress": "Bas.Icon.Sentara",
+  "customIconColor": true,
+  "iconColor": {
+    "r": 0.9372549,
+    "g": 0.6431373,
+    "b": 0.31764707,
+    "a": 1.0
+  },
+  "color": {
+    "r": 0.286274523,
+    "g": 0.392156869,
+    "b": 0.396078438,
+    "a": 1.0
+  },
+  "name": "{Sentara}",
+  "nameLocalizationId": "Sentara",
+  "descriptionsByLevelId": [
+    {
+      "$type": "ThunderRoad.EnemyConfig+DescriptionByLevelId, ThunderRoad",
+      "levelId": "DungeonDalgarian",
+      "description": "SentaraOutpostDesc"
+    }
+  ],
+  "patrolMixId": "SentaraAlertMix",
+  "patrolMeleeId": "SentaraAlertMix",
+  "patrolRangedId": "Sentara_Base_RangedWeak",
+  "alertMixId": "SentaraAlertMix",
+  "alertMeleeId": "SentaraAlertMix",
+  "alertRangedId": "Sentara_Base_RangedWeak",
+  "rareMixId": "Sentara_Base_MeleeSpecial",
+  "rareMeleeId": "Sentara_Base_MeleeSpecial",
+  "rareRangedId": "Sentara_Base_RangedWeak",
+  "mixedStd": "Dungeon_Sentara_Std_Mixed",
+  "meleeOnlyStd": "Dungeon_Sentara_Std_Mixed",
+  "meleeFocusedStd": "Dungeon_Sentara_Std_Mixed",
+  "rangedFocusedStd": "Dungeon_Sentara_Std_Mixed",
+  "mixedArena": "Dungeon_Sentara_Arena_Mixed",
+  "meleeOnlyArena": "Dungeon_Sentara_Arena_Mixed",
+  "meleeFocusedArena": "Dungeon_Sentara_Arena_Mixed",
+  "rangedFocusedArena": "Dungeon_Sentara_Arena_Mixed",
+  "mixedEnd": "Dungeon_Sentara_End_Mixed",
+  "meleeOnlyEnd": "Dungeon_Sentara_End_Mixed",
+  "meleeFocusedEnd": "Dungeon_Sentara_End_Mixed",
+  "rangedFocusedEnd": "Dungeon_Sentara_End_Mixed"
+}

@@ -5,14 +5,13 @@ using ThunderRoad.AI.Action;
 using System.Linq;
 using System.Collections;
 using ThunderRoad.Skill.SpellPower;
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
+using Newtonsoft.Json;
 
 namespace ThunderRoad
 {
+    [System.Serializable]
+    [AutoLabelWidth(AddedWidth = 5f, MinWidth = 0f)]
     public class BrainModuleThrow : BrainModuleRanged
     {
         [Header("Rock throwing")]

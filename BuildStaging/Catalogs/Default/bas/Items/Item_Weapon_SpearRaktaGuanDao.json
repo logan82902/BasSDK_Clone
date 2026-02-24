@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 4,
+  "groupPath": "",
   "localizationId": "SpearRaktaGuanDao",
   "displayName": "Cleaving Staff",
   "description": "A typical, yet versatile Raike warfare weapon. An excellent balance between reach and slashing power when on the battlefield.",
@@ -14,17 +15,18 @@
   "tier": 3,
   "flags": "Throwable, Spinnable, Jabbing, Piercing",
   "levelRequired": 0,
-  "category": "Spears",
+  "type": "Weapon",
+  "category": "Rakta Weapons",
   "update": "Rakta",
   "iconEffectId": "",
   "preferredItemCenter": "Mass",
   "drainImbueWhenIdle": true,
+  "forceImbueUseButton": "None",
   "prefabAddress": "Bas.Item.Melee.Spear.RaktaGuanDao",
   "iconAddress": "Bas.Item.Melee.Spear.RaktaGuanDao.Icon[wpn_guandao]",
   "closeUpIconAddress": "Bas.Item.Melee.Spear.RaktaGuanDao.IconClose[wpn_guandao-close-up]",
   "pooledCount": 0,
   "androidPooledCount": 0,
-  "type": "Weapon",
   "allowedStorage": "Container, SandboxAllItems",
   "despawnOnStoredInInventory": false,
   "isStackable": false,
@@ -38,6 +40,7 @@
   "mass": 5.0,
   "drag": 0.4,
   "angularDrag": 0.05,
+  "density": 7000.0,
   "focusRegenMultiplier": 1.0,
   "spellChargeSpeedPlayerMultiplier": 1.0,
   "spellChargeSpeedNPCMultiplier": 1.0,
@@ -151,6 +154,50 @@
     "preWrapMode": "ClampForever",
     "postWrapMode": "ClampForever"
   },
+  "colliderGroups": [
+    {
+      "$type": "ThunderRoad.ItemData+ColliderGroup, ThunderRoad",
+      "transformName": "Blades",
+      "colliderGroupId": "BladeSpear"
+    }
+  ],
+  "damagers": [
+    {
+      "$type": "ThunderRoad.ItemData+Damager, ThunderRoad",
+      "transformName": "Pierce",
+      "damagerID": "ChopperPierce"
+    },
+    {
+      "$type": "ThunderRoad.ItemData+Damager, ThunderRoad",
+      "transformName": "Slash",
+      "damagerID": "ChopperSlash2H"
+    },
+    {
+      "$type": "ThunderRoad.ItemData+Damager, ThunderRoad",
+      "transformName": "Blunt",
+      "damagerID": "HandleHeavy"
+    }
+  ],
+  "Interactables": [
+    {
+      "$type": "ThunderRoad.ItemData+Interactable, ThunderRoad",
+      "transformName": "Handle",
+      "interactableId": "ObjectHandleHeavy"
+    }
+  ],
+  "effectHinges": [],
+  "whooshs": [
+    {
+      "$type": "ThunderRoad.ItemData+Whoosh, ThunderRoad",
+      "transformName": "Whoosh",
+      "effectId": "WhooshSwordShort",
+      "trigger": "Always",
+      "stopOnSnap": true,
+      "minVelocity": 3.0,
+      "maxVelocity": 14.0,
+      "dampening": 0.1
+    }
+  ],
   "modules": [
     {
       "$type": "ThunderRoad.ItemModuleAI, ThunderRoad",
@@ -159,7 +206,6 @@
       "weaponHandling": "TwoHanded",
       "secondaryHandling": "None",
       "weaponAttackTypes": "Thrust",
-      "ignoredByDefense": false,
       "alwaysPrimary": false,
       "defaultStanceInfo": {
         "$type": "ThunderRoad.ItemModuleAI+StanceInfo, ThunderRoad",
@@ -175,33 +221,8 @@
           "stanceDataID": ""
         }
       ],
-      "rangedWeaponData": {
-        "$type": "ThunderRoad.ItemModuleAI+RangedWeaponData, ThunderRoad",
-        "ammoType": "",
-        "tooCloseDistance": 5.0,
-        "spread": {
-          "x": 1.0,
-          "y": 1.0
-        },
-        "projectileSpeed": 20.0,
-        "accountForGravity": true,
-        "weaponAimAngleOffset": {
-          "x": 0.0,
-          "y": 0.0,
-          "z": 0.0
-        },
-        "weaponHoldPositionOffset": {
-          "x": 0.0,
-          "y": 0.0,
-          "z": 0.0
-        },
-        "weaponHoldAngleOffset": {
-          "x": 0.0,
-          "y": 0.0,
-          "z": 0.0
-        },
-        "customRangedAttackAnimationData": ""
-      },
+      "rangedWeaponData": null,
+      "ignoredByDefense": false,
       "armResistanceMultiplier": 3.0,
       "allowDynamicHeight": false,
       "defenseHasPriority": false
@@ -260,50 +281,5 @@
       ]
     }
   ],
-  "colliderGroups": [
-    {
-      "$type": "ThunderRoad.ItemData+ColliderGroup, ThunderRoad",
-      "transformName": "Blades",
-      "colliderGroupId": "BladeSpear"
-    }
-  ],
-  "damagers": [
-    {
-      "$type": "ThunderRoad.ItemData+Damager, ThunderRoad",
-      "transformName": "Pierce",
-      "damagerID": "ChopperPierce"
-    },
-    {
-      "$type": "ThunderRoad.ItemData+Damager, ThunderRoad",
-      "transformName": "Slash",
-      "damagerID": "ChopperSlash2H"
-    },
-    {
-      "$type": "ThunderRoad.ItemData+Damager, ThunderRoad",
-      "transformName": "Blunt",
-      "damagerID": "HandleHeavy"
-    }
-  ],
-  "Interactables": [
-    {
-      "$type": "ThunderRoad.ItemData+Interactable, ThunderRoad",
-      "transformName": "Handle",
-      "interactableId": "ObjectHandleHeavy"
-    }
-  ],
-  "effectHinges": [],
-  "whooshs": [
-    {
-      "$type": "ThunderRoad.ItemData+Whoosh, ThunderRoad",
-      "transformName": "Whoosh",
-      "effectId": "WhooshSwordShort",
-      "trigger": "Always",
-      "stopOnSnap": true,
-      "minVelocity": 3.0,
-      "maxVelocity": 14.0,
-      "dampening": 0.1
-    }
-  ],
-  "entityModules": [],
-  "groupPath": ""
+  "entityModules": []
 }

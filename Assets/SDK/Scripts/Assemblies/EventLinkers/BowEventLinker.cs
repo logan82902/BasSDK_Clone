@@ -1,10 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-#if ODIN_INSPECTOR
-#else
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
@@ -33,13 +30,43 @@ namespace ThunderRoad
         }
 
         [System.Serializable]
+        [DeclareHorizontalGroup("Options", Sizes = new float[] { 220f, 0f })]
         public class BowUnityEvent
         {
+            [AutoLabelWidth(AddedWidth = 5f)]
             public BowEvent bowEvent;
+            [Group("Options")]
+            [AutoLabelWidth(AddedWidth = 5f)]
             public ArrowState arrowStateRequired;
-            [Range(0f, 1f)]
+            [ShowInInspector]
+            [Group("Options")]
+            [AutoLabelWidth(AddedWidth = 5f)]
+            [MinMaxSlider(0f, 1f, ShowFields = true)]
+            public Vector2 pullRatioRange
+            {
+                get
+                {
+                    Vector2 value = new Vector2(pullPercent - allowance, pullPercent + allowance);
+                    Vector2 clamped = value.ClampMinMax(0f, 1f);
+                    if (!clamped.x.IsApproximately(value.x) || !clamped.y.IsApproximately(value.y))
+                    {
+                        allowance = Mathf.Abs(clamped.y - clamped.x) / 2f;
+                        pullPercent = clamped.x + allowance;
+                        return clamped;
+                    }
+                    return value;
+                }
+                set
+                {
+                    allowance = Mathf.Abs(value.y - value.x) / 2f;
+                    pullPercent = value.x + allowance;
+                }
+            }
+            //[Range(0f, 1f)]
+            [HideInInspector]
             public float pullPercent = 0.5f;
-            [Range(0f, 1.1f)]
+            //[Range(0f, 1.1f)]
+            [HideInInspector]
             public float allowance = 1f;
             public UnityEvent<BowString> onActivate;
         }

@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 1,
+  "groupPath": null,
   "damageType": "Blunt",
   "collisions": [
     {
@@ -590,6 +591,5 @@
         }
       ]
     }
-  ],
-  "groupPath": null
+  ]
 }

@@ -1,0 +1,25 @@
+{
+  "$type": "ThunderRoad.BundleData, ThunderRoad",
+  "id": "PunchSorcererBundleT4",
+  "sensitiveContent": "None",
+  "sensitiveFilterBehaviour": "Discard",
+  "version": 0,
+  "groupPath": "T4",
+  "localizationGroup": "Bundles",
+  "displayName": "BundlePunchSorcererBundleT4Name",
+  "description": null,
+  "altDescriptionTitle": "ContentsTitle",
+  "isArmorBundle": false,
+  "bundleItemId": "Bundle",
+  "items": [],
+  "skills": [
+    "ForcePunch",
+    "RocketPunch",
+    "ThunderPunch",
+    "BurningGrasp",
+    "FloatingGrasp",
+    "ShockingGrasp"
+  ],
+  "lootTables": [],
+  "spriteAddress": "Ui.Icon.Unknown"
+}

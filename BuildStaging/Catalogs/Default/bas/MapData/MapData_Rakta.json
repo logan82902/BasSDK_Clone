@@ -1,0 +1,25 @@
+{
+  "$type": "ThunderRoad.MapData, ThunderRoad",
+  "id": "Rakta",
+  "sensitiveContent": "None",
+  "sensitiveFilterBehaviour": "Discard",
+  "version": 0,
+  "groupPath": null,
+  "worldmapPrefabAddress": "Bas.Image.Map.Default",
+  "worldmapTextureAddress": "Bas.Worldmap.Rakta",
+  "worldmapLocalisationId": "RaktaMap",
+  "bookmarkIconAddress": "Bas.Icon.Location.Rakta",
+  "bookmarkColor": {
+    "r": 0.41568628,
+    "g": 0.274509817,
+    "b": 0.266666681,
+    "a": 1.0
+  },
+  "iconColor": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+  },
+  "order": 2
+}

@@ -4,12 +4,12 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 1,
+  "groupPath": null,
   "order": 1.0,
   "isDefault": true,
   "nameId": "Options",
   "iconAddress": "Bas.Icon.MenuOptions[ui_MenuOptions]",
   "iconRollhoverAddress": "Bas.Icon.MenuOptions_Rollhover[ui_MenuOptions_Rollhover]",
   "prefabAddress": "Bas.Menu.Options",
-  "module": null,
-  "groupPath": null
+  "module": null
 }

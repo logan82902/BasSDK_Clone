@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 4,
+  "groupPath": null,
   "localizationId": "SwordDalgar",
   "displayName": "Stone Sword",
   "description": "",
@@ -14,16 +15,18 @@
   "tier": 0,
   "flags": "Spinnable",
   "levelRequired": 0,
+  "type": "Weapon",
   "category": "Greatswords",
+  "update": "",
   "iconEffectId": null,
   "preferredItemCenter": "Mass",
   "drainImbueWhenIdle": true,
+  "forceImbueUseButton": "None",
   "prefabAddress": "Bas.Item.Melee.Statue_DalgarSwordBig",
   "iconAddress": "Bas.Item.Melee.Statue_DalgarSword.Icon[KingDalgarSword_Small]",
   "closeUpIconAddress": "Bas.Item.Melee.Statue_DalgarSword.IconClose[KingDalgarSword_Small-close-up]",
   "pooledCount": 0,
   "androidPooledCount": 0,
-  "type": "Weapon",
   "allowedStorage": 0,
   "despawnOnStoredInInventory": false,
   "isStackable": false,
@@ -37,6 +40,7 @@
   "mass": 100.0,
   "drag": 1.5,
   "angularDrag": 0.05,
+  "density": 2500.0,
   "focusRegenMultiplier": 1.0,
   "spellChargeSpeedPlayerMultiplier": 1.0,
   "spellChargeSpeedNPCMultiplier": 1.0,
@@ -179,7 +183,6 @@
     "preWrapMode": "ClampForever",
     "postWrapMode": "ClampForever"
   },
-  "modules": [],
   "colliderGroups": [],
   "damagers": [
     {
@@ -218,6 +221,6 @@
       "dampening": 0.1
     }
   ],
-  "entityModules": [],
-  "groupPath": null
+  "modules": [],
+  "entityModules": []
 }

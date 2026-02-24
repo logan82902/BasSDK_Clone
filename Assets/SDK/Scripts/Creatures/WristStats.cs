@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
-
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
@@ -15,32 +9,22 @@ namespace ThunderRoad
     {
         public float showDistance = 0.31f;
         public float showAngle = 40.0f;
-
-#if ODIN_INSPECTOR
-        [ValueDropdown(nameof(GetAllEffectID))]
-#endif
+        public float distanceFromEyes = 0.25f;
+        public float minComfortableDistance = 0.2f;
+        
+        [Dropdown(nameof(GetAllEffectID))]
         public string healthEffectId;
-#if ODIN_INSPECTOR
-        [ValueDropdown(nameof(GetAllEffectID))]
-#endif
+        [Dropdown(nameof(GetAllEffectID))]
         public string manaEffectId;
-#if ODIN_INSPECTOR
-        [ValueDropdown(nameof(GetAllEffectID), AppendNextDrawer = true)]
-#endif
+        [Dropdown(nameof(GetAllEffectID))]
         public string focusEffectId;
 
         [NonSerialized]
         public Creature creature;
         [NonSerialized]
         public bool isShown = true;
+        
+        public TriDropdownList<string> GetAllEffectID() => Catalog.GetDropdownAllID(Category.Effect);
 
-        
-#if ODIN_INSPECTOR
-        public List<ValueDropdownItem<string>> GetAllEffectID()
-        {
-            return Catalog.GetDropdownAllID(Category.Effect);
-        }
-#endif
-        
     }
 }

@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
+  "groupPath": "Outpost/Start-End",
   "isUnique": true,
   "areaPrefabAddress": "Bas.Area.GL_Start_Lighthouse",
   "lightingPresetAddress": "Bas.Area.GL_Start_Lighthouse.LightingPreset",
@@ -78,6 +79,5 @@
       "isZeroIntensity": false,
       "visibleFromGate": true
     }
-  ],
-  "groupPath": "Outpost/Start-End"
+  ]
 }

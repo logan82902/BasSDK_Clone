@@ -1,0 +1,26 @@
+{
+  "$type": "ThunderRoad.BundleData, ThunderRoad",
+  "id": "ArmorMercenary",
+  "sensitiveContent": "None",
+  "sensitiveFilterBehaviour": "Discard",
+  "version": 0,
+  "groupPath": "Armor",
+  "localizationGroup": "Bundles",
+  "displayName": "BundleArmorMercenaryName",
+  "description": null,
+  "altDescriptionTitle": "ContentsTitle",
+  "isArmorBundle": true,
+  "bundleItemId": "Bundle",
+  "items": [
+    "ApparelMercenaryBoots",
+    "ApparelMercenaryPants",
+    "ApparelMercenaryHand1L",
+    "ApparelMercenaryHand1R",
+    "ApparelMercenaryJacket",
+    "ApparelMercenaryHeadband",
+    "ApparelMercenaryShoulders2"
+  ],
+  "skills": [],
+  "lootTables": [],
+  "spriteAddress": "Ui.Icon.Unknown"
+}

@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
+  "groupPath": null,
   "musicSegments": [
     {
       "$type": "ThunderRoad.MusicSegment, ThunderRoad",
@@ -24,6 +25,5 @@
   "BPM": 170,
   "beatsPerBar": 4,
   "barPerGrid": 4,
-  "groupPath": null,
   "SegmentOrderCount": 2
 }

@@ -4,11 +4,11 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
+  "groupPath": null,
   "sideRoomLootTableID": "Outpost_SideLoot_T0",
   "enemyDropLootTableID": "Outpost_MainLoot_T0",
   "treasureLootTableID": "Outpost_MainLoot_T0",
   "rewardLootTableID": "CrystalHuntLootTypeRewards",
   "altSideRoomLootTableID": "Outpost_SideLoot_T0",
-  "altTreasureLootTableID": "Outpost_MainLoot_T0",
-  "groupPath": null
+  "altTreasureLootTableID": "Outpost_MainLoot_T0"
 }

@@ -1,0 +1,70 @@
+{
+  "$type": "ThunderRoad.WaveData, ThunderRoad",
+  "id": "Dungeon_Rakta_Arena_Mixed",
+  "sensitiveContent": "None",
+  "sensitiveFilterBehaviour": "Discard",
+  "version": 2,
+  "groupPath": "Dungeon",
+  "category": "Dungeon Arena Room",
+  "localizationId": "-",
+  "title": "Rakta Arena Mixed",
+  "description": "",
+  "loopBehavior": "NoLoop",
+  "totalMaxAlive": 4,
+  "alwaysAvailable": false,
+  "waveSelectors": [],
+  "factions": [
+    {
+      "$type": "ThunderRoad.WaveData+WaveFaction, ThunderRoad",
+      "factionID": 5,
+      "factionMaxAlive": 8
+    }
+  ],
+  "groups": [
+    {
+      "$type": "ThunderRoad.WaveData+Group, ThunderRoad",
+      "mergeKey": "5a0a46f0",
+      "reference": "Table",
+      "referenceID": "RaktaAlertMix",
+      "overrideFaction": false,
+      "factionID": 0,
+      "overrideContainer": false,
+      "overrideContainerID": "",
+      "overrideBrain": false,
+      "overrideBrainID": "",
+      "overrideMaxMelee": false,
+      "overrideMaxMeleeCount": 2,
+      "groupHealthMultiplier": 1.0,
+      "minMaxCount": {
+        "x": 6,
+        "y": 6
+      },
+      "spawnPointIndex": -1,
+      "prereqGroupIndex": -1,
+      "prereqMaxRemainingAlive": 0
+    },
+    {
+      "$type": "ThunderRoad.WaveData+Group, ThunderRoad",
+      "mergeKey": "f54c74c5",
+      "reference": "Table",
+      "referenceID": "RaktaAlertMix",
+      "overrideFaction": false,
+      "factionID": 0,
+      "overrideContainer": false,
+      "overrideContainerID": "",
+      "overrideBrain": false,
+      "overrideBrainID": "",
+      "overrideMaxMelee": false,
+      "overrideMaxMeleeCount": 2,
+      "groupHealthMultiplier": 1.0,
+      "minMaxCount": {
+        "x": 7,
+        "y": 7
+      },
+      "spawnPointIndex": -1,
+      "prereqGroupIndex": -1,
+      "prereqMaxRemainingAlive": 0
+    }
+  ],
+  "modules": null
+}

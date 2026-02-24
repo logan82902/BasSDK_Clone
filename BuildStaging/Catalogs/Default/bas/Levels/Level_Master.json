@@ -4,15 +4,14 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 3,
+  "groupPath": null,
   "name": null,
   "description": null,
   "descriptionLocalizationId": null,
   "sceneAddress": null,
   "showOnlyDevMode": false,
   "showInLevelSelection": false,
-  "worldmapPrefabAddress": "Bas.Image.Map.Default",
-  "worldmapTextureAddress": "Bas.Worldmap.Eraden",
-  "worldmapLabel": null,
+  "worldMapId": "Eraden",
   "worldMapTravelAudioContainerAddress": "Bas.AudioGroup.UI.PinSelected",
   "mapLocationIndex": 0,
   "showOnMap": false,
@@ -33,9 +32,7 @@
       "availableOptions": []
     }
   ],
-  "modePickCountPerRank": 2,
   "customCameras": [],
   "throwableRefType": "Item",
-  "improvisedThrowableID": "ThrowablesRock",
-  "groupPath": null
+  "improvisedThrowableID": "ThrowablesRock"
 }

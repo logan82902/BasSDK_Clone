@@ -1,44 +1,25 @@
-using UnityEngine;
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
-using TriInspector;
-#endif
+﻿using UnityEngine;
 
-#if UNITY_EDITOR
-using UnityEditor;
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector.Editor;
-using Sirenix.Utilities.Editor;
-#endif
-#endif
+using TriInspector;
 
 namespace ThunderRoad
 {
     [System.Serializable]
     //[CreateAssetMenu(menuName = "ThunderRoad/Creatures/Golem ability/Generic")]
+    [DeclareBoxGroup("Damage", Title = "Damage")]
+    [DeclareHorizontalGroup("Damage/Horiz1")]
+    [DeclareHorizontalGroup("Damage/Horiz2")]
     public class CreatureAbility : ScriptableObject
     {
-#if ODIN_INSPECTOR
-        [BoxGroup("Damage")]
-#endif
+        [Group("Damage")]
         public bool multiHit = true;
-#if ODIN_INSPECTOR
-        [BoxGroup("Damage")]
-        [HorizontalGroup("Damage/Horiz1")]
-#endif
+        [Group("Damage/Horiz1")]
         public float contactDamage;
-#if ODIN_INSPECTOR
-        [HorizontalGroup("Damage/Horiz1")]
-#endif
+        [Group("Damage/Horiz1")]
         public bool breakBreakables;
-#if ODIN_INSPECTOR
-        [HorizontalGroup("Damage/Horiz2")]
-#endif
+        [Group("Damage/Horiz2")]
         public float contactForce;
-#if ODIN_INSPECTOR
-        [HorizontalGroup("Damage/Horiz2")]
-#endif
+        [Group("Damage/Horiz2")]
         public bool forceUngrip;
 
         public Creature creature { get; protected set; }

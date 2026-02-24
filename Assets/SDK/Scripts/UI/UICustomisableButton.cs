@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -6,10 +6,9 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using TriInspector;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#endif
+
 
 namespace ThunderRoad
 {
@@ -58,21 +57,13 @@ namespace ThunderRoad
 
         [Header("Press and Hold")]
         public bool isPressAndHoldEnabled;
-#if ODIN_INSPECTOR
         [ShowIf("isPressAndHoldEnabled")]
-#endif
         public float minPressAndHoldDuration = 0.5f;
-#if ODIN_INSPECTOR
         [ShowIf("isPressAndHoldEnabled")]
-#endif
         public float holdSlowClicksInterval = 0.3f;
-#if ODIN_INSPECTOR
         [ShowIf("isPressAndHoldEnabled")]
-#endif
         public float holdFastClicksInterval = 0.125f;
-#if ODIN_INSPECTOR
         [ShowIf("isPressAndHoldEnabled")]
-#endif
         public int holdSlowClicksCount = 3;
         
         [Header("Fonts")]

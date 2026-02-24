@@ -1,0 +1,21 @@
+{
+  "$type": "ThunderRoad.BundleData, ThunderRoad",
+  "id": "GravediggerBundleT0",
+  "sensitiveContent": "Skeleton",
+  "sensitiveFilterBehaviour": "Discard",
+  "version": 0,
+  "groupPath": "T0",
+  "localizationGroup": "Bundles",
+  "displayName": "BundleGravediggerBundleT0Name",
+  "description": null,
+  "altDescriptionTitle": "ContentsTitle",
+  "isArmorBundle": false,
+  "bundleItemId": "Bundle",
+  "items": [
+    "SkeletonSkull",
+    "SkeletonBone"
+  ],
+  "skills": [],
+  "lootTables": [],
+  "spriteAddress": "Ui.Icon.Unknown"
+}

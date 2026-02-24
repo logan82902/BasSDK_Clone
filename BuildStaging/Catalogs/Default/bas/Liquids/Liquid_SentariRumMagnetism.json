@@ -1,0 +1,187 @@
+{
+  "$type": "ThunderRoad.LiquidLightningMagnetPotion, ThunderRoad",
+  "id": "SentariRumMagnetism",
+  "sensitiveContent": "None",
+  "sensitiveFilterBehaviour": "Discard",
+  "version": 0,
+  "groupPath": "",
+  "lightningBodyEffectId": "ImbueLightningRagdoll",
+  "lightningZapEffectId": "SpellLightningBoltZapSingle",
+  "imbue": true,
+  "lightningSpellId": "Lightning",
+  "imbueAmountPerZap": 50.0,
+  "zapJoltVelocity": 0.35,
+  "disarmNpcs": true,
+  "disarmChance": 1.0,
+  "pullNpcOnDisarm": true,
+  "pullDisarmForce": 20.0,
+  "pullArmoredNpcs": true,
+  "ragdollArmoredChance": 1.0,
+  "electrocuteStatusId": "Electrocute",
+  "magnetRadiusEffectId": "",
+  "itemMagnetForceByDistance": {
+    "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
+    "keys": [
+      {
+        "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
+        "time": 0.0,
+        "value": 20.0,
+        "inTangent": -26.666666,
+        "outTangent": -8.891415,
+        "inWeight": 0.0,
+        "outWeight": 0.7256349,
+        "weightedMode": "Both",
+        "tangentMode": 1
+      },
+      {
+        "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
+        "time": 1.0,
+        "value": 0.0,
+        "inTangent": -2.67555714,
+        "outTangent": -2.67555714,
+        "inWeight": 0.5980055,
+        "outWeight": 0.210932925,
+        "weightedMode": "Both",
+        "tangentMode": 0
+      },
+      {
+        "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
+        "time": 5.0,
+        "value": -70.0,
+        "inTangent": -0.800065,
+        "outTangent": -7.04536724,
+        "inWeight": 0.9124531,
+        "outWeight": 0.0,
+        "weightedMode": "Both",
+        "tangentMode": 1
+      }
+    ],
+    "length": 3,
+    "preWrapMode": "ClampForever",
+    "postWrapMode": "ClampForever"
+  },
+  "creatureMagnetForceByDistance": {
+    "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
+    "keys": [
+      {
+        "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
+        "time": 0.0,
+        "value": 20.0,
+        "inTangent": -26.666666,
+        "outTangent": -0.123682596,
+        "inWeight": 0.0,
+        "outWeight": 1.0,
+        "weightedMode": "Both",
+        "tangentMode": 1
+      },
+      {
+        "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
+        "time": 2.5,
+        "value": 0.0,
+        "inTangent": -0.7898713,
+        "outTangent": -0.7898713,
+        "inWeight": 0.304257482,
+        "outWeight": 0.234534949,
+        "weightedMode": "Both",
+        "tangentMode": 0
+      },
+      {
+        "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
+        "time": 5.0,
+        "value": -70.0,
+        "inTangent": -1.13754725,
+        "outTangent": -7.04536724,
+        "inWeight": 0.71028024,
+        "outWeight": 0.0,
+        "weightedMode": "Both",
+        "tangentMode": 1
+      }
+    ],
+    "length": 3,
+    "preWrapMode": "ClampForever",
+    "postWrapMode": "ClampForever"
+  },
+  "magnetForceMode": "Acceleration",
+  "repulsionForceByDistance": {
+    "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
+    "keys": [
+      {
+        "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
+        "time": 0.0,
+        "value": 1.0,
+        "inTangent": -1.0,
+        "outTangent": -1.0,
+        "inWeight": 0.0,
+        "outWeight": 0.333333343,
+        "weightedMode": "None",
+        "tangentMode": 34
+      },
+      {
+        "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
+        "time": 1.0,
+        "value": 0.0,
+        "inTangent": -1.0,
+        "outTangent": -1.0,
+        "inWeight": 0.333333343,
+        "outWeight": 0.0,
+        "weightedMode": "None",
+        "tangentMode": 34
+      }
+    ],
+    "length": 2,
+    "preWrapMode": "ClampForever",
+    "postWrapMode": "ClampForever"
+  },
+  "repulusionForceMode": "VelocityChange",
+  "resistiveForce": true,
+  "resistiveForceMinSpeed": 3.0,
+  "resistiveForceAcceleration": 30.0,
+  "endEjectThrowSpeed": 2.0,
+  "inheritedSourceVelocity": 0.8,
+  "throwOnEject": false,
+  "zapOnEject": true,
+  "minMaxZapFequency": {
+    "x": 1.0,
+    "y": 1.6
+  },
+  "pullRadiusByConsumptionAmount": {
+    "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
+    "keys": [
+      {
+        "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
+        "time": 40.0,
+        "value": 2.5,
+        "inTangent": 0.0,
+        "outTangent": 0.0416666679,
+        "inWeight": 0.0,
+        "outWeight": 0.0,
+        "weightedMode": "None",
+        "tangentMode": 0
+      },
+      {
+        "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
+        "time": 100.0,
+        "value": 5.0,
+        "inTangent": 0.0416666679,
+        "outTangent": 0.0,
+        "inWeight": 0.0,
+        "outWeight": 0.0,
+        "weightedMode": "None",
+        "tangentMode": 0
+      }
+    ],
+    "length": 2,
+    "preWrapMode": "ClampForever",
+    "postWrapMode": "ClampForever"
+  },
+  "consumptionPerDrink": 20.0,
+  "consumptionDecayPerSecond": 3.25,
+  "decayDelay": 1.0,
+  "designation": "Sentari lightning magnetism rum",
+  "color": {
+    "r": 0.0,
+    "g": 0.4650367,
+    "b": 0.6509804,
+    "a": 0.8235294
+  }
+}

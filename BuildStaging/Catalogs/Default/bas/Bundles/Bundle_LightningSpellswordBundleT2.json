@@ -1,0 +1,24 @@
+{
+  "$type": "ThunderRoad.BundleData, ThunderRoad",
+  "id": "LightningSpellswordBundleT2",
+  "sensitiveContent": "None",
+  "sensitiveFilterBehaviour": "Discard",
+  "version": 0,
+  "groupPath": "T2",
+  "localizationGroup": "Bundles",
+  "displayName": "BundleLightningSpellswordBundleT2Name",
+  "description": null,
+  "altDescriptionTitle": "ContentsTitle",
+  "isArmorBundle": false,
+  "bundleItemId": "Bundle",
+  "items": [
+    "SwordLongCommon"
+  ],
+  "skills": [
+    "ShockParry",
+    "ShockingGrasp",
+    "ThunderPunch"
+  ],
+  "lootTables": [],
+  "spriteAddress": "Ui.Icon.Unknown"
+}

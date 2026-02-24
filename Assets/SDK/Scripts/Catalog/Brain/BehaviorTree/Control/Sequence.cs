@@ -1,19 +1,13 @@
 ﻿using System.Collections.Generic;
-
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
 
 namespace ThunderRoad.AI.Control
 {
-	[System.Serializable]
+    [System.Serializable]
+    [AutoLabelWidth(AddedWidth = 5f, MinWidth = 0f)]
     public class Sequence : ControlNode
     {
-#if ODIN_INSPECTOR
-        [PropertyOrder(0)] 
-#endif
+        [PropertyOrder(0)]
         public bool evaluateAllNodesOnCycle;
 
     }

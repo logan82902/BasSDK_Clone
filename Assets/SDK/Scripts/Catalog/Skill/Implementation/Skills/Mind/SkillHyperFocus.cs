@@ -3,82 +3,65 @@ using System.Collections.Generic;
 using Shadowood;
 using ThunderRoad.Skill.SpellPower;
 using UnityEngine;
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#endif
+using TriInspector;
+using System;
+using Newtonsoft.Json;
 
 namespace ThunderRoad.Skill.Spell
 {
+    [DeclareBoxGroup("Time Scale", Title = "Time Scale")]
+    [DeclareBoxGroup("Focus Consumption", Title = "Focus Consumption")]
+    [DeclareBoxGroup("Activation", Title = "Activation")]
+    [DeclareBoxGroup("Multipliers", Title = "Multipliers")]
+    [DeclareBoxGroup("Effects", Title = "Effects")]
     public class SkillHyperFocus : SkillData
     {
-#if ODIN_INSPECTOR
-        [BoxGroup("Time Scale")]
-#endif
+        [Group("Time Scale")]
         public float timeScale = 0.1f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Time Scale")]
-#endif
+        [Group("Time Scale")]
         public float timeScaleAndroid = 0.15f;
 
+        [JsonIgnore]
         public float TimeScale => Common.IsAndroid ? timeScaleAndroid : timeScale;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Focus Consumption")]
-#endif
+        [Group("Focus Consumption")]
         public float focusConsumptionStart = 10f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Focus Consumption")]
-#endif
+        [Group("Focus Consumption")]
         public float focusConsumption = 5f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Focus Consumption")]
-#endif
+        [Group("Focus Consumption")]
         public float minFocus = 20f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Activation")]
-#endif
+        [Group("Activation")]
         public float buttonHoldThreshold = 0.3f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Multipliers")]
-#endif
+        [Group("Multipliers")]
         public float jointPosMultiplier = 10;
-#if ODIN_INSPECTOR
-        [BoxGroup("Multipliers")]
-#endif
+        [Group("Multipliers")]
         public float jointRotMultiplier = 10;
-#if ODIN_INSPECTOR
-        [BoxGroup("Multipliers")]
-#endif
+        [Group("Multipliers")]
         public float speedMultiplier = 10;
-#if ODIN_INSPECTOR
-        [BoxGroup("Multipliers")]
-#endif
+        [Group("Multipliers")]
         public float dragMult = 5f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Multipliers")]
-#endif
+        [Group("Multipliers")]
         public float maxSpeedCap = 20;
-#if ODIN_INSPECTOR
-        [BoxGroup("Multipliers")]
-#endif
+        [Group("Multipliers")]
         public float mixerMultiplier = 1;
-#if ODIN_INSPECTOR
-        [BoxGroup("Multipliers")]
-#endif
+        [Group("Multipliers")]
         public float chargeSpeedMultiplier = 3f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Effects"), ValueDropdown(nameof(GetAllEffectID))]
-#endif
+        [Group("Effects")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string effectId;
 
+        [NonSerialized]
+        [JsonIgnore]
         public EffectData effectData;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Effects"), ValueDropdown(nameof(GetAllEffectID))]
-#endif
+        [Group("Effects")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string handEffectId;
         protected EffectData handEffectData;
+
+        [NonSerialized]
+        [JsonIgnore]
         public HashSet<object> handlers;
 
     }

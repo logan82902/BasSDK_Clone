@@ -1,8 +1,6 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#endif
+using TriInspector;
 using UnityEngine;
 
 namespace ThunderRoad
@@ -25,20 +23,9 @@ namespace ThunderRoad
         [Tooltip("How force is applied based on distance from the center. Proximity has force falloff, Absolute will apply the same force regardless of distance.")]
         public RadialPushMode pushMode = RadialPushMode.Absolute;
 
-#if ODIN_INSPECTOR
-        public List<ValueDropdownItem<string>> GetAllEffectID() => Catalog.GetDropdownAllID(Category.Effect);
-        [ValueDropdown(nameof(GetAllEffectID), AppendNextDrawer = true)]
-#endif
+        public TriDropdownList<string> GetAllEffectID() => Catalog.GetDropdownAllID(Category.Effect);
+        [Dropdown(nameof(GetAllEffectID))]
         public string effectId = "Shockwave";
-
-        public void Push(){}
-
-        public void ForcePush(){}
-
-        private void OnDrawGizmos()
-        {
-            Gizmos.DrawWireSphere(transform.position, radius);
-        }
  // ProjectCore
     }
 }

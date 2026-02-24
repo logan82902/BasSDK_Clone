@@ -3,51 +3,42 @@ using System.Collections.Generic;
 using UnityEngine;
 using Newtonsoft.Json;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
-    [System.Serializable]
+    [Serializable]
+    [DeclareHorizontalGroup("StanceNode/Horiz", Sizes = new float[] { 470f, 0f })]
+    [DeclareBoxGroup("StanceNode/Horiz/Attack", Title = "Attack")]
+    [DeclareHorizontalGroup("StanceNode/Horiz/Attack/Motion", Sizes = new float[] { 80f, 80f, 150f, 0f, 60f, 0f, 150f, 0f })]
+    [DeclareHorizontalGroup("StanceNode/Horiz/Attack/Timing")]
+    [DeclareHorizontalGroup("StanceNode/Horiz/Attack/Transitions")]
     public class AttackMotion : StanceNode
     {
         // settings for the attack and all related information
-#if ODIN_INSPECTOR
-        [LabelWidth(75), HorizontalGroup("$prettifiedID/Horiz"), VerticalGroup("$prettifiedID/Horiz/Fields"), HorizontalGroup("$prettifiedID/Horiz/Fields/Row4")]
-#endif
+        [LabelWidth(75)]
+        [Group("StanceNode/Horiz/Fields/Row4")]
         public float skipChance = 0f;
-#if ODIN_INSPECTOR
-        [VerticalGroup("$prettifiedID/Horiz/Clip"), FoldoutGroup("$prettifiedID/Horiz/Clip/Curve")]
-#endif
+        [LabelWidth(75)]
+        [Group("StanceNode/Horiz/Fields/Row4")]
         public AnimationCurve rootZCurve = null;
-#if ODIN_INSPECTOR
-        [HorizontalGroup("$prettifiedID/Horiz", Width = 0.6f)]
-        [BoxGroup("$prettifiedID/Horiz/Attack")]
-        [HorizontalGroup("$prettifiedID/Horiz/Attack/Motion", Width = 80), HideLabel]
-#endif
+        [Group("StanceNode/Horiz/Attack/Motion")]
+        [HideLabel]
         public Interactable.HandSide attackSide = Interactable.HandSide.Right;
-#if ODIN_INSPECTOR
-        [HorizontalGroup("$prettifiedID/Horiz/Attack/Motion", Width = 80), HideLabel]
-#endif
+        [Group("StanceNode/Horiz/Attack/Motion")]
+        [HideLabel]
         public ItemModuleAI.AttackType attackMotion;
-#if ODIN_INSPECTOR
-        [HorizontalGroup("$prettifiedID/Horiz/Attack/Motion"), LabelWidth(135)]
-#endif
+        [Group("StanceNode/Horiz/Attack/Motion")]
+        [LabelWidth(135)]
         public bool includeInMeleeRange = true;
-#if ODIN_INSPECTOR
-        [HorizontalGroup("$prettifiedID/Horiz/Attack/Motion"), LabelWidth(65)]
-#endif
+        [Group("StanceNode/Horiz/Attack/Motion")]
+        [LabelWidth(65)]
         public float minRange;
-#if ODIN_INSPECTOR
-        [HorizontalGroup("$prettifiedID/Horiz/Attack/Motion", Width = 60), LabelWidth(45)]
-#endif
+        [Group("StanceNode/Horiz/Attack/Motion")]
+        [LabelWidth(45)]
         public bool sweep;
-#if ODIN_INSPECTOR
-        [HorizontalGroup("$prettifiedID/Horiz/Attack/Motion"), LabelWidth(65)]
-#endif
+        [Group("StanceNode/Horiz/Attack/Motion")]
+        [LabelWidth(65)]
         public float maxRange;
         [JsonProperty("range")]
         protected float range
@@ -58,37 +49,32 @@ namespace ThunderRoad
                 maxRange = value;
             }
         }
-#if ODIN_INSPECTOR
-        [HorizontalGroup("$prettifiedID/Horiz/Attack/Motion", Width = 150), LabelWidth(135)]
-#endif
+        [Group("StanceNode/Horiz/Attack/Motion")]
+        [LabelWidth(135)]
         public bool includeWeaponReach = true;
-#if ODIN_INSPECTOR
-        [HorizontalGroup("$prettifiedID/Horiz/Attack/Motion"), LabelWidth(80)]
-#endif
+        [Group("StanceNode/Horiz/Attack/Motion")]
+        [LabelWidth(80)]
         public float pushForce;
-#if ODIN_INSPECTOR
-        [HorizontalGroup("$prettifiedID/Horiz/Attack/Timing"), LabelWidth(40)]
-#endif
+        [Group("StanceNode/Horiz/Attack/Timing")]
+        [LabelWidth(40)]
         public float start;
-#if ODIN_INSPECTOR
-        [HorizontalGroup("$prettifiedID/Horiz/Attack/Timing"), LabelWidth(40)]
-#endif
+        [Group("StanceNode/Horiz/Attack/Timing")]
+        [LabelWidth(40)]
         public float peak;
-#if ODIN_INSPECTOR
-        [HorizontalGroup("$prettifiedID/Horiz/Attack/Timing"), LabelWidth(40)]
-#endif
+        [Group("StanceNode/Horiz/Attack/Timing")]
+        [LabelWidth(40)]
         public float end;
-#if ODIN_INSPECTOR
-        [HorizontalGroup("$prettifiedID/Horiz/Attack/Transitions"), LabelWidth(70), ValueDropdown(nameof(GetSourceIdleOptions))]
-#endif
+        [Group("StanceNode/Horiz/Attack/Transitions")]
+        [LabelWidth(70)]
+        [Dropdown(nameof(GetSourceIdleOptions))]
         public string sourceIdle = "Any";
-#if ODIN_INSPECTOR
-        [HorizontalGroup("$prettifiedID/Horiz/Attack/Transitions"), LabelWidth(60), ValueDropdown(nameof(GetEndIdleOptions))]
-#endif
+        [Group("StanceNode/Horiz/Attack/Transitions")]
+        [LabelWidth(60)]
+        [Dropdown(nameof(GetEndIdleOptions))]
         public string endIdle = "Previous";
-#if ODIN_INSPECTOR
-        [HorizontalGroup("$prettifiedID/Horiz/Attack/Transitions"), LabelWidth(120), ValueDropdown(nameof(GetChainComboOptions))]
-#endif
+        [Group("StanceNode/Horiz/Attack/Transitions")]
+        [LabelWidth(120)]
+        [Dropdown(nameof(GetChainComboOptions))]
         public string comboChainAttack = "Random";
 
         [NonSerialized]
@@ -103,47 +89,38 @@ namespace ThunderRoad
         protected List<AttackMotion> bothChainAttacks;
         protected List<AttackMotion> rightChainAttacks;
 
-#if ODIN_INSPECTOR
-        public List<ValueDropdownItem<string>> GetSourceIdleOptions() => GetIdleOptions(true);
+        public TriDropdownList<string> GetSourceIdleOptions() => GetIdleOptions(true);
 
-        public List<ValueDropdownItem<string>> GetEndIdleOptions() => GetIdleOptions(false);
+        public TriDropdownList<string> GetEndIdleOptions() => GetIdleOptions(false);
 
-        public List<ValueDropdownItem<string>> GetIdleOptions(bool source)
+        public TriDropdownList<string> GetIdleOptions(bool source)
         {
-            List<ValueDropdownItem<string>> options = new List<ValueDropdownItem<string>>
-                {
-                    source ? new ValueDropdownItem<string>("Any", "Any") : new ValueDropdownItem<string>("Previous", "Previous"),
-                };
+            TriDropdownList<string> options = new() { source ? new TriDropdownItem<string>() { Text = "Any", Value = "Any" } : new TriDropdownItem<string>() { Text = "Previous", Value = "Previous" } };
             if (!source)
             {
-                options.Add(new ValueDropdownItem<string>("RandomInc", "RandomInc"));
-                options.Add(new ValueDropdownItem<string>("RandomExc", "RandomExc"));
+                options.Add("RandomInc", "RandomInc");
+                options.Add("RandomExc", "RandomExc");
             }
             if (stanceData is MeleeStanceData meleeStanceData) options.AddRange(GetNodeListOptions(meleeStanceData.idles));
             return options;
         }
 
-        public List<ValueDropdownItem<string>> GetChainComboOptions()
+        public TriDropdownList<string> GetChainComboOptions()
         {
-            List<ValueDropdownItem<string>> options = new List<ValueDropdownItem<string>>
-            {
-                new ValueDropdownItem<string>("None", "None"),
-                new ValueDropdownItem<string>("Random", "Random"),
-            };
+            TriDropdownList<string> options = new() { new TriDropdownItem<string>() { Text = "None", Value = "None" }, new TriDropdownItem<string>() { Text = "Random", Value = "Random" } };
             if (stanceData is MeleeStanceData meleeStanceData) options.AddRange(GetNodeListOptions(meleeStanceData.chainAttacks));
             return options;
         }
 
-        protected List<ValueDropdownItem<string>> GetNodeListOptions<T>(List<T> nodes) where T : StanceNode
+        protected TriDropdownList<string> GetNodeListOptions<T>(List<T> nodes) where T : StanceNode
         {
-            List<ValueDropdownItem<string>> options = new List<ValueDropdownItem<string>>();
+            TriDropdownList<string> options = new();
             for (int i = 0; i < nodes.Count; i++)
             {
-                options.Add(new ValueDropdownItem<string>(nodes[i].id, nodes[i].id));
+                options.Add(nodes[i].id, nodes[i].id);
             }
             return options;
         }
-#endif
 
     }
 }

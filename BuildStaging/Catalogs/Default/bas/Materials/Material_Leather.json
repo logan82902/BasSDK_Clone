@@ -4,7 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 3,
-  "physicMaterialHash": 1987304248,
+  "groupPath": null,
   "apparelProtectionLevel": 1,
   "idMapColorIds": [
     3
@@ -196,6 +196,5 @@
         }
       ]
     }
-  ],
-  "groupPath": null
+  ]
 }

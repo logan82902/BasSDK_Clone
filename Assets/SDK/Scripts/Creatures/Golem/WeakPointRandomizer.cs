@@ -1,12 +1,9 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
@@ -17,9 +14,7 @@ namespace ThunderRoad
         [System.Serializable]
         public class Group
         {
-#if ODIN_INSPECTOR
             [LabelText("Group parent")]
-#endif
             public Transform parent;
             public int priority;
             public Vector2 minMaxWeakPoints;

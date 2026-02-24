@@ -45,6 +45,7 @@ MonoBehaviour:
     blacklistGlobalKeywords:
     - FOG_EXP
     - FOG_EXP2
+    - DYNAMICLIGHTMAP_ON
   android:
     blacklist:
     - {fileID: 4800000, guid: 7a5ad1c2405856749b150f7a2dabd271, type: 3}
@@ -74,6 +75,7 @@ MonoBehaviour:
       keywords:
       - _RECEIVE_SHADOWS_OFF
       - LOD_FADE_CROSSFADE
+      - _USE_SSS_ON
     blacklistGlobalKeywords:
     - _ADDITIONAL_LIGHT_SHADOWS
     - _ADDITIONAL_OFF

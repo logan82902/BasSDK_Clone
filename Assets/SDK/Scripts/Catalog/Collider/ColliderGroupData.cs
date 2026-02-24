@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
-	[Serializable]
+    [Serializable]
+#if UNITY_EDITOR
+    [EditorLoadPriority(-5)]
+#endif
     public class ColliderGroupData : CatalogData
     {
         public CollisionHandling collisionHandling = CollisionHandling.ByGroup;
@@ -20,37 +20,32 @@ namespace ThunderRoad
         public List<Modifier> modifiers = new List<Modifier>();
 
         [FormerlySerializedAs("allowedImbueEffectModules")]
-#if ODIN_INSPECTOR
-        [ShowInInspector, ValueDropdown(nameof(GetAllEffectModuleTypes))]
-#endif
+        [ShowInInspector]
+        [DropdownList(nameof(GetAllEffectModuleTypes))]
         public Type[] ignoredImbueEffectModules;
 
-#if ODIN_INSPECTOR
-        public List<ValueDropdownItem<Type>> GetAllEffectModuleTypes()
+        public TriDropdownList<Type> GetAllEffectModuleTypes()
         {
-            var dropdownList = new List<ValueDropdownItem<Type>>();
-            foreach (var type in typeof(EffectModule).Assembly.GetTypes())
+            TriDropdownList<Type> dropdownList = new();
+            foreach (Type type in typeof(EffectModule).Assembly.GetTypes())
             {
                 if (type.IsSubclassOf(typeof(EffectModule)))
-                    dropdownList.Add(new ValueDropdownItem<Type>(type.Name, type));
+                {
+                    dropdownList.Add(type.Name, type);
+                }
             }
 
             return dropdownList;
         }
-#endif
 
         public bool customSpellEffects = false;
-#if ODIN_INSPECTOR
-        [ShowInInspector, ShowIf("customSpellEffects")]
-#endif
+        [ShowInInspector]
+        [ShowIf("customSpellEffects")]
         public List<CustomSpellEffect> customSpellEffectIDs;
-#if ODIN_INSPECTOR
         [ShowIf("customSpellEffects")]
-#endif
+        [JsonIgnore]
         public Dictionary<int, EffectData> customSpellEffectData;
-#if ODIN_INSPECTOR
         [ShowIf("customSpellEffects")]
-#endif
         public bool blockPoolSteal = false;
 
         public enum ImbueType
@@ -69,15 +64,17 @@ namespace ThunderRoad
         }
 
         [Serializable]
+        [DeclareHorizontalGroup("Split")]
+        [DeclareBoxGroup("Split/Filters", Title = "Filters")]
+        [DeclareBoxGroup("Split/Imbue", Title = "Imbue")]
+        [DeclareBoxGroup("Split/Deflect", Title = "Deflect")]
         public class Modifier
         {
             [NonSerialized]
             public ColliderGroupData colliderGroupData;
 
-#if ODIN_INSPECTOR
-            [HorizontalGroup("Split", width: 0.25f, LabelWidth = 150)]
-            [BoxGroup("Split/Filters")]
-#endif
+            [Group("Split/Filters")]
+            [LabelWidth(150f)]
             public TierFilter tierFilter;
 
             [Flags]
@@ -92,105 +89,83 @@ namespace ThunderRoad
                 Tier6 = 64,
             }
 
+            protected string InfoBox => $"{Mathf.FloorToInt(imbueMax / staffSlamLoss)} slams total\n"
+                                     + $"{1 / (50 / staffSlamLoss * imbueRate):F2}s to first slam\n"
+                                     + $"{1 / (50 / 100f * imbueRate):F2}s to full charge";
 
-#if ODIN_INSPECTOR
-            [InfoBox("@InfoBox")]
-            [BoxGroup("Split/Imbue")]
-#endif
+            [InfoBox("$InfoBox")]
+            [Group("Split/Imbue")]
             public ImbueType imbueType = ImbueType.None;
-#if ODIN_INSPECTOR
-            [BoxGroup("Split/Imbue"), HideIf("imbueType", ImbueType.None)]
-#endif
+            [Group("Split/Imbue")]
+            [HideIf("imbueType", ImbueType.None)]
             public float imbueMax = 100;
-#if ODIN_INSPECTOR
-            [BoxGroup("Split/Imbue"), HideIf("imbueType", ImbueType.None)]
-#endif
+            [Group("Split/Imbue")]
+            [HideIf("imbueType", ImbueType.None)]
             public float imbueRate = 1;
-#if ODIN_INSPECTOR
-            [BoxGroup("Split/Imbue"), HideIf("imbueType", ImbueType.None)]
-#endif
+            [Group("Split/Imbue")]
+            [HideIf("imbueType", ImbueType.None)]
             public float imbueConstantLoss = 3;
-#if ODIN_INSPECTOR
-            [BoxGroup("Split/Imbue"), HideIf("imbueType", ImbueType.None)]
-#endif
+            [Group("Split/Imbue")]
+            [HideIf("imbueType", ImbueType.None)]
             public float staffSlamLoss = 90;
-#if ODIN_INSPECTOR
-            [BoxGroup("Split/Imbue"), HideIf("imbueType", ImbueType.None)]
-#endif
+            [Group("Split/Imbue")]
+            [HideIf("imbueType", ImbueType.None)]
             public float imbueHitLoss = 30;
-#if ODIN_INSPECTOR
-            [BoxGroup("Split/Imbue"), HideIf("imbueType", ImbueType.None)]
-#endif
+            [Group("Split/Imbue")]
+            [HideIf("imbueType", ImbueType.None)]
             public float imbueVelocityLossPerSecond = 0f;
-#if ODIN_INSPECTOR
-            [BoxGroup("Split/Imbue"), HideIf("imbueType", ImbueType.None)]
-#endif
+            [Group("Split/Imbue")]
+            [HideIf("imbueType", ImbueType.None)]
             public float imbueEffectiveness = 1f;
-#if ODIN_INSPECTOR
-            [BoxGroup("Split/Imbue"), HideIf("imbueType", ImbueType.None)]
-#endif
+            [Group("Split/Imbue")]
+            [HideIf("imbueType", ImbueType.None)]
             public float waterLossRateMultiplier = 1f;
+            [Group("Split/Imbue")]
+            [HideIf("imbueType", ImbueType.None)]
+            public ImbueFeature imbueFeatures = 0;
 
-#if ODIN_INSPECTOR
-            [BoxGroup("Split/Deflect")]
-#endif
+            [Group("Split/Deflect")]
             public float deflectMaxAngleCollision = 0;
-#if ODIN_INSPECTOR
-            [BoxGroup("Split/Deflect"), HideIf("deflectMaxAngleCollision", 0f)]
-#endif
+            [Group("Split/Deflect")]
+            [HideIf("deflectMaxAngleCollision", 0f)]
             public float deflectMaxAngleTarget = 0;
-#if ODIN_INSPECTOR
-            [BoxGroup("Split/Deflect"), HideIf("deflectMaxAngleCollision", 0f)]
-#endif
+            [Group("Split/Deflect")]
+            [HideIf("deflectMaxAngleCollision", 0f)]
             public float deflectSpeedMultiplier = 2.0f;
-#if ODIN_INSPECTOR
-            [BoxGroup("Split/Deflect"), HideIf("deflectMaxAngleCollision", 0f)]
-#endif
+            [Group("Split/Deflect")]
+            [HideIf("deflectMaxAngleCollision", 0f)]
             public float deflectSpreadHeight = 1; // z rotation
-#if ODIN_INSPECTOR
-            [BoxGroup("Split/Deflect"), HideIf("deflectMaxAngleCollision", 0f)]
-#endif
+            [Group("Split/Deflect")]
+            [HideIf("deflectMaxAngleCollision", 0f)]
             public float deflectSpreadWidth = 1; // y rotation
             
             public FilterLogic spellFilterLogic = FilterLogic.AnyExcept;
-#if ODIN_INSPECTOR
-            [ValueDropdown(nameof(GetAllSpellID))] 
-#endif
+            [DropdownList(nameof(GetAllSpellID))]
             public List<string> spellIds;
 
-#if ODIN_INSPECTOR
-            public List<ValueDropdownItem<string>> GetAllSpellID()
-            {
-                return Catalog.GetDropdownAllID<SpellData>();
-            }
-#endif
+            public TriDropdownList<string> GetAllSpellID() => Catalog.GetDropdownAllID<SpellData>();
         }
 
         public struct CustomSpellEffect
         {
-#if ODIN_INSPECTOR
-            [ValueDropdown(nameof(GetAllSpellID))]
-#endif
+            [Dropdown(nameof(GetAllSpellID))]
             public string spellId;
 
-#if ODIN_INSPECTOR
-            [ValueDropdown(nameof(GetAllEffectID))]
-#endif
+            [Dropdown(nameof(GetAllEffectID))]
             public string effectId;
 
-#if ODIN_INSPECTOR
-            public List<ValueDropdownItem<string>> GetAllEffectID()
-            {
-                return Catalog.GetDropdownAllID(Category.Effect);
-            }
+            public TriDropdownList<string> GetAllEffectID() => Catalog.GetDropdownAllID(Category.Effect);
 
-            public List<ValueDropdownItem<string>> GetAllSpellID()
-            {
-                return Catalog.GetDropdownAllID<SpellCastCharge>();
-            }
-#endif
+            public TriDropdownList<string> GetAllSpellID() => Catalog.GetDropdownAllID<SpellCastCharge>();
         }
 
+        [Flags]
+        public enum ImbueFeature
+        {
+            Slam = 1,
+            Steal = 2,
+            Use = 4
+        }
     }
 }
 

@@ -4,12 +4,12 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 3,
+  "groupPath": null,
   "disableTouch": false,
   "highlighterViewHandFreeOnly": false,
   "ignoreWhenTouchConflict": false,
   "referencePoint": "Grip",
   "localizationId": null,
   "highlightDefaultTitle": null,
-  "highlightDefaultDesignation": null,
-  "groupPath": null
+  "highlightDefaultDesignation": null
 }

@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
+  "groupPath": null,
   "groupId": "Misc",
   "volumeDb": 0.0,
   "modules": [
@@ -92,6 +93,7 @@
         }
       ],
       "materialProperties": [],
+      "mergeKey": "6ae77ac0",
       "step": "Loop",
       "stepCustomId": null,
       "loopCustomStep": false,
@@ -109,6 +111,5 @@
       "damagersFilterLogic": "AnyExcept",
       "damagersFilter": []
     }
-  ],
-  "groupPath": null
+  ]
 }

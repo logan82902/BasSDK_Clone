@@ -1,0 +1,22 @@
+{
+  "$type": "ThunderRoad.BundleData, ThunderRoad",
+  "id": "MusketeerBundleT3",
+  "sensitiveContent": "None",
+  "sensitiveFilterBehaviour": "Discard",
+  "version": 0,
+  "groupPath": "T3",
+  "localizationGroup": "Bundles",
+  "displayName": "Musketeer Bundle",
+  "description": null,
+  "altDescriptionTitle": "ContentsTitle",
+  "isArmorBundle": false,
+  "bundleItemId": "Bundle",
+  "items": [
+    "CrystalMusket"
+  ],
+  "skills": [],
+  "lootTables": [
+    "RandomSpell"
+  ],
+  "spriteAddress": "Ui.Icon.Unknown"
+}

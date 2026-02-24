@@ -4,12 +4,12 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 1,
+  "groupPath": null,
   "order": 4.0,
   "isDefault": false,
   "nameId": "Leave",
   "iconAddress": "Bas.Icon.MenuLeave[ui_MenuLeave]",
   "iconRollhoverAddress": "Bas.Icon.MenuLeave_Rollhover[ui_MenuLeave_Rollhover]",
   "prefabAddress": "Bas.Menu.Leave",
-  "module": null,
-  "groupPath": null
+  "module": null
 }

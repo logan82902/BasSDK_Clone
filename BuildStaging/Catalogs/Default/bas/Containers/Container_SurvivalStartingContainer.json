@@ -1,0 +1,42 @@
+{
+  "$type": "ThunderRoad.ContainerData, ThunderRoad",
+  "id": "SurvivalStartingContainer",
+  "sensitiveContent": "None",
+  "sensitiveFilterBehaviour": "Discard",
+  "version": 1,
+  "groupPath": "Player",
+  "displayName": "Survival Starting Container",
+  "description": null,
+  "containerContents": [
+    {
+      "$type": "ThunderRoad.ItemContent, ThunderRoad",
+      "quantity": 1,
+      "state": {
+        "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
+      },
+      "customDataList": null,
+      "mergeKey": "a2fa1de4",
+      "referenceID": "ApparelShirt03"
+    },
+    {
+      "$type": "ThunderRoad.ItemContent, ThunderRoad",
+      "quantity": 1,
+      "state": {
+        "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
+      },
+      "customDataList": null,
+      "mergeKey": "abd10226",
+      "referenceID": "ApparelRuggedTrousers"
+    },
+    {
+      "$type": "ThunderRoad.ItemContent, ThunderRoad",
+      "quantity": 1,
+      "state": {
+        "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
+      },
+      "customDataList": null,
+      "mergeKey": "a0250a4d",
+      "referenceID": "ApparelCivilianBoots"
+    }
+  ]
+}

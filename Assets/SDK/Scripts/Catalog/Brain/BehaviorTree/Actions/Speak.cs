@@ -1,14 +1,10 @@
 ﻿using UnityEngine;
-
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
 
 namespace ThunderRoad.AI.Action
 {
-	public class Speak : ActionNode
+    [AutoLabelWidth(AddedWidth = 5f, MinWidth = 0f)]
+    public class Speak : ActionNode
     {
         public enum PlayMode
         {
@@ -21,13 +17,9 @@ namespace ThunderRoad.AI.Action
         public bool checkMuffled = true;
         public PlayMode playMode = PlayMode.Default;
         public bool ignoreIfFromWave = true;
-#if ODIN_INSPECTOR
-        [ShowIf("playMode", optionalValue: PlayMode.WithCooldown)]
-#endif
-        public Vector2 cooldownMinMax = new Vector2(3f, 5f);
-#if ODIN_INSPECTOR
-        [ShowIf("playMode", optionalValue: PlayMode.WithCooldown)]
-#endif
+        [ShowIf("playMode", PlayMode.WithCooldown)]
+        public Vector2 cooldownMinMax = new(3f, 5f);
+        [ShowIf("playMode", PlayMode.WithCooldown)]
         public bool succeedOnCooldown = true;
 
     }

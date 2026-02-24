@@ -1,10 +1,7 @@
 ﻿using UnityEngine;
 using System;
 
-#if ODIN_INSPECTOR
-#else
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
@@ -12,14 +9,19 @@ namespace ThunderRoad
     [AddComponentMenu("ThunderRoad/Creatures/Ragdoll foot")]
     public class RagdollFoot : RagdollPart
     {
+        [Group("Tabs"), Tab("Foot")]
         public Side side = Side.Right;
+        [Group("Tabs"), Tab("Foot")]
         public Transform grip;
 
+        [Group("Tabs"), Tab("Foot")]
         [Header("Bones (non-humanoid creature only)")]
         [Tooltip("detected automatically for humanoid")]
         public Transform upperLegBone;
+        [Group("Tabs"), Tab("Foot")]
         [Tooltip("detected automatically for humanoid")]
         public Transform lowerLegBone;
+        [Group("Tabs"), Tab("Foot")]
         [Tooltip("detected automatically for humanoid")]
         public Transform toesBone;
 

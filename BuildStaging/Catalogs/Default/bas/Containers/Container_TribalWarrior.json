@@ -4,9 +4,9 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 1,
+  "groupPath": "Factions/Tribal",
   "displayName": "Tribal Warrior",
   "description": null,
-  "contents": [],
   "containerContents": [
     {
       "$type": "ThunderRoad.TableContent, ThunderRoad",
@@ -16,6 +16,7 @@
         "holderName": "BackRight"
       },
       "customDataList": [],
+      "mergeKey": "4a0d1b10",
       "referenceID": "WeaponTribalWarrior"
     },
     {
@@ -26,6 +27,7 @@
         "holderName": "BackLeft"
       },
       "customDataList": [],
+      "mergeKey": "19ca066c",
       "referenceID": "ShieldTribal"
     },
     {
@@ -36,6 +38,7 @@
         "holderName": "BackRight"
       },
       "customDataList": [],
+      "mergeKey": "9a5eb5c9",
       "referenceID": "WeaponTribalWarrior"
     },
     {
@@ -45,6 +48,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "df6180bf",
       "referenceID": "ApparelGladiatorHeadband"
     },
     {
@@ -54,6 +58,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "d52e9b6e",
       "referenceID": "MercenaryShoulders"
     },
     {
@@ -63,6 +68,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "18c47d3c",
       "referenceID": "ApparelMercenaryJacket"
     },
     {
@@ -72,6 +78,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "06918efb",
       "referenceID": "MercenaryHandL"
     },
     {
@@ -81,6 +88,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "03843e25",
       "referenceID": "MercenaryHandR"
     },
     {
@@ -90,6 +98,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "862864ad",
       "referenceID": "ApparelMercenaryPants"
     },
     {
@@ -99,6 +108,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "9eccd295",
       "referenceID": "ApparelMercenaryBoots"
     },
     {
@@ -108,6 +118,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "614beaea",
       "referenceID": "HairsTribal"
     },
     {
@@ -117,8 +128,8 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "45d84c6f",
       "referenceID": "BeardsTribal"
     }
-  ],
-  "groupPath": "Factions/Tribal"
+  ]
 }

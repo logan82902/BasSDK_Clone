@@ -1,58 +1,47 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#endif
+using TriInspector;
 using UnityEngine;
 
 namespace ThunderRoad.Skill.Spell
 {
+    [DeclareBoxGroup("Grab", Title = "Grab")]
+    [DeclareBoxGroup("Throw", Title = "Throw")]
+    [DeclareBoxGroup("Status", Title = "Status")]
     public class SkillRiptide : SpellSkillData
     {
-#if ODIN_INSPECTOR
-        [BoxGroup("Grab")]
-#endif
+        [Group("Grab")]
         public float initialDelay = 0.1f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Grab")]
-#endif
+        [Group("Grab")]
         public bool includeItems = false;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Grab")]
-#endif
+        [Group("Grab")]
         public float gripWindow = 0.5f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Grab"), ValueDropdown(nameof(GetAllEffectID))]
-#endif
+        [Group("Grab")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string tetherEffectId;
 
         protected EffectData tetherEffectData;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Grab"), ValueDropdown(nameof(GetAllEffectID))]
-#endif
+        [Group("Grab")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string grabEffectId;
 
         protected EffectData grabEffectData;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Throw")]
-#endif
+        [Group("Throw")]
         public float throwMultiplier = 3f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Throw"), ValueDropdown(nameof(GetAllEffectID))]
-#endif
+        [Group("Throw")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string throwEffectId;
 
         protected EffectData throwEffectData;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Status"), ValueDropdown(nameof(GetAllStatusEffectID))]
-#endif
+        [Group("Status")]
+        [Dropdown(nameof(GetAllStatusEffectID))]
         public string statusId = "Floating";
 
         protected StatusData statusData;

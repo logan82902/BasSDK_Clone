@@ -1,9 +1,7 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#endif
+using TriInspector;
 
 namespace ThunderRoad
 {
@@ -11,19 +9,15 @@ namespace ThunderRoad
     {
         public bool forcer = true;
         public bool damager = true;
-#if ODIN_INSPECTOR
         [TableList]
-#endif
-        public List<InflictedStatus> applyStatuses = new List<InflictedStatus>();
+        public List<InflictedStatus> applyStatuses = new();
 
         [System.Serializable]
         public class InflictedStatus
         {
-#if ODIN_INSPECTOR
-            private List<ValueDropdownItem<string>> GetAllStatuses => Catalog.GetDropdownAllID<StatusData>();
+            private TriDropdownList<string> GetAllStatuses => Catalog.GetDropdownAllID<StatusData>();
 
-            [ValueDropdown(nameof(GetAllStatuses))]
-#endif
+            [Dropdown(nameof(GetAllStatuses))]
             public string data;
             public float duration = 3f;
         }
@@ -37,6 +31,7 @@ namespace ThunderRoad
 
         protected static Dictionary<Creature, List<PhysicBody>> affectedBodies = new Dictionary<Creature, List<PhysicBody>>();
         protected static Dictionary<Creature, List<Creature>> damagedCreatures = new Dictionary<Creature, List<Creature>>();
+
 
         // Start is called before the first frame update
         void Start()
@@ -58,7 +53,6 @@ namespace ThunderRoad
         public void EnableHitBox(CreatureAbility ability)
         {
             this.ability = ability;
-            //Debug.Log($"enabled {name} hit box, ability is {ability.name}");  
             hitCollider.enabled = true;
             CheckInitCreatureAffectedList(affectedBodies);
             CheckInitCreatureAffectedList(damagedCreatures);
@@ -66,7 +60,6 @@ namespace ThunderRoad
 
         public void DisableHitBox()
         {
-            //Debug.Log($"disabled {name} hit box");
             ability = null;
             hitCollider.enabled = false;
             affectedBodies.Clear();

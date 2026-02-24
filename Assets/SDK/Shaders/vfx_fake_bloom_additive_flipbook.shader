@@ -157,6 +157,28 @@ Shader "ThunderRoad/VFX/vfx_fake_bloom_additive_flipbook"
 		}
 		#endif //ASE_TESS_FUNCS
 		ENDHLSL
+		
+		/*
+		//Shadowood: Application SpaceWarp: https://developers.meta.com/horizon/documentation/unity/unity-asw/
+		Pass
+		{
+			Name "MotionVectors"
+			Tags{ "LightMode" = "MotionVectors"}
+			Tags { "RenderType" = "Opaque" }
+		
+			ZWrite[_ZWrite]
+			Cull[_Cull]
+			ZTest LEqual
+		
+			HLSLPROGRAM
+			/*ase_pragma_before*/
+			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/OculusMotionVectorCore.hlsl"
+		
+			#pragma vertex vert
+			#pragma fragment frag
+		
+			ENDHLSL
+		}*/
 
 		
 		Pass
@@ -165,7 +187,7 @@ Shader "ThunderRoad/VFX/vfx_fake_bloom_additive_flipbook"
 			Name "Forward"
 			Tags { "LightMode"="UniversalForward" }
 
-			Blend OneMinusDstColor One, One OneMinusSrcAlpha
+			Blend One One, One OneMinusSrcAlpha
 			ZWrite Off
 			ZTest LEqual
 			Offset 0 , 0
@@ -181,6 +203,7 @@ Shader "ThunderRoad/VFX/vfx_fake_bloom_additive_flipbook"
 			#define ASE_SRP_VERSION 120115
 			#include_with_pragmas "Assets/Plugins/AmplifyShaderEditor/TonemappingGear.cginc"
 			#define TONEMAPPINGELSEWHERE
+			#include_with_pragmas "Assets/Plugins/AmplifyShaderEditor/UnderWaterFog.cginc"
 
 
 			#pragma shader_feature_local _RECEIVE_SHADOWS_OFF
@@ -215,7 +238,6 @@ Shader "ThunderRoad/VFX/vfx_fake_bloom_additive_flipbook"
 			#define ASE_NEEDS_FRAG_WORLD_POSITION
 			#pragma multi_compile __ _USEUNDERWATER
 			#pragma shader_feature GLOBALTONEMAPPING
-			#include_with_pragmas "Assets/Plugins/AmplifyShaderEditor/UnderWaterFog.cginc"
 
 
 			struct VertexInput
@@ -463,9 +485,9 @@ Shader "ThunderRoad/VFX/vfx_fake_bloom_additive_flipbook"
 					#endif
 				#endif
 
-				float4 appendResult11_g2882 = (float4(_TonemappingSettings.x , _TonemappingSettings.y , _TonemappingSettings.z , _TonemappingSettings.w));
-				float4 temp_output_4_0_g2881 = appendResult11_g2882;
-				float4 settings7_g2881 = temp_output_4_0_g2881;
+				float4 appendResult11_g2906 = (float4(_TonemappingSettings.x , _TonemappingSettings.y , _TonemappingSettings.z , _TonemappingSettings.w));
+				float4 temp_output_4_0_g2905 = appendResult11_g2906;
+				float4 settings7_g2905 = temp_output_4_0_g2905;
 				float4 appendResult42 = (float4(IN.ase_color.r , IN.ase_color.g , IN.ase_color.b , 0.0));
 				float2 uv_Main = IN.ase_texcoord3.xy * _Main_ST.xy + _Main_ST.zw;
 				float2 break135_g2 = uv_Main;
@@ -562,20 +584,14 @@ Shader "ThunderRoad/VFX/vfx_fake_bloom_additive_flipbook"
 				#else
 				float3 staticSwitch37_g2908 = temp_output_14_0_g2908;
 				#endif
-				float3 temp_output_3_0_g2881 = staticSwitch37_g2908;
-				float3 color7_g2881 = temp_output_3_0_g2881;
-				float3 localApplyTonemapper7_g2881 = ApplyTonemapper( settings7_g2881 , color7_g2881 );
-				
-				#ifdef _USEUNDERWATER
-				float staticSwitch38_g2908 = ( temp_output_27_0_g2908 * temp_output_31_0_g2908 );
-				#else
-				float staticSwitch38_g2908 = temp_output_31_0_g2908;
-				#endif
+				float3 temp_output_3_0_g2905 = staticSwitch37_g2908;
+				float3 color7_g2905 = temp_output_3_0_g2905;
+				float3 localApplyTonemapper7_g2905 = ApplyTonemapper( settings7_g2905 , color7_g2905 );
 				
 				float3 BakedAlbedo = 0;
 				float3 BakedEmission = 0;
-				float3 Color = localApplyTonemapper7_g2881;
-				float Alpha = staticSwitch38_g2908;
+				float3 Color = localApplyTonemapper7_g2905;
+				float Alpha = 1;
 				float AlphaClipThreshold = 0.5;
 				float AlphaClipThresholdShadow = 0.5;
 
@@ -623,6 +639,7 @@ Shader "ThunderRoad/VFX/vfx_fake_bloom_additive_flipbook"
 			#define ASE_SRP_VERSION 120115
 			#include_with_pragmas "Assets/Plugins/AmplifyShaderEditor/TonemappingGear.cginc"
 			#define TONEMAPPINGELSEWHERE
+			#include_with_pragmas "Assets/Plugins/AmplifyShaderEditor/UnderWaterFog.cginc"
 
 
 			#pragma vertex vert
@@ -638,19 +655,15 @@ Shader "ThunderRoad/VFX/vfx_fake_bloom_additive_flipbook"
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl"
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/ShaderGraphFunctions.hlsl"
 
-			#define ASE_NEEDS_FRAG_COLOR
-			#define ASE_NEEDS_FRAG_WORLD_POSITION
 			#pragma multi_compile __ _USEUNDERWATER
 			#pragma shader_feature GLOBALTONEMAPPING
-			#include_with_pragmas "Assets/Plugins/AmplifyShaderEditor/UnderWaterFog.cginc"
 
 
 			struct VertexInput
 			{
 				float4 positionOS : POSITION;
 				float3 normalOS : NORMAL;
-				float4 ase_color : COLOR;
-				float4 ase_texcoord : TEXCOORD0;
+				
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 			};
 
@@ -663,8 +676,7 @@ Shader "ThunderRoad/VFX/vfx_fake_bloom_additive_flipbook"
 				#if defined(REQUIRES_VERTEX_SHADOW_COORD_INTERPOLATOR) && defined(ASE_NEEDS_FRAG_SHADOWCOORDS)
 					float4 shadowCoord : TEXCOORD1;
 				#endif
-				float4 ase_color : COLOR;
-				float4 ase_texcoord2 : TEXCOORD2;
+				
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 				UNITY_VERTEX_OUTPUT_STEREO
 			};
@@ -691,8 +703,6 @@ Shader "ThunderRoad/VFX/vfx_fake_bloom_additive_flipbook"
 			half2 _CausticsPanSpeed;
 			half4 _CausticsColor;
 			sampler2D _Caustics;
-			sampler2D _Main;
-			sampler2D _Bloom;
 
 
 			float calcFogFactor( float distance, float gradientFogDensity )
@@ -700,11 +710,6 @@ Shader "ThunderRoad/VFX/vfx_fake_bloom_additive_flipbook"
 					//beer-lambert law, Fog =1/e^(distance * density)
 					float e = 2.7182818284590452353602874713527f;
 					return 1.0 - saturate(1.0f / pow(e, (distance * gradientFogDensity)));
-			}
-			
-			inline float4 GetUnderWaterFogs240_g2875( float3 viewDir, float3 camWorldPos, float3 posWS, float4 oceanFogDensities, float oceanHeight, float4 oceanFogTop_RGB_Exponent, float4 oceanFogBottom_RGB_Intensity )
-			{
-				return GetUnderWaterFog( viewDir, camWorldPos, posWS, oceanFogDensities, oceanHeight, oceanFogTop_RGB_Exponent, oceanFogBottom_RGB_Intensity );;
 			}
 			
 
@@ -718,11 +723,7 @@ Shader "ThunderRoad/VFX/vfx_fake_bloom_additive_flipbook"
 				UNITY_TRANSFER_INSTANCE_ID(v, o);
 				UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO( o );
 
-				o.ase_color = v.ase_color;
-				o.ase_texcoord2.xy = v.ase_texcoord.xy;
 				
-				//setting value to unused interpolator channels and avoid initialization warnings
-				o.ase_texcoord2.zw = 0;
 
 				#ifdef ASE_ABSOLUTE_VERTEX_POS
 					float3 defaultVertexValue = v.positionOS.xyz;
@@ -779,9 +780,7 @@ Shader "ThunderRoad/VFX/vfx_fake_bloom_additive_flipbook"
 			{
 				float4 vertex : INTERNALTESSPOS;
 				float3 normalOS : NORMAL;
-				float4 ase_color : COLOR;
-				float4 ase_texcoord : TEXCOORD0;
-
+				
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 			};
 
@@ -798,8 +797,7 @@ Shader "ThunderRoad/VFX/vfx_fake_bloom_additive_flipbook"
 				UNITY_TRANSFER_INSTANCE_ID(v, o);
 				o.vertex = v.positionOS;
 				o.normalOS = v.normalOS;
-				o.ase_color = v.ase_color;
-				o.ase_texcoord = v.ase_texcoord;
+				
 				return o;
 			}
 
@@ -838,8 +836,7 @@ Shader "ThunderRoad/VFX/vfx_fake_bloom_additive_flipbook"
 				VertexInput o = (VertexInput) 0;
 				o.positionOS = patch[0].vertex * bary.x + patch[1].vertex * bary.y + patch[2].vertex * bary.z;
 				o.normalOS = patch[0].normalOS * bary.x + patch[1].normalOS * bary.y + patch[2].normalOS * bary.z;
-				o.ase_color = patch[0].ase_color * bary.x + patch[1].ase_color * bary.y + patch[2].ase_color * bary.z;
-				o.ase_texcoord = patch[0].ase_texcoord * bary.x + patch[1].ase_texcoord * bary.y + patch[2].ase_texcoord * bary.z;
+				
 				#if defined(ASE_PHONG_TESSELLATION)
 				float3 pp[3];
 				for (int i = 0; i < 3; ++i)
@@ -876,79 +873,9 @@ Shader "ThunderRoad/VFX/vfx_fake_bloom_additive_flipbook"
 					#endif
 				#endif
 
-				float4 appendResult42 = (float4(IN.ase_color.r , IN.ase_color.g , IN.ase_color.b , 0.0));
-				float2 uv_Main = IN.ase_texcoord2.xy * _Main_ST.xy + _Main_ST.zw;
-				float2 break135_g2 = uv_Main;
-				float2 appendResult206_g2 = (float2(frac( break135_g2.x ) , frac( break135_g2.y )));
-				float temp_output_4_0_g2 = _UVColumns;
-				float temp_output_5_0_g2 = _UVRows;
-				float2 appendResult116_g2 = (float2(temp_output_4_0_g2 , temp_output_5_0_g2));
-				float temp_output_122_0_g2 = ( temp_output_4_0_g2 * temp_output_5_0_g2 );
-				float2 appendResult175_g2 = (float2(temp_output_122_0_g2 , temp_output_5_0_g2));
-				float Columns213_g2 = temp_output_4_0_g2;
-				float Rows212_g2 = temp_output_5_0_g2;
-				float temp_output_133_0_g2 = ( fmod( ( _TimeParameters.x ) , ( Columns213_g2 * Rows212_g2 ) ) * _FlipbookSpeed );
-				float clampResult129_g2 = clamp( 0.0 , 1E-05 , ( temp_output_122_0_g2 - 1.0 ) );
-				float temp_output_185_0_g2 = frac( ( ( temp_output_133_0_g2 + ( clampResult129_g2 + 1E-05 ) ) / temp_output_122_0_g2 ) );
-				float2 appendResult186_g2 = (float2(temp_output_185_0_g2 , ( 1.0 - temp_output_185_0_g2 )));
-				float2 temp_output_203_0_g2 = ( ( appendResult206_g2 / appendResult116_g2 ) + ( floor( ( appendResult175_g2 * appendResult186_g2 ) ) / appendResult116_g2 ) );
-				float4 tex2DNode5 = tex2D( _Main, temp_output_203_0_g2 );
-				float2 uv_Bloom = IN.ase_texcoord2.xy * _Bloom_ST.xy + _Bloom_ST.zw;
-				float4 tex2DNode6 = tex2D( _Bloom, uv_Bloom );
-				float4 temp_output_8_0 = ( ( ( appendResult42 * float4( (( ( IN.ase_color.a * _TextureIntensity ) * tex2DNode5 )).rgb , 0.0 ) ) * tex2DNode5.a ) + ( ( appendResult42 * tex2DNode6 ) * ( tex2DNode6.a * ( IN.ase_color.a * _BloomIntensity ) ) ) );
-				float grayscale74 = (temp_output_8_0.xyz.r + temp_output_8_0.xyz.g + temp_output_8_0.xyz.b) / 3;
-				float temp_output_31_0_g2908 = grayscale74;
-				float4 _Vector3 = float4(1,1,1,0);
-				float4 appendResult47_g2828 = (float4(_Vector3));
-				float OceanUnder289_g2828 = GlobalOceanUnder;
-				float3 WorldPosition256_g2828 = WorldPosition;
-				float3 WorldPos252_g2875 = WorldPosition256_g2828;
-				float temp_output_67_0_g2828 = ( GlobalOceanOffset + GlobalOceanHeight );
-				float OceanHeight274_g2828 = temp_output_67_0_g2828;
-				float temp_output_108_0_g2875 = OceanHeight274_g2828;
-				float3 ase_worldViewDir = ( _WorldSpaceCameraPos.xyz - WorldPosition );
-				ase_worldViewDir = normalize(ase_worldViewDir);
-				float3 ViewDir264_g2828 = ase_worldViewDir;
-				float3 viewDir240_g2875 = ViewDir264_g2828;
-				float3 camWorldPos240_g2875 = _WorldSpaceCameraPos;
-				float3 posWS240_g2875 = WorldPos252_g2875;
-				float4 oceanFogDensities240_g2875 = OceanFogDensities;
-				float oceanHeight240_g2875 = temp_output_108_0_g2875;
-				float4 oceanFogTop_RGB_Exponent240_g2875 = OceanFogTop_RGB_Exponent;
-				float4 oceanFogBottom_RGB_Intensity240_g2875 = OceanFogBottom_RGB_Intensity;
-				float4 localGetUnderWaterFogs240_g2875 = GetUnderWaterFogs240_g2875( viewDir240_g2875 , camWorldPos240_g2875 , posWS240_g2875 , oceanFogDensities240_g2875 , oceanHeight240_g2875 , oceanFogTop_RGB_Exponent240_g2875 , oceanFogBottom_RGB_Intensity240_g2875 );
-				float4 ifLocalVar257_g2875 = 0;
-				UNITY_BRANCH 
-				if( (WorldPos252_g2875).y < ( temp_output_108_0_g2875 + 0.2 ) )
-				ifLocalVar257_g2875 = localGetUnderWaterFogs240_g2875;
-				float4 FogRes185_g2875 = ifLocalVar257_g2875;
-				float3 appendResult94_g2875 = (float3(FogRes185_g2875.xyz));
-				float3 temp_output_394_103_g2828 = appendResult94_g2875;
-				float temp_output_61_0_g2875 = ( 1.0 - (FogRes185_g2875).w );
-				float temp_output_58_0_g2828 = ( 1.0 - temp_output_61_0_g2875 );
-				float4 appendResult44_g2828 = (float4(temp_output_394_103_g2828 , temp_output_58_0_g2828));
-				float4 ifLocalVar49_g2828 = 0;
-				UNITY_BRANCH 
-				if( OceanUnder289_g2828 >= 1.0 )
-				ifLocalVar49_g2828 = appendResult44_g2828;
-				else
-				ifLocalVar49_g2828 = appendResult47_g2828;
-				#ifdef _USEUNDERWATER
-				float4 staticSwitch215_g2828 = max( ifLocalVar49_g2828 , float4( 0,0,0,0 ) );
-				#else
-				float4 staticSwitch215_g2828 = appendResult47_g2828;
-				#endif
-				float4 temp_output_1_0_g2908 = staticSwitch215_g2828;
-				float DepthMask5_g2908 = (temp_output_1_0_g2908).w;
-				float temp_output_27_0_g2908 = ( 1.0 - DepthMask5_g2908 );
-				#ifdef _USEUNDERWATER
-				float staticSwitch38_g2908 = ( temp_output_27_0_g2908 * temp_output_31_0_g2908 );
-				#else
-				float staticSwitch38_g2908 = temp_output_31_0_g2908;
-				#endif
 				
 
-				float Alpha = staticSwitch38_g2908;
+				float Alpha = 1;
 				float AlphaClipThreshold = 0.5;
 				float AlphaClipThresholdShadow = 0.5;
 
@@ -987,6 +914,7 @@ Shader "ThunderRoad/VFX/vfx_fake_bloom_additive_flipbook"
             #define ASE_SRP_VERSION 120115
             #include_with_pragmas "Assets/Plugins/AmplifyShaderEditor/TonemappingGear.cginc"
             #define TONEMAPPINGELSEWHERE
+            #include_with_pragmas "Assets/Plugins/AmplifyShaderEditor/UnderWaterFog.cginc"
 
 
             #pragma multi_compile _ DOTS_INSTANCING_ON
@@ -999,19 +927,15 @@ Shader "ThunderRoad/VFX/vfx_fake_bloom_additive_flipbook"
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl"
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/ShaderGraphFunctions.hlsl"
 
-			#define ASE_NEEDS_FRAG_COLOR
-			#define ASE_NEEDS_FRAG_WORLD_POSITION
 			#pragma multi_compile __ _USEUNDERWATER
 			#pragma shader_feature GLOBALTONEMAPPING
-			#include_with_pragmas "Assets/Plugins/AmplifyShaderEditor/UnderWaterFog.cginc"
 
 
 			struct VertexInput
 			{
 				float4 positionOS : POSITION;
 				float3 normalOS : NORMAL;
-				float4 ase_color : COLOR;
-				float4 ase_texcoord : TEXCOORD0;
+				
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 			};
 
@@ -1024,8 +948,7 @@ Shader "ThunderRoad/VFX/vfx_fake_bloom_additive_flipbook"
 				#if defined(REQUIRES_VERTEX_SHADOW_COORD_INTERPOLATOR) && defined(ASE_NEEDS_FRAG_SHADOWCOORDS)
 				float4 shadowCoord : TEXCOORD1;
 				#endif
-				float4 ase_color : COLOR;
-				float4 ase_texcoord2 : TEXCOORD2;
+				
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 				UNITY_VERTEX_OUTPUT_STEREO
 			};
@@ -1052,8 +975,6 @@ Shader "ThunderRoad/VFX/vfx_fake_bloom_additive_flipbook"
 			half2 _CausticsPanSpeed;
 			half4 _CausticsColor;
 			sampler2D _Caustics;
-			sampler2D _Main;
-			sampler2D _Bloom;
 
 
 			float calcFogFactor( float distance, float gradientFogDensity )
@@ -1061,11 +982,6 @@ Shader "ThunderRoad/VFX/vfx_fake_bloom_additive_flipbook"
 					//beer-lambert law, Fog =1/e^(distance * density)
 					float e = 2.7182818284590452353602874713527f;
 					return 1.0 - saturate(1.0f / pow(e, (distance * gradientFogDensity)));
-			}
-			
-			inline float4 GetUnderWaterFogs240_g2875( float3 viewDir, float3 camWorldPos, float3 posWS, float4 oceanFogDensities, float oceanHeight, float4 oceanFogTop_RGB_Exponent, float4 oceanFogBottom_RGB_Intensity )
-			{
-				return GetUnderWaterFog( viewDir, camWorldPos, posWS, oceanFogDensities, oceanHeight, oceanFogTop_RGB_Exponent, oceanFogBottom_RGB_Intensity );;
 			}
 			
 
@@ -1076,11 +992,7 @@ Shader "ThunderRoad/VFX/vfx_fake_bloom_additive_flipbook"
 				UNITY_TRANSFER_INSTANCE_ID(v, o);
 				UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(o);
 
-				o.ase_color = v.ase_color;
-				o.ase_texcoord2.xy = v.ase_texcoord.xy;
 				
-				//setting value to unused interpolator channels and avoid initialization warnings
-				o.ase_texcoord2.zw = 0;
 
 				#ifdef ASE_ABSOLUTE_VERTEX_POS
 					float3 defaultVertexValue = v.positionOS.xyz;
@@ -1120,9 +1032,7 @@ Shader "ThunderRoad/VFX/vfx_fake_bloom_additive_flipbook"
 			{
 				float4 vertex : INTERNALTESSPOS;
 				float3 normalOS : NORMAL;
-				float4 ase_color : COLOR;
-				float4 ase_texcoord : TEXCOORD0;
-
+				
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 			};
 
@@ -1139,8 +1049,7 @@ Shader "ThunderRoad/VFX/vfx_fake_bloom_additive_flipbook"
 				UNITY_TRANSFER_INSTANCE_ID(v, o);
 				o.vertex = v.positionOS;
 				o.normalOS = v.normalOS;
-				o.ase_color = v.ase_color;
-				o.ase_texcoord = v.ase_texcoord;
+				
 				return o;
 			}
 
@@ -1179,8 +1088,7 @@ Shader "ThunderRoad/VFX/vfx_fake_bloom_additive_flipbook"
 				VertexInput o = (VertexInput) 0;
 				o.positionOS = patch[0].vertex * bary.x + patch[1].vertex * bary.y + patch[2].vertex * bary.z;
 				o.normalOS = patch[0].normalOS * bary.x + patch[1].normalOS * bary.y + patch[2].normalOS * bary.z;
-				o.ase_color = patch[0].ase_color * bary.x + patch[1].ase_color * bary.y + patch[2].ase_color * bary.z;
-				o.ase_texcoord = patch[0].ase_texcoord * bary.x + patch[1].ase_texcoord * bary.y + patch[2].ase_texcoord * bary.z;
+				
 				#if defined(ASE_PHONG_TESSELLATION)
 				float3 pp[3];
 				for (int i = 0; i < 3; ++i)
@@ -1217,79 +1125,9 @@ Shader "ThunderRoad/VFX/vfx_fake_bloom_additive_flipbook"
 					#endif
 				#endif
 
-				float4 appendResult42 = (float4(IN.ase_color.r , IN.ase_color.g , IN.ase_color.b , 0.0));
-				float2 uv_Main = IN.ase_texcoord2.xy * _Main_ST.xy + _Main_ST.zw;
-				float2 break135_g2 = uv_Main;
-				float2 appendResult206_g2 = (float2(frac( break135_g2.x ) , frac( break135_g2.y )));
-				float temp_output_4_0_g2 = _UVColumns;
-				float temp_output_5_0_g2 = _UVRows;
-				float2 appendResult116_g2 = (float2(temp_output_4_0_g2 , temp_output_5_0_g2));
-				float temp_output_122_0_g2 = ( temp_output_4_0_g2 * temp_output_5_0_g2 );
-				float2 appendResult175_g2 = (float2(temp_output_122_0_g2 , temp_output_5_0_g2));
-				float Columns213_g2 = temp_output_4_0_g2;
-				float Rows212_g2 = temp_output_5_0_g2;
-				float temp_output_133_0_g2 = ( fmod( ( _TimeParameters.x ) , ( Columns213_g2 * Rows212_g2 ) ) * _FlipbookSpeed );
-				float clampResult129_g2 = clamp( 0.0 , 1E-05 , ( temp_output_122_0_g2 - 1.0 ) );
-				float temp_output_185_0_g2 = frac( ( ( temp_output_133_0_g2 + ( clampResult129_g2 + 1E-05 ) ) / temp_output_122_0_g2 ) );
-				float2 appendResult186_g2 = (float2(temp_output_185_0_g2 , ( 1.0 - temp_output_185_0_g2 )));
-				float2 temp_output_203_0_g2 = ( ( appendResult206_g2 / appendResult116_g2 ) + ( floor( ( appendResult175_g2 * appendResult186_g2 ) ) / appendResult116_g2 ) );
-				float4 tex2DNode5 = tex2D( _Main, temp_output_203_0_g2 );
-				float2 uv_Bloom = IN.ase_texcoord2.xy * _Bloom_ST.xy + _Bloom_ST.zw;
-				float4 tex2DNode6 = tex2D( _Bloom, uv_Bloom );
-				float4 temp_output_8_0 = ( ( ( appendResult42 * float4( (( ( IN.ase_color.a * _TextureIntensity ) * tex2DNode5 )).rgb , 0.0 ) ) * tex2DNode5.a ) + ( ( appendResult42 * tex2DNode6 ) * ( tex2DNode6.a * ( IN.ase_color.a * _BloomIntensity ) ) ) );
-				float grayscale74 = (temp_output_8_0.xyz.r + temp_output_8_0.xyz.g + temp_output_8_0.xyz.b) / 3;
-				float temp_output_31_0_g2908 = grayscale74;
-				float4 _Vector3 = float4(1,1,1,0);
-				float4 appendResult47_g2828 = (float4(_Vector3));
-				float OceanUnder289_g2828 = GlobalOceanUnder;
-				float3 WorldPosition256_g2828 = WorldPosition;
-				float3 WorldPos252_g2875 = WorldPosition256_g2828;
-				float temp_output_67_0_g2828 = ( GlobalOceanOffset + GlobalOceanHeight );
-				float OceanHeight274_g2828 = temp_output_67_0_g2828;
-				float temp_output_108_0_g2875 = OceanHeight274_g2828;
-				float3 ase_worldViewDir = ( _WorldSpaceCameraPos.xyz - WorldPosition );
-				ase_worldViewDir = normalize(ase_worldViewDir);
-				float3 ViewDir264_g2828 = ase_worldViewDir;
-				float3 viewDir240_g2875 = ViewDir264_g2828;
-				float3 camWorldPos240_g2875 = _WorldSpaceCameraPos;
-				float3 posWS240_g2875 = WorldPos252_g2875;
-				float4 oceanFogDensities240_g2875 = OceanFogDensities;
-				float oceanHeight240_g2875 = temp_output_108_0_g2875;
-				float4 oceanFogTop_RGB_Exponent240_g2875 = OceanFogTop_RGB_Exponent;
-				float4 oceanFogBottom_RGB_Intensity240_g2875 = OceanFogBottom_RGB_Intensity;
-				float4 localGetUnderWaterFogs240_g2875 = GetUnderWaterFogs240_g2875( viewDir240_g2875 , camWorldPos240_g2875 , posWS240_g2875 , oceanFogDensities240_g2875 , oceanHeight240_g2875 , oceanFogTop_RGB_Exponent240_g2875 , oceanFogBottom_RGB_Intensity240_g2875 );
-				float4 ifLocalVar257_g2875 = 0;
-				UNITY_BRANCH 
-				if( (WorldPos252_g2875).y < ( temp_output_108_0_g2875 + 0.2 ) )
-				ifLocalVar257_g2875 = localGetUnderWaterFogs240_g2875;
-				float4 FogRes185_g2875 = ifLocalVar257_g2875;
-				float3 appendResult94_g2875 = (float3(FogRes185_g2875.xyz));
-				float3 temp_output_394_103_g2828 = appendResult94_g2875;
-				float temp_output_61_0_g2875 = ( 1.0 - (FogRes185_g2875).w );
-				float temp_output_58_0_g2828 = ( 1.0 - temp_output_61_0_g2875 );
-				float4 appendResult44_g2828 = (float4(temp_output_394_103_g2828 , temp_output_58_0_g2828));
-				float4 ifLocalVar49_g2828 = 0;
-				UNITY_BRANCH 
-				if( OceanUnder289_g2828 >= 1.0 )
-				ifLocalVar49_g2828 = appendResult44_g2828;
-				else
-				ifLocalVar49_g2828 = appendResult47_g2828;
-				#ifdef _USEUNDERWATER
-				float4 staticSwitch215_g2828 = max( ifLocalVar49_g2828 , float4( 0,0,0,0 ) );
-				#else
-				float4 staticSwitch215_g2828 = appendResult47_g2828;
-				#endif
-				float4 temp_output_1_0_g2908 = staticSwitch215_g2828;
-				float DepthMask5_g2908 = (temp_output_1_0_g2908).w;
-				float temp_output_27_0_g2908 = ( 1.0 - DepthMask5_g2908 );
-				#ifdef _USEUNDERWATER
-				float staticSwitch38_g2908 = ( temp_output_27_0_g2908 * temp_output_31_0_g2908 );
-				#else
-				float staticSwitch38_g2908 = temp_output_31_0_g2908;
-				#endif
 				
 
-				float Alpha = staticSwitch38_g2908;
+				float Alpha = 1;
 				float AlphaClipThreshold = 0.5;
 
 				#ifdef _ALPHATEST_ON
@@ -1320,6 +1158,7 @@ Shader "ThunderRoad/VFX/vfx_fake_bloom_additive_flipbook"
             #define ASE_SRP_VERSION 120115
             #include_with_pragmas "Assets/Plugins/AmplifyShaderEditor/TonemappingGear.cginc"
             #define TONEMAPPINGELSEWHERE
+            #include_with_pragmas "Assets/Plugins/AmplifyShaderEditor/UnderWaterFog.cginc"
 
 
             #pragma multi_compile _ DOTS_INSTANCING_ON
@@ -1339,27 +1178,22 @@ Shader "ThunderRoad/VFX/vfx_fake_bloom_additive_flipbook"
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/ShaderGraphFunctions.hlsl"
 			#include "Packages/com.unity.render-pipelines.universal/Editor/ShaderGraph/Includes/ShaderPass.hlsl"
 
-			#define ASE_NEEDS_FRAG_COLOR
 			#pragma multi_compile __ _USEUNDERWATER
 			#pragma shader_feature GLOBALTONEMAPPING
-			#include_with_pragmas "Assets/Plugins/AmplifyShaderEditor/UnderWaterFog.cginc"
 
 
 			struct VertexInput
 			{
 				float4 positionOS : POSITION;
 				float3 normalOS : NORMAL;
-				float4 ase_color : COLOR;
-				float4 ase_texcoord : TEXCOORD0;
+				
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 			};
 
 			struct VertexOutput
 			{
 				float4 positionCS : SV_POSITION;
-				float4 ase_color : COLOR;
-				float4 ase_texcoord : TEXCOORD0;
-				float4 ase_texcoord1 : TEXCOORD1;
+				
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 				UNITY_VERTEX_OUTPUT_STEREO
 			};
@@ -1386,8 +1220,6 @@ Shader "ThunderRoad/VFX/vfx_fake_bloom_additive_flipbook"
 			half2 _CausticsPanSpeed;
 			half4 _CausticsColor;
 			sampler2D _Caustics;
-			sampler2D _Main;
-			sampler2D _Bloom;
 
 
 			float calcFogFactor( float distance, float gradientFogDensity )
@@ -1395,11 +1227,6 @@ Shader "ThunderRoad/VFX/vfx_fake_bloom_additive_flipbook"
 					//beer-lambert law, Fog =1/e^(distance * density)
 					float e = 2.7182818284590452353602874713527f;
 					return 1.0 - saturate(1.0f / pow(e, (distance * gradientFogDensity)));
-			}
-			
-			inline float4 GetUnderWaterFogs240_g2875( float3 viewDir, float3 camWorldPos, float3 posWS, float4 oceanFogDensities, float oceanHeight, float4 oceanFogTop_RGB_Exponent, float4 oceanFogBottom_RGB_Intensity )
-			{
-				return GetUnderWaterFog( viewDir, camWorldPos, posWS, oceanFogDensities, oceanHeight, oceanFogTop_RGB_Exponent, oceanFogBottom_RGB_Intensity );;
 			}
 			
 
@@ -1421,15 +1248,7 @@ Shader "ThunderRoad/VFX/vfx_fake_bloom_additive_flipbook"
 				UNITY_TRANSFER_INSTANCE_ID(v, o);
 				UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(o);
 
-				float3 ase_worldPos = TransformObjectToWorld( (v.positionOS).xyz );
-				o.ase_texcoord1.xyz = ase_worldPos;
 				
-				o.ase_color = v.ase_color;
-				o.ase_texcoord.xy = v.ase_texcoord.xy;
-				
-				//setting value to unused interpolator channels and avoid initialization warnings
-				o.ase_texcoord.zw = 0;
-				o.ase_texcoord1.w = 0;
 
 				#ifdef ASE_ABSOLUTE_VERTEX_POS
 					float3 defaultVertexValue = v.positionOS.xyz;
@@ -1459,9 +1278,7 @@ Shader "ThunderRoad/VFX/vfx_fake_bloom_additive_flipbook"
 			{
 				float4 vertex : INTERNALTESSPOS;
 				float3 normalOS : NORMAL;
-				float4 ase_color : COLOR;
-				float4 ase_texcoord : TEXCOORD0;
-
+				
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 			};
 
@@ -1478,8 +1295,7 @@ Shader "ThunderRoad/VFX/vfx_fake_bloom_additive_flipbook"
 				UNITY_TRANSFER_INSTANCE_ID(v, o);
 				o.vertex = v.positionOS;
 				o.normalOS = v.normalOS;
-				o.ase_color = v.ase_color;
-				o.ase_texcoord = v.ase_texcoord;
+				
 				return o;
 			}
 
@@ -1518,8 +1334,7 @@ Shader "ThunderRoad/VFX/vfx_fake_bloom_additive_flipbook"
 				VertexInput o = (VertexInput) 0;
 				o.positionOS = patch[0].vertex * bary.x + patch[1].vertex * bary.y + patch[2].vertex * bary.z;
 				o.normalOS = patch[0].normalOS * bary.x + patch[1].normalOS * bary.y + patch[2].normalOS * bary.z;
-				o.ase_color = patch[0].ase_color * bary.x + patch[1].ase_color * bary.y + patch[2].ase_color * bary.z;
-				o.ase_texcoord = patch[0].ase_texcoord * bary.x + patch[1].ase_texcoord * bary.y + patch[2].ase_texcoord * bary.z;
+				
 				#if defined(ASE_PHONG_TESSELLATION)
 				float3 pp[3];
 				for (int i = 0; i < 3; ++i)
@@ -1541,80 +1356,9 @@ Shader "ThunderRoad/VFX/vfx_fake_bloom_additive_flipbook"
 			{
 				SurfaceDescription surfaceDescription = (SurfaceDescription)0;
 
-				float4 appendResult42 = (float4(IN.ase_color.r , IN.ase_color.g , IN.ase_color.b , 0.0));
-				float2 uv_Main = IN.ase_texcoord.xy * _Main_ST.xy + _Main_ST.zw;
-				float2 break135_g2 = uv_Main;
-				float2 appendResult206_g2 = (float2(frac( break135_g2.x ) , frac( break135_g2.y )));
-				float temp_output_4_0_g2 = _UVColumns;
-				float temp_output_5_0_g2 = _UVRows;
-				float2 appendResult116_g2 = (float2(temp_output_4_0_g2 , temp_output_5_0_g2));
-				float temp_output_122_0_g2 = ( temp_output_4_0_g2 * temp_output_5_0_g2 );
-				float2 appendResult175_g2 = (float2(temp_output_122_0_g2 , temp_output_5_0_g2));
-				float Columns213_g2 = temp_output_4_0_g2;
-				float Rows212_g2 = temp_output_5_0_g2;
-				float temp_output_133_0_g2 = ( fmod( ( _TimeParameters.x ) , ( Columns213_g2 * Rows212_g2 ) ) * _FlipbookSpeed );
-				float clampResult129_g2 = clamp( 0.0 , 1E-05 , ( temp_output_122_0_g2 - 1.0 ) );
-				float temp_output_185_0_g2 = frac( ( ( temp_output_133_0_g2 + ( clampResult129_g2 + 1E-05 ) ) / temp_output_122_0_g2 ) );
-				float2 appendResult186_g2 = (float2(temp_output_185_0_g2 , ( 1.0 - temp_output_185_0_g2 )));
-				float2 temp_output_203_0_g2 = ( ( appendResult206_g2 / appendResult116_g2 ) + ( floor( ( appendResult175_g2 * appendResult186_g2 ) ) / appendResult116_g2 ) );
-				float4 tex2DNode5 = tex2D( _Main, temp_output_203_0_g2 );
-				float2 uv_Bloom = IN.ase_texcoord.xy * _Bloom_ST.xy + _Bloom_ST.zw;
-				float4 tex2DNode6 = tex2D( _Bloom, uv_Bloom );
-				float4 temp_output_8_0 = ( ( ( appendResult42 * float4( (( ( IN.ase_color.a * _TextureIntensity ) * tex2DNode5 )).rgb , 0.0 ) ) * tex2DNode5.a ) + ( ( appendResult42 * tex2DNode6 ) * ( tex2DNode6.a * ( IN.ase_color.a * _BloomIntensity ) ) ) );
-				float grayscale74 = (temp_output_8_0.xyz.r + temp_output_8_0.xyz.g + temp_output_8_0.xyz.b) / 3;
-				float temp_output_31_0_g2908 = grayscale74;
-				float4 _Vector3 = float4(1,1,1,0);
-				float4 appendResult47_g2828 = (float4(_Vector3));
-				float OceanUnder289_g2828 = GlobalOceanUnder;
-				float3 ase_worldPos = IN.ase_texcoord1.xyz;
-				float3 WorldPosition256_g2828 = ase_worldPos;
-				float3 WorldPos252_g2875 = WorldPosition256_g2828;
-				float temp_output_67_0_g2828 = ( GlobalOceanOffset + GlobalOceanHeight );
-				float OceanHeight274_g2828 = temp_output_67_0_g2828;
-				float temp_output_108_0_g2875 = OceanHeight274_g2828;
-				float3 ase_worldViewDir = ( _WorldSpaceCameraPos.xyz - ase_worldPos );
-				ase_worldViewDir = normalize(ase_worldViewDir);
-				float3 ViewDir264_g2828 = ase_worldViewDir;
-				float3 viewDir240_g2875 = ViewDir264_g2828;
-				float3 camWorldPos240_g2875 = _WorldSpaceCameraPos;
-				float3 posWS240_g2875 = WorldPos252_g2875;
-				float4 oceanFogDensities240_g2875 = OceanFogDensities;
-				float oceanHeight240_g2875 = temp_output_108_0_g2875;
-				float4 oceanFogTop_RGB_Exponent240_g2875 = OceanFogTop_RGB_Exponent;
-				float4 oceanFogBottom_RGB_Intensity240_g2875 = OceanFogBottom_RGB_Intensity;
-				float4 localGetUnderWaterFogs240_g2875 = GetUnderWaterFogs240_g2875( viewDir240_g2875 , camWorldPos240_g2875 , posWS240_g2875 , oceanFogDensities240_g2875 , oceanHeight240_g2875 , oceanFogTop_RGB_Exponent240_g2875 , oceanFogBottom_RGB_Intensity240_g2875 );
-				float4 ifLocalVar257_g2875 = 0;
-				UNITY_BRANCH 
-				if( (WorldPos252_g2875).y < ( temp_output_108_0_g2875 + 0.2 ) )
-				ifLocalVar257_g2875 = localGetUnderWaterFogs240_g2875;
-				float4 FogRes185_g2875 = ifLocalVar257_g2875;
-				float3 appendResult94_g2875 = (float3(FogRes185_g2875.xyz));
-				float3 temp_output_394_103_g2828 = appendResult94_g2875;
-				float temp_output_61_0_g2875 = ( 1.0 - (FogRes185_g2875).w );
-				float temp_output_58_0_g2828 = ( 1.0 - temp_output_61_0_g2875 );
-				float4 appendResult44_g2828 = (float4(temp_output_394_103_g2828 , temp_output_58_0_g2828));
-				float4 ifLocalVar49_g2828 = 0;
-				UNITY_BRANCH 
-				if( OceanUnder289_g2828 >= 1.0 )
-				ifLocalVar49_g2828 = appendResult44_g2828;
-				else
-				ifLocalVar49_g2828 = appendResult47_g2828;
-				#ifdef _USEUNDERWATER
-				float4 staticSwitch215_g2828 = max( ifLocalVar49_g2828 , float4( 0,0,0,0 ) );
-				#else
-				float4 staticSwitch215_g2828 = appendResult47_g2828;
-				#endif
-				float4 temp_output_1_0_g2908 = staticSwitch215_g2828;
-				float DepthMask5_g2908 = (temp_output_1_0_g2908).w;
-				float temp_output_27_0_g2908 = ( 1.0 - DepthMask5_g2908 );
-				#ifdef _USEUNDERWATER
-				float staticSwitch38_g2908 = ( temp_output_27_0_g2908 * temp_output_31_0_g2908 );
-				#else
-				float staticSwitch38_g2908 = temp_output_31_0_g2908;
-				#endif
 				
 
-				surfaceDescription.Alpha = staticSwitch38_g2908;
+				surfaceDescription.Alpha = 1;
 				surfaceDescription.AlphaClipThreshold = 0.5;
 
 				#if _ALPHATEST_ON
@@ -1646,6 +1390,7 @@ Shader "ThunderRoad/VFX/vfx_fake_bloom_additive_flipbook"
             #define ASE_SRP_VERSION 120115
             #include_with_pragmas "Assets/Plugins/AmplifyShaderEditor/TonemappingGear.cginc"
             #define TONEMAPPINGELSEWHERE
+            #include_with_pragmas "Assets/Plugins/AmplifyShaderEditor/UnderWaterFog.cginc"
 
 
             #pragma multi_compile _ DOTS_INSTANCING_ON
@@ -1666,27 +1411,22 @@ Shader "ThunderRoad/VFX/vfx_fake_bloom_additive_flipbook"
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/ShaderGraphFunctions.hlsl"
 			#include "Packages/com.unity.render-pipelines.universal/Editor/ShaderGraph/Includes/ShaderPass.hlsl"
 
-			#define ASE_NEEDS_FRAG_COLOR
 			#pragma multi_compile __ _USEUNDERWATER
 			#pragma shader_feature GLOBALTONEMAPPING
-			#include_with_pragmas "Assets/Plugins/AmplifyShaderEditor/UnderWaterFog.cginc"
 
 
 			struct VertexInput
 			{
 				float4 positionOS : POSITION;
 				float3 normalOS : NORMAL;
-				float4 ase_color : COLOR;
-				float4 ase_texcoord : TEXCOORD0;
+				
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 			};
 
 			struct VertexOutput
 			{
 				float4 positionCS : SV_POSITION;
-				float4 ase_color : COLOR;
-				float4 ase_texcoord : TEXCOORD0;
-				float4 ase_texcoord1 : TEXCOORD1;
+				
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 				UNITY_VERTEX_OUTPUT_STEREO
 			};
@@ -1713,8 +1453,6 @@ Shader "ThunderRoad/VFX/vfx_fake_bloom_additive_flipbook"
 			half2 _CausticsPanSpeed;
 			half4 _CausticsColor;
 			sampler2D _Caustics;
-			sampler2D _Main;
-			sampler2D _Bloom;
 
 
 			float calcFogFactor( float distance, float gradientFogDensity )
@@ -1722,11 +1460,6 @@ Shader "ThunderRoad/VFX/vfx_fake_bloom_additive_flipbook"
 					//beer-lambert law, Fog =1/e^(distance * density)
 					float e = 2.7182818284590452353602874713527f;
 					return 1.0 - saturate(1.0f / pow(e, (distance * gradientFogDensity)));
-			}
-			
-			inline float4 GetUnderWaterFogs240_g2875( float3 viewDir, float3 camWorldPos, float3 posWS, float4 oceanFogDensities, float oceanHeight, float4 oceanFogTop_RGB_Exponent, float4 oceanFogBottom_RGB_Intensity )
-			{
-				return GetUnderWaterFog( viewDir, camWorldPos, posWS, oceanFogDensities, oceanHeight, oceanFogTop_RGB_Exponent, oceanFogBottom_RGB_Intensity );;
 			}
 			
 
@@ -1747,15 +1480,7 @@ Shader "ThunderRoad/VFX/vfx_fake_bloom_additive_flipbook"
 				UNITY_TRANSFER_INSTANCE_ID(v, o);
 				UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(o);
 
-				float3 ase_worldPos = TransformObjectToWorld( (v.positionOS).xyz );
-				o.ase_texcoord1.xyz = ase_worldPos;
 				
-				o.ase_color = v.ase_color;
-				o.ase_texcoord.xy = v.ase_texcoord.xy;
-				
-				//setting value to unused interpolator channels and avoid initialization warnings
-				o.ase_texcoord.zw = 0;
-				o.ase_texcoord1.w = 0;
 
 				#ifdef ASE_ABSOLUTE_VERTEX_POS
 					float3 defaultVertexValue = v.positionOS.xyz;
@@ -1783,9 +1508,7 @@ Shader "ThunderRoad/VFX/vfx_fake_bloom_additive_flipbook"
 			{
 				float4 vertex : INTERNALTESSPOS;
 				float3 normalOS : NORMAL;
-				float4 ase_color : COLOR;
-				float4 ase_texcoord : TEXCOORD0;
-
+				
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 			};
 
@@ -1802,8 +1525,7 @@ Shader "ThunderRoad/VFX/vfx_fake_bloom_additive_flipbook"
 				UNITY_TRANSFER_INSTANCE_ID(v, o);
 				o.vertex = v.positionOS;
 				o.normalOS = v.normalOS;
-				o.ase_color = v.ase_color;
-				o.ase_texcoord = v.ase_texcoord;
+				
 				return o;
 			}
 
@@ -1842,8 +1564,7 @@ Shader "ThunderRoad/VFX/vfx_fake_bloom_additive_flipbook"
 				VertexInput o = (VertexInput) 0;
 				o.positionOS = patch[0].vertex * bary.x + patch[1].vertex * bary.y + patch[2].vertex * bary.z;
 				o.normalOS = patch[0].normalOS * bary.x + patch[1].normalOS * bary.y + patch[2].normalOS * bary.z;
-				o.ase_color = patch[0].ase_color * bary.x + patch[1].ase_color * bary.y + patch[2].ase_color * bary.z;
-				o.ase_texcoord = patch[0].ase_texcoord * bary.x + patch[1].ase_texcoord * bary.y + patch[2].ase_texcoord * bary.z;
+				
 				#if defined(ASE_PHONG_TESSELLATION)
 				float3 pp[3];
 				for (int i = 0; i < 3; ++i)
@@ -1865,80 +1586,9 @@ Shader "ThunderRoad/VFX/vfx_fake_bloom_additive_flipbook"
 			{
 				SurfaceDescription surfaceDescription = (SurfaceDescription)0;
 
-				float4 appendResult42 = (float4(IN.ase_color.r , IN.ase_color.g , IN.ase_color.b , 0.0));
-				float2 uv_Main = IN.ase_texcoord.xy * _Main_ST.xy + _Main_ST.zw;
-				float2 break135_g2 = uv_Main;
-				float2 appendResult206_g2 = (float2(frac( break135_g2.x ) , frac( break135_g2.y )));
-				float temp_output_4_0_g2 = _UVColumns;
-				float temp_output_5_0_g2 = _UVRows;
-				float2 appendResult116_g2 = (float2(temp_output_4_0_g2 , temp_output_5_0_g2));
-				float temp_output_122_0_g2 = ( temp_output_4_0_g2 * temp_output_5_0_g2 );
-				float2 appendResult175_g2 = (float2(temp_output_122_0_g2 , temp_output_5_0_g2));
-				float Columns213_g2 = temp_output_4_0_g2;
-				float Rows212_g2 = temp_output_5_0_g2;
-				float temp_output_133_0_g2 = ( fmod( ( _TimeParameters.x ) , ( Columns213_g2 * Rows212_g2 ) ) * _FlipbookSpeed );
-				float clampResult129_g2 = clamp( 0.0 , 1E-05 , ( temp_output_122_0_g2 - 1.0 ) );
-				float temp_output_185_0_g2 = frac( ( ( temp_output_133_0_g2 + ( clampResult129_g2 + 1E-05 ) ) / temp_output_122_0_g2 ) );
-				float2 appendResult186_g2 = (float2(temp_output_185_0_g2 , ( 1.0 - temp_output_185_0_g2 )));
-				float2 temp_output_203_0_g2 = ( ( appendResult206_g2 / appendResult116_g2 ) + ( floor( ( appendResult175_g2 * appendResult186_g2 ) ) / appendResult116_g2 ) );
-				float4 tex2DNode5 = tex2D( _Main, temp_output_203_0_g2 );
-				float2 uv_Bloom = IN.ase_texcoord.xy * _Bloom_ST.xy + _Bloom_ST.zw;
-				float4 tex2DNode6 = tex2D( _Bloom, uv_Bloom );
-				float4 temp_output_8_0 = ( ( ( appendResult42 * float4( (( ( IN.ase_color.a * _TextureIntensity ) * tex2DNode5 )).rgb , 0.0 ) ) * tex2DNode5.a ) + ( ( appendResult42 * tex2DNode6 ) * ( tex2DNode6.a * ( IN.ase_color.a * _BloomIntensity ) ) ) );
-				float grayscale74 = (temp_output_8_0.xyz.r + temp_output_8_0.xyz.g + temp_output_8_0.xyz.b) / 3;
-				float temp_output_31_0_g2908 = grayscale74;
-				float4 _Vector3 = float4(1,1,1,0);
-				float4 appendResult47_g2828 = (float4(_Vector3));
-				float OceanUnder289_g2828 = GlobalOceanUnder;
-				float3 ase_worldPos = IN.ase_texcoord1.xyz;
-				float3 WorldPosition256_g2828 = ase_worldPos;
-				float3 WorldPos252_g2875 = WorldPosition256_g2828;
-				float temp_output_67_0_g2828 = ( GlobalOceanOffset + GlobalOceanHeight );
-				float OceanHeight274_g2828 = temp_output_67_0_g2828;
-				float temp_output_108_0_g2875 = OceanHeight274_g2828;
-				float3 ase_worldViewDir = ( _WorldSpaceCameraPos.xyz - ase_worldPos );
-				ase_worldViewDir = normalize(ase_worldViewDir);
-				float3 ViewDir264_g2828 = ase_worldViewDir;
-				float3 viewDir240_g2875 = ViewDir264_g2828;
-				float3 camWorldPos240_g2875 = _WorldSpaceCameraPos;
-				float3 posWS240_g2875 = WorldPos252_g2875;
-				float4 oceanFogDensities240_g2875 = OceanFogDensities;
-				float oceanHeight240_g2875 = temp_output_108_0_g2875;
-				float4 oceanFogTop_RGB_Exponent240_g2875 = OceanFogTop_RGB_Exponent;
-				float4 oceanFogBottom_RGB_Intensity240_g2875 = OceanFogBottom_RGB_Intensity;
-				float4 localGetUnderWaterFogs240_g2875 = GetUnderWaterFogs240_g2875( viewDir240_g2875 , camWorldPos240_g2875 , posWS240_g2875 , oceanFogDensities240_g2875 , oceanHeight240_g2875 , oceanFogTop_RGB_Exponent240_g2875 , oceanFogBottom_RGB_Intensity240_g2875 );
-				float4 ifLocalVar257_g2875 = 0;
-				UNITY_BRANCH 
-				if( (WorldPos252_g2875).y < ( temp_output_108_0_g2875 + 0.2 ) )
-				ifLocalVar257_g2875 = localGetUnderWaterFogs240_g2875;
-				float4 FogRes185_g2875 = ifLocalVar257_g2875;
-				float3 appendResult94_g2875 = (float3(FogRes185_g2875.xyz));
-				float3 temp_output_394_103_g2828 = appendResult94_g2875;
-				float temp_output_61_0_g2875 = ( 1.0 - (FogRes185_g2875).w );
-				float temp_output_58_0_g2828 = ( 1.0 - temp_output_61_0_g2875 );
-				float4 appendResult44_g2828 = (float4(temp_output_394_103_g2828 , temp_output_58_0_g2828));
-				float4 ifLocalVar49_g2828 = 0;
-				UNITY_BRANCH 
-				if( OceanUnder289_g2828 >= 1.0 )
-				ifLocalVar49_g2828 = appendResult44_g2828;
-				else
-				ifLocalVar49_g2828 = appendResult47_g2828;
-				#ifdef _USEUNDERWATER
-				float4 staticSwitch215_g2828 = max( ifLocalVar49_g2828 , float4( 0,0,0,0 ) );
-				#else
-				float4 staticSwitch215_g2828 = appendResult47_g2828;
-				#endif
-				float4 temp_output_1_0_g2908 = staticSwitch215_g2828;
-				float DepthMask5_g2908 = (temp_output_1_0_g2908).w;
-				float temp_output_27_0_g2908 = ( 1.0 - DepthMask5_g2908 );
-				#ifdef _USEUNDERWATER
-				float staticSwitch38_g2908 = ( temp_output_27_0_g2908 * temp_output_31_0_g2908 );
-				#else
-				float staticSwitch38_g2908 = temp_output_31_0_g2908;
-				#endif
 				
 
-				surfaceDescription.Alpha = staticSwitch38_g2908;
+				surfaceDescription.Alpha = 1;
 				surfaceDescription.AlphaClipThreshold = 0.5;
 
 				#if _ALPHATEST_ON
@@ -1975,6 +1625,7 @@ Shader "ThunderRoad/VFX/vfx_fake_bloom_additive_flipbook"
             #define ASE_SRP_VERSION 120115
             #include_with_pragmas "Assets/Plugins/AmplifyShaderEditor/TonemappingGear.cginc"
             #define TONEMAPPINGELSEWHERE
+            #include_with_pragmas "Assets/Plugins/AmplifyShaderEditor/UnderWaterFog.cginc"
 
 
             #pragma multi_compile _ DOTS_INSTANCING_ON
@@ -1996,18 +1647,15 @@ Shader "ThunderRoad/VFX/vfx_fake_bloom_additive_flipbook"
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/ShaderGraphFunctions.hlsl"
 			#include "Packages/com.unity.render-pipelines.universal/Editor/ShaderGraph/Includes/ShaderPass.hlsl"
 
-			#define ASE_NEEDS_FRAG_COLOR
 			#pragma multi_compile __ _USEUNDERWATER
 			#pragma shader_feature GLOBALTONEMAPPING
-			#include_with_pragmas "Assets/Plugins/AmplifyShaderEditor/UnderWaterFog.cginc"
 
 
 			struct VertexInput
 			{
 				float4 positionOS : POSITION;
 				float3 normalOS : NORMAL;
-				float4 ase_color : COLOR;
-				float4 ase_texcoord : TEXCOORD0;
+				
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 			};
 
@@ -2015,9 +1663,7 @@ Shader "ThunderRoad/VFX/vfx_fake_bloom_additive_flipbook"
 			{
 				float4 positionCS : SV_POSITION;
 				float3 normalWS : TEXCOORD0;
-				float4 ase_color : COLOR;
-				float4 ase_texcoord1 : TEXCOORD1;
-				float4 ase_texcoord2 : TEXCOORD2;
+				
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 				UNITY_VERTEX_OUTPUT_STEREO
 			};
@@ -2044,8 +1690,6 @@ Shader "ThunderRoad/VFX/vfx_fake_bloom_additive_flipbook"
 			half2 _CausticsPanSpeed;
 			half4 _CausticsColor;
 			sampler2D _Caustics;
-			sampler2D _Main;
-			sampler2D _Bloom;
 
 
 			float calcFogFactor( float distance, float gradientFogDensity )
@@ -2053,11 +1697,6 @@ Shader "ThunderRoad/VFX/vfx_fake_bloom_additive_flipbook"
 					//beer-lambert law, Fog =1/e^(distance * density)
 					float e = 2.7182818284590452353602874713527f;
 					return 1.0 - saturate(1.0f / pow(e, (distance * gradientFogDensity)));
-			}
-			
-			inline float4 GetUnderWaterFogs240_g2875( float3 viewDir, float3 camWorldPos, float3 posWS, float4 oceanFogDensities, float oceanHeight, float4 oceanFogTop_RGB_Exponent, float4 oceanFogBottom_RGB_Intensity )
-			{
-				return GetUnderWaterFog( viewDir, camWorldPos, posWS, oceanFogDensities, oceanHeight, oceanFogTop_RGB_Exponent, oceanFogBottom_RGB_Intensity );;
 			}
 			
 
@@ -2076,15 +1715,7 @@ Shader "ThunderRoad/VFX/vfx_fake_bloom_additive_flipbook"
 				UNITY_TRANSFER_INSTANCE_ID(v, o);
 				UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(o);
 
-				float3 ase_worldPos = TransformObjectToWorld( (v.positionOS).xyz );
-				o.ase_texcoord2.xyz = ase_worldPos;
 				
-				o.ase_color = v.ase_color;
-				o.ase_texcoord1.xy = v.ase_texcoord.xy;
-				
-				//setting value to unused interpolator channels and avoid initialization warnings
-				o.ase_texcoord1.zw = 0;
-				o.ase_texcoord2.w = 0;
 
 				#ifdef ASE_ABSOLUTE_VERTEX_POS
 					float3 defaultVertexValue = v.positionOS.xyz;
@@ -2116,9 +1747,7 @@ Shader "ThunderRoad/VFX/vfx_fake_bloom_additive_flipbook"
 			{
 				float4 vertex : INTERNALTESSPOS;
 				float3 normalOS : NORMAL;
-				float4 ase_color : COLOR;
-				float4 ase_texcoord : TEXCOORD0;
-
+				
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 			};
 
@@ -2135,8 +1764,7 @@ Shader "ThunderRoad/VFX/vfx_fake_bloom_additive_flipbook"
 				UNITY_TRANSFER_INSTANCE_ID(v, o);
 				o.vertex = v.positionOS;
 				o.normalOS = v.normalOS;
-				o.ase_color = v.ase_color;
-				o.ase_texcoord = v.ase_texcoord;
+				
 				return o;
 			}
 
@@ -2175,8 +1803,7 @@ Shader "ThunderRoad/VFX/vfx_fake_bloom_additive_flipbook"
 				VertexInput o = (VertexInput) 0;
 				o.positionOS = patch[0].vertex * bary.x + patch[1].vertex * bary.y + patch[2].vertex * bary.z;
 				o.normalOS = patch[0].normalOS * bary.x + patch[1].normalOS * bary.y + patch[2].normalOS * bary.z;
-				o.ase_color = patch[0].ase_color * bary.x + patch[1].ase_color * bary.y + patch[2].ase_color * bary.z;
-				o.ase_texcoord = patch[0].ase_texcoord * bary.x + patch[1].ase_texcoord * bary.y + patch[2].ase_texcoord * bary.z;
+				
 				#if defined(ASE_PHONG_TESSELLATION)
 				float3 pp[3];
 				for (int i = 0; i < 3; ++i)
@@ -2198,80 +1825,9 @@ Shader "ThunderRoad/VFX/vfx_fake_bloom_additive_flipbook"
 			{
 				SurfaceDescription surfaceDescription = (SurfaceDescription)0;
 
-				float4 appendResult42 = (float4(IN.ase_color.r , IN.ase_color.g , IN.ase_color.b , 0.0));
-				float2 uv_Main = IN.ase_texcoord1.xy * _Main_ST.xy + _Main_ST.zw;
-				float2 break135_g2 = uv_Main;
-				float2 appendResult206_g2 = (float2(frac( break135_g2.x ) , frac( break135_g2.y )));
-				float temp_output_4_0_g2 = _UVColumns;
-				float temp_output_5_0_g2 = _UVRows;
-				float2 appendResult116_g2 = (float2(temp_output_4_0_g2 , temp_output_5_0_g2));
-				float temp_output_122_0_g2 = ( temp_output_4_0_g2 * temp_output_5_0_g2 );
-				float2 appendResult175_g2 = (float2(temp_output_122_0_g2 , temp_output_5_0_g2));
-				float Columns213_g2 = temp_output_4_0_g2;
-				float Rows212_g2 = temp_output_5_0_g2;
-				float temp_output_133_0_g2 = ( fmod( ( _TimeParameters.x ) , ( Columns213_g2 * Rows212_g2 ) ) * _FlipbookSpeed );
-				float clampResult129_g2 = clamp( 0.0 , 1E-05 , ( temp_output_122_0_g2 - 1.0 ) );
-				float temp_output_185_0_g2 = frac( ( ( temp_output_133_0_g2 + ( clampResult129_g2 + 1E-05 ) ) / temp_output_122_0_g2 ) );
-				float2 appendResult186_g2 = (float2(temp_output_185_0_g2 , ( 1.0 - temp_output_185_0_g2 )));
-				float2 temp_output_203_0_g2 = ( ( appendResult206_g2 / appendResult116_g2 ) + ( floor( ( appendResult175_g2 * appendResult186_g2 ) ) / appendResult116_g2 ) );
-				float4 tex2DNode5 = tex2D( _Main, temp_output_203_0_g2 );
-				float2 uv_Bloom = IN.ase_texcoord1.xy * _Bloom_ST.xy + _Bloom_ST.zw;
-				float4 tex2DNode6 = tex2D( _Bloom, uv_Bloom );
-				float4 temp_output_8_0 = ( ( ( appendResult42 * float4( (( ( IN.ase_color.a * _TextureIntensity ) * tex2DNode5 )).rgb , 0.0 ) ) * tex2DNode5.a ) + ( ( appendResult42 * tex2DNode6 ) * ( tex2DNode6.a * ( IN.ase_color.a * _BloomIntensity ) ) ) );
-				float grayscale74 = (temp_output_8_0.xyz.r + temp_output_8_0.xyz.g + temp_output_8_0.xyz.b) / 3;
-				float temp_output_31_0_g2908 = grayscale74;
-				float4 _Vector3 = float4(1,1,1,0);
-				float4 appendResult47_g2828 = (float4(_Vector3));
-				float OceanUnder289_g2828 = GlobalOceanUnder;
-				float3 ase_worldPos = IN.ase_texcoord2.xyz;
-				float3 WorldPosition256_g2828 = ase_worldPos;
-				float3 WorldPos252_g2875 = WorldPosition256_g2828;
-				float temp_output_67_0_g2828 = ( GlobalOceanOffset + GlobalOceanHeight );
-				float OceanHeight274_g2828 = temp_output_67_0_g2828;
-				float temp_output_108_0_g2875 = OceanHeight274_g2828;
-				float3 ase_worldViewDir = ( _WorldSpaceCameraPos.xyz - ase_worldPos );
-				ase_worldViewDir = normalize(ase_worldViewDir);
-				float3 ViewDir264_g2828 = ase_worldViewDir;
-				float3 viewDir240_g2875 = ViewDir264_g2828;
-				float3 camWorldPos240_g2875 = _WorldSpaceCameraPos;
-				float3 posWS240_g2875 = WorldPos252_g2875;
-				float4 oceanFogDensities240_g2875 = OceanFogDensities;
-				float oceanHeight240_g2875 = temp_output_108_0_g2875;
-				float4 oceanFogTop_RGB_Exponent240_g2875 = OceanFogTop_RGB_Exponent;
-				float4 oceanFogBottom_RGB_Intensity240_g2875 = OceanFogBottom_RGB_Intensity;
-				float4 localGetUnderWaterFogs240_g2875 = GetUnderWaterFogs240_g2875( viewDir240_g2875 , camWorldPos240_g2875 , posWS240_g2875 , oceanFogDensities240_g2875 , oceanHeight240_g2875 , oceanFogTop_RGB_Exponent240_g2875 , oceanFogBottom_RGB_Intensity240_g2875 );
-				float4 ifLocalVar257_g2875 = 0;
-				UNITY_BRANCH 
-				if( (WorldPos252_g2875).y < ( temp_output_108_0_g2875 + 0.2 ) )
-				ifLocalVar257_g2875 = localGetUnderWaterFogs240_g2875;
-				float4 FogRes185_g2875 = ifLocalVar257_g2875;
-				float3 appendResult94_g2875 = (float3(FogRes185_g2875.xyz));
-				float3 temp_output_394_103_g2828 = appendResult94_g2875;
-				float temp_output_61_0_g2875 = ( 1.0 - (FogRes185_g2875).w );
-				float temp_output_58_0_g2828 = ( 1.0 - temp_output_61_0_g2875 );
-				float4 appendResult44_g2828 = (float4(temp_output_394_103_g2828 , temp_output_58_0_g2828));
-				float4 ifLocalVar49_g2828 = 0;
-				UNITY_BRANCH 
-				if( OceanUnder289_g2828 >= 1.0 )
-				ifLocalVar49_g2828 = appendResult44_g2828;
-				else
-				ifLocalVar49_g2828 = appendResult47_g2828;
-				#ifdef _USEUNDERWATER
-				float4 staticSwitch215_g2828 = max( ifLocalVar49_g2828 , float4( 0,0,0,0 ) );
-				#else
-				float4 staticSwitch215_g2828 = appendResult47_g2828;
-				#endif
-				float4 temp_output_1_0_g2908 = staticSwitch215_g2828;
-				float DepthMask5_g2908 = (temp_output_1_0_g2908).w;
-				float temp_output_27_0_g2908 = ( 1.0 - DepthMask5_g2908 );
-				#ifdef _USEUNDERWATER
-				float staticSwitch38_g2908 = ( temp_output_27_0_g2908 * temp_output_31_0_g2908 );
-				#else
-				float staticSwitch38_g2908 = temp_output_31_0_g2908;
-				#endif
 				
 
-				surfaceDescription.Alpha = staticSwitch38_g2908;
+				surfaceDescription.Alpha = 1;
 				surfaceDescription.AlphaClipThreshold = 0.5;
 
 				#if _ALPHATEST_ON
@@ -2294,7 +1850,8 @@ Shader "ThunderRoad/VFX/vfx_fake_bloom_additive_flipbook"
 	}
 	
 	CustomEditor "UnityEditor.ShaderGraphUnlitGUI"
-	FallBack "Hidden/Shader Graph/FallbackError"
+	//FallBack "Hidden/Shader Graph/FallbackError"
+	Fallback Off // To avoid potential compiler errors: Failed to write file: Temp/StagingArea/Data/Resources/unity_builtin_extra
 	
 	Fallback "Hidden/InternalErrorShader"
 }
@@ -2322,25 +1879,25 @@ Node;AmplifyShaderEditor.SimpleMultiplyOpNode;10;-613.1417,-61.69288;Inherit;Tru
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;38;458.5055,-292.3741;Inherit;True;2;2;0;FLOAT4;0,0,0,0;False;1;FLOAT;0;False;1;FLOAT4;0
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;40;69.94791,129.4711;Inherit;True;2;2;0;FLOAT4;0,0,0,0;False;1;FLOAT;0;False;1;FLOAT4;0
 Node;AmplifyShaderEditor.SimpleAddOpNode;8;819.049,-149.5448;Inherit;True;2;2;0;FLOAT4;0,0,0,0;False;1;FLOAT4;0,0,0,0;False;1;FLOAT4;0
-Node;AmplifyShaderEditor.FunctionNode;71;893.1472,-605.8372;Inherit;False;CausticsAndFog;10;;2828;faa94743a70a11f47a63fa5c9cf350f2;16,175,0,230,0,246,0,236,0,216,0,162,0,370,0,237,0,387,1,384,1,388,1,15,0,100,0,171,0,168,1,13,0;10;253;FLOAT3;0,0,0;False;263;FLOAT3;0,0,0;False;245;FLOAT;0;False;67;FLOAT;0;False;195;FLOAT3;0,0,0;False;23;FLOAT;0;False;11;FLOAT3;1,1,1;False;10;FLOAT3;0,0,0;False;9;FLOAT3;0,0,1;False;57;FLOAT;0;False;6;FLOAT3;266;FLOAT3;0;FLOAT3;8;FLOAT4;25;FLOAT;243;FLOAT3;167
+Node;AmplifyShaderEditor.FunctionNode;71;893.1472,-605.8372;Inherit;False;CausticsAndFog;10;;2828;faa94743a70a11f47a63fa5c9cf350f2;18,175,0,388,1,384,1,387,1,237,0,370,0,216,0,162,0,236,0,246,0,230,0,397,1,171,0,15,0,100,0,168,1,405,0,13,0;10;253;FLOAT3;0,0,0;False;263;FLOAT3;0,0,0;False;245;FLOAT;0;False;67;FLOAT;0;False;195;FLOAT3;0,0,0;False;23;FLOAT;0;False;11;FLOAT3;1,1,1;False;10;FLOAT3;0,0,0;False;9;FLOAT3;0,0,1;False;57;FLOAT;0;False;6;FLOAT3;266;FLOAT3;0;FLOAT3;8;FLOAT4;25;FLOAT;243;FLOAT3;167
 Node;AmplifyShaderEditor.TFHCGrayscale;74;1040,-352;Inherit;False;2;1;0;FLOAT3;0,0,0;False;1;FLOAT;0
 Node;AmplifyShaderEditor.TextureCoordinatesNode;26;-1375.758,84.95694;Inherit;False;0;6;2;3;2;SAMPLER2D;;False;0;FLOAT2;1,1;False;1;FLOAT2;0,0;False;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
-Node;AmplifyShaderEditor.SaturateNode;51;1080.536,-231.8661;Inherit;False;1;0;FLOAT4;0,0,0,0;False;1;FLOAT4;0
 Node;AmplifyShaderEditor.RadiansOpNode;64;-1567.532,-97.12859;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0
 Node;AmplifyShaderEditor.RotatorNode;63;-1372.056,-263.6708;Inherit;True;3;0;FLOAT2;0,0;False;1;FLOAT2;0.5,0.5;False;2;FLOAT;0;False;1;FLOAT2;0
-Node;AmplifyShaderEditor.RangedFloatNode;65;-1774.712,-79.94389;Inherit;False;Property;_RotationOffset;Rotation Offset;37;0;Create;True;0;0;0;False;0;False;0;90;0;0;0;1;FLOAT;0
-Node;AmplifyShaderEditor.FunctionNode;72;1533.147,-557.8372;Inherit;False;TonemappingNode;2;;2881;305ac1d3fd2773448b8bd3815ea5531e;1,6,1;2;3;FLOAT3;0,0,0;False;4;FLOAT4;0,0,0,0;False;1;FLOAT3;0
+Node;AmplifyShaderEditor.RangedFloatNode;65;-1774.712,-79.94389;Inherit;False;Property;_RotationOffset;Rotation Offset;51;0;Create;True;0;0;0;False;0;False;0;90;0;0;0;1;FLOAT;0
+Node;AmplifyShaderEditor.FunctionNode;72;1533.147,-557.8372;Inherit;False;TonemappingNode;2;;2905;305ac1d3fd2773448b8bd3815ea5531e;1,6,1;2;3;FLOAT3;0,0,0;False;4;FLOAT4;0,0,0,0;False;1;FLOAT3;0
 Node;AmplifyShaderEditor.FunctionNode;75;1245.147,-525.8372;Inherit;False;ApplyFogAndTint;-1;;2908;6bb817da436f9a84da1721b331a80851;5,32,1,16,0,35,1,45,1,39,1;5;14;FLOAT3;0,0,0;False;17;FLOAT;0;False;1;FLOAT4;0,0,0,0;False;2;FLOAT3;1,1,1;False;31;FLOAT;1;False;2;FLOAT3;0;FLOAT;25
-Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;28;1307.217,-167.8989;Float;False;False;-1;2;UnityEditor.ShaderGraphUnlitGUI;0;13;New Amplify Shader;2992e84f91cbeb14eab234972e07ea9d;True;ExtraPrePass;0;0;ExtraPrePass;5;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;False;False;False;True;4;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;UniversalMaterialType=Unlit;True;3;True;12;all;0;False;True;1;1;False;;0;False;;0;1;False;;0;False;;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;True;True;True;True;0;False;;False;False;False;False;False;False;False;True;False;255;False;;255;False;;255;False;;7;False;;1;False;;1;False;;1;False;;7;False;;1;False;;1;False;;1;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;0;False;False;0;Hidden/InternalErrorShader;0;0;Standard;0;False;0
-Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;32;1307.217,-167.8989;Float;False;False;-1;2;UnityEditor.ShaderGraphUnlitGUI;0;13;New Amplify Shader;2992e84f91cbeb14eab234972e07ea9d;True;Meta;0;4;Meta;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;False;False;False;True;4;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;UniversalMaterialType=Unlit;True;3;True;12;all;0;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;2;False;;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;1;LightMode=Meta;False;False;0;Hidden/InternalErrorShader;0;0;Standard;0;False;0
-Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;29;1586.242,-173.8999;Float;False;True;-1;2;UnityEditor.ShaderGraphUnlitGUI;0;13;ThunderRoad/VFX/vfx_fake_bloom_additive_flipbook;2992e84f91cbeb14eab234972e07ea9d;True;Forward;0;1;Forward;8;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;False;False;False;True;4;RenderPipeline=UniversalPipeline;RenderType=Transparent=RenderType;Queue=Transparent=Queue=0;UniversalMaterialType=Unlit;True;3;True;12;all;0;True;True;5;4;False;;1;False;;1;1;False;;10;False;;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;True;True;True;True;0;False;;False;False;False;False;False;False;False;True;False;255;False;;255;False;;255;False;;7;False;;1;False;;1;False;;1;False;;7;False;;1;False;;1;False;;1;False;;False;True;2;False;;True;3;False;;True;True;0;False;;0;False;;True;1;LightMode=UniversalForward;False;False;4;Custom;#include_with_pragmas "Assets/Plugins/AmplifyShaderEditor/TonemappingGear.cginc";False;;Custom;False;0;0;;Custom;#define TONEMAPPINGELSEWHERE;False;;Custom;False;0;0;;Custom;#include_with_pragmas "Assets/Plugins/AmplifyShaderEditor/UnderWaterFog.cginc";False;;Custom;False;0;0;;Include;;False;;Native;False;0;0;;Hidden/InternalErrorShader;0;0;Standard;21;Surface;1;0;  Blend;0;0;Two Sided;1;0;Forward Only;0;0;Cast Shadows;1;638417443614931432;  Use Shadow Threshold;0;0;GPU Instancing;1;0;LOD CrossFade;0;0;Built-in Fog;0;0;Meta Pass;0;0;Extra Pre Pass;0;0;Tessellation;0;0;  Phong;0;0;  Strength;0.5,False,;0;  Type;0;0;  Tess;16,False,;0;  Min;10,False,;0;  Max;25,False,;0;  Edge Length;16,False,;0;  Max Displacement;25,False,;0;Vertex Position,InvertActionOnDeselection;1;0;0;10;False;True;True;True;False;False;True;True;True;False;False;;False;0
-Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;31;1307.217,-167.8989;Float;False;False;-1;2;UnityEditor.ShaderGraphUnlitGUI;0;13;New Amplify Shader;2992e84f91cbeb14eab234972e07ea9d;True;DepthOnly;0;3;DepthOnly;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;False;False;False;True;4;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;UniversalMaterialType=Unlit;True;3;True;12;all;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;False;False;True;False;False;False;False;0;False;;False;False;False;False;False;False;False;False;False;True;1;False;;False;False;True;1;LightMode=DepthOnly;False;False;0;Hidden/InternalErrorShader;0;0;Standard;0;False;0
-Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;30;1307.217,-167.8989;Float;False;False;-1;2;UnityEditor.ShaderGraphUnlitGUI;0;13;New Amplify Shader;2992e84f91cbeb14eab234972e07ea9d;True;ShadowCaster;0;2;ShadowCaster;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;False;False;False;True;4;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;UniversalMaterialType=Unlit;True;3;True;12;all;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;False;False;True;False;False;False;False;0;False;;False;False;False;False;False;False;False;False;False;True;1;False;;True;3;False;;False;True;1;LightMode=ShadowCaster;False;False;0;Hidden/InternalErrorShader;0;0;Standard;0;False;0
-Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;66;1586.242,-123.8999;Float;False;False;-1;2;UnityEditor.ShaderGraphUnlitGUI;0;13;New Amplify Shader;2992e84f91cbeb14eab234972e07ea9d;True;Universal2D;0;5;Universal2D;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;False;False;False;True;4;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;UniversalMaterialType=Unlit;True;3;True;12;all;0;False;True;1;1;False;;0;False;;0;1;False;;0;False;;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;True;True;True;True;0;False;;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;1;LightMode=Universal2D;False;False;0;;0;0;Standard;0;False;0
-Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;67;1586.242,-123.8999;Float;False;False;-1;2;UnityEditor.ShaderGraphUnlitGUI;0;13;New Amplify Shader;2992e84f91cbeb14eab234972e07ea9d;True;SceneSelectionPass;0;6;SceneSelectionPass;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;False;False;False;True;4;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;UniversalMaterialType=Unlit;True;3;True;12;all;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;2;False;;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;1;LightMode=SceneSelectionPass;False;False;0;;0;0;Standard;0;False;0
-Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;68;1586.242,-123.8999;Float;False;False;-1;2;UnityEditor.ShaderGraphUnlitGUI;0;13;New Amplify Shader;2992e84f91cbeb14eab234972e07ea9d;True;ScenePickingPass;0;7;ScenePickingPass;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;False;False;False;True;4;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;UniversalMaterialType=Unlit;True;3;True;12;all;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;1;LightMode=Picking;False;False;0;;0;0;Standard;0;False;0
-Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;69;1586.242,-123.8999;Float;False;False;-1;2;UnityEditor.ShaderGraphUnlitGUI;0;13;New Amplify Shader;2992e84f91cbeb14eab234972e07ea9d;True;DepthNormals;0;8;DepthNormals;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;False;False;False;True;4;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;UniversalMaterialType=Unlit;True;3;True;12;all;0;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;1;False;;True;3;False;;False;True;1;LightMode=DepthNormalsOnly;False;False;0;;0;0;Standard;0;False;0
-Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;70;1586.242,-123.8999;Float;False;False;-1;2;UnityEditor.ShaderGraphUnlitGUI;0;13;New Amplify Shader;2992e84f91cbeb14eab234972e07ea9d;True;DepthNormalsOnly;0;9;DepthNormalsOnly;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;False;False;False;True;4;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;UniversalMaterialType=Unlit;True;3;True;12;all;0;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;1;False;;True;3;False;;False;True;1;LightMode=DepthNormalsOnly;False;True;9;d3d11;metal;vulkan;xboxone;xboxseries;playstation;ps4;ps5;switch;0;;0;0;Standard;0;False;0
+Node;AmplifyShaderEditor.SaturateNode;51;1168,-224;Inherit;False;1;0;FLOAT4;0,0,0,0;False;1;FLOAT4;0
+Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;28;1307.217,-167.8989;Float;False;False;-1;2;UnityEditor.ShaderGraphUnlitGUI;0;13;New Amplify Shader;2992e84f91cbeb14eab234972e07ea9d;True;ExtraPrePass;0;0;ExtraPrePass;5;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;False;True;3;False;;False;True;4;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;UniversalMaterialType=Unlit;True;3;True;12;all;0;False;True;1;1;False;;0;False;;0;1;False;;0;False;;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;True;True;True;True;0;False;;False;False;False;False;False;False;False;True;False;255;False;;255;False;;255;False;;7;False;;1;False;;1;False;;1;False;;7;False;;1;False;;1;False;;1;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;0;False;False;0;Hidden/InternalErrorShader;0;0;Standard;0;False;0
+Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;32;1307.217,-167.8989;Float;False;False;-1;2;UnityEditor.ShaderGraphUnlitGUI;0;13;New Amplify Shader;2992e84f91cbeb14eab234972e07ea9d;True;Meta;0;4;Meta;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;False;True;3;False;;False;True;4;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;UniversalMaterialType=Unlit;True;3;True;12;all;0;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;2;False;;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;1;LightMode=Meta;False;False;0;Hidden/InternalErrorShader;0;0;Standard;0;False;0
+Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;31;1307.217,-167.8989;Float;False;False;-1;2;UnityEditor.ShaderGraphUnlitGUI;0;13;New Amplify Shader;2992e84f91cbeb14eab234972e07ea9d;True;DepthOnly;0;3;DepthOnly;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;False;True;3;False;;False;True;4;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;UniversalMaterialType=Unlit;True;3;True;12;all;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;False;False;True;False;False;False;False;0;False;;False;False;False;False;False;False;False;False;False;True;1;False;;False;False;True;1;LightMode=DepthOnly;False;False;0;Hidden/InternalErrorShader;0;0;Standard;0;False;0
+Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;30;1307.217,-167.8989;Float;False;False;-1;2;UnityEditor.ShaderGraphUnlitGUI;0;13;New Amplify Shader;2992e84f91cbeb14eab234972e07ea9d;True;ShadowCaster;0;2;ShadowCaster;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;False;True;3;False;;False;True;4;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;UniversalMaterialType=Unlit;True;3;True;12;all;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;False;False;True;False;False;False;False;0;False;;False;False;False;False;False;False;False;False;False;True;1;False;;True;3;False;;False;True;1;LightMode=ShadowCaster;False;False;0;Hidden/InternalErrorShader;0;0;Standard;0;False;0
+Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;66;1586.242,-123.8999;Float;False;False;-1;2;UnityEditor.ShaderGraphUnlitGUI;0;13;New Amplify Shader;2992e84f91cbeb14eab234972e07ea9d;True;Universal2D;0;5;Universal2D;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;False;True;3;False;;False;True;4;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;UniversalMaterialType=Unlit;True;3;True;12;all;0;False;True;1;1;False;;0;False;;0;1;False;;0;False;;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;True;True;True;True;0;False;;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;1;LightMode=Universal2D;False;False;0;;0;0;Standard;0;False;0
+Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;67;1586.242,-123.8999;Float;False;False;-1;2;UnityEditor.ShaderGraphUnlitGUI;0;13;New Amplify Shader;2992e84f91cbeb14eab234972e07ea9d;True;SceneSelectionPass;0;6;SceneSelectionPass;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;False;True;3;False;;False;True;4;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;UniversalMaterialType=Unlit;True;3;True;12;all;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;2;False;;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;1;LightMode=SceneSelectionPass;False;False;0;;0;0;Standard;0;False;0
+Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;68;1586.242,-123.8999;Float;False;False;-1;2;UnityEditor.ShaderGraphUnlitGUI;0;13;New Amplify Shader;2992e84f91cbeb14eab234972e07ea9d;True;ScenePickingPass;0;7;ScenePickingPass;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;False;True;3;False;;False;True;4;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;UniversalMaterialType=Unlit;True;3;True;12;all;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;1;LightMode=Picking;False;False;0;;0;0;Standard;0;False;0
+Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;69;1586.242,-123.8999;Float;False;False;-1;2;UnityEditor.ShaderGraphUnlitGUI;0;13;New Amplify Shader;2992e84f91cbeb14eab234972e07ea9d;True;DepthNormals;0;8;DepthNormals;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;False;True;3;False;;False;True;4;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;UniversalMaterialType=Unlit;True;3;True;12;all;0;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;1;False;;True;3;False;;False;True;1;LightMode=DepthNormalsOnly;False;False;0;;0;0;Standard;0;False;0
+Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;70;1586.242,-123.8999;Float;False;False;-1;2;UnityEditor.ShaderGraphUnlitGUI;0;13;New Amplify Shader;2992e84f91cbeb14eab234972e07ea9d;True;DepthNormalsOnly;0;9;DepthNormalsOnly;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;False;True;3;False;;False;True;4;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;UniversalMaterialType=Unlit;True;3;True;12;all;0;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;1;False;;True;3;False;;False;True;1;LightMode=DepthNormalsOnly;False;True;9;d3d11;metal;vulkan;xboxone;xboxseries;playstation;ps4;ps5;switch;0;;0;0;Standard;0;False;0
+Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;29;1586.242,-173.8999;Float;False;True;-1;2;UnityEditor.ShaderGraphUnlitGUI;0;13;ThunderRoad/VFX/vfx_fake_bloom_additive_flipbook;2992e84f91cbeb14eab234972e07ea9d;True;Forward;0;1;Forward;8;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;False;True;3;False;;False;True;4;RenderPipeline=UniversalPipeline;RenderType=Transparent=RenderType;Queue=Transparent=Queue=0;UniversalMaterialType=Unlit;True;3;True;12;all;0;False;True;5;1;False;;1;False;;1;1;False;;10;False;;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;True;True;True;True;0;False;;False;False;False;False;False;False;False;True;False;255;False;;255;False;;255;False;;7;False;;1;False;;1;False;;1;False;;7;False;;1;False;;1;False;;1;False;;False;True;2;False;;True;3;False;;True;True;0;False;;0;False;;True;1;LightMode=UniversalForward;False;False;4;Custom;#include_with_pragmas "Assets/Plugins/AmplifyShaderEditor/TonemappingGear.cginc";False;;Custom;False;0;0;;Custom;#define TONEMAPPINGELSEWHERE;False;;Custom;False;0;0;;Custom;#include_with_pragmas "Assets/Plugins/AmplifyShaderEditor/UnderWaterFog.cginc";False;;Custom;False;0;0;;Include;;False;;Native;False;0;0;;Hidden/InternalErrorShader;0;0;Standard;21;Surface;1;0;  Blend;2;638954850742440030;Two Sided;1;0;Forward Only;0;0;Cast Shadows;1;638417443614931432;  Use Shadow Threshold;0;0;GPU Instancing;1;0;LOD CrossFade;0;0;Built-in Fog;0;0;Meta Pass;0;0;Extra Pre Pass;0;0;Tessellation;0;0;  Phong;0;0;  Strength;0.5,False,;0;  Type;0;0;  Tess;16,False,;0;  Min;10,False,;0;  Max;25,False,;0;  Edge Length;16,False,;0;  Max Displacement;25,False,;0;Vertex Position,InvertActionOnDeselection;1;0;0;10;False;True;True;True;False;False;True;True;True;False;False;;False;0
 WireConnection;61;13;25;0
 WireConnection;61;4;53;0
 WireConnection;61;5;54;0
@@ -2370,7 +1927,6 @@ WireConnection;40;1;13;0
 WireConnection;8;0;38;0
 WireConnection;8;1;40;0
 WireConnection;74;0;8;0
-WireConnection;51;0;8;0
 WireConnection;64;0;65;0
 WireConnection;63;2;64;0
 WireConnection;72;3;75;0
@@ -2378,7 +1934,7 @@ WireConnection;75;14;8;0
 WireConnection;75;1;71;25
 WireConnection;75;2;71;167
 WireConnection;75;31;74;0
+WireConnection;51;0;8;0
 WireConnection;29;2;72;0
-WireConnection;29;3;75;25
 ASEEND*/
-//CHKSM=922405943172BD99B908C53CAA3F67273BAB1F78
+//CHKSM=DB7AD6D93A3134580C7AE6B803D9564743ADAEF3

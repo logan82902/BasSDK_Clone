@@ -1,46 +1,33 @@
-﻿#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
-using TriInspector;
-#endif
+﻿using TriInspector;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace ThunderRoad.Skill.Spell
 {
+    [DeclareBoxGroup("Push Decapitate", Title = "Push Decapitate")]
+    [DeclareBoxGroup("Effect", Title = "Effect")]
+    [DeclareBoxGroup("Backup Push Force", Title = "Backup Push Force")]
     public class SkillGravityDecapitate : SpellSkillData
     {
-#if ODIN_INSPECTOR
-        [BoxGroup("Push Decapitate")]
-#endif
+        protected static Collider[] colliders = new Collider[200];
+        [Group("Push Decapitate")]
         public float minCharge = 0.95f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Push Decapitate")]
-#endif
+        [Group("Push Decapitate")]
         public LayerMask layerMask;
-#if ODIN_INSPECTOR
-        [BoxGroup("Push Decapitate")]
-#endif
+        [Group("Push Decapitate")]
         public float maxDistance = 0.2f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Push Decapitate")]
-#endif
+        [Group("Push Decapitate")]
         public float pushedPartVelocityMult = 0.4f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Effect"), ValueDropdown(nameof(GetAllEffectID))]
-#endif
+        [Group("Effect")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string effectId = "SpellGravityPushDecapitate";
         protected EffectData effectData;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Backup Push Force")]
-#endif
+        [Group("Backup Push Force")]
         public float pushForce = 3f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Backup Push Force")]
-#endif
+        [Group("Backup Push Force")]
         public ForceMode pushForceMode = ForceMode.VelocityChange;
 
     }

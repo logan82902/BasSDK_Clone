@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
+  "groupPath": "Outpost/Arena",
   "isUnique": true,
   "areaPrefabAddress": "Bas.Area.GL_Arena_xC&C_Chapel",
   "lightingPresetAddress": "Bas.Area.GL_Arena_xC&C_Chapel.LightingPreset",
@@ -102,6 +103,5 @@
       "isZeroIntensity": false,
       "visibleFromGate": true
     }
-  ],
-  "groupPath": "Outpost/Arena"
+  ]
 }

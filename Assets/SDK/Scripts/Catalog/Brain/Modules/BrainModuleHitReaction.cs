@@ -4,70 +4,53 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json;
-
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
+    [System.Serializable]
+    [AutoLabelWidth(AddedWidth = 5f, MinWidth = 0f)]
+    [DeclareBoxGroup("General", Title = "General")]
+    [DeclareBoxGroup("Behaviours", Title = "Behaviours")]
+    [DeclareBoxGroup("Resistances", Title = "Resistances")]
     public class BrainModuleHitReaction : BrainData.Module
     {
-#if ODIN_INSPECTOR
-        [BoxGroup("General")]
-#endif
+        [Group("General")]
         public bool ignoreDamagingCreature = false;
-#if ODIN_INSPECTOR
-        [BoxGroup("General")] 
-#endif
+        [Group("General")]
         public float recoverySpeed = 1f;
-#if ODIN_INSPECTOR
-        [BoxGroup("General")] 
-#endif
+        [Group("General")]
         public float parryRecoilCooldown = 1f;
-#if ODIN_INSPECTOR
-        [BoxGroup("General")] 
-#endif
+        [Group("General")]
         public float waitPhysicDelay = 0.2f;
-#if ODIN_INSPECTOR
-        [BoxGroup("General")] 
-#endif
+        [Group("General")]
         public float speedMultWhileWait = -0.5f;
-#if ODIN_INSPECTOR
-        [BoxGroup("General")] 
-#endif
+        [Group("General")]
         public float staggerLight = 0.2f;
-#if ODIN_INSPECTOR
-        [BoxGroup("General")] 
-#endif
+        [Group("General")]
         public float staggerMedium = 0.6f;
-#if ODIN_INSPECTOR
-        [BoxGroup("General")] 
-#endif
+        [Group("General")]
         public float jumpFootHeightThreshold = 0.1f;
-#if ODIN_INSPECTOR
-        [BoxGroup("General")]
-#endif
+        [Group("General")]
         public string stunAnimationID = "HumanStun";
-#if ODIN_INSPECTOR
-        [BoxGroup("General")] 
-#endif
+        [Group("General")]
         public bool cancelGetUp = true;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Behaviours"), TableList(AlwaysExpanded = true)] 
-#endif
-        public List<PushBehaviour> pushMagicBehaviors = new List<PushBehaviour>();
-#if ODIN_INSPECTOR
-        [BoxGroup("Behaviours"), TableList(AlwaysExpanded = true)] 
-#endif
-        public List<PushBehaviour> pushGrabThrowBehaviors = new List<PushBehaviour>();
-#if ODIN_INSPECTOR
-        [BoxGroup("Behaviours"), TableList(AlwaysExpanded = true)] 
-#endif
-        public List<PushBehaviour> pushHitBehaviors = new List<PushBehaviour>();
+        [Group("Behaviours")]
+        [HideReferencePicker]
+        [SerializeReference]
+        [TableList(AlwaysExpanded = true)]
+        public List<PushBehaviour> pushMagicBehaviors = new();
+        [Group("Behaviours")]
+        [HideReferencePicker]
+        [SerializeReference]
+        [TableList(AlwaysExpanded = true)]
+        public List<PushBehaviour> pushGrabThrowBehaviors = new();
+        [Group("Behaviours")]
+        [HideReferencePicker]
+        [SerializeReference]
+        [TableList(AlwaysExpanded = true)]
+        public List<PushBehaviour> pushHitBehaviors = new();
 
         [NonSerialized]
         public float maxPushMagicBehaviourLevel;
@@ -76,23 +59,42 @@ namespace ThunderRoad
         [NonSerialized]
         public float maxPushHitBehaviourLevel;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Resistances")]
-#endif
+        [Group("Resistances")]
         public bool resistDestabilizeFromMagic;
 
         [Serializable]
         public class PushBehaviour
         {
-#if ODIN_INSPECTOR
-            [TableColumnWidth(50, false)] 
-#endif
+            [HideInInspector]
+            [JsonIgnore]
+            [JsonMergeKey]
+            public string mergeKey
+            {
+                // for the merge key, we want it to be the level + a representation of all different part types in the list
+                // if the list has every body type, it should be -1, which would result in a merge key like "1:-1", which is fine since it's just a string and isn't used anywhere else
+                get
+                {
+                    RagdollPart.Type combinedTypeEnum = 0;
+                    foreach (var type in onlyForBodyParts)
+                    {
+                        combinedTypeEnum |= type;
+                    }
+                    return $"{level}.{combinedTypeEnum}";
+                }
+            }
+
+            [HideInInspector]
+            [JsonIgnore]
+            public int sortKey
+            {
+                // push level is multiplied by 100 so it's the primary sort component, then we add the number of parts to act as a secondary sort component
+                // the parts count should never be greater than 99, but we clamp it just in case something bad happens
+                get => (level * 100) + Mathf.Clamp(onlyForBodyParts.Count, 0, 99);
+            }
+
             public int level;
 
-#if ODIN_INSPECTOR
-            [TableColumnWidth(220, false)] 
-#endif
-            public List<RagdollPart.Type> onlyForBodyParts = new List<RagdollPart.Type>();
+            public List<RagdollPart.Type> onlyForBodyParts = new();
 
             public Effect duringIdle = Effect.Destabilize;
             public Effect duringCombat = Effect.StaggerLight;

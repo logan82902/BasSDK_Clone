@@ -1,13 +1,10 @@
 ﻿using UnityEngine;
-
-#if ODIN_INSPECTOR
-#else
 using TriInspector;
-#endif
 
 namespace ThunderRoad.AI.Action
 {
-	public class ConsoleLog : ActionNode
+    [AutoLabelWidth(AddedWidth = 5f, MinWidth = 0f)]
+    public class ConsoleLog : ActionNode
     {
         public string consoleOutput = "Console log output";
         public State returnValue = State.SUCCESS;

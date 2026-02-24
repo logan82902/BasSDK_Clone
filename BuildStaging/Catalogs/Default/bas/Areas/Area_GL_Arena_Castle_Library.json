@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
+  "groupPath": "Outpost/Arena",
   "isUnique": true,
   "areaPrefabAddress": "Bas.Area.GL_Arena_Castle_Library",
   "lightingPresetAddress": "Bas.Area.GL_Arena_Castle_Library.LightingPreset",
@@ -92,6 +93,5 @@
       "fakeViewAddress": "Bas.Area.GL_Arena_Castle_Library.FakeView.2"
     }
   ],
-  "areaGlobalParameters": [],
-  "groupPath": "Outpost/Arena"
+  "areaGlobalParameters": []
 }

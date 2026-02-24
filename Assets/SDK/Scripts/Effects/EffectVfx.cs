@@ -31,7 +31,6 @@ namespace ThunderRoad
         public float despawnDelay = 0;
         public bool usePointCache = false;
         public bool pointCacheSkinnedMeshUpdate = false;
-        public int pointCacheMapSize = 512;
         public int pointCachePointCount = 4096;
         public int pointCacheSeed = 0;
         public PointCacheGenerator.Distribution pointCacheDistribution = PointCacheGenerator.Distribution.RandomUniformArea;

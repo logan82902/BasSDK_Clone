@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 4,
+  "groupPath": "",
   "localizationId": "PotionHealth",
   "displayName": "Health potion",
   "description": "A wound-healing liquid concoction imbued with magic. Its healing properties are scarcely understood, but it is said that excessive ingestion can drive one mad.",
@@ -14,29 +15,32 @@
   "tier": 2,
   "flags": "None",
   "levelRequired": 0,
+  "type": "Potion",
   "category": "Consumables",
-  "iconEffectId": null,
+  "update": "",
+  "iconEffectId": "",
   "preferredItemCenter": "Mass",
   "drainImbueWhenIdle": true,
+  "forceImbueUseButton": "None",
   "prefabAddress": "Bas.Item.Potion.Health",
   "iconAddress": "Bas.Item.Potion.Health.Icon[PotionHealth]",
-  "closeUpIconAddress": null,
+  "closeUpIconAddress": "",
   "pooledCount": 0,
   "androidPooledCount": 0,
-  "type": "Potion",
   "allowedStorage": "Inventory, Container, SandboxAllItems",
   "despawnOnStoredInInventory": false,
   "isStackable": false,
-  "consumableId": null,
+  "consumableId": "",
   "inventoryAudioContainerAddress": "Bas.AudioGroup.Inventory.Store.Potions",
   "inventoryAudioVolume_dB": 0.0,
   "slot": "Potion",
   "snapAudioContainerAddress": "Bas.AudioGroup.Snap.Default",
   "snapAudioVolume_dB": 0.0,
   "overrideMassAndDrag": true,
-  "mass": 0.1,
+  "mass": 0.75,
   "drag": 1.0,
   "angularDrag": 0.05,
+  "density": 2000.0,
   "focusRegenMultiplier": 1.0,
   "spellChargeSpeedPlayerMultiplier": 1.0,
   "spellChargeSpeedNPCMultiplier": 1.0,
@@ -150,9 +154,32 @@
     "preWrapMode": "ClampForever",
     "postWrapMode": "ClampForever"
   },
+  "colliderGroups": [],
+  "damagers": [
+    {
+      "$type": "ThunderRoad.ItemData+Damager, ThunderRoad",
+      "transformName": "Blunt",
+      "damagerID": "HandleHeavy"
+    }
+  ],
+  "Interactables": [
+    {
+      "$type": "ThunderRoad.ItemData+Interactable, ThunderRoad",
+      "transformName": "Handle",
+      "interactableId": "ObjectHandleProp"
+    },
+    {
+      "$type": "ThunderRoad.ItemData+Interactable, ThunderRoad",
+      "transformName": "Handle2",
+      "interactableId": "ObjectHandleProp"
+    }
+  ],
+  "effectHinges": [],
+  "whooshs": [],
   "modules": [
     {
       "$type": "ThunderRoad.ItemModulePotion, ThunderRoad",
+      "maxLevel": 8.0,
       "contents": [
         {
           "$type": "ThunderRoad.LiquidData+Content, ThunderRoad",
@@ -160,50 +187,16 @@
           "level": 8.0
         }
       ],
-      "maxLevel": 8.0,
       "popCorkOnAltUse": true,
       "corkPopForce": 0.3,
       "corkPopForceMode": "Impulse",
       "collisionLayer": 16385,
-      "healthIndicatorGradient": {
-        "$type": "UnityEngine.Gradient, UnityEngine.CoreModule",
-        "colorKeys": [
-          {
-            "$type": "UnityEngine.GradientColorKey, UnityEngine.CoreModule",
-            "color": {
-              "r": 0.8962264,
-              "g": 0.274283141,
-              "b": 0.190236762,
-              "a": 1.0
-            },
-            "time": 0.0
-          },
-          {
-            "$type": "UnityEngine.GradientColorKey, UnityEngine.CoreModule",
-            "color": {
-              "r": 2.980994,
-              "g": 1.0708425,
-              "b": 0.7452485,
-              "a": 1.0
-            },
-            "time": 0.997055
-          }
-        ],
-        "alphaKeys": [
-          {
-            "$type": "UnityEngine.GradientAlphaKey, UnityEngine.CoreModule",
-            "alpha": 1.0,
-            "time": 0.0
-          },
-          {
-            "$type": "UnityEngine.GradientAlphaKey, UnityEngine.CoreModule",
-            "alpha": 1.0,
-            "time": 1.0
-          }
-        ],
-        "mode": "Blend"
-      },
-      "levelIndicatorGradient": {
+      "flowSpeed": 1.2,
+      "flowMinAngle": 70.0,
+      "flowMaxAngle": 100.0,
+      "effectFlowId": "PotionFlow",
+      "primaryEffectId": "WristMana",
+      "primaryIndicatorGradient": {
         "$type": "UnityEngine.Gradient, UnityEngine.CoreModule",
         "colorKeys": [
           {
@@ -241,12 +234,51 @@
         ],
         "mode": "Blend"
       },
-      "flowSpeed": 1.2,
-      "flowMinAngle": 70.0,
-      "flowMaxAngle": 100.0,
-      "effectFlowId": "PotionFlow",
-      "healthEffectId": "WristHealth",
-      "levelEffectId": "WristMana"
+      "primaryIndicator": {
+        "$type": "ThunderRoad.LiquidData+LevelIndicator, ThunderRoad"
+      },
+      "secondaryEffectId": "WristHealth",
+      "secondaryIndicatorGradient": {
+        "$type": "UnityEngine.Gradient, UnityEngine.CoreModule",
+        "colorKeys": [
+          {
+            "$type": "UnityEngine.GradientColorKey, UnityEngine.CoreModule",
+            "color": {
+              "r": 0.8962264,
+              "g": 0.274283141,
+              "b": 0.190236762,
+              "a": 1.0
+            },
+            "time": 0.0
+          },
+          {
+            "$type": "UnityEngine.GradientColorKey, UnityEngine.CoreModule",
+            "color": {
+              "r": 2.980994,
+              "g": 1.0708425,
+              "b": 0.7452485,
+              "a": 1.0
+            },
+            "time": 0.997055
+          }
+        ],
+        "alphaKeys": [
+          {
+            "$type": "UnityEngine.GradientAlphaKey, UnityEngine.CoreModule",
+            "alpha": 1.0,
+            "time": 0.0
+          },
+          {
+            "$type": "UnityEngine.GradientAlphaKey, UnityEngine.CoreModule",
+            "alpha": 1.0,
+            "time": 1.0
+          }
+        ],
+        "mode": "Blend"
+      },
+      "secondaryIndicator": {
+        "$type": "ThunderRoad.LiquidHealth+PlayerHealthIndicator, ThunderRoad"
+      }
     },
     {
       "$type": "ThunderRoad.ItemModuleStats, ThunderRoad",
@@ -260,28 +292,5 @@
       ]
     }
   ],
-  "colliderGroups": [],
-  "damagers": [
-    {
-      "$type": "ThunderRoad.ItemData+Damager, ThunderRoad",
-      "transformName": "Blunt",
-      "damagerID": "HandleHeavy"
-    }
-  ],
-  "Interactables": [
-    {
-      "$type": "ThunderRoad.ItemData+Interactable, ThunderRoad",
-      "transformName": "Handle",
-      "interactableId": "ObjectHandleProp"
-    },
-    {
-      "$type": "ThunderRoad.ItemData+Interactable, ThunderRoad",
-      "transformName": "Handle2",
-      "interactableId": "ObjectHandleProp"
-    }
-  ],
-  "effectHinges": [],
-  "whooshs": [],
-  "entityModules": [],
-  "groupPath": null
+  "entityModules": []
 }

@@ -7,22 +7,16 @@ namespace ThunderRoad
 {
 	public static class Yielders
     {
-        static Dictionary<float, WaitForSeconds> _timeInterval = new Dictionary<float, WaitForSeconds>(100, new FloatComparer());
-        static Dictionary<float, WaitForSecondsRealtime> _realTimeInterval = new Dictionary<float, WaitForSecondsRealtime>(100, new FloatComparer());
+        private static readonly Dictionary<float, WaitForSeconds> _timeInterval = new(100, new FloatComparer());
+        private static readonly Dictionary<float, WaitForSecondsRealtime> _realTimeInterval = new(100, new FloatComparer());
 
-        static WaitForEndOfFrame _endOfFrame = new WaitForEndOfFrame();
+        private static readonly WaitForEndOfFrame _endOfFrame = new();
 
-        public static WaitForEndOfFrame EndOfFrame
-        {
-            get { return _endOfFrame; }
-        }
+        public static WaitForEndOfFrame EndOfFrame => _endOfFrame;
 
-        static WaitForFixedUpdate _fixedUpdate = new WaitForFixedUpdate();
+        private static readonly WaitForFixedUpdate _fixedUpdate = new();
 
-        public static WaitForFixedUpdate FixedUpdate
-        {
-            get { return _fixedUpdate; }
-        }
+        public static WaitForFixedUpdate FixedUpdate => _fixedUpdate;
 
         public static WaitForSeconds ForSeconds(float seconds)
         {

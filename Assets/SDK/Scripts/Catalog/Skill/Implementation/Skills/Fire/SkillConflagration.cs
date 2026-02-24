@@ -1,32 +1,20 @@
-﻿
-using UnityEngine;
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#endif
+﻿using UnityEngine;
+using TriInspector;
 
 namespace ThunderRoad.Skill.Spell
 {
+    [DeclareBoxGroup("Spread", Title = "Spread")]
     public class SkillConflagration : SpellSkillData
     {
-#if ODIN_INSPECTOR
-        [BoxGroup("Spread")] 
-#endif
+        [Group("Spread")]
         public float radius = 3;
-#if ODIN_INSPECTOR
-        [BoxGroup("Spread")] 
-#endif
+        [Group("Spread")]
         public float heatTransfer = 0.3f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Spread")] 
-#endif
+        [Group("Spread")]
         public float heatTransferToDeadEnemy = 0.1f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Spread")] 
-#endif
+        [Group("Spread")]
         public float heatTransferToCharredEnemy = 0f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Spread")] 
-#endif
+        [Group("Spread")]
         public AnimationCurve rangeCurve = AnimationCurve.Linear(0, 0, 1, 1);
     }
 }

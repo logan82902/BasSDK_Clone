@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
+  "groupPath": null,
   "name": "CrystalHunt",
   "nameLocalizationId": "DungeonCrystalHuntName",
   "description": "-in Text",
@@ -143,80 +144,146 @@
       },
       "minPinsToGeneratePerDay": 3,
       "maxPinsToGeneratePerDay": 5,
+      "shopID": "Shop",
+      "persistentLevels": null,
+      "tutorialDungeonLevelInfo": {
+        "$type": "ThunderRoad.Modules.CrystalHuntLevelInstancesModule+LevelInfo, ThunderRoad",
+        "levelId": "DungeonTutorial",
+        "modeId": "CrystalHunt",
+        "staticEnemyConfigDataId": null,
+        "staticLootConfigDataId": null
+      },
+      "tutorialEnemyConfig": "OutpostEnemyConfigT0",
+      "tutorialLootConfig": "OutpostLootConfigT0",
+      "outpostMapLocationRandomNearest": 5,
+      "outpostDungeonLevelInfo": {
+        "$type": "ThunderRoad.Modules.CrystalHuntLevelInstancesModule+LevelInfo, ThunderRoad",
+        "levelId": "DungeonOutpost",
+        "modeId": "CrystalHunt",
+        "staticEnemyConfigDataId": null,
+        "staticLootConfigDataId": null
+      },
+      "outpostEnemyConfigs": {
+        "$type": "ThunderRoad.Modules.CrystalHuntLevelInstancesModule+EnemyConfigTiers, ThunderRoad",
+        "Tier0": [
+          "OutpostEnemyConfigT0"
+        ],
+        "Tier1": [
+          "OutpostEnemyConfigT1"
+        ],
+        "Tier2": [
+          "OutpostEnemyConfigT2"
+        ],
+        "Tier3": [
+          "OutpostEnemyConfigT3"
+        ]
+      },
+      "outpostLootConfigs": {
+        "$type": "ThunderRoad.Modules.CrystalHuntLevelInstancesModule+LootConfigTiers, ThunderRoad",
+        "Tier0": [
+          "OutpostLootConfigT0"
+        ],
+        "Tier1": [
+          "OutpostLootConfigT1"
+        ],
+        "Tier2": [
+          "OutpostLootConfigT2"
+        ],
+        "Tier3": [
+          "OutpostLootConfigT3"
+        ]
+      },
+      "minNumberOfArenasAllowedPerDay": 1,
+      "maxNumberOfArenasAllowedPerDay": 2,
       "arenasLevelInfo": [
         {
           "$type": "ThunderRoad.Modules.CrystalHuntLevelInstancesModule+LevelInfo, ThunderRoad",
           "levelId": "Arena",
-          "modeId": "WaveAssault"
+          "modeId": "WaveAssault",
+          "staticEnemyConfigDataId": "",
+          "staticLootConfigDataId": ""
         },
         {
           "$type": "ThunderRoad.Modules.CrystalHuntLevelInstancesModule+LevelInfo, ThunderRoad",
           "levelId": "Sanctuary",
-          "modeId": "WaveAssault"
+          "modeId": "WaveAssault",
+          "staticEnemyConfigDataId": null,
+          "staticLootConfigDataId": null
         },
         {
           "$type": "ThunderRoad.Modules.CrystalHuntLevelInstancesModule+LevelInfo, ThunderRoad",
           "levelId": "Canyon",
-          "modeId": "WaveAssault"
+          "modeId": "WaveAssault",
+          "staticEnemyConfigDataId": null,
+          "staticLootConfigDataId": null
         },
         {
           "$type": "ThunderRoad.Modules.CrystalHuntLevelInstancesModule+LevelInfo, ThunderRoad",
           "levelId": "Citadel",
-          "modeId": "WaveAssault"
+          "modeId": "WaveAssault",
+          "staticEnemyConfigDataId": null,
+          "staticLootConfigDataId": null
         },
         {
           "$type": "ThunderRoad.Modules.CrystalHuntLevelInstancesModule+LevelInfo, ThunderRoad",
           "levelId": "Market",
-          "modeId": "WaveAssault"
+          "modeId": "WaveAssault",
+          "staticEnemyConfigDataId": null,
+          "staticLootConfigDataId": null
+        },
+        {
+          "$type": "ThunderRoad.Modules.CrystalHuntLevelInstancesModule+LevelInfo, ThunderRoad",
+          "levelId": "RaktaDojo",
+          "modeId": "WaveAssault",
+          "staticEnemyConfigDataId": "OutpostEnemyConfigRakta",
+          "staticLootConfigDataId": null
+        },
+        {
+          "$type": "ThunderRoad.Modules.CrystalHuntLevelInstancesModule+LevelInfo, ThunderRoad",
+          "levelId": "SentaraShip",
+          "modeId": "WaveAssault",
+          "staticEnemyConfigDataId": "OutpostEnemyConfigSentara",
+          "staticLootConfigDataId": null
         }
       ],
-      "minNumberOfArenasAllowedPerDay": 1,
-      "maxNumberOfArenasAllowedPerDay": 2,
+      "dalgarianMapLocationRandomNearest": 3,
       "dalgarianDungeonLevelInfo": {
         "$type": "ThunderRoad.Modules.CrystalHuntLevelInstancesModule+LevelInfo, ThunderRoad",
         "levelId": "DungeonDalgarian",
-        "modeId": "CrystalHunt"
+        "modeId": "CrystalHunt",
+        "staticEnemyConfigDataId": null,
+        "staticLootConfigDataId": null
       },
-      "dalgarianEnemyConfigs": [
-        "DalgarianEnemyConfigT1",
-        "DalgarianEnemyConfigT1",
-        "DalgarianEnemyConfigT2",
-        "DalgarianEnemyConfigT3"
-      ],
-      "dalgarianLootConfigs": [
-        "DalgarianLootConfigT0",
-        "DalgarianLootConfigT1",
-        "DalgarianLootConfigT2",
-        "DalgarianLootConfigT3"
-      ],
-      "dalgarianMapLocationRandomNearest": 3,
-      "tutorialDungeonLevelInfo": {
-        "$type": "ThunderRoad.Modules.CrystalHuntLevelInstancesModule+LevelInfo, ThunderRoad",
-        "levelId": "DungeonTutorial",
-        "modeId": "CrystalHunt"
+      "dalgarianEnemyConfigs": {
+        "$type": "ThunderRoad.Modules.CrystalHuntLevelInstancesModule+EnemyConfigTiers, ThunderRoad",
+        "Tier0": [
+          "DalgarianEnemyConfigT1"
+        ],
+        "Tier1": [
+          "DalgarianEnemyConfigT1"
+        ],
+        "Tier2": [
+          "DalgarianEnemyConfigT2"
+        ],
+        "Tier3": [
+          "DalgarianEnemyConfigT3"
+        ]
       },
-      "tutorialEnemyConfig": "OutpostEnemyConfigT0",
-      "tutorialLootConfig": "OutpostLootConfigT0",
-      "outpostDungeonLevelInfo": {
-        "$type": "ThunderRoad.Modules.CrystalHuntLevelInstancesModule+LevelInfo, ThunderRoad",
-        "levelId": "DungeonOutpost",
-        "modeId": "CrystalHunt"
+      "dalgarianLootConfigs": {
+        "$type": "ThunderRoad.Modules.CrystalHuntLevelInstancesModule+LootConfigTiers, ThunderRoad",
+        "Tier0": [
+          "DalgarianLootConfigT1"
+        ],
+        "Tier1": [
+          "DalgarianLootConfigT1"
+        ],
+        "Tier2": [
+          "DalgarianLootConfigT2"
+        ],
+        "Tier3": [
+          "DalgarianLootConfigT3"
+        ]
       },
-      "outpostEnemyConfigs": [
-        "OutpostEnemyConfigT0",
-        "OutpostEnemyConfigT1",
-        "OutpostEnemyConfigT2",
-        "OutpostEnemyConfigT3"
-      ],
-      "outpostLootConfigs": [
-        "OutpostLootConfigT0",
-        "OutpostLootConfigT1",
-        "OutpostLootConfigT2",
-        "OutpostLootConfigT3"
-      ],
-      "outpostMapLocationRandomNearest": 5,
-      "shopID": "Shop",
-      "persistentLevels": null,
       "endRewardBalanceAddress": "Bas.Config.CrystalHunt.DungeonEndReward",
       "dungeonLengthBalanceAddress": "Bas.Config.CrystalHunt.DungeonLength",
       "dungeonLootMultiplierBalanceAddress": "Bas.Config.CrystalHunt.DungeonLootMultiplier",
@@ -258,9 +325,6 @@
       "loreAquiredTextGroupId": null,
       "textLoreAquired": "LoreAcquire",
       "loreAquiredText": null,
-      "allLoreSO": null,
-      "loreNotRead": null,
-      "availableLore": null,
       "LoreFoundSfxID": "LoreFound"
     }
   ],
@@ -274,6 +338,7 @@
       "$type": "ThunderRoad.DeathPenaltyOption, ThunderRoad",
       "defaultValue": "None",
       "name": "DeathPenalty",
+      "localizationGroup": "Default",
       "displayName": "DeathPenalty",
       "description": "DeathPenaltyDescription"
     },
@@ -284,6 +349,7 @@
       "defaultValue": 100,
       "stepValue": 20,
       "name": "EnemyDamageMultiplier",
+      "localizationGroup": "Default",
       "displayName": "EnemyDamageMultiplier",
       "description": "EnemyDamageMultiplierDescription"
     },
@@ -294,6 +360,7 @@
       "defaultValue": 100,
       "stepValue": 25,
       "name": "PlayerDamageMultiplier",
+      "localizationGroup": "Default",
       "displayName": "PlayerDamageMultiplier",
       "description": "PlayerDamageMultiplierDescription"
     },
@@ -301,6 +368,7 @@
       "$type": "ThunderRoad.AutoTranslateOption, ThunderRoad",
       "defaultValue": true,
       "name": "AutoDalgTranslate",
+      "localizationGroup": "Default",
       "displayName": "AutoDalgTranslateOption",
       "description": "AutoDalgTranslateDesc"
     },
@@ -308,6 +376,7 @@
       "$type": "ThunderRoad.EnableCheatMenuOption, ThunderRoad",
       "defaultValue": false,
       "name": "CheatMenu",
+      "localizationGroup": "Default",
       "displayName": "Cheats",
       "description": "Cheats"
     }
@@ -441,6 +510,5 @@
   "defaultDifficultyPreset": 1,
   "warningMessageGroupId": "Default",
   "warningMessageTextId": "InstalledModsWarning",
-  "cheatsAllowed": [],
-  "groupPath": null
+  "cheatsAllowed": []
 }

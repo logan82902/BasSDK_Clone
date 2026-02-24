@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
+  "groupPath": null,
   "groupId": "Fire",
   "volumeDb": 0.0,
   "modules": [
@@ -84,6 +85,7 @@
       "collisionMaxIntensity": 1.0,
       "collisionUseMainGradient": false,
       "collisionUseSecondaryGradient": false,
+      "mergeKey": "cd336338",
       "step": "Loop",
       "stepCustomId": null,
       "loopCustomStep": false,
@@ -178,6 +180,7 @@
       "collisionMaxIntensity": 1.0,
       "collisionUseMainGradient": false,
       "collisionUseSecondaryGradient": false,
+      "mergeKey": "790adbe4",
       "step": "End",
       "stepCustomId": null,
       "loopCustomStep": false,
@@ -252,6 +255,7 @@
         "b": 0.0,
         "a": 0.0
       },
+      "mergeKey": "07ba1a2b",
       "step": "Loop",
       "stepCustomId": null,
       "loopCustomStep": false,
@@ -267,37 +271,7 @@
       "colliderGroupFilterLogic": "AnyExcept",
       "colliderGroupsFilter": [],
       "damagersFilterLogic": "AnyExcept",
-      "damagersFilter": [],
-      "intensityCurve": {
-        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
-        "keys": [
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 0.0,
-            "value": 0.0,
-            "inTangent": 0.0,
-            "outTangent": 1.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          },
-          {
-            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
-            "time": 1.0,
-            "value": 1.0,
-            "inTangent": 1.0,
-            "outTangent": 0.0,
-            "inWeight": 0.0,
-            "outWeight": 0.0,
-            "weightedMode": "None",
-            "tangentMode": 0
-          }
-        ],
-        "length": 2,
-        "preWrapMode": "ClampForever",
-        "postWrapMode": "ClampForever"
-      }
+      "damagersFilter": []
     },
     {
       "$type": "ThunderRoad.EffectModuleVfx, ThunderRoad",
@@ -367,7 +341,6 @@
       "scaleCurve": null,
       "usePointCache": false,
       "pointCacheSkinnedMeshUpdate": false,
-      "pointCacheMapSize": 512,
       "pointCachePointCount": 4096,
       "pointCacheSeed": 0,
       "pointCacheDistribution": "RandomUniformArea",
@@ -375,6 +348,7 @@
       "useMesh": false,
       "meshAddress": null,
       "materialProperties": [],
+      "mergeKey": "9fd9f9e9",
       "step": "Loop",
       "stepCustomId": null,
       "loopCustomStep": false,
@@ -392,6 +366,5 @@
       "damagersFilterLogic": "AnyExcept",
       "damagersFilter": []
     }
-  ],
-  "groupPath": null
+  ]
 }

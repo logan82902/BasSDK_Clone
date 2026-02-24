@@ -7,6 +7,7 @@ using UnityEditor.AddressableAssets.Settings;
 
 using UnityEngine;
 
+#pragma warning disable UDR0001 // Domain Reload Analyzer
 namespace ThunderRoad
 {
     public static class WeaponPreviewUtility
@@ -17,6 +18,7 @@ namespace ThunderRoad
         {
             foreach (GameObject weapon in Selection.objects)
             {
+                UnityEditor.SceneManagement.PrefabStage.prefabStageOpened -= OnPrefabStageOpened;
                 UnityEditor.SceneManagement.PrefabStage.prefabStageOpened += OnPrefabStageOpened;
 
                 string prefabPath = AssetDatabase.GetAssetPath(weapon);

@@ -5,11 +5,7 @@ using UnityEngine.AI;
 using UnityEngine.Events;
 using System;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
@@ -42,16 +38,12 @@ namespace ThunderRoad
             RareMelee,
             RareRanged
         }
-        
-#if ODIN_INSPECTOR
-        [ValueDropdown(nameof(GetAllCreatureTableID), AppendNextDrawer = true)]
-        [ShowIf("referenceType", Value = ReferenceType.None)]
-#endif
+
+        [Dropdown(nameof(GetAllCreatureTableID))]
+        [ShowIf("referenceType", ReferenceType.None)]
         public string creatureTableID;
         public ReferenceType referenceType = ReferenceType.EnemyConfig;
-#if ODIN_INSPECTOR
-        [ShowIf("referenceType", Value = ReferenceType.EnemyConfig)]
-#endif
+        [ShowIf("referenceType", ReferenceType.EnemyConfig)]
         public EnemyConfigType enemyConfigType;
         
         [Tooltip("Spawns creatures in faster/immediately, but can break some of them. If your creatures are behaving weirdly, uncheck this box.")]
@@ -62,9 +54,7 @@ namespace ThunderRoad
         public bool spawnOnStart = true;
         [Tooltip("When enabled, creature will respawn when the killed.")]
         public bool respawnOnDeath = false;
-        #if ODIN_INSPECTOR
         [ShowIf(nameof(respawnOnDeath))]
-#endif
         [Tooltip("Sets a delay for the respawn.")]
         public float respawnDelay = 1f;
         [Tooltip("If set to true, if this spawner is called on Level load, it'll delay the end of the loading screen until the creature is done spawning.")]
@@ -81,24 +71,19 @@ namespace ThunderRoad
         [System.Serializable]
         public class CreatureEvent : UnityEvent<UnityEngine.Object> { }
 
-        [System.Serializable]
+        [Serializable]
+        [DeclareBoxGroup("Post-delay checks", Title = "Post-delay checks")]
         public class BrainStateEvent
         {
             public Brain.State triggerState = Brain.State.Combat;
             public float timeDelay = 0f;
             [Tooltip("This should be toggled on if this brain state change event starts a wave")]
             public bool addCreatureTargetShareDelay = false;
-#if ODIN_INSPECTOR
-            [BoxGroup("Post-delay checks")]
-#endif
+            [Group("Post-delay checks")]
             public bool checkAlive = true;
-#if ODIN_INSPECTOR
-            [BoxGroup("Post-delay checks")]
-#endif
+            [Group("Post-delay checks")]
             public bool checkNotMuffled = true;
-#if ODIN_INSPECTOR
-            [BoxGroup("Post-delay checks")]
-#endif
+            [Group("Post-delay checks")]
             public bool checkSameState = true;
             public CreatureEvent onChange;
         }
@@ -114,12 +99,7 @@ namespace ThunderRoad
 
         private CreatureTable currentLoadedData;
 
-#if ODIN_INSPECTOR
-        public List<ValueDropdownItem<string>> GetAllCreatureTableID()
-        {
-            return Catalog.GetDropdownAllID(Category.CreatureTable);
-        }
-#endif
+        public TriDropdownList<string> GetAllCreatureTableID() => Catalog.GetDropdownAllID(Category.CreatureTable);
 
         [Button]
         public void Spawn()

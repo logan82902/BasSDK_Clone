@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 4,
+  "groupPath": null,
   "localizationId": "BirdEgg",
   "displayName": "Bird Egg",
   "description": "A small bird egg. It wont provide much nutrition but the contents are quite delicious.",
@@ -14,16 +15,18 @@
   "tier": 0,
   "flags": "Spinnable",
   "levelRequired": 0,
+  "type": "Food",
   "category": "Consumables",
+  "update": "",
   "iconEffectId": null,
   "preferredItemCenter": "Mass",
   "drainImbueWhenIdle": true,
+  "forceImbueUseButton": "None",
   "prefabAddress": "Bas.Item.Food.BirdEgg",
   "iconAddress": "Bas.Item.Food.BirdEgg.Icon[BirdEgg]",
   "closeUpIconAddress": null,
   "pooledCount": 0,
   "androidPooledCount": 0,
-  "type": "Food",
   "allowedStorage": "Inventory, Container, SandboxAllItems",
   "despawnOnStoredInInventory": false,
   "isStackable": true,
@@ -37,6 +40,7 @@
   "mass": 0.03,
   "drag": 0.3,
   "angularDrag": 0.05,
+  "density": 200.0,
   "focusRegenMultiplier": 1.0,
   "spellChargeSpeedPlayerMultiplier": 1.0,
   "spellChargeSpeedNPCMultiplier": 1.0,
@@ -150,28 +154,6 @@
     "preWrapMode": "ClampForever",
     "postWrapMode": "ClampForever"
   },
-  "modules": [
-    {
-      "$type": "ThunderRoad.ItemModuleEdible, ThunderRoad",
-      "nextStageItemID": "FoodBirdEggEaten",
-      "onConsumeAudioContainerAddress": "",
-      "healthGain": 10.0,
-      "focusGain": 10.0,
-      "consumeTime": 0.0,
-      "transferCustomData": false
-    },
-    {
-      "$type": "ThunderRoad.ItemModuleStats, ThunderRoad",
-      "stats": [
-        {
-          "$type": "ThunderRoad.ItemStatInt, ThunderRoad",
-          "value": 1,
-          "useStarIcons": true,
-          "name": "Healing"
-        }
-      ]
-    }
-  ],
   "colliderGroups": [
     {
       "$type": "ThunderRoad.ItemData+ColliderGroup, ThunderRoad",
@@ -206,6 +188,27 @@
       "dampening": 0.1
     }
   ],
-  "entityModules": [],
-  "groupPath": null
+  "modules": [
+    {
+      "$type": "ThunderRoad.ItemModuleEdible, ThunderRoad",
+      "nextStageItemID": "FoodBirdEggEaten",
+      "onConsumeAudioContainerAddress": "",
+      "healthGain": 10.0,
+      "focusGain": 10.0,
+      "consumeTime": 0.0,
+      "transferCustomData": false
+    },
+    {
+      "$type": "ThunderRoad.ItemModuleStats, ThunderRoad",
+      "stats": [
+        {
+          "$type": "ThunderRoad.ItemStatInt, ThunderRoad",
+          "value": 1,
+          "useStarIcons": true,
+          "name": "Healing"
+        }
+      ]
+    }
+  ],
+  "entityModules": []
 }

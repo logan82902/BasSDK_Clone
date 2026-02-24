@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Diagnostics;
 
 namespace TriInspector
@@ -12,5 +12,7 @@ namespace TriInspector
         public bool HideRemoveButton { get; set; }
         public bool AlwaysExpanded { get; set; }
         public bool ShowElementLabels { get; set; }
+        public bool DontForceInline { get; set; }
+        public int ItemsPerPage { get; set; } = 0;
     }
 }

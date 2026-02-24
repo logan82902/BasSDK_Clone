@@ -25,7 +25,7 @@ namespace ThunderRoad
         public static TextureImporterFormat defaultAndroidLightmapColorFormat = TextureImporterFormat.ASTC_HDR_4x4;
 
         // Use RGB 16 Bit to avoid white artifacts when baking on GPU
-        public static TextureImporterFormat defaultLightmapDirectionalFormat = TextureImporterFormat.DXT1;
+        public static TextureImporterFormat defaultLightmapDirectionalFormat = TextureImporterFormat.BC6H;
 
         static bool stopBakeIfCPU;
         static EditorCoroutine coroutine;
@@ -61,6 +61,7 @@ namespace ThunderRoad
             Lightmapping.bakeStarted += OnBakeStarted;
             Lightmapping.bakeCompleted += OnBakeCompleted;
         }
+
 
         public static void SetEditorContributeGI(MeshRenderer meshRenderer, bool active)
         {

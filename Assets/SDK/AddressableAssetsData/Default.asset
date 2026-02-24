@@ -17,8 +17,239 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: de43681218a0fc2409e418a9cf3027e3
   m_SerializeEntries:
+  - m_GUID: 4edad2ce240bd16499bb4ee19a64bc0d
+    m_Address: Bas.Config.CrystalHunt.DungeonLength
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 15a86771c9a3921409e6d35b36f9b152
+    m_Address: Bas.Config.CrystalHunt.DungeonEndReward
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c90f7252e6bb3c64fafced2ac4025853
+    m_Address: Bas.Config.CrystalHunt.DungeonDalgarianFactionTiers
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f5e50aaf8e565df4ca6e9b9f0f232d3b
+    m_Address: Assets/Core/Config/CrystalHunt/AutoBalance.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 6fc1637a5d8cce44caedd6c787f20ef0
     m_Address: ThunderRoad.Settings
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4b394fda5ca49d14389259fc2bcdf09f
+    m_Address: Bas.Material.Debug.Unlit
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3a816751d3ea0d548b04a4c365ced07b
+    m_Address: Bas.Core.DebugConsole
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c77f3764ffac5d14ba8f9b069476c088
+    m_Address: Bas.Core.EndGameMenu
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e9328c89d0cd13e4a9cddeec9324d8ef
+    m_Address: Bas.Core.Keyboard
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5bd6ba36bef0fcf4597acf0bd249ea41
+    m_Address: Bas.Core.KeyboardNumpad
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5d687c0c88ca6494aae84f150da24b3e
+    m_Address: Bas.Core.NoteRenderer
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 17c6b7cd7b53bf84a9149a19098b69fd
+    m_Address: Bas.Core.CrystalHuntLore.Wildfolks
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b99d89c427f30954e83008fe121ec449
+    m_Address: Bas.Core.CrystalHuntLore.TheEye
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 27c8fbac2836ffa4eaff20a4bcf2a40a
+    m_Address: Bas.Core.CrystalHuntLore.Outlaw
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: de0bc9d980469e9479301680b70172da
+    m_Address: Bas.Core.CrystalHuntLore.Eraden
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8cf9e6982688ecf4bb52da50b6559b19
+    m_Address: Bas.Core.CrystalHuntLore.DalgarianPreservationSociety
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6d916e5d31ca1e942b39f5aba57a5c09
+    m_Address: Bas.Core.CrystalHuntLore.Dalgarian
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 20ef4960770e5c940bfb3268c6610332
+    m_Address: Bas.Core.CrystalHuntLore.Byeth
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 08a133b6f54630641820704cf1537fe6
+    m_Address: Bas.Config.CrystalHunt.DungeonType
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3e2d77e4b89e71749a3be56600ad11dd
+    m_Address: Bas.Config.CrystalHunt.DungeonOutpostFactionTiers
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e34bf3a4a08e7614297bcacf5a8ca778
+    m_Address: Bas.Config.CrystalHunt.DungeonLootMultiplier
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b8bebcea5189c2b498e2f1f66046ec14
+    m_Address: Bas.Item.Misc.Foot
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 65ebd5ab13cf7bf4799a8fd9e16bf8a0
+    m_Address: Bas.Item.Misc.Projectile
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c3f63b5556ba094489b04a88fa577c41
+    m_Address: Bas.Material.UI.Gamepad
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 996a20016cfde3a4ca5bfd8749ee9daf
+    m_Address: Bas.Menu.Leave
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 207ec60a33ddad640ae93a92bebb8dbd
+    m_Address: Bas.Menu.Mods
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ea913d8625332e7459de9d2e22ef1c7c
+    m_Address: Bas.Menu.Options
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 58a15fb82e0452f40abf72318a17fb9b
+    m_Address: Bas.Menu.Sandbox
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3e7ceaad016e2b44ea341850ad1f6b64
+    m_Address: Bas.Mixer.Game
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 438f312474426304387f1d2c5a56e58a
+    m_Address: Bas.Ui.LoadingBar
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f90ee29e1325cad40ad94fc2a51c4929
+    m_Address: Ui.Highlighter
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6264f4c4f94c85345bf23095ca25ef62
+    m_Address: Ui.LoadingBar
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 38892a317f87dd74cb009e82803c41a9
+    m_Address: Ui.OptionsMenu
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 14533f1d5d36cc441ae33c1e728f87d4
+    m_Address: Ui.Pointer
     m_ReadOnly: 0
     m_SerializedLabels:
     - Windows
@@ -30,6 +261,235 @@ MonoBehaviour:
     m_SerializedLabels:
     - Windows
     - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 63c192840e439664a8fbe696df7e002b
+    m_Address: Bas.Core.UIMessage
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d871ced634aa8264582b9c6c382b3e4e
+    m_Address: Achievements/BirdNest
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - achievement
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 927ca72a82c0a354d9e083aac6e5eab4
+    m_Address: Achievements/AnnihilationEnding
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - achievement
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0090ee89692b2f14da6d4a4d54a6ca01
+    m_Address: Achievements/BuyAllSkills
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - achievement
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8ed45dba50bf52f43a9a32779f264b1e
+    m_Address: Achievements/BuyAllSkillsInTree
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - achievement
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 67a4d585aed353940a9f1a527a5c75ba
+    m_Address: Achievements/BuyAllTier4Weapons
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - achievement
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c509dd5e9b4cd7e40b62f559133e942e
+    m_Address: Achievements/BuyT4Weapon
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - achievement
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ec16b1992abe40a4b8cc7943fc47e9ce
+    m_Address: Achievements/CitadelPeak
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - achievement
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 29dc0c833b1ad474b9d9598cec412502
+    m_Address: Achievements/CitadelSkyCell
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - achievement
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1142553a83b862c438b1a02867725387
+    m_Address: Achievements/CitadelTunnels
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - achievement
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e38a9e2a170c8a84396e961564a84836
+    m_Address: Achievements/ClimbingChasm
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - achievement
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 962e0109a6a98ce49a4177ffd5ca7d9a
+    m_Address: Achievements/CollectAllShopLore
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - achievement
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6981e55bba1b2164aacc9e6fc0e3a2f6
+    m_Address: Achievements/CompleteAllAchievements
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - achievement
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9144d7ca5846e434cb634b4d6470b815
+    m_Address: Achievements/CompleteDalgarian
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - achievement
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1491cef5e978578439d4765d71c8373c
+    m_Address: Achievements/CompleteSurvivalWaves10
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - achievement
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5a4be8f3dffe5654bb4708b580dd1c93
+    m_Address: Achievements/CompleteSurvivalWaves50
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - achievement
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a5578088a9e427b48a0cfd2727fdac3e
+    m_Address: Achievements/CompleteTutorial
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - achievement
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 987c7213b7d10354ba62fd72e4907b26
+    m_Address: Achievements/DrainageLever
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - achievement
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6601443250151054399756a6efa8f33c
+    m_Address: Achievements/EatPoo
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - achievement
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: efcbc05abea41cf40a4860a8d4e5c168
+    m_Address: Achievements/FindBaguetteSword
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - achievement
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 336bee3361a270443bb235440ca8499c
+    m_Address: Achievements/FindBaronHat
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - achievement
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: eda59a0a55a929149b04daf3bdc6feab
+    m_Address: Achievements/FindCarl
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - achievement
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e9b523a7c8809fb4b964bd21e6bd5c69
+    m_Address: Achievements/FindChicken
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - achievement
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2b0c8bee03989ee4cb9fbdac4386e79f
+    m_Address: Achievements/FindCupbending
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - achievement
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5a3691278295f9242b658059b3d6aab4
+    m_Address: Achievements/FindFalchion
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - achievement
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ce4f93050fb3ccb41af1084ebdcc92ea
+    m_Address: Achievements/FindPoo
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - achievement
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fa9acb675816e214a86f6dd1948d5196
+    m_Address: Achievements/FullTier3Apparel
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - achievement
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 56a8cd68b76fb9744b6a7ff71442c8bc
+    m_Address: Achievements/KhemenetEnding
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - achievement
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c8b23236f8125894793fc76bb5f11869
+    m_Address: Achievements/KillShopKeeper
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - achievement
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ba7c2de6f72a4d14cb6d0a071bd7aacc
+    m_Address: Achievements/MarketWell
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - achievement
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4aeb14d25ad1ef94cbd024b4e1f9716f
+    m_Address: Achievements/MergeCrystalsFirst
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - achievement
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f01c8a4469a9c984ab6cae102f6497da
+    m_Address: Achievements/MergeCrystalsT3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - achievement
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a6c1fbed3edd1214d9a933ae75aa68ce
+    m_Address: Achievements/NoKillDungeon
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - achievement
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 13d809d7385bc8e479be4f162669dbd0
+    m_Address: Achievements/OutpostWatchtowerWell
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - achievement
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1e9b269b199db3e498e65d42c2ac4476
+    m_Address: Achievements/PermadeathCompletion
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - achievement
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 53001069ace3b7c4cb855a0ba50b6d73
+    m_Address: Achievements/SanctuaryChandelier
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - achievement
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3403726bdcc43664db190581eefce992
+    m_Address: Achievements/T3DungeonT0Equipment
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - achievement
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 450850a0a1882f649b434d9575372c15
+    m_Address: Achievements/WaterfallLever
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - achievement
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: b14c4d9d8b63f3247be008fe8b53d3ae, type: 2}

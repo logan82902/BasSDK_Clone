@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
+  "groupPath": "Dalgarian/XSTransi",
   "isUnique": true,
   "areaPrefabAddress": "Bas.Area.DA_XSTransi_WaterCisturn",
   "lightingPresetAddress": "Bas.Area.DA_XSTransi_WaterCisturn.LightingPreset",
@@ -124,6 +125,5 @@
       "fakeViewAddress": "Bas.Area.DA_XSTransi_WaterCisturn.FakeView.3"
     }
   ],
-  "areaGlobalParameters": [],
-  "groupPath": "Dalgarian/XSTransi"
+  "areaGlobalParameters": []
 }

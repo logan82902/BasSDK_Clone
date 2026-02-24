@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
+  "groupPath": "Dalgarian/Transi",
   "isUnique": true,
   "areaPrefabAddress": "Bas.Area.DA_Transi_CollapsedCliff",
   "lightingPresetAddress": "Bas.Area.DA_Transi_CollapsedCliff.LightingPreset",
@@ -86,6 +87,5 @@
       "isZeroIntensity": false,
       "visibleFromGate": true
     }
-  ],
-  "groupPath": "Dalgarian/Transi"
+  ]
 }

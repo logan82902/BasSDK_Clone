@@ -94,13 +94,13 @@
   },
   "waterFluidData": {
     "$type": "ThunderRoad.DragArea+Fluid, ThunderRoad",
-    "density": 750.0,
+    "density": 1000.0,
     "flow": {
       "x": 0.0,
       "y": 0.0,
       "z": 0.0
     },
-    "MassDensity": 750.0
+    "MassDensity": 1000.0
   },
   "spellWheelEffectId": "SpellOrbCenter",
   "SpellWheelOpenHandPoseId": "SpellSelClose",
@@ -571,6 +571,54 @@
       "name": "Breakable",
       "group": "Equipment",
       "iconAddress": "Bas.Icon.props[ui_ItemProps]"
+    },
+    {
+      "$type": "ThunderRoad.GameData+Category, ThunderRoad",
+      "name": "Rakta Weapons",
+      "group": "Weapons",
+      "iconAddress": "Bas.Icon.Rakta[ui_Rakta]"
+    },
+    {
+      "$type": "ThunderRoad.GameData+Category, ThunderRoad",
+      "name": "Rakta Armor",
+      "group": "Apparels",
+      "iconAddress": "Bas.Icon.Rakta[ui_Rakta]"
+    },
+    {
+      "$type": "ThunderRoad.GameData+Category, ThunderRoad",
+      "name": "Sentara Weapons",
+      "group": "Weapons",
+      "iconAddress": "Bas.Icon.Sentara[ui_Sentari]"
+    },
+    {
+      "$type": "ThunderRoad.GameData+Category, ThunderRoad",
+      "name": "Sentara Armor",
+      "group": "Apparels",
+      "iconAddress": "Bas.Icon.Sentara[ui_Sentari]"
+    },
+    {
+      "$type": "ThunderRoad.GameData+Category, ThunderRoad",
+      "name": "Khar-Tib Weapons",
+      "group": "Weapons",
+      "iconAddress": "Bas.Icon.KharTib[ui_KharTib]"
+    },
+    {
+      "$type": "ThunderRoad.GameData+Category, ThunderRoad",
+      "name": "Khar-Tib Armor",
+      "group": "Apparels",
+      "iconAddress": "Bas.Icon.KharTib[ui_KharTib]"
+    },
+    {
+      "$type": "ThunderRoad.GameData+Category, ThunderRoad",
+      "name": "Madene Weapons",
+      "group": "Weapons",
+      "iconAddress": "Bas.Icon.Madlu[ui_Maldu]"
+    },
+    {
+      "$type": "ThunderRoad.GameData+Category, ThunderRoad",
+      "name": "Madene Armor",
+      "group": "Apparels",
+      "iconAddress": "Bas.Icon.Madlu[ui_Maldu]"
     }
   ],
   "holderSlots": [

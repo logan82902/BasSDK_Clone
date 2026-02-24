@@ -10,8 +10,10 @@
   "sceneAddress": "Bas.Level.Test",
   "showOnlyDevMode": false,
   "showInLevelSelection": false,
-  "savePlayerInventoryOnUnload": false,
   "worldmapPrefabAddress": "Bas.Image.Map.Test",
+  "worldmapTextureAddress": "Bas.Worldmap.Eraden",
+  "worldmapLabel": null,
+  "worldMapTravelAudioContainerAddress": "Bas.AudioGroup.UI.LightClick",
   "mapLocationIndex": 0,
   "showOnMap": true,
   "hideOnAndroid": false,
@@ -28,9 +30,7 @@
         "Sandbox"
       ],
       "mapOrder": 0,
-      "difficultyMultipliers": [],
-      "playerCanDie": true,
-      "deathLossAddress": "Bas.Loss.Death",
+      "playerDeathAction": "AskReload",
       "modules": [
         {
           "$type": "ThunderRoad.LevelModuleCleaner, ThunderRoad",
@@ -100,5 +100,6 @@
     }
   ],
   "throwableRefType": "Item",
-  "improvisedThrowableID": null
+  "improvisedThrowableID": null,
+  "groupPath": null
 }

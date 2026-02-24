@@ -4,31 +4,28 @@ using UnityEngine;
 using System.Linq;
 using Newtonsoft.Json;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
-	[Serializable]
+    [Serializable]
+#if UNITY_EDITOR
+    [EditorLoadPriority(-5)]
+#endif
+    [DeclareBoxGroup("General", Title = "General")]
+    [DeclareBoxGroup("Generation test", Title = "Generation test")]
+    [DeclareBoxGroup("Population test", Title = "Population test")]
     public class CreatureTable : CatalogData
     {
-#if ODIN_INSPECTOR
-        [BoxGroup("General")] 
-#endif
+        [Group("General")]
         [Multiline]
         public string description;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("General")] 
-#endif
+        [Group("General")]
         public bool linkedToGenderRatio;
 
-#if ODIN_INSPECTOR
-        [TableList(AlwaysExpanded = true)] 
-#endif
+        [HideReferencePicker]
+        [TableList(AlwaysExpanded = true)]
         public List<Drop> drops;
 
 
@@ -50,87 +47,103 @@ namespace ThunderRoad
         }
 
         [Serializable]
+        [DeclareHorizontalGroup("Reference")]
+        [DeclareHorizontalGroup("Override Faction", Sizes = new float[] { 15f, 0f})]
+        [DeclareHorizontalGroup("Override Container", Sizes = new float[] { 15f, 0f })]
+        [DeclareHorizontalGroup("Override Brain", Sizes = new float[] { 15f, 0f })]
+        [DeclareHorizontalGroup("Override Ethnicity", Sizes = new float[] { 15f, 0f })]
+        [DeclareHorizontalGroup("Probability Weights")]
         public class Drop
         {
-#if ODIN_INSPECTOR
-            [HorizontalGroup("Reference"), EnumToggleButtons, HideLabel] 
-#endif
+            [JsonMergeKey(MergeKeyValueProvider = nameof(GetMergeKey))]
+            [HideInInspector]
+            public string mergeKey = "";
+
+            [Group("Reference")]
+            [HideLabel]
+            [EnumToggleButtons]
             public Reference reference = Reference.Creature;
 
-#if ODIN_INSPECTOR
-            [ValueDropdown(nameof(GetAllCreatureOrTableID))] 
-#endif
+            [Group("Reference")]
+            [LabelText("ID")]
+            [LabelWidth(20f)]
+            [Dropdown(nameof(GetAllCreatureOrTableID))]
             public string referenceID;
 
-            // For compatibility (to remove)
-            [JsonIgnore, HideInInspector]
-            public string creatureID;
-
-            // For compatibility (to remove)
-            [JsonIgnore, HideInInspector]
-            public string creatureTableID;
-
-#if ODIN_INSPECTOR
-            [HorizontalGroup("Override Faction")]
-            [HideLabel] 
-#endif
+            [Group("Override Faction")]
+            [HideLabel]
             public bool overrideFaction;
 
-#if ODIN_INSPECTOR
-            [HorizontalGroup("Override Faction")]
-            [ShowIf("overrideFaction", true), ValueDropdown(nameof(GetAllFactionID)), HideLabel] 
-#endif
+            [Group("Override Faction")]
+            [ShowIf("overrideFaction", true)]
+            [Dropdown(nameof(GetAllFactionID), Searchable = false)]
+            [HideLabel]
             public int factionID = 0;
 
-#if ODIN_INSPECTOR
-            [HorizontalGroup("Override Container"), HideLabel] 
-#endif
+            [Group("Override Container")]
+            [HideLabel]
             public bool overrideContainer;
 
-#if ODIN_INSPECTOR
-            [HorizontalGroup("Override Container"), ShowIf("overrideContainer", true), ValueDropdown(nameof(GetAllContainerID)), HideLabel] 
-#endif
+            [Group("Override Container")]
+            [ShowIf("overrideContainer", true)]
+            [Dropdown(nameof(GetAllContainerID))]
+            [HideLabel]
             public string overrideContainerID;
 
-#if ODIN_INSPECTOR
-            [HorizontalGroup("Override Brain"), HideLabel] 
-#endif
+            [Group("Override Brain")]
+            [HideLabel]
             public bool overrideBrain;
 
-#if ODIN_INSPECTOR
-            [HorizontalGroup("Override Brain"), ShowIf("overrideBrain", true), ValueDropdown(nameof(GetAllBrainID)), HideLabel] 
-#endif
+            [Group("Override Brain")]
+            [ShowIf("overrideBrain", true)]
+            [Dropdown(nameof(GetAllBrainID))]
+            [HideLabel]
             public string overrideBrainID;
 
-#if ODIN_INSPECTOR
-            [HorizontalGroup("Override Ethnicity"), HideLabel] 
-#endif
+            [Group("Override Ethnicity")]
+            [OnValueChanged(nameof(SetEthnicityDefault))]
+            [HideLabel]
             public bool overrideEthnicity;
 
-#if ODIN_INSPECTOR
-            [HorizontalGroup("Override Ethnicity"), ShowIf("overrideEthnicity", true), ValueDropdown(nameof(GetAllEthnicityID)), HideLabel] 
-#endif
+            [Group("Override Ethnicity")]
+            [ShowIf("overrideEthnicity", true)]
+            [Dropdown(nameof(GetAllEthnicityID), Searchable = false)]
+            [HideLabel]
             public string overrideEthnicityID;
 
-            
-#if ODIN_INSPECTOR
-            [HorizontalGroup("Probability Weights"), HideLabel, ShowInInspector, OnValueChanged(nameof(EditorCalculateWeight)), PropertyOrder(0)]
-#endif
+
+            [Group("Probability Weights")]
+            [HideLabel]
+            [ShowInInspector]
+            [OnValueChanged(nameof(EditorCalculateWeight))]
             public float probabilityWeight;
 
-#if ODIN_INSPECTOR
-            [ShowInInspector, ReadOnly, ProgressBar(0, 100), PropertyOrder(1)] 
-#endif
+            [Group("Probability Weights")]
+            [ShowInInspector]
+            [ReadOnly]
             [NonSerialized]
+            [LabelText("%")]
+            [LabelWidth(15f)]
             public float probabilityPercent;
             [NonSerialized]
             public float probabilityRangeFrom;
             [NonSerialized]
             public float probabilityRangeTo;
 
+            public static string GetMergeKey()
+            {
+                return Guid.NewGuid().ToString().Substring(0, 8);
+            }
 
-#if ODIN_INSPECTOR
-            public List<ValueDropdownItem<string>> GetAllCreatureOrTableID()
+            public void SetEthnicityDefault()
+            {
+                if (overrideEthnicityID.IsNullOrEmptyOrWhitespace())
+                {
+                    overrideEthnicityID = GetAllEthnicityID()[0].Value;
+                }
+            }
+
+            public TriDropdownList<string> GetAllCreatureOrTableID()
             {
                 if (reference == Reference.Creature)
                 {
@@ -142,32 +155,22 @@ namespace ThunderRoad
                 }
             }
 
-            public List<ValueDropdownItem<string>> GetAllContainerID()
-            {
-                return Catalog.GetDropdownAllID(Category.Container);
-            }
+            public TriDropdownList<string> GetAllContainerID() => Catalog.GetDropdownAllID(Category.Container);
 
-            public List<ValueDropdownItem<string>> GetAllBrainID()
-            {
-                return Catalog.GetDropdownAllID(Category.Brain);
-            }
+            public TriDropdownList<string> GetAllBrainID() => Catalog.GetDropdownAllID(Category.Brain);
 
-            public List<ValueDropdownItem<string>> GetAllEthnicityID()
+            public TriDropdownList<string> GetAllEthnicityID()
             {
                 //hardcode a list of IDs for now
-                List<ValueDropdownItem<string>> list = new List<ValueDropdownItem<string>>();
-                list.Add(new ValueDropdownItem<string>("Eradian", "Eradian"));
-                list.Add(new ValueDropdownItem<string>("Madene", "Madene"));
-                list.Add(new ValueDropdownItem<string>("Sentari", "Sentari"));
-                list.Add(new ValueDropdownItem<string>("Kharese", "Kharese"));
-                list.Add(new ValueDropdownItem<string>("Raike", "Raike"));
+                TriDropdownList<string> list = new();
+                list.Add("Eradian", "Eradian");
+                list.Add("Madene", "Madene");
+                list.Add("Sentari", "Sentari");
+                list.Add("Kharese", "Kharese");
+                list.Add("Raike", "Raike");
                 return list;
             }
-            public List<ValueDropdownItem<int>> GetAllFactionID()
-            {
-                return Catalog.gameData.GetFactions();
-            } 
-#endif
+            public TriDropdownList<int> GetAllFactionID() => Catalog.gameData.GetFactions();
 
             public enum Reference
             {
@@ -194,24 +197,17 @@ namespace ThunderRoad
                         return new int[] { Catalog.GetData<CreatureData>(referenceID)?.factionId ?? 0 };
                     }
                 }
-
             }
 
             public void OnCatalogRefresh()
             {
-                if (!string.IsNullOrEmpty(referenceID)) return;
-                switch (reference)
+                if (mergeKey.IsNullOrEmptyOrWhitespace())
                 {
-                    case Reference.Creature:
-                        referenceID = creatureID;
-                        break;
-                    case Reference.Table:
-                        referenceID = creatureTableID;
-                        break;
+                    mergeKey = GetMergeKey();
                 }
+                if (!string.IsNullOrEmpty(referenceID)) return;
             }
 
-#if UNITY_EDITOR && ODIN_INSPECTOR
             public void EditorCalculateWeight()
             {
                 foreach (CreatureTable creatureTable in Catalog.GetDataList(Category.CreatureTable))
@@ -219,7 +215,6 @@ namespace ThunderRoad
                     creatureTable.EditorCalculateWeight();
                 }
             }
-#endif
 
             public Drop Clone()
             {

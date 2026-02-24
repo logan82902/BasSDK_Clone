@@ -5,11 +5,8 @@ using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.XR;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
@@ -91,6 +88,7 @@ namespace ThunderRoad
             Right,
         }
 
+
         void OnValidate()
         {
 #if UNITY_EDITOR
@@ -98,6 +96,10 @@ namespace ThunderRoad
 #endif
             if (!gameObject.activeInHierarchy)
                 return;
+        }
+
+        private void OnDestroy()
+        {
         }
 
         [Button]

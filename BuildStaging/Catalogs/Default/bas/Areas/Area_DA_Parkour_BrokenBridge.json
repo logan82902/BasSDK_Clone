@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
+  "groupPath": "Dalgarian/Parkour",
   "isUnique": true,
   "areaPrefabAddress": "Bas.Area.DA_Parkour_BrokenBridge",
   "lightingPresetAddress": "Bas.Area.DA_Parkour_BrokenBridge.LightingPreset",
@@ -76,6 +77,5 @@
       "fakeViewAddress": "Bas.Area.DA_Parkour_BrokenBridge.FakeView.1"
     }
   ],
-  "areaGlobalParameters": [],
-  "groupPath": "Dalgarian/Parkour"
+  "areaGlobalParameters": []
 }

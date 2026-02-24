@@ -1,9 +1,9 @@
-﻿#if ODIN_INSPECTOR
-#else
-using TriInspector;
-#endif
+﻿using TriInspector;
+using UnityEngine;
 
 namespace ThunderRoad
 {
-    public class IntOptionData : ModOptionData<int> { }
+    public class IntOptionData : ModOptionData<int>
+    {
+    }
 }

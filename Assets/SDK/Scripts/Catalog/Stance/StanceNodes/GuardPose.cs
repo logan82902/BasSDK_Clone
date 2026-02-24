@@ -1,20 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
     [System.Serializable]
     public class GuardPose : StanceNode
     {
-#if ODIN_INSPECTOR
-        [ValueDropdown(nameof(GetRiposteOptions)), ListDrawerSettings(Expanded = true), FoldoutGroup("$prettifiedID")]
-#endif
+        [DropdownList(nameof(GetRiposteOptions), Searchable = false)]
+        [Group("StanceNode")]
+        [ListDrawerSettings(AlwaysExpanded = true)]
         public List<string> riposteOptions;
 
         [NonSerialized]
@@ -22,20 +18,18 @@ namespace ThunderRoad
 
         public override bool customID => false;
 
-#if ODIN_INSPECTOR
-        public List<ValueDropdownItem<string>> GetRiposteOptions()
+        public TriDropdownList<string> GetRiposteOptions()
         {
-            List<ValueDropdownItem<string>> options = new List<ValueDropdownItem<string>>();
+            TriDropdownList<string> options = new();
             if (stanceData is MeleeStanceData meleeStanceData)
             {
                 for (int i = 0; i < meleeStanceData.ripostes.Count; i++)
                 {
-                    options.Add(new ValueDropdownItem<string>(meleeStanceData.ripostes[i].id, meleeStanceData.ripostes[i].id));
+                    options.Add(meleeStanceData.ripostes[i].id, meleeStanceData.ripostes[i].id);
                 }
             }
             return options;
         }
-#endif
 
     }
 }

@@ -25,5 +25,6 @@ namespace ThunderRoad
             transitionEndTime = Time.unscaledTime + timeTransition;
 #endif
         }
+
     }
 }

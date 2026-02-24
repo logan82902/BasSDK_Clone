@@ -1,19 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
 
 namespace ThunderRoad.AI.Decorator
 {
-	public class IfCondition : DecoratorNode
+    [AutoLabelWidth(AddedWidth = 5f)]
+    [DeclareVerticalGroup("Vertical")]
+    [DeclareBoxGroup("Vertical/Conditions", Title = "Conditions")]
+    [DeclareHorizontalGroup("Vertical/Conditions/Horiz")]
+    public class IfCondition : DecoratorNode
     {
-#if ODIN_INSPECTOR
-        [PropertyOrder(0)] 
-#endif
+        [Group("Vertical/Conditions")]
+        [PropertyOrder(0)]
         public Operation operation = Operation.AND;
 
         public enum Operation
@@ -22,14 +20,18 @@ namespace ThunderRoad.AI.Decorator
             OR,
         }
 
-#if ODIN_INSPECTOR
-        [ListDrawerSettings(Expanded = true), PropertyOrder(0)] 
-#endif
-        public List<ConditionNode> ifConditions = new List<ConditionNode>();
-#if ODIN_INSPECTOR
-        [ListDrawerSettings(Expanded = true), PropertyOrder(0)] 
-#endif
-        public List<ConditionNode> ifNotConditions = new List<ConditionNode>();
+        [ShowInInspector]
+        [PropertyOrder(1)]
+        [Group("Vertical/Conditions/Horiz")]
+        [ListDrawerSettings(DontForceInline = true, AlwaysExpanded = true)]
+        public List<ConditionNode> ifConditions = new();
+        [ShowInInspector]
+        [PropertyOrder(2)]
+        [Group("Vertical/Conditions/Horiz")]
+        [ListDrawerSettings(DontForceInline = true, AlwaysExpanded = true)]
+        public List<ConditionNode> ifNotConditions = new();
+
+        public IfCondition() : base() { }
 
     }
 }

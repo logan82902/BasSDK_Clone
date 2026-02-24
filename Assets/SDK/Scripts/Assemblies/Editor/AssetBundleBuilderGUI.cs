@@ -6,10 +6,12 @@ using UnityEditor.AddressableAssets.Settings.GroupSchemas;
 using System.IO;
 using System.Collections.Generic;
 using System;
+using Ionic.Zip;
 using Newtonsoft.Json;
 using UnityEditor.SceneManagement;
 using UnityEngine.SceneManagement;
 
+#pragma warning disable UDR0001 // Domain Reload Analyzer
 namespace ThunderRoad
 {
     public class AssetBundleBuilderGUI : EditorWindow
@@ -102,6 +104,22 @@ namespace ThunderRoad
             }
             EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
             GUILayout.Space(5);
+            // Header row
+            int buildCol = 40;
+            int zipCol = 60;
+            int groupCol = 125;
+            int exportCol = 40;
+            int destCol = 80;
+            EditorGUILayout.BeginHorizontal(EditorStyles.toolbar);
+            {
+                GUILayout.Label("Build", GUILayout.Width(buildCol));
+                GUILayout.Label("Zip JSON", GUILayout.Width(zipCol));
+                GUILayout.Label("Asset Group", GUILayout.Width(groupCol));
+                GUILayout.Label("Export", GUILayout.Width(exportCol));
+                GUILayout.Label("Destination", GUILayout.Width(destCol));
+                GUILayout.Label("Actions", GUILayout.ExpandWidth(true));
+            }
+            EditorGUILayout.EndHorizontal();
             scrollPos = EditorGUILayout.BeginScrollView(scrollPos);
             int selectedCount = 0;
             foreach (AssetBundleGroup assetBundleGroup in assetBundleGroups)
@@ -110,20 +128,21 @@ namespace ThunderRoad
                 EditorGUILayout.BeginHorizontal();
                 {
                     var prevSelected = assetBundleGroup.selected;
-                    assetBundleGroup.selected = EditorGUILayout.Toggle(assetBundleGroup.selected, GUILayout.MaxWidth(20));
+                    assetBundleGroup.selected = EditorGUILayout.Toggle(assetBundleGroup.selected, GUILayout.MaxWidth(buildCol));
                     if (prevSelected != assetBundleGroup.selected) EditorUtility.SetDirty(assetBundleGroup);
-                    
+                    var prevZipCatalogFiles = assetBundleGroup.zipCatalogFiles;
+                    assetBundleGroup.zipCatalogFiles = EditorGUILayout.Toggle(assetBundleGroup.zipCatalogFiles, GUILayout.Width(zipCol));
+                    if (prevZipCatalogFiles != assetBundleGroup.zipCatalogFiles) EditorUtility.SetDirty(assetBundleGroup);
                     if (assetBundleGroup.selected) selectedCount++;
-                    if (GUILayout.Button($"{assetBundleGroup.name}", GUILayout.Width(120)))
+                    if (GUILayout.Button($"{assetBundleGroup.name}", GUILayout.Width(groupCol)))
                     {
                         //open the asset bundle group file in a new inspector window
                         EditorUtility.OpenPropertyEditor(assetBundleGroup);
                     }
                     var prevexportAfterBuild = assetBundleGroup.exportAfterBuild;
                     var prevExportMode = assetBundleGroup.exportMode;
-                    EditorGUILayout.LabelField("Export After Build", GUILayout.Width(100));
-                    assetBundleGroup.exportAfterBuild = EditorGUILayout.Toggle(assetBundleGroup.exportAfterBuild, GUILayout.MaxWidth(20));
-                    assetBundleGroup.exportMode = (ExportMode)EditorGUILayout.Popup((int)assetBundleGroup.exportMode, Enum.GetNames(typeof(ExportMode)), GUILayout.Width(100));
+                    assetBundleGroup.exportAfterBuild = EditorGUILayout.Toggle(assetBundleGroup.exportAfterBuild, GUILayout.MaxWidth(exportCol));
+                    assetBundleGroup.exportMode = (ExportMode)EditorGUILayout.Popup((int)assetBundleGroup.exportMode, Enum.GetNames(typeof(ExportMode)), GUILayout.Width(destCol));
                     if (prevexportAfterBuild != assetBundleGroup.exportAfterBuild || prevExportMode != assetBundleGroup.exportMode) EditorUtility.SetDirty(assetBundleGroup);
                     if (GUILayout.Button("Export now", GUILayout.Width(80)))
                     {
@@ -477,7 +496,15 @@ namespace ThunderRoad
                 // Clean destination path
                 if (cleanDestination)
                 {
+                    //show a warning dialog to confirm deletion
+                    bool userResponse = EditorUtility.DisplayDialog("Clean Destination", $"Clean Destination checked: This will DELETE all files and folders inside the selected folder: \n{manualFolderPath}. Do you wish to continue?", "Yes", "Abort Export");
+                    if (!userResponse)
+                    {
+                        Debug.Log("User cancelled the export.");
+                        return;
+                    }
                     foreach (string filePath in Directory.GetFiles(manualFolderPath, "*.*", SearchOption.AllDirectories)) File.Delete(filePath);
+                    foreach(string folderPath in Directory.GetDirectories(manualFolderPath, "*", SearchOption.AllDirectories)) Directory.Delete(folderPath, true);
                 }
                 else
                 {
@@ -491,8 +518,17 @@ namespace ThunderRoad
 
                 if (Directory.Exists(catalogFullPath))
                 {
-                    AssetBundleBuilder.CopyDirectory(catalogFullPath, manualFolderPath);
-                    Debug.Log($"Copied json folder {catalogFullPath} to {manualFolderPath}");
+                    if (assetBundleGroup.isMod && assetBundleGroup.zipCatalogFiles)
+                    {
+                        string jsonDbPath = ZipCatalogFiles(catalogFullPath, assetBundleGroup.folderName);
+                        AssetBundleBuilder.CopyDirectory(jsonDbPath, manualFolderPath);
+                        Debug.Log($"Copied jsondb {jsonDbPath} to {manualFolderPath}");
+                    }
+                    else
+                    {
+                        AssetBundleBuilder.CopyDirectory(catalogFullPath, manualFolderPath);
+                        Debug.Log($"Copied json folder {catalogFullPath} to {manualFolderPath}");
+                    }
                 }
 
                 if (assetBundleGroup.isMod)
@@ -530,6 +566,8 @@ namespace ThunderRoad
                 {
                     foreach (string filePath in Directory.GetFiles(destinationAssetsPath, "*.*", SearchOption.AllDirectories)) File.Delete(filePath);
                     foreach (string filePath in Directory.GetFiles(destinationCatalogPath, "*.*", SearchOption.AllDirectories)) File.Delete(filePath);
+                    foreach(string folderPath in Directory.GetDirectories(destinationAssetsPath, "*", SearchOption.AllDirectories)) Directory.Delete(folderPath, true);
+                    foreach(string folderPath in Directory.GetDirectories(destinationCatalogPath, "*", SearchOption.AllDirectories)) Directory.Delete(folderPath, true);
                 }
                 else
                 {
@@ -546,8 +584,17 @@ namespace ThunderRoad
 
                 if (Directory.Exists(catalogFullPath))
                 {
-                    AssetBundleBuilder.CopyDirectory(catalogFullPath, destinationAssetsPath);
-                    Debug.Log($"Copied json folder {catalogFullPath} to {destinationAssetsPath}");
+                    if (assetBundleGroup.isMod && assetBundleGroup.zipCatalogFiles)
+                    {
+                        string jsonDbPath = ZipCatalogFiles(catalogFullPath, assetBundleGroup.folderName);
+                        AssetBundleBuilder.CopyDirectory(jsonDbPath, destinationAssetsPath);
+                        Debug.Log($"Copied jsondb {jsonDbPath} to {destinationAssetsPath}");
+                    }
+                    else
+                    {
+                        AssetBundleBuilder.CopyDirectory(catalogFullPath, destinationAssetsPath);
+                        Debug.Log($"Copied json folder {catalogFullPath} to {destinationAssetsPath}");
+                    }
                 }
 
                 if (assetBundleGroup.isMod)
@@ -573,25 +620,58 @@ namespace ThunderRoad
                     if (Directory.Exists(catalogFullPath))
                     {
                         AndroidPushAssets(catalogFullPath);
+                        Debug.Log($"Pushed json folder {catalogFullPath} to default on device");
                     }
                 }
                 else
                 {
                     AndroidPushAssets(assetsFullPath, assetBundleGroup.folderName);
+                    Debug.Log($"Pushed addressable asset folder {assetsFullPath} to {assetBundleGroup.folderName} on device");
                     if (Directory.Exists(catalogFullPath))
                     {
-                        AndroidPushAssets(catalogFullPath, assetBundleGroup.folderName);
+                        if (assetBundleGroup.isMod && assetBundleGroup.zipCatalogFiles)
+                        {
+                            string jsonDbPath = ZipCatalogFiles(catalogFullPath, assetBundleGroup.folderName);
+                            AndroidPushAssets(jsonDbPath, assetBundleGroup.folderName); 
+                            Debug.Log($"Pushed jsondb {jsonDbPath} to {assetBundleGroup.folderName} on device");
+                        }
+                        else
+                        {
+                            AndroidPushAssets(catalogFullPath, assetBundleGroup.folderName);    
+                            Debug.Log($"Pushed json folder {catalogFullPath} to {assetBundleGroup.folderName} on device");
+                        }
                     }
                     if (assetBundleGroup.isMod)
                     {
                         string manifestTempFolderPath = GenerateManifest(assetBundleGroup);
                         AndroidPushAssets(manifestTempFolderPath, assetBundleGroup.folderName);
+                        Debug.Log($"Pushed manifest {manifestTempFolderPath} to {assetBundleGroup.folderName} on device");
                     }
                 }
             }
             Debug.Log("Export done");
         }
 
+        public static string ZipCatalogFiles(string catalogFullPath, string folderName)
+        {
+            string tempFolder = $"{Application.temporaryCachePath}/tmpCatalog";
+            if (!Directory.Exists(tempFolder)) Directory.CreateDirectory(tempFolder);
+            
+            string jsondbPath = Path.Combine(tempFolder, $"{folderName}.jsondb");
+            
+            ZipFile zip = new ZipFile();
+            string[] files = Directory.GetFiles(catalogFullPath, "*.json", SearchOption.AllDirectories);
+            foreach (string file in files)
+            {
+                //exclude manifest.json
+                if (Path.GetFileName(file).Equals("manifest.json")) continue;
+                zip.AddFile(file, Path.GetDirectoryName(FileManager.GetRelativePath(Path.Combine(catalogFullPath, folderName), file)));
+            }
+
+            zip.Save(jsondbPath);
+            Debug.Log($"Zipped json {folderName} to {jsondbPath}");
+            return tempFolder;
+        }
         public static string GenerateManifest(AssetBundleGroup assetBundleGroup)
         {
             ModManager.ModData modData = new ModManager.ModData();

@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
+  "groupPath": null,
   "iconAddress": "Bas.Icon.EnemyConfig.Wildfolk",
   "customIconColor": true,
   "iconColor": {
@@ -36,17 +37,16 @@
   "rareMixId": "TribalRareMix",
   "rareMeleeId": "TribalRareMelee",
   "rareRangedId": "TribalRareRanged",
+  "mixedStd": "Dungeon_Tribal_Std_Mixed",
   "meleeOnlyStd": "Dungeon_Tribal_Std_MeleeOnly",
   "meleeFocusedStd": "Dungeon_Tribal_Std_MeleeFocused",
-  "mixedStd": "Dungeon_Tribal_Std_Mixed",
   "rangedFocusedStd": "Dungeon_Tribal_Std_RangedFocused",
+  "mixedArena": "Dungeon_Tribal_Arena_Mixed",
   "meleeOnlyArena": "Dungeon_Tribal_Arena_MeleeOnly",
   "meleeFocusedArena": "Dungeon_Tribal_Arena_MeleeFocused",
-  "mixedArena": "Dungeon_Tribal_Arena_Mixed",
   "rangedFocusedArena": "Dungeon_Tribal_Arena_RangedFocused",
+  "mixedEnd": "Dungeon_Tribal_End_Mixed",
   "meleeOnlyEnd": "Dungeon_Tribal_End_MeleeOnly",
   "meleeFocusedEnd": "Dungeon_Tribal_End_MeleeFocused",
-  "mixedEnd": "Dungeon_Tribal_End_Mixed",
-  "rangedFocusedEnd": "Dungeon_Tribal_End_RangedFocused",
-  "groupPath": null
+  "rangedFocusedEnd": "Dungeon_Tribal_End_RangedFocused"
 }

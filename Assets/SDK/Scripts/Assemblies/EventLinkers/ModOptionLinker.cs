@@ -3,11 +3,8 @@ using UnityEngine;
 using UnityEngine.Events;
 using System.Collections;
 using System;
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
@@ -31,10 +28,9 @@ namespace ThunderRoad
         [NonSerialized]
         public ModOptionData<T> optionData;
         [NonSerialized]
-#if ODIN_INSPECTOR
-        [ShowInInspector, ReadOnly]
-#endif
-        public T lastValue = default(T);
+        [ShowInInspector]
+        [ReadOnly]
+        public T lastValue = default;
 
         public void Start()
         {
@@ -107,7 +103,8 @@ namespace ThunderRoad
         }
     }
 
-    [System.Serializable]
+    [Serializable]
+    [DeclareHorizontalGroup("Condition")]
     public abstract class UpdateChecker<T>
     {
         public enum Comparison
@@ -120,11 +117,27 @@ namespace ThunderRoad
             Greater
         }
 
-        public T comparedValue;
+        [Group("Condition")]
+        [Dropdown(nameof(AllowedComparisons), Searchable = false)]
+        [AutoLabelWidth(AddedWidth = 5f)]
+        [LabelText("Option Value")]
         public Comparison comparison;
+        [Group("Condition")]
+        [HideLabel]
+        public T comparedValue;
         public List<UnityEvent<T>> valueMatchEvents;
 
         private float lastPrintTime = 0f;
+
+        public virtual TriDropdownList<Comparison> AllowedComparisons()
+        {
+            TriDropdownList<Comparison> result = new TriDropdownList<Comparison>();
+            foreach (Comparison comparison in Enum.GetValues(typeof(Comparison)))
+            {
+                result.Add(Utils.AddSpacesToSentence(comparison.ToString(), true), comparison);
+            }
+            return result;
+        }
 
         public abstract bool Check(T value);
 

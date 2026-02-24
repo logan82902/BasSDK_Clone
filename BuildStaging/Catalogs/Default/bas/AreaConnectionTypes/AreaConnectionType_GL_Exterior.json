@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
+  "groupPath": null,
   "size": {
     "x": 2.5,
     "y": 2.75
@@ -21,6 +22,5 @@
   "randomGateTableAdress": {
     "$type": "ThunderRoad.AreaConnectionTypeData+PrefabAdressTable, ThunderRoad",
     "drops": []
-  },
-  "groupPath": null
+  }
 }

@@ -1,29 +1,24 @@
-﻿using ThunderRoad.Skill.SpellPower;
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#endif
+﻿using System.Collections.Generic;
+using ThunderRoad.Skill.SpellPower;
+using TriInspector;
 
 namespace ThunderRoad.Skill.Spell
 {
+    [DeclareBoxGroup("Status", Title = "Status")]
+    [DeclareBoxGroup("Effect", Title = "Effect")]
     public class SkillEmergencyExit : SkillData
     {
-#if ODIN_INSPECTOR
-        [BoxGroup("Status"), ValueDropdown(nameof(GetAllStatusEffectID))]
-#endif
+        [Group("Status")]
+        [Dropdown(nameof(GetAllStatusEffectID))]
         public string statusId;
 
         protected StatusData statusData;
-#if ODIN_INSPECTOR
-        [BoxGroup("Status")]
-#endif
+        [Group("Status")]
         public float radius;
-#if ODIN_INSPECTOR
-        [BoxGroup("Status")]
-#endif
+        [Group("Status")]
         public float duration;
-#if ODIN_INSPECTOR
-        [BoxGroup("Effect"), ValueDropdown("GetAllEffectID")]
-#endif
+        [Group("Effect")]
+        [Dropdown("GetAllEffectID")]
         public string effectId;
 
         protected EffectData effectData;

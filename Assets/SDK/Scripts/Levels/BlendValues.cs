@@ -1,11 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
@@ -22,9 +19,8 @@ namespace ThunderRoad
         protected float value4;
         protected float value5;
 
-#if ODIN_INSPECTOR
-        [ShowInInspector, ReadOnly]
-#endif
+        [ShowInInspector]
+        [ReadOnly]
         protected float outputValue;
 
         protected bool changeDetected;

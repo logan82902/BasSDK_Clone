@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 4,
+  "groupPath": null,
   "localizationId": "ToolFork",
   "displayName": "Pitchfork",
   "description": "Incredibly effective against hay, leaves and manure. May be of some use in combat against humans as well, as peasants often have limited means to protect themselves from bandits.",
@@ -14,16 +15,18 @@
   "tier": 0,
   "flags": "Throwable, Spinnable, Jabbing",
   "levelRequired": 0,
+  "type": "Weapon",
   "category": "Spears",
+  "update": "",
   "iconEffectId": null,
   "preferredItemCenter": "Mass",
   "drainImbueWhenIdle": true,
+  "forceImbueUseButton": "None",
   "prefabAddress": "Bas.Item.Melee.Tools.Fork",
   "iconAddress": "Bas.Item.Melee.Tools.Fork.Icon[Fork_01]",
   "closeUpIconAddress": "Bas.Item.Melee.Tools.Fork.IconClose[Fork_01-close-up]",
   "pooledCount": 0,
   "androidPooledCount": 0,
-  "type": "Weapon",
   "allowedStorage": "Container, SandboxAllItems",
   "despawnOnStoredInInventory": false,
   "isStackable": false,
@@ -37,6 +40,7 @@
   "mass": 7.0,
   "drag": 1.3,
   "angularDrag": 0.05,
+  "density": 4000.0,
   "focusRegenMultiplier": 1.0,
   "spellChargeSpeedPlayerMultiplier": 1.0,
   "spellChargeSpeedNPCMultiplier": 1.0,
@@ -150,89 +154,6 @@
     "preWrapMode": "ClampForever",
     "postWrapMode": "ClampForever"
   },
-  "modules": [
-    {
-      "$type": "ThunderRoad.ItemModuleAI, ThunderRoad",
-      "primaryClass": "Melee",
-      "secondaryClass": "None",
-      "weaponHandling": "TwoHanded",
-      "secondaryHandling": "None",
-      "weaponAttackTypes": "Thrust",
-      "ignoredByDefense": false,
-      "alwaysPrimary": false,
-      "defaultStanceInfo": {
-        "$type": "ThunderRoad.ItemModuleAI+StanceInfo, ThunderRoad",
-        "offhand": "Anything",
-        "grabAIHandleRadius": 0.0,
-        "stanceDataID": "HumanMelee1hStance"
-      },
-      "stanceInfosByOffhand": [
-        {
-          "$type": "ThunderRoad.ItemModuleAI+StanceInfo, ThunderRoad",
-          "offhand": "SameItem",
-          "grabAIHandleRadius": 0.0,
-          "stanceDataID": ""
-        }
-      ],
-      "rangedWeaponData": null,
-      "armResistanceMultiplier": 3.0,
-      "allowDynamicHeight": false,
-      "defenseHasPriority": false
-    },
-    {
-      "$type": "ThunderRoad.ItemModuleStats, ThunderRoad",
-      "stats": [
-        {
-          "$type": "ThunderRoad.ItemStatInt, ThunderRoad",
-          "value": 2,
-          "useStarIcons": true,
-          "name": "FleshDamage"
-        },
-        {
-          "$type": "ThunderRoad.ItemStatInt, ThunderRoad",
-          "value": 1,
-          "useStarIcons": true,
-          "name": "LeatherDamage"
-        },
-        {
-          "$type": "ThunderRoad.ItemStatInt, ThunderRoad",
-          "value": 1,
-          "useStarIcons": true,
-          "name": "PlateDamage"
-        },
-        {
-          "$type": "ThunderRoad.ItemStatInt, ThunderRoad",
-          "value": 1,
-          "useStarIcons": true,
-          "name": "Penetration"
-        },
-        {
-          "$type": "ThunderRoad.ItemStatInt, ThunderRoad",
-          "value": 1,
-          "useStarIcons": true,
-          "name": "Dismemberment"
-        },
-        {
-          "$type": "ThunderRoad.ItemStatInt, ThunderRoad",
-          "value": 1,
-          "useStarIcons": true,
-          "name": "Stagger"
-        },
-        {
-          "$type": "ThunderRoad.ItemStatInt, ThunderRoad",
-          "value": 0,
-          "useStarIcons": true,
-          "name": "Imbue"
-        },
-        {
-          "$type": "ThunderRoad.ItemStatInt, ThunderRoad",
-          "value": 1,
-          "useStarIcons": true,
-          "name": "Handling"
-        }
-      ]
-    }
-  ],
   "colliderGroups": [
     {
       "$type": "ThunderRoad.ItemData+ColliderGroup, ThunderRoad",
@@ -292,6 +213,88 @@
       "dampening": 0.1
     }
   ],
-  "entityModules": [],
-  "groupPath": null
+  "modules": [
+    {
+      "$type": "ThunderRoad.ItemModuleAI, ThunderRoad",
+      "primaryClass": "Melee",
+      "secondaryClass": "None",
+      "weaponHandling": "TwoHanded",
+      "secondaryHandling": "None",
+      "weaponAttackTypes": "Thrust",
+      "alwaysPrimary": false,
+      "defaultStanceInfo": {
+        "$type": "ThunderRoad.ItemModuleAI+StanceInfo, ThunderRoad",
+        "offhand": "Anything",
+        "grabAIHandleRadius": 0.0,
+        "stanceDataID": "HumanMelee1hStance"
+      },
+      "stanceInfosByOffhand": [
+        {
+          "$type": "ThunderRoad.ItemModuleAI+StanceInfo, ThunderRoad",
+          "offhand": "SameItem",
+          "grabAIHandleRadius": 0.0,
+          "stanceDataID": ""
+        }
+      ],
+      "rangedWeaponData": null,
+      "ignoredByDefense": false,
+      "armResistanceMultiplier": 3.0,
+      "allowDynamicHeight": false,
+      "defenseHasPriority": false
+    },
+    {
+      "$type": "ThunderRoad.ItemModuleStats, ThunderRoad",
+      "stats": [
+        {
+          "$type": "ThunderRoad.ItemStatInt, ThunderRoad",
+          "value": 2,
+          "useStarIcons": true,
+          "name": "FleshDamage"
+        },
+        {
+          "$type": "ThunderRoad.ItemStatInt, ThunderRoad",
+          "value": 1,
+          "useStarIcons": true,
+          "name": "LeatherDamage"
+        },
+        {
+          "$type": "ThunderRoad.ItemStatInt, ThunderRoad",
+          "value": 1,
+          "useStarIcons": true,
+          "name": "PlateDamage"
+        },
+        {
+          "$type": "ThunderRoad.ItemStatInt, ThunderRoad",
+          "value": 1,
+          "useStarIcons": true,
+          "name": "Penetration"
+        },
+        {
+          "$type": "ThunderRoad.ItemStatInt, ThunderRoad",
+          "value": 1,
+          "useStarIcons": true,
+          "name": "Dismemberment"
+        },
+        {
+          "$type": "ThunderRoad.ItemStatInt, ThunderRoad",
+          "value": 1,
+          "useStarIcons": true,
+          "name": "Stagger"
+        },
+        {
+          "$type": "ThunderRoad.ItemStatInt, ThunderRoad",
+          "value": 0,
+          "useStarIcons": true,
+          "name": "Imbue"
+        },
+        {
+          "$type": "ThunderRoad.ItemStatInt, ThunderRoad",
+          "value": 1,
+          "useStarIcons": true,
+          "name": "Handling"
+        }
+      ]
+    }
+  ],
+  "entityModules": []
 }

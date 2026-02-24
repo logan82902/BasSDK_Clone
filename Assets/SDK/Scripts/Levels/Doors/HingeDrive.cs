@@ -1,13 +1,11 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
+using TriInspector;
 
-#endif
 
 namespace ThunderRoad
 {

@@ -1,7 +1,5 @@
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
-#if ODIN_INSPECTOR
-#endif
 
 namespace ThunderRoad
 {

@@ -1,77 +1,72 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
 using UnityEngine;
 using UnityEngine.AI;
 using Object = UnityEngine.Object;
 
 namespace ThunderRoad.Skill.Spell
 {
+    [DeclareBoxGroup("Skills", Title = "Skills")]
+    [DeclareBoxGroup("Conditions", Title = "Conditions")]
+    [DeclareBoxGroup("Link", Title = "Link")]
+    [DeclareBoxGroup("Wall", Title = "Wall")]
     public class SkillTwinFlame : SpellSkillData
     {
-        #if ODIN_INSPECTOR
-        [BoxGroup("Skills"), ValueDropdown(nameof(GetAllSkillID))]
-        #endif
+        [Group("Skills")]
+        [Dropdown(nameof(GetAllSkillID))]
         public string remoteDetonationId;
 
-        [BoxGroup("Conditions")]
+        [Group("Conditions")]
         public float detonateWindow = 0.1f;
 
-        [BoxGroup("Conditions")]
+        [Group("Conditions")]
         public float maxRange = 15f;
 
-        #if ODIN_INSPECTOR
-        [BoxGroup("Link"), ValueDropdown(nameof(GetAllEffectID))]
-        #endif
+        [Group("Link")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string linkEffectId;
 
         [NonSerialized]
         public EffectData linkEffectData;
-        
-        #if ODIN_INSPECTOR
-        [BoxGroup("Wall"), ValueDropdown(nameof(GetAllEffectID))]
-        #endif
+
+        [Group("Wall")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string dropEffectId;
 
         [NonSerialized]
         public EffectData dropEffectData;
-        
-        #if ODIN_INSPECTOR
-        [BoxGroup("Wall"), ValueDropdown(nameof(GetAllEffectID))]
-        #endif
+
+        [Group("Wall")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string wallEffectId;
 
         [NonSerialized]
         public EffectData wallEffectData;
-        #if ODIN_INSPECTOR
-        [BoxGroup("Wall"), ValueDropdown(nameof(GetAllStatusEffectID))]
-        #endif
+        [Group("Wall")]
+        [Dropdown(nameof(GetAllStatusEffectID))]
         public string statusId;
 
         [NonSerialized]
         public StatusData status;
 
-        [BoxGroup("Wall")]
+        [Group("Wall")]
         public float thickness = 0.5f;
-        
-        [BoxGroup("Wall")]
+
+        [Group("Wall")]
         public float heatRadius = 1f;
-        
-        [BoxGroup("Wall")]
+
+        [Group("Wall")]
         public float height = 1f;
 
-        [BoxGroup("Wall")]
+        [Group("Wall")]
         public float heatPerSecond;
 
-        [BoxGroup("Wall")]
+        [Group("Wall")]
         public float duration = 10;
 
-        [BoxGroup("Wall")]
+        [Group("Wall")]
         public bool allowXZMotion = false;
     }
 

@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
+  "groupPath": null,
   "groupId": "UI",
   "volumeDb": 0.0,
   "modules": [
@@ -174,6 +175,7 @@
           "name": "_BorderScale"
         }
       ],
+      "mergeKey": "3bfe9276",
       "step": "Loop",
       "stepCustomId": null,
       "loopCustomStep": false,
@@ -358,6 +360,7 @@
           "name": "_BorderScale"
         }
       ],
+      "mergeKey": "54fe03fd",
       "step": "Loop",
       "stepCustomId": null,
       "loopCustomStep": false,
@@ -542,6 +545,7 @@
           "name": "_BorderScale"
         }
       ],
+      "mergeKey": "9e8c60d0",
       "step": "Loop",
       "stepCustomId": null,
       "loopCustomStep": false,
@@ -656,7 +660,6 @@
       "scaleCurve": null,
       "usePointCache": true,
       "pointCacheSkinnedMeshUpdate": false,
-      "pointCacheMapSize": 512,
       "pointCachePointCount": 4096,
       "pointCacheSeed": 0,
       "pointCacheDistribution": "RandomUniformArea",
@@ -664,6 +667,7 @@
       "useMesh": true,
       "meshAddress": "Bas.Mesh.FocusHollow[rune_hollow_left]",
       "materialProperties": [],
+      "mergeKey": "9b39c190",
       "step": "Loop",
       "stepCustomId": null,
       "loopCustomStep": false,
@@ -778,7 +782,6 @@
       "scaleCurve": null,
       "usePointCache": true,
       "pointCacheSkinnedMeshUpdate": false,
-      "pointCacheMapSize": 512,
       "pointCachePointCount": 4096,
       "pointCacheSeed": 0,
       "pointCacheDistribution": "RandomUniformArea",
@@ -786,6 +789,7 @@
       "useMesh": true,
       "meshAddress": "Bas.Mesh.FocusHollow[rune_hollow_top]",
       "materialProperties": [],
+      "mergeKey": "80ff4557",
       "step": "Loop",
       "stepCustomId": null,
       "loopCustomStep": false,
@@ -900,7 +904,6 @@
       "scaleCurve": null,
       "usePointCache": true,
       "pointCacheSkinnedMeshUpdate": false,
-      "pointCacheMapSize": 512,
       "pointCachePointCount": 4096,
       "pointCacheSeed": 0,
       "pointCacheDistribution": "RandomUniformArea",
@@ -908,6 +911,7 @@
       "useMesh": true,
       "meshAddress": "Bas.Mesh.FocusHollow[rune_hollow_right]",
       "materialProperties": [],
+      "mergeKey": "37385365",
       "step": "Loop",
       "stepCustomId": null,
       "loopCustomStep": false,
@@ -1002,6 +1006,7 @@
       "collisionMaxIntensity": 1.0,
       "collisionUseMainGradient": false,
       "collisionUseSecondaryGradient": false,
+      "mergeKey": "968837c9",
       "step": "Loop",
       "stepCustomId": null,
       "loopCustomStep": false,
@@ -1019,6 +1024,5 @@
       "damagersFilterLogic": "AnyExcept",
       "damagersFilter": []
     }
-  ],
-  "groupPath": null
+  ]
 }

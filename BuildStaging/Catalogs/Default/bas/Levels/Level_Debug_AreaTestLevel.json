@@ -4,15 +4,14 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 3,
+  "groupPath": "Debug",
   "name": "Debug_AreaTestLevel",
   "description": "New Area system\nBegin your first Dungeon adventure in the Greenlands; characterized by its ruined castle-like stone structures and cave systems. ",
   "descriptionLocalizationId": "OutpostDescription",
   "sceneAddress": "Level.Areas",
   "showOnlyDevMode": true,
   "showInLevelSelection": true,
-  "worldmapPrefabAddress": "Bas.Image.Map.Debug",
-  "worldmapTextureAddress": "Bas.Worldmap.Eraden",
-  "worldmapLabel": null,
+  "worldMapId": "Eraden",
   "worldMapTravelAudioContainerAddress": "Bas.AudioGroup.UI.LightClick",
   "mapLocationIndex": 12,
   "showOnMap": true,
@@ -52,6 +51,7 @@
           "defaultValue": 0,
           "stepValue": 1,
           "name": "Difficulty",
+          "localizationGroup": "Default",
           "displayName": "Number of NPC",
           "description": "Number of NPC (1 star is 0 NPC)"
         },
@@ -62,6 +62,7 @@
           "defaultValue": 1,
           "stepValue": 1,
           "name": "DungeonLength",
+          "localizationGroup": "Default",
           "displayName": "Connected",
           "description": "Connect area to each connection"
         },
@@ -72,15 +73,14 @@
           "defaultValue": 0,
           "stepValue": 1,
           "name": "DungeonRoom",
+          "localizationGroup": "Default",
           "displayName": "Area Id",
           "description": "Area to spawn"
         }
       ]
     }
   ],
-  "modePickCountPerRank": 2,
   "customCameras": [],
   "throwableRefType": "Item",
-  "improvisedThrowableID": null,
-  "groupPath": "Debug"
+  "improvisedThrowableID": null
 }

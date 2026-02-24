@@ -15,8 +15,8 @@ NavMeshProjectSettings:
     cost: 3
   - name: Edge
     cost: 3
-  - name: 
-    cost: 1
+  - name: Ocean
+    cost: 8
   - name: 
     cost: 1
   - name: 

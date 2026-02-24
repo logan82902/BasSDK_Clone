@@ -1,26 +1,20 @@
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 using UnityEngine.EventSystems;
-
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
-using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
     public class UISelectionListButtonsLevelModeOption : UISelectionListButtons, IPointerEnterHandler
     {
+        // This works I guess
+        public static UISelectionListButtonsLevelModeOption presetOption;
+
         public Image starImagePrefab = null;
         public Sprite starImage = null;
         public Sprite starImageFill = null;
-
-        public UISelectionListButtonsBool toggle = null;
         public Transform starPlace = null;
         public int maxIcon = 5;
-
+        public bool isCustom;
 
         public void OnPointerEnter(UnityEngine.EventSystems.PointerEventData eventData)
         {

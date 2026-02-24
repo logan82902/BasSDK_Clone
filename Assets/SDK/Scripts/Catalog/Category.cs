@@ -20,6 +20,7 @@ namespace ThunderRoad
         Menu,
         ColliderGroup,
         DamageModifier,
+        SkillTree, // Must be refreshed before Skill
         Skill,
         BehaviorTree,
         EffectGroup,
@@ -39,9 +40,9 @@ namespace ThunderRoad
         Status,
         Stance,
         EntityModule,
-        SkillTree,
         EnemyConfig,
         LootConfig,
+        Bundle
     }
     
 }

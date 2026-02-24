@@ -4,13 +4,12 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
+  "groupPath": null,
   "collisionHandling": "ByCollider",
   "allowPenetration": false,
   "modifiers": [],
   "ignoredImbueEffectModules": null,
   "customSpellEffects": false,
   "customSpellEffectIDs": null,
-  "customSpellEffectData": null,
-  "blockPoolSteal": false,
-  "groupPath": null
+  "blockPoolSteal": false
 }

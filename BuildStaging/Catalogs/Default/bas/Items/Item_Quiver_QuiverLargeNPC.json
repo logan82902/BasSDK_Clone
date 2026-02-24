@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 4,
+  "groupPath": null,
   "localizationId": "QuiverLarge",
   "displayName": "Bodkin Arrow Quiver",
   "description": "Arrows of war, designed to penetrate armor. Rather expensive but necessary to stop an approaching army.",
@@ -14,16 +15,18 @@
   "tier": 3,
   "flags": "Spinnable",
   "levelRequired": 0,
+  "type": "Quiver",
   "category": "Bows",
+  "update": "",
   "iconEffectId": null,
   "preferredItemCenter": "Mass",
   "drainImbueWhenIdle": true,
+  "forceImbueUseButton": "None",
   "prefabAddress": "Bas.Item.Ranged.QuiverLargeNPC",
   "iconAddress": "Bas.Item.Ranged.QuiverLarge.Icon[wpn_Q03_largequiver_arrow]",
   "closeUpIconAddress": null,
   "pooledCount": 0,
   "androidPooledCount": 0,
-  "type": "Quiver",
   "allowedStorage": 0,
   "despawnOnStoredInInventory": false,
   "isStackable": false,
@@ -37,6 +40,7 @@
   "mass": 1.4,
   "drag": 0.0,
   "angularDrag": 0.05,
+  "density": 1000.0,
   "focusRegenMultiplier": 1.0,
   "spellChargeSpeedPlayerMultiplier": 1.0,
   "spellChargeSpeedNPCMultiplier": 1.0,
@@ -179,18 +183,6 @@
     "preWrapMode": "ClampForever",
     "postWrapMode": "ClampForever"
   },
-  "modules": [
-    {
-      "$type": "ThunderRoad.ItemModuleStats, ThunderRoad",
-      "stats": [
-        {
-          "$type": "ThunderRoad.ItemStatString, ThunderRoad",
-          "value": "32",
-          "name": "HoldAmount"
-        }
-      ]
-    }
-  ],
   "colliderGroups": [],
   "damagers": [
     {
@@ -218,6 +210,17 @@
   ],
   "effectHinges": [],
   "whooshs": [],
-  "entityModules": [],
-  "groupPath": null
+  "modules": [
+    {
+      "$type": "ThunderRoad.ItemModuleStats, ThunderRoad",
+      "stats": [
+        {
+          "$type": "ThunderRoad.ItemStatString, ThunderRoad",
+          "value": "32",
+          "name": "HoldAmount"
+        }
+      ]
+    }
+  ],
+  "entityModules": []
 }

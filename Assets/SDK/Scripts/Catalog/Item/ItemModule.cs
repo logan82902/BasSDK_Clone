@@ -1,10 +1,13 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections;
+using TriInspector;
 
 namespace ThunderRoad
 {
-    public class ItemModule 
+    [System.Serializable]
+    [AutoLabelWidth(MinWidth = 0f)]
+    public abstract class ItemModule
     {
         [JsonMergeKey, JsonProperty("$type"), JsonIgnore]
         public Type type => GetType();

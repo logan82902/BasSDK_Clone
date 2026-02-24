@@ -1,0 +1,425 @@
+{
+  "$type": "ThunderRoad.ItemData, ThunderRoad",
+  "id": "CrystalMusket",
+  "sensitiveContent": "None",
+  "sensitiveFilterBehaviour": "Discard",
+  "version": 4,
+  "groupPath": "",
+  "localizationId": "CrystalMusket",
+  "displayName": "Shard Striker",
+  "description": "A mechanism that allows the use of destructive sorcery with minimal sorcery affinity. Invented by the Sentara, who favored selling shards rather than consuming them.",
+  "author": "Pascual",
+  "valueType": "Gold",
+  "value": 4098.0,
+  "rewardValue": 0.0,
+  "tier": 3,
+  "flags": "Blunt, NoChargeSapping, NoMoltenArc",
+  "levelRequired": 0,
+  "type": "Weapon",
+  "category": "Sentara Weapons",
+  "update": "Sentara",
+  "iconEffectId": "",
+  "preferredItemCenter": "Mass",
+  "drainImbueWhenIdle": false,
+  "forceImbueUseButton": "AltUse",
+  "prefabAddress": "Bas.Item.Ranged.CrystalMusket",
+  "iconAddress": "Bas.Item.Ranged.CrystalMusket.Icon[wpn_crystalmusket]",
+  "closeUpIconAddress": "",
+  "pooledCount": 0,
+  "androidPooledCount": 0,
+  "allowedStorage": "Container, SandboxAllItems",
+  "despawnOnStoredInInventory": false,
+  "isStackable": false,
+  "consumableId": "",
+  "inventoryAudioContainerAddress": "",
+  "inventoryAudioVolume_dB": 0.0,
+  "slot": "Small",
+  "snapAudioContainerAddress": "",
+  "snapAudioVolume_dB": 0.0,
+  "overrideMassAndDrag": false,
+  "mass": 1.0,
+  "drag": 1.0,
+  "angularDrag": 1.0,
+  "density": 1000.0,
+  "focusRegenMultiplier": 1.0,
+  "spellChargeSpeedPlayerMultiplier": 1.0,
+  "spellChargeSpeedNPCMultiplier": 1.0,
+  "collisionMaxOverride": 0,
+  "collisionEnterOnly": false,
+  "collisionNoMinVelocityCheck": false,
+  "forceLayer": "None",
+  "diffForceLayerWhenHeld": false,
+  "forceLayerHeld": "None",
+  "waterHandSpringMultiplierCurve": {
+    "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
+    "keys": [
+      {
+        "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
+        "time": 0.0,
+        "value": 0.3,
+        "inTangent": 0.0,
+        "outTangent": 0.0,
+        "inWeight": 0.0,
+        "outWeight": 0.0,
+        "weightedMode": "None",
+        "tangentMode": 0
+      },
+      {
+        "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
+        "time": 1.0,
+        "value": 0.15,
+        "inTangent": 0.0,
+        "outTangent": 0.0,
+        "inWeight": 0.0,
+        "outWeight": 0.0,
+        "weightedMode": "None",
+        "tangentMode": 0
+      }
+    ],
+    "length": 2,
+    "preWrapMode": "ClampForever",
+    "postWrapMode": "ClampForever"
+  },
+  "waterDragMultiplierCurve": {
+    "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
+    "keys": [
+      {
+        "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
+        "time": 0.0,
+        "value": 1.0,
+        "inTangent": 0.0,
+        "outTangent": 0.0,
+        "inWeight": 0.0,
+        "outWeight": 0.0,
+        "weightedMode": "None",
+        "tangentMode": 0
+      },
+      {
+        "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
+        "time": 1.0,
+        "value": 10.0,
+        "inTangent": 0.0,
+        "outTangent": 0.0,
+        "inWeight": 0.0,
+        "outWeight": 0.0,
+        "weightedMode": "None",
+        "tangentMode": 0
+      }
+    ],
+    "length": 2,
+    "preWrapMode": "ClampForever",
+    "postWrapMode": "ClampForever"
+  },
+  "waterSampleMinRadius": 0.2,
+  "throwMultiplier": 0.3,
+  "runSpeedMultiplier": 1.0,
+  "flyRotationSpeed": 2.0,
+  "flyThrowAngle": 0.0,
+  "allowFlyBackwards": false,
+  "telekinesisSafeDistance": 1.0,
+  "telekinesisThrowRatio": 1.0,
+  "telekinesisAutoGrabAnyHandle": false,
+  "grippable": false,
+  "grabAndGripClimb": false,
+  "playerGrabAndGripChangeLayer": true,
+  "customSnaps": [],
+  "drainImbueOnSnap": false,
+  "imbueEnergyOverTimeOnSnap": {
+    "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
+    "keys": [
+      {
+        "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
+        "time": 0.0,
+        "value": 1.0,
+        "inTangent": 0.0,
+        "outTangent": 0.0,
+        "inWeight": 0.0,
+        "outWeight": 0.0,
+        "weightedMode": "None",
+        "tangentMode": 0
+      },
+      {
+        "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
+        "time": 3.0,
+        "value": 0.0,
+        "inTangent": 0.0,
+        "outTangent": 0.0,
+        "inWeight": 0.0,
+        "outWeight": 0.0,
+        "weightedMode": "None",
+        "tangentMode": 0
+      }
+    ],
+    "length": 2,
+    "preWrapMode": "ClampForever",
+    "postWrapMode": "ClampForever"
+  },
+  "colliderGroups": [
+    {
+      "$type": "ThunderRoad.ItemData+ColliderGroup, ThunderRoad",
+      "transformName": "Colliders",
+      "colliderGroupId": "PropMetal"
+    },
+    {
+      "$type": "ThunderRoad.ItemData+ColliderGroup, ThunderRoad",
+      "transformName": "CrystalColliderGroup",
+      "colliderGroupId": "CrystalMusket"
+    }
+  ],
+  "damagers": [
+    {
+      "$type": "ThunderRoad.ItemData+Damager, ThunderRoad",
+      "transformName": "Blunt",
+      "damagerID": "PropBlunt"
+    },
+    {
+      "$type": "ThunderRoad.ItemData+Damager, ThunderRoad",
+      "transformName": "BluntCrystal",
+      "damagerID": "PropBlunt"
+    }
+  ],
+  "Interactables": [
+    {
+      "$type": "ThunderRoad.ItemData+Interactable, ThunderRoad",
+      "transformName": "Handle",
+      "interactableId": "ObjectHandleLight"
+    },
+    {
+      "$type": "ThunderRoad.ItemData+Interactable, ThunderRoad",
+      "transformName": "Handle2",
+      "interactableId": "ObjectHandleAimedWeaponSupport"
+    }
+  ],
+  "effectHinges": [],
+  "whooshs": [
+    {
+      "$type": "ThunderRoad.ItemData+Whoosh, ThunderRoad",
+      "transformName": "Whoosh",
+      "effectId": "WhooshPropLight",
+      "trigger": "Always",
+      "stopOnSnap": true,
+      "minVelocity": 5.0,
+      "maxVelocity": 12.0,
+      "dampening": 0.1
+    }
+  ],
+  "modules": [
+    {
+      "$type": "ThunderRoad.ItemModuleCrystalMusket, ThunderRoad",
+      "hammerDuration": 0.02,
+      "hammerDelay": 0.2,
+      "fireDelay": 0.2,
+      "recoil": 50.0,
+      "recoilCurve": {
+        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
+        "keys": [
+          {
+            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
+            "time": 0.0,
+            "value": 0.5,
+            "inTangent": 0.0,
+            "outTangent": 0.0,
+            "inWeight": 0.0,
+            "outWeight": 0.0,
+            "weightedMode": "None",
+            "tangentMode": 0
+          },
+          {
+            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
+            "time": 0.3,
+            "value": 1.0,
+            "inTangent": -0.00291178,
+            "outTangent": -0.00291178,
+            "inWeight": 0.0,
+            "outWeight": 0.132851437,
+            "weightedMode": "None",
+            "tangentMode": 0
+          },
+          {
+            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
+            "time": 1.0,
+            "value": 0.0,
+            "inTangent": -0.948710144,
+            "outTangent": -0.948710144,
+            "inWeight": 0.140554309,
+            "outWeight": 0.0,
+            "weightedMode": "None",
+            "tangentMode": 0
+          }
+        ],
+        "length": 3,
+        "preWrapMode": "ClampForever",
+        "postWrapMode": "ClampForever"
+      },
+      "angularRecoil": 10000.0,
+      "angularRecoilCurve": {
+        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
+        "keys": [
+          {
+            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
+            "time": 0.0,
+            "value": 0.5,
+            "inTangent": 0.0,
+            "outTangent": 0.0,
+            "inWeight": 0.0,
+            "outWeight": 0.0,
+            "weightedMode": "None",
+            "tangentMode": 0
+          },
+          {
+            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
+            "time": 0.3,
+            "value": 1.0,
+            "inTangent": -0.00291178,
+            "outTangent": -0.00291178,
+            "inWeight": 0.0,
+            "outWeight": 0.132851437,
+            "weightedMode": "None",
+            "tangentMode": 0
+          },
+          {
+            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
+            "time": 1.0,
+            "value": 0.0,
+            "inTangent": -0.948710144,
+            "outTangent": -0.948710144,
+            "inWeight": 0.140554309,
+            "outWeight": 0.0,
+            "weightedMode": "None",
+            "tangentMode": 0
+          }
+        ],
+        "length": 3,
+        "preWrapMode": "ClampForever",
+        "postWrapMode": "ClampForever"
+      },
+      "recoilDuration": 0.15,
+      "hapticClip": {
+        "$type": "ThunderRoad.GameData+HapticClip, ThunderRoad",
+        "curveIntensity": {
+          "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
+          "keys": [
+            {
+              "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
+              "time": 0.3,
+              "value": 1.0,
+              "inTangent": 0.0,
+              "outTangent": 0.0,
+              "inWeight": 0.0,
+              "outWeight": 0.0,
+              "weightedMode": "None",
+              "tangentMode": 0
+            },
+            {
+              "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
+              "time": 1.0,
+              "value": 0.2,
+              "inTangent": 0.15,
+              "outTangent": 0.15,
+              "inWeight": 0.0,
+              "outWeight": 0.0,
+              "weightedMode": "None",
+              "tangentMode": 0
+            }
+          ],
+          "length": 2,
+          "preWrapMode": "ClampForever",
+          "postWrapMode": "ClampForever"
+        },
+        "curvePeriod": {
+          "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
+          "keys": [
+            {
+              "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
+              "time": 0.0,
+              "value": 0.05,
+              "inTangent": 0.0,
+              "outTangent": 0.0,
+              "inWeight": 0.0,
+              "outWeight": 0.0,
+              "weightedMode": "None",
+              "tangentMode": 0
+            },
+            {
+              "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
+              "time": 1.0,
+              "value": 0.0,
+              "inTangent": 0.0,
+              "outTangent": 0.0,
+              "inWeight": 0.0,
+              "outWeight": 0.0,
+              "weightedMode": "None",
+              "tangentMode": 0
+            }
+          ],
+          "length": 2,
+          "preWrapMode": "ClampForever",
+          "postWrapMode": "ClampForever"
+        },
+        "duration": 0.8
+      },
+      "imbueDrainOnFire": 150.0,
+      "hammerImpactEffectId": "",
+      "dryFireEffectId": "MusketDryFire",
+      "chargeIncreaseEffectId": "MusketDink",
+      "fullyChargedEffectId": "MusketDink",
+      "shootEffectId": "",
+      "heldRecoilMultiplier": 15.0,
+      "crystalColliderGroup": "CrystalColliderGroup"
+    },
+    {
+      "$type": "ThunderRoad.ItemModuleStats, ThunderRoad",
+      "stats": [
+        {
+          "$type": "ThunderRoad.ItemStatInt, ThunderRoad",
+          "value": 2,
+          "useStarIcons": true,
+          "name": "FleshDamage"
+        },
+        {
+          "$type": "ThunderRoad.ItemStatInt, ThunderRoad",
+          "value": 1,
+          "useStarIcons": true,
+          "name": "LeatherDamage"
+        },
+        {
+          "$type": "ThunderRoad.ItemStatInt, ThunderRoad",
+          "value": 2,
+          "useStarIcons": true,
+          "name": "PlateDamage"
+        },
+        {
+          "$type": "ThunderRoad.ItemStatInt, ThunderRoad",
+          "value": 0,
+          "useStarIcons": true,
+          "name": "Penetration"
+        },
+        {
+          "$type": "ThunderRoad.ItemStatInt, ThunderRoad",
+          "value": 0,
+          "useStarIcons": true,
+          "name": "Dismemberment"
+        },
+        {
+          "$type": "ThunderRoad.ItemStatInt, ThunderRoad",
+          "value": 2,
+          "useStarIcons": true,
+          "name": "Stagger"
+        },
+        {
+          "$type": "ThunderRoad.ItemStatInt, ThunderRoad",
+          "value": 4,
+          "useStarIcons": true,
+          "name": "Imbue"
+        },
+        {
+          "$type": "ThunderRoad.ItemStatInt, ThunderRoad",
+          "value": 2,
+          "useStarIcons": true,
+          "name": "Handling"
+        }
+      ]
+    }
+  ],
+  "entityModules": []
+}

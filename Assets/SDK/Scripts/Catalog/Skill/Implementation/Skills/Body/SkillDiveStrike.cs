@@ -1,127 +1,80 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
 
 namespace ThunderRoad.Skill
 {
+    [DeclareBoxGroup("Detection", Title = "Detection")]
+    [DeclareBoxGroup("Dive", Title = "Dive")]
+    [DeclareBoxGroup("Misc", Title = "Misc")]
     public class SkillDiveStrike : SkillData
     {
         public delegate void DiveEvent(Creature creature, EventTime eventTime);
         public static event DiveEvent OnDive;
 
         [Header("General")]
-#if ODIN_INSPECTOR
-        [BoxGroup("Detection")]
-#endif
+        [Group("Detection")]
         public float downwardAngle = 5f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Detection")]
-#endif
+        [Group("Detection")]
         public float minimumVelocity = 3f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Detection")]
-#endif
+        [Group("Detection")]
         public float grabWait = 0.5f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Detection")]
-#endif
+        [Group("Detection")]
         public float headAngleRange = 15f;
 
         [Header("Jab")]
-#if ODIN_INSPECTOR
-        [BoxGroup("Detection")]
-#endif
+        [Group("Detection")]
         public float decelerationRatioThresholdStab = 0.1f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Detection")]
-#endif
+        [Group("Detection")]
         public bool allowPommelDive = false;
         [Header("Swing")]
-#if ODIN_INSPECTOR
-        [BoxGroup("Detection")]
-#endif
+        [Group("Detection")]
         public bool swingDetectionEnabled = false;
-#if ODIN_INSPECTOR
-        [BoxGroup("Detection")]
-#endif
+        [Group("Detection")]
         public float decelerationRatioThresholdSlash = 0.1f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Detection")]
-#endif
+        [Group("Detection")]
         public float maxSwingPointDistance = 0.5f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Detection")]
-#endif
+        [Group("Detection")]
         public float minAirborneTimeForPunch = 0.6f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Detection")]
-#endif
+        [Group("Detection")]
         public float minAirborneTimeForSlash = 0.5f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Detection")]
-#endif
+        [Group("Detection")]
         public float slashLookBiasAmount = 0.75f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Dive")]
-#endif
+        [Group("Dive")]
         public bool aimAssist = false;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Dive"), ValueDropdown(nameof(GetAllEffectID))]
-#endif
+        [Group("Dive")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string effectId;
 
         protected EffectData effectData;
-#if ODIN_INSPECTOR
-        [BoxGroup("Dive")]
-#endif
+        [Group("Dive")]
         public float diveSpeedScaleAimAssist = 1.4f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Dive")]
-#endif
+        [Group("Dive")]
         public float currentSpeedScale = 0.75f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Dive")]
-#endif
+        [Group("Dive")]
         public float diveSpeedScale = 2f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Dive")]
-#endif
+        [Group("Dive")]
         public float handVelocityMult = 2;
-#if ODIN_INSPECTOR
-        [BoxGroup("Dive")]
-#endif
+        [Group("Dive")]
         public float maxVelocity = 8f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Dive")]
-#endif
+        [Group("Dive")]
         public float damageMultiplier = 3f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Dive")]
-#endif
+        [Group("Dive")]
         public float groundEndDiveAllowance = 0.5f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Misc")]
-#endif
+        [Group("Misc")]
         public bool endOnHit = false;
-#if ODIN_INSPECTOR
-        [BoxGroup("Misc")]
-#endif
+        [Group("Misc")]
         public float fallDamageScale = 0;
 
     }

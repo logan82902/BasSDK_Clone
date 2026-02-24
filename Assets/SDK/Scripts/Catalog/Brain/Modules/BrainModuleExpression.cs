@@ -10,6 +10,7 @@ using Newtonsoft.Json;
 namespace ThunderRoad
 {
     [System.Serializable]
+    [AutoLabelWidth(AddedWidth = 5f, MinWidth = 0f)]
     public class BrainModuleExpression : BrainData.Module
     {
         [Serializable]

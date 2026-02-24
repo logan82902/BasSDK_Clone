@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
+  "groupPath": "Dalgarian/Standard",
   "isUnique": true,
   "areaPrefabAddress": "Bas.Area.DA_Std_CaveTerrace",
   "lightingPresetAddress": "Bas.Area.DA_Std_CaveTerrace.LightingPreset",
@@ -76,6 +77,5 @@
       "fakeViewAddress": "Bas.Area.DA_Std_CaveTerrace.FakeView.1"
     }
   ],
-  "areaGlobalParameters": [],
-  "groupPath": "Dalgarian/Standard"
+  "areaGlobalParameters": []
 }

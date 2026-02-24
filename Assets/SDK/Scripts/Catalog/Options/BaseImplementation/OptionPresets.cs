@@ -1,7 +1,6 @@
 ﻿using System;
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#endif
+using TriInspector;
+
 namespace ThunderRoad
 {
 	[Serializable]
@@ -11,6 +10,7 @@ namespace ThunderRoad
 		{ }
 		public abstract object Value();
 	}
+
 	[Serializable]
 	public class OptionBooleanValue : OptionValue
 	{
@@ -23,6 +23,7 @@ namespace ThunderRoad
 		public bool value;
 		public override object Value() => value;
 	}
+
 	[Serializable]
 	public class OptionStringValue : OptionValue
 	{
@@ -35,6 +36,7 @@ namespace ThunderRoad
 		public string value;
 		public override object Value() => value;
 	}
+
 	[Serializable]
 	public class OptionIntValue : OptionValue
 	{
@@ -47,6 +49,7 @@ namespace ThunderRoad
 		public int value;
 		public override object Value() => value;
 	}
+
 	[Serializable]
 	public class OptionFloatValue : OptionValue
 	{
@@ -68,19 +71,16 @@ namespace ThunderRoad
 			this.enumValue = value;
 		}
 		private T _enumValue;
-#if ODIN_INSPECTOR		
+
 		[ShowInInspector]
-#endif		
 		public T enumValue
 		{
 			get => _enumValue;
-			set { _enumValue = value; this.value = Convert.ToInt32(_enumValue);}
+			set { _enumValue = value; this.value = Convert.ToInt32(_enumValue); }
 		}
-
-		public override object Value() => _enumValue;
 	}
-	
-	
-	[Serializable]
-	public class OptionPresets : UnitySerializedDictionary<string, OptionValue>{}
+
+    [Serializable]
+    public class OptionPresets : UnitySerializedDictionary<string, OptionValue>
+    { }
 }

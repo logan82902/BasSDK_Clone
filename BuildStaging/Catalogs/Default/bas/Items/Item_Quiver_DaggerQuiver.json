@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 4,
+  "groupPath": null,
   "localizationId": "DaggerQuiver",
   "displayName": "Throwing Dagger Pouch",
   "description": "Small, cheap blades, properly balanced for optimal throwing.",
@@ -11,19 +12,21 @@
   "valueType": "Gold",
   "value": 1230.0,
   "rewardValue": 0.0,
-  "tier": 0,
+  "tier": 2,
   "flags": "Spinnable",
   "levelRequired": 0,
+  "type": "Quiver",
   "category": "Daggers",
+  "update": "",
   "iconEffectId": null,
   "preferredItemCenter": "Mass",
   "drainImbueWhenIdle": true,
+  "forceImbueUseButton": "None",
   "prefabAddress": "Bas.Item.Throwables.DaggerQuiver",
   "iconAddress": "Bas.Item.Throwables.DaggerQuiver.Icon[wpn_THP_DaggerHolder]",
   "closeUpIconAddress": null,
   "pooledCount": 0,
   "androidPooledCount": 0,
-  "type": "Quiver",
   "allowedStorage": "Container, SandboxAllItems",
   "despawnOnStoredInInventory": false,
   "isStackable": false,
@@ -37,6 +40,7 @@
   "mass": 0.9,
   "drag": 0.0,
   "angularDrag": 0.05,
+  "density": 1000.0,
   "focusRegenMultiplier": 1.0,
   "spellChargeSpeedPlayerMultiplier": 1.0,
   "spellChargeSpeedNPCMultiplier": 1.0,
@@ -150,18 +154,6 @@
     "preWrapMode": "ClampForever",
     "postWrapMode": "ClampForever"
   },
-  "modules": [
-    {
-      "$type": "ThunderRoad.ItemModuleStats, ThunderRoad",
-      "stats": [
-        {
-          "$type": "ThunderRoad.ItemStatString, ThunderRoad",
-          "value": "8",
-          "name": "HoldAmount"
-        }
-      ]
-    }
-  ],
   "colliderGroups": [],
   "damagers": [
     {
@@ -189,6 +181,17 @@
   ],
   "effectHinges": [],
   "whooshs": [],
-  "entityModules": [],
-  "groupPath": null
+  "modules": [
+    {
+      "$type": "ThunderRoad.ItemModuleStats, ThunderRoad",
+      "stats": [
+        {
+          "$type": "ThunderRoad.ItemStatString, ThunderRoad",
+          "value": "8",
+          "name": "HoldAmount"
+        }
+      ]
+    }
+  ],
+  "entityModules": []
 }

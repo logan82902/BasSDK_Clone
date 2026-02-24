@@ -1,9 +1,6 @@
-using System;
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+﻿using System;
+
 using TriInspector;
-#endif
 using ThunderRoadVRKBSharedData;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -51,9 +48,7 @@ namespace ThunderRoad
         public Material PressedKeyMaterial;
         
         [NonSerialized]
-#if ODIN_INSPECTOR
         [ShowInInspector]
-#endif
         public KeyboardData data;
         
         [NonSerialized]

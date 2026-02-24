@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 2,
+  "groupPath": null,
   "pooledCount": 1,
   "cycle": true,
   "cyclePlayerMinDistance": 2.0,
@@ -26,9 +27,7 @@
       "audioHitChance": 1.0,
       "audioDeathChance": 1.0,
       "moveMouth": true,
-      "audioLipSyncUpdateRate": 0.05,
-      "audioLipSyncMaxValue": 0.3,
-      "audioLipSampleDataLength": 1024,
+      "audioLipSyncMaxValue": 2.0,
       "lipSyncSpeed": 5.0,
       "speakOnAttackMelee": false,
       "speakOnAttackCast": false,
@@ -59,6 +58,7 @@
       "areaMask": -11,
       "stuckRadius": 0.01,
       "stuckMaxDuration": 0.5,
+      "maxAllowedWaterDepth": 0.0,
       "preventTooClose": false,
       "tooCloseDistance": 0.7,
       "edgeAvoidanceDistance": 0.1,
@@ -442,6 +442,5 @@
       "lastShootUpdatePositionMaxDistance": 0.5,
       "debug": false
     }
-  ],
-  "groupPath": null
+  ]
 }

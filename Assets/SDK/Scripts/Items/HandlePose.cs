@@ -1,11 +1,8 @@
 ﻿using UnityEngine;
 using System;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
@@ -78,6 +75,14 @@ namespace ThunderRoad
                 UnityEditor.EditorApplication.delayCall += _OnValidate;
             }
         }
+
+        private void OnDestroy()
+        {
+#if UNITY_EDITOR
+            UnityEditor.EditorApplication.delayCall -= _OnValidate;
+#endif
+        }
+
         private void _OnValidate()
         {
             UnityEditor.EditorApplication.delayCall -= _OnValidate;

@@ -1,6 +1,6 @@
-namespace ThunderRoad
+﻿namespace ThunderRoad
 {
-    using UnityEngine;
+using UnityEngine;
 
     public class MusicStingerOnItemBreakModule : MusicDynamicStingerModule
     {

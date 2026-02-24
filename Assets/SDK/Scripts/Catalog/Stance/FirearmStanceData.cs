@@ -1,38 +1,39 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
+    [DeclareBoxGroup("Stance basics", Title = "Stance basics")]
+    [DeclareBoxGroup("Shooting", Title = "Shooting")]
     public class FirearmStanceData : StanceData
     {
-#if ODIN_INSPECTOR
-        [BoxGroup("Stance basics"), OnValueChanged(nameof(UpdateIDs))]
-#endif
+        [Group("Stance basics")]
+        [OnValueChanged(nameof(UpdateIDs))]
         public string rootName;
-#if ODIN_INSPECTOR
-        [BoxGroup("Shooting"), HideLabel, Header("Idle")]
-#endif
-        public FirearmPose idlePose = new FirearmPose();
-#if ODIN_INSPECTOR
-        [BoxGroup("Shooting"), HideLabel, Header("Aim")]
-#endif
-        public FirearmPose aimPose = new FirearmPose();
-#if ODIN_INSPECTOR
-        [BoxGroup("Shooting"), HideLabel, Header("Fire")]
-#endif
-        public FirearmAction fireAction = new FirearmAction();
-#if ODIN_INSPECTOR
-        [BoxGroup("Shooting"), HideLabel, Header("Reload")]
-#endif
-        public FirearmAction reloadAction = new FirearmAction();
+        [Group("Shooting")]
+        [HideLabel]
+        [HideReferencePicker]
+        [Header("Idle")]
+        public FirearmPose idlePose = new();
+        [Group("Shooting")]
+        [HideLabel]
+        [HideReferencePicker]
+        [Header("Aim")]
+        public FirearmPose aimPose = new();
+        [Group("Shooting")]
+        [HideLabel]
+        [HideReferencePicker]
+        [Header("Fire")]
+        public FirearmAction fireAction = new();
+        [Group("Shooting")]
+        [HideLabel]
+        [HideReferencePicker]
+        [Header("Reload")]
+        public FirearmAction reloadAction = new();
 
-#if ODIN_INSPECTOR
         protected void UpdateIDs()
         {
             idlePose.id = rootName + "IdlePose";
@@ -40,7 +41,14 @@ namespace ThunderRoad
             fireAction.id = rootName + "ShootAnimation";
             reloadAction.id = rootName + "ReloadAnimation";
         }
-#endif
+
+        public override IEnumerable<StanceNode> AllStanceNodes()
+        {
+            yield return idlePose;
+            yield return aimPose;
+            yield return fireAction;
+            yield return reloadAction;
+        }
 
     }
 }

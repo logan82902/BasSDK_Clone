@@ -4,32 +4,35 @@ using System.Linq;
 using System;
 
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
     [HelpURL("https://kospy.github.io/BasSDK/Components/ThunderRoad/Items/Holder.html")]
     [AddComponentMenu("ThunderRoad/Holder")]
+    [DeclareBoxGroup("Holder")]
     public class Holder : Interactable
     {
-        [Tooltip("If enabled, when the hand is near the holder, it will display a HUD Highlighter")]
+
         public static bool showHudHighlighter = true;
-        [Tooltip("If set to true, this holder will ignore the JSON item limit, and spawn an infinite supply of the item")]
         public static bool infiniteSupply = false;
+
+        [Group("Holder")]
         [Tooltip("This is the position of the holder, assuming this holder has been placed on a creature.")]
         public DrawSlot drawSlot = DrawSlot.None;
+        [Group("Holder")]
         [Tooltip("If useAnchor is set to true, the holder will only align the items to the first slot.")]
         public bool useAnchor = true;
+        [Group("Holder")]
         [Tooltip("Determines the amount of slots in the holder. The number of items inside the holder can bypass the amount of slots, but it will not make new slots for the items to sit in.")]
-        public List<Transform> slots = new List<Transform>();
+        public List<Transform> slots = new();
+        [Group("Holder")]
         [Tooltip("This is a list of items that the holder will start with. For this to take effect, the item must exist in the scene that the holder is in (for example, an item rack)")]
-        public List<Item> startObjects = new List<Item>();
+        public List<Item> startObjects = new();
+        [Group("Holder")]
         [Tooltip("GameObjects placed in this holder will not have any physics interactions with any colliders in this list, when the item is taken out (For example, an arrow will not collide with its' quiver)")]
-        public List<Collider> ignoredColliders = new List<Collider>();
+        public List<Collider> ignoredColliders = new();
+        [Group("Holder")]
         [Tooltip("This value is used to define the target anchor in editor only. This is ignored in game, and is a testing tool only.")]
         public string editorTargetAnchor;
         [NonSerialized]
@@ -47,17 +50,10 @@ namespace ThunderRoad
         [Serializable]
         public class HolderSize
         {
-#if ODIN_INSPECTOR
-            [ValueDropdown(nameof(GetAllHolderSlots))]
-#endif
+            [Dropdown(nameof(GetAllHolderSlots))]
             public string slot;
 
-#if ODIN_INSPECTOR
-            public List<ValueDropdownItem<string>> GetAllHolderSlots()
-            {
-                return Catalog.GetDropdownHolderSlots();
-            }
-#endif
+            public TriDropdownList<string> GetAllHolderSlots() => Catalog.GetDropdownHolderSlots();
         }
 
         [NonSerialized]
@@ -73,11 +69,11 @@ namespace ThunderRoad
             if (slots.Count == 0) slots.Add(this.transform);
         }
 
-        [Button("Refill holder")]
         public void FillWithDefault()
         {
         }
 
+        [Group("Holder")]
         [Button("Align start object")]
         public virtual void AlignObject(Item item)
         {

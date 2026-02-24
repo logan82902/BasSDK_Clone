@@ -1,0 +1,25 @@
+{
+  "$type": "ThunderRoad.MapData, ThunderRoad",
+  "id": "Eraden",
+  "sensitiveContent": "None",
+  "sensitiveFilterBehaviour": "Discard",
+  "version": 0,
+  "groupPath": null,
+  "worldmapPrefabAddress": "Bas.Image.Map.Default",
+  "worldmapTextureAddress": "Bas.Worldmap.Eraden",
+  "worldmapLocalisationId": "EradenMap",
+  "bookmarkIconAddress": "Bas.Icon.EnemyConfig.Eraden",
+  "bookmarkColor": {
+    "r": 0.227450982,
+    "g": 0.282352954,
+    "b": 0.3372549,
+    "a": 1.0
+  },
+  "iconColor": {
+    "r": 0.9490196,
+    "g": 0.772549033,
+    "b": 0.58431375,
+    "a": 1.0
+  },
+  "order": 1
+}

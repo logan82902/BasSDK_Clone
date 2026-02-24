@@ -1,69 +1,43 @@
-﻿#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#endif
+﻿using Newtonsoft.Json;
+using TriInspector;
 using UnityEngine;
 
 namespace ThunderRoad.Skill.Spell
 {
+    [DeclareBoxGroup("Imbue Use", Title = "Imbue Use")]
     public class SkillGravityHammer : SpellSkillData
     {
-#if ODIN_INSPECTOR
-        [BoxGroup("Imbue Use"), ValueDropdown(nameof(GetAllEffectID))]
-#endif
+        [Group("Imbue Use")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string whooshEffectId;
+        [JsonIgnore]
         public EffectData whooshEffectData;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Imbue Use")]
-#endif
+        [Group("Imbue Use")]
         public float minWhooshVelocity = 5;
-#if ODIN_INSPECTOR
-        [BoxGroup("Imbue Use")]
-#endif
+        [Group("Imbue Use")]
         public float maxWhooshVelocity = 12;
-#if ODIN_INSPECTOR
-        [BoxGroup("Imbue Use")]
-#endif
+        [Group("Imbue Use")]
         public float throwMult = 1f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Imbue Use")]
-#endif
+        [Group("Imbue Use")]
         public float jointPositionSpring = 1000;
-#if ODIN_INSPECTOR
-        [BoxGroup("Imbue Use")]
-#endif
+        [Group("Imbue Use")]
         public float jointPositionDamper = 150;
-#if ODIN_INSPECTOR
-        [BoxGroup("Imbue Use")]
-#endif
+        [Group("Imbue Use")]
         public float jointPositionMaxForce = 100000;
-#if ODIN_INSPECTOR
-        [BoxGroup("Imbue Use")]
-#endif
+        [Group("Imbue Use")]
         public float jointRotationSpring = 1000;
-#if ODIN_INSPECTOR
-        [BoxGroup("Imbue Use")]
-#endif
+        [Group("Imbue Use")]
         public float jointRotationDamper = 50;
-#if ODIN_INSPECTOR
-        [BoxGroup("Imbue Use")]
-#endif
+        [Group("Imbue Use")]
         public float jointRotationMaxForce = 10000;
-#if ODIN_INSPECTOR
-        [BoxGroup("Imbue Use")]
-#endif
+        [Group("Imbue Use")]
         public float ragdollMassModifier = 8f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Imbue Use")]
-#endif
+        [Group("Imbue Use")]
         public float imbueDrainItem = 3;
-#if ODIN_INSPECTOR
-        [BoxGroup("Imbue Use")]
-#endif
+        [Group("Imbue Use")]
         public float imbueDrainRagdoll = 7;
-#if ODIN_INSPECTOR
-        [BoxGroup("Imbue Use")]
-#endif
+        [Group("Imbue Use")]
         public float minDistance = 1f;
 
         public float minThrowVelocity = 2;

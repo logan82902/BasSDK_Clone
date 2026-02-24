@@ -1,111 +1,84 @@
 ﻿using System;
 using UnityEngine;
 using System.Collections.Generic;
+using TriInspector;
 
 #if UNITY_EDITOR
 using UnityEditor.SceneManagement;
 using UnityEditor;
 #endif
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
-using TriInspector;
-#endif
-
 namespace ThunderRoad
 {
     [HelpURL("https://kospy.github.io/BasSDK/Components/ThunderRoad/Levels/BakedLodGroup.html")]
-    [ExecuteInEditMode] 
+    [ExecuteInEditMode]
+    [DeclareBoxGroup("Source", Title = "Source")]
+    [DeclareBoxGroup("Baking", Title = "Baking")]
+    [DeclareBoxGroup("Cached", Title = "Cached")]
     public class BakedLODGroup : MonoBehaviour, ICheckAsset
     {
-#if ODIN_INSPECTOR
-        [BoxGroup("Source")]
-#endif
+        [Group("Source")]
         [Tooltip("This will be the head mesh renderer, which will be used for the lightmap, especially if you share lightmaps with other LODs.")]
         public MeshRenderer meshRenderer;
+        
 #if UNITY_EDITOR
-#if ODIN_INSPECTOR
-        [BoxGroup("Source")]
+        [Group("Source")]
         [Tooltip("If true, the lightmap scale will be scaled by the object's scale")]
-#endif
         public bool scaleByObjectScale = true;
-#if ODIN_INSPECTOR
-        [BoxGroup("Source")]
-#endif
+        [Group("Source")]
         [Tooltip("The minimum lightmap scale of this object when far away from a Player Lightmap Volume")]
         public float minLightMapScale;
-#if ODIN_INSPECTOR
-        [BoxGroup("Source")]
+        [Group("Source")]
         [ReadOnly]
         [ShowInInspector]
         [Tooltip("The min lightmap scale scaled by the object's scale")]
-#endif        
         private float scaledMinLightMapScale;
-#if ODIN_INSPECTOR
-        [BoxGroup("Source")]
-#endif
+        [Group("Source")]
         [Tooltip("The maximum lightmap scale of this object when inside a Player Lightmap Volume")]
         public float maxLightMapScale;
-#if ODIN_INSPECTOR
-        [BoxGroup("Source")]
+        [Group("Source")]
         [ReadOnly]
         [ShowInInspector]
         [Tooltip("The max lightmap scale scaled by the object's scale")]
-#endif        
         private float scaledMaxLightMapScale;
-#if ODIN_INSPECTOR
-        [BoxGroup("Source")]
-#endif
+        [Group("Source")]
         [Tooltip("The default lightmap scale which was set in the meshRenderer in the prefab")]
         public float defaultLightMapScale;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Source")]
+        [Group("Source")]
         [ReadOnly]
         [Tooltip("The calculated lightmap scale")]
         [ShowInInspector]
-#endif
         [NonSerialized]
         public float calculatedLightMapScale;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Source")]
-#endif
+        [Group("Source")]
         [Tooltip("When enabled, the material of the LOD0 will share between LODs")]
         public bool applySourceMaterialOnTargets;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Source")]
+        [Group("Source")]
         [ReadOnly]
         [ShowInInspector]
         [Tooltip("The global scale of the object in the world")]
-#endif        
         private Vector3 objectLossyScale;
-#if ODIN_INSPECTOR
-        [BoxGroup("Source")]
+        [Group("Source")]
         [ReadOnly]
         [ShowInInspector]
         [Tooltip("The ratio of how much the object is scaled")]
-#endif        
         private float objectScaleRatio;
-
-
 #endif
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Baking")]
-#endif
+        [Group("Baking")]
         [Tooltip("To save lightmap space, you can put other LODs of this object here, a recommendation if they share the same lightmap UVs.")]
         public bool applySourceLightmapOnTarget;
-#if ODIN_INSPECTOR
-        [BoxGroup("Baking"), ShowIf("applySourceLightmapOnTarget")]
-#endif
+        [Group("Baking")]
+        [ShowIf("applySourceLightmapOnTarget")]
         [Tooltip("Put LODs you want to share lightmap scales with here.")]
         public MeshRenderer[] targetMeshRenderers = new MeshRenderer[0];
 
         protected LightingGroup lightingGroup;
         protected float orgLightmapScale = 0;
+
 
         private void Awake()
         {
@@ -187,23 +160,23 @@ namespace ThunderRoad
 #if UNITY_EDITOR
         public static bool allowHighPolyBake = true;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Baking")]
-#endif
+        [Group("Baking")]
         [Tooltip("When baking, the renderer will switch to this model to get a high poly bake, then switch back when baking ends.")]
         public bool useHighPoly;
-#if ODIN_INSPECTOR
-        [BoxGroup("Baking"), ShowInInspector, OnValueChanged(nameof(EditorUpdateHighPolyMesh)), InlineButton("EditorClearHighPolyMesh", "Clear"), InlineButton("EditorUnloadCachedHighPolyMesh", "Unload"), InlineButton("EditorLoadCachedHighPolyMesh", "Load"), ShowIf("useHighPoly")]
-#endif
+        [Group("Baking")]
+        [ShowInInspector]
+        [OnValueChanged(nameof(EditorUpdateHighPolyMesh))]
+        [InlineButton(nameof(EditorClearHighPolyMesh), "Clear")]
+        [InlineButton(nameof(EditorUnloadCachedHighPolyMesh), "Unload")]
+        [InlineButton(nameof(EditorLoadCachedHighPolyMesh), "Load")]
+        [ShowIf("useHighPoly")]
         [NonSerialized]
         public Mesh highPolyMeshEditorReference;
-#if ODIN_INSPECTOR
-        [BoxGroup("Cached"), ReadOnly]
-#endif
+        [Group("Cached")]
+        [ReadOnly]
         public string highPolyMeshName;
-#if ODIN_INSPECTOR
-        [BoxGroup("Cached"), ReadOnly]
-#endif
+        [Group("Cached")]
+        [ReadOnly]
         public string highPolyMeshGUID;
 
         protected void EditorUpdateHighPolyMesh()
@@ -217,7 +190,6 @@ namespace ThunderRoad
             if (allowHighPolyBake && useHighPoly && highPolyMeshGUID != null && highPolyMeshGUID != "")
             {
                 UnityEngine.Object[] objects = UnityEditor.AssetDatabase.LoadAllAssetRepresentationsAtPath(UnityEditor.AssetDatabase.GUIDToAssetPath(highPolyMeshGUID));
-                //Debug.LogFormat(this, "Load highPoly Mesh EditorReference:" + highPolyMeshName);
                 for (int i = 0; i < objects.Length; i++) // loop on all sub-assets loaded
                 {
                     if (objects[i].name == highPolyMeshName && objects[i].GetType() == typeof(Mesh)) // if the name AND the type match we found it
@@ -276,9 +248,7 @@ namespace ThunderRoad
                     }
                 }
             }
-
         }
-
 
         private void OnValidate()
         {
@@ -290,7 +260,6 @@ namespace ThunderRoad
             {
                 GetMeshRenderer();
             }
-            
         }
 
         [Button]
@@ -471,7 +440,6 @@ namespace ThunderRoad
 
             // //the object could be far away from a PLV so the actual calculatedLightMapScale could be zero, in that case, we need to clamp it to the min/max first
             // calculatedLightMapScale = Mathf.Clamp(scaledCalculatedLightMapScale, minLightMapScale, maxLightMapScale);
-            //
             // the calculated lightmap scale is inversely proportional to the scale of the object
             float scaledCalculatedLightMapScale = calculatedLightMapScale * objectScaleRatio;
 
@@ -479,7 +447,6 @@ namespace ThunderRoad
             scaledCalculatedLightMapScale = Mathf.Clamp(scaledCalculatedLightMapScale, scaledMinLightMapScale, scaledMaxLightMapScale);
 
             calculatedLightMapScale = scaledCalculatedLightMapScale;
-
         }
 
         //A method which will take the lossy scale of an object, and calculate the ratio of how much it is under or overscaled from 1,1,1
@@ -498,8 +465,13 @@ namespace ThunderRoad
         private void OnEnable()
         {
             if(Application.isPlaying) return;
+            // warning suppressed due to it being unsubscribed in OnDisable()/ManagedOnDisable()
+#pragma warning disable UDR0005 // Domain Reload Analyzer
+            LightmapBakeHelper.onBakeStarted -= OnBakeStarted;
             LightmapBakeHelper.onBakeStarted += OnBakeStarted;
+            LightmapBakeHelper.onBakeCompleted -= OnBakeCompleted;
             LightmapBakeHelper.onBakeCompleted += OnBakeCompleted;
+#pragma warning restore UDR0005 // Domain Reload Analyzer
             UpdateLightmapScale();
         }
 
@@ -619,7 +591,6 @@ namespace ThunderRoad
         Color green = Color.green;
         public void OnDrawGizmosSelected()
         {
-
             if (PlayerLightMapVolume.drawLinesToVolumes)
             {
                 Gizmos.color = Color.magenta;
@@ -658,8 +629,6 @@ namespace ThunderRoad
             }
         }
 #endif
-
-
 #endif
     }
 }

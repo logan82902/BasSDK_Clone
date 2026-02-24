@@ -1,11 +1,14 @@
-namespace ThunderRoad
+﻿namespace ThunderRoad
 {
-    using UnityEngine;
+using UnityEngine;
 
     public class ThunderBehaviourSingleton<T> : ThunderBehaviour where T : ThunderBehaviour
     {
         #region Fields
-        private static T _instance = null;
+        // RuntimeInitializeOnLoadMethod is not allowed on a generic class, so this variable is reset in the non-generic derived classes
+#pragma warning disable UDR0001
+        protected static T _instance = null;
+#pragma warning restore UDR0001
         #endregion Fields
 
         #region Properties
@@ -28,7 +31,8 @@ namespace ThunderRoad
                 return _instance;
             }
         }
-        public static bool HasInstance { get { return _instance != null; } }
+        public static bool HasInstance => _instance != null;
+
         #endregion Properties
 
         #region Methods

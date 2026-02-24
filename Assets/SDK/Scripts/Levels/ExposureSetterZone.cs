@@ -5,11 +5,8 @@ using UnityEditor;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
@@ -47,7 +44,8 @@ namespace ThunderRoad
         public float speedDown = 1;
         [Tooltip("The exposure to set when the player enters zone via green portal.")]
         public float exposureOnEnter = 1f;
- 
-        
+
+
+
     }
 }

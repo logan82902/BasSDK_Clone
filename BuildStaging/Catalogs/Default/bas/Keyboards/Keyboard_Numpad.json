@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
+  "groupPath": null,
   "prefabAddress": "Bas.Core.KeyboardNumpad",
   "localizationIds": [
     "English",
@@ -375,6 +376,5 @@
         }
       }
     }
-  },
-  "groupPath": null
+  }
 }

@@ -4,11 +4,8 @@ using System.Collections.Generic;
 using Random = UnityEngine.Random;
 
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {

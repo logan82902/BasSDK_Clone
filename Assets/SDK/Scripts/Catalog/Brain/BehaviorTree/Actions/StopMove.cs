@@ -1,10 +1,8 @@
-﻿#if ODIN_INSPECTOR
-#else
-using TriInspector;
-#endif
+﻿using TriInspector;
 
 namespace ThunderRoad.AI.Action
 {
+    [AutoLabelWidth(AddedWidth = 5f, MinWidth = 0f)]
     public class StopMove : ActionNode
     {
         public bool stopMovement;

@@ -3,14 +3,19 @@ using System.Collections;
 using UnityEngine;
 using System.Collections.Generic;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+
 using TriInspector;
-#endif
+using Newtonsoft.Json;
 
 namespace ThunderRoad
 {
+    [DeclareBoxGroup("Color", Title = "Color")]
+    [DeclareBoxGroup("Color (HDR)", Title = "Color (HDR)")]
+    [DeclareHorizontalGroup("Color (HDR)/MainColor")]
+    [DeclareHorizontalGroup("Color (HDR)/SecondaryColor")]
+    [DeclareBoxGroup("Color (Non HDR)", Title = "Color (Non HDR)")]
+    [DeclareHorizontalGroup("Color (Non HDR)/MainNoHdr")]
+    [DeclareHorizontalGroup("Color (Non HDR)/SecondaryNoHdr")]
     public class EffectModuleShader : EffectModule
     {
         public EffectTarget linkBaseColor = EffectTarget.None;
@@ -24,78 +29,61 @@ namespace ThunderRoad
         public float refreshSpeed = 0.1f;
         public bool useSecondaryRenderer;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Color")] 
-#endif
-        [NonSerialized, GradientUsage(true)]
+        [Group("Color")]
+        [NonSerialized]
+        [JsonIgnore]
+        [GradientUsage(true)]
         private Gradient mainGradient;
 
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Color")] 
-#endif
-        [NonSerialized, GradientUsage(true)]
+        [Group("Color")]
+        [NonSerialized]
+        [JsonIgnore]
+        [GradientUsage(true)]
         private Gradient secondaryGradient;
 
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Color")] 
-#endif
+        [Group("Color")]
         [NonSerialized]
+        [JsonIgnore]
         private Gradient mainGradientNoHdr;
 
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Color")] 
-#endif
+        [Group("Color")]
         [NonSerialized]
+        [JsonIgnore]
         private Gradient secondaryGradientNoHdr;
 
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Color (HDR)")]
-        [HorizontalGroup("Color (HDR)/MainColor")] 
-#endif
-        [ColorUsage(true, true), SerializeField]
+        [Group("Color (HDR)/MainColor")]
+        [ColorPickerField(Alpha = true, HDR = true)]
+        [SerializeField]
         public Color mainColorStart;
-#if ODIN_INSPECTOR
-        [HorizontalGroup("Color (HDR)/MainColor")] 
-#endif
-        [ColorUsage(true, true), SerializeField]
+        [Group("Color (HDR)/MainColor")]
+        [ColorPickerField(Alpha = true, HDR = true)]
+        [SerializeField]
         public Color mainColorEnd;
-#if ODIN_INSPECTOR
-        [HorizontalGroup("Color (HDR)/SecondaryColor")] 
-#endif
-        [ColorUsage(true, true), SerializeField]
+        [Group("Color (HDR)/SecondaryColor")]
+        [ColorPickerField(Alpha = true, HDR = true)]
+        [SerializeField]
         public Color secondaryColorStart;
-#if ODIN_INSPECTOR
-        [HorizontalGroup("Color (HDR)/SecondaryColor")] 
-#endif
-        [ColorUsage(true, true), SerializeField]
+        [Group("Color (HDR)/SecondaryColor")]
+        [ColorPickerField(Alpha = true, HDR = true)]
+        [SerializeField]
         public Color secondaryColorEnd;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Color (Non HDR)")]
-        [HorizontalGroup("Color (Non HDR)/MainNoHdr")] 
-#endif
+        [Group("Color (Non HDR)/MainNoHdr")]
         [SerializeField]
         public Color mainNoHdrColorStart;
-#if ODIN_INSPECTOR
-        [HorizontalGroup("Color (Non HDR)/MainNoHdr")] 
-#endif
+        [Group("Color (Non HDR)/MainNoHdr")]
         [SerializeField]
         public Color mainNoHdrColorEnd;
-#if ODIN_INSPECTOR
-        [HorizontalGroup("Color (Non HDR)/SecondaryNoHdr")] 
-#endif
+        [Group("Color (Non HDR)/SecondaryNoHdr")]
         [SerializeField]
         public Color secondaryNoHdrColorStart;
-#if ODIN_INSPECTOR
-        [HorizontalGroup("Color (Non HDR)/SecondaryNoHdr")] 
-#endif
+        [Group("Color (Non HDR)/SecondaryNoHdr")]
         [SerializeField]
         public Color secondaryNoHdrColorEnd;
-
         public static List<EffectShader> pool = new List<EffectShader>();
         public static Transform poolRoot;
 

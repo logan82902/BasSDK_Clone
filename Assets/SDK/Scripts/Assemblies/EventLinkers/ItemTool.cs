@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using TriInspector;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -17,14 +18,28 @@ namespace ThunderRoad
         public List<Item> selectedItems = new List<Item>();
 
         [Serializable]
+        [AutoLabelWidth(AddedWidth = 5f)]
+        [DeclareHorizontalGroup("TopRow", Sizes = new float[] { 0f, 110f })]
+        [DeclareHorizontalGroup("Conditions")]
+        [DeclareHorizontalGroup("GrabState")]
         public class SelectionSetting
         {
+            [Group("TopRow")]
             public string idFilter = "";
-            public SelectionCondition condition = SelectionCondition.Random;
-            public VennState playerGrabState = VennState.Either;
-            public VennState NPCGrabState = VennState.Either;
-            public VennState breakable = VennState.Either;
+            [Group("TopRow")]
             public int repeat = 1;
+            [Group("Conditions")]
+            public SelectionCondition condition = SelectionCondition.Random;
+            [Group("Conditions")]
+            [EnumToggleButtons]
+            public VennState breakable = VennState.Either;
+            [Header("Grab State")]
+            [Group("GrabState")]
+            [EnumToggleButtons]
+            public VennState playerGrabState = VennState.Either;
+            [Group("GrabState")]
+            [EnumToggleButtons]
+            public VennState NPCGrabState = VennState.Either;
         }
 
         public enum VennState
@@ -44,6 +59,7 @@ namespace ThunderRoad
             NewestInteracted,
             OldestInteracted,
         }
+
 
         public void ClearSelections()
         {

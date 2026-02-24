@@ -1,6 +1,7 @@
 ﻿namespace ThunderRoad
 {
-	public class ItemModuleMagicProjectile : ItemModule
+    [System.Serializable]
+    public class ItemModuleMagicProjectile : ItemModule
     {
     }
 }

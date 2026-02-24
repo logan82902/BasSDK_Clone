@@ -98,9 +98,7 @@ namespace ThunderRoad.Manikin
 
         public bool useSRPBatcher = true;
         public ManikinProperty[] properties;
-
-        public bool applyBitmaskEveryUpdate = false;
-
+        
         public string occlusionID;
         public int occlusionIDHash;
         public int occlusionBitmask;

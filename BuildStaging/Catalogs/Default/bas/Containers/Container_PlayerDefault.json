@@ -4,10 +4,18 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 1,
+  "groupPath": "Player",
   "displayName": "Sandbox Player",
   "description": null,
-  "contents": [],
   "containerContents": [
+    {
+      "$type": "ThunderRoad.ItemContent, ThunderRoad",
+      "quantity": 1,
+      "state": null,
+      "customDataList": null,
+      "mergeKey": "793e0f0a",
+      "referenceID": "ZiplineWheel01"
+    },
     {
       "$type": "ThunderRoad.TableContent, ThunderRoad",
       "quantity": 1,
@@ -16,6 +24,7 @@
         "holderName": "BackRight"
       },
       "customDataList": null,
+      "mergeKey": "c5c7e9a5",
       "referenceID": "WeaponCivilian"
     },
     {
@@ -26,70 +35,87 @@
         "holderName": "HipsLeft"
       },
       "customDataList": null,
+      "mergeKey": "17e78414",
       "referenceID": "WeaponCivilianDagger"
     },
     {
       "$type": "ThunderRoad.SpellContent, ThunderRoad",
+      "mergeKey": "1588f2df",
       "referenceID": "Telekinesis"
     },
     {
       "$type": "ThunderRoad.SpellContent, ThunderRoad",
+      "mergeKey": "5a3590d3",
       "referenceID": "SlowTime"
     },
     {
       "$type": "ThunderRoad.SpellContent, ThunderRoad",
+      "mergeKey": "868f5d67",
       "referenceID": "Fire"
     },
     {
       "$type": "ThunderRoad.SpellContent, ThunderRoad",
+      "mergeKey": "638054e7",
       "referenceID": "Gravity"
     },
     {
       "$type": "ThunderRoad.SpellContent, ThunderRoad",
+      "mergeKey": "4ac62f75",
       "referenceID": "Lightning"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "f43aaf25",
       "referenceID": "BoostJump"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "64d9eeed",
       "referenceID": "StaticDisarm"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "9e7e14f1",
       "referenceID": "CombatFocus"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "7b1e874c",
       "referenceID": "Telespin"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "dbe71d69",
       "referenceID": "Telethrow"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "8093f153",
       "referenceID": "Arcwire"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "1cb90e1e",
       "referenceID": "InfernoStaff"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "55490fc9",
       "referenceID": "GravityHammer"
     },
     {
       "$type": "ThunderRoad.SpellContent, ThunderRoad",
+      "mergeKey": "3b3b6d82",
       "referenceID": "FireMerge"
     },
     {
       "$type": "ThunderRoad.SpellContent, ThunderRoad",
+      "mergeKey": "425f28d5",
       "referenceID": "GravityMerge"
     },
     {
       "$type": "ThunderRoad.SpellContent, ThunderRoad",
+      "mergeKey": "333f1ff6",
       "referenceID": "LightningMerge"
     },
     {
@@ -99,6 +125,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": null,
+      "mergeKey": "99719648",
       "referenceID": "ApparelCivilianChest"
     },
     {
@@ -108,6 +135,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": null,
+      "mergeKey": "6d70a110",
       "referenceID": "ApparelCivilianHandL"
     },
     {
@@ -117,6 +145,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": null,
+      "mergeKey": "5be2c079",
       "referenceID": "ApparelCivilianHandR"
     },
     {
@@ -126,6 +155,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": null,
+      "mergeKey": "311b5d37",
       "referenceID": "ApparelCivilianLegs"
     },
     {
@@ -135,8 +165,8 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": null,
+      "mergeKey": "7064c7b7",
       "referenceID": "ApparelCivilianBoots"
     }
-  ],
-  "groupPath": "Player"
+  ]
 }

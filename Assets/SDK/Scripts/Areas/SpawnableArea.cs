@@ -1,15 +1,12 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.ResourceManagement.ResourceLocations;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
@@ -118,9 +115,7 @@ namespace ThunderRoad
         public Dictionary<int, GameObject> connectionGateSpawn => _connectionGateSpawn;
         public Dictionary<int, GameObject> connectionLinkNavMesh => _connectionLinkNavMesh;
 
-#if ODIN_INSPECTOR
         [ShowInInspector]
-#endif
         public string AreaDataId => _areaData.id;
         public AreaData AreaData => _areaData;
 

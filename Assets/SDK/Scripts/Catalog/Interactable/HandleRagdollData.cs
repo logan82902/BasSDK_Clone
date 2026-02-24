@@ -1,29 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
-
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
-	[Serializable]
+    [Serializable]
+    [DeclareBoxGroup("Ragdoll", Title = "Ragdoll")]
+    [DeclareBoxGroup("Ragdoll/IK", Title = "IK")]
+    [DeclareBoxGroup("Ragdoll/Lift", Title = "Lift")]
+    [DeclareBoxGroup("Handle/StabilizationJoint", Title = "StabilizationJoint")]
+    [DeclareBoxGroup("Handle/Telekinesis", Title = "Telekinesis")]
+    [DeclareBoxGroup("Ragdoll/Move", Title = "Move")]
+    [DeclareBoxGroup("Ragdoll/Forces", Title = "Forces")]
+    [DeclareBoxGroup("Ragdoll/Char joint", Title = "Char joint")]
     public class HandleRagdollData : HandleData
     {
-#if ODIN_INSPECTOR
-        [BoxGroup("Ragdoll")] 
-#endif
+        [Group("Ragdoll")]
         public Behaviour behaviour = Behaviour.None;
-#if ODIN_INSPECTOR
-        [BoxGroup("Ragdoll")] 
-#endif
+        [Group("Ragdoll")]
         public float scaleDuringCombat = 1f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Ragdoll")]
-#endif
+        [Group("Ragdoll")]
         public TkCondition tkActiveCondition = TkCondition.Always;
 
         public enum Behaviour
@@ -43,171 +40,94 @@ namespace ThunderRoad
             Always,
         }
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Ragdoll")] 
-#endif
+        [Group("Ragdoll")]
         public List<RagdollPart.Type> activateCollisionOnParts;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Ragdoll/IK")] 
-#endif
+        [Group("Ragdoll/IK")]
         public bool useIK;
-#if ODIN_INSPECTOR
-        [BoxGroup("Ragdoll/IK")] 
-#endif
+        [Group("Ragdoll/IK")]
         public bool allowRotationIK;
-#if ODIN_INSPECTOR
-        [BoxGroup("Ragdoll/IK")] 
-#endif
+        [Group("Ragdoll/IK")]
         public float IkPositionWeight = 1;
-#if ODIN_INSPECTOR
-        [BoxGroup("Ragdoll/IK")] 
-#endif
+        [Group("Ragdoll/IK")]
         public float IkRotationWeight = 1;
-#if ODIN_INSPECTOR
-        [BoxGroup("Ragdoll/IK")] 
-#endif
+        [Group("Ragdoll/IK")]
         public bool changeHeight;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Ragdoll/Lift")] 
-#endif
+        [Group("Ragdoll/Lift")]
         public LiftBehaviour liftBehaviour = LiftBehaviour.None;
-#if ODIN_INSPECTOR
-        [BoxGroup("Ragdoll/Lift")] 
-#endif
+        [Group("Ragdoll/Lift")]
         public Part liftPartReference = Part.Root;
-#if ODIN_INSPECTOR
-        [BoxGroup("Ragdoll/Lift")] 
-#endif
+        [Group("Ragdoll/Lift")]
         public ForceLiftCondition forceLiftGrabCondition;
-#if ODIN_INSPECTOR
-        [BoxGroup("Ragdoll/Lift")] 
-#endif
+        [Group("Ragdoll/Lift")]
         public ForceLiftCondition forceLiftTKCondition;
-#if ODIN_INSPECTOR
-        [BoxGroup("Ragdoll/Lift")] 
-#endif
+        [Group("Ragdoll/Lift")]
         public float liftOffset = 0.05f;
-#if ODIN_INSPECTOR
-		[BoxGroup("Ragdoll/Lift")]
-#endif
-		public bool telekinesisSpinningFix = true; // Fixes the TK spin, just in case it might break stuff, easy to disable
-#if ODIN_INSPECTOR
-		[BoxGroup("Ragdoll/Lift")]
-#endif
-		public bool liftSpinningFix = true; // The fix enabling the lifting to lock hips 
-#if ODIN_INSPECTOR
-        [BoxGroup("Ragdoll/Lift")]
-#endif
-        public float liftSpinningFacingPower = 10f;// Hips facing slerp power
+        [Group("Ragdoll/Lift")]
+        public bool telekinesisSpinningFix = true; // Fixes the TK spin, just in case it might break stuff, easy to disable
+        [Group("Ragdoll/Lift")]
+        public bool liftSpinningFix = true; // The fix enabling the lifting to lock hips 
+        [Group("Ragdoll/Lift")]
+        public float liftSpinningFacingPower = 10f; // Hips facing slerp power
 
-#if ODIN_INSPECTOR
-		[BoxGroup("Ragdoll/Lift")]
-#endif
-		public float liftSpinningFacingMaxSpeed = 5f; // Maximum slerping speed of the hips
-#if ODIN_INSPECTOR
-		[BoxGroup("Ragdoll/Lift")]
-#endif
-		public float liftSpinEnableMaxSpeed = 1.5f; // At which speed does the spin fix get enabled
+        [Group("Ragdoll/Lift")]
+        public float liftSpinningFacingMaxSpeed = 5f; // Maximum slerping speed of the hips
+        [Group("Ragdoll/Lift")]
+        public float liftSpinEnableMaxSpeed = 1.5f; // At which speed does the spin fix get enabled
 
 
-#if ODIN_INSPECTOR
-		[BoxGroup("Handle/StabilizationJoint")]
-#endif
-		public bool applyStabilizationJoint = true;
-#if ODIN_INSPECTOR
-		[BoxGroup("Handle/StabilizationJoint")]
-#endif
-		public UnityEngine.Vector3 telekinesisStabilizationJointAxis;
-#if ODIN_INSPECTOR
-		[BoxGroup("Handle/StabilizationJoint")]
-#endif
-		public float stabilizationEnableMinSpeed = 5f;
+        [Group("Handle/StabilizationJoint")]
+        public bool applyStabilizationJoint = true;
+        [Group("Handle/StabilizationJoint")]
+        public Vector3 telekinesisStabilizationJointAxis;
+        [Group("Handle/StabilizationJoint")]
+        public float stabilizationEnableMinSpeed = 5f;
 
-#if ODIN_INSPECTOR
-		[BoxGroup("Handle/StabilizationJoint")]
-#endif
-		public float stabilizationEnableDot = 0.7f;
-#if ODIN_INSPECTOR
-		[BoxGroup("Handle/StabilizationJoint")]
-#endif
-		public float stabilizationDisableDotMultiplier = 0.7f;
-#if ODIN_INSPECTOR
-		[BoxGroup("Handle/StabilizationJoint")]
-#endif
-		public float stabilizationPositionSpring = 2000;
-#if ODIN_INSPECTOR
-		[BoxGroup("Handle/StabilizationJoint")]
-#endif
-		public float stabilizationPositionDamper = 200;
-#if ODIN_INSPECTOR
-		[BoxGroup("Handle/StabilizationJoint")]
-#endif
-		public float stabilizationPositionMaxForce = 1500;
+        [Group("Handle/StabilizationJoint")]
+        public float stabilizationEnableDot = 0.7f;
+        [Group("Handle/StabilizationJoint")]
+        public float stabilizationDisableDotMultiplier = 0.7f;
+        [Group("Handle/StabilizationJoint")]
+        public float stabilizationPositionSpring = 2000;
+        [Group("Handle/StabilizationJoint")]
+        public float stabilizationPositionDamper = 200;
+        [Group("Handle/StabilizationJoint")]
+        public float stabilizationPositionMaxForce = 1500;
 
-#if ODIN_INSPECTOR
-		[BoxGroup("Handle/Telekinesis")]
-#endif
-		public Vector2 playerFaceForceRange = new Vector2(25f,45f);
-#if ODIN_INSPECTOR
-		[BoxGroup("Handle/Telekinesis")]
-#endif
-		public float restingAngle = 20f;
+        [Group("Handle/Telekinesis")]
+        public Vector2 playerFaceForceRange = new(25f, 45f);
+        [Group("Handle/Telekinesis")]
+        public float restingAngle = 20f;
 
-#if ODIN_INSPECTOR
-		[BoxGroup("Ragdoll/Move")] 
-#endif
+        [Group("Ragdoll/Move")]
         public bool moveStep;
-#if ODIN_INSPECTOR
-        [BoxGroup("Ragdoll/Move")] 
-#endif
+        [Group("Ragdoll/Move")]
         public Part stepPartReference = Part.Head;
-#if ODIN_INSPECTOR
-        [BoxGroup("Ragdoll/Move")] 
-#endif
+        [Group("Ragdoll/Move")]
         public float stepSpeedMultiplier = 1;
-#if ODIN_INSPECTOR
-        [BoxGroup("Ragdoll/Move")] 
-#endif
+        [Group("Ragdoll/Move")]
         public float stepThresholdMultiplier = 1;
-#if ODIN_INSPECTOR
-        [BoxGroup("Ragdoll/Move")] 
-#endif
+        [Group("Ragdoll/Move")]
         public BodyTurnDirection bodyTurnDirection = BodyTurnDirection.None;
-#if ODIN_INSPECTOR
-        [BoxGroup("Ragdoll/Move"), ShowIf("bodyTurnDirection", BodyTurnDirection.ClosestCardinal)] 
-#endif
+        [Group("Ragdoll/Move")]
+        [ShowIf("bodyTurnDirection", BodyTurnDirection.ClosestCardinal)]
         public Cardinal cardinal = Cardinal.XZ;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Ragdoll/Forces")] 
-#endif
+        [Group("Ragdoll/Forces")]
         public float releaseArmSpring = 0.25f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Ragdoll/Forces")] 
-#endif
+        [Group("Ragdoll/Forces")]
         public float releaseArmDamper = 0.5f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Ragdoll/Char joint")] 
-#endif
+        [Group("Ragdoll/Char joint")]
         public List<RagdollPart.Type> overrideCharJointLimitsOnParts;
-#if ODIN_INSPECTOR
-        [BoxGroup("Ragdoll/Char joint")] 
-#endif
+        [Group("Ragdoll/Char joint")]
         public float swing1Limit = 0;
-#if ODIN_INSPECTOR
-        [BoxGroup("Ragdoll/Char joint")] 
-#endif
+        [Group("Ragdoll/Char joint")]
         public float lowTwistLimit = 0;
-#if ODIN_INSPECTOR
-        [BoxGroup("Ragdoll/Char joint")] 
-#endif
+        [Group("Ragdoll/Char joint")]
         public float highTwistLimit = 0;
-#if ODIN_INSPECTOR
-        [BoxGroup("Ragdoll/Char joint")] 
-#endif
+        [Group("Ragdoll/Char joint")]
         public bool invertLowHighOnBack = true;
 
 		[Flags]
@@ -245,12 +165,7 @@ namespace ThunderRoad
             GrabberPosition,
         }
 
-#if ODIN_INSPECTOR
-        public List<ValueDropdownItem<string>> GetAllDamagerID()
-        {
-            return Catalog.GetDropdownAllID(Category.Damager);
-        } 
-#endif
+        public TriDropdownList<string> GetAllDamagerID() => Catalog.GetDropdownAllID(Category.Damager);
 
     }
 }

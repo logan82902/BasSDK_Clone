@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
+  "groupPath": null,
   "type": "WIP",
   "rootNode": {
     "$type": "ThunderRoad.AI.Control.Sequence, ThunderRoad",
@@ -22,10 +23,7 @@
         "outputCreatureAsCurrentTarget": true,
         "outputCreatureVariableName": "",
         "outputTransform": "None",
-        "outputTransformVariableName": "",
-        "blackboard": null,
-        "creature": null,
-        "brainData": null
+        "outputTransformVariableName": ""
       },
       {
         "$type": "ThunderRoad.AI.Control.Selector, ThunderRoad",
@@ -56,26 +54,17 @@
                   "weaponHandling": "None",
                   "checkAmmo": false,
                   "checkInHolder": false
-                },
-                "blackboard": null,
-                "creature": null,
-                "brainData": null
+                }
               },
               {
                 "$type": "ThunderRoad.AI.Action.SetStance, ThunderRoad",
                 "stance": "MeleeShield",
-                "onlyOnce": false,
-                "blackboard": null,
-                "creature": null,
-                "brainData": null
+                "onlyOnce": false
               },
               {
                 "$type": "ThunderRoad.AI.Action.SetDefenseState, ThunderRoad",
                 "parry": true,
-                "dodge": false,
-                "blackboard": null,
-                "creature": null,
-                "brainData": null
+                "dodge": false
               }
             ]
           },
@@ -104,26 +93,17 @@
                   "weaponHandling": "None",
                   "checkAmmo": false,
                   "checkInHolder": false
-                },
-                "blackboard": null,
-                "creature": null,
-                "brainData": null
+                }
               },
               {
                 "$type": "ThunderRoad.AI.Action.SetStance, ThunderRoad",
                 "stance": "DualWield",
-                "onlyOnce": false,
-                "blackboard": null,
-                "creature": null,
-                "brainData": null
+                "onlyOnce": false
               },
               {
                 "$type": "ThunderRoad.AI.Action.SetDefenseState, ThunderRoad",
                 "parry": true,
-                "dodge": false,
-                "blackboard": null,
-                "creature": null,
-                "brainData": null
+                "dodge": false
               }
             ]
           },
@@ -152,26 +132,17 @@
                   "weaponHandling": "None",
                   "checkAmmo": false,
                   "checkInHolder": false
-                },
-                "blackboard": null,
-                "creature": null,
-                "brainData": null
+                }
               },
               {
                 "$type": "ThunderRoad.AI.Action.SetStance, ThunderRoad",
                 "stance": "Melee1H",
-                "onlyOnce": false,
-                "blackboard": null,
-                "creature": null,
-                "brainData": null
+                "onlyOnce": false
               },
               {
                 "$type": "ThunderRoad.AI.Action.SetDefenseState, ThunderRoad",
                 "parry": true,
-                "dodge": false,
-                "blackboard": null,
-                "creature": null,
-                "brainData": null
+                "dodge": false
               }
             ]
           },
@@ -200,24 +171,17 @@
                   "weaponHandling": "None",
                   "checkAmmo": false,
                   "checkInHolder": false
-                },
-                "blackboard": null,
-                "creature": null,
-                "brainData": null
+                }
               },
               {
                 "$type": "ThunderRoad.AI.Action.SetStance, ThunderRoad",
                 "stance": "Staff",
-                "onlyOnce": false,
-                "blackboard": null,
-                "creature": null,
-                "brainData": null
+                "onlyOnce": false
               }
             ]
           }
         ]
       }
     ]
-  },
-  "groupPath": null
+  }
 }

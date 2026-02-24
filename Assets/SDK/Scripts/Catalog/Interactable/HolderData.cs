@@ -2,149 +2,82 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.ResourceManagement.ResourceLocations;
-
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
     [Serializable]
+    [DeclareBoxGroup("Holder", Title = "Holder")]
     public class HolderData : InteractableData
     {
-#if ODIN_INSPECTOR
-        [BoxGroup("Holder"), ValueDropdown(nameof(GetAllItemID))]
-#endif
+        [Group("Holder")]
+        [Dropdown(nameof(GetAllItemID))]
         public string spawnItemID;
-#if ODIN_INSPECTOR
-        [BoxGroup("Holder")]
-#endif
+        [Group("Holder")]
         public int spawnQuantity = 0;
-#if ODIN_INSPECTOR
-        [BoxGroup("Holder")]
-#endif
+        [Group("Holder")]
         public bool allowInfiniteSupplyCheat = false;
-#if ODIN_INSPECTOR
-        [BoxGroup("Holder")]
-#endif
+        [Group("Holder")]
         public DespawnProtection itemDespawnCondition;
-#if ODIN_INSPECTOR
-        [BoxGroup("Holder")]
-#endif
+        [Group("Holder")]
         public int maxQuantity = 1;
-#if ODIN_INSPECTOR
-        [BoxGroup("Holder")]
-#endif
+        [Group("Holder")]
         public string targetAnchor;
-#if ODIN_INSPECTOR
-        [BoxGroup("Holder")]
-#endif
+        [Group("Holder")]
         public bool forceAllowTouchOnPlayer;
-#if ODIN_INSPECTOR
-        [BoxGroup("Holder")]
-#endif
+        [Group("Holder")]
         public bool highlighterPlayerView = false;
-#if ODIN_INSPECTOR
-        [BoxGroup("Holder")]
-#endif
+        [Group("Holder")]
         public FilterLogic tagFilter = FilterLogic.AnyExcept;
-#if ODIN_INSPECTOR
-        [BoxGroup("Holder"), ValueDropdown(nameof(GetAllHolderSlots))]
-#endif
+        [Group("Holder")]
+        [DropdownList(nameof(GetAllHolderSlots))]
         public List<string> slots;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Holder")]
-#endif
+        [Group("Holder")]
         public FilterLogic typeFilter = FilterLogic.AnyExcept;
-#if ODIN_INSPECTOR
-        [BoxGroup("Holder")]
-#endif
+        [Group("Holder")]
         public List<ItemData.Type> itemTypes;
-#if ODIN_INSPECTOR
-        [BoxGroup("Holder")]
-#endif
+        [Group("Holder")]
         public FilterLogic itemFilter = FilterLogic.AnyExcept;
-#if ODIN_INSPECTOR
-	    [BoxGroup("Holder"), ValueDropdown(nameof(GetAllItemID))]
-#endif
+        [Group("Holder")]
+        [DropdownList(nameof(GetAllItemID))]
         public List<string> itemIds;
-        
-#if ODIN_INSPECTOR
-        [BoxGroup("Holder")]
-#endif
+
+        [Group("Holder")]
         public bool locked = false;
-#if ODIN_INSPECTOR
-        [BoxGroup("Holder")]
-#endif
+        [Group("Holder")]
         public bool warnIfNotAllowed = false;
-#if ODIN_INSPECTOR
-        [BoxGroup("Holder")]
-#endif
+        [Group("Holder")]
         public bool warnIfInUse = false;
-#if ODIN_INSPECTOR
-        [BoxGroup("Holder")]
-#endif
+        [Group("Holder")]
         public bool warnIfLocked = false;
-#if ODIN_INSPECTOR
-        [BoxGroup("Holder")]
-#endif
+        [Group("Holder")]
         public bool grabFromHandle = true;
-#if ODIN_INSPECTOR
-        [BoxGroup("Holder")]
-#endif
+        [Group("Holder")]
         public bool playerGrabFromHandle = true;
-#if ODIN_INSPECTOR
-        [BoxGroup("Holder")]
-#endif
+        [Group("Holder")]
         public bool grabWithTrigger = false;
-#if ODIN_INSPECTOR
-        [BoxGroup("Holder")]
-#endif
+        [Group("Holder")]
         public bool disableWhenHolstered = false;
-#if ODIN_INSPECTOR
-        [BoxGroup("Holder")]
-#endif
+        [Group("Holder")]
         public bool allowTeleGrab = true;
-#if ODIN_INSPECTOR
-        [BoxGroup("Holder")]
-#endif
+        [Group("Holder")]
         public bool hideFromFpv;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Holder")]
-#endif
+        [Group("Holder")]
         public GrabTeleport grabTeleport = GrabTeleport.Disabled;
-#if ODIN_INSPECTOR
-        [BoxGroup("Holder")]
-#endif
+        [Group("Holder")]
         public bool disableObjectProximityHighlighter = false;
-#if ODIN_INSPECTOR
-        [BoxGroup("Holder")]
-#endif
+        [Group("Holder")]
         public bool delegateToParentHolder;
-#if ODIN_INSPECTOR
-        [BoxGroup("Holder")]
-#endif
+        [Group("Holder")]
         public float cleanItemsDuration = 0;
-#if ODIN_INSPECTOR
-        [BoxGroup("Holder")]
-#endif
+        [Group("Holder")]
         public float cleanItemsStep = 10f;
 
-#if ODIN_INSPECTOR
-        public List<ValueDropdownItem<string>> GetAllItemID()
-        {
-            return Catalog.GetDropdownAllID(Category.Item);
-        }
+        public TriDropdownList<string> GetAllItemID() => Catalog.GetDropdownAllID(Category.Item);
 
-        public List<ValueDropdownItem<string>> GetAllHolderSlots()
-        {
-            return Catalog.GetDropdownHolderSlots();
-        }
-#endif
+        public TriDropdownList<string> GetAllHolderSlots() => Catalog.GetDropdownHolderSlots();
 
         public enum DespawnProtection
         {
@@ -161,9 +94,7 @@ namespace ThunderRoad
             IfParentHolder
         }
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Holder")]
-#endif
+        [Group("Holder")]
         public string audioContainerAddress;
         [NonSerialized]
         public IResourceLocation audioContainerLocation;

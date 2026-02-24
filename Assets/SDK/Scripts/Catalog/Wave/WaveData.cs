@@ -6,35 +6,29 @@ using Newtonsoft.Json;
 using System.Threading.Tasks;
 using System.Collections;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
     [Serializable]
+#if UNITY_EDITOR
+    [EditorLoadPriority(0)]
+#endif
+    [DeclareBoxGroup("General", Title = "General")]
+    [DeclareBoxGroup("Info", Title = "Info")]
     public class WaveData : CatalogData
     {
-#if ODIN_INSPECTOR
-        [BoxGroup("General")]
-#endif
+        [Group("General")]
         public string category = "Misc";
 
-#if ODIN_INSPECTOR
-        [BoxGroup("General")]
-#endif
+        [Group("General")]
         public string localizationId;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("General")]
-#endif
+        [Group("General")]
         public string title = "Unknown";
 
-#if ODIN_INSPECTOR
-        [BoxGroup("General"), Multiline]
-#endif
+        [Group("General")]
+        [Multiline]
         public string description;
 
         public enum LoopBehavior
@@ -44,100 +38,80 @@ namespace ThunderRoad
             Loop,
         }
 
-        [JsonProperty("loop")]
-        private bool loopBehaviorSetter
-        {
-            set
-            {
-                if (value)
-                {
-                    loopBehavior = LoopBehavior.LoopSeamless;
-                }
-                else
-                {
-                    loopBehavior = LoopBehavior.NoLoop;
-                }
-            }
-        }
-
-#if ODIN_INSPECTOR
-        [BoxGroup("General")]
-#endif
+        [Group("General")]
         public LoopBehavior loopBehavior;
 
-        // For compatibility (to remove)
-        [JsonProperty("maxAlive")]
-        private int maxAliveAlternateSetter
-        {
-            set { totalMaxAlive = value; }
-        }
-#if ODIN_INSPECTOR
-        [BoxGroup("General")]
-#endif
+        [Group("General")]
         public int totalMaxAlive = 5;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("General")]
-#endif
+        [Group("General")]
         public bool alwaysAvailable;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("General")]
-#endif
+        [Group("General")]
+        [ListDrawerSettings(AlwaysExpanded = true)]
         public List<string> waveSelectors;
-        
-#if ODIN_INSPECTOR
-        [BoxGroup("Info"), NonSerialized, ShowInInspector, ReadOnly]
-#endif
-        public int minTotalCount;
-#if ODIN_INSPECTOR
-        [BoxGroup("Info"), NonSerialized, ShowInInspector, ReadOnly]
-#endif
-        public float maxTotalCount;
-#if ODIN_INSPECTOR
-        [ListDrawerSettings(IsReadOnly = true)]
-#endif
-        public List<WaveFaction> factions = new List<WaveFaction>();
 
-#if ODIN_INSPECTOR
-        [ListDrawerSettings(OnBeginListElementGUI = "OnBeginCheckGroup", OnEndListElementGUI = "OnEndCheckGroup")]
-#endif
+        [Group("Info")]
+        [NonSerialized]
+        [ShowInInspector]
+        [ReadOnly]
+        public int minTotalCount;
+        [Group("Info")]
+        [NonSerialized]
+        [ShowInInspector]
+        [ReadOnly]
+        public float maxTotalCount;
+        [ListDrawerSettings(HideAddButton = true, HideRemoveButton = true, Draggable = false)]
+        [HideReferencePicker]
+        public List<WaveFaction> factions = new();
+
+        [HideReferencePicker]
+        [OnValueChanged(nameof(RefreshInfo))]
         public List<Group> groups;
+
+        public List<WaveModule> modules;
 
         public override int GetCurrentVersion()
         {
             return 2;
         }
-        
-        void OnBeginCheckGroup(int index)
-        {
-            groups[index].index = index;
-
-            if (string.IsNullOrEmpty(groups[index].referenceID))
-            {
-                GUI.color = Color.red;
-            }
-            else
-            {
-                switch (groups[index].reference)
-                {
-                    case Group.Reference.Creature when Catalog.GetData<CreatureData>(groups[index].referenceID, false) == null:
-                    case Group.Reference.Table when Catalog.GetData<CreatureTable>(groups[index].referenceID, false) == null:
-                        GUI.color = Color.red;
-                        break;
-                }
-            }
-        }
-
-        void OnEndCheckGroup(int index)
-        {
-            GUI.color = Color.white;
-        }
 
         public override void OnCatalogRefresh()
         {
             base.OnCatalogRefresh();
+            if (Application.isPlaying) ClearNullOrEmptyRefGroups();
             RefreshInfo();
+            if (modules is { Count: > 0 })
+            {
+                for (var i = 0; i < modules.Count; i++)
+                {
+                    modules[i].OnCatalogRefresh();
+                }
+            }
+        }
+
+        public void ClearNullOrEmptyRefGroups()
+        {
+            for (int i = groups.Count - 1; i >= 0; i--)
+            {
+                if (groups[i].referenceID.IsNullOrEmptyOrWhitespace())
+                {
+                    Debug.LogWarning($"Null group ({groups[i].mergeKey}) ID found in wave data {id}, removing from wave data");
+                    groups.RemoveAt(i);
+                }
+            }
+        }
+
+        public override IEnumerator OnCatalogRefreshCoroutine()
+        {
+            yield return base.OnCatalogRefreshCoroutine();
+            if (modules is { Count: > 0 })
+            {
+                for (var i = 0; i < modules.Count; i++)
+                {
+                    yield return modules[i].OnCatalogRefreshCoroutine();
+                }
+            }
         }
 
         private void RefreshInfo()
@@ -150,7 +124,7 @@ namespace ThunderRoad
                 faction.factionName = Catalog.gameData.GetFaction(faction.factionID).name;
                 if (!foundFactions.TryAdd(faction.factionID, faction))
                 {
-	                Debug.LogError($"Duplicate faction {faction.factionID} in wave {id}");
+                    Debug.LogError($"Duplicate faction {faction.factionID} in wave {id}");
                 }
             }
             List<int> factionsInWave = new List<int>();
@@ -192,27 +166,26 @@ namespace ThunderRoad
 
 
         [Serializable]
+        [DeclareHorizontalGroup("Box/Split")]
+        [DeclareBoxGroup("Box/Split/Faction", Title = "Faction")]
+        [DeclareHorizontalGroup("Box/Split/Faction/Horiz")]
+        [DeclareBoxGroup("Box/Split/Faction health multiplier", Title = "Faction health multiplier")]
+        [DeclareBoxGroup("Box/Split/Faction max alive", Title = "Faction max alive")]
         public class WaveFaction
         {
-#if ODIN_INSPECTOR
-            [HorizontalGroup("Split")]
-            [BoxGroup("Split/Faction")]
-            [HorizontalGroup("Split/Faction/Group"), ReadOnly, HideLabel]
-#endif
+            [Group("Box/Split/Faction/Horiz")]
+            [ReadOnly]
+            [HideLabel]
             public int factionID;
-#if ODIN_INSPECTOR
-            [HorizontalGroup("Split/Faction/Group"), NonSerialized, ShowInInspector, ReadOnly, HideLabel]
-#endif
+            [Group("Box/Split/Faction/Horiz")]
+            [NonSerialized]
+            [ShowInInspector]
+            [ReadOnly]
+            [HideLabel]
             public string factionName;
-
-#if ODIN_INSPECTOR
-            [BoxGroup("Split/Faction health multiplier"), HideLabel]
-#endif
-            public float factionHealthMultiplier = 1f;
-
-#if ODIN_INSPECTOR
-            [BoxGroup("Split/Faction max alive"), HideLabel]
-#endif
+            
+            [Group("Box/Split/Faction max alive")]
+            [HideLabel]
             public int factionMaxAlive = 5;
 
             public WaveFaction() { }
@@ -233,141 +206,159 @@ namespace ThunderRoad
         }
 
         [Serializable]
+        [DeclareFoldoutGroup("Box", Title = "$" + nameof(label), Expanded = true)]
+        [DeclareHorizontalGroup("Box/Split", Sizes = new float[] { 300f, 0f, 0f, 0f, 0f, 0f, 200f, 0f, 350f })]
+        [DeclareBoxGroup("Box/Split/Reference", Title = "Reference")]
+        [DeclareHorizontalGroup("Box/Split/Reference/Horiz")]
+        [DeclareBoxGroup("Box/Split/OverrideFaction", Title = "Override Faction")]
+        [DeclareHorizontalGroup("Box/Split/OverrideFaction/Horiz", Sizes = new float[] { 15f, 0f })]
+        [DeclareBoxGroup("Box/Split/OverrideContainer", Title = "Override Container")]
+        [DeclareHorizontalGroup("Box/Split/OverrideContainer/Horiz", Sizes = new float[] { 15f, 0f })]
+        [DeclareBoxGroup("Box/Split/OverrideBrain", Title = "Override Brain")]
+        [DeclareHorizontalGroup("Box/Split/OverrideBrain/Horiz", Sizes = new float[] { 15f, 0f })]
+        [DeclareBoxGroup("Box/Split/MaxMelee", Title = "Override Max Melee")]
+        [DeclareHorizontalGroup("Box/Split/MaxMelee/Horiz", Sizes = new float[] { 15f, 0f })]
+        [DeclareBoxGroup("Box/Split/HealthMult", Title = "Group health mult")]
+        [DeclareBoxGroup("Box/Split/Spawning", Title = "Spawning Min/Max")]
+        [DeclareBoxGroup("Box/Split/SpawnPoint", Title = "Spawn Point")]
+        [DeclareHorizontalGroup("Box/Split/SpawnPoint/Horiz", Sizes = new float[] { 15f, 0f })]
+        [DeclareBoxGroup("Box/Split/PrereqGroup", Title = "Prereq Group")]
+        [DeclareHorizontalGroup("Box/Split/PrereqGroup/Horiz", Sizes = new float[] { 15f, 120f, 0f })]
         public class Group
         {
             [NonSerialized]
+            [JsonIgnore]
             public WaveData waveData;
+            [JsonIgnore]
+            public string label => $"Group Index {waveData?.groups.IndexOf(this)}";
 
-#if ODIN_INSPECTOR
-            [HorizontalGroup("Split", MinWidth = 40)]
-            [BoxGroup("Split/Index"), ShowInInspector, ReadOnly, HideLabel]
-#endif
-            [NonSerialized]
-            public int index;
+            [JsonMergeKey(MergeKeyValueProvider = nameof(GetMergeKey))]
+            [HideInInspector]
+            public string mergeKey = "";
 
-#if ODIN_INSPECTOR
-            [BoxGroup("Split/Reference")]
-            [HorizontalGroup("Split/Reference/Group", MinWidth = 150), HideLabel, EnumToggleButtons]
-#endif
+            [Group("Box/Split/Reference/Horiz")]
+            [HideLabel]
+            [EnumToggleButtons]
+            [PropertyOrder(0)]
             public Reference reference = Reference.Creature;
-
-#if ODIN_INSPECTOR
-            [HorizontalGroup("Split/Reference/Group", MinWidth = 150), ValueDropdown(nameof(GetAllCreatureOrTableID)), HideLabel, OnValueChanged(nameof(RefreshInfo))]
-#endif
+            [Group("Box/Split/Reference/Horiz")]
+            [Dropdown(nameof(GetAllCreatureOrTableID))]
+            [HideLabel]
+            [OnValueChanged(nameof(RefreshInfo))]
+            [PropertyOrder(1)]
             public string referenceID;
 
-
-            // For compatibility (to remove)
-            [JsonIgnore, HideInInspector]
-            public string creatureID;
-            [JsonProperty("creatureID")]
-            private string creatureIDAlternateSetter
-            {
-                set { creatureID = value; }
-            }
-
-            // For compatibility (to remove)
-            [JsonIgnore, HideInInspector]
-            public string creatureTableID;
-            [JsonProperty("creatureTableID")]
-            private string creatureTableIDAlternateSetter
-            {
-                set { creatureTableID = value; }
-            }
-
-
-#if ODIN_INSPECTOR
-            [BoxGroup("Split/Override Faction")]
-            [HorizontalGroup("Split/Override Faction/Group"), HideLabel, OnValueChanged(nameof(RefreshInfo))]
-#endif
+            [Group("Box/Split/OverrideFaction/Horiz")]
+            [HideLabel]
+            [OnValueChanged(nameof(RefreshInfo))]
+            [PropertyOrder(2)]
             public bool overrideFaction;
-#if ODIN_INSPECTOR
-            [HorizontalGroup("Split/Override Faction/Group")]
-            [EnableIf("overrideFaction", true), ValueDropdown(nameof(GetAllFactionID)), HideLabel, OnValueChanged(nameof(RefreshInfo))]
-#endif
+            [Group("Box/Split/OverrideFaction/Horiz")]
+            [EnableIf(nameof(overrideFaction), true)]
+            [Dropdown(nameof(GetAllFactionID), Searchable = false)]
+            [HideLabel]
+            [OnValueChanged(nameof(RefreshInfo))]
+            [PropertyOrder(3)]
             public int factionID = 0;
 
-#if ODIN_INSPECTOR
-            [BoxGroup("Split/Override Container")]
-            [HorizontalGroup("Split/Override Container/Group"), HideLabel]
-#endif
+            [Group("Box/Split/OverrideContainer/Horiz")]
+            [HideLabel]
+            [PropertyOrder(4)]
             public bool overrideContainer;
-#if ODIN_INSPECTOR
-            [HorizontalGroup("Split/Override Container/Group"), EnableIf("overrideContainer", true), ValueDropdown(nameof(GetAllContainerID)), HideLabel]
-#endif
+            [Group("Box/Split/OverrideContainer/Horiz")]
+            [EnableIf(nameof(overrideContainer), true)]
+            [Dropdown(nameof(GetAllContainerID))]
+            [HideLabel]
+            [PropertyOrder(5)]
             public string overrideContainerID;
 
-#if ODIN_INSPECTOR
-            [BoxGroup("Split/Override Brain")]
-            [HorizontalGroup("Split/Override Brain/Group"), HideLabel]
-#endif
+            [Group("Box/Split/OverrideBrain/Horiz")]
+            [HideLabel]
+            [PropertyOrder(6)]
             public bool overrideBrain;
-#if ODIN_INSPECTOR
-            [HorizontalGroup("Split/Override Brain/Group"), EnableIf("overrideBrain", true), ValueDropdown(nameof(GetAllBrainID)), HideLabel]
-#endif
+            [Group("Box/Split/OverrideBrain/Horiz")]
+            [EnableIf(nameof(overrideBrain), true)]
+            [Dropdown(nameof(GetAllBrainID))]
+            [HideLabel]
+            [PropertyOrder(7)]
             public string overrideBrainID;
 
-#if ODIN_INSPECTOR
-            [BoxGroup("Split/Override max melee")]
-            [HorizontalGroup("Split/Override max melee/Group"), HideLabel]
-#endif
+            [Group("Box/Split/MaxMelee/Horiz")]
+            [HideLabel]
+            [PropertyOrder(8)]
             public bool overrideMaxMelee;
-#if ODIN_INSPECTOR
-            [HorizontalGroup("Split/Override max melee/Group"), HideLabel, EnableIf("overrideMaxMelee", true)]
-#endif
+            [Group("Box/Split/MaxMelee/Horiz")]
+            [HideLabel]
+            [EnableIf(nameof(overrideMaxMelee), true)]
+            [PropertyOrder(9)]
             public int overrideMaxMeleeCount;
 
-#if ODIN_INSPECTOR
-            [BoxGroup("Split/Group health mult"), HideLabel]
-#endif
+            [Group("Box/Split/HealthMult")]
+            [HideLabel]
+            [PropertyOrder(10)]
             public float groupHealthMultiplier = 1f;
 
-#if ODIN_INSPECTOR
-            [BoxGroup("Split/Spawning"), HideLabel]
-            [MinMaxSlider(1, 10, showFields: true), OnValueChanged(nameof(RefreshInfo))]
-#endif
-            public Vector2Int minMaxCount = new Vector2Int(1, 1);
+            [Group("Box/Split/Spawning")]
+            [HideLabel]
+            [MinMaxSlider(1, 10, true)]
+            [OnValueChanged(nameof(RefreshInfo))]
+            [PropertyOrder(11)]
+            public Vector2Int minMaxCount = new(1, 1);
 
-#if ODIN_INSPECTOR
-            [BoxGroup("Split/Set spawn point")]
-            [HorizontalGroup("Split/Set spawn point/Group", MaxWidth = 10), HideLabel, ShowInInspector, NonSerialized, OnValueChanged(nameof(SetRandSpawn))]
+            [Group("Box/Split/SpawnPoint/Horiz")]
+            [HideLabel]
+            [ShowInInspector]
+            [NonSerialized]
+            [JsonIgnore]
+#if UNITY_EDITOR
+            [OnValueChanged(nameof(SetRandSpawn))]
 #endif
+            [PropertyOrder(12)]
             public bool set = false;
-            private bool IsSet() => set;
-#if ODIN_INSPECTOR
-            [HorizontalGroup("Split/Set spawn point/Group", MaxWidth = 30), HideLabel, EnableIf("IsSet")]
-#endif
+            [Group("Box/Split/SpawnPoint/Horiz")]
+            [HideLabel]
+            [EnableIf(nameof(set))]
+            [PropertyOrder(13)]
             public int spawnPointIndex = -1;
 
-            // For compatibility (to remove)
-            [JsonProperty("conditionStepIndex")]
-            private int conditionAlternateSetter
-            {
-                set { prereqGroupIndex = value; }
-            }
-#if ODIN_INSPECTOR
-            [BoxGroup("Split/Prereq group index"), HideLabel]
-#endif
-            public int prereqGroupIndex = -1;
+            [Group("Box/Split/PrereqGroup/Horiz")]
+            [HideLabel]
+            [ShowInInspector]
             [NonSerialized]
-            public Group prereqGroup;
-
-            // For compatibility (to remove)
-            [JsonProperty("conditionThreshold")]
-            private int conditionThreshAlternateSetter
-            {
-                set { prereqMaxRemainingAlive = value; }
-            }
-#if ODIN_INSPECTOR
-            [BoxGroup("Split/Prereq group max alive"), PropertyRange(0, nameof(GetMaxThreshold)), HideLabel]
+            [JsonIgnore]
+#if UNITY_EDITOR
+            [OnValueChanged(nameof(SetPrereqGroupIndex))]
 #endif
+            [PropertyOrder(14)]
+            public bool hasPrereq = false;
+            [Group("Box/Split/PrereqGroup/Horiz")]
+            [EnableIf(nameof(hasPrereq))]
+            [LabelText("Group Index")]
+            [AutoLabelWidth]
+            [PropertyOrder(15)]
+            public int prereqGroupIndex = -1;
+            [Group("Box/Split/PrereqGroup/Horiz")]
+            [EnableIf(nameof(hasPrereq))]
+            [LabelText("Max Alive Remaining")]
+            [AutoLabelWidth]
+            [PropertyOrder(16)]
             public int prereqMaxRemainingAlive = 0;
+
+            [NonSerialized]
+            [JsonIgnore]
+            public Group prereqGroup;
 
             public enum Reference
             {
                 Creature,
                 Table,
             }
+
+            public static string GetMergeKey()
+            {
+                return Guid.NewGuid().ToString().Substring(0, 8);
+            }
+
             public int GetMaxThreshold()
             {
                 if (waveData != null)
@@ -381,6 +372,23 @@ namespace ThunderRoad
                 return 4;
             }
 
+#if UNITY_EDITOR
+            public void SetPrereqGroupIndex()
+            {
+                if (!hasPrereq)
+                {
+                    prereqGroupIndex = -1;
+                    prereqMaxRemainingAlive = 0;
+                }
+                else
+                {
+                    if (prereqGroupIndex == -1)
+                    {
+                        prereqGroupIndex = -1;
+                    }
+                }
+            }
+
             public void SetRandSpawn()
             {
                 if (!set) spawnPointIndex = -1;
@@ -389,6 +397,7 @@ namespace ThunderRoad
                     if (spawnPointIndex == -1) spawnPointIndex = 0;
                 }
             }
+#endif
 
             private void RefreshInfo()
             {
@@ -411,49 +420,82 @@ namespace ThunderRoad
                     }
                     else
                     {
-	                    if (Catalog.TryGetData<CreatureTable>(referenceID, out var creatureTable))
-	                    {
-		                    foreach (int factionID in creatureTable.GetFactionIDs())
-		                    {
-			                    if (!existing.Contains(factionID)) existing.Add(factionID);
-		                    }
-	                    } else
-	                    {
-		                    Debug.LogError($"Could not find creature table {referenceID} for wave {waveData.id}");
-	                    }
+                        if (Catalog.TryGetData<CreatureTable>(referenceID, out var creatureTable))
+                        {
+                            foreach (int factionID in creatureTable.GetFactionIDs())
+                            {
+                                if (!existing.Contains(factionID)) existing.Add(factionID);
+                            }
+                        } else
+                        {
+                            Debug.LogError($"Could not find creature table {referenceID} for wave {waveData.id}");
+                        }
                     }
                 }
             }
 
 
-#if ODIN_INSPECTOR
-            public List<ValueDropdownItem<string>> GetAllCreatureOrTableID()
-            {
-                return Catalog.GetDropdownAllID(reference == Reference.Creature ? Category.Creature : Category.CreatureTable);
-            }
+            public TriDropdownList<string> GetAllCreatureOrTableID() => Catalog.GetDropdownAllID(reference == Reference.Creature ? Category.Creature : Category.CreatureTable);
 
-            public List<ValueDropdownItem<string>> GetAllContainerID()
-            {
-                return Catalog.GetDropdownAllID(Category.Container);
-            }
+            public TriDropdownList<string> GetAllContainerID() => Catalog.GetDropdownAllID(Category.Container);
 
-            public List<ValueDropdownItem<string>> GetAllBrainID()
-            {
-                return Catalog.GetDropdownAllID(Category.Brain);
-            }
+            public TriDropdownList<string> GetAllBrainID() => Catalog.GetDropdownAllID(Category.Brain);
 
-            public List<ValueDropdownItem<int>> GetAllFactionID()
-            {
-                return Catalog.gameData.GetFactions();
-            }
-#endif
+            public TriDropdownList<int> GetAllFactionID() => Catalog.gameData.GetFactions();
 
             public void OnCatalogRefresh()
             {
-                if (string.IsNullOrEmpty(referenceID))
+                if (mergeKey.IsNullOrEmptyOrWhitespace())
                 {
-                    if (reference == Reference.Creature) referenceID = creatureID;
-                    if (reference == Reference.Table) referenceID = creatureTableID;
+                    mergeKey = GetMergeKey();
+                }
+            }
+        }
+
+        public void OnWaveStart(WaveSpawner waveSpawner)
+        {
+            if (modules is not { Count: > 0 }) return;
+            for (var i = 0; i < modules.Count; i++)
+            {
+                try
+                {
+                    modules[i]?.OnWaveStart(waveSpawner);
+                }
+                catch (Exception e)
+                {
+                    Debug.LogException(e);
+                }
+            }
+        }
+        
+        public void OnWaveEnd(WaveSpawner waveSpawner)
+        {
+            if (modules is not { Count: > 0 }) return;
+            for (var i = 0; i < modules.Count; i++)
+            {
+                try
+                {
+                    modules[i]?.OnWaveEnd(waveSpawner);
+                }
+                catch (Exception e)
+                {
+                    Debug.LogException(e);
+                }
+            }
+        }
+
+        public void OnSpawnCreature(WaveSpawner waveSpawner, Creature spawned)
+        {
+            if (modules is not { Count: > 0 }) return;
+            for (var i = 0; i < modules.Count; i++)
+            {
+                try
+                {
+                    modules[i]?.OnSpawnCreature(waveSpawner, spawned);
+                }
+                catch (Exception e)
+                {
+                    Debug.LogException(e);
                 }
             }
         }

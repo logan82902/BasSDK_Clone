@@ -1,20 +1,16 @@
-﻿#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#endif
+﻿using TriInspector;
 using UnityEngine;
 
 namespace ThunderRoad.Skill.Spell
 {
+    [DeclareBoxGroup("Jump", Title = "Jump")]
     public class SkillAirDash : SkillData
     {
-#if ODIN_INSPECTOR
-        [BoxGroup("Jump"), ValueDropdown(nameof(GetAllEffectID))]
-#endif
+        [Group("Jump")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string effectId;
         protected EffectData effectData;
-#if ODIN_INSPECTOR
-        [BoxGroup("Jump")]
-#endif
+        [Group("Jump")]
         public float dashForce = 10;
 
     }

@@ -2,137 +2,90 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
-	[Serializable]
+    [SkipInTypeDropdown]
+    [Serializable]
+    [DeclareBoxGroup("Handle", Title = "Handle")]
+    [DeclareBoxGroup("Handle/Magic", Title = "Magic")]
+    [DeclareBoxGroup("Handle/UI", Title = "UI")]
+    [DeclareBoxGroup("Handle/Audio", Title = "Audio")]
+    [DeclareBoxGroup("Handle/Forces", Title = "Forces")]
+    [DeclareBoxGroup("Handle/Allowance", Title = "Allowance")]
+    [DeclareBoxGroup("Handle/Telekinesis", Title = "Telekinesis")]
+    [DeclareBoxGroup("Handle/Slide", Title = "Slide")]
     public class HandleData : InteractableData
     {
-#if ODIN_INSPECTOR
-        [BoxGroup("Handle")]
-#endif
+        [Group("Handle")]
         public bool disableOnStart = false;
-#if ODIN_INSPECTOR
-        [BoxGroup("Handle")] 
-#endif
+        [Group("Handle")]
         public bool rotateAroundAxis = false;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Handle")] 
-#endif
+        [Group("Handle")]
         public bool forceHoldGripToGrab = false;
-#if ODIN_INSPECTOR
-        [BoxGroup("Handle")] 
-#endif
+        [Group("Handle")]
         public bool forcePlayerPhysicLink = false;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Handle")] 
-#endif
+        [Group("Handle")]
         public bool disableHandCollider = false;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Handle")] 
-#endif
+        [Group("Handle")]
         public bool alwaysTeleportToHand = false;
-#if ODIN_INSPECTOR
-        [BoxGroup("Handle")] 
-#endif
+        [Group("Handle")]
         public bool disablePinchGrab = false;
-#if ODIN_INSPECTOR
-        [BoxGroup("Handle")] 
-#endif
+        [Group("Handle")]
         public bool setCenterOfMassTohandle = false;
-#if ODIN_INSPECTOR
-        [BoxGroup("Handle")] 
-#endif
+        [Group("Handle")]
         public float handlerLocomotionSpeedMultiplier = 1;
-#if ODIN_INSPECTOR
-        [BoxGroup("Handle")] 
-#endif
+        [Group("Handle")]
         public bool forceAllowTwoHanded;
-#if ODIN_INSPECTOR
-        [BoxGroup("Handle")] 
-#endif
+        [Group("Handle")]
         public bool allowSlidingWithBothHand;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Handle/Magic")] 
-#endif
+        [Group("Handle/Magic")]
         public bool allowSpellMenu = false;
-#if ODIN_INSPECTOR
-        [BoxGroup("Handle/Magic")] 
-#endif
+        [Group("Handle/Magic")]
         public bool allowSpellFire = false;
-#if ODIN_INSPECTOR
-        [BoxGroup("Handle/Magic"), ShowIf("allowSpellFire")] 
-#endif
+        [Group("Handle/Magic")]
+        [ShowIf("allowSpellFire")]
         public Vector3 spellFireMagicOffset;
-#if ODIN_INSPECTOR
-        [BoxGroup("Handle/Magic"), ShowIf("allowSpellFire")] 
-#endif
+        [Group("Handle/Magic")]
+        [ShowIf("allowSpellFire")]
         public bool offsetInHandleSpace;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Handle/UI")] 
-#endif
+        [Group("Handle/UI")]
         public bool warnIfNotAllowed = false;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Handle/Audio"), ValueDropdown(nameof(GetAllEffectID))] 
-#endif
+        [Group("Handle/Audio")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string grabEffectId;
         [NonSerialized]
         public EffectData grabEffectData;
-#if ODIN_INSPECTOR
-        [BoxGroup("Handle/Audio")] 
-#endif
+        [Group("Handle/Audio")]
         public float slideFxMinVelocity = 2;
-#if ODIN_INSPECTOR
-        [BoxGroup("Handle/Audio")] 
-#endif
+        [Group("Handle/Audio")]
         public float slideFxMaxVelocity = 10;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Handle/Forces")] 
-#endif
+        [Group("Handle/Forces")]
         public RotationDrive rotationDrive = RotationDrive.Slerp;
-#if ODIN_INSPECTOR
-        [BoxGroup("Handle/Forces")] 
-#endif
+        [Group("Handle/Forces")]
         public bool useWYZWhenTwoHanded = true;
-#if ODIN_INSPECTOR
-        [BoxGroup("Handle/Forces")] 
-#endif
+        [Group("Handle/Forces")]
         public float positionSpringMultiplier = 1;
-#if ODIN_INSPECTOR
-        [BoxGroup("Handle/Forces")] 
-#endif
+        [Group("Handle/Forces")]
         public float positionDamperMultiplier = 1;
-#if ODIN_INSPECTOR
-        [BoxGroup("Handle/Forces")] 
-#endif
+        [Group("Handle/Forces")]
         public float rotationSpringMultiplier = 1;
-#if ODIN_INSPECTOR
-        [BoxGroup("Handle/Forces")] 
-#endif
+        [Group("Handle/Forces")]
         public float rotationDamperMultiplier = 1;
-#if ODIN_INSPECTOR
-        [BoxGroup("Handle/Forces")] 
-#endif
+        [Group("Handle/Forces")]
         public float rotationSpring2hMultiplier = 1;
-#if ODIN_INSPECTOR
-        [BoxGroup("Handle/Forces")] 
-#endif
+        [Group("Handle/Forces")]
         public float rotationDamper2hMultiplier = 1;
-#if ODIN_INSPECTOR
-        [BoxGroup("Handle/Forces")] 
-#endif
+        [Group("Handle/Forces")]
         public bool forceClimbing = false;
 
         public enum RotationDrive
@@ -143,115 +96,62 @@ namespace ThunderRoad
             WYZ,
         }
 
-        public static Side dominantHand = Side.Right;
-        public static TwoHandedMode twoHandedMode = TwoHandedMode.AutoFront;
-
-#if ODIN_INSPECTOR
-        [BoxGroup("Handle")] 
-#endif
+        [Group("Handle")]
         public bool dominantWhenTwoHanded = true;
-#if ODIN_INSPECTOR
-        [BoxGroup("Handle")] 
-#endif
+        [Group("Handle")]
         public bool ignoreSnap = false;
-#if ODIN_INSPECTOR
-        [BoxGroup("Handle")] 
-#endif
+        [Group("Handle")]
         public bool disabledOnSnap = false;
-#if ODIN_INSPECTOR
-        [BoxGroup("Handle")] 
-#endif
+        [Group("Handle")]
         public bool useDefaultGripForHolder = true;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Handle/Allowance")] 
-#endif
+        [Group("Handle/Allowance")]
         public bool allowAutoGrab = true;
-#if ODIN_INSPECTOR
-        [BoxGroup("Handle/Allowance")] 
-#endif
+        [Group("Handle/Allowance")]
         public bool allowSteal = true;
-#if ODIN_INSPECTOR
-        [BoxGroup("Handle/Allowance")] 
-#endif
+        [Group("Handle/Allowance")]
         public bool allowSwap = true;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Handle/Telekinesis")] 
-#endif
+        [Group("Handle/Telekinesis")]
         public bool allowTelekinesis;
-#if ODIN_INSPECTOR
-        [BoxGroup("Handle/Telekinesis")] 
-#endif
+        [Group("Handle/Telekinesis")]
         public float telekinesisPullRepelMultiplier = 1;
-#if ODIN_INSPECTOR
-        [BoxGroup("Handle/Telekinesis")] 
-#endif
+        [Group("Handle/Telekinesis")]
         public float telekinesisMaxDistanceMultiplier = 1;
-#if ODIN_INSPECTOR
-        [BoxGroup("Handle/Telekinesis")] 
-#endif
+        [Group("Handle/Telekinesis")]
         public float telekinesisPositionSpringMultiplier = 1;
-#if ODIN_INSPECTOR
-        [BoxGroup("Handle/Telekinesis")] 
-#endif
+        [Group("Handle/Telekinesis")]
         public float telekinesisPositionDamperMultiplier = 1;
-#if ODIN_INSPECTOR
-        [BoxGroup("Handle/Telekinesis")] 
-#endif
+        [Group("Handle/Telekinesis")]
         public float telekinesisPositionMaxForceMultiplier = 1;
-#if ODIN_INSPECTOR
-        [BoxGroup("Handle/Telekinesis")] 
-#endif
+        [Group("Handle/Telekinesis")]
         public float telekinesisRotationSpringMultiplier = 1;
-#if ODIN_INSPECTOR
-        [BoxGroup("Handle/Telekinesis")] 
-#endif
+        [Group("Handle/Telekinesis")]
         public float telekinesisRotationDamperMultiplier = 1;
-#if ODIN_INSPECTOR
-        [BoxGroup("Handle/Telekinesis")] 
-#endif
+        [Group("Handle/Telekinesis")]
         public float telekinesisRotationMaxForceMultiplier = 1;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Handle/Slide")] 
-#endif
+        [Group("Handle/Slide")]
         public float slideMinDamper = 20;
-#if ODIN_INSPECTOR
-        [BoxGroup("Handle/Slide")] 
-#endif
+        [Group("Handle/Slide")]
         public float slideMaxDamper = 300;
-#if ODIN_INSPECTOR
-        [BoxGroup("Handle/Slide")] 
-#endif
+        [Group("Handle/Slide")]
         public float slideMotorMaxForce = 0;
-#if ODIN_INSPECTOR
-        [BoxGroup("Handle/Slide")] 
-#endif
+        [Group("Handle/Slide")]
         public float slideMotorAcceleration = 5;
-#if ODIN_INSPECTOR
-        [BoxGroup("Handle/Slide")] 
-#endif
+        [Group("Handle/Slide")]
         public SlideMotorDirection slideMotorDir = SlideMotorDirection.Gravity;
 
-        public static string tagTkDefault = "TkDefault";
-        public static string tagTkRagdoll = "TkRagdoll";
-        public static string tagTkDefaultLeft = "TkDefaultLeft";
-        public static string tagTkDefaultRight = "TkDefaultRight";
-        public static string tagTkRagdollLeft = "TkRagdollLeft";
-        public static string tagTkRagdollRight = "TkRagdollRight";
+        public const string tagTkDefault = "TkDefault";
+        public const string tagTkRagdoll = "TkRagdoll";
+        public const string tagTkDefaultLeft = "TkDefaultLeft";
+        public const string tagTkDefaultRight = "TkDefaultRight";
+        public const string tagTkRagdollLeft = "TkRagdollLeft";
+        public const string tagTkRagdollRight = "TkRagdollRight";
 
-#if ODIN_INSPECTOR
-        public List<ValueDropdownItem<string>> GetAllEffectID()
-        {
-            return Catalog.GetDropdownAllID(Category.Effect);
-        } 
+        public TriDropdownList<string> GetAllEffectID() => Catalog.GetDropdownAllID(Category.Effect);
 
-        public List<ValueDropdownItem<string>> GetAllHandPoseID()
-        {
-            return Catalog.GetDropdownAllID(Category.HandPose);
-        }
-#endif
+        public TriDropdownList<string> GetAllHandPoseID() => Catalog.GetDropdownAllID(Category.HandPose);
 
         public enum SlideMotorDirection
         {

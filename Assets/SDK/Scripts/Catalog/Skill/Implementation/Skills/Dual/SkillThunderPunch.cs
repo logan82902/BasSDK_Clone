@@ -1,27 +1,21 @@
-﻿#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#endif
+﻿using TriInspector;
 using UnityEngine;
 
 namespace ThunderRoad.Skill.Spell
 {
+    [DeclareBoxGroup("Bolt", Title = "Bolt")]
     public class SkillThunderPunch : SkillSpellPunch
     {
-#if ODIN_INSPECTOR
-        [BoxGroup("Bolt"), ValueDropdown(nameof(GetAllEffectID))]
-#endif
+        [Group("Bolt")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string boltEffectId;
 
         protected EffectData boltEffect;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Bolt")]
-#endif
+        [Group("Bolt")]
         public float boltRadius = 3;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Bolt")]
-#endif
+        [Group("Bolt")]
         public float damageShareRatio = 0.5f;
     }
 }

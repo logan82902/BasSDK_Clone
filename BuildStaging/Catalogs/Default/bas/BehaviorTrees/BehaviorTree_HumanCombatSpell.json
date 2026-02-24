@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
+  "groupPath": null,
   "type": "SubTree",
   "rootNode": {
     "$type": "ThunderRoad.AI.Control.Sequence, ThunderRoad",
@@ -55,26 +56,17 @@
                   "weaponHandling": "None",
                   "checkAmmo": false,
                   "checkInHolder": false
-                },
-                "blackboard": null,
-                "creature": null,
-                "brainData": null
+                }
               },
               {
                 "$type": "ThunderRoad.AI.Action.SetStance, ThunderRoad",
                 "stance": "Staff",
-                "onlyOnce": false,
-                "blackboard": null,
-                "creature": null,
-                "brainData": null
+                "onlyOnce": false
               },
               {
                 "$type": "ThunderRoad.AI.Action.SetDefenseState, ThunderRoad",
                 "parry": false,
-                "dodge": true,
-                "blackboard": null,
-                "creature": null,
-                "brainData": null
+                "dodge": true
               }
             ]
           },
@@ -103,26 +95,17 @@
                   "weaponHandling": "None",
                   "checkAmmo": false,
                   "checkInHolder": false
-                },
-                "blackboard": null,
-                "creature": null,
-                "brainData": null
+                }
               },
               {
                 "$type": "ThunderRoad.AI.Action.SetStance, ThunderRoad",
                 "stance": "Melee1H",
-                "onlyOnce": false,
-                "blackboard": null,
-                "creature": null,
-                "brainData": null
+                "onlyOnce": false
               },
               {
                 "$type": "ThunderRoad.AI.Action.SetDefenseState, ThunderRoad",
                 "parry": true,
-                "dodge": true,
-                "blackboard": null,
-                "creature": null,
-                "brainData": null
+                "dodge": true
               }
             ]
           }
@@ -180,10 +163,7 @@
               "angleMode": "None",
               "changeAngleUntilUnobstructed": false,
               "targetRadiusMinAngle": 0.0,
-              "targetRadiusMaxAngle": 0.0,
-              "blackboard": null,
-              "creature": null,
-              "brainData": null
+              "targetRadiusMaxAngle": 0.0
             }
           },
           {
@@ -199,20 +179,14 @@
                     "target": "CurrentTarget",
                     "inputVariableName": "",
                     "checkShortestPath": false,
-                    "outputPositionVariableName": "ShootPosition",
-                    "blackboard": null,
-                    "creature": null,
-                    "brainData": null
+                    "outputPositionVariableName": "ShootPosition"
                   },
                   {
                     "$type": "ThunderRoad.AI.Get.GetShootPosition, ThunderRoad",
                     "target": "CurrentTarget",
                     "inputVariableName": "",
                     "checkShortestPath": false,
-                    "outputPositionVariableName": "ShootPosition",
-                    "blackboard": null,
-                    "creature": null,
-                    "brainData": null
+                    "outputPositionVariableName": "ShootPosition"
                   }
                 ]
               },
@@ -230,20 +204,14 @@
                         "selectionMode": "ByDistance",
                         "spellID": "",
                         "target": "CurrentTarget",
-                        "inputTransformVariableName": "",
-                        "blackboard": null,
-                        "creature": null,
-                        "brainData": null
+                        "inputTransformVariableName": ""
                       },
                       {
                         "$type": "ThunderRoad.AI.Action.AttackSpell, ThunderRoad",
                         "target": "CurrentTarget",
                         "inputTransformVariableName": "",
                         "castLeft": true,
-                        "castRight": false,
-                        "blackboard": null,
-                        "creature": null,
-                        "brainData": null
+                        "castRight": false
                       }
                     ]
                   },
@@ -263,10 +231,7 @@
                     "forceMaxRangeDelta": 0.0,
                     "stopOnReset": false,
                     "pickClipSequentialMaxIndex": 0,
-                    "updateClipRange": false,
-                    "blackboard": null,
-                    "creature": null,
-                    "brainData": null
+                    "updateClipRange": false
                   },
                   {
                     "$type": "ThunderRoad.AI.Action.MoveTo, ThunderRoad",
@@ -303,10 +268,7 @@
                     "angleMode": "None",
                     "changeAngleUntilUnobstructed": false,
                     "targetRadiusMinAngle": 0.0,
-                    "targetRadiusMaxAngle": 0.0,
-                    "blackboard": null,
-                    "creature": null,
-                    "brainData": null
+                    "targetRadiusMaxAngle": 0.0
                   }
                 ]
               }
@@ -315,6 +277,5 @@
         ]
       }
     ]
-  },
-  "groupPath": null
+  }
 }

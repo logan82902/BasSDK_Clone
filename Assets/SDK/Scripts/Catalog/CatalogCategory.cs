@@ -30,8 +30,15 @@ namespace ThunderRoad
         public bool AddCatalogData(CatalogData catalogData)
         {
             //The hashes may already exist if something called GetHashId since it will add it there
-            idToHashId.TryAdd(catalogData.id, catalogData.hashId);
-            idToHashIdCaseSensitive.TryAdd(catalogData.id, catalogData.hashId);
+            string catalogID = catalogData.id;
+#if UNITY_EDITOR
+            if (Catalog.loadOverridesSeparately && catalogData.isOverrider)
+            {
+                catalogID = catalogData.editorGuid;
+            }
+#endif
+            idToHashId.TryAdd(catalogID, catalogData.hashId);
+            idToHashIdCaseSensitive.TryAdd(catalogID, catalogData.hashId);
 
             if (hashIdToCatalogData.TryAdd(catalogData.hashId, catalogData))
             {

@@ -1,64 +1,46 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
 
 namespace ThunderRoad.AI.Get
 {
-	public class GetCreature : ActionNode
+    [DeclareBoxGroup("General", Title = "General")]
+    [DeclareBoxGroup("Outputs", Title = "Outputs")]
+    [DeclareHorizontalGroup("Outputs/Horiz", Sizes = new float[] { 215f, 0f })]
+    [DeclareHorizontalGroup("Outputs/Horiz2", Sizes = new float[] { 230f, 0f })]
+    [AutoLabelWidth(AddedWidth = 5f, MinWidth = 0f)]
+    public class GetCreature : ActionNode
     {
-#if ODIN_INSPECTOR
-        [BoxGroup("General")] 
-#endif
+        [Group("General")]
         public Target target = Target.ClosestEnemy;
-#if ODIN_INSPECTOR
-        [BoxGroup("General")] 
-#endif
+        [Group("General")]
         public bool checkFov = true;
-#if ODIN_INSPECTOR
-        [BoxGroup("General")] 
-#endif
+        [Group("General")]
         public bool checkSight = true;
-#if ODIN_INSPECTOR
-        [BoxGroup("General")] 
-#endif
+        [Group("General")]
         public bool checkShortestPath = false;
-#if ODIN_INSPECTOR
-        [BoxGroup("General")] 
-#endif
+        [Group("General")]
         public float rememberDuration = 5;
-#if ODIN_INSPECTOR
-        [BoxGroup("General")] 
-#endif
+        [Group("General")]
         public float focusDuration = 5;
-#if ODIN_INSPECTOR
-        [BoxGroup("General")] 
-#endif
+        [Group("General")]
         public float maxDistance = 0;
-#if ODIN_INSPECTOR
-        [BoxGroup("General")] 
-#endif
+        [Group("General")]
         public bool debugLines;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Outputs"), HorizontalGroup("Outputs/Horiz", MinWidth = 300), LabelWidth(200)] 
-#endif
+        [Group("Outputs/Horiz")]
+        [LabelWidth(200)]
         public bool outputCreatureAsCurrentTarget = true;
-#if ODIN_INSPECTOR
-        [BoxGroup("Outputs"), HorizontalGroup("Outputs/Horiz"), LabelWidth(200), DisableIf("outputCreatureAsCurrentTarget")] 
-#endif
+        [Group("Outputs/Horiz")]
+        [LabelWidth(200)]
+        [DisableIf(nameof(outputCreatureAsCurrentTarget))]
         public string outputCreatureVariableName = "";
-#if ODIN_INSPECTOR
-        [BoxGroup("Outputs"), HorizontalGroup("Outputs/Horiz2", MinWidth = 300), LabelWidth(120)] 
-#endif
+        [Group("Outputs/Horiz2")]
+        [LabelWidth(120)]
         public OutputTransform outputTransform = OutputTransform.SightedPart;
-#if ODIN_INSPECTOR
-        [BoxGroup("Outputs"), HorizontalGroup("Outputs/Horiz2"), LabelWidth(200), DisableIf("outputTransform", optionalValue: OutputTransform.None)] 
-#endif
+        [Group("Outputs/Horiz2")]
+        [LabelWidth(200)]
+        [DisableIf("outputTransform", OutputTransform.None)]
         public string outputTransformVariableName = "";
 
         public enum Target
@@ -85,6 +67,8 @@ namespace ThunderRoad.AI.Get
             Creature,
             Target,
         }
+
+        public GetCreature() { }
 
     }
 }

@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
+  "groupPath": null,
   "type": "SubTree",
   "rootNode": {
     "$type": "ThunderRoad.AI.Control.Selector, ThunderRoad",
@@ -60,10 +61,7 @@
                       "weaponHandling": "None",
                       "checkAmmo": false,
                       "checkInHolder": false
-                    },
-                    "blackboard": null,
-                    "creature": null,
-                    "brainData": null
+                    }
                   },
                   {
                     "$type": "ThunderRoad.AI.Control.Selector, ThunderRoad",
@@ -124,10 +122,7 @@
                                   "$type": "ThunderRoad.AI.Action.HolsterItem, ThunderRoad",
                                   "holsterRight": true,
                                   "holsterLeft": false,
-                                  "waitForFinished": true,
-                                  "blackboard": null,
-                                  "creature": null,
-                                  "brainData": null
+                                  "waitForFinished": true
                                 },
                                 {
                                   "$type": "ThunderRoad.AI.Action.PlayAnimation, ThunderRoad",
@@ -147,20 +142,11 @@
                                   "interruptStop": true,
                                   "mirror": false,
                                   "doCallbackNode": false,
-                                  "callbackNode": null,
-                                  "blackboard": null,
-                                  "creature": null,
-                                  "brainData": null
+                                  "callbackNode": null
                                 }
                               ]
-                            },
-                            "blackboard": null,
-                            "creature": null,
-                            "brainData": null
-                          },
-                          "blackboard": null,
-                          "creature": null,
-                          "brainData": null
+                            }
+                          }
                         }
                       },
                       {
@@ -189,10 +175,7 @@
                               "$type": "ThunderRoad.AI.Action.HolsterItem, ThunderRoad",
                               "holsterRight": true,
                               "holsterLeft": false,
-                              "waitForFinished": true,
-                              "blackboard": null,
-                              "creature": null,
-                              "brainData": null
+                              "waitForFinished": true
                             },
                             {
                               "$type": "ThunderRoad.AI.Action.PlayAnimation, ThunderRoad",
@@ -212,16 +195,10 @@
                               "interruptStop": true,
                               "mirror": false,
                               "doCallbackNode": false,
-                              "callbackNode": null,
-                              "blackboard": null,
-                              "creature": null,
-                              "brainData": null
+                              "callbackNode": null
                             }
                           ]
-                        },
-                        "blackboard": null,
-                        "creature": null,
-                        "brainData": null
+                        }
                       }
                     ]
                   }
@@ -271,10 +248,7 @@
                       "weaponHandling": "None",
                       "checkAmmo": false,
                       "checkInHolder": false
-                    },
-                    "blackboard": null,
-                    "creature": null,
-                    "brainData": null
+                    }
                   },
                   {
                     "$type": "ThunderRoad.AI.Control.Selector, ThunderRoad",
@@ -331,18 +305,9 @@
                               "$type": "ThunderRoad.AI.Action.HolsterItem, ThunderRoad",
                               "holsterRight": true,
                               "holsterLeft": false,
-                              "waitForFinished": true,
-                              "blackboard": null,
-                              "creature": null,
-                              "brainData": null
-                            },
-                            "blackboard": null,
-                            "creature": null,
-                            "brainData": null
-                          },
-                          "blackboard": null,
-                          "creature": null,
-                          "brainData": null
+                              "waitForFinished": true
+                            }
+                          }
                         }
                       },
                       {
@@ -367,22 +332,13 @@
                           "$type": "ThunderRoad.AI.Action.HolsterItem, ThunderRoad",
                           "holsterRight": true,
                           "holsterLeft": false,
-                          "waitForFinished": true,
-                          "blackboard": null,
-                          "creature": null,
-                          "brainData": null
-                        },
-                        "blackboard": null,
-                        "creature": null,
-                        "brainData": null
+                          "waitForFinished": true
+                        }
                       }
                     ]
                   }
                 ]
-              },
-              "blackboard": null,
-              "creature": null,
-              "brainData": null
+              }
             }
           ]
         }
@@ -405,12 +361,8 @@
         "interruptStop": true,
         "mirror": false,
         "doCallbackNode": false,
-        "callbackNode": null,
-        "blackboard": null,
-        "creature": null,
-        "brainData": null
+        "callbackNode": null
       }
     ]
-  },
-  "groupPath": null
+  }
 }

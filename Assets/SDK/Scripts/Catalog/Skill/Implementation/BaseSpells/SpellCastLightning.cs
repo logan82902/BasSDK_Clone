@@ -6,97 +6,83 @@ using UnityEngine;
 using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
 
-
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
 
 namespace ThunderRoad.Skill.Spell
 {
+    [DeclareBoxGroup("Imbue hit", Title = "Imbue hit")]
+    [DeclareBoxGroup("Staff Slam", Title = "Staff Slam")]
+    [DeclareBoxGroup("Bolts", Title = "Bolts")]
+    [DeclareBoxGroup("Electrocution", Title = "Electrocution")]
+    [DeclareBoxGroup("Chaining", Title = "Chaining")]
+    [DeclareBoxGroup("Arcing Bolt", Title = "Arcing Bolt")]
+    [DeclareBoxGroup("Musket")]
     public class SpellCastLightning : SpellCastCharge
     {
+        public static readonly Type[] MUSKET_IGNORED_EFFECT_MODULES = { typeof(EffectModuleAudio) };
+        
         public bool speedUpByTimeScale = false;
         public static int modifierChainRange = Animator.StringToHash("ChainRange");
-#if ODIN_INSPECTOR
-        [BoxGroup("Imbue hit"), ValueDropdown(nameof(GetAllEffectID))] 
-#endif
+        [Group("Imbue hit")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string imbueHitEffectId;
 
         [NonSerialized]
         public EffectData imbueHitEffectData;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Imbue hit"), ValueDropdown(nameof(GetAllEffectID))] 
-#endif
+        [Group("Imbue hit")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string imbueHitRagdollEffectId;
 
         [NonSerialized]
         public EffectData imbueHitRagdollEffectData;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Staff Slam")] 
-#endif
+        [Group("Staff Slam")]
         public float staffSlamRadius = 10f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Staff Slam")] 
-#endif
+        [Group("Staff Slam")]
         public float staffSlamStunDuration = 5f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Staff Slam")] 
-#endif
+        [Group("Staff Slam")]
         public float staffSlamExpandDuration = 1f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Bolts")]
-#endif
+        [Group("Bolts")]
         public AnimationCurve boltIntensityCurve;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Bolts"), ValueDropdown(nameof(GetAllEffectID))] 
-#endif
+        [Group("Bolts")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string boltEffectId;
         [NonSerialized]
         public EffectData boltEffectData;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Bolts"), ValueDropdown(nameof(GetAllEffectID))] 
-#endif
+        [Group("Bolts")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string boltLoopEffectId;
         [NonSerialized]
         public EffectData boltLoopEffectData;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Bolts"), ValueDropdown(nameof(GetAllEffectID))] 
-#endif
+        [Group("Bolts")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string boltHitEffectId;
         [NonSerialized]
         public EffectData boltHitEffectData;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Bolts"), ValueDropdown(nameof(GetAllEffectID))] 
-#endif
+        [Group("Bolts")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string boltHitImbueEffectId;
         [NonSerialized]
         public EffectData boltHitImbueEffectData;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Bolts")] 
-#endif
+        [Group("Bolts")]
         public int simultaneousBolts = 3;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Bolts"), MinMaxSlider(0.01f, 0.5f, ShowFields = true)] 
-#endif
-        public Vector2 intervalMinRange = new Vector2(0.1f, 0.2f);
+        [Group("Bolts")]
+        [MinMaxSlider(0.01f, 0.5f, ShowFields = true)]
+        public Vector2 intervalMinRange = new(0.1f, 0.2f);
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Bolts"), MinMaxSlider(0.01f, 0.5f, ShowFields = true)] 
-#endif
-        public Vector2 intervalMaxRange = new Vector2(0.05f, 0.1f);
+        [Group("Bolts")]
+        [MinMaxSlider(0.01f, 0.5f, ShowFields = true)]
+        public Vector2 intervalMaxRange = new(0.05f, 0.1f);
 
         public float MinDuration => Mathf.Lerp(intervalMaxRange.x, intervalMaxRange.y, 0.5f) / drainPerBolt;
 
@@ -107,125 +93,80 @@ namespace ThunderRoad.Skill.Spell
         [JsonIgnore]
         public string StunDurationPerSkillLabel => $"Stun Duration per Skill ({boltElectrocuteDuration}s base, {boltElectrocuteDuration * (1 + durationPerSkill * 3)}s with unlocks)";
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Bolts"), LabelText("@DrainPerBoltLabel")]
-#endif
+        [Group("Bolts")]
+        [LabelText("$" + nameof(DrainPerBoltLabel))]
         public float drainPerBolt = 0.015f;
-        
-#if ODIN_INSPECTOR
-        [BoxGroup("Bolts"), LabelText(@"@SkillPassiveLabel(""Efficiency"", efficiencyPerSkill)")]
-#endif
+
+        [Group("Bolts")]
+        [LabelText("$" + nameof(EfficiencyPerSkillLabel))]
         public float efficiencyPerSkill = 0.05f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Bolts"), LabelText("@StunDurationPerSkillLabel")]
-#endif
+        [Group("Bolts")]
+        [LabelText("$" + nameof(StunDurationPerSkillLabel))]
         public float durationPerSkill = 0.1f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Bolts")] 
-#endif
+        [JsonIgnore]
+        public string EfficiencyPerSkillLabel => SkillPassiveLabel("Efficiency", efficiencyPerSkill);
+
+        [Group("Bolts")]
         public float coneAngle = 30;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Bolts")] 
-#endif
+        [Group("Bolts")]
         public float boltMaxRange = 5;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Bolts")] 
-#endif
+        [Group("Bolts")]
         public float fireDirectionAngle = 70;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Bolts")] 
-#endif
+        [Group("Bolts")]
         public float boltDamage = 1;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Bolts")] 
-#endif
+        [Group("Bolts")]
         public int pushLevel = 1;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Bolts")] 
-#endif
+        [Group("Bolts")]
         public float boltHaptic = 0.2f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Bolts")] 
-#endif
+        [Group("Bolts")]
         public int boltElectrocuteDuration = 2;
-#if ODIN_INSPECTOR
-        [BoxGroup("Bolts")] 
-#endif
+        [Group("Bolts")]
         public int boltElectrocuteDurationMetal = 6;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Bolts")] 
-#endif
+        [Group("Bolts")]
         public float boltPushForce = 5f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Bolts")] 
-#endif
+        [Group("Bolts")]
         public float headToFireMaxAngle = 45;
-#if ODIN_INSPECTOR
-        [BoxGroup("Bolts")] 
-#endif
+        [Group("Bolts")]
         public float boltLoopFadoutDelay = 0.5f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Bolts")] 
-#endif
+        [Group("Bolts")]
         public LayerMask rayMaskPlayer;
-#if ODIN_INSPECTOR
-        [BoxGroup("Bolts")] 
-#endif
+        [Group("Bolts")]
         public LayerMask rayMaskNpc;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Bolts")] 
-#endif
+        [Group("Bolts")]
         public float hitLookupMaxDiffRange = 0.25f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Bolts")] 
-#endif
+        [Group("Bolts")]
         public float boltEnergyTransfer = 2f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Bolts")] 
-#endif
+        [Group("Bolts")]
         public float boltElectrocuteChance = 0.3f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Electrocution"), ValueDropdown(nameof(GetAllStatusEffectID))]
-#endif
+        [Group("Electrocution")]
+        [Dropdown(nameof(GetAllStatusEffectID))]
         public string electrocuteStatusId = "Electrocute";
         [NonSerialized]
         public StatusData electrocuteStatusData;
-        
-#if ODIN_INSPECTOR
-        [BoxGroup("Chaining")] 
-#endif
+
+        [Group("Chaining")]
         public float minChainIntensity = 0.6f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Chaining")] 
-#endif
+        [Group("Chaining")]
         public float minChainLength = 0.4f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Chaining")] 
-#endif
+        [Group("Chaining")]
         public float maxChainLength = 1.2f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Chaining")] 
-#endif
+        [Group("Chaining")]
         public float chainIntensityMultiplier = 0.75f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Chaining")]
-#endif
+        [Group("Chaining")]
         public int maxChainsPerBolt = 3;
-#if ODIN_INSPECTOR
-        [BoxGroup("Chaining")] 
-#endif
+        [Group("Chaining")]
         public float chainChance = 0.5f;
         
         [NonSerialized]
@@ -234,26 +175,57 @@ namespace ThunderRoad.Skill.Spell
         public bool allowChainItems;
 
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Arcing Bolt"), ShowIf("allowThrow")] 
-#endif
+        [Group("Arcing Bolt")]
+        [ShowIf("allowThrow")]
         public float arcDuration = 10f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Arcing Bolt"), ShowIf("allowThrow")] 
-#endif
+        [Group("Arcing Bolt")]
+        [ShowIf("allowThrow")]
         public float arcJumpRadius = 5f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Arcing Bolt"), ShowIf("allowThrow")] 
-#endif
+        [Group("Arcing Bolt")]
+        [ShowIf("allowThrow")]
         public float arcThrowAngle = 30f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Arcing Bolt"), ShowIf("allowThrow")] 
-#endif
+        [Group("Arcing Bolt")]
+        [ShowIf("allowThrow")]
         public float arcShockDuration = 1.5f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Arcing Bolt"), ShowIf("allowThrow")] 
-#endif
+        [Group("Arcing Bolt")]
+        [ShowIf("allowThrow")]
         public float arcJumpDelay = 1.5f;
+
+        [Group("Musket")]
+        [Dropdown(nameof(GetAllSkillID))]
+        public string musketThunderboltId;
+        [JsonIgnore]
+        public SkillThunderbolt musketThunderboltData;
+
+        [Group("Musket")]
+        [Dropdown(nameof(GetAllEffectID))]
+        public string musketProjectileEffectId;
+        [JsonIgnore]
+        public EffectData musketProjectileEffectData;
+
+        [Group("Musket")]
+        [Dropdown(nameof(GetAllItemID))]
+        public string musketProjectileId;
+        [JsonIgnore]
+        public ItemData musketProjectileData;
+
+        [Group("Musket")]
+        [Dropdown(nameof(GetAllDamagerID))]
+        public string musketProjectileDamagerId;
+        [JsonIgnore]
+        protected DamagerData musketProjectileDamagerData;
+
+        [Group("Musket")]
+        public int musketProjectileCount = 6;
+
+        [Group("Musket")]
+        public float musketProjectileSpeed = 30;
+
+        [Group("Musket")]
+        public float musketTargetRadius = 3;
+
+        [Group("Musket")]
+        public float musketProjectileAngle = 35;
         
         public delegate void SprayEvent(SpellCastLightning spell);
 

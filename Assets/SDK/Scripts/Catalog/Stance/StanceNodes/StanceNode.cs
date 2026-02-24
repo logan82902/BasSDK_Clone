@@ -1,49 +1,51 @@
 ﻿using System;
 using UnityEngine;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+
 using TriInspector;
-#endif
+using Newtonsoft.Json;
 
 namespace ThunderRoad
 {
-    [System.Serializable]
+    [Serializable]
+    [DeclareFoldoutGroup("StanceNode", Expanded = true, Title = "$niceID")]
+    [DeclareHorizontalGroup("StanceNode/Horiz")]
+    [DeclareVerticalGroup("StanceNode/Horiz/Fields")]
+    [DeclareHorizontalGroup("StanceNode/Horiz/Fields/Row2")]
+    [DeclareHorizontalGroup("StanceNode/Horiz/Fields/Row3")]
+    [DeclareHorizontalGroup("StanceNode/Horiz/Fields/Row4")]
     public abstract class StanceNode
     {
+        [JsonMergeKey]
+        [LabelWidth(35)]
+        [EnableIf(nameof(customID))]
+        [Group("StanceNode/Horiz/Fields")]
+        public string id = "[New stance animation]";
+        [LabelWidth(65)]
+        [LabelText("Animation")]
+        [Group("StanceNode/Horiz/Fields/Row2")]
+        public string address;
         [NonSerialized]
-#if ODIN_INSPECTOR
-        [ShowInInspector, HideLabel, PreviewField(ObjectFieldAlignment.Left, Height = 60f), FoldoutGroup("$prettifiedID", expanded: true), HorizontalGroup("$prettifiedID/Horiz", 65f), VerticalGroup("$prettifiedID/Horiz/Clip")]
+        [ShowInInspector]
+        [HideLabel]
+        [Group("StanceNode/Horiz/Fields/Row2")]
 #if UNITY_EDITOR
         [OnValueChanged(nameof(EditorUpdateAddress))]
 #endif
-#endif
         public AnimationClip animationClip;
-        [JsonMergeKey]
-#if ODIN_INSPECTOR
-        [LabelWidth(35), EnableIf("customID"), HorizontalGroup("$prettifiedID/Horiz"), VerticalGroup("$prettifiedID/Horiz/Fields")]
-#endif
-        public string id = "[New stance animation]";
-#if ODIN_INSPECTOR
-        [LabelWidth(65), HorizontalGroup("$prettifiedID/Horiz"), VerticalGroup("$prettifiedID/Horiz/Fields")]
-#endif
-        public string address;
-#if ODIN_INSPECTOR
-        [LabelWidth(105), HorizontalGroup("$prettifiedID/Horiz"), VerticalGroup("$prettifiedID/Horiz/Fields"), HorizontalGroup("$prettifiedID/Horiz/Fields/Row3", Order = 0, Width = 170)]
-#endif
+        [LabelWidth(105)]
+        [Group("StanceNode/Horiz/Fields/Row3")]
         public float animationSpeed = 1;
-#if ODIN_INSPECTOR
-        [LabelWidth(60), HorizontalGroup("$prettifiedID/Horiz"), VerticalGroup("$prettifiedID/Horiz/Fields"), HorizontalGroup("$prettifiedID/Horiz/Fields/Row3", Order = 1, Width = 95), ShowIf("showDifficulty")]
-#endif
+        [LabelWidth(60)]
+        [Group("StanceNode/Horiz/Fields/Row3")]
+        [ShowIf("showDifficulty")]
         public int difficulty;
-#if ODIN_INSPECTOR
-        [LabelWidth(135), HorizontalGroup("$prettifiedID/Horiz"), VerticalGroup("$prettifiedID/Horiz/Fields"), HorizontalGroup("$prettifiedID/Horiz/Fields/Row3", Order = 3, Width = 145, PaddingRight = 10)]
-#endif
+        [LabelWidth(130)]
+        [Group("StanceNode/Horiz/Fields/Row3")]
         public bool allowPlayAndMove = true;
-#if ODIN_INSPECTOR
-        [LabelWidth(75), HorizontalGroup("$prettifiedID/Horiz"), VerticalGroup("$prettifiedID/Horiz/Fields"), HorizontalGroup("$prettifiedID/Horiz/Fields/Row4"), ShowIf("showWeight")]
-#endif
+        [LabelWidth(40)]
+        [Group("StanceNode/Horiz/Fields/Row4")]
+        [ShowIf("showWeight")]
         public float weight;
 
         [NonSerialized]
@@ -59,12 +61,11 @@ namespace ThunderRoad
 
         public virtual bool showWeight => false;
 
-#if ODIN_INSPECTOR
-        protected string prettifiedID => Utils.AddSpacesToSentence(id, true);
+        [JsonIgnore]
+        protected string niceID => Utils.AddSpacesToSentence(id, true);
 
 #if UNITY_EDITOR
         protected void EditorUpdateAddress() => address = animationClip ? Catalog.GetAddressFromPrefab(animationClip) : "";
-#endif
 #endif
 
     }

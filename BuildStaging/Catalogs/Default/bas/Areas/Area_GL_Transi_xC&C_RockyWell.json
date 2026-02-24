@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
+  "groupPath": "Outpost/Transi",
   "isUnique": true,
   "areaPrefabAddress": "Bas.Area.GL_Transi_xC&C_RockyWell",
   "lightingPresetAddress": "Bas.Area.GL_Transi_xC&C_RockyWell.LightingPreset",
@@ -94,6 +95,5 @@
       "isZeroIntensity": false,
       "visibleFromGate": true
     }
-  ],
-  "groupPath": "Outpost/Transi"
+  ]
 }

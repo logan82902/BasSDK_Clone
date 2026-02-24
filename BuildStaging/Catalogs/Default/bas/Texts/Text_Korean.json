@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 1,
+  "groupPath": null,
   "languageCode": "ko",
   "textGroups": [
     {
@@ -260,6 +261,293 @@
           "text": "보상을 획득했습니다.\n인벤토리에 추가해 집으로 보내세요.",
           "spriteAddress": null,
           "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "OptionPresetName",
+          "text": "프리셋",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "OptionWaveModeName",
+          "text": "웨이브 루핑",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "OptionWaveModeDescription",
+          "text": "마지막 웨이브를 완료했을 때 발생할 상황을 결정합니다.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "RouletteChallengeName",
+          "text": "이전 보상을 제거합니다.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "RouletteChallengeDescription",
+          "text": "활성화하면, 웨이브를 완료할 때 이전 보상이 사라집니다.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "ForbidEnemyWeaponsName",
+          "text": "적 무기 사용 금지",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "ForbidEnemyWeaponsDescription",
+          "text": "활성화하면 적의 무기를 집거나 사용할 수 없습니다.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SpawnWeaponsName",
+          "text": "무기 생성",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SpawnWeaponsDescription",
+          "text": "활성화 시, 보상 풀에 무기를 포함합니다.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SpawnSkillsCombatName",
+          "text": "전투 스킬 생성",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SpawnSkillsCombatDescription",
+          "text": "활성화 시, 보상 풀에 공격 기술을 포함합니다.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SpawnSkillsNonCombatName",
+          "text": "비전투 기술 생성",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SpawnSkillsNonCombatDescription",
+          "text": "활성화 시, 보상 풀에 유틸리티 스킬을 포함합니다.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SpawnPotionsName",
+          "text": "포션 생성",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SpawnPotionsDescription",
+          "text": "활성화 시 보상 풀에 물약이 포함됩니다.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SpawnArmorName",
+          "text": "갑옷 생성",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SpawnArmorDescription",
+          "text": "활성화 시, 보상 풀에 갑옷 부품을 포함합니다.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SpawnBundlesName",
+          "text": "번들 생성",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SpawnBundlesDescription",
+          "text": "활성화 시, 보상 풀에 관련 스킬과 무기 묶음을 포함합니다.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "RemovePlayerWeaponsName",
+          "text": "플레이어 무기 제거",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "RemovePlayerWeaponsDescription",
+          "text": "활성화 시, 첫 번째 웨이브가 시작되기 전에 장착한 모든 샌드박스 무기를 제거합니다.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "RemovePlayerSkillsName",
+          "text": "플레이어 스킬 제거",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "RemovePlayerSkillsDescription",
+          "text": "활성화 시, 첫 번째 웨이브가 시작되기 전에 모든 샌드박스 스킬을 제거합니다.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "RemovePlayerArmorName",
+          "text": "플레이어의 갑옷을 제거합니다.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "RemovePlayerArmorDescription",
+          "text": "활성화 시, 첫 번째 웨이브가 시작되기 전에 장착한 샌드박스 갑옷을 제거합니다.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "PresetProgressionName",
+          "text": "진행도",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "PresetProgressionDescription",
+          "text": "무에서 시작하여 힘을 키워나가세요. 웨이브를 완료하며 기술, 무기, 갑옷을 획득하세요. 적의 무기는 사용할 수 없으며, 갑옷 없이 시작합니다.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "PresetProgressionUnrestrictedName",
+          "text": "진행 (제한 없음)",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "PresetProgressionUnrestrictedDescription",
+          "text": "무에서 시작하여 힘을 키워나가세요. 웨이브를 완료하며 스킬, 무기, 갑옷을 획득하세요. 장착한 샌드박스 무기, 갑옷, 스킬은 모두 유지할 수 있습니다.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "PresetRouletteModeName",
+          "text": "룰렛 모드",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "PresetRouletteModeDescription",
+          "text": "각 라운드마다 해당 라운드에서만 사용할 수 있는 보상을 하나 활용할 수 있습니다. 보상은 각 라운드 사이에 초기화됩니다.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "PresetClassicName",
+          "text": "클래식 서바이벌",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "PresetClassicDescription",
+          "text": "보상으로 무기만 등장합니다. 장착한 샌드박스 무기, 갑옷 및 스킬은 유지할 수 있습니다.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "LoopModeNoLoopName",
+          "text": "집으로 돌아가기",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "LoopModeNoLoopDescription",
+          "text": "모든 웨이브를 완료한 후 집으로 돌아갑니다.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "LoopModeLoopName",
+          "text": "처음부터 반복",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "LoopModeLoopDescription",
+          "text": "모든 웨이브를 완료한 후 첫 번째 웨이브부터 다시 시작합니다.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "LoopModeRepeatLastWaveName",
+          "text": "마지막 웨이브 반복",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "LoopModeRepeatLastWaveDescription",
+          "text": "마지막 웨이브를 무한히 반복합니다.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "HoldTriggerToChooseItem",
+          "text": "트리거를 길게 눌러 아이템을 선택하세요",
+          "spriteAddress": "",
+          "videoAddress": ""
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "HoldTriggerToChooseBundle",
+          "text": "트리거를 길게 눌러 번들을 선택하세요",
+          "spriteAddress": "",
+          "videoAddress": ""
         }
       ]
     },
@@ -5408,6 +5696,104 @@
           "text": "키 오프셋",
           "spriteAddress": null,
           "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "Rakta",
+          "text": "락타",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "Rakta Armor",
+          "text": "락타",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "Rakta Weapons",
+          "text": "락타",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "Madene Armor",
+          "text": "Madene",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "Sentara",
+          "text": "센타라",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "Sentara Weapons",
+          "text": "센타라",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "Sentara Armor",
+          "text": "센타라",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "Madene Weapons",
+          "text": "Madene",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "Madene",
+          "text": "Madene",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "Khar-Tib Armor",
+          "text": "Khar-Tib",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "Khar-Tib Weapons",
+          "text": "Khar-Tib",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "Khar-Tib",
+          "text": "Khar-Tib",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "LoreAccurateFlintlockName",
+          "text": "플린트록 지팡이 기술",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "LoreAccurateFlintlockDescription",
+          "text": "센타리 플린트록에 아크와이어, 중력 해머 또는 인페르노 스태프 같은 스킬의 사용을 허용할지 여부입니다.",
+          "spriteAddress": null,
+          "videoAddress": null
         }
       ]
     },
@@ -5942,6 +6328,62 @@
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
           "id": "OutpostCoastalFortDescription",
           "text": "침입자를 경계하고 제압하기 위해 세워진 해변가의 요새입니다.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "RaktaDojo",
+          "text": "라이크 사원",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "RaktaDojoDescription",
+          "text": "고급 명상 의식과 마법 수련을 연마하기 위해 사용되는 라이크 사원입니다.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SentaraShip",
+          "text": "센타리 난파선",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SentaraShipDescription",
+          "text": "무너져가는 등대에 좌초된 센타리 함선이 갈라져 신비한 크리스털을 드러내고 있다.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "RaktaMap",
+          "text": "락타",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibMap",
+          "text": "카르 티브",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SentaraMap",
+          "text": "센타라",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "MadluMap",
+          "text": "마들루",
           "spriteAddress": null,
           "videoAddress": null
         }
@@ -13926,6 +14368,475 @@
           "text": "레이크 족은 뛰어난 장인들이지. 그래서 해변에 밀려오는 장비는 모두 내가 진열할 거야. 새 물건이 나올 때까지 눈 크게 뜨고 기다려.",
           "spriteAddress": null,
           "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "MultiUpdateIntro_1",
+          "text": "이봐! 네가 없는 동안 폭풍에 휘말린 외국 선박들을 꽤 많이 봤어. 그 잔해들이 내 해안에 밀려올 거니까, 새 물건을 찾으려고 눈을 크게 뜨고 있어.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "MultiUpdateIntro_2",
+          "text": "안녕하세요! 지난 며칠 동안 폭풍으로 많은 외국 선박들이 난파되었습니다. 난파선이 제 섬에 밀려오면서, 당신을 위한 독특한 무기와 갑옷을 준비해 놓았습니다.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "MageApparel_1",
+          "text": "마법사들은 그런 장비를 착용하는 경향이 있습니다. 그렇게 하면 힘을 더 빠르게 끌어낼 수 있다고 합니다.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "MageApparel_2",
+          "text": "그래서... 당신은 마법사 같은 존재인가요?",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "MageApparel_3",
+          "text": "마법은 훌륭하지만, 그것이 당신을 집어삼키게 하지 마세요.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "MageApparel_4",
+          "text": "하, 한 번 괴짜 마법사 같은 녀석을 만난 적이 있어... 그런 옷을 입고 있었지... 허리춤에 빵 검 같은 걸 차고 다녔어. 마지막으로 들은 바로는, 이제 그에게는 일종의 추종자들이 생겼대.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "PlateApparel_1",
+          "text": "단단한 금속. 무게가 나가지만, 전투에서 치명상을 입을 가능성이 줄어듭니다.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "PlateApparel_2",
+          "text": "판금 갑옷은 소음이 심해 은신에 불리하지만, 머리부터 발끝까지 철갑으로 무장했다면 은밀할 필요가 없겠죠.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "PlateApparel_3",
+          "text": "단단한 강철이지만, 캔 오프너를 조심하세요!",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "LeatherApparel_1",
+          "text": "이 갑옷은 기동성과 민첩성에 탁월합니다. 하지만 주의하세요, 최상의 방어력을 제공하지는 않습니다.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "LeatherApparel_2",
+          "text": "이 가죽은 상태가 매우 좋습니다. 이전 주인이 세심하게 관리했던 흔적이 보입니다.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "LeatherApparel_3",
+          "text": "포트 마켓에서는 가죽 갑옷을 입고 고양이처럼 조용히 움직일 거라 생각하는 가짜 도적들이 몰려다녔지. 어이없어... 두 골목 건너서도 기름칠 안 된 가죽이 삐걱거리는 소리가 들릴 정도였어.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "GenericApparel_1",
+          "text": "이걸로 너의 의상이 완벽해질 거야.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "GenericApparel_2",
+          "text": "그것이 당신에게 잘 어울릴 겁니다.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "GenericApparel_3",
+          "text": "옷장을 새롭게 꾸밀 생각이신가요? 여기서 다양한 상품을 판매 중입니다!",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SentariIntroLore_0",
+          "text": "오, 이거 참 옛날 생각 나는군! 이건 내 고향 센타라에서 온 거야, 친구. 우리는 에라덴 서쪽에 위치한 작지만 번영한 상업 국가지.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SentariIntroLore_1",
+          "text": "센타라에는 도시도 많지 않고 인구도 적지만, 바이에스 최고의 선원들을 보유해 우리 체급을 훨씬 뛰어넘는 힘을 발휘해.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SentariIntroLore_2",
+          "text": "우리 선원들은 가장 위험한 바다도 두려워하지 않고 항해하며 부와 정보를 거래하고 영향력을 확장하지.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SentariIntroLore_3",
+          "text": "물론, 센타라는 종종 외교적 게임에서 중립을 지키며 적대국 간의 무역 중개를 이용하고 불법 물품까지 포함해 부를 축적한다는 비난을 받곤 해.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SentariIntroLore_4",
+          "text": "그리고, 어, 그게 틀린 말은 아니지.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SentariWeapon_2",
+          "text": "이곳에 밀려오는 많은 무기들은 바닷물에 손상되지만, 센타리 무기는 그렇지 않습니다! 아무리 많은 바닷물에 노출되어도 견딜 수 있습니다.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SentariWeapon_3",
+          "text": "모험을 떠나고 싶으신가요? 센타리 무기가 딱 필요한 무기입니다. 하지만 발걸음도 잊지 마세요!",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SentariWeapon_1",
+          "text": "센타리 무기는 결투에 완벽하지만, 적의 위치를 주의하지 않으면 등에 칼날이 박힐 수 있습니다.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SentariWeapon_4",
+          "text": "대부분의 센타리 무기는 한 손으로 사용하도록 만들어져 있어. 돛대를 타고 오르내릴 때 자유로운 손을 포기할 순 없으니까. 하지만 내가 이렇게 말하면 아이러니하게 들릴지도 모르겠군.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "Pistol_1",
+          "text": "마법은 센타리의 본질은 아니지만, 우리는 경쟁을 균등하게 만들기 위해 충분히 손질했습니다. 이 아름다움에 마력을 담아 폭발시키세요!",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "Pistol_2",
+          "text": "호, 옛날에 그런 무기 하나 가졌었지! 정말 훌륭한 무기야, 하지만 눈 하나 잃고 나서는 그다지 좋지 않더라.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "Pistol_3",
+          "text": "센타리는 그다지 뛰어난 마법사는 아니지만, 우리는 훌륭한 장인들이야. 천재 수준의 지능은 아니지만, 고향의 어떤 영리한 동료가 수정을 서로 부딪히는 시행착오를 통해 그 무기가 작동하도록 만드는 방법을 알아냈지.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "FireRum_1",
+          "text": "이 음료는 마치 입에 불이 붙은 듯한 느낌을 줄 거야. 아니, 느낌만이 아니라...",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "FireRum_2",
+          "text": "이 음료는 센타리 해적들 사이에서 인기가 많지만, 일부 선장들은 배 안에서 완전히 금지하기도 해. 한 모금 마셔보면 이유를 알게 될 거야!",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "GravityRum_1",
+          "text": "이건 조심해, 친구! 너무 높이 떠오르면, 착지할 때 자존심 이상이 부서질 거야!",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "GravityRum_2",
+          "text": "이 음료는 센타리 선원들 사이에서 인기 있어. 한 모금 마시면, 돛대를 쉽게 기어오를 수 있지.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "LightningRum_1",
+          "text": "이 음료는 재미있습니다. 한 모금 마시면 주변의 모든 금속 물체를 끌어당기기 시작합니다.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "LightningRum_2",
+          "text": "센타리 선원들이 이 음료를 동료들에게 장난칠 때 사용하는 것을 본 적 있습니다. 저녁 식사 시간에 한 모금 마시면 갑자기 식탁 위의 모든 식기가 사라집니다.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SentariArmour_1",
+          "text": "센타리 의상은 방어력이 뛰어나진 않지만 가볍고 세련되어, 외국을 방문하는 상인에게 완벽합니다.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SentariArmour_2",
+          "text": "센타리 의상은 방어보다 기동성을 위해 제작되었습니다. 많은 등반과 휘두르기, 그리고 상황이 나빠지면 많은 수영을 할 수 있도록.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SentariArmour_3",
+          "text": "센타리 품질의 의상입니다.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SentariArmour_4",
+          "text": "바로 저게 센타리의 하이 패션입니다.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SentariArmour_5",
+          "text": "선원의 역할을 복장으로 알 수 있다는 거 아시나요? 글쎄요, 사실은 아니지만, 모자와 코트가 당신을 중요하게 느끼게 해줄 거예요.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SentaraLoreA_0",
+          "text": "그레이스톤 들어보셨나요? 센타라 해안 바로 옆에 있는 섬이에요. 수정 광맥이 발견되기 전까지 센타리인들은 식민지화에 관심이 없었죠.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SentaraLoreA_1",
+          "text": "젊은 시절, 저는 그곳으로 원정대를 이끌라는 명령을 받았어요. 섬 중심부에서 우리는 낡은 지하실 입구를 우연히 발견했죠.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SentaraLoreA_2",
+          "text": "하지만 아래쪽, 어둠 속에서, 으... 비에스에서 본 적 없는 생물들이 있었어요.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SentaraLoreA_3",
+          "text": "썩고 악취 나는 시체들, 죽었지만 움직일 수 있고, 칼날을 휘두르며... 고통과 피해에 면역이었죠.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SentaraLoreA_4",
+          "text": "쉽게 잊지 못할 공포였어요!",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SentaraLoreB_0",
+          "text": "한참 전 일 같지만, 나는 센타라에서 남작이었어.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SentaraLoreB_1",
+          "text": "센타라에서는 항상 봉건 계급과 지역 도제 간 협력이 있었지만, 모두가 국가의 진짜 힘은 대형 무역 길드에 있다는 걸 알고 있었지.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SentaraLoreB_2",
+          "text": "그러한 거대 기업의 도제가 정치에 무게를 실어 스스로를 그랜드-도제로 선언하고, 센타라의 미래를 위한 전면 내전인 항해 전쟁을 촉발하는 건 시간 문제였어.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SentaraLoreB_3",
+          "text": "그 시점에 상류 귀족들은 이미 그랜드-도제의 주머니에 단단히 들어가 있었고, 전쟁은 하급 귀족과 무역 길드의 끝없는 돈, 그리고 그들의 용병과 용병 군대 사이에서 격렬하게 벌어졌어.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SentaraLoreC_0",
+          "text": "센타라에는 대도시가 많지 않지만, 수도인 포트-마켓은 예외야.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SentaraLoreC_1",
+          "text": "이 도시는 해안선 바로 옆에 있는 거대한 대도시로, 항구에 도착하면 궁전이 부두를 내려다보고 있어.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SentaraLoreC_2",
+          "text": "지금까지 센타라에서 가장 큰 시장으로, 상상할 수 있는 모든 것이 판매되고 있어.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SentaraLoreD_0",
+          "text": "항해에 대한 성향 때문에 센타리 출신 이민자들은 종종 프리랜서로 일하며, 용병, 현상금 사냥꾼, 심지어 불법자들의 선원단에 합류합니다.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SentaraLoreE_0",
+          "text": "센타라에는 많은 길드가 있지만, '더 길드'로 알려진 단 하나의 길드가 있습니다. 원래는 모험과 보물 사냥 길드로 설립되었으며, 약간의 밀수도 병행했습니다.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SentaraLoreE_1",
+          "text": "그런 식으로 흘러가는 법이죠.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "NewMaps_1",
+          "text": "에라덴은 큰 곳이지만, 가능하다면 세상을 여행해야 합니다.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "NewMaps_2",
+          "text": "바이스 주변을 여행한다면, 기념품을 가져다 주세요!",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "NewMaps_3",
+          "text": "에라덴 외부로 여행을 계획 중이라면, 여기서 먼저 물자를 충분히 준비하세요.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "Chicken_1",
+          "text": "죄송하지만, 조나단은 판매하지 않습니다.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "Chicken_2",
+          "text": "이봐, 카운터에서 내려!",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "FeedingFruit_1",
+          "text": "여기서 질식하고 있어...",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "FeedingFruit_2",
+          "text": "음... 고마워, 괜찮아.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "FeedingFruit_3",
+          "text": "으, 너 항상 낯선 사람에게 억지로 먹이를 주는 거야?",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "FeedingEgg_1",
+          "text": "있잖아, 그거 먼저 요리하는 게 좋을 거야.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "FeedingEgg_2",
+          "text": "오, 껍질까지 다 먹는군요. 뭐, 살짝 바삭한 맛도 나쁘지 않아요.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "FeedingEgg_3",
+          "text": "와... 대모험을 살다가 누군가 날계란을 강제로 먹여 살모넬라로 죽는 상상이라니...",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SkeletonHand_1",
+          "text": "아!... 그래... 다시 붙이기엔 너무 늦은 것 같아.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SkeletonHand_2",
+          "text": "그걸 어디서 구했는지 묻지 않을 거야.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "Pistol_4",
+          "text": "장전 완료, 친구!",
+          "spriteAddress": null,
+          "videoAddress": null
         }
       ]
     },
@@ -14035,6 +14946,62 @@
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
           "id": "CHArenaDesc",
           "text": "적 웨이브와 싸워 끝까지 살아남으면 보상이 기다리고 있습니다.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "RaktaDalg",
+          "text": "Rakta",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "RaktaOutpost",
+          "text": "Rakta",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "RaktaDalgDesc",
+          "text": "락타 달가리안 유적",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "RaktaOutpostDesc",
+          "text": "락타 전초기지",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SentaraOutpostDesc",
+          "text": "센타라 전초기지 유적",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SentaraDalgDesc",
+          "text": "센타라 달가리안 유적",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "Sentara",
+          "text": "센타라",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "Rakta",
+          "text": "락타",
           "spriteAddress": null,
           "videoAddress": null
         }
@@ -14528,6 +15495,488 @@
           "videoAddress": null
         }
       ]
+    },
+    {
+      "$type": "ThunderRoad.TextData+TextGroup, ThunderRoad",
+      "id": "Bundles",
+      "texts": [
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleBanditArmorName",
+          "text": "산적 갑옷 세트",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleDruidArmorName",
+          "text": "드루이드 갑옷 세트",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleSoldierArmorName",
+          "text": "병사 갑옷 세트",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleArmorBanditName",
+          "text": "가죽 갑옷 세트",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleArmorBattleMageName",
+          "text": "전투마법사 로브 번들",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleArmorDruidName",
+          "text": "드루이드 갑옷 번들",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleArmorGladiatorName",
+          "text": "부족 갑옷 세트",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleArmorMageName",
+          "text": "패치워크 로브 세트",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleArmorMercenaryName",
+          "text": "약탈자 갑옷 세트",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleArmorOfficerName",
+          "text": "검게 그을린 판금 갑옷 세트",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleArmorRaktaName",
+          "text": "라이크 정예 갑옷 세트",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleArmorRogueName",
+          "text": "약탈자 갑옷 세트",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleArmorSoldierName",
+          "text": "판금 갑옷 세트",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleArmorWarMageName",
+          "text": "수습 사제 로브 세트",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleBlacksmithBundleT0Name",
+          "text": "대장장이 번들",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleCavemanBundleT0Name",
+          "text": "석기 시대 번들",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleFarmerBundleT0Name",
+          "text": "농사 도구 세트",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleGravediggerBundleT0Name",
+          "text": "무덤 파기 도구 세트",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleGravitySorcererBundleT0Name",
+          "text": "법외 마법사 번들",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundlePoomancerBundleT0Name",
+          "text": "푸 마법사 번들",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleSwordAndBoardBundleT0Name",
+          "text": "검과 방패 세트",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleTavernBrawlerBundleT0Name",
+          "text": "선술집 난투꾼",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleWannabeSorcererBundleT0Name",
+          "text": "사기꾼 번들",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleArcherBundleT1Name",
+          "text": "궁수 번들",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleBerserkerBundleT1Name",
+          "text": "광전사 번들",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleDalgarianSmasherBundleT2Name",
+          "text": "달가리안 스매셔 번들",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleFireSorcererBundleT1Name",
+          "text": "화염 마법사 번들",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleFireSpellswordBundleT1Name",
+          "text": "화염 마법검사 번들",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleLightningFisherBundleT1Name",
+          "text": "폭풍 낚시꾼 번들",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleSpearmanBundleT1Name",
+          "text": "창 전사 번들",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleSwordAndBoardBundleT1Name",
+          "text": "검과 방패 번들",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleTelekineticBundleT1Name",
+          "text": "염력 번들",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleThrowingKnifeBundleT1Name",
+          "text": "회전하는 칼날 번들",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleWarriorMonkBundleT1Name",
+          "text": "전사 수도사 번들",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleArcherBundleT2Name",
+          "text": "궁수 번들",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleCaptainDalgarianBundleT2Name",
+          "text": "방패 반사 번들",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleChargeSapperBundleT3Name",
+          "text": "충전 사퍼 번들",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleDaggerBenderBundleT2Name",
+          "text": "추적하는 칼날 번들",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleDuelistBundleT2Name",
+          "text": "결투사 번들",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleFireSorcererBundleT2Name",
+          "text": "화염 마법사 번들",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleFireSpellswordBundleT2Name",
+          "text": "화염 주문검사 번들",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleGravityMonkBundleT2Name",
+          "text": "중력 수도사 번들",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleLightningSorcererBundleT2Name",
+          "text": "번개 마법사 번들",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleLightningSpellswordBundleT2Name",
+          "text": "번개 주문검사 번들",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleMobilityBundleT2Name",
+          "text": "중력 점프 번들",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleSpearmanBundleT2Name",
+          "text": "창 전사 번들",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleSwordAndBoardBundleT2Name",
+          "text": "검과 방패 세트",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleWarriorMonkBundleT2Name",
+          "text": "전사 수도사 세트",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleArcherBundleT3Name",
+          "text": "궁수 번들",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleArcwireBundleT3Name",
+          "text": "아크와이어 주문검사",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleBaronBundleT3Name",
+          "text": "남작의 번들",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleBerserkerBundleT3Name",
+          "text": "광전사의 번들",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleFireSorcererBundleT3Name",
+          "text": "화염 마법사 번들",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleGravitySorcererBundleT3Name",
+          "text": "중력 마법사 번들",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleLightningSorcererBundleT3Name",
+          "text": "번개 마법사 번들",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleSpearmanBundleT3Name",
+          "text": "창 전사 번들",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleSwordAndBoardBundleT3Name",
+          "text": "검과 방패 세트",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleTeslaWiresBundleT3Name",
+          "text": "테슬라 와이어 세트",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleUnarmedSorceryBundleT3Name",
+          "text": "바디 소서리 번들",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleChronoMasterBundleT4Name",
+          "text": "크로노마스터 번들",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleGrandmasterBundleT4Name",
+          "text": "그랜드마스터 번들",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundlePunchSorcererBundleT4Name",
+          "text": "근접 마스터 번들",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleRemoteDetonatorBundleT4Name",
+          "text": "원격 폭발 장치 세트",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleSorceryArcherT4Name",
+          "text": "재능 있는 궁수 세트",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleTelekineticBundleT4Name",
+          "text": "마스터 텔레키네틱 번들",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleFoodBundleName",
+          "text": "식량 번들",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleElementalistBundleT1Name",
+          "text": "원소술사 번들",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundlePsionicBundleT1Name",
+          "text": "사이오닉 번들",
+          "spriteAddress": null,
+          "videoAddress": null
+        }
+      ]
     }
   ],
   "items": [
@@ -14716,12 +16165,6 @@
       "id": "MaceLongBecDeCorbin",
       "name": "까마귀 부리",
       "description": "방어구를 착용한 병사를 상대하는 데 특화된 훌륭한 장병기입니다. 충분한 힘을 적용하면 어떤 방어구든 관통할 수 있으나 뾰족한 끝으로 정확히 조준하려면 고도의 기술이 필요합니다."
-    },
-    {
-      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
-      "id": "MaceLongClub",
-      "name": "나무 곤봉",
-      "description": "두툼한 나뭇가지와 기능적으로 다를 바 없지만, 적으로 하여금 접근하는 것을 주저하게 할 만큼 강력합니다."
     },
     {
       "$type": "ThunderRoad.TextData+Item, ThunderRoad",
@@ -16197,7 +17640,7 @@
       "$type": "ThunderRoad.TextData+Item, ThunderRoad",
       "id": "SwordDalgarSmall",
       "name": "돌검",
-      "description": ""
+      "description": "에라덴 전역에 흩어져 있는 달가르 왕의 수많은 석상 중 하나에서 뽑아낸 돌검."
     },
     {
       "$type": "ThunderRoad.TextData+Item, ThunderRoad",
@@ -16408,6 +17851,126 @@
       "id": "ApparelRaktaShoulders",
       "name": "라이크 엘리트 폴드론",
       "description": "라이크 엘리트 병사들이 착용하는 고품질의 화려한 어깨 갑옷."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "AxeSentaraBoardingAxe",
+      "name": "접선 도끼",
+      "description": "센타리 도끼로, 전투 중인 배에서 항상 발견되는 종류로 적함에 올라타거나 문을 부수는 데 유용한 도구입니다. 당연히 효과적인 무기로도 사용됩니다."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "SwordSentaraCutlass",
+      "name": "커틀러스",
+      "description": "민첩한 센타리 커틀러스입니다. 짧은 길이가 단점처럼 보일 수 있지만, 배의 좁은 공간에서 매우 유용합니다."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "SwordSentaraDuelingSword",
+      "name": "결투검",
+      "description": "센타리 레이피어로, 악명 높은 성격에도 불구하고 결투를 즐긴다는 선장들이 자주 휴대합니다."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "SpearSentaraHarpoon",
+      "name": "작살",
+      "description": "센타리 선박 승무원들의 식량을 위해 대형 해양 생물을 포획하는 데 사용되는 작살입니다. 갈고리 덕분에 맞은 편에 서면 무시무시한 창이 됩니다."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "SwordSentaraSaber",
+      "name": "센타리 세이버",
+      "description": "전쟁을 위해 정교하게 제작된 센타리 출신의 우아한 세이버입니다. 검의 가드는 다른 검과의 싸움에 적합하도록 설계되었습니다."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "DaggerSentaraStiletto",
+      "name": "포니아드",
+      "description": "장식품이자 예비 무기로 휴대되는 화려한 센타리 단검입니다. 찌르기 공격에 특화되어 있어, 갑옷을 입은 적을 마무리하는 데 특히 적합합니다."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "CrystalMusket",
+      "name": "파편 타격기",
+      "description": "최소한의 마법 친화력으로도 파괴적인 마법을 사용할 수 있게 하는 장치입니다. 센타라족이 발명했으며, 그들은 파편을 소비하기보다 판매하는 것을 선호했습니다."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "SentaraPotionLightning",
+      "name": "충격의 물약",
+      "description": "마법이 깃든 센타리족의 혼합물로, 외부인에게는 그 목적이 알려지지 않았습니다. 섭취하면 전기로 충전되어 주변 금속 물체를 끌어당깁니다."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "SentaraPotionFire",
+      "name": "작열의 물약",
+      "description": "센타리족이 마법을 담아 만든 혼합물로, 외부인에게는 그 목적이 알려지지 않았습니다. 섭취하면 머리가 밝게 빛나고 입에서 불꽃이 뿜어져 나올 수 있습니다."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "SentaraPotionGravity",
+      "name": "깃털의 물약",
+      "description": "센타리족이 마법을 담아 만든 혼합물로, 외부인에게는 그 목적이 알려지지 않았습니다. 섭취하면 무중력 상태가 되어 공기를 물처럼 헤엄칠 수 있습니다."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "ApparelSentaraBandana",
+      "name": "센타리 반다나",
+      "description": "바닷바람으로부터 머리카락을 보호합니다."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "ApparelSentaraBoots",
+      "name": "센타리 부츠",
+      "description": "해변의 지면으로부터 발을 보호합니다."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "ApparelSentaraCoat",
+      "name": "센타리 오버코트",
+      "description": "신분을 과시하는 고급스러운 코트입니다."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "ApparelSentaraHandLeft",
+      "name": "센타리 보석류 (왼쪽)",
+      "description": "과시하고 싶은 이들을 위한 정교한 반지 세트."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "ApparelSentaraHandRight",
+      "name": "센타리 보석류 (오른쪽)",
+      "description": "과시하고 싶은 이들을 위한 정교한 반지 세트."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "ApparelSentaraHat",
+      "name": "센타리 트리코른",
+      "description": "선장에게 어울리는 우아한 모자."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "ApparelSentaraLegs",
+      "name": "센타리 팬탈룬",
+      "description": "정말 놀라운 바지 한 벌입니다."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "ApparelSentaraTorso",
+      "name": "센타리 웨이스트코트",
+      "description": "가장 어두운 순간에도 승무원들의 사기를 높이기 위해 제작된 정교한 조끼입니다."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "Dojo_IncenseBurner",
+      "name": "향로",
+      "description": null
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "Dojo_Gong_Mallet",
+      "name": "공 망치",
+      "description": null
     }
   ],
   "waves": [
@@ -16608,7 +18171,48 @@
       "id": "SpecialWeaponSwordDuel",
       "title": "검술사 결투",
       "description": "칼만 휘두르는 적과의 결투."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Wave, ThunderRoad",
+      "id": "RaktaFull",
+      "title": "기본",
+      "description": "이 진영의 모든 적 유형과 싸워라."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Wave, ThunderRoad",
+      "id": "RaktaMeleeOnly",
+      "title": "근접형",
+      "description": "근접 무기를 사용하는 적과만 싸워라."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Wave, ThunderRoad",
+      "id": "RaktaSorceryOnly",
+      "title": "마법 전용",
+      "description": "이 진영의 마법사와 싸우세요."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Wave, ThunderRoad",
+      "id": "RaktaDuel",
+      "title": "락타 정예 결투",
+      "description": "전신 갑옷과 라이크 소드로 무장한 락타 정예와 싸우십시오."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Wave, ThunderRoad",
+      "id": "SentaraFull",
+      "title": "기본",
+      "description": "이 진영의 모든 적 유형과 싸워라."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Wave, ThunderRoad",
+      "id": "SentaraMeleeOnly",
+      "title": "근접형",
+      "description": "근접 무기를 사용하는 적과만 싸워라."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Wave, ThunderRoad",
+      "id": "SentaraDuel",
+      "title": "센타리 대장 결투",
+      "description": "센타리 대장과 죽음의 결투를 벌이세요."
     }
-  ],
-  "groupPath": null
+  ]
 }

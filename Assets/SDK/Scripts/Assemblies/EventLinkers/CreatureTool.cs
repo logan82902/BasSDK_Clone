@@ -25,13 +25,19 @@ namespace ThunderRoad
         protected RagdollPart targetPart;
 
         [Serializable]
+        [AutoLabelWidth(AddedWidth = 5f)]
+        [DeclareHorizontalGroup("TopRow", Sizes = new float[] { 0f, 105f, 110f})]
         public class SelectionSetting
         {
+            [Group("TopRow")]
             public string nameFilter = "Human";
-            public SelectionCondition condition = SelectionCondition.Random;
-            public CreatureEventLinker.LifeState aliveState = CreatureEventLinker.LifeState.Either;
+            [Group("TopRow")]
             public bool includePlayer;
+            [Group("TopRow")]
             public int repeat = 1;
+            public SelectionCondition condition = SelectionCondition.Random;
+            [EnumToggleButtons]
+            public CreatureEventLinker.LifeState aliveState = CreatureEventLinker.LifeState.Either;
         }
 
         [Serializable]
@@ -52,6 +58,7 @@ namespace ThunderRoad
             Closest,
             Furthest,
         }
+
 
         #region Selection
         public void ClearSelections()

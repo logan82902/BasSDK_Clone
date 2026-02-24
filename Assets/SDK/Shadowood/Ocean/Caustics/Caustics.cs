@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+
 using TriInspector;
 using UnityEngine;
 
@@ -14,7 +15,8 @@ namespace Shadowood
 
         public bool debugCaustics;
 
-        [GUIColor("@PathValid() ? Color.white : Color.red")] [Space]
+        [GUIColor("$TexturesPathGuiColor")]
+        [Space]
         public string texturesPath = FOLDER_PATH + @"/Ocean/Caustics/C.Sequence/";
 
         public static readonly int CausticMatrix = Shader.PropertyToID("_CausticMatrix");
@@ -33,10 +35,12 @@ namespace Shadowood
 #if UNITY_EDITOR
         //TODO make singletonn, warn if multiple found?
 
-        public bool PathValid()
-        {
-            return System.IO.Directory.Exists(texturesPath);
-        }
+        public bool PathValid() => System.IO.Directory.Exists(texturesPath);
+
+        private Color TexturesPathGuiColor => PathValid() ? Color.white : Color.red;
+        private Color CausticTexturesGuiColor => causticTextures != null && causticTextures.Length > 0 ? Color.white : Color.red;
+        private Color DirLightGuiColor => dirlight != null ? Color.white : Color.red;
+        private Color PanDirFromTransformGuiColor => panDirFromTransform != null ? Color.white : Color.red;
 
         [Button]
         [ContextMenu("FindTextures")]
@@ -102,7 +106,10 @@ namespace Shadowood
             Shader.SetGlobalColor(CausticsColorPropName, Color.black);
         }
 
-        [GUIColor("@causticTextures.Length > 0 ? Color.white : Color.red")]
+        [GUIColor("$CausticTexturesGuiColor")]
+#if UNITY_EDITOR
+        [InlineButton(nameof(FindTextures))]
+#endif
         public Texture[] causticTextures = new Texture[0]; // TODO populate from folder path
 
         //[Tooltip("Set shader globals for in shader caustics")]
@@ -112,7 +119,7 @@ namespace Shadowood
         //public bool setCookieOnLight = false;
 
 
-        [Space] [GUIColor("@dirlight ? Color.white : Color.red")] 
+        [Space] [GUIColor("$DirLightGuiColor")]
         public Light dirlight;
 #if UNITY_EDITOR
         [Button("FindSun")]
@@ -145,7 +152,9 @@ namespace Shadowood
 
         [Space] public eDirMethod dirMethod = eDirMethod.tranRotation;
 
-        [GUIColor("@panDirFromTransform ? Color.white : Color.red")] [Tooltip("If set copies the transforms forward to set the caustics panning direction")]
+        [GUIColor("$PanDirFromTransformGuiColor")]
+        [InlineButton(nameof(FindWaveCenter), "Find")]
+        [Tooltip("If set copies the transforms forward to set the caustics panning direction")]
         public Transform panDirFromTransform;
 
         [Button]

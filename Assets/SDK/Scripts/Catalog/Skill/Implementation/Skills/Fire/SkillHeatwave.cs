@@ -1,69 +1,52 @@
 ﻿using System;
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#endif
+using System.Collections.Generic;
+using TriInspector;
 using UnityEngine;
 
 namespace ThunderRoad.Skill.Spell
 {
+    [DeclareBoxGroup("Effect", Title = "Effect")]
+    [DeclareBoxGroup("Status Effect", Title = "Status Effect")]
+    [DeclareBoxGroup("Damage", Title = "Damage")]
+    [DeclareBoxGroup("Detection", Title = "Detection")]
     public class SkillHeatwave : SpellSkillData
     {
-#if ODIN_INSPECTOR
-        [BoxGroup("Effect"), ValueDropdown(nameof(GetAllEffectID))]
-#endif
+        [Group("Effect")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string effectId;
-        
-#if ODIN_INSPECTOR
-        [BoxGroup("Status Effect"), ValueDropdown(nameof(GetAllStatusEffectID))]
-#endif
+
+        [Group("Status Effect")]
+        [Dropdown(nameof(GetAllStatusEffectID))]
         public string statusEffectId = "Burning";
         [NonSerialized]
         public StatusData status;
-        
-#if ODIN_INSPECTOR
-        [BoxGroup("Damage")]
-#endif
+
+        [Group("Damage")]
         public float radius = 1.5f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Damage")]
-#endif
+        [Group("Damage")]
         public int pushLevel = 1;
-#if ODIN_INSPECTOR
-        [BoxGroup("Damage")]
-#endif
+        [Group("Damage")]
         public float force = 10f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Damage")]
-#endif
+        [Group("Damage")]
         public float damage = 10f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Damage")]
-#endif
+        [Group("Damage")]
         public float heat = 40f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Detection")]
-#endif
+        [Group("Detection")]
         public float punchStartMinMagnitude = 4;
         [NonSerialized]
         public float punchStartMinSqrMagnitude;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Detection")]
-#endif
+        [Group("Detection")]
         public float punchStopMaxMagnitude = 0.5f;
         [NonSerialized]
         public float punchStopMaxSqrMagnitude;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Detection")]
-#endif
+        [Group("Detection")]
         public float punchStopWindow = 0.1f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Detection")]
-#endif
+        [Group("Detection")]
         public float punchDelay = 0.3f;
         
         [NonSerialized]

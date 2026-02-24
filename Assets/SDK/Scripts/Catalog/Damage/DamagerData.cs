@@ -2,80 +2,82 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
-	[Serializable]
+    [Serializable]
+#if UNITY_EDITOR
+    [EditorLoadPriority(-5)]
+#endif
+    [DeclareBoxGroup("General", Title = "General")]
+    [DeclareHorizontalGroup("Split")]
+    [DeclareVerticalGroup("Split/Left")]
+    [DeclareBoxGroup("Split/Left/Damage", Title = "Damage")]
+    [DeclareBoxGroup("Split/Left/Bad angle", Title = "Bad angle")]
+    [DeclareBoxGroup("Split/Left/Animation", Title = "Animation")]
+    [DeclareBoxGroup("Split/Left/Force", Title = "Force")]
+    [DeclareVerticalGroup("Split/Right")]
+    [DeclareBoxGroup("Split/Right/Penetration", Title = "Penetration")]
+    [DeclareBoxGroup("Split/Right/Penetration Temporary Modifier", Title = "Penetration Temporary Modifier")]
+    [DeclareBoxGroup("Split/Right/Pressure", Title = "Pressure")]
+    [DeclareBoxGroup("Split/Right/Dismemberment", Title = "Dismemberment")]
     public class DamagerData : CatalogData
     {
-#if ODIN_INSPECTOR
-        [BoxGroup("General"), ValueDropdown(nameof(GetAllDamagerModifierID))] 
-#endif
+        [Group("General")]
+        [Dropdown(nameof(GetAllDamagerModifierID))]
         public string damageModifierId;
         [NonSerialized]
         public DamageModifierData damageModifierData;
 
-#if ODIN_INSPECTOR
-        public List<ValueDropdownItem<string>> GetAllDamagerModifierID()
-        {
-            return Catalog.GetDropdownAllID(Category.DamageModifier);
-        }
+        public TriDropdownList<string> GetAllDamagerModifierID() => Catalog.GetDropdownAllID(Category.DamageModifier);
 
-        public List<ValueDropdownItem<string>> GetAllMaterialID()
-        {
-            return Catalog.GetDropdownAllID(Category.Material);
-        } 
-#endif
+        public TriDropdownList<string> GetAllMaterialID() => Catalog.GetDropdownAllID(Category.Material);
 
-#if ODIN_INSPECTOR
-        [TableList(ShowIndexLabels = true)] 
-#endif
+        [TableList(ShowElementLabels = true)]
         public Tier[] tiers;
 
         [Serializable]
+        [DeclareHorizontalGroup("Damage")]
+        [DeclareHorizontalGroup("Dismemberment")]
         public class Tier
         {
-#if ODIN_INSPECTOR
-            [HorizontalGroup("Damage"), LabelText("Mult."), LabelWidth(40)] 
-#endif
+            [Group("Damage")]
+            [LabelText("Mult.")]
+            [LabelWidth(40)]
             public float damageMultiplier = 1;
-#if ODIN_INSPECTOR
-            [HorizontalGroup("Damage"), LabelText("Player Mult."), LabelWidth(40)]
-#endif
+            [Group("Damage")]
+            [LabelText("Player Mult.")]
+            [LabelWidth(40)]
             public float playerDamageMultiplier = 1;
-#if ODIN_INSPECTOR
-            [HorizontalGroup("Damage"), LabelText("V. angle"), LabelWidth(50)] 
-#endif
+            [Group("Damage")]
+            [LabelText("V. angle")]
+            [LabelWidth(50)]
             public float maxVerticalAngle = 80f;
-#if ODIN_INSPECTOR
-            [HorizontalGroup("Damage"), LabelText("H. angle"), LabelWidth(50)] 
-#endif
+            [Group("Damage")]
+            [LabelText("H. angle")]
+            [LabelWidth(50)]
             public float maxHorizontalAngle = 60f;
-#if ODIN_INSPECTOR
-            [HorizontalGroup("Damage"), LabelText("Norm. angle"), LabelWidth(70)] 
-#endif
+            [Group("Damage")]
+            [LabelText("Norm. angle")]
+            [LabelWidth(70)]
             public float maxNormalAngle = 60;
-#if ODIN_INSPECTOR
-            [HorizontalGroup("Damage"), LabelText("Grip disable chance"), LabelWidth(100)] 
-#endif
+            [Group("Damage")]
+            [LabelText("Grip disable chance")]
+            [LabelWidth(100)]
             public float gripDisableChance = 0f;
 
-#if ODIN_INSPECTOR
-            [HorizontalGroup("Dismemberment"), LabelText("Velocity Mult."), LabelWidth(90)] 
-#endif
+            [Group("Dismemberment")]
+            [LabelText("Velocity Mult.")]
+            [LabelWidth(90)]
             public float dismembermentMinVelocityMultiplier = 1f;
-#if ODIN_INSPECTOR
-            [HorizontalGroup("Dismemberment"), LabelText("V. angle"), LabelWidth(50)] 
-#endif
+            [Group("Dismemberment")]
+            [LabelText("V. angle")]
+            [LabelWidth(50)]
             public float dismembermentMaxVerticalAngle = 30;
-#if ODIN_INSPECTOR
-            [HorizontalGroup("Dismemberment"), LabelText("H. angle"), LabelWidth(50)] 
-#endif
+            [Group("Dismemberment")]
+            [LabelText("H. angle")]
+            [LabelWidth(50)]
             public float dismembermentMaxHorizontalAngle = 30;
 
         }
@@ -86,220 +88,167 @@ namespace ThunderRoad
         }
 
 
-#if ODIN_INSPECTOR
-        [HorizontalGroup("Split")]
-        [VerticalGroup("Split/Left")]
-        [BoxGroup("Split/Left/Damage")] 
-#endif
-        public AnimationCurve velocityDamageCurve = new AnimationCurve(new Keyframe(2, 1), new Keyframe(12, 8));
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Left/Damage")] 
-#endif
+        [Group("Split/Left/Damage")]
+        public AnimationCurve velocityDamageCurve = new(new Keyframe(2, 1), new Keyframe(12, 8));
+        [Group("Split/Left/Damage")]
         public float minSelfVelocity = 0;
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Left/Damage")] 
-#endif
+        [Group("Split/Left/Damage")]
         public float intensityMinVelocity;
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Left/Damage")] 
-#endif
+        [Group("Split/Left/Damage")]
         public float intensityMaxVelocity;
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Left/Damage")] 
-#endif
+        [Group("Split/Left/Damage")]
         public float hitDelayByCollider = 0.1f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Left/Damage")] 
-#endif
+        [Group("Split/Left/Damage")]
         public float playerMinDamage = 5;
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Left/Damage")] 
-#endif
+        [Group("Split/Left/Damage")]
         public float playerMaxDamage = 15;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Left/Damage")] 
-#endif
+        [Group("Split/Left/Damage")]
         public bool selfDamage;
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Left/Damage"), ShowIf("selfDamage")] 
-#endif
+        [Group("Split/Left/Damage")]
+        [ShowIf("selfDamage")]
         public AnimationCurve staticVelocityDamageCurve;
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Left/Damage"), HideIf("selfDamage")] 
-#endif
+        [Group("Split/Left/Damage")]
+        [HideIf("selfDamage")]
         public float throwedMultiplier = 2;
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Left/Damage")]
-#endif
+        [Group("Split/Left/Damage")]
         public bool handleDamager = false;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Left/Bad angle")] 
-#endif
+        [Group("Split/Left/Bad angle")]
         public bool badAngleBluntFallback;
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Left/Bad angle"), ShowIf("badAngleBluntFallback")] 
-#endif
+        [Group("Split/Left/Bad angle")]
+        [ShowIf("badAngleBluntFallback")]
         public float badAngleDamage = 1;
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Left/Bad angle"), ShowIf("badAngleBluntFallback")] 
-#endif
+        [Group("Split/Left/Bad angle")]
+        [ShowIf("badAngleBluntFallback")]
         public float badAngleRecoilMultiplier;
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Left/Bad angle"), ValueDropdown(nameof(GetAllDamagerModifierID)), ShowIf("badAngleBluntFallback")] 
-#endif
+        [Group("Split/Left/Bad angle")]
+        [Dropdown(nameof(GetAllDamagerModifierID))]
+        [ShowIf("badAngleBluntFallback")]
         public string badAngleMaterialDamageId;
         [NonSerialized]
         public DamageModifierData badAngleModifierData;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Left/Animation")] 
-#endif
+        [Group("Split/Left/Animation")]
         public float dyingAnimationMaxVelocity = 8;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Left/Force")] 
-#endif
+        [Group("Split/Left/Force")]
         public float addForce = 0;
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Left/Force"), ShowIf("@this.addForce > 0")] 
-#endif
+        private bool addForceOverZero => addForce > 0;
+        [Group("Split/Left/Force")]
+        [ShowIf(nameof(addForceOverZero))]
         public ObjectState addForceState = ObjectState.Handled;
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Left/Force"), ShowIf("@this.addForce > 0")] 
-#endif
+        [Group("Split/Left/Force")]
+        [ShowIf(nameof(addForceOverZero))]
         public TargetType addForceTargetType = TargetType.All;
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Left/Force"), ShowIf("@this.addForce > 0")] 
-#endif
+        [Group("Split/Left/Force")]
+        [ShowIf(nameof(addForceOverZero))]
         public ForceMode addForceMode = ForceMode.Impulse;
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Left/Force"), ShowIf("@this.addForce > 0")] 
-#endif
+        [Group("Split/Left/Force")]
+        [ShowIf(nameof(addForceOverZero))]
         public float addForceDuration = 0;
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Left/Force"), ShowIf("@this.addForce > 0")] 
-#endif
+        [Group("Split/Left/Force")]
+        [ShowIf(nameof(addForceOverZero))]
         public float addForceRagdollPartMultiplier = 1;
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Left/Force"), ShowIf("@this.addForce > 0")] 
-#endif
+        [Group("Split/Left/Force")]
+        [ShowIf(nameof(addForceOverZero))]
         public float addForceRagdollOtherMultiplier = 0;
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Left/Force"), ShowIf("@this.addForce > 0")] 
-#endif
+        [Group("Split/Left/Force")]
+        [ShowIf(nameof(addForceOverZero))]
         public float addForceSlowMoMultiplier = 1;
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Left/Force"), ShowIf("@this.addForce > 0")] 
-#endif
+        [Group("Split/Left/Force")]
+        [ShowIf(nameof(addForceOverZero))]
         public bool addForceNormalize = false;
 
-#if ODIN_INSPECTOR
-        [VerticalGroup("Split/Right")]
-        [BoxGroup("Split/Right/Penetration")] 
-#endif
+        [Group("Split/Right/Penetration")]
         public bool penetrationAllowed;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Right/Penetration"), ShowIf("penetrationAllowed")] 
-#endif
+        [Group("Split/Right/Penetration")]
+        [ShowIf("penetrationAllowed")]
         public float penetrationDeepDepthMultiplier = 1;
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Right/Penetration"), ShowIf("penetrationAllowed")] 
-#endif
+        [Group("Split/Right/Penetration")]
+        [ShowIf("penetrationAllowed")]
         public float penetrationDamage = 20;
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Right/Penetration"), ShowIf("penetrationAllowed")] 
-#endif
+        [Group("Split/Right/Penetration")]
+        [ShowIf("penetrationAllowed")]
         public bool penetrationEffect = true;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Right/Penetration"), ShowIf("penetrationAllowed")] 
-#endif
+        [Group("Split/Right/Penetration")]
+        [ShowIf("penetrationAllowed")]
         public float penetrationInitialVelocityMultiplier = 1;
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Right/Penetration"), ShowIf("penetrationAllowed")] 
-#endif
+        [Group("Split/Right/Penetration")]
+        [ShowIf("penetrationAllowed")]
         public bool penetrationSkewerDetection = false;
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Right/Penetration"), ShowIf("penetrationAllowed"), ShowIf("penetrationSkewerDetection")] 
-#endif
+        [Group("Split/Right/Penetration")]
+        [ShowIf("penetrationAllowed")]
+        [ShowIf("penetrationSkewerDetection")]
         public float penetrationSkewerDamage = 0;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Right/Penetration"), ShowIf("penetrationAllowed")] 
-#endif
+        [Group("Split/Right/Penetration")]
+        [ShowIf("penetrationAllowed")]
         public float penetrationHeldDamperIn = 800;
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Right/Penetration"), ShowIf("penetrationAllowed")] 
-#endif
+        [Group("Split/Right/Penetration")]
+        [ShowIf("penetrationAllowed")]
         public float penetrationHeldDamperOut = 1000;
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Right/Penetration"), ShowIf("penetrationAllowed")] 
-#endif
+        [Group("Split/Right/Penetration")]
+        [ShowIf("penetrationAllowed")]
         public float penetrationDamper = 5000;
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Right/Penetration"), ShowIf("penetrationAllowed")] 
-#endif
+        [Group("Split/Right/Penetration")]
+        [ShowIf("penetrationAllowed")]
 
         public float penetrationShortDepth = 0f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Right/Penetration"), ShowIf("penetrationAllowed")] 
-#endif
+        [Group("Split/Right/Penetration")]
+        [ShowIf("penetrationAllowed")]
         public float penetrationShortDepthAngle = 30;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Right/Penetration"), ShowIf("penetrationAllowed")] 
-#endif
+        [Group("Split/Right/Penetration")]
+        [ShowIf("penetrationAllowed")]
         public bool penetrationAllowSlide = false;
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Right/Penetration"), ShowIf("penetrationAllowed"), ShowIf("penetrationAllowSlide")] 
-#endif
+        [Group("Split/Right/Penetration")]
+        [ShowIf("penetrationAllowed")]
+        [ShowIf("penetrationAllowSlide")]
         public float penetrationSlideDamper = 100;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Right/Penetration Temporary Modifier"), ShowIf("penetrationAllowed")] 
-#endif
+        [Group("Split/Right/Penetration Temporary Modifier")]
+        [ShowIf("penetrationAllowed")]
         public PenetrationTempModifier penetrationTempModifier = PenetrationTempModifier.OnThrow;
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Right/Penetration Temporary Modifier"), ShowIf("penetrationAllowed"), ShowIf("@((int)this.penetrationTempModifier) > 0")] 
-#endif
+        private bool penetrationTempMod => (int)penetrationTempModifier > 0;
+        [Group("Split/Right/Penetration Temporary Modifier")]
+        [ShowIf("penetrationAllowed")]
+        [ShowIf(nameof(penetrationTempMod))]
         public float penetrationTempModifierDuration = 0.5f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Right/Penetration Temporary Modifier"), ShowIf("penetrationAllowed"), ShowIf("@((int)this.penetrationTempModifier) > 0")] 
-#endif
+        [Group("Split/Right/Penetration Temporary Modifier")]
+        [ShowIf("penetrationAllowed")]
+        [ShowIf(nameof(penetrationTempMod))]
         public float penetrationTempModifierDamperIn = 0;
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Right/Penetration Temporary Modifier"), ShowIf("penetrationAllowed"), ShowIf("@((int)this.penetrationTempModifier) > 0")] 
-#endif
+        [Group("Split/Right/Penetration Temporary Modifier")]
+        [ShowIf("penetrationAllowed")]
+        [ShowIf(nameof(penetrationTempMod))]
         public float penetrationTempModifierDamperOut = 5000;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Right/Pressure")] 
-#endif
+        [Group("Split/Right/Pressure")]
         public bool penetrationPressureAllowed = false;
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Right/Pressure"), ShowIf("penetrationPressureAllowed"), ShowIf("@this.penetrationAllowed && this.penetrationPressureAllowed")] 
-#endif
-        public AnimationCurve penetrationPressureForceCurve = new AnimationCurve(new Keyframe(0, 5), new Keyframe(2, 0.5f));
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Right/Pressure"), ShowIf("penetrationPressureAllowed"), ShowIf("@this.penetrationAllowed && this.penetrationPressureAllowed")] 
-#endif
+        private bool showPenetrationPressureSettings => penetrationAllowed && penetrationPressureAllowed;
+        [Group("Split/Right/Pressure")]
+        [ShowIf("penetrationPressureAllowed")]
+        [ShowIf(nameof(showPenetrationPressureSettings))]
+        public AnimationCurve penetrationPressureForceCurve = new(new Keyframe(0, 5), new Keyframe(2, 0.5f));
+        [Group("Split/Right/Pressure")]
+        [ShowIf("penetrationPressureAllowed")]
+        [ShowIf(nameof(showPenetrationPressureSettings))]
         public float penetrationPressureMaxDot = 0.2f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Right/Dismemberment")] 
-#endif
+        [Group("Split/Right/Dismemberment")]
         public bool dismembermentAllowed = false;
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Right/Dismemberment"), ShowIf("dismembermentAllowed"), ShowIf("@this.penetrationAllowed && this.dismembermentAllowed")] 
-#endif
+        private bool showDismemberSettings => penetrationAllowed && dismembermentAllowed;
+        [Group("Split/Right/Dismemberment")]
+        [ShowIf("dismembermentAllowed")]
+        [ShowIf(nameof(showDismemberSettings))]
         public float dismembermentMinVelocity = 10f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Right/Dismemberment"), ShowIf("dismembermentAllowed"), ShowIf("@this.penetrationAllowed && this.dismembermentAllowed")] 
-#endif
+        [Group("Split/Right/Dismemberment")]
+        [ShowIf("dismembermentAllowed")]
+        [ShowIf(nameof(showDismemberSettings))]
         public float dismembermentNoPenetrationDuration = 1f;
 
         [Flags]

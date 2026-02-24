@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 4,
+  "groupPath": "Soldier/",
   "localizationId": "SoldierHelmet",
   "displayName": "Plate Barubute",
   "description": "A metal open face helmet that works wonders in deflecting slash attacks.",
@@ -14,16 +15,18 @@
   "tier": 2,
   "flags": "Spinnable",
   "levelRequired": 0,
+  "type": "Wardrobe",
   "category": "Plate",
+  "update": "",
   "iconEffectId": null,
   "preferredItemCenter": "Mass",
   "drainImbueWhenIdle": true,
+  "forceImbueUseButton": "None",
   "prefabAddress": "Bas.Item.Apparel.Soldier.Helmet",
   "iconAddress": "Bas.Item.Apparel.Soldier.Helmet.Icon[ArmorItems_Soldier_Helmet]",
   "closeUpIconAddress": null,
   "pooledCount": 0,
   "androidPooledCount": 0,
-  "type": "Wardrobe",
   "allowedStorage": "Inventory, Container, SandboxAllItems",
   "despawnOnStoredInInventory": false,
   "isStackable": false,
@@ -37,6 +40,7 @@
   "mass": 1.2,
   "drag": 1.0,
   "angularDrag": 1.0,
+  "density": 6000.0,
   "focusRegenMultiplier": 0.91,
   "spellChargeSpeedPlayerMultiplier": 0.88,
   "spellChargeSpeedNPCMultiplier": 1.0,
@@ -150,58 +154,6 @@
     "preWrapMode": "ClampForever",
     "postWrapMode": "ClampForever"
   },
-  "modules": [
-    {
-      "$type": "ThunderRoad.ItemModuleWardrobe, ThunderRoad",
-      "castSpeedPerHand": null,
-      "category": "Apparel",
-      "castShadows": "PlayerAndNPC",
-      "wardrobes": [
-        {
-          "$type": "ThunderRoad.ItemModuleWardrobe+CreatureWardrobe, ThunderRoad",
-          "creatureName": "HumanMale",
-          "wardrobeDataAddress": "Bas.Creature.Wardrobe.HumanMale.Soldier.Helmet"
-        },
-        {
-          "$type": "ThunderRoad.ItemModuleWardrobe+CreatureWardrobe, ThunderRoad",
-          "creatureName": "HumanFemale",
-          "wardrobeDataAddress": "Bas.Creature.Wardrobe.HumanFemale.Soldier.Helmet"
-        }
-      ],
-      "isMetal": true,
-      "armorSoundEffectPriority": 2,
-      "armorSoundEffectID": "ArmorSFX(Plate)"
-    },
-    {
-      "$type": "ThunderRoad.ItemModuleStats, ThunderRoad",
-      "stats": [
-        {
-          "$type": "ThunderRoad.ItemStatInt, ThunderRoad",
-          "value": 4,
-          "useStarIcons": true,
-          "name": "Defense"
-        },
-        {
-          "$type": "ThunderRoad.ItemStatInt, ThunderRoad",
-          "value": 3,
-          "useStarIcons": true,
-          "name": "Mobility"
-        },
-        {
-          "$type": "ThunderRoad.ItemStatInt, ThunderRoad",
-          "value": 1,
-          "useStarIcons": true,
-          "name": "SpellCasting"
-        },
-        {
-          "$type": "ThunderRoad.ItemStatInt, ThunderRoad",
-          "value": 1,
-          "useStarIcons": true,
-          "name": "FocusRegen"
-        }
-      ]
-    }
-  ],
   "colliderGroups": [],
   "damagers": [
     {
@@ -245,6 +197,58 @@
       "dampening": 0.1
     }
   ],
-  "entityModules": [],
-  "groupPath": "Soldier/"
+  "modules": [
+    {
+      "$type": "ThunderRoad.ItemModuleWardrobe, ThunderRoad",
+      "category": "Apparel",
+      "castShadows": "PlayerAndNPC",
+      "wardrobes": [
+        {
+          "$type": "ThunderRoad.ItemModuleWardrobe+CreatureWardrobe, ThunderRoad",
+          "creatureName": "HumanMale",
+          "wardrobeDataAddress": "Bas.Creature.Wardrobe.HumanMale.Soldier.Helmet",
+          "runtimeBlendshapeActivators": null
+        },
+        {
+          "$type": "ThunderRoad.ItemModuleWardrobe+CreatureWardrobe, ThunderRoad",
+          "creatureName": "HumanFemale",
+          "wardrobeDataAddress": "Bas.Creature.Wardrobe.HumanFemale.Soldier.Helmet",
+          "runtimeBlendshapeActivators": null
+        }
+      ],
+      "isMetal": true,
+      "armorSoundEffectPriority": 2,
+      "armorSoundEffectID": "ArmorSFX(Plate)"
+    },
+    {
+      "$type": "ThunderRoad.ItemModuleStats, ThunderRoad",
+      "stats": [
+        {
+          "$type": "ThunderRoad.ItemStatInt, ThunderRoad",
+          "value": 4,
+          "useStarIcons": true,
+          "name": "Defense"
+        },
+        {
+          "$type": "ThunderRoad.ItemStatInt, ThunderRoad",
+          "value": 3,
+          "useStarIcons": true,
+          "name": "Mobility"
+        },
+        {
+          "$type": "ThunderRoad.ItemStatInt, ThunderRoad",
+          "value": 1,
+          "useStarIcons": true,
+          "name": "SpellCasting"
+        },
+        {
+          "$type": "ThunderRoad.ItemStatInt, ThunderRoad",
+          "value": 1,
+          "useStarIcons": true,
+          "name": "FocusRegen"
+        }
+      ]
+    }
+  ],
+  "entityModules": []
 }

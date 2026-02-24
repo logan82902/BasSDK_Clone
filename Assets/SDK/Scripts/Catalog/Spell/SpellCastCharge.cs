@@ -2,121 +2,97 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
+using Newtonsoft.Json;
 
 namespace ThunderRoad
 {
     [Serializable]
+    [DeclareBoxGroup("Skill UI", Title = "Skill UI")]
+    [DeclareBoxGroup("Charge", Title = "Charge")]
+    [DeclareBoxGroup("Imbue", Title = "Imbue")]
+    [DeclareBoxGroup("Hand force", Title = "Hand force")]
+    [DeclareBoxGroup("Throw", Title = "Throw")]
+    [DeclareBoxGroup("Spray", Title = "Spray")]
+    [DeclareBoxGroup("Grip Cast", Title = "Grip Cast")]
+    [DeclareBoxGroup("Staff Slam", Title = "Staff Slam")]
+    [DeclareBoxGroup("Musket")]
     public class SpellCastCharge : SpellCastData
     {
-        public static bool forceOverrideToLocalizedText = false;
-#if ODIN_INSPECTOR
-        [BoxGroup("Skill UI")]
-#endif
+        [Group("Skill UI")]
         public string castDescription;
-#if ODIN_INSPECTOR
-        [BoxGroup("Skill UI")]
-#endif
+        [Group("Skill UI")]
         public string imbueDescription;
-#if ODIN_INSPECTOR
-        [BoxGroup("Skill UI")]
-#endif
+        [Group("Skill UI")]
         public string slamDescription;
-        
-#if ODIN_INSPECTOR
-        [BoxGroup("Charge"), ValueDropdown(nameof(GetAllEffectID))]
-#endif
+
+        [Group("Charge")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string chargeEffectId;
 
         [NonSerialized]
         public EffectData chargeEffectData;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Charge"), ValueDropdown(nameof(GetAllEffectID))]
-#endif
+        [Group("Charge")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string readyEffectId;
 
         [NonSerialized]
         public EffectData readyEffectData;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Charge"), ValueDropdown(nameof(GetAllEffectID))]
-#endif
+        [Group("Charge")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string readyMinorEffectId = "SpellFlourishMinor";
-        protected EffectData readyMinorEffectData;
+
+        [NonSerialized]
+        public EffectData readyMinorEffectData;
 
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Charge"), ValueDropdown(nameof(GetAllEffectID))]
-#endif
+        [Group("Charge")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string fingerEffectId;
         protected EffectData fingerEffectData;
-        
-#if ODIN_INSPECTOR
-        [BoxGroup("Charge"), ValueDropdown(nameof(GetAllHandPoseID))]
-#endif
+
+        [Group("Charge")]
+        [Dropdown(nameof(GetAllHandPoseID))]
         public string closeHandPoseId;
         [NonSerialized]
         public HandPoseData closeHandPoseData;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Charge"), ValueDropdown(nameof(GetAllHandPoseID))]
-#endif
+        [Group("Charge")]
+        [Dropdown(nameof(GetAllHandPoseID))]
         public string openHandPoseId;
         [NonSerialized]
         public HandPoseData openHandPoseData;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Charge")]
-#endif
+        [Group("Charge")]
         public bool doReadyHaptic = true;
-#if ODIN_INSPECTOR
-        [BoxGroup("Charge")]
-#endif
+        [Group("Charge")]
         public AnimationCurve chargeEffectCurve = AnimationCurve.Linear(0, 0, 1, 1);
-#if ODIN_INSPECTOR
-        [BoxGroup("Charge")]
-#endif
+        [Group("Charge")]
         public float orbVariationSpeed = 10f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Charge")]
-#endif
+        [Group("Charge")]
         public float orbVariationAmount = 0.2f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Charge")]
-#endif
+        [Group("Charge")]
         public float chargeSpeed = 0.5f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Charge")]
-#endif
+        [Group("Charge")]
         public bool allowStaffBuff = false;
-#if ODIN_INSPECTOR
-        [BoxGroup("Charge"), ShowIf("allowStaffBuff"), ShowInInspector]
-#endif
+        [Group("Charge")]
+        [ShowIf("allowStaffBuff")]
+        [ShowInInspector]
         public Dictionary<Modifier, float> heldStaffModifiers;
-#if ODIN_INSPECTOR
-        [BoxGroup("Charge"), LabelText(@"@SkillPassiveLabel(""Charge Speed"", chargeSpeedPerSkill)")]
-#endif
+        [Group("Charge")]
+        [LabelText("$" + nameof(ChargeSpeedPerSkillLabel))]
         public float chargeSpeedPerSkill = 0.05f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Charge")]
-#endif
+        [JsonIgnore]
+        public string ChargeSpeedPerSkillLabel => SkillPassiveLabel("Charge Speed", chargeSpeedPerSkill);
+        [Group("Charge")]
         public float grabbedFireMaxCharge = 0.5f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Charge")]
-#endif
+        [Group("Charge")]
         public bool allowUnderwater;
-#if ODIN_INSPECTOR
-        [BoxGroup("Charge")]
-#endif
+        [Group("Charge")]
         public bool endOnGrip = true;
-#if ODIN_INSPECTOR
-        [BoxGroup("Charge")]
-#endif
+        [Group("Charge")]
         public bool allowCharge = true;
 
         public bool ShouldSerializeallowUnderwater()
@@ -124,79 +100,58 @@ namespace ThunderRoad
             return false;
         }
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Imbue")]
-#endif
+        [Group("Imbue")]
         public float chargeMinHaptic = 0.05f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Imbue")]
-#endif
+        [Group("Imbue")]
         public float chargeMaxHaptic = 0.3f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Hand force")]
-#endif
+        [Group("Hand force")]
         public float handSpringMultiplier = 0.8f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Hand force")]
-#endif
+        [Group("Hand force")]
         public float handLocomotionVelocityCorrectionMultiplier = 1f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Throw")]
-#endif
+        [Group("Throw")]
         public bool allowThrow = true;
-#if ODIN_INSPECTOR
-        [BoxGroup("Throw"), ValueDropdown(nameof(GetAllEffectID)), ShowIf("allowThrow")]
-#endif
+        [Group("Throw")]
+        [Dropdown(nameof(GetAllEffectID))]
+        [ShowIf("allowThrow")]
         public string throwEffectId;
         [NonSerialized]
         public EffectData throwEffectData;
-#if ODIN_INSPECTOR
-        [BoxGroup("Throw"), ShowIf("allowThrow")]
-#endif
+        [Group("Throw")]
+        [ShowIf("allowThrow")]
         public float throwMinCharge = 0.9f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Spray")]
-#endif
+        [Group("Spray")]
         public bool allowSpray;
-#if ODIN_INSPECTOR
-        [BoxGroup("Spray"), ValueDropdown(nameof(GetAllHandPoseID)), ShowIf("allowSpray")]
-#endif
+        [Group("Spray")]
+        [Dropdown(nameof(GetAllHandPoseID))]
+        [ShowIf("allowSpray")]
         public string sprayHandPoseId;
         [NonSerialized]
         public HandPoseData sprayHandPoseData;
-#if ODIN_INSPECTOR
-        [BoxGroup("Spray"), ShowIf("allowSpray")]
-#endif
+        [Group("Spray")]
+        [ShowIf("allowSpray")]
         public Vector3 sprayMagicOffset;
-#if ODIN_INSPECTOR
-        [BoxGroup("Spray"), ShowIf("allowSpray")]
-#endif
+        [Group("Spray")]
+        [ShowIf("allowSpray")]
         public float sprayHeadToFireMaxAngle = 45;
-#if ODIN_INSPECTOR
-        [BoxGroup("Spray"), ShowIf("allowSpray")]
-#endif
+        [Group("Spray")]
+        [ShowIf("allowSpray")]
         public float sprayStopMinCharge = 0.2f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Spray"), ShowIf("allowSpray")]
-#endif
+        [Group("Spray")]
+        [ShowIf("allowSpray")]
         public float sprayStartMinCharge = 0.5f;
-        
-#if ODIN_INSPECTOR
-        [BoxGroup("Grip Cast"), ValueDropdown(nameof(GetAllEffectID))]
-#endif
+
+        [Group("Grip Cast")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string gripCastEffectId;
         [NonSerialized]
         public EffectData gripCastEffectData;
-#if ODIN_INSPECTOR
-        [BoxGroup("Grip Cast"), ValueDropdown(nameof(GetAllStatusEffectID))]
-#endif
+        [Group("Grip Cast")]
+        [Dropdown(nameof(GetAllStatusEffectID))]
         public string gripCastStatusEffectId;
-#if ODIN_INSPECTOR
-        [BoxGroup("Grip Cast")]
-#endif
+        [Group("Grip Cast")]
         public float gripCastStatusDuration;
         
         [NonSerialized]
@@ -224,124 +179,104 @@ namespace ThunderRoad
         [NonSerialized]
         public float currentCharge;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Imbue")]
-#endif
+        [Group("Imbue")]
         public bool imbueEnabled = true;
-#if ODIN_INSPECTOR
-        [BoxGroup("Imbue")]
-#endif
+        [Group("Imbue")]
         public bool imbueAllowMetal = false;
-#if ODIN_INSPECTOR
-        [BoxGroup("Imbue")]
-#endif
+        [Group("Imbue")]
         public float imbueRate = 1;
-#if ODIN_INSPECTOR
-        [BoxGroup("Imbue")]
-#endif
+        [Group("Imbue")]
         public float imbueLossMultiplier = 1;
-#if ODIN_INSPECTOR
-        [BoxGroup("Imbue")]
-#endif
+        [Group("Imbue")]
         public float imbueRadius = 0.2f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Imbue")]
-#endif
+        [Group("Imbue")]
         public bool imbueHitUseDamager = false;
-#if ODIN_INSPECTOR
-        [BoxGroup("Imbue"), HideIf("imbueHitUseDamager")]
-#endif
+        [Group("Imbue")]
+        [HideIf("imbueHitUseDamager")]
         public float imbueHitMinVelocity = 4f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Imbue")]
-#endif
+        [Group("Imbue")]
         public float imbueWhooshMinSpeed = 4f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Imbue")]
-#endif
+        [Group("Imbue")]
         public float imbueWhooshMaxSpeed = 12f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Imbue")]
-#endif
+        [Group("Imbue")]
         public float imbueWhooshHapticMultiplier = 1f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Imbue"), ValueDropdown(nameof(GetAllEffectID))]
-#endif
+        [Group("Imbue")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string imbueMetalEffectId;
         [NonSerialized]
         public EffectData imbueMetalEffectData;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Imbue"), ValueDropdown(nameof(GetAllEffectID))]
-#endif
+        [Group("Imbue")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string imbueBladeEffectId;
         [NonSerialized]
         public EffectData imbueBladeEffectData;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Imbue"), ValueDropdown(nameof(GetAllEffectID))]
-#endif
+        [Group("Imbue")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string imbueCrystalEffectId;
         [NonSerialized]
         public EffectData imbueCrystalEffectData;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Charge"), ValueDropdown(nameof(GetAllEffectID))]
-#endif
+        [Group("Charge")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string imbueNaaEffectId;
 
         [NonSerialized]
         public EffectData imbueNaaEffectData;
-        
-#if ODIN_INSPECTOR
-        [BoxGroup("Imbue"), ValueDropdown(nameof(GetAllEffectID))]
-#endif
+
+        [Group("Imbue")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string imbueTransferEffectId;
         [NonSerialized]
         public EffectData imbueTransferEffectData;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Imbue")]
-#endif
+        [Group("Imbue")]
         public float imbueHitEnergySteal = 1;
 
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Staff Slam")]
-#endif
+        [Group("Staff Slam")]
         public float staffSlamRechargeDelay = 2f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Staff Slam")]
-#endif
+        [Group("Staff Slam")]
         public float staffSlamMinVelocity = 4f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Staff Slam")]
-#endif
+        [Group("Staff Slam")]
         public float staffSlamConsumptionMult = 1f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Staff Slam")]
-#endif
+        [Group("Staff Slam")]
         public float staffSlamMaxVelocity = 15f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Staff Slam"), ValueDropdown(nameof(GetAllEffectID))]
-#endif
+        [Group("Staff Slam")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string staffSlamTipEffectId;
         [NonSerialized]
         public EffectData staffSlamTipEffectData;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Staff Slam"), ValueDropdown(nameof(GetAllEffectID))]
-#endif
+        [Group("Staff Slam")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string staffSlamCollisionEffectId;
 
         [NonSerialized]
         public EffectData staffSlamCollisionEffectData;
-#if ODIN_INSPECTOR
-        [BoxGroup("Staff Slam")]
-#endif
+        [Group("Staff Slam")]
         public bool allowEnemySelfSlam = false;
+        [Group("Musket")]
+        [Dropdown(nameof(GetAllEffectID))]
+        public string musketHammerEffectId;
+        [NonSerialized]
+        [JsonIgnore]
+        public EffectData musketHammerEffectData;
+        [Group("Musket")]
+        [Dropdown(nameof(GetAllEffectID))]
+        public string musketShootEffectId;
+        [NonSerialized]
+        [JsonIgnore]
+        public EffectData musketShootEffectData;
+        [Group("Musket")]
+        [Dropdown(nameof(GetAllEffectID))]
+        public string musketChargeEffectId;
+        [NonSerialized]
+        [JsonIgnore]
+        public EffectData musketChargeEffectData;
 
 
 
@@ -362,12 +297,7 @@ namespace ThunderRoad
             {
                 { Modifier.ChargeSpeed, 1.5f }
             };
-            if (forceOverrideToLocalizedText)
-            {
-                castDescription = $"{{{id}DescriptionCast}}";
-                imbueDescription = $"{{{id}DescriptionImbue}}";
-                slamDescription = $"{{{id}DescriptionSlam}}";
-            }
+
             chargeEffectData = Catalog.GetData<EffectData>(chargeEffectId);
             readyEffectData = Catalog.GetData<EffectData>(readyEffectId);
             readyMinorEffectData = Catalog.GetData<EffectData>(readyMinorEffectId);
@@ -383,6 +313,9 @@ namespace ThunderRoad
             imbueTransferEffectData = Catalog.GetData<EffectData>(imbueTransferEffectId);
             imbueCrystalEffectData = Catalog.GetData<EffectData>(imbueCrystalEffectId);
             imbueNaaEffectData = Catalog.GetData<EffectData>(imbueNaaEffectId);
+            musketShootEffectData = Catalog.GetData<EffectData>(musketShootEffectId);
+            musketHammerEffectData = Catalog.GetData<EffectData>(musketHammerEffectId);
+            musketChargeEffectData = Catalog.GetData<EffectData>(musketChargeEffectId);
 
             staffSlamCollisionEffectData = Catalog.GetData<EffectData>(staffSlamCollisionEffectId);
             staffSlamTipEffectData = Catalog.GetData<EffectData>(staffSlamTipEffectId);

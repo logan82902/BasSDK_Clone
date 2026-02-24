@@ -1,52 +1,34 @@
-﻿
-using UnityEngine;
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#endif
+﻿using UnityEngine;
+using TriInspector;
 
 namespace ThunderRoad.Skill.Spell
 {
+    [DeclareBoxGroup("Imbue Hit", Title = "Imbue Hit")]
     public class SkillImpactPulse : SpellSkillData
     {
-#if ODIN_INSPECTOR
-        [BoxGroup("Imbue Hit")]
-#endif
+        [Group("Imbue Hit")]
         public float minMomentum = 8f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Imbue Hit")]
-#endif
+        [Group("Imbue Hit")]
         public float minVelocity = 5f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Imbue Hit"), MinMaxSlider(0, 3, true)]
-#endif
+        [Group("Imbue Hit")]
+        [MinMaxSlider(0, 3, true)]
         public Vector2 extraForce;
-#if ODIN_INSPECTOR
-        [BoxGroup("Imbue Hit")]
-#endif
+        [Group("Imbue Hit")]
         public float maxExtraForce = 10f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Imbue Hit")]
-#endif
+        [Group("Imbue Hit")]
         public ForceMode forceMode = ForceMode.Impulse;
-        
-#if ODIN_INSPECTOR
-        [BoxGroup("Imbue Hit")]
-#endif
+
+        [Group("Imbue Hit")]
         public float playerMultiplier = 3;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Imbue Hit")]
-#endif
+        [Group("Imbue Hit")]
         public float imbueEnergyDrainOnHit = 5f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Imbue Hit")]
-#endif
+        [Group("Imbue Hit")]
         public int pushLevel = 2;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Imbue Hit"), ValueDropdown(nameof(GetAllEffectID))]
-#endif
+        [Group("Imbue Hit")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string effectId;
 
         protected EffectData effectData;

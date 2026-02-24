@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -56,8 +57,10 @@ namespace ThunderRoad
             {
                 return materialInstance.materials;
             }
-            Debug.LogWarning("No MaterialInstance component found on " + renderer.name, renderer);
-            return new Material[0];
+#if UNITY_EDITOR
+            Debug.LogWarning($"No MaterialInstance component found on {renderer.name}", renderer);
+#endif
+            return Array.Empty<Material>();
         }
 
         public static void MaterialInstances(this Renderer renderer, List<Material> materials)
@@ -69,7 +72,9 @@ namespace ThunderRoad
             }
             else
             {
-                Debug.LogWarning("No MaterialInstance component found on " + renderer.name, renderer);
+#if UNITY_EDITOR
+                Debug.LogWarning($"No MaterialInstance component found on {renderer.name}", renderer);
+#endif
             }
         }
 

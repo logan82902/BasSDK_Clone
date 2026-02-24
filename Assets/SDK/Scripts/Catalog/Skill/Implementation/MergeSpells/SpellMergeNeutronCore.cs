@@ -1,49 +1,34 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#endif
+
 using UnityEngine;
+using TriInspector;
 
 namespace ThunderRoad.Skill.SpellMerge
 {
+    [DeclareBoxGroup("Physics", Title = "Physics")]
+    [DeclareBoxGroup("Force", Title = "Force")]
     public class SpellMergeNeutronCore : SpellMergeFire
     {
-#if ODIN_INSPECTOR
-        [BoxGroup("Physics")]
-#endif
+        [Group("Physics")]
         public float drag = 1f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Physics")]
-#endif
+        [Group("Physics")]
         public float dragDelay = 1f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Force")]
-#endif
+        [Group("Force")]
         public float forceMultiplier = -1;
-#if ODIN_INSPECTOR
-        [BoxGroup("Force")]
-#endif
+        [Group("Force")]
         public AnimationCurve forceDistanceCurve;
-        
-#if ODIN_INSPECTOR
-        [BoxGroup("Force")]
-#endif
+
+        [Group("Force")]
         public AnimationCurve forceTimeCurve;
-        
-#if ODIN_INSPECTOR
-        [BoxGroup("Force")]
-#endif
+
+        [Group("Force")]
         public float duration = 5;
-        
-#if ODIN_INSPECTOR
-        [BoxGroup("Force")]
-#endif
+
+        [Group("Force")]
         public float guidanceAmount = 20;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Force")]
-#endif
+        [Group("Force")]
         public float radius = 4;
     }
 }

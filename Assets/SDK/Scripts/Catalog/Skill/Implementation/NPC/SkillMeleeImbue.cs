@@ -1,37 +1,29 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#endif
+using TriInspector;
 using UnityEngine;
 using UnityEngine.Serialization;
 
 namespace ThunderRoad.Skill
 {
+    [DeclareBoxGroup("Imbue", Title = "Imbue")]
+    [DeclareBoxGroup("Spell", Title = "Spell")]
     public class SkillMeleeImbue : AISkillData
     {
-#if ODIN_INSPECTOR
-        [BoxGroup("Imbue")]
-#endif
+        [Group("Imbue")]
         public float autoImbueTime = 1f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Imbue")]
-#endif
+        [Group("Imbue")]
         public bool recharge = true;
-#if ODIN_INSPECTOR
-        [BoxGroup("Imbue")]
-#endif
+        [Group("Imbue")]
         [FormerlySerializedAs("autoImbueDelay")]
         public float rechargeDelay = 5f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Spell"), ValueDropdown(nameof(GetAllSpellID))]
-#endif
+        [Group("Spell")]
+        [Dropdown(nameof(GetAllSpellID))]
         public string spellId;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Spell"), ValueDropdown(nameof(GetAllSpellID))]
-#endif
+        [Group("Spell")]
+        [DropdownList(nameof(GetAllSpellID))]
         public List<string> randomSpells;
 
         protected string chosenSpell;

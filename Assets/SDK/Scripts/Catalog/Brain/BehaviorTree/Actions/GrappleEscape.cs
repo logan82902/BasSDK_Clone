@@ -1,14 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
-
-#if ODIN_INSPECTOR
-#else
 using TriInspector;
-#endif
 
 namespace ThunderRoad.AI.Action
 {
-	public class GrappleEscape : ActionNode
+    [AutoLabelWidth(AddedWidth = 5f, MinWidth = 0f)]
+    public class GrappleEscape : ActionNode
     {
         public float initialSuccessChance = 0.25f;
         public float attemptsMultiplier = 0.1f;

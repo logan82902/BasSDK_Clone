@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 468a46d0ae32c3544b7d98094e6448a9, type: 3}
   m_Name: AddressableAssetSettings
   m_EditorClassIdentifier: 
-  m_DefaultGroup: 54a2b12ff0c91264f8b4e694879cf316
+  m_DefaultGroup: de43681218a0fc2409e418a9cf3027e3
   m_currentHash:
     serializedVersion: 2
     Hash: 00000000000000000000000000000000
@@ -51,6 +51,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 256939aa0931a9f448e8a6a0765902d7, type: 2}
   - {fileID: 11400000, guid: 9f937fc8a19b3ae429f92c02db43898a, type: 2}
   - {fileID: 11400000, guid: 6c00cdf8a2c6afb419ce6148fbb245c0, type: 2}
+  - {fileID: 11400000, guid: 3aa89b373a1efa14fafbff5c7372dcc8, type: 2}
+  - {fileID: 11400000, guid: 6d365c0dc0532324e899cfa057d49684, type: 2}
   - {fileID: 11400000, guid: 53753514782f4b54aab1832255592318, type: 2}
   m_BuildSettings:
     m_CompileScriptsInVirtualMode: 0
@@ -279,6 +281,10 @@ MonoBehaviour:
     - RaktaGroup3
     - RaktaArmor
     - achievement
+    - SentaraGroup1
+    - SentaraGroup2
+    - SentaraArmor
+    - SentaraPotions
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: b2091e8321e676b4eb1c72cfbde3dec2, type: 2}

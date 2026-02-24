@@ -3,43 +3,60 @@ using System;
 using System.Collections.Generic;
 
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
     [HelpURL("https://kospy.github.io/BasSDK/Components/ThunderRoad/RagdollHand")]
     [AddComponentMenu("ThunderRoad/Creatures/Ragdoll hand")]
+    [DeclareVerticalGroup("Tabs/HandInfo")]
     public class RagdollHand : RagdollPart
     {
-        [Header("Hand")]
+        [Group("Tabs/HandInfo"), Tab("Hand")]
         public Side side = Side.Right;
+        [Group("Tabs/HandInfo"), Tab("Hand")]
         public RagdollPart lowerArmPart;
+        [Group("Tabs/HandInfo"), Tab("Hand")]
         public RagdollPart upperArmPart;
 
+        [Group("Tabs/HandInfo"), Tab("Hand")]
         public bool meshFixedScale = true;
+        [Group("Tabs/HandInfo"), Tab("Hand")]
         public Vector3 meshGlobalScale = Vector3.one;
 
+        [Group("Tabs/HandInfo"), Tab("Hand")]
         public Vector3 axisThumb = Vector3.up;
+        [Group("Tabs/HandInfo"), Tab("Hand")]
         public Vector3 axisPalm = Vector3.left;
 
+        [Group("Tabs/HandInfo"), Tab("Hand")]
         public Collider touchCollider;
+        [Group("Tabs/HandInfo"), Tab("Hand")]
+        public Collider palmCollider;
+        [Group("Tabs/HandInfo"), Tab("Hand")]
+        public Collider simplifiedCollider;
 
+        [Group("Tabs/HandInfo"), Tab("Hand")]
         public WristStats wristStats;
+        [Group("Tabs/HandInfo"), Tab("Hand")]
         public RagdollHandPoser poser;
 
-        [Header("Fingers")]
-        public Finger fingerThumb = new Finger();
-        public Finger fingerIndex = new Finger();
-        public Finger fingerMiddle = new Finger();
-        public Finger fingerRing = new Finger();
-        public Finger fingerLittle = new Finger();
-        public List<Finger> fingers = new List<Finger>();
-        public Collider palmCollider;
-        public Collider simplifiedCollider;
+        [Title("Fingers")]
+        [Group("Tabs"), Tab("Hand")]
+        public Finger fingerThumb = new();
+        [Group("Tabs"), Tab("Hand")]
+        public Finger fingerIndex = new();
+        [Group("Tabs"), Tab("Hand")]
+        public Finger fingerMiddle = new();
+        [Group("Tabs"), Tab("Hand")]
+        public Finger fingerRing = new();
+        [Group("Tabs"), Tab("Hand")]
+        public Finger fingerLittle = new();
+        [Group("Tabs"), Tab("Hand")]
+        public List<Finger> fingers = new();
+
+
         public delegate void PunchEvent(RagdollHand hand, Vector3 velocity);
         public event PunchEvent OnPunchStartEvent;
         public event PunchEvent OnPunchEndEvent;
@@ -155,6 +172,7 @@ namespace ThunderRoad
             if (poser == null) poser = this.GetComponent<RagdollHandPoser>();
         }
 
+        [Group("Tabs"), Tab("Hand")]
         [Button]
         public void MirrorFingersToOtherHand()
         {
@@ -179,6 +197,7 @@ namespace ThunderRoad
             otherHand.SetupFingers();
         }
 
+        [Group("Tabs/HandInfo"), Tab("Hand")]
         [Button]
         public virtual void SetGripToDefaultPosition()
         {
@@ -205,6 +224,7 @@ namespace ThunderRoad
             return newGrip;
         }
 
+        [Group("Tabs"), Tab("Hand")]
         [Button]
         public virtual void SetupFingers()
         {

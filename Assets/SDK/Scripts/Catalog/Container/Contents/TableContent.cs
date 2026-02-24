@@ -1,9 +1,6 @@
 ﻿using System.Collections.Generic;
 
-#if ODIN_INSPECTOR
-#else
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {

@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
@@ -6,11 +6,8 @@ using System.Linq;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {

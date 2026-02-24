@@ -4,9 +4,8 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 1,
+  "groupPath": null,
   "displayName": "",
   "description": null,
-  "contents": [],
-  "containerContents": [],
-  "groupPath": null
+  "containerContents": []
 }

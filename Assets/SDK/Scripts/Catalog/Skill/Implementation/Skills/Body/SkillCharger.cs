@@ -1,55 +1,44 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
+using Newtonsoft.Json;
 
 namespace ThunderRoad.Skill
 {
+    [DeclareBoxGroup("Force", Title = "Force")]
+    [DeclareBoxGroup("Footstep", Title = "Footstep")]
+    [DeclareBoxGroup("Player Modifiers", Title = "Player Modifiers")]
     public class SkillCharger : SkillData
     {
-#if ODIN_INSPECTOR
-        [BoxGroup("Force")]
-#endif
+        [Group("Force")]
         public float sprintDelay = 0.5f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Force")]
-#endif
+        [Group("Force")]
         public float force = 1f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Force"), ValueDropdown(nameof(GetAllEffectID))]
-#endif
+        [Group("Force")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string linesEffectId;
-
+        [JsonIgnore]
         public EffectData linesEffectData;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Force"), ValueDropdown(nameof(GetAllEffectID))]
-#endif
+        [Group("Force")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string shoveEffectId;
-
+        [JsonIgnore]
         public EffectData shoveEffectData;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Footstep"), ValueDropdown(nameof(GetAllEffectID))]
-#endif
+        [Group("Footstep")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string stepEffectId;
-
+        [JsonIgnore]
         protected EffectData stepEffectData;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Player Modifiers")]
-#endif
+        [Group("Player Modifiers")]
         public float damageReduction = 0.3f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Player Modifiers")]
-#endif
+        [Group("Player Modifiers")]
         public float speedMultiplier = 1.3f;
 
     }

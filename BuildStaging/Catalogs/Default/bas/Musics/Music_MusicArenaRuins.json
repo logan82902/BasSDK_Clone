@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
+  "groupPath": null,
   "volumeDb": -2.0,
   "groupsToLoad": [
     "ArenaRuinsStartFight",
@@ -78,6 +79,5 @@
       "isDefault": true,
       "IsConnected": false
     }
-  },
-  "groupPath": null
+  }
 }

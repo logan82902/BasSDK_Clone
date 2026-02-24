@@ -1,11 +1,8 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
@@ -13,9 +10,7 @@ namespace ThunderRoad
     [CreateAssetMenu(menuName = "ThunderRoad/Creatures/Face Property Binding")]
     public class FacePropertyBindings : ScriptableObject
     {
-#if ODIN_INSPECTOR
-        [TableList(AlwaysExpanded = true, DrawScrollView = true)]
-#endif
+        [TableList(AlwaysExpanded = true)]
         public List<FaceAnimator.SerializeableBinding> allBindables;
     }
 #endif

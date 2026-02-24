@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 2,
+  "groupPath": "Dungeon",
   "category": "Dungeon Standard Room",
   "localizationId": "-",
   "title": "Tribal Std Mixed",
@@ -16,13 +17,13 @@
     {
       "$type": "ThunderRoad.WaveData+WaveFaction, ThunderRoad",
       "factionID": 7,
-      "factionHealthMultiplier": 1.0,
       "factionMaxAlive": 8
     }
   ],
   "groups": [
     {
       "$type": "ThunderRoad.WaveData+Group, ThunderRoad",
+      "mergeKey": "8cfd1d2b",
       "reference": "Table",
       "referenceID": "TribalPatrolMelee",
       "overrideFaction": false,
@@ -44,6 +45,7 @@
     },
     {
       "$type": "ThunderRoad.WaveData+Group, ThunderRoad",
+      "mergeKey": "b82994db",
       "reference": "Table",
       "referenceID": "TribalAlertRanged",
       "overrideFaction": false,
@@ -65,6 +67,7 @@
     },
     {
       "$type": "ThunderRoad.WaveData+Group, ThunderRoad",
+      "mergeKey": "09287eb5",
       "reference": "Table",
       "referenceID": "TribalAlertMix",
       "overrideFaction": false,
@@ -86,6 +89,7 @@
     },
     {
       "$type": "ThunderRoad.WaveData+Group, ThunderRoad",
+      "mergeKey": "25dc5a18",
       "reference": "Table",
       "referenceID": "TribalRareMix",
       "overrideFaction": false,
@@ -106,5 +110,5 @@
       "prereqMaxRemainingAlive": 0
     }
   ],
-  "groupPath": "Dungeon"
+  "modules": null
 }

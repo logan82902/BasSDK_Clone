@@ -4,186 +4,172 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using Object = UnityEngine.Object;
-
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
+using Random = UnityEngine.Random;
+using Newtonsoft.Json;
 
 namespace ThunderRoad.Skill.Spell
 {
-	public class SpellCastProjectile : SpellCastCharge
+    [DeclareBoxGroup("Grip Cast", Title = "Grip Cast")]
+    [DeclareBoxGroup("Cast Heat Zone", Title = "Cast Heat Zone")]
+    [DeclareBoxGroup("Projectile", Title = "Projectile")]
+    [DeclareBoxGroup("Fire Sparks", Title = "Fire Sparks")]
+    [DeclareBoxGroup("Imbue", Title = "Imbue")]
+    [DeclareBoxGroup("Imbue use", Title = "Imbue use")]
+    [DeclareBoxGroup("Staff Slam", Title = "Staff Slam")]
+    [DeclareBoxGroup("Musket")]
+    public class SpellCastProjectile : SpellCastCharge
     {
-#if ODIN_INSPECTOR
-        [BoxGroup("Grip Cast")]
-#endif
+        [Group("Grip Cast")]
         public float gripCastHeatTransfer = 40;
-#if ODIN_INSPECTOR
-        [BoxGroup("Cast Heat Zone")]
-#endif
+        [Group("Cast Heat Zone")]
         public bool allowCastHeat = true;
-#if ODIN_INSPECTOR
-        [BoxGroup("Cast Heat Zone"), ShowIf(nameof(allowCastHeat))]
-#endif
+        [Group("Cast Heat Zone")]
+        [ShowIf(nameof(allowCastHeat))]
         public float spellCastHeatPerSecond = 20;
-        
-#if ODIN_INSPECTOR
-        [BoxGroup("Cast Heat Zone"), ShowIf(nameof(allowCastHeat))]
-#endif
+
+        [Group("Cast Heat Zone")]
+        [ShowIf(nameof(allowCastHeat))]
         public float castHeatRadius = 0.1f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Projectile"), LabelText(@"@SkillPassiveLabel(""Damage"", intensityPerSkill)")]
-#endif
+        [Group("Projectile")]
+        [LabelText("$" + nameof(IntensityPerSkillLabel))]
         public float intensityPerSkill = 0.1f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Projectile"), LabelText(@"@SkillPassiveLabel(""Burn Duration"", durationPerSkill)")]
-#endif
+        [JsonIgnore]
+        public string IntensityPerSkillLabel => SkillPassiveLabel("Damage", intensityPerSkill);
+        [Group("Projectile")]
+        [LabelText("$" + nameof(DurationPerSkillLabel))]
         public float durationPerSkill = 0.1f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Projectile")]
-#endif
+        [JsonIgnore]
+        public string DurationPerSkillLabel => SkillPassiveLabel("Burn Duration", durationPerSkill);
+        [Group("Projectile")]
         public bool destroyInWater = false;
-#if ODIN_INSPECTOR
-        [BoxGroup("Projectile"), ValueDropdown(nameof(GetAllEffectID))] 
-#endif
+        [Group("Projectile")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string projectileEffectId;
         [NonSerialized]
         public EffectData projectileEffectData;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Projectile"), ValueDropdown(nameof(GetAllItemID))] 
-#endif
+        [Group("Projectile")]
+        [Dropdown(nameof(GetAllItemID))]
         public string projectileId;
         [NonSerialized]
         public ItemData projectileData;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Projectile"), ValueDropdown(nameof(GetAllDamagerID))] 
-#endif
+        [Group("Projectile")]
+        [Dropdown(nameof(GetAllDamagerID))]
         public string projectileDamagerId;
         [NonSerialized]
         public DamagerData projectileDamagerData;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Projectile")] 
-#endif
+        [Group("Projectile")]
         public readonly AnimationCurve damageOverTimeCurve = AnimationCurve.Linear(1, 1, 1, 1);
 
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Projectile")] 
-#endif
+        [Group("Projectile")]
         public float projectileImbueEnergyTransferred = 0;
-#if ODIN_INSPECTOR
-        [BoxGroup("Projectile"), UnityEngine.Range(0f, 1f)] 
-#endif
+        [Group("Projectile")]
+        [Range(0f, 1f)]
         public float throwHeadBias = 0.5f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Projectile")] 
-#endif
+        [Group("Projectile")]
         public float projectileVelocity = 5;
-#if ODIN_INSPECTOR
-        [BoxGroup("Projectile")] 
-#endif
+        [Group("Projectile")]
         public bool projectilePlayerGuided = true;
-#if ODIN_INSPECTOR
-        [BoxGroup("Projectile")] 
-#endif
+        [Group("Projectile")]
         public float projectileGuidanceDelay = 0.5f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Projectile")] 
-#endif
+        [Group("Projectile")]
         public bool projectileAllowDeflect = true;
-#if ODIN_INSPECTOR
-        [BoxGroup("Projectile"), ValueDropdown(nameof(GetAllEffectID))] 
-#endif
+        [Group("Projectile")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string projectileDeflectEffectId;
         [NonSerialized]
         public EffectData projectileDeflectEffectData;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Fire Sparks"), ValueDropdown(nameof(GetAllStatusEffectID))] 
-#endif
+        [Group("Fire Sparks")]
+        [Dropdown(nameof(GetAllStatusEffectID))]
         public string fireSparkStatusId = "Burning";
         [NonSerialized]
         public StatusData fireSparkStatusEffect;
-        
-#if ODIN_INSPECTOR
-        [BoxGroup("Fire Sparks")] 
-#endif
+
+        [Group("Fire Sparks")]
         public float fireSparkStatusDuration = 5;
-        
-#if ODIN_INSPECTOR
-        [BoxGroup("Fire Sparks")] 
-#endif
+
+        [Group("Fire Sparks")]
         public float fireSparkHeatTransfer = 10;
-        
-#if ODIN_INSPECTOR
-        [BoxGroup("Imbue"), ValueDropdown(nameof(GetAllStatusEffectID))]
-#endif
+
+        [Group("Imbue")]
+        [Dropdown(nameof(GetAllStatusEffectID))]
         public string imbueHitStatusEffectId = "Burning";
         [NonSerialized]
         protected StatusData imbueHitStatusEffect;
-#if ODIN_INSPECTOR
-        [BoxGroup("Imbue")]
-#endif
+        [Group("Imbue")]
         public float imbueHitStatusDuration = Mathf.Infinity;
-#if ODIN_INSPECTOR
-        [BoxGroup("Imbue")]
-#endif
+        [Group("Imbue")]
         public float imbueHitHeat = 20;
-#if ODIN_INSPECTOR
-        [BoxGroup("Imbue")]
-#endif
+        [Group("Imbue")]
         public float imbuePenetrateHeatPerSecond = 10;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Imbue use")] 
-#endif
+        [Group("Imbue use")]
         public float imbueUseConsumption = 10;
-#if ODIN_INSPECTOR
-        [BoxGroup("Imbue use"), ValueDropdown(nameof(GetAllEffectID))] 
-#endif
+        [Group("Imbue use")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string imbueUseEffectId;
         [NonSerialized]
         public EffectData imbueUseEffectData;
-#if ODIN_INSPECTOR
-        [BoxGroup("Imbue use"), ValueDropdown(nameof(GetAllEffectID))] 
-#endif
+        [Group("Imbue use")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string imbueUseProjectileEffectId;
         [NonSerialized]
         public EffectData imbueUseProjectileEffectData;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Imbue use")] 
-#endif
+        [Group("Imbue use")]
         public FireMode imbueShootFireMode = FireMode.InheritVelocity;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Imbue use")] 
-#endif
+        [Group("Imbue use")]
         public TriggerType imbueShootTriggerMode = TriggerType.ButtonUp;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Staff Slam"), ValueDropdown(nameof(GetAllEffectID))] 
-#endif
+        [Group("Staff Slam")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string imbueHitProjectileEffectId;
         [NonSerialized]
         public EffectData imbueHitProjectileEffectData;
-#if ODIN_INSPECTOR
-        [BoxGroup("Staff Slam")] 
-#endif
+        [Group("Staff Slam")]
         protected float staffSlamFireballSpeed = 15f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Staff Slam")] 
-#endif
+        [Group("Staff Slam")]
         public int staffSlamNumFireballs = 6;
-#if ODIN_INSPECTOR
-        [BoxGroup("Staff Slam")] 
-#endif
+        [Group("Staff Slam")]
         public float slamOnCrystalDistance = 1f;
+
+        [Group("Musket")]
+        public float musketDamage = 30f;
+        [Group("Musket")]
+        public float musketRadius = 2f;
+        [Group("Musket")]
+        public LayerMask musketDecapitateLayerMask;
+        [Group("Musket")]
+        public int fireSparkCount = 6;
+        [Group("Musket")]
+        [Dropdown(nameof(GetAllStatusEffectID))]
+        public string musketStatusId;
+        protected StatusData musketStatusData;
+        [Group("Musket")]
+        [Dropdown(nameof(GetAllEffectID))]
+        public string musketSparkEffectId;
+        protected EffectData musketSparkEffectData;
+        [Group("Musket")]
+        public float musketForce = 20f;
+        [Group("Musket")]
+        public float musketStatusDuration = Mathf.Infinity;
+        [Group("Musket")]
+        public float musketStatusParameterCone = 100;
+        [Group("Musket")]
+        public float musketStatusParameterParticle = 100;
+        [Group("Musket")]
+        public Vector2 musketSparkVelocity = new Vector2(15f, 25f);
+
+        protected SkillTwinFlame twinFlameSkill;
+        
+        
         
         protected HashSet<Creature> creaturesHeatedThisFrame;
 
@@ -205,6 +191,9 @@ namespace ThunderRoad.Skill.Spell
             imbueUseEffectData = Catalog.GetData<EffectData>(imbueUseEffectId);
             imbueHitProjectileEffectData = Catalog.GetData<EffectData>(imbueHitProjectileEffectId);
             imbueUseProjectileEffectData = Catalog.GetData<EffectData>(imbueUseProjectileEffectId);
+            musketStatusData = Catalog.GetData<StatusData>(musketStatusId);
+            musketSparkEffectData = Catalog.GetData<EffectData>(musketSparkEffectId);
+            twinFlameSkill = Catalog.GetData<SkillTwinFlame>("TwinFlame");
 
         }
 

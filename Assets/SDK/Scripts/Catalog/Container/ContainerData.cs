@@ -3,41 +3,49 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
-#else
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
 
     [Serializable]
+#if UNITY_EDITOR
+    [EditorLoadPriority(-5)]
+#endif
+    [DeclareBoxGroup("Container", Title = "Container")]
+    [DeclareFoldoutGroup("Container/Debug", Title = "Debug")]
     public class ContainerData : CatalogData
     {
-#if ODIN_INSPECTOR
-        [BoxGroup("Container")] 
-#endif
+        [Group("Container")]
         public string displayName = "Unknown";
-#if ODIN_INSPECTOR
-        [BoxGroup("Container")] 
-#endif
+        [Group("Container")]
         [Multiline]
         public string description;
 
-#if ODIN_INSPECTOR
-        [HideInInspector]
-#endif
-        public List<Content> contents = new List<Content>();
+        [ShowInInspector]
+        [Group("Container")]
+        [HideReferencePicker]
+        [ListDrawerSettings(AlwaysExpanded = true)]
+        public List<ContainerContent> containerContents = new();
 
-#if ODIN_INSPECTOR
-        [ShowInInspector, HideReferenceObjectPicker, ListDrawerSettings(Expanded = true)]
-#endif
-        public List<ContainerContent> containerContents = new List<ContainerContent>();
+        [NonSerialized]
+        [ShowInInspector]
+        [Group("Container/Debug")]
+        [ListDrawerSettings(AlwaysExpanded = true)]
+        [InlineButton(nameof(TestGeneration))]
+        public List<string> generationOutput;
 
+        public void TestGeneration()
+        {
+            generationOutput = new List<string>();
+            foreach (ContainerContent ct in containerContents)
+            {
+                generationOutput.Add(ct.GetOutput());
+            }
+        }
 
 
         public override int GetCurrentVersion()
@@ -48,7 +56,26 @@ namespace ThunderRoad
         public override void OnCatalogRefresh()
         {
             base.OnCatalogRefresh();
+            CleanContainerContents(Application.isPlaying);
+        }
 
+        public void CleanContainerContents(bool clearEmptyOrNullContents)
+        {
+            if (!containerContents.IsNullOrEmpty())
+            {
+                for (var i = containerContents.Count - 1; i >= 0; i--)
+                {
+                    if (clearEmptyOrNullContents && containerContents[i].referenceID.IsNullOrEmptyOrWhitespace())
+                    {
+                        Debug.LogWarning($"Null ID found on {containerContents[i].GetType().Name} ({containerContents[i].mergeKey}) in container {id}, removing from container");
+                        containerContents.RemoveAt(i);
+                        continue;
+                    }
+                    if (containerContents[i] is SkillContent { data: SpellData spell })
+                        containerContents[i] = new SpellContent(spell);
+                    containerContents[i].OnCatalogRefresh();
+                }
+            }
         }
 
         public override CatalogData Clone()
@@ -58,85 +85,10 @@ namespace ThunderRoad
             return clone;
         }
 
-
-        [Serializable]
-        public class Content
-        {
-#if ODIN_INSPECTOR
-            [HorizontalGroup("Reference"), EnumToggleButtons, HideLabel, TableColumnWidth(100, false)] 
-#endif
-            public Reference reference = Reference.Item;
-
-#if ODIN_INSPECTOR
-            [ValueDropdown(nameof(GetAllItemOrLootTableID))] 
-#endif
-            [JsonMergeKey]
-            public string referenceID;
-
-#if ODIN_INSPECTOR
-            [TableColumnWidth(55, false)] 
-#endif
-            public int quantity = 1;
-
-#if ODIN_INSPECTOR
-            [ShowInInspector] 
-#endif
-            public ContentState state;
-
-#if ODIN_INSPECTOR
-            [ShowInInspector] 
-#endif
-            public List<ContentCustomData> customDataList;
-
-            public enum Reference
-            {
-                Item,
-                Table
-            }
-
-            [NonSerialized]
-            public ItemData itemData;
-            [NonSerialized]
-            public LootTableBase lootTable;
-
-            public delegate void ContentSpawned(Item item);
-            public event ContentSpawned OnContentSpawn;
-
-
-            public Content(ItemData itemData, ContentState state = null, List<ContentCustomData> customDataList = null, int quantity = 1)
-            {
-                this.reference = Reference.Item;
-                this.referenceID = itemData.id;
-                this.itemData = itemData;
-                this.state = state;
-                this.customDataList = customDataList;
-                SetQuantity(quantity);
-            }
-
-            public void SetQuantity(int newQuantity)
-            {
-            }
-
-#if ODIN_INSPECTOR
-            public List<ValueDropdownItem<string>> GetAllItemOrLootTableID()
-            {
-                if (reference == Reference.Item)
-                {
-                    return Catalog.GetDropdownAllID(Category.Item);
-                }
-                else
-                {
-                    return Catalog.GetDropdownAllID(Category.LootTable);
-                }
-            }
-#endif
-        }
     }
 
-    [System.Serializable]
-    public abstract class ContentCustomData
-    {
-    }
+    [Serializable]
+    public abstract class ContentCustomData { }
 
     /// <summary>
     /// Used to store liquid contents and maximum level
@@ -145,6 +97,8 @@ namespace ThunderRoad
     public class ContentCustomDataLiquidContainer : ContentCustomData
     {
         public List<LiquidData.Content> LiquidContents;
+
+        public ContentCustomDataLiquidContainer() => LiquidContents = new List<LiquidData.Content>();
 
     }
 
@@ -185,6 +139,11 @@ namespace ThunderRoad
 
         public List<AnimatorParam> savedParams = new List<AnimatorParam>();
 
+        public ContentCustomDataAnimatorParams()
+        {
+            savedParams = new List<AnimatorParam>();
+        }
+
     }
 
     [System.Serializable]
@@ -192,6 +151,8 @@ namespace ThunderRoad
     {
         public string valueType = null;
         public float value = -1f;
+
+        public ContentCustomDataValueOverride() { }
 
     }
 
@@ -202,6 +163,8 @@ namespace ThunderRoad
     public class ContentCustomOrder : ContentCustomData
     {
         public int order = 0;
+
+        public ContentCustomOrder() { }
 
     }
 

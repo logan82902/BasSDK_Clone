@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
+  "groupPath": "Dalgarian/Arena",
   "isUnique": true,
   "areaPrefabAddress": "Bas.Area.DA_Arena_Temple",
   "lightingPresetAddress": "Bas.Area.DA_Arena_Temple.LightingPreset",
@@ -130,6 +131,5 @@
       "isZeroIntensity": true,
       "visibleFromGate": false
     }
-  ],
-  "groupPath": "Dalgarian/Arena"
+  ]
 }

@@ -3,11 +3,8 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
 using System.Linq;
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
@@ -30,26 +27,25 @@ namespace ThunderRoad
 
 
         [NonSerialized]
-#if ODIN_INSPECTOR
-        [ShowInInspector, ReadOnly, ShowIf("displayType", DisplayType.Holders)]
-#endif
+        [ShowInInspector]
+        [ReadOnly]
+        [ShowIf("displayType", DisplayType.Holders)]
         public List<Holder> holders;
         [NonSerialized]
-#if ODIN_INSPECTOR
-        [ShowInInspector, ReadOnly, ShowIf("displayType", DisplayType.Shelf)]
-#endif
+        [ShowInInspector]
+        [ReadOnly]
+        [ShowIf("displayType", DisplayType.Shelf)]
         public List<ItemShelf> shelves;
         [NonSerialized]
-#if ODIN_INSPECTOR
-        [ShowInInspector, ReadOnly, ShowIf("displayType", DisplayType.Basket)]
-#endif
+        [ShowInInspector]
+        [ReadOnly]
+        [ShowIf("displayType", DisplayType.Basket)]
         public List<ItemBasket> baskets;
 
         public Shop shop;
         [NonSerialized]
-#if ODIN_INSPECTOR
-        [ShowInInspector, ReadOnly]
-#endif
+        [ShowInInspector]
+        [ReadOnly]
         public List<Item> displayItems;
 
     }

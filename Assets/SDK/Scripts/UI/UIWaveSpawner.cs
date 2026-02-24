@@ -1,14 +1,12 @@
-using System.Collections;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+
 using TriInspector;
-#endif
 namespace ThunderRoad
 {
     public class UIWaveSpawner : MonoBehaviour

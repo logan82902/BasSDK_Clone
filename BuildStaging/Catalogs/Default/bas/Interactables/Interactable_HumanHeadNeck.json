@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 3,
+  "groupPath": null,
   "behaviour": "Choke",
   "scaleDuringCombat": 1.5,
   "tkActiveCondition": "Always",
@@ -121,6 +122,5 @@
   "referencePoint": "Grip",
   "localizationId": "Neck",
   "highlightDefaultTitle": "Neck",
-  "highlightDefaultDesignation": "",
-  "groupPath": null
+  "highlightDefaultDesignation": ""
 }

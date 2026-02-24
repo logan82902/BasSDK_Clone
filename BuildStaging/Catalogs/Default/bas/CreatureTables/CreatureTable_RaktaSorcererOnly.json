@@ -1,0 +1,57 @@
+{
+  "$type": "ThunderRoad.CreatureTable, ThunderRoad",
+  "id": "RaktaSorcererOnly",
+  "sensitiveContent": "None",
+  "sensitiveFilterBehaviour": "Discard",
+  "version": 1,
+  "groupPath": "Factions/Sandbox",
+  "description": null,
+  "linkedToGenderRatio": false,
+  "drops": [
+    {
+      "$type": "ThunderRoad.CreatureTable+Drop, ThunderRoad",
+      "mergeKey": "8f649ed1",
+      "reference": "Table",
+      "referenceID": "Rakta_Base_RangedWeak",
+      "overrideFaction": false,
+      "factionID": 5,
+      "overrideContainer": false,
+      "overrideContainerID": "CultistDevotee",
+      "overrideBrain": false,
+      "overrideBrainID": "HumanHard",
+      "overrideEthnicity": false,
+      "overrideEthnicityID": null,
+      "probabilityWeight": 1.0
+    },
+    {
+      "$type": "ThunderRoad.CreatureTable+Drop, ThunderRoad",
+      "mergeKey": "89428afd",
+      "reference": "Table",
+      "referenceID": "Rakta_Base_RangedStrong",
+      "overrideFaction": false,
+      "factionID": 5,
+      "overrideContainer": false,
+      "overrideContainerID": "CultistPartisan",
+      "overrideBrain": false,
+      "overrideBrainID": "HumanHard",
+      "overrideEthnicity": false,
+      "overrideEthnicityID": null,
+      "probabilityWeight": 1.0
+    },
+    {
+      "$type": "ThunderRoad.CreatureTable+Drop, ThunderRoad",
+      "mergeKey": "fc9511af",
+      "reference": "Table",
+      "referenceID": "Rakta_Base_MeleeStrong",
+      "overrideFaction": false,
+      "factionID": 0,
+      "overrideContainer": false,
+      "overrideContainerID": null,
+      "overrideBrain": false,
+      "overrideBrainID": null,
+      "overrideEthnicity": false,
+      "overrideEthnicityID": null,
+      "probabilityWeight": 2.0
+    }
+  ]
+}

@@ -1,15 +1,11 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine.Events;
 using System;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
@@ -26,35 +22,37 @@ namespace ThunderRoad
         public UnityEvent onFailPierceEvent = new();
         [Tooltip("If set to false, the pierce will not spawn any effects.")]
         public bool spawnEffects = true;
-#if ODIN_INSPECTOR
-        public List<ValueDropdownItem<string>> GetAllWeapons()
+        public TriDropdownList<string> GetAllWeapons()
         {
-            List<ValueDropdownItem<string>> weapons = new List<ValueDropdownItem<string>>();
+            TriDropdownList<string> weapons = new();
             foreach (ItemData data in Catalog.GetDataList<ItemData>())
             {
-                if (data.type == ItemData.Type.Weapon) weapons.Add(new ValueDropdownItem<string>(data.id, data.id));
+                if (data.type == ItemData.Type.Weapon)
+                {
+                    weapons.Add(data.id, data.id);
+                }
             }
             return weapons;
         }
 
-        [ValueDropdown(nameof(GetAllWeapons))]
-#endif
+        [Dropdown(nameof(GetAllWeapons))]
         [Tooltip("If the weapon hits this collider, it should stop piercing at this point and go no deeper!")]
         public string pierceWeaponID;
-#if ODIN_INSPECTOR
-        public List<ValueDropdownItem<string>> GetAllDamagers()
+        public TriDropdownList<string> GetAllDamagers()
         {
-            List<ValueDropdownItem<string>> damagers = new List<ValueDropdownItem<string>>();
-            if (pierceWeaponData == null) pierceWeaponData = Catalog.GetData<ItemData>(pierceWeaponID);
-            foreach (var damager in pierceWeaponData.damagers)
+            TriDropdownList<string> damagers = new();
+            if (pierceWeaponData == null)
             {
-                damagers.Add(new ValueDropdownItem<string>(damager.transformName, damager.transformName));
+                pierceWeaponData = Catalog.GetData<ItemData>(pierceWeaponID);
+            }
+            foreach (ItemData.Damager damager in pierceWeaponData.damagers)
+            {
+                damagers.Add(damager.transformName, damager.transformName);
             }
             return damagers;
         }
 
-        [ValueDropdown(nameof(GetAllDamagers))]
-#endif
+        [Dropdown(nameof(GetAllDamagers))]
         [Tooltip("Pick which damager should do the piercing. This lines up with the pierce transform's name.")]
         public string pierceDamagerName;
         [Tooltip("Sets what the 'impact velocity' of the collision should be, if this hits a ragdoll. Any value greater than 0 makes the pierce deal damage to ragdolls it pierces.")]
@@ -64,9 +62,8 @@ namespace ThunderRoad
         [Tooltip("If the weapon hits this collider, it should stop piercing at this point and go no deeper!")]
         public Collider endPierceCollider;
         [NonSerialized]
-#if ODIN_INSPECTOR
-        [ShowInInspector, ReadOnly]
-#endif
+        [ShowInInspector]
+        [ReadOnly]
         public Collider hitCollider;
         [Header("Raycasting")]
         public LayerMask raycastLayerMask = (LayerMask)(218250337);
@@ -100,9 +97,11 @@ namespace ThunderRoad
 
         protected void FindPiercePoint()
         {
+#if UNITY_EDITOR
             lastCalcPiercePointStart = transform.position;
             lastCalcPiercePointRotat = transform.eulerAngles;
             colliderPiercePoint = transform.forward * raycastDistance;
+#endif
         }
 
 
@@ -113,7 +112,19 @@ namespace ThunderRoad
 
         public void OnValidate()
         {
+#if UNITY_EDITOR
+            if (this.InPrefabScene())
+            {
+                return;
+            }
+            if (UnityEditor.EditorApplication.isPlayingOrWillChangePlaymode)
+            {
+                return;
+            }
             Setup();
+
+ //ProjectCore
+#endif //UNITY_EDITOR
         }
 
         public void OnDrawGizmos()

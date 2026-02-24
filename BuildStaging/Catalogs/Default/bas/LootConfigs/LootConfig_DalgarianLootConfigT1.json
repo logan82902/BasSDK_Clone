@@ -4,11 +4,11 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
+  "groupPath": null,
   "sideRoomLootTableID": "Outpost_SideLoot_T1",
   "enemyDropLootTableID": "Outpost_MainLoot_T1",
   "treasureLootTableID": "Outpost_MainLoot_T1",
   "rewardLootTableID": "CrystalHuntLootTypeRewards",
   "altSideRoomLootTableID": "Dalgarian_SideLoot_T1",
-  "altTreasureLootTableID": "Dalgarian_MainLoot_T1",
-  "groupPath": null
+  "altTreasureLootTableID": "Dalgarian_MainLoot_T1"
 }

@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
+  "groupPath": "Outpost/Start-End",
   "isUnique": true,
   "areaPrefabAddress": "Bas.Area.GL_End_Cave_TheLostCove",
   "lightingPresetAddress": "Bas.Area.GL_End_Cave_TheLostCove.LightingPreset",
@@ -58,6 +59,5 @@
       "isZeroIntensity": false,
       "visibleFromGate": false
     }
-  ],
-  "groupPath": "Outpost/Start-End"
+  ]
 }

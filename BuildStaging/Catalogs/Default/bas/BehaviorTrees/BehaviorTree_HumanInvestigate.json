@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
+  "groupPath": null,
   "type": "SubTree",
   "rootNode": {
     "$type": "ThunderRoad.AI.Control.Sequence, ThunderRoad",
@@ -34,10 +35,7 @@
               "evaluateAllNodesOnCycle": false,
               "childs": [
                 {
-                  "$type": "ThunderRoad.AI.Action.CheckHolsters, ThunderRoad",
-                  "blackboard": null,
-                  "creature": null,
-                  "brainData": null
+                  "$type": "ThunderRoad.AI.Action.CheckHolsters, ThunderRoad"
                 },
                 {
                   "$type": "ThunderRoad.AI.Get.GetCreature, ThunderRoad",
@@ -52,10 +50,7 @@
                   "outputCreatureAsCurrentTarget": false,
                   "outputCreatureVariableName": "Self",
                   "outputTransform": "None",
-                  "outputTransformVariableName": "",
-                  "blackboard": null,
-                  "creature": null,
-                  "brainData": null
+                  "outputTransformVariableName": ""
                 },
                 {
                   "$type": "ThunderRoad.AI.Get.GetRandomPositionAround, ThunderRoad",
@@ -66,10 +61,7 @@
                   "minRadius": 0.0,
                   "maxRadius": 2.0,
                   "attempts": 5,
-                  "outputPositionVariableName": "SearchPosition",
-                  "blackboard": null,
-                  "creature": null,
-                  "brainData": null
+                  "outputPositionVariableName": "SearchPosition"
                 }
               ]
             },
@@ -82,10 +74,7 @@
                   "offsetHeightRatioWhenOnFloor": 1.0,
                   "raycastOffset": 0.1,
                   "outputPositionVariableName": "SearchPosition",
-                  "outputOffsetPositionVariableName": "SearchOffsetPosition",
-                  "blackboard": null,
-                  "creature": null,
-                  "brainData": null
+                  "outputOffsetPositionVariableName": "SearchOffsetPosition"
                 }
               ]
             },
@@ -98,10 +87,7 @@
                   "offsetHeightRatioWhenOnFloor": 1.0,
                   "raycastOffset": 0.1,
                   "outputPositionVariableName": "SearchPosition",
-                  "outputOffsetPositionVariableName": "SearchOffsetPosition",
-                  "blackboard": null,
-                  "creature": null,
-                  "brainData": null
+                  "outputOffsetPositionVariableName": "SearchOffsetPosition"
                 }
               ]
             },
@@ -122,10 +108,7 @@
                   "outputCreatureAsCurrentTarget": false,
                   "outputCreatureVariableName": "BodyFound",
                   "outputTransform": "SightedPart",
-                  "outputTransformVariableName": "PartTransform",
-                  "blackboard": null,
-                  "creature": null,
-                  "brainData": null
+                  "outputTransformVariableName": "PartTransform"
                 },
                 {
                   "$type": "ThunderRoad.AI.Get.GetTransformAsSearchPosition, ThunderRoad",
@@ -133,10 +116,7 @@
                   "raycastOffset": 0.1,
                   "inputTransformVariableName": "PartTransform",
                   "outputPositionVariableName": "SearchPosition",
-                  "outputOffsetPositionVariableName": "SearchOffsetPosition",
-                  "blackboard": null,
-                  "creature": null,
-                  "brainData": null
+                  "outputOffsetPositionVariableName": "SearchOffsetPosition"
                 }
               ]
             },
@@ -152,10 +132,7 @@
                   "maxDistance": 0.0,
                   "debugLines": false,
                   "outputPositionVariableName": "SearchPosition",
-                  "outputOffsetPositionVariableName": "SearchOffsetPosition",
-                  "blackboard": null,
-                  "creature": null,
-                  "brainData": null
+                  "outputOffsetPositionVariableName": "SearchOffsetPosition"
                 }
               ]
             },
@@ -172,10 +149,7 @@
                   "rememberDuration": 45.0,
                   "outputCreatureAsCurrentTarget": false,
                   "outputCreatureVariableName": "BodyFound",
-                  "outputPartTransformVariableName": "PartTransform",
-                  "blackboard": null,
-                  "creature": null,
-                  "brainData": null
+                  "outputPartTransformVariableName": "PartTransform"
                 },
                 {
                   "$type": "ThunderRoad.AI.Control.Selector, ThunderRoad",
@@ -187,10 +161,7 @@
                       "raycastOffset": 0.1,
                       "inputTransformVariableName": "PartTransform",
                       "outputPositionVariableName": "SearchPosition",
-                      "outputOffsetPositionVariableName": "SearchOffsetPosition",
-                      "blackboard": null,
-                      "creature": null,
-                      "brainData": null
+                      "outputOffsetPositionVariableName": "SearchOffsetPosition"
                     },
                     {
                       "$type": "ThunderRoad.AI.Get.GetTransformAsSearchPosition, ThunderRoad",
@@ -198,10 +169,7 @@
                       "raycastOffset": 0.1,
                       "inputTransformVariableName": "BodyFound",
                       "outputPositionVariableName": "SearchPosition",
-                      "outputOffsetPositionVariableName": "SearchOffsetPosition",
-                      "blackboard": null,
-                      "creature": null,
-                      "brainData": null
+                      "outputOffsetPositionVariableName": "SearchOffsetPosition"
                     }
                   ]
                 }
@@ -221,26 +189,17 @@
           "x": 30.0,
           "y": 40.0
         },
-        "succeedOnCooldown": true,
-        "blackboard": null,
-        "creature": null,
-        "brainData": null
+        "succeedOnCooldown": true
       },
       {
         "$type": "ThunderRoad.AI.Action.InterruptIdle, ThunderRoad",
         "alwaysFullInterrupt": true,
         "changeBrainStateBeforeInterrupt": true,
-        "brainState": "Investigate",
-        "blackboard": null,
-        "creature": null,
-        "brainData": null
+        "brainState": "Investigate"
       },
       {
         "$type": "ThunderRoad.AI.Action.SetBrainState, ThunderRoad",
-        "brainState": "Investigate",
-        "blackboard": null,
-        "creature": null,
-        "brainData": null
+        "brainState": "Investigate"
       },
       {
         "$type": "ThunderRoad.AI.Control.Selector, ThunderRoad",
@@ -260,18 +219,12 @@
                   "x": 0.0,
                   "y": 0.0,
                   "z": 0.0
-                },
-                "blackboard": null,
-                "creature": null,
-                "brainData": null
+                }
               },
               {
                 "$type": "ThunderRoad.AI.Action.PlaceTargetTransform, ThunderRoad",
                 "vectorPositionName": "SearchPosition",
-                "transformVariableName": "SearchPositionTransform",
-                "blackboard": null,
-                "creature": null,
-                "brainData": null
+                "transformVariableName": "SearchPositionTransform"
               },
               {
                 "$type": "ThunderRoad.AI.Control.Parallel, ThunderRoad",
@@ -304,10 +257,7 @@
                               "weaponHandling": "TwoHanded",
                               "checkAmmo": true,
                               "checkInHolder": false
-                            },
-                            "blackboard": null,
-                            "creature": null,
-                            "brainData": null
+                            }
                           },
                           {
                             "$type": "ThunderRoad.AI.Decorator.AlwaysSuccess, ThunderRoad",
@@ -328,10 +278,7 @@
                                 "$type": "ThunderRoad.AI.Action.HolsterItem, ThunderRoad",
                                 "holsterRight": true,
                                 "holsterLeft": false,
-                                "waitForFinished": false,
-                                "blackboard": null,
-                                "creature": null,
-                                "brainData": null
+                                "waitForFinished": false
                               }
                             }
                           },
@@ -356,18 +303,12 @@
                               "weaponHandling": "TwoHanded",
                               "checkAmmo": true,
                               "checkInHolder": false
-                            },
-                            "blackboard": null,
-                            "creature": null,
-                            "brainData": null
+                            }
                           },
                           {
                             "$type": "ThunderRoad.AI.Action.SetStance, ThunderRoad",
                             "stance": "Bow",
-                            "onlyOnce": false,
-                            "blackboard": null,
-                            "creature": null,
-                            "brainData": null
+                            "onlyOnce": false
                           }
                         ]
                       },
@@ -396,18 +337,12 @@
                               "weaponHandling": "TwoHanded",
                               "checkAmmo": false,
                               "checkInHolder": false
-                            },
-                            "blackboard": null,
-                            "creature": null,
-                            "brainData": null
+                            }
                           },
                           {
                             "$type": "ThunderRoad.AI.Action.SetStance, ThunderRoad",
                             "stance": "Staff",
-                            "onlyOnce": false,
-                            "blackboard": null,
-                            "creature": null,
-                            "brainData": null
+                            "onlyOnce": false
                           }
                         ]
                       },
@@ -458,10 +393,7 @@
                         "angleMode": "Randomize",
                         "changeAngleUntilUnobstructed": false,
                         "targetRadiusMinAngle": 0.0,
-                        "targetRadiusMaxAngle": 360.0,
-                        "blackboard": null,
-                        "creature": null,
-                        "brainData": null
+                        "targetRadiusMaxAngle": 360.0
                       },
                       {
                         "$type": "ThunderRoad.AI.Action.TurnTo, ThunderRoad",
@@ -469,10 +401,7 @@
                         "inputVariableName": "SearchPosition",
                         "successIfAngleReached": true,
                         "successAngle": 5.0,
-                        "becomeExclusiveHandler": false,
-                        "blackboard": null,
-                        "creature": null,
-                        "brainData": null
+                        "becomeExclusiveHandler": false
                       }
                     ]
                   }
@@ -489,6 +418,5 @@
         ]
       }
     ]
-  },
-  "groupPath": null
+  }
 }

@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 4,
+  "groupPath": null,
   "localizationId": "Poo",
   "displayName": "Poo",
   "description": "No description",
@@ -14,16 +15,18 @@
   "tier": 0,
   "flags": "None",
   "levelRequired": 0,
+  "type": "Prop",
   "category": "Breakable",
+  "update": "",
   "iconEffectId": null,
   "preferredItemCenter": "Mass",
   "drainImbueWhenIdle": true,
+  "forceImbueUseButton": "None",
   "prefabAddress": "Bas.Item.Prop.Poo_01",
   "iconAddress": "Bas.Item.Prop.Poo_01.Icon[Poo_01]",
   "closeUpIconAddress": null,
   "pooledCount": 0,
   "androidPooledCount": 0,
-  "type": "Prop",
   "allowedStorage": "Inventory, Container",
   "despawnOnStoredInInventory": false,
   "isStackable": true,
@@ -37,6 +40,7 @@
   "mass": 0.3,
   "drag": 1.0,
   "angularDrag": 0.2,
+  "density": 1100.0,
   "focusRegenMultiplier": 1.0,
   "spellChargeSpeedPlayerMultiplier": 1.0,
   "spellChargeSpeedNPCMultiplier": 1.0,
@@ -150,17 +154,6 @@
     "preWrapMode": "ClampForever",
     "postWrapMode": "ClampForever"
   },
-  "modules": [
-    {
-      "$type": "ThunderRoad.ItemModuleEdible, ThunderRoad",
-      "nextStageItemID": "",
-      "onConsumeAudioContainerAddress": "Bas.AudioGroup.Voice.Male.BreathlessDeath",
-      "healthGain": 0.0,
-      "focusGain": 1.0,
-      "consumeTime": 0.0,
-      "transferCustomData": false
-    }
-  ],
   "colliderGroups": [],
   "damagers": [
     {
@@ -178,6 +171,16 @@
   ],
   "effectHinges": [],
   "whooshs": [],
-  "entityModules": [],
-  "groupPath": null
+  "modules": [
+    {
+      "$type": "ThunderRoad.ItemModuleEdible, ThunderRoad",
+      "nextStageItemID": "",
+      "onConsumeAudioContainerAddress": "Bas.AudioGroup.Voice.Male.BreathlessDeath",
+      "healthGain": 0.0,
+      "focusGain": 1.0,
+      "consumeTime": 0.0,
+      "transferCustomData": false
+    }
+  ],
+  "entityModules": []
 }

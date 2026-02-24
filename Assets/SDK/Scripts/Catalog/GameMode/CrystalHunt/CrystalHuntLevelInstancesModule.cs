@@ -1,10 +1,9 @@
-using System;
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#endif
+﻿using System;
+using TriInspector;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 namespace ThunderRoad.Modules
@@ -13,6 +12,23 @@ namespace ThunderRoad.Modules
     /// Handles creating and updating the level instances for the Crystal Hunt game mode
     /// </summary>
     [Serializable]
+    [DeclareBoxGroup("MapPins", Title = "Map Pins")]
+    [DeclareHorizontalGroup("MapPins/Horiz")]
+    [DeclareBoxGroup("Shop & Persistent Levels")]
+    [DeclareBoxGroup("Tutorial", Title = "Tutorial Dungeon")]
+    [DeclareHorizontalGroup("Tutorial/Horiz")]
+    [DeclareHorizontalGroup("LevelsHoriz")]
+    [DeclareBoxGroup("LevelsHoriz/Outposts", Title = "Outpost Dungeons")]
+    [DeclareHorizontalGroup("LevelsHoriz/Outposts/Horiz")]
+    [DeclareBoxGroup("LevelsHoriz/Outposts/Horiz/EnemyConfigs", Title = "Enemy Configs")]
+    [DeclareBoxGroup("LevelsHoriz/Outposts/Horiz/LootConfigs", Title = "Loot Configs")]
+    [DeclareBoxGroup("LevelsHoriz/Arenas", Title = "Arenas")]
+    [DeclareHorizontalGroup("LevelsHoriz/Arenas/Horiz")]
+    [DeclareBoxGroup("LevelsHoriz/Dalgarian", Title = "Dalgarian Dungeon")]
+    [DeclareHorizontalGroup("LevelsHoriz/Dalgarian/Horiz")]
+    [DeclareBoxGroup("LevelsHoriz/Dalgarian/Horiz/EnemyConfigs", Title = "Enemy Configs")]
+    [DeclareBoxGroup("LevelsHoriz/Dalgarian/Horiz/LootConfigs", Title = "Loot Configs")]
+    [DeclareBoxGroup("Balancing", Title = "Balancing Data")]
     public class CrystalHuntLevelInstancesModule : LevelInstancesModule
     {
         //this dungeon type describes if this is a loot heavy or shard heavy dungeon
@@ -25,80 +41,160 @@ namespace ThunderRoad.Modules
             Dalgarian,
         }
 
-        public static string CrystalHuntGameModeId = "CrystalHunt";
-
+        [Group("MapPins")]
         public string mapInfoPrefabAddress;
 
+        [Group("MapPins")]
         public string difficultyIcon;
+        [Group("MapPins")]
         public Color difficultyIconColor;
 
+        [Group("MapPins/Horiz")]
         public int minPinsToGeneratePerDay = 2;
+        [Group("MapPins/Horiz")]
         public int maxPinsToGeneratePerDay = 4;
 
-        [Header("Arenas")]
-        public List<LevelInfo> arenasLevelInfo;
-        public int minNumberOfArenasAllowedPerDay = 1;
-        public int maxNumberOfArenasAllowedPerDay = 1;
-
-        [Header("Dalgarian Dungeon")]
-        public LevelInfo dalgarianDungeonLevelInfo;
-
-#if ODIN_INSPECTOR
-        [ValueDropdown(nameof(GetAllEnemyConfigs))]
-#endif
-        public List<string> dalgarianEnemyConfigs;
-
-#if ODIN_INSPECTOR
-        [ValueDropdown(nameof(GetAllLootConfigs))]
-#endif
-        public List<string> dalgarianLootConfigs;
-        public int dalgarianMapLocationRandomNearest = 3;
-
-        [Header("Tutorial")]
-        public LevelInfo tutorialDungeonLevelInfo;
-
-#if ODIN_INSPECTOR
-        [ValueDropdown(nameof(GetAllEnemyConfigs))]
-#endif
-        public string tutorialEnemyConfig;
-
-#if ODIN_INSPECTOR
-        [ValueDropdown(nameof(GetAllLootConfigs))]
-#endif
-        public string tutorialLootConfig;
-
-        [Header("Outpost Dungeon")]
-        public LevelInfo outpostDungeonLevelInfo;
-
-#if ODIN_INSPECTOR
-        [ValueDropdown(nameof(GetAllEnemyConfigs))]
-#endif
-        public List<string> outpostEnemyConfigs;
-
-#if ODIN_INSPECTOR
-        [ValueDropdown(nameof(GetAllLootConfigs))]
-#endif
-        public List<string> outpostLootConfigs;
-        public int outpostMapLocationRandomNearest = 5;
-
-        [Header("Shop & Persistent levels")]
+        [Group("Shop & Persistent Levels")]
         public string shopID;
+        [Group("Shop & Persistent Levels")]
+        [HideReferencePicker]
+        [ListDrawerSettings(AlwaysExpanded = true)]
         public List<LevelInfo> persistentLevels;
 
+        [Group("Tutorial")]
+        [InlineProperty]
+        [HideReferencePicker]
+        [NullValueFix]
+        public LevelInfo tutorialDungeonLevelInfo;
+
+        [Group("Tutorial/Horiz")]
+        [Dropdown(nameof(GetAllEnemyConfigs))]
+        public string tutorialEnemyConfig;
+
+        [Group("Tutorial/Horiz")]
+        [Dropdown(nameof(GetAllLootConfigs))]
+        public string tutorialLootConfig;
+
+        [Group("LevelsHoriz/Outposts")]
+        public int outpostMapLocationRandomNearest = 5;
+
+        [Group("LevelsHoriz/Outposts")]
+        [InlineProperty]
+        [HideReferencePicker]
+        [NullValueFix]
+        public LevelInfo outpostDungeonLevelInfo;
+
+        [Group("LevelsHoriz/Outposts/Horiz/EnemyConfigs")]
+        [InlineProperty]
+        [HideReferencePicker]
+        [NullValueFix]
+        public EnemyConfigTiers outpostEnemyConfigs;
+
+        [Group("LevelsHoriz/Outposts/Horiz/LootConfigs")]
+        [InlineProperty]
+        [HideReferencePicker]
+        [NullValueFix]
+        public LootConfigTiers outpostLootConfigs;
+
+        [Group("LevelsHoriz/Arenas/Horiz")]
+        public int minNumberOfArenasAllowedPerDay = 1;
+        [Group("LevelsHoriz/Arenas/Horiz")]
+        public int maxNumberOfArenasAllowedPerDay = 1;
+        [Group("LevelsHoriz/Arenas")]
+        [HideReferencePicker]
+        [ListDrawerSettings(AlwaysExpanded = true)]
+        public List<LevelInfo> arenasLevelInfo;
+
+        [Group("LevelsHoriz/Dalgarian")]
+        public int dalgarianMapLocationRandomNearest = 3;
+
+        [Group("LevelsHoriz/Dalgarian")]
+        [InlineProperty]
+        [HideReferencePicker]
+        [NullValueFix]
+        public LevelInfo dalgarianDungeonLevelInfo;
+
+        [Group("LevelsHoriz/Dalgarian/Horiz/EnemyConfigs")]
+        [InlineProperty]
+        [HideReferencePicker]
+        [NullValueFix]
+        public EnemyConfigTiers dalgarianEnemyConfigs;
+
+        [Group("LevelsHoriz/Dalgarian/Horiz/LootConfigs")]
+        [InlineProperty]
+        [HideReferencePicker]
+        [NullValueFix]
+        public LootConfigTiers dalgarianLootConfigs;
+
  // ProjectCore
-        
+
         [System.Serializable]
+        public class EnemyConfigTiers : ConfigTiers<EnemyConfig> { }
+
+        [System.Serializable]
+        public class LootConfigTiers : ConfigTiers<LootConfigData> { }
+
+        [AutoLabelWidth(MinWidth = 0f)]
+        public abstract class ConfigTiers<T> where T : CatalogData
+        {
+            public List<string> GetTier(int tier)
+            {
+                return tier switch
+                {
+                    0 => Tier0,
+                    1 => Tier1,
+                    2 => Tier2,
+                    3 => Tier3,
+                    _ => Tier0
+                };
+            }
+
+            public TriDropdownList<string> GetAllOptionIDs()
+            {
+                return Catalog.GetDropdownAllID<T>();
+            }
+
+            public TriDropdownList<string> GetAllEnemyConfigs() => Catalog.GetDropdownAllID<EnemyConfig>();
+
+            public TriDropdownList<string> GetAllLootConfigs() => Catalog.GetDropdownAllID<LootConfigData>();
+
+            [ListDrawerSettings(AlwaysExpanded = true)]
+            [DropdownList(nameof(GetAllOptionIDs))]
+            public List<string> Tier0;
+            [ListDrawerSettings(AlwaysExpanded = true)]
+            [DropdownList(nameof(GetAllOptionIDs))]
+            public List<string> Tier1;
+            [ListDrawerSettings(AlwaysExpanded = true)]
+            [DropdownList(nameof(GetAllOptionIDs))]
+            public List<string> Tier2;
+            [ListDrawerSettings(AlwaysExpanded = true)]
+            [DropdownList(nameof(GetAllOptionIDs))]
+            public List<string> Tier3;
+        }
+
+        [AutoLabelWidth(MinWidth = 0f)]
+        [System.Serializable]
+        [DeclareBoxGroup("Box", HideTitle = true)]
+        [DeclareHorizontalGroup("Box/HorizTop")]
+        [DeclareHorizontalGroup("Box/HorizBottom")]
         public class LevelInfo
         {
-#if ODIN_INSPECTOR
-            [ValueDropdown(nameof(GetAllLevelId))]
-#endif
+            [Group("Box/HorizTop")]
+            [Dropdown(nameof(GetAllLevelId))]
             public string levelId;
-#if ODIN_INSPECTOR
-            [ValueDropdown(nameof(GetAllLevelMode))]
-#endif
+            [Group("Box/HorizTop")]
+            [Dropdown(nameof(GetAllLevelMode))]
             public string modeId;
 
+            [Group("Box/HorizBottom")]
+            [Dropdown(nameof(GetAllEnemyConfigs))]
+            public string staticEnemyConfigDataId;
+
+            [Group("Box/HorizBottom")]
+            [FormerlySerializedAs("lootConfigDataId")]
+            [Dropdown(nameof(GetAllLootConfigs))]
+            public string staticLootConfigDataId;
+            
             [Newtonsoft.Json.JsonProperty("modId")]
             private string modeIdSetter
             {
@@ -109,52 +205,53 @@ namespace ThunderRoad.Modules
             }
 
  // ProjectCore
-#if ODIN_INSPECTOR
-            public List<ValueDropdownItem<string>> GetAllLevelId()
-            {
-                return Catalog.GetDropdownAllID<LevelData>();
-            }
+            public TriDropdownList<string> GetAllEnemyConfigs() => Catalog.GetDropdownAllID<EnemyConfig>();
 
-            public List<ValueDropdownItem<string>> GetAllLevelMode()
+            public TriDropdownList<string> GetAllLootConfigs() => Catalog.GetDropdownAllID<LootConfigData>();
+
+            public TriDropdownList<string> GetAllLevelId() => Catalog.GetDropdownAllID<LevelData>();
+
+            public TriDropdownList<string> GetAllLevelMode()
             {
-                List<ValueDropdownItem<string>> result = new List<ValueDropdownItem<string>>();
+                TriDropdownList<string> result = new();
                 LevelData level = Catalog.GetData<LevelData>(levelId);
-                if (level == null) return result;
+                if (level == null)
+                {
+                    result.Add("None", null);
+                    return result;
+                }
 
                 List<LevelData.Mode> levelModes = level.modes;
                 int count = levelModes.Count;
                 for (int i = 0; i < count; i++)
                 {
-                    result.Add(new ValueDropdownItem<string>(levelModes[i].name, levelModes[i].name));
+                    result.Add(levelModes[i].name, levelModes[i].name);
                 }
                 return result;
             }
-#endif //ODIN_INSPECTOR
         }
 
 
         #region ScriptableObjects
 
+        [Group("Balancing")]
         public string endRewardBalanceAddress;
+        [Group("Balancing")]
         public string dungeonLengthBalanceAddress;
+        [Group("Balancing")]
         public string dungeonLootMultiplierBalanceAddress;
+        [Group("Balancing")]
         public string dungeonTypeBalanceAddress;
+        [Group("Balancing")]
         public string outpostFactionTierBalanceAddress;
+        [Group("Balancing")]
         public string dalgarianFactionTierBalanceAddress;
  // ProjectCore
         #endregion
 
 
-#if ODIN_INSPECTOR
-        public List<ValueDropdownItem<string>> GetAllEnemyConfigs()
-        {
-            return Catalog.GetDropdownAllID<EnemyConfig>();
-        }
+        public TriDropdownList<string> GetAllEnemyConfigs() => Catalog.GetDropdownAllID<EnemyConfig>();
 
-        public List<ValueDropdownItem<string>> GetAllLootConfigs()
-        {
-            return Catalog.GetDropdownAllID<LootConfigData>();
-        }
-#endif
+        public TriDropdownList<string> GetAllLootConfigs() => Catalog.GetDropdownAllID<LootConfigData>();
     }
 }

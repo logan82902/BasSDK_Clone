@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 3,
+  "groupPath": null,
   "spawnItemID": "Dalg_Pottery_Canope_Lid",
   "spawnQuantity": 1,
   "allowInfiniteSupplyCheat": false,
@@ -42,6 +43,5 @@
   "referencePoint": "Grip",
   "localizationId": "Dalg_Canope_Lid",
   "highlightDefaultTitle": "Canope Lid",
-  "highlightDefaultDesignation": "",
-  "groupPath": null
+  "highlightDefaultDesignation": ""
 }

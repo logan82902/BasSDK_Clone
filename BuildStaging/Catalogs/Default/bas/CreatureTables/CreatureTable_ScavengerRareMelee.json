@@ -4,11 +4,13 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 1,
+  "groupPath": "Factions/Dungeon",
   "description": null,
   "linkedToGenderRatio": false,
   "drops": [
     {
       "$type": "ThunderRoad.CreatureTable+Drop, ThunderRoad",
+      "mergeKey": "332c51b2",
       "reference": "Table",
       "referenceID": "Scavenger_Base_MeleeSpecial",
       "overrideFaction": false,
@@ -21,6 +23,5 @@
       "overrideEthnicityID": null,
       "probabilityWeight": 1.0
     }
-  ],
-  "groupPath": "Factions/Dungeon"
+  ]
 }

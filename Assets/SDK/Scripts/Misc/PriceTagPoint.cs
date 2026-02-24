@@ -4,10 +4,7 @@
 using UnityEditor;
 #endif
 
-#if ODIN_INSPECTOR
-#else
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {

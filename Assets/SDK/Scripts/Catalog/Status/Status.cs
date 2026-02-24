@@ -73,12 +73,16 @@ namespace ThunderRoad
             float duration = float.PositiveInfinity,
             object parameter = default,
             bool playEffect = true);
+
+        public virtual bool IgnoreClearByType => true;
     }
 
     public abstract class Status : IStatus
     {
         public StatusData data;
         public ThunderEntity entity;
+        public bool IgnoreClearByType => data.ignoreClearByType;
+
         public virtual void Spawn(StatusData data, ThunderEntity entity)
         {
         }

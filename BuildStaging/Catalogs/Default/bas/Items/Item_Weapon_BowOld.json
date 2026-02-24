@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 4,
+  "groupPath": null,
   "localizationId": "OldBow",
   "displayName": "Tribal Bow",
   "description": "A simple bow created for hunting. Easy to make, disposable, and not particularly well suited towards warfare. ",
@@ -14,16 +15,18 @@
   "tier": 1,
   "flags": "Spinnable",
   "levelRequired": 0,
+  "type": "Weapon",
   "category": "Bows",
+  "update": "",
   "iconEffectId": null,
   "preferredItemCenter": "Mass",
   "drainImbueWhenIdle": true,
+  "forceImbueUseButton": "None",
   "prefabAddress": "Bas.Item.Ranged.OldBow",
   "iconAddress": "Bas.Item.Ranged.OldBow.Icon[wpn_B01_oldbow]",
   "closeUpIconAddress": "Bas.Item.Ranged.OldBow.IconClose[wpn_B01_oldbow-close-up]",
   "pooledCount": 0,
   "androidPooledCount": 0,
-  "type": "Weapon",
   "allowedStorage": "Container, SandboxAllItems",
   "despawnOnStoredInInventory": false,
   "isStackable": false,
@@ -37,6 +40,7 @@
   "mass": 0.8,
   "drag": 0.0,
   "angularDrag": 0.05,
+  "density": 800.0,
   "focusRegenMultiplier": 1.0,
   "spellChargeSpeedPlayerMultiplier": 1.0,
   "spellChargeSpeedNPCMultiplier": 1.0,
@@ -165,6 +169,28 @@
     "preWrapMode": "ClampForever",
     "postWrapMode": "ClampForever"
   },
+  "colliderGroups": [],
+  "damagers": [
+    {
+      "$type": "ThunderRoad.ItemData+Damager, ThunderRoad",
+      "transformName": "Blunt",
+      "damagerID": "HandleLight"
+    }
+  ],
+  "Interactables": [
+    {
+      "$type": "ThunderRoad.ItemData+Interactable, ThunderRoad",
+      "transformName": "Handle",
+      "interactableId": "ObjectHandleBow"
+    },
+    {
+      "$type": "ThunderRoad.ItemData+Interactable, ThunderRoad",
+      "transformName": "HandleString",
+      "interactableId": "ObjectHandleBowString"
+    }
+  ],
+  "effectHinges": [],
+  "whooshs": [],
   "modules": [
     {
       "$type": "ThunderRoad.ItemModuleAI, ThunderRoad",
@@ -173,7 +199,6 @@
       "weaponHandling": "TwoHanded",
       "secondaryHandling": "None",
       "weaponAttackTypes": "None",
-      "ignoredByDefense": false,
       "alwaysPrimary": false,
       "defaultStanceInfo": null,
       "stanceInfosByOffhand": null,
@@ -204,6 +229,7 @@
         },
         "customRangedAttackAnimationData": ""
       },
+      "ignoredByDefense": false,
       "armResistanceMultiplier": 2.0,
       "allowDynamicHeight": false,
       "defenseHasPriority": true
@@ -234,28 +260,5 @@
       ]
     }
   ],
-  "colliderGroups": [],
-  "damagers": [
-    {
-      "$type": "ThunderRoad.ItemData+Damager, ThunderRoad",
-      "transformName": "Blunt",
-      "damagerID": "HandleLight"
-    }
-  ],
-  "Interactables": [
-    {
-      "$type": "ThunderRoad.ItemData+Interactable, ThunderRoad",
-      "transformName": "Handle",
-      "interactableId": "ObjectHandleBow"
-    },
-    {
-      "$type": "ThunderRoad.ItemData+Interactable, ThunderRoad",
-      "transformName": "HandleString",
-      "interactableId": "ObjectHandleBowString"
-    }
-  ],
-  "effectHinges": [],
-  "whooshs": [],
-  "entityModules": [],
-  "groupPath": null
+  "entityModules": []
 }

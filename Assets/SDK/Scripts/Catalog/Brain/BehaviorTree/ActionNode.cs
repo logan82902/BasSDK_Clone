@@ -1,8 +1,11 @@
 ﻿using System.Collections;
+using Newtonsoft.Json;
+using TriInspector;
 
 namespace ThunderRoad.AI
 {
-	public class ActionNode : Node
+    [AutoLabelWidth(AddedWidth = 5f, MinWidth = 0f)]
+    public abstract class ActionNode : Node
     {
     }
 }

@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
+  "groupPath": null,
   "localizationGroupID": null,
   "displayName": "Test",
   "description": "Test Skill Tree (for modding guide)",
@@ -31,5 +32,8 @@
   "videoAddress": null,
   "iconEnabledAddress": null,
   "iconDisabledAddress": null,
-  "groupPath": null
+  "tierBlockers": [
+    "SpellCastTest",
+    "SpellMergeTest"
+  ]
 }

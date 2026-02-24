@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 3,
+  "groupPath": null,
   "spawnItemID": "Arrow",
   "spawnQuantity": 6,
   "allowInfiniteSupplyCheat": true,
@@ -42,6 +43,5 @@
   "referencePoint": "Grip",
   "localizationId": "Arrow",
   "highlightDefaultTitle": "Arrow",
-  "highlightDefaultDesignation": "",
-  "groupPath": null
+  "highlightDefaultDesignation": ""
 }

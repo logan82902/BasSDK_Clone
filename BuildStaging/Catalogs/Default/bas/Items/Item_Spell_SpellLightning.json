@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 4,
+  "groupPath": null,
   "localizationId": "SpellLightning",
   "displayName": "Lightning",
   "description": null,
@@ -14,16 +15,18 @@
   "tier": 0,
   "flags": "Spinnable",
   "levelRequired": 0,
+  "type": "Spell",
   "category": null,
+  "update": "",
   "iconEffectId": "SpellOrbLightning",
   "preferredItemCenter": "Mass",
   "drainImbueWhenIdle": true,
+  "forceImbueUseButton": "None",
   "prefabAddress": null,
   "iconAddress": null,
   "closeUpIconAddress": null,
   "pooledCount": 0,
   "androidPooledCount": 0,
-  "type": "Spell",
   "allowedStorage": 0,
   "despawnOnStoredInInventory": false,
   "isStackable": false,
@@ -37,6 +40,7 @@
   "mass": 1.0,
   "drag": 1.0,
   "angularDrag": 1.0,
+  "density": 1000.0,
   "focusRegenMultiplier": 1.0,
   "spellChargeSpeedPlayerMultiplier": 1.0,
   "spellChargeSpeedNPCMultiplier": 1.0,
@@ -150,17 +154,16 @@
     "preWrapMode": "ClampForever",
     "postWrapMode": "ClampForever"
   },
+  "colliderGroups": [],
+  "damagers": [],
+  "Interactables": [],
+  "effectHinges": [],
+  "whooshs": [],
   "modules": [
     {
       "$type": "ThunderRoad.ItemModuleSpell, ThunderRoad",
       "spellId": "Lightning"
     }
   ],
-  "colliderGroups": [],
-  "damagers": [],
-  "Interactables": [],
-  "effectHinges": [],
-  "whooshs": [],
-  "entityModules": [],
-  "groupPath": null
+  "entityModules": []
 }

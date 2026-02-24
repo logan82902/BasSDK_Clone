@@ -1,22 +1,19 @@
 ﻿using System.Collections;
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#endif
+using TriInspector;
 using ThunderRoad.Skill.SpellMerge;
 using UnityEngine;
 
 namespace ThunderRoad.Skill.Spell
 {
+    [DeclareBoxGroup("Status Effect", Title = "Status Effect")]
+    [DeclareBoxGroup("Velocity", Title = "Velocity")]
     public class SkillDilationBubble : SpellSkillData
     {
-#if ODIN_INSPECTOR
-        [BoxGroup("Status Effect"), ValueDropdown(nameof(GetAllStatusEffectID))]
-#endif
+        [Group("Status Effect")]
+        [Dropdown(nameof(GetAllStatusEffectID))]
         public string statusId;
-        
-#if ODIN_INSPECTOR
-        [BoxGroup("Velocity")]
-#endif
+
+        [Group("Velocity")]
         public float storedVelocityMult = 1.5f;
 
     }

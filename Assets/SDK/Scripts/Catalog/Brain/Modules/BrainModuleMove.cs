@@ -6,14 +6,13 @@ using System.Collections.Generic;
 using System.Collections;
 using Newtonsoft.Json;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
+    [System.Serializable]
+    [AutoLabelWidth(AddedWidth = 5f, MinWidth = 0f)]
     public class BrainModuleMove : BrainData.Module
     {
         [Header("General")]
@@ -31,6 +30,7 @@ namespace ThunderRoad
         [Header("Close or stuck detection")]
         public float stuckRadius = 0.01f;
         public float stuckMaxDuration = 0.5f;
+        public float maxAllowedWaterDepth = 0.6f;
         public bool preventTooClose = true;
         public float tooCloseDistance = 0.7f;
         public float edgeAvoidanceDistance = 0.1f;

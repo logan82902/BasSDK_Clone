@@ -3,85 +3,124 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
+
 
 namespace ThunderRoad
 {
     [HelpURL("https://kospy.github.io/BasSDK/Components/ThunderRoad/Ragdoll")]
     [AddComponentMenu("ThunderRoad/Creatures/Ragdoll")]
+    [DeclareTabGroup("Tabs")]
+    [DeclareVerticalGroup("Tabs/State")]
+    [DeclareVerticalGroup("Tabs/Parts")]
+    [DeclareVerticalGroup("Tabs/StandUp")]
+    [DeclareVerticalGroup("Tabs/Collision")]
+    [DeclareToggleGroup("Tabs/PhysicToggle", Title = "Physics Toggle Enabled")]
+    [DeclareHorizontalGroup("Tabs/PhysicToggle/Runtime", Sizes = new float[] { 0f, 120f })]
     public class Ragdoll : ThunderBehaviour
     {
+        [Group("Tabs/State"), Tab("General")]
+        public State state = State.Disabled;
+        [Group("Tabs"), Tab("General")]
         public Transform meshRig;
+        [Group("Tabs"), Tab("General")]
         public Transform meshRootBone;
+        [Group("Tabs"), Tab("General")]
+        public bool hipsAttached;
+
+        [Group("Tabs/PhysicToggle"), Tab("General")]
+        public bool physicToggle;
+        [Group("Tabs/PhysicToggle"), Tab("General")]
+        public float physicTogglePlayerRadius = 5;
+        [Group("Tabs/PhysicToggle"), Tab("General")]
+        public float physicToggleRagdollRadius = 3;
+        [Group("Tabs/PhysicToggle"), Tab("General")]
+        public float physicEnabledDuration = 2;
 
         [Header("Parts")]
+        [Group("Tabs/Parts"), Tab("General")]
         public RagdollPart headPart;
+        [Group("Tabs/Parts"), Tab("General")]
         public RagdollPart leftUpperArmPart;
+        [Group("Tabs/Parts"), Tab("General")]
         public RagdollPart rightUpperArmPart;
+        [Group("Tabs/Parts"), Tab("General")]
         public RagdollPart targetPart;
+        [Group("Tabs/Parts"), Tab("General")]
         public RagdollPart rootPart;
 
+        [Header("StandUp")]
+        [Group("Tabs/StandUp"), Tab("General")]
+        public AnimationCurve standUpCurve;
+        [Group("Tabs/StandUp"), Tab("General")]
+        public float standUpFromGrabDuration = 1.0f;
+        [Group("Tabs/StandUp"), Tab("General")]
+        public float preStandUpDuration = 3f;
+        [Group("Tabs/StandUp"), Tab("General")]
+        public float preStandUpRatio = 0.7f;
+
+        [Header("Collision")]
+        [Group("Tabs/Collision"), Tab("General")]
+        public float collisionEffectMinDelay = 0.2f;
+        [Group("Tabs/Collision"), Tab("General")]
+        public float collisionMinVelocity = 2.0f;
+
+        [Header("Misc")]
+        [Group("Tabs"), Tab("General")]
+        public bool allowSelfDamage;
+        [Group("Tabs"), Tab("General")]
+        public bool grippable = true;
+
         [Header("Default forces")]
+        [Group("Tabs"), Tab("Forces")]
         public float springPositionForce = 1000;
+        [Group("Tabs"), Tab("Forces")]
         public float damperPositionForce = 50;
+        [Group("Tabs"), Tab("Forces")]
         public float maxPositionForce = 1000;
 
+        [Group("Tabs"), Tab("Forces")]
         public float springRotationForce = 800;
+        [Group("Tabs"), Tab("Forces")]
         public float damperRotationForce = 50;
+        [Group("Tabs"), Tab("Forces")]
         public float maxRotationForce = 100;
 
         [Header("Destabilized")]
+        [Group("Tabs"), Tab("Forces")]
         public float destabilizedSpringRotationMultiplier = 0.5f;
+        [Group("Tabs"), Tab("Forces")]
         public float destabilizedDamperRotationMultiplier = 0.1f;
+        [Group("Tabs"), Tab("Forces")]
         public float destabilizedGroundSpringRotationMultiplier = 0.2f;
 
         [Header("HipsAttached")]
+        [Group("Tabs"), Tab("Forces")]
         public float hipsAttachedSpringPositionMultiplier = 1f;
+        [Group("Tabs"), Tab("Forces")]
         public float hipsAttachedDamperPositionMultiplier = 0f;
+        [Group("Tabs"), Tab("Forces")]
         public float hipsAttachedSpringRotationMultiplier = 1f;
+        [Group("Tabs"), Tab("Forces")]
         public float hipsAttachedDamperRotationMultiplier = 0f;
 
-        [Header("StandUp")]
-        public AnimationCurve standUpCurve;
-        public float standUpFromGrabDuration = 1.0f;
-        public float preStandUpDuration = 3f;
-        public float preStandUpRatio = 0.7f;
-
         [Header("Player arm")]
+        [Group("Tabs"), Tab("Forces")]
         public float playerArmPositionSpring = 5000f;
+        [Group("Tabs"), Tab("Forces")]
         public float playerArmPositionDamper = 40f;
-        public float playerArmRotationSpring = 1000f;
-        public float playerArmRotationDamper = 40f;
+        [Group("Tabs"), Tab("Forces")]
         public float playerArmMaxPositionForce = 3000f;
+        [Group("Tabs"), Tab("Forces")]
+        public float playerArmRotationSpring = 1000f;
+        [Group("Tabs"), Tab("Forces")]
+        public float playerArmRotationDamper = 40f;
+        [Group("Tabs"), Tab("Forces")]
         public float playerArmMaxRotationForce = 250f;
-
-        [Header("Collision")]
-        public float collisionEffectMinDelay = 0.2f;
-        public float collisionMinVelocity = 2.0f;
-        [NonSerialized]
-        public float lastCollisionEffectTime;
-
-        [Header("Misc")]
-        public bool allowSelfDamage;
-        public bool grippable = true;
 
         [NonSerialized]
         public Creature creature;
 
-
-        [InlineButton("TogglePhysic")]
-
-        [Header("Physic toggle")]
-        public bool physicToggle;
-        public float physicTogglePlayerRadius = 5;
-        public float physicToggleRagdollRadius = 3;
-        public float physicEnabledDuration = 2;
-        public float lastPhysicToggleTime;
-        
         /// <summary>
         /// Set by the PhysicToggleManager to indicate if this ragdoll should have physics enabled on next check
         /// This just acts as a cached bool to avoid storing state in the physic toggle manager
@@ -95,10 +134,6 @@ namespace ThunderRoad
         public Transform animatorRig;
         [NonSerialized]
         public float totalMass;
-#if ODIN_INSPECTOR
-        [DisableInPlayMode]
-#endif
-        public State state = State.Disabled;
 
         public enum State
         {
@@ -111,10 +146,13 @@ namespace ThunderRoad
             Disabled,
         }
 
-        public bool hipsAttached;
-
+        [Group("Tabs/Parts"), Tab("General")]
         public List<RagdollPart> parts;
 
+        [Group("Tabs/Parts"), Tab("General")]
+        public List<RagdollPart> safeSliceParts;
+
+        [Group("Tabs/Parts"), Tab("General")]
         [ShowInInspector]
         [NonSerialized]
         public List<Bone> bones = new List<Bone>();
@@ -159,13 +197,16 @@ namespace ThunderRoad
         public bool initialized;
 
         [NonSerialized]
+        [ShowInInspector]
+        [ReadOnly]
+        [LabelText("Standing Up (Runtime)")]
+        [Group("Tabs/StandUp"), Tab("General")]
         public bool standingUp;
         [NonSerialized]
         public float standStartTime = 0f;
         protected Coroutine getUpCoroutine;
 
-
-        /// <summary> 
+        /// <summary>
         /// Helper class to keep the line of which objects would like to apply a stabilization joint.
         /// </summary>
         private class StabilizationJointQueue
@@ -213,8 +254,6 @@ namespace ThunderRoad
         // Gets the stabilization joint for use in any other components. i.e. Telekinesis to rotate character to face the players hand forward
         public ConfigurableJoint StabilizationJoint { get { return stabilizationJoint; } }
 
-
-
         public enum PhysicStateChange
         {
             None,
@@ -247,6 +286,7 @@ namespace ThunderRoad
         }
 
         [Button]
+        [Group("Tabs/Parts"), Tab("General")]
         public void AutoCreateMeshColliders()
         {
             Dictionary<Transform, List<SkinnedMeshRenderer>> associatedBones = new Dictionary<Transform, List<SkinnedMeshRenderer>>();
@@ -261,7 +301,6 @@ namespace ThunderRoad
                 
                 if (smr.bones.Length > 0)
                 {
-                    //Debug.LogError($"{smr.name} has multiple associated bones and won't be automatically moved to the ragdoll!");
                     Mesh mesh = smr.sharedMesh;
                     var bonesPerVertex = mesh.GetBonesPerVertex();
                     if (bonesPerVertex.Length == 0) return;
@@ -296,8 +335,8 @@ namespace ThunderRoad
             }
         }
 
-
         [Button]
+        [Group("Tabs/Parts"), Tab("General")]
         public void AutoAssignParentPartsByBones()
         {
             Dictionary<Transform, RagdollPart> bonedParts = new Dictionary<Transform, RagdollPart>();
@@ -323,7 +362,6 @@ namespace ThunderRoad
                 }
             }
         }
-
 
     }
 }

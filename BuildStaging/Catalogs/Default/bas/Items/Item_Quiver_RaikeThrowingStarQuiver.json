@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 4,
+  "groupPath": "",
   "localizationId": "RaktaThrowingStarQuiver",
   "displayName": "Throwing Star Pouch",
   "description": "Small, cheap blades, properly balanced for optimal throwing.",
@@ -11,20 +12,21 @@
   "valueType": "Gold",
   "value": 803.0,
   "rewardValue": 0.0,
-  "tier": 0,
+  "tier": 2,
   "flags": "Spinnable",
   "levelRequired": 0,
-  "category": "Daggers",
+  "type": "Quiver",
+  "category": "Rakta Weapons",
   "update": "Rakta",
   "iconEffectId": "",
   "preferredItemCenter": "Mass",
   "drainImbueWhenIdle": true,
+  "forceImbueUseButton": "None",
   "prefabAddress": "Bas.Item.Ranged.Rakta.ThrowingStarHolder",
   "iconAddress": "Bas.Item.Ranged.Rakta.ThrowingStarHolder.Icon[wpn_throwingstarHolder]",
   "closeUpIconAddress": "",
   "pooledCount": 0,
   "androidPooledCount": 0,
-  "type": "Quiver",
   "allowedStorage": "Container, SandboxAllItems",
   "despawnOnStoredInInventory": false,
   "isStackable": false,
@@ -38,6 +40,7 @@
   "mass": 0.9,
   "drag": 0.0,
   "angularDrag": 0.05,
+  "density": 1000.0,
   "focusRegenMultiplier": 1.0,
   "spellChargeSpeedPlayerMultiplier": 1.0,
   "spellChargeSpeedNPCMultiplier": 1.0,
@@ -166,18 +169,6 @@
     "preWrapMode": "ClampForever",
     "postWrapMode": "ClampForever"
   },
-  "modules": [
-    {
-      "$type": "ThunderRoad.ItemModuleStats, ThunderRoad",
-      "stats": [
-        {
-          "$type": "ThunderRoad.ItemStatString, ThunderRoad",
-          "value": "8",
-          "name": "HoldAmount"
-        }
-      ]
-    }
-  ],
   "colliderGroups": [],
   "damagers": [
     {
@@ -205,6 +196,17 @@
   ],
   "effectHinges": [],
   "whooshs": [],
-  "entityModules": [],
-  "groupPath": ""
+  "modules": [
+    {
+      "$type": "ThunderRoad.ItemModuleStats, ThunderRoad",
+      "stats": [
+        {
+          "$type": "ThunderRoad.ItemStatString, ThunderRoad",
+          "value": "8",
+          "name": "HoldAmount"
+        }
+      ]
+    }
+  ],
+  "entityModules": []
 }

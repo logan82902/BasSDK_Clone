@@ -2,11 +2,8 @@
 using System;
 using System.Collections.Generic;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
@@ -21,16 +18,14 @@ namespace ThunderRoad
         public int forceAllowHitLocomotionLayer = -1;
 
         [NonSerialized]
-#if ODIN_INSPECTOR
-        [ShowInInspector, ReadOnly]
-#endif
-        public List<CollisionHandler> penetratedObjects = new List<CollisionHandler>();
+        [ShowInInspector]
+        [ReadOnly]
+        public List<CollisionHandler> penetratedObjects = new();
 
         [NonSerialized]
-#if ODIN_INSPECTOR
-        [ShowInInspector, ReadOnly]
-#endif
-        public List<Holder> holders = new List<Holder>();
+        [ShowInInspector]
+        [ReadOnly]
+        public List<Holder> holders = new();
 
     }
 }

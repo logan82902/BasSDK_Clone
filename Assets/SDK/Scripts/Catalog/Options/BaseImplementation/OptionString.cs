@@ -1,14 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using Newtonsoft.Json;
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
+    [Serializable]
     public abstract class OptionStringBase : OptionBase<OptionIntValue>
     {
         protected int defaultIntValue;
@@ -17,7 +13,6 @@ namespace ThunderRoad
         public abstract int StringCount();
 
         public abstract string GetString(int index);
-
         
         public virtual OptionStringValue DefaultStringValue()
         {
@@ -63,81 +58,108 @@ namespace ThunderRoad
     }
 
     [Serializable]
-    public class OptionStringLabel : OptionString
+    [DeclareHorizontalGroup("Horiz")]
+    public abstract class OptionStringList : OptionStringBase
     {
-	    public List<string> labelList = new List<string>();
-	    
-	    public override string GetCurrentValueLabel()
-	    {
-		    if (currentIntValue >= 0 && currentIntValue < StringCount())
-		    {
-			    return labelList[currentIntValue];
-		    }
-		    return $"INVALID[{currentIntValue}]";
-	    }
-        
-	    public override string GetDefaultValueLabel()
-	    {
-		    if (defaultIntValue >= 0 && defaultIntValue < StringCount())
-		    {
-			    return labelList[defaultIntValue];
-		    }
-		    return $"INVALID[{defaultIntValue}]";
-	    }
-	    
-#if UNITY_EDITOR	    
+        public override bool IsHidden() => false; // should be visible by default
+        public override bool IsLevelOption() => true; // should be set as level option by default
 
-	    [Button]
-	    public override void AddAllValueFromCatalogType()
-	    {
-		    valueList ??= new List<string>();
-		    valueList.AddRange(Catalog.GetAllID(catalogType));
-		    foreach (var value in valueList)
-		    {
-			    if (Catalog.TryGetData<CatalogData>(value, out CatalogData catalogData))
-			    {
-				    labelList.Add(catalogData.id);
-			    }
-		    }
-	    }
-#endif
-	    
-    }
-    
-    [Serializable]
-    public class OptionString : OptionStringBase
-    {
-	    public override bool IsHidden() => false; // should be visible by default
-	    public override bool IsLevelOption() => true; // should be set as level option by default
-	    
-	    public List<string> valueList = new List<string>();
-	    
-	    
-#if UNITY_EDITOR	    
-        [JsonIgnore]
-        public Category catalogType;
-        [Button]
-        public virtual void AddAllValueFromCatalogType()
-        {
-            valueList ??= new List<string>();
-            valueList.AddRange(Catalog.GetAllID(catalogType));
-        }
-#endif
+        public abstract List<string> GetOptionList();
+        public abstract void SetOptionList(List<string> list);
+
         public override string GetString(int index)
         {
             if (index >= 0 && index < StringCount())
             {
-                return valueList[index];
+                return GetOptionList()[index];
             }
             return $"INVALID[{index}]";
         }
-        
-        public override int StringCount() => valueList != null ? valueList.Count : 0;
+
+        public override int StringCount()
+        {
+            if (GetOptionList().IsNullOrEmpty()) return 0;
+            return GetOptionList().Count;
+        }
 
         public override void SetValue(OptionValue preset)
         {
-            valueList ??= new List<string>();
+            if (GetOptionList().IsNullOrEmpty()) SetOptionList(new List<string>());
             base.SetValue(preset);
         }
+    }
+
+    [Serializable]
+    public class OptionString : OptionStringList
+    {
+        [Group("Horiz")]
+        public List<string> valueList = new();
+
+        public override List<string> GetOptionList() => valueList;
+        public override void SetOptionList(List<string> list) => valueList = list;
+    }
+
+    [Serializable]
+    public class OptionStringLabel : OptionString
+    {
+        [Group("Horiz")]
+        public List<string> labelList = new();
+
+        public override string GetCurrentValueLabel()
+        {
+            if (currentIntValue >= 0 && currentIntValue < StringCount())
+            {
+                return labelList[currentIntValue];
+            }
+            return $"INVALID[{currentIntValue}]";
+        }
+
+        public override string GetDefaultValueLabel()
+        {
+            if (defaultIntValue >= 0 && defaultIntValue < StringCount())
+            {
+                return labelList[defaultIntValue];
+            }
+            return $"INVALID[{defaultIntValue}]";
+        }
+    }
+
+    public abstract class OptionStringDropdown : OptionStringList
+    {
+        [Group("Horiz")]
+        [DropdownList(nameof(GetValueOptions))]
+        public List<string> valueList = new();
+
+        public override List<string> GetOptionList() => valueList;
+        public override void SetOptionList(List<string> list) => valueList = list;
+
+        public abstract TriDropdownList<string> GetValueOptions();
+    }
+
+    [Serializable]
+    public class OptionStringLabelDropdown : OptionStringDropdown
+    {
+        [Group("Horiz")]
+        public List<string> labelList = new();
+
+        public override string GetCurrentValueLabel()
+        {
+            if (currentIntValue >= 0 && currentIntValue < StringCount())
+            {
+                return labelList[currentIntValue];
+            }
+            return $"INVALID[{currentIntValue}]";
+        }
+
+        public override string GetDefaultValueLabel()
+        {
+            if (defaultIntValue >= 0 && defaultIntValue < StringCount())
+            {
+                return labelList[defaultIntValue];
+            }
+            return $"INVALID[{defaultIntValue}]";
+        }
+
+        public override TriDropdownList<string> GetValueOptions() => Catalog.GetDropdownAllID(Category.AreaCollection);
     }
 }

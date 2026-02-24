@@ -2,15 +2,11 @@
 using System.Collections.Generic;
 using System;
 using System.IO;
+using TriInspector;
+
 
 #if UNITY_EDITOR
 using UnityEditor;
-#endif
-
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
-using TriInspector;
 #endif
 
 namespace ThunderRoad
@@ -44,21 +40,23 @@ namespace ThunderRoad
             add
             {
                 _updateRenderSettingEvent -= value;
+#pragma warning disable UDR0004 // Domain Reload Analyzer
                 _updateRenderSettingEvent += value;
+#pragma warning restore UDR0004 // Domain Reload Analyzer
             }
         }
-
-#if ODIN_INSPECTOR
-        [TableList, InlineButton("UpdateReferencesAndSaveAll", "Save all")]
+        
+#if UNITY_EDITOR
+        [InlineButton(nameof(UpdateReferencesAndSave), "Save all")]
 #endif
         public LightingPreset lightingPreset;
 
         public bool changeLightmapFormatForAndroid;
-
-#if ODIN_INSPECTOR
-        [TableList, InlineButton("UpdateReferences")]
+        
+#if UNITY_EDITOR
+        [HideInInspector]
 #endif
-        public List<MeshRendererReference> meshRendererReferences = new List<MeshRendererReference>();
+        public List<MeshRendererReference> meshRendererReferences = new();
 
         [Serializable]
         public class MeshRendererReference
@@ -71,11 +69,9 @@ namespace ThunderRoad
                 this.meshRenderer = meshRenderer;
             }
         }
-
-#if ODIN_INSPECTOR
-        [TableList]
-#endif
-        public List<LightReference> lightReferences = new List<LightReference>();
+        
+        [HideInInspector]
+        public List<LightReference> lightReferences = new();
 
         [Serializable]
         public class LightReference
@@ -88,11 +84,11 @@ namespace ThunderRoad
                 this.light = light;
             }
         }
-
-#if ODIN_INSPECTOR
-        [TableList, InlineButton("BakeProbeVolumes", "Bake probe volumes")]
+        
+#if UNITY_EDITOR
+        [HideInInspector]
 #endif
-        public List<LightProbeVolumeReference> lightProbeVolumeReferences = new List<LightProbeVolumeReference>();
+        public List<LightProbeVolumeReference> lightProbeVolumeReferences = new();
 
         [Serializable]
         public class LightProbeVolumeReference
@@ -106,10 +102,10 @@ namespace ThunderRoad
             }
         }
 
-#if ODIN_INSPECTOR
-        [TableList]
+#if UNITY_EDITOR
+        [HideInInspector]
 #endif
-        public List<ReflectionProbeReference> reflectionProbeReferences = new List<ReflectionProbeReference>();
+        public List<ReflectionProbeReference> reflectionProbeReferences = new();
 
         [Serializable]
         public class ReflectionProbeReference
@@ -309,6 +305,7 @@ namespace ThunderRoad
             lightmapIndexHelper = null;
         }
 
+
         private void OnValidate()
         {
             if (!enabled) return; // Shadowood: Validate will run scripts even if they are disabled; which is rude, could also check for isActiveAndEnabled
@@ -327,6 +324,7 @@ namespace ThunderRoad
                 {
                     bakedLODGroups = new List<BakedLODGroup>(this.GetComponentsInChildren<BakedLODGroup>());
 #if UNITY_EDITOR
+                    UnityEditor.EditorApplication.delayCall -= ApplyAll;
                     UnityEditor.EditorApplication.delayCall += ApplyAll;
 #endif
                 }
@@ -371,7 +369,11 @@ namespace ThunderRoad
                 ApplyAll();
             }
 #if UNITY_EDITOR
+            LightmapBakeHelper.onBakeStarted -= OnBakeStarted;
+            // warning suppressed due to it being unsubscribed in OnDisable()/ManagedOnDisable()
+#pragma warning disable UDR0004 // Domain Reload Analyzer
             LightmapBakeHelper.onBakeStarted += OnBakeStarted;
+#pragma warning restore UDR0004 // Domain Reload Analyzer
 #endif
         }
 
@@ -391,6 +393,9 @@ namespace ThunderRoad
             
                 ClearAll();
             }
+#if UNITY_EDITOR
+            UnityEditor.EditorApplication.delayCall -= ApplyAll;
+#endif
         }
 
         private void GetBakedLODGroups()
@@ -538,8 +543,6 @@ namespace ThunderRoad
                 // create a dummy to avoid compile error
                 copyLevelCurrentPreset = ScriptableObject.CreateInstance<LightingPreset>();
             }
-
-
 
             RenderSettings.ambientIntensity = lightingPreset.ambientIntensity;
             copyLevelCurrentPreset.ambientIntensity = lightingPreset.ambientIntensity;
@@ -938,6 +941,7 @@ namespace ThunderRoad
         }
 
         [ContextMenu("BakeProbeVolumes")]
+        [Button]
         public bool BakeProbeVolumes()
         {
             try
@@ -961,10 +965,10 @@ namespace ThunderRoad
         [ContextMenu("UpdateReferencesAndSaveAll")]
         public void UpdateReferencesAndSaveAll()
         {
-            UpdateReferencesAndSaveAll(true);
+            UpdateReferencesAndSave(true);
         }
 
-        public void UpdateReferencesAndSaveAll(bool saveBakedReflectionProbe = true)
+        public void UpdateReferencesAndSave(bool saveBakedReflectionProbe)
         {
             if (LightmapSettings.lightmaps == null || LightmapSettings.lightmaps.Length == 0)
             {
@@ -1016,7 +1020,17 @@ namespace ThunderRoad
             }
             return lightingPresetAssetsFolderPath;
         }
-
+        public string ReferencesLabel => $"MeshRenderers: {meshRendererReferences.Count}, Lights: {lightReferences.Count}, ReflectionProbes: {reflectionProbeReferences.Count}, LightProbeVolumes: {lightProbeVolumeReferences.Count}";
+        
+        [Title("$" + nameof(ReferencesLabel))]
+        [NonSerialized]
+        [ShowInInspector]
+        [PropertyOrder(0)]
+        [ReadOnly]
+        [HideLabel]
+        public string refInfo;
+        
+        [Button("Update References")]
         public void UpdateReferences()
         {
             // Get all baked meshRenderers
@@ -1164,11 +1178,7 @@ namespace ThunderRoad
                 for (var i = 0; i < count; i++)
                 {
                     MeshRendererReference meshRendererReference = meshRendererReferences[i];
-                    if (meshRendererReference.meshRenderer == null)
-                    {
-                        //Debug.LogError("mesh is null : " + meshRendererReference.guid + " in lighting group :" + gameObject.name);
-                        continue;
-                    }
+                    if (meshRendererReference.meshRenderer == null) continue;
 
                     _meshRendererByGuid.Add(meshRendererReference.guid, meshRendererReference.meshRenderer);
                 }
@@ -1322,7 +1332,6 @@ namespace ThunderRoad
                 }
             }
 
-
             int meshCount = lightingPreset.rendererDataListForLightmaps.Count;
             int indexLightmap = -1;
             int indexNextLightmapMesh = 0;
@@ -1379,7 +1388,6 @@ namespace ThunderRoad
 
                     allMeshRenderers.Remove(meshRenderer);
                 }
-
             }
 
             foreach (MeshRenderer meshRenderer in allMeshRenderers)

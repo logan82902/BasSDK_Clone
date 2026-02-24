@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 4,
+  "groupPath": null,
   "localizationId": "DalgarianLoot",
   "displayName": "",
   "description": "",
@@ -14,16 +15,18 @@
   "tier": 3,
   "flags": "Spinnable",
   "levelRequired": 0,
+  "type": "Valuable",
   "category": "Valuables",
+  "update": "",
   "iconEffectId": null,
   "preferredItemCenter": "Mass",
   "drainImbueWhenIdle": true,
+  "forceImbueUseButton": "None",
   "prefabAddress": "Bas.Item.Treasure.DieD4",
   "iconAddress": "Bas.Item.Treasure.DieD4.Icon[Loot_Dalg_Dice_D4]",
   "closeUpIconAddress": "",
   "pooledCount": 0,
   "androidPooledCount": 0,
-  "type": "Valuable",
   "allowedStorage": "Inventory, Container, SandboxAllItems",
   "despawnOnStoredInInventory": false,
   "isStackable": false,
@@ -37,6 +40,7 @@
   "mass": 0.6,
   "drag": 0.4,
   "angularDrag": 0.05,
+  "density": 2000.0,
   "focusRegenMultiplier": 1.0,
   "spellChargeSpeedPlayerMultiplier": 1.0,
   "spellChargeSpeedNPCMultiplier": 1.0,
@@ -150,12 +154,6 @@
     "preWrapMode": "ClampForever",
     "postWrapMode": "ClampForever"
   },
-  "modules": [
-    {
-      "$type": "ThunderRoad.ItemModuleStats, ThunderRoad",
-      "stats": []
-    }
-  ],
   "colliderGroups": [],
   "damagers": [
     {
@@ -184,6 +182,11 @@
       "dampening": 0.1
     }
   ],
-  "entityModules": [],
-  "groupPath": null
+  "modules": [
+    {
+      "$type": "ThunderRoad.ItemModuleStats, ThunderRoad",
+      "stats": []
+    }
+  ],
+  "entityModules": []
 }

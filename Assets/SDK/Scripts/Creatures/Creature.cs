@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Collections;
@@ -6,36 +6,150 @@ using System.Linq;
 using Random = UnityEngine.Random;
 using ThunderRoad.Manikin;
 using ThunderRoad.Skill;
-
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
+
+#if UNITY_EDITOR
+using UnityEditor;
 #endif
 
 namespace ThunderRoad
 {
     [HelpURL("https://kospy.github.io/BasSDK/Components/ThunderRoad/Creatures/Creature.html")]
     [AddComponentMenu("ThunderRoad/Creatures/Creature")]
+    [DeclareTabGroup("Tabs")]
+    // tab: general
+    [DeclareBoxGroup("Tabs/Head", Title = "Head")]
+    // tab: movement
+    [DeclareFoldoutGroup("Tabs/MoveAnimation", Title = "Movement Animation")]
+    [DeclareBoxGroup("Tabs/Falling", Title = "Falling")]
+    // tab: runtime
+    [DeclareFoldoutGroup("Tabs/General", Title = "General")]
+    [DeclareFoldoutGroup("Tabs/TPosing", Title = "T-Posing")]
+    [DeclareFoldoutGroup("Tabs/Animation", Title = "Animation")]
+    [DeclareFoldoutGroup("Tabs/Customization", Title = "Customization")]
     public class Creature : ThunderEntity
     {
-        public static string secondWindId = "SecondWind";
+        public const string secondWindId = "SecondWind";
 
+        [Group("Tabs"), Tab("General")]
         [Tooltip("The Creature ID of the creature.")]
+        [Dropdown(nameof(GetAllCreatureID), AppendToField = true)]
         public string creatureId;
 
+        [Group("Tabs"), Tab("General")]
         [Tooltip("The animator the creature will use for animations")]
         public Animator animator;
+        [Group("Tabs"), Tab("General")]
         [Tooltip("The LOD Group for the creature meshes, if it has one.")]
         public LODGroup lodGroup;
+        [Group("Tabs"), Tab("General")]
         [Tooltip("The container the creature uses for its parts.")]
         public Container container;
-        [Tooltip("The transform used for eye rotation")]
-        public Transform centerEyes;
-        [Tooltip("The offset used for the eye camera")]
-        public Vector3 eyeCameraOffset;
+        [Group("Tabs"), Tab("General")]
         [Tooltip("If the creature use a VFX renderer, put it here.")]
         public Renderer vfxRenderer;
+
+        [NonSerialized]
+        public HashSet<string> heldCrystalImbues;
+
+        [Group("Tabs"), Tab("General")]
+
+        [Tooltip("References the class for armor SFX")]
+        public ArmorSFX armorSFX;
+
+        [Group("Tabs"), Tab("General")]
+        [Tooltip("Set the faction of this creature. Will generally be overridden by creature data.")]
+        [Dropdown(nameof(GetAllFactionID), Searchable = false)]
+        public int factionId;
+
+
+        [Group("Tabs/Head"), Tab("General")]
+        [Tooltip("The transform used for eye rotation")]
+        public Transform centerEyes;
+        [Group("Tabs/Head"), Tab("General")]
+        [Tooltip("The offset used for the eye camera")]
+        public Vector3 eyeCameraOffset;
+        [Group("Tabs/Head"), Tab("General")]
+        [Tooltip("When enabled, the creature blinks")]
+        public bool autoEyeClipsActive = true;
+        [Group("Tabs/Head"), Tab("General")]
+        [Tooltip("Reference the eyes for blinking")]
+        public List<CreatureEye> allEyes = new();
+        [Group("Tabs/Head"), Tab("General")]
+        [Tooltip("Reference the eye animation clips")]
+        public List<CreatureData.EyeClip> eyeClips = new();
+        [Group("Tabs/Head"), Tab("General")]
+        [Tooltip("Reference the meshes to hide when in first person.")]
+        public List<SkinnedMeshRenderer> meshesToHideForFPV;
+
+        [Group("Tabs/Head"), Tab("General")]
+        [Header("Speech")]
+        [Tooltip("Reference the jaw bone for creature speaking")]
+        public Transform jaw;
+        [Group("Tabs/Head"), Tab("General")]
+        [Tooltip("Max rotation of the jaw when it speaks.")]
+        public Vector3 jawMaxRotation = new(0, -30, 0);
+
+        [Group("Tabs"), Tab("Movement")]
+        public bool stepEnabled;
+        [Group("Tabs"), Tab("Movement")]
+        public float stepThreshold = 0.2f;
+
+        [Group("Tabs"), Tab("Movement")]
+        public bool turnRelativeToHand = true;
+        [Group("Tabs"), Tab("Movement")]
+        public float headMinAngle = 30;
+        [Group("Tabs"), Tab("Movement")]
+        public float headMaxAngle = 80;
+        [Group("Tabs"), Tab("Movement")]
+        public float handToBodyRotationMaxVelocity = 2;
+        [Group("Tabs"), Tab("Movement")]
+        public float handToBodyRotationMaxAngle = 30;
+        [Group("Tabs"), Tab("Movement")]
+        public float turnSpeed = 6;
+        [Group("Tabs"), Tab("Movement")]
+        public float ikLocomotionSpeedThreshold = 1;
+        [Group("Tabs"), Tab("Movement")]
+        public float ikLocomotionAngularSpeedThreshold = 30f;
+
+        [Group("Tabs/MoveAnimation"), Tab("Movement")]
+        [InfoBox("The following values control locomotion animation! It is not advised for you to change these values unless it's necessary!", TriMessageType.Warning)]
+        [Tooltip("Defines how quickly the creature blends into and out of locomotion animations.")]
+        public float animationDampTime = 0.1f;
+        [Group("Tabs/MoveAnimation"), Tab("Movement")]
+        [Tooltip("Defines how quickly the creature blends into and out of locomotion animations while moving in the air.")]
+        public float verticalDampTime = 0.5f;
+        [Group("Tabs/MoveAnimation"), Tab("Movement")]
+        [Tooltip("Defines the speed threshold for the creature to be considered moving.")]
+        public float stationaryVelocityThreshold = 0.01f;
+        [Group("Tabs/MoveAnimation"), Tab("Movement")]
+        [Tooltip("Define the speed for turn animations.")]
+        public float turnAnimSpeed = 0.007f;
+
+        [Group("Tabs/Falling"), Tab("Movement")]
+        [Tooltip("The height off the ground the creature needs to be before they play the fall animation")]
+        public float fallAliveAnimationHeight = 0.5f;
+        [Group("Tabs/Falling"), Tab("Movement")]
+        [Tooltip("The height the creautre needs to fall before their ragdoll distabilizes")]
+        public float fallAliveDestabilizeHeight = 3;
+        [Group("Tabs/Falling"), Tab("Movement")]
+        [Tooltip("The maximum velocity for the creatures body before it can stand up")]
+        public float groundStabilizationMaxVelocity = 1;
+        [Group("Tabs/Falling"), Tab("Movement")]
+        [Tooltip("The minimum duration a creature is on the ground before getting up.")]
+        public float groundStabilizationMinDuration = 3;
+        [Group("Tabs/Falling"), Tab("Movement")]
+        [Tooltip("How submerged the creature needs to be before they can start the swimming animations.")]
+        [Range(0f, 1f)]
+        public float swimFallAnimationRatio = 0.6f;
+
+        [Group("Tabs"), Tab("Movement")]
+        [Tooltip("Toggle T Pose for the creature.")]
+        public bool toogleTPose;
+
+        public FloatHandler detectionFOVModifier;
+        public FloatHandler hitEnvironmentDamageModifier;
+        public FloatHandler healthModifier;
 
         [NonSerialized]
         public Ragdoll ragdoll;
@@ -62,65 +176,6 @@ namespace ThunderRoad
         [NonSerialized]
         public bool wasLoadedForCharacterSelect;
 
-        [NonSerialized]
-        public HashSet<string> heldCrystalImbues;
-
-        [Tooltip("References the class to tell in-game skills if the player is airborne.")]
-        public AirHelper airHelper;
-
-        [Tooltip("References the class for armor SFX")]
-        public ArmorSFX armorSFX;
-
-
-        [Header("Speak")]
-        [Tooltip("Reference the jaw bone for creature speaking")]
-        public Transform jaw;
-        [Tooltip("Max rotation of the jaw when it speaks.")]
-        public Vector3 jawMaxRotation = new Vector3(0, -30, 0);
-
-        [Header("Head")]
-        [Tooltip("When enabled, the creature blinks")]
-        public bool autoEyeClipsActive = true;
-        [Tooltip("Reference the eyes for blinking")]
-        public List<CreatureEye> allEyes = new List<CreatureEye>();
-        [Tooltip("Reference the eye animation clips")]
-        public List<CreatureData.EyeClip> eyeClips = new List<CreatureData.EyeClip>();
-        [Tooltip("Reference the meshes to hide when in first person.")]
-        public List<SkinnedMeshRenderer> meshesToHideForFPV;
-
-        [Header("Fall")]
-        [Tooltip("The height off the ground the creature needs to be before they play the fall animation")]
-        public float fallAliveAnimationHeight = 0.5f;
-        [Tooltip("The height the creautre needs to fall before their ragdoll distabilizes")]
-        public float fallAliveDestabilizeHeight = 3;
-        [Tooltip("The maximum velocity for the creatures body before it can stand up")]
-        public float groundStabilizationMaxVelocity = 1;
-        [Tooltip("The minimum duration a creature is on the ground before getting up.")]
-        public float groundStabilizationMinDuration = 3;
-        [Tooltip("How submerged the creature needs to be before they can start the swimming animations.")]
-        [Range(0f, 1f)]
-        public float swimFallAnimationRatio = 0.6f;
-
-        [Tooltip("Toggle T Pose for the creature.")]
-        public bool toogleTPose;
-
-        [Header("Movement")]
-        public bool stepEnabled;
-        public float stepThreshold = 0.2f;
-
-        public bool turnRelativeToHand = true;
-        public float headMinAngle = 30;
-        public float headMaxAngle = 80;
-        public float handToBodyRotationMaxVelocity = 2;
-        public float handToBodyRotationMaxAngle = 30;
-        public float turnSpeed = 6;
-        public float ikLocomotionSpeedThreshold = 1;
-        public float ikLocomotionAngularSpeedThreshold = 30f;
-
-        public FloatHandler detectionFOVModifier;
-        public FloatHandler hitEnvironmentDamageModifier;
-        public FloatHandler healthModifier;
-
         public static int hashDynamicOneShot, hashDynamicLoop, hashDynamicLoopAdd, hashDynamicLoop3, hashDynamicInterrupt, hashDynamicSpeedMultiplier, hashDynamicMirror;
         public static int hashDynamicUpperOneShot, hashDynamicUpperLoop, hashDynamicUpperMultiplier, hashDynamicUpperMirror;
         public static int hashExitDynamic, hashInvokeCallback, hashIsBusy, hashFeminity, hashHeight, hashFalling, hashUnderwater, hashGetUp, hashTstance, hashStaticIdle, hashFreeHands;
@@ -145,9 +200,8 @@ namespace ThunderRoad
             Parry,
         }
 
-#if ODIN_INSPECTOR
+        [Group("Tabs/Falling"), Tab("Movement")]
         [ReadOnly]
-#endif
         public FallState fallState = FallState.None;
 
         public enum FallState
@@ -160,15 +214,14 @@ namespace ThunderRoad
         }
 
 
-#if ODIN_INSPECTOR
-        [ShowInInspector, ReadOnly]
-#endif
+        [ShowInInspector]
+        [Group("Tabs/State"), Tab("General")]
+        [ReadOnly]
         [NonSerialized]
         public List<Holder> holders;
 
-#if ODIN_INSPECTOR
         [ShowInInspector]
-#endif
+        [Group("Tabs"), Tab("General")]
         [NonSerialized]
         public List<RendererData> renderers = new List<RendererData>();
         [NonSerialized]
@@ -207,15 +260,12 @@ namespace ThunderRoad
         [NonSerialized]
         public HashSet<string> heldImbueIDs;
 
-#if ODIN_INSPECTOR
-        [ValueDropdown(nameof(GetAllFactionID))]
-#endif
-        public int factionId;
+        [Group("Tabs/State"), Tab("General")]
         public GameData.Faction faction;
 
-#if ODIN_INSPECTOR
-        [ShowInInspector, ReadOnly]
-#endif
+        [ShowInInspector]
+        [Group("Tabs/State"), Tab("General")]
+        [ReadOnly]
         [NonSerialized]
         public CreatureData data;
 
@@ -237,22 +287,21 @@ namespace ThunderRoad
         public Creature lastInteractionCreature;
         [NonSerialized]
         public float swimVerticalRatio;
+        [NonSerialized]
+        public bool resistWaveForce = false;
 
         [NonSerialized] public CreatureData.EthnicGroup currentEthnicGroup;
 
-#if ODIN_INSPECTOR
+        [Group("Tabs/State"), Tab("General")]
         [ReadOnly]
-#endif
         public bool initialized = false;
-#if ODIN_INSPECTOR
+        [Group("Tabs/State"), Tab("General")]
         [ReadOnly]
-#endif
         public bool loaded = false;
 
         public bool canPlayDynamicAnimation => animatorOverrideController != null;
-#if ODIN_INSPECTOR
+        [Group("Tabs/State"), Tab("General")]
         [ReadOnly]
-#endif
         public bool isPlayingDynamicAnimation;
         protected Action dynamicAnimationendEndCallback;
         protected Action upperDynamicAnimationendEndCallback;
@@ -269,9 +318,8 @@ namespace ThunderRoad
         [NonSerialized]
         public bool updateReveal;
 
-#if ODIN_INSPECTOR
+        [Group("Tabs/State"), Tab("General")]
         [ReadOnly]
-#endif
         public bool isKilled = false;
 
         public enum State
@@ -290,6 +338,8 @@ namespace ThunderRoad
                 return State.Alive;
             }
         }
+        [NonSerialized]
+        public Vector3 fallGroundPoint;
 
 
         public enum ProtectToAim
@@ -298,7 +348,6 @@ namespace ThunderRoad
             Idle,
             Aim,
         }
-
 
         public enum AnimFootStep
         {
@@ -317,18 +366,10 @@ namespace ThunderRoad
             Skin,
         }
 
-#if ODIN_INSPECTOR
-        public List<ValueDropdownItem<string>> GetAllCreatureID()
-        {
-            return Catalog.GetDropdownAllID(Category.Creature);
-        }
 
-        public List<ValueDropdownItem<int>> GetAllFactionID()
-        {
-            if (Catalog.gameData == null) return null;
-            return Catalog.gameData.GetFactions();
-        }
-#endif
+        public TriDropdownList<string> GetAllCreatureID() => Catalog.GetDropdownAllID(Category.Creature);
+
+        public TriDropdownList<int> GetAllFactionID() => Catalog.GetDropdownAllFactionID();
 
         protected void Awake()
         {
@@ -346,8 +387,6 @@ namespace ThunderRoad
             locomotion = this.GetComponent<Locomotion>();
             mana = this.GetComponent<Mana>();
             climber = this.GetComponentInChildren<FeetClimber>();
-
-            airHelper = this.GetOrAddComponent<AirHelper>();
 
             holders = new List<Holder>(this.GetComponentsInChildren<Holder>());
             heldCrystalImbues = new HashSet<string>();
@@ -499,6 +538,7 @@ namespace ThunderRoad
 #endif
 
         #region Exposed SDK methods
+
         [Button]
         public void Heal(float healing)
         {

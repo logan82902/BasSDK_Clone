@@ -1,6 +1,4 @@
-﻿#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#endif
+﻿using TriInspector;
 using System;
 using System.Collections;
 using UnityEngine;
@@ -8,44 +6,32 @@ using Random = UnityEngine.Random;
 
 namespace ThunderRoad.Skill.Spell
 {
+    [DeclareBoxGroup("Sparks", Title = "Sparks")]
+    [DeclareBoxGroup("Dependencies", Title = "Dependencies")]
     public class SkillDetonationSwarm : SkillData
     {
-#if ODIN_INSPECTOR
-        [BoxGroup("Sparks")]
-#endif
+        [Group("Sparks")]
         public float damageMultiplier = 0.4f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Sparks")]
-#endif
+        [Group("Sparks")]
         public float fireVelocity = 3f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Sparks")]
-#endif
+        [Group("Sparks")]
         public int baseSparkCount = 3;
-#if ODIN_INSPECTOR
-        [BoxGroup("Sparks")]
-#endif
+        [Group("Sparks")]
         public int sparkCountBody = 1;
-#if ODIN_INSPECTOR
-        [BoxGroup("Sparks")]
-#endif
+        [Group("Sparks")]
         public float homingDelay = 0.5f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Sparks")]
-#endif
+        [Group("Sparks")]
         public bool requireBurningStatus = true;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Dependencies"), ValueDropdown(nameof(GetAllSkillID))]
-#endif
+        [Group("Dependencies")]
+        [Dropdown(nameof(GetAllSkillID))]
         public string remoteDetonationSkillId = "RemoteDetonation";
 
         [NonSerialized]
         public SkillRemoteDetonation remoteDetonationSkill;
-#if ODIN_INSPECTOR
-        [BoxGroup("Dependencies"), ValueDropdown(nameof(GetAllStatusEffectID))]
-#endif
+        [Group("Dependencies")]
+        [Dropdown(nameof(GetAllStatusEffectID))]
         public string burningStatusId = "Burning";
         
         [NonSerialized]

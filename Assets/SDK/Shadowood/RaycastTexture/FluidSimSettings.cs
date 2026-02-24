@@ -1,16 +1,20 @@
 ﻿#if FLUXY
 using System;
 using Fluxy;
-using Sirenix.OdinInspector;
+using TriInspector;
+
 using UnityEngine;
 
 [Serializable]
+[DeclareFoldoutGroup("NormalMap Distort", Expanded = false)]
 public class FluidSimSettings
 {
     [Tooltip("Enable this while playing with settings")]
-    [GUIColor("@realtimeUpdate ? Color.red : Color.white")]
+    [GUIColor("$RealtimeUpdateGuiColor")]
     public bool realtimeUpdate;
-    
+
+    private Color RealtimeUpdateGuiColor => realtimeUpdate ? Color.red : Color.white;
+
     public float gravity = -25;
 
     public Vector3 constantForce = Vector3.zero;
@@ -25,22 +29,25 @@ public class FluidSimSettings
 
     //
 
-    [FoldoutGroup("NormalMap Distort")] public bool useNormalMap = false;
+    [Group("NormalMap Distort")]
+    public bool useNormalMap = false;
+
 
     
     [Tooltip("Normal map to add swirly, follows the UV of the mesh")] //
-    [ShowIf("@useNormalMap")]
-    [FoldoutGroup("NormalMap Distort")]
-    [InlineButton("FindTextures","Default")]
+    [ShowIf("useNormalMap")]
+    [Group("NormalMap Distort")]
+    [InlineButton(nameof(FindTextures), "Default")]
     public Texture2D surfaceNormals;
 
-    [FoldoutGroup("NormalMap Distort")] [ShowIf("@useNormalMap")] //
+    [Group("NormalMap Distort")]
+    [ShowIf("useNormalMap")] //
     public Vector2 normalTiling = Vector2.one;
 
-    [FoldoutGroup("NormalMap Distort")]
+    [Group("NormalMap Distort")]
     [Tooltip("if set to 1 will overpower/replace other effects like gravity")] //
-    [ShowIf("@useNormalMap")]
-    [Range(0,2)]
+    [ShowIf("useNormalMap")]
+    [Range(0, 2)]
     public float normalStrength = 0.5f;
     
     [HideInInspector]

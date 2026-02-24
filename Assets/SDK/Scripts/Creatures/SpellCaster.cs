@@ -3,11 +3,8 @@ using System;
 using System.Collections.Generic;
 using ThunderRoad.Skill.SpellPower;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {

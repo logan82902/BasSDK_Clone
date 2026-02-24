@@ -1,13 +1,11 @@
 ﻿using System.Collections.Generic;
 using System;
 using Newtonsoft.Json;
-
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#endif
+using TriInspector;
 
 namespace ThunderRoad
 {
+    [SkipInTypeDropdown]
     public abstract class ContainerContent<T, V> : ContainerContent where T : CatalogData, IContainerLoadable<T> where V : ContainerContent
     {
         [JsonIgnore]
@@ -36,6 +34,10 @@ namespace ThunderRoad
 
         public override bool OnCatalogRefresh()
         {
+            if (mergeKey.IsNullOrEmptyOrWhitespace())
+            {
+               mergeKey = GetMergeKey();
+            }
             return LoadData();
         }
 
@@ -45,16 +47,8 @@ namespace ThunderRoad
             loadable = Catalog.GetData<T>(referenceID, false);
             return loadable != null;
         }
-#if ODIN_INSPECTOR
-        public override string GetTypeString()
-        {
-            return (Catalog.TryGetCategory<T>(out Category category) ? category.ToString() : "Unknown") + $" ({GetType().Name})";
-        }
+        public override string GetTypeString() => (Catalog.TryGetCategory<T>(out Category category) ? category.ToString() : "Unknown") + $" ({GetType().Name})";
 
-        public override List<ValueDropdownItem<string>> DropdownOptions()
-        {
-            return Catalog.GetDropdownAllID<T>();
-        }
-#endif
+        public override TriDropdownList<string> DropdownOptions() => Catalog.GetDropdownAllID<T>();
     }
 }

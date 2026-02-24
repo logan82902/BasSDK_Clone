@@ -4,9 +4,9 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 1,
+  "groupPath": "Player",
   "displayName": "FireCrystal",
   "description": "You start with a gravity crystal",
-  "contents": [],
   "containerContents": [
     {
       "$type": "ThunderRoad.ItemContent, ThunderRoad",
@@ -15,6 +15,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": null,
+      "mergeKey": "79979281",
       "referenceID": "ApparelShirt04"
     },
     {
@@ -24,6 +25,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": null,
+      "mergeKey": "9e9d0fc1",
       "referenceID": "ApparelCivilianLegs"
     },
     {
@@ -33,10 +35,12 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": null,
+      "mergeKey": "dea2839f",
       "referenceID": "ApparelCivilianBoots"
     },
     {
       "$type": "ThunderRoad.SpellContent, ThunderRoad",
+      "mergeKey": "43a17f73",
       "referenceID": "Telekinesis"
     },
     {
@@ -60,6 +64,7 @@
         "lastSpawnTime": 0.0
       },
       "customDataList": null,
+      "mergeKey": "afddcbfb",
       "referenceID": "CrystalMindT1"
     },
     {
@@ -67,6 +72,7 @@
       "quantity": 1,
       "state": null,
       "customDataList": null,
+      "mergeKey": "68c9c640",
       "referenceID": "Journal"
     },
     {
@@ -74,6 +80,7 @@
       "quantity": 1,
       "state": null,
       "customDataList": null,
+      "mergeKey": "57ab1533",
       "referenceID": "ZiplineWheel01"
     },
     {
@@ -97,8 +104,8 @@
         "lastSpawnTime": 0.0
       },
       "customDataList": null,
+      "mergeKey": "ef2b6a46",
       "referenceID": "DaggerAntique"
     }
-  ],
-  "groupPath": "Player"
+  ]
 }

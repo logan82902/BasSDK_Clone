@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Collections;
@@ -6,11 +6,8 @@ using System.IO;
  // ProjectCore
 using UnityEngine.ResourceManagement.ResourceLocations;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+
 using TriInspector;
-#endif
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -172,11 +169,10 @@ return false;
 
         public Bounds Bounds;
         public List<AreaRotationHelper.Rotation> allowedRotation;
+        [HideReferencePicker]
         public List<AreaConnection> connections;
 
-#if ODIN_INSPECTOR
         [ShowInInspector]
-#endif
         public AreaGlobalParameter[] areaGlobalParameters;
         #endregion Data
 

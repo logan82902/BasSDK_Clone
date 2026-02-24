@@ -16,7 +16,13 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: 230a76f1bba692e4b9bff48952144e59
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: f99be0b93825ea740860fa6b3f1b94ed
+    m_Address: Shader.Lux.Decal
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: b14c4d9d8b63f3247be008fe8b53d3ae, type: 2}
   m_SchemaSet:

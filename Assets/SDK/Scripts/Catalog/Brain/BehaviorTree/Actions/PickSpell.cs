@@ -1,28 +1,19 @@
 ﻿using UnityEngine;
-
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
 
 namespace ThunderRoad.AI.Action
 {
-	public class PickSpell : ActionNode
+    [AutoLabelWidth(AddedWidth = 5f, MinWidth = 0f)]
+    public class PickSpell : ActionNode
     {
         public Side side = Side.Left;
         public SelectionMode selectionMode = SelectionMode.ByDistance;
-#if ODIN_INSPECTOR
-        [ShowIf("selectionMode", Value = SelectionMode.ByID)] 
-#endif
+        [ShowIf("selectionMode", SelectionMode.ByID)]
         public string spellID = "";
-#if ODIN_INSPECTOR
-        [ShowIf("selectionMode", Value = SelectionMode.ByDistance)] 
-#endif
+        [ShowIf("selectionMode", SelectionMode.ByDistance)]
         public Target target = Target.CurrentTarget;
-#if ODIN_INSPECTOR
-        [ShowIf("selectionMode", Value = SelectionMode.ByDistance), DisableIf("target", optionalValue: Target.CurrentTarget)] 
-#endif
+        [ShowIf("selectionMode", SelectionMode.ByDistance)]
+        [DisableIf("target", Target.CurrentTarget)]
         public string inputTransformVariableName = "";
 
         public enum SelectionMode

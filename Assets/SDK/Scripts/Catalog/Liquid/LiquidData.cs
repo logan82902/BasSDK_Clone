@@ -1,27 +1,24 @@
 ﻿using UnityEngine;
 using System;
 using System.Collections.Generic;
-
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
     [Serializable]
+#if UNITY_EDITOR
+    [EditorLoadPriority(5)]
+#endif
     public class LiquidData : CatalogData
     {
         [Multiline]
         public string designation;
         public Color color;
 
+        [Serializable]
         public class Content
         {
-#if ODIN_INSPECTOR
-            [ValueDropdown(nameof(GetAllLiquidID))]
-#endif
+            [Dropdown(nameof(GetAllLiquidID))]
             public string liquidId;
             [NonSerialized]
             public LiquidData liquidData;
@@ -48,12 +45,30 @@ namespace ThunderRoad
                 this.level = level;
             }
 
-#if ODIN_INSPECTOR
-            public List<ValueDropdownItem<string>> GetAllLiquidID()
-            {
-                return Catalog.GetDropdownAllID(Category.Liquid);
-            }
-#endif
+            public TriDropdownList<string> GetAllLiquidID() => Catalog.GetDropdownAllID(Category.Liquid);
+        }
+
+        [Serializable]
+        [DeclareBoxGroup("Settings", Title = "Indicator Settings")]
+        [AutoLabelWidth(MinWidth = 0f)]
+        public abstract class Indicator
+        {
+            public abstract string GetName();
+
+        }
+
+        [Serializable]
+        public class NoIndicator : Indicator
+        {
+            public override string GetName() => "None";
+
+        }
+
+        [Serializable]
+        public class LevelIndicator : Indicator
+        {
+            public override string GetName() => "Level";
+
         }
 
     }

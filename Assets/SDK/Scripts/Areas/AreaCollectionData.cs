@@ -1,14 +1,12 @@
-namespace ThunderRoad
+﻿namespace ThunderRoad
 {
-    using System.Collections.Generic;
-    using UnityEngine;
+using System.Collections.Generic;
+using UnityEngine;
 
-#if ODIN_INSPECTOR
-    using Sirenix.OdinInspector;
-#else
-    using TriInspector;
-#endif
+    
+using TriInspector;
 
+    [SkipInTypeDropdown]
     public abstract class AreaCollectionData : CatalogData, IAreaBlueprintGenerator
     {
         public string GetId()

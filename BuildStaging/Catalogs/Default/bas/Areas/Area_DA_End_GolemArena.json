@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
+  "groupPath": "Dalgarian/GameSpecific",
   "isUnique": true,
   "areaPrefabAddress": "Bas.Area.DA_End_GolemArena",
   "lightingPresetAddress": "Bas.Area.DA_End_GolemArena.LightingPreset",
@@ -86,6 +87,5 @@
       "isZeroIntensity": false,
       "visibleFromGate": false
     }
-  ],
-  "groupPath": "Dalgarian/GameSpecific"
+  ]
 }

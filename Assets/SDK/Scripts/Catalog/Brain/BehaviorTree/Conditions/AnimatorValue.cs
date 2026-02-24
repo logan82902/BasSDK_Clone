@@ -1,24 +1,16 @@
 ﻿using UnityEngine;
-
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
 
 namespace ThunderRoad.AI.Condition
 {
+    [AutoLabelWidth(AddedWidth = 5f, MinWidth = 0f)]
     public class AnimatorValue : ConditionNode
     {
         public string parameterName;
         public AnimatorControllerParameterType parameterType = AnimatorControllerParameterType.Bool;
-#if ODIN_INSPECTOR
-        [HideIf("parameterType", optionalValue: AnimatorControllerParameterType.Bool)]
-#endif
+        [HideIf("parameterType", AnimatorControllerParameterType.Bool)]
         public Comparator variableComparator;
-#if ODIN_INSPECTOR
-        [HideIf("parameterType", optionalValue: AnimatorControllerParameterType.Bool)]
-#endif
+        [HideIf("parameterType", AnimatorControllerParameterType.Bool)]
         public float comparedValue;
 
         public enum Comparator

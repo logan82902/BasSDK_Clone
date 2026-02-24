@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
+  "groupPath": null,
   "gravityMult": 1.0,
   "dragRatio": 1.0,
   "gravityMultPlayer": 1.0,
@@ -17,6 +18,7 @@
   "creatureTorqueMult": 0.0,
   "itemTorqueMult": 0.0,
   "torqueForceMode": "VelocityChange",
+  "constantTorque": false,
   "destabilizeCreatures": false,
   "environmentDamageMult": 0.1,
   "allowSlamOnEnd": true,
@@ -25,11 +27,11 @@
   "lithobrakeId": "Lithobrake",
   "type": "ThunderRoad.Floating, ThunderRoad, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
   "bypassImmunity": 0,
+  "ignoreClearByType": false,
   "stackType": "Refresh",
   "forceAllowOnCreatures": false,
   "allowOnItems": true,
   "creatureEffectId": "ImbueGravityRagdoll",
   "itemEffectId": "ImbueGravityRagdoll",
-  "groupPath": null,
   "StackTypeDescription": "Refreshes the duration every time you apply a status."
 }

@@ -1,15 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
 
 namespace ThunderRoad.AI.Get
 {
-	public class AvailableWeapons
+    [AutoLabelWidth(AddedWidth = 5f, MinWidth = 0f)]
+    public class AvailableWeapons
     {
         public Item rightMelee1h;
         public Item leftMelee1h;
@@ -24,28 +20,27 @@ namespace ThunderRoad.AI.Get
         public SpellData spell;
     }
 
+    [AutoLabelWidth(AddedWidth = 5f, MinWidth = 0f)]
     public class GetAvailableWeapons : ActionNode
     {
         public string outputAvailableAttacksVariableName = "AvailableWeapons";
 
-#if ODIN_INSPECTOR
-        [ValueDropdown(nameof(GetAllSubTreesID))] 
-#endif
-        public List<string> priorityTreeID = new List<string>();
+        [DropdownList(nameof(GetAllSubTreesID))]
+        public List<string> priorityTreeID = new();
 
-#if ODIN_INSPECTOR
-        public List<ValueDropdownItem<string>> GetAllSubTreesID()
+        public TriDropdownList<string> GetAllSubTreesID()
         {
-            List<ValueDropdownItem<string>> dropdownList = new List<ValueDropdownItem<string>>();
-            dropdownList.Add(new ValueDropdownItem<string>("None", ""));
+            TriDropdownList<string> dropdownList = new();
+            dropdownList.Add("None", "");
             List<string> list2 = Catalog.GetDataList(Category.BehaviorTree).OfType<BehaviorTreeData>().Where(x => x.type == BehaviorTreeData.Type.SubTree).Select(x => x.id).ToList();
             foreach (string id in list2)
             {
-                dropdownList.Add(new ValueDropdownItem<string>(id, id));
+                dropdownList.Add(id, id);
             }
             return dropdownList;
-        } 
-#endif
+        }
+
+        public GetAvailableWeapons() { }
 
     }
 }

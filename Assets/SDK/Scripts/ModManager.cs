@@ -8,21 +8,14 @@ using System;
 using System.Collections;
 using System.Text;
 using System.Text.RegularExpressions;
-
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
     public static class ModManager
     {
-        public const string debugLine = "[ModManager]";
-        public static string modFolderName = "Mods";
-        public static bool editorLoadAddressableBundles = false;
-
+        private const string debugLine = "[ModManager]";
+        public const string modFolderName = "Mods";
         public static bool modCatalogAddressablesLoaded;
 
         public static readonly HashSet<ModData> loadedMods = new HashSet<ModData>();
@@ -62,36 +55,30 @@ namespace ThunderRoad
             /// <summary>
             /// The name of the folder containing the manifest.
             /// </summary>
-#if ODIN_INSPECTOR
             [ShowInInspector]
-#endif
             [NonSerialized]
             public string folderName;
 
             /// <summary>
             /// Full path to the folder containing the manifest.
             /// </summary>
-#if ODIN_INSPECTOR
             [ShowInInspector]
-#endif
             [NonSerialized]
             public string fullPath;
 
-#if ODIN_INSPECTOR
             [ShowInInspector]
-#endif
             [NonSerialized]
             public bool Incompatible;
 
-#if ODIN_INSPECTOR
             [ShowInInspector]
-#endif
             [NonSerialized]
             public List<Assembly> assemblies = new List<Assembly>();
 
-#if ODIN_INSPECTOR
             [ShowInInspector]
-#endif
+            [NonSerialized]
+            public List<string> assemblyPaths = new List<string>();
+
+            [ShowInInspector]
             [NonSerialized]
             public HashSet<Error> errors = new HashSet<Error>();
 
@@ -457,6 +444,11 @@ yield break;
                     }
                     modFolders = modFoldersOrdered.ToArray();
                 }
+            }
+            else
+            {
+                //order them alphabetically if no load order file
+                Array.Sort(modFolders, StringComparer.OrdinalIgnoreCase);
             }
             return modFolders;
         }

@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
+  "groupPath": null,
   "type": "SubTree",
   "rootNode": {
     "$type": "ThunderRoad.AI.Control.Selector, ThunderRoad",
@@ -43,10 +44,7 @@
                       "outputCreatureAsCurrentTarget": true,
                       "outputCreatureVariableName": "",
                       "outputTransform": "SightedPart",
-                      "outputTransformVariableName": "CurrentTargetSightedPartTransform",
-                      "blackboard": null,
-                      "creature": null,
-                      "brainData": null
+                      "outputTransformVariableName": "CurrentTargetSightedPartTransform"
                     },
                     {
                       "$type": "ThunderRoad.AI.Decorator.IfCondition, ThunderRoad",
@@ -70,10 +68,7 @@
                         "turnSpeed": 0.0,
                         "moveMinDuration": 0.7,
                         "stuckRadius": 0.1,
-                        "stuckMaxDuration": 5.0,
-                        "blackboard": null,
-                        "creature": null,
-                        "brainData": null
+                        "stuckMaxDuration": 5.0
                       }
                     }
                   ]
@@ -88,10 +83,7 @@
                 "fromDirection": "Either",
                 "rememberDuration": 20.0,
                 "outputCreatureAsCurrentTarget": true,
-                "outputCreatureVariableName": "",
-                "blackboard": null,
-                "creature": null,
-                "brainData": null
+                "outputCreatureVariableName": ""
               },
               {
                 "$type": "ThunderRoad.AI.Get.GetRagdollTouch, ThunderRoad",
@@ -102,10 +94,7 @@
                 "rememberDuration": 20.0,
                 "outputCreatureAsCurrentTarget": true,
                 "outputCreatureVariableName": "",
-                "outputPartTransformVariableName": "",
-                "blackboard": null,
-                "creature": null,
-                "brainData": null
+                "outputPartTransformVariableName": ""
               },
               {
                 "$type": "ThunderRoad.AI.Get.GetCreature, ThunderRoad",
@@ -120,10 +109,7 @@
                 "outputCreatureAsCurrentTarget": true,
                 "outputCreatureVariableName": "",
                 "outputTransform": "SightedPart",
-                "outputTransformVariableName": "CurrentTargetSightedPartTransform",
-                "blackboard": null,
-                "creature": null,
-                "brainData": null
+                "outputTransformVariableName": "CurrentTargetSightedPartTransform"
               },
               {
                 "$type": "ThunderRoad.AI.Get.GetSharedTarget, ThunderRoad",
@@ -133,10 +119,7 @@
                 "checkShortestPath": false,
                 "outputCreatureAsCurrentTarget": true,
                 "outputCreatureVariableName": "",
-                "outputTransformVariableName": "",
-                "blackboard": null,
-                "creature": null,
-                "brainData": null
+                "outputTransformVariableName": ""
               }
             ]
           },
@@ -145,10 +128,7 @@
             "target": "CurrentTarget",
             "inputCreatureVariableName": "",
             "targetPart": "RagdollEyes",
-            "outputTransformVariableName": "CurrentTargetEyes",
-            "blackboard": null,
-            "creature": null,
-            "brainData": null
+            "outputTransformVariableName": "CurrentTargetEyes"
           },
           {
             "$type": "ThunderRoad.AI.Decorator.AlwaysSuccess, ThunderRoad",
@@ -162,10 +142,7 @@
                 "x": 0.0,
                 "y": 0.0,
                 "z": 0.0
-              },
-              "blackboard": null,
-              "creature": null,
-              "brainData": null
+              }
             }
           },
           {
@@ -179,26 +156,17 @@
               "x": 3.0,
               "y": 5.0
             },
-            "succeedOnCooldown": true,
-            "blackboard": null,
-            "creature": null,
-            "brainData": null
+            "succeedOnCooldown": true
           },
           {
             "$type": "ThunderRoad.AI.Action.InterruptIdle, ThunderRoad",
             "alwaysFullInterrupt": true,
             "changeBrainStateBeforeInterrupt": true,
-            "brainState": "Combat",
-            "blackboard": null,
-            "creature": null,
-            "brainData": null
+            "brainState": "Combat"
           },
           {
             "$type": "ThunderRoad.AI.Action.SetBrainState, ThunderRoad",
-            "brainState": "Combat",
-            "blackboard": null,
-            "creature": null,
-            "brainData": null
+            "brainState": "Combat"
           },
           {
             "$type": "ThunderRoad.AI.Control.Selector, ThunderRoad",
@@ -228,10 +196,7 @@
                     "x": 0.0,
                     "y": 0.0,
                     "z": 0.0
-                  },
-                  "blackboard": null,
-                  "creature": null,
-                  "brainData": null
+                  }
                 }
               },
               {
@@ -294,10 +259,7 @@
                 "angleMode": "Randomize",
                 "changeAngleUntilUnobstructed": false,
                 "targetRadiusMinAngle": 10.0,
-                "targetRadiusMaxAngle": 60.0,
-                "blackboard": null,
-                "creature": null,
-                "brainData": null
+                "targetRadiusMaxAngle": 60.0
               },
               {
                 "$type": "ThunderRoad.AI.Decorator.AlwaysSuccess, ThunderRoad",
@@ -325,10 +287,7 @@
               {
                 "$type": "ThunderRoad.AI.Action.SetStance, ThunderRoad",
                 "stance": "Idle",
-                "onlyOnce": false,
-                "blackboard": null,
-                "creature": null,
-                "brainData": null
+                "onlyOnce": false
               },
               {
                 "$type": "ThunderRoad.AI.Decorator.AlwaysSuccess, ThunderRoad",
@@ -336,10 +295,7 @@
                   "$type": "ThunderRoad.AI.Action.HolsterItem, ThunderRoad",
                   "holsterRight": true,
                   "holsterLeft": true,
-                  "waitForFinished": false,
-                  "blackboard": null,
-                  "creature": null,
-                  "brainData": null
+                  "waitForFinished": false
                 }
               },
               {
@@ -374,10 +330,7 @@
                       "turnSpeed": 0.0,
                       "moveMinDuration": 0.7,
                       "stuckRadius": 0.1,
-                      "stuckMaxDuration": 5.0,
-                      "blackboard": null,
-                      "creature": null,
-                      "brainData": null
+                      "stuckMaxDuration": 5.0
                     }
                   }
                 ]
@@ -387,6 +340,5 @@
         }
       }
     ]
-  },
-  "groupPath": null
+  }
 }

@@ -5,57 +5,86 @@ using System.Linq;
 using ThunderRoad.Manikin;
 using ThunderRoad.Skill.SpellPower;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
     [HelpURL("https://kospy.github.io/BasSDK/Components/ThunderRoad/Creatures/RagdollPart.html")]
     [AddComponentMenu("ThunderRoad/Creatures/Ragdoll part")]
     [RequireComponent(typeof(CollisionHandler))]
+    [DeclareTabGroup("Tabs")]
+    [DeclareToggleGroup("Tabs/Dismemberment", Title = "Dismemberment")]
+    [DeclareHorizontalGroup("Tabs/PositionForces")]
+    [DeclareHorizontalGroup("Tabs/RotationForces")]
     public class RagdollPart : ThunderBehaviour
     {
-        [Header("Part")]
+        [Group("Tabs"), Tab("General")]
         public Transform meshBone;
+        [Group("Tabs"), Tab("General")]
         public Transform[] linkedMeshBones;
+        [Group("Tabs"), Tab("General")]
         public Type type;
+        [Group("Tabs"), Tab("General")]
         public Section section = Section.Full;
         [SerializeField]
+        [Group("Tabs"), Tab("General")]
         private Axis frontAxis = Axis.Forwards;
         [SerializeField]
+        [Group("Tabs"), Tab("General")]
         private Axis upAxis = Axis.Left;
+        [Group("Tabs"), Tab("General")]
         public Vector3 boneToChildDirection = Vector3.left;
+        [Group("Tabs"), Tab("General")]
         public RagdollPart parentPart;
         public bool hasParent { get; protected set; }
+        [Group("Tabs"), Tab("General")]
         public bool ignoreStaticCollision;
-
-        [Header("Dismemberment")]
-        public bool sliceAllowed;
-        [Range(0, 1)]
-        public float sliceParentAdjust = 0.5f;
-        public float sliceWidth = 0.04f;
-        public float sliceHeight = 0;
-        public float sliceThreshold = 0.5f;
-        public Material sliceFillMaterial;
-        [Tooltip("Disable this part collider and slice the referenced child part on slice (usefull for necks)")]
-        public RagdollPart sliceChildAndDisableSelf;
-        public bool ripBreak = false;
-        public float ripBreakForce = 3000;
+        [Group("Tabs"), Tab("General")]
+        public Wearable wearable;
+        [Group("Tabs"), Tab("General")]
+        public List<RagdollPart> ignoredParts;
 
         [Header("Forces")]
-        [Min(0.00001f)]
+        [Group("Tabs"), Tab("General")]
         public float handledMass = -1f;
-        [Min(0.00001f)]
+        [Group("Tabs"), Tab("General")]
         public float ragdolledMass = -1f;
+        [Group("Tabs/PositionForces"), Tab("General")]
+        [AutoLabelWidth]
         public float springPositionMultiplier = 1;
+        [Group("Tabs/PositionForces"), Tab("General")]
+        [AutoLabelWidth]
         public float damperPositionMultiplier = 1;
+        [Group("Tabs/RotationForces"), Tab("General")]
+        [AutoLabelWidth]
         public float springRotationMultiplier = 1;
+        [Group("Tabs/RotationForces"), Tab("General")]
+        [AutoLabelWidth]
         public float damperRotationMultiplier = 1;
+        [Group("Tabs"), Tab("General")]
+        public int damagerTier = 0;
 
-        public List<RagdollPart> ignoredParts;
+        [Group("Tabs/Dismemberment"), Tab("General")]
+        public bool sliceAllowed;
+        [Group("Tabs/Dismemberment"), Tab("General")]
+        [Range(0, 1)]
+        public float sliceParentAdjust = 0.5f;
+        [Group("Tabs/Dismemberment"), Tab("General")]
+        public float sliceWidth = 0.04f;
+        [Group("Tabs/Dismemberment"), Tab("General")]
+        public float sliceHeight = 0;
+        [Group("Tabs/Dismemberment"), Tab("General")]
+        public float sliceThreshold = 0.5f;
+        [Group("Tabs/Dismemberment"), Tab("General")]
+        public Material sliceFillMaterial;
+        [Group("Tabs/Dismemberment"), Tab("General")]
+        [Tooltip("Disable this part collider and slice the referenced child part on slice (usefull for necks)")]
+        public RagdollPart sliceChildAndDisableSelf;
+        [Group("Tabs/Dismemberment"), Tab("General")]
+        public bool ripBreak = false;
+        [Group("Tabs/Dismemberment"), Tab("General")]
+        public float ripBreakForce = 3000;
 
         [NonSerialized]
         public bool initialized;
@@ -70,8 +99,6 @@ namespace ThunderRoad
         public ColliderGroup colliderGroup;
         [NonSerialized]
         public CollisionHandler collisionHandler;
-
-        public Wearable wearable;
 
         [NonSerialized]
         public bool hasMetalArmor;
@@ -125,15 +152,16 @@ namespace ThunderRoad
                 if (characterJoint)
                     parentPart = characterJoint.connectedBody.GetComponent<RagdollPart>();
             }
+            if (handledMass < 0) handledMass = 0;
             if (ragdolledMass < 0 && this.GetPhysicBody() is PhysicBody pb)
             {
                 ragdolledMass = pb.mass;
             }
         }
 
-        [Button]
         public void SetAllowSlice(bool allow) => sliceAllowed = allow;
 
+        [Group("Tabs"), Tab("Runtime (Ragdoll Part)")]
         [Button]
         public void SetPositionToBone()
         {
@@ -142,6 +170,7 @@ namespace ThunderRoad
             this.transform.localScale = meshBone.localScale;
         }
 
+        [Group("Tabs"), Tab("Runtime (Ragdoll Part)")]
         [Button]
         public void SetPositionToBoneLeaveChildren()
         {
@@ -161,6 +190,7 @@ namespace ThunderRoad
         }
 
 #if UNITY_EDITOR
+        [Group("Tabs"), Tab("Runtime (Ragdoll Part)")]
         [Button]
         public void ConvertToHand()
         {
@@ -168,6 +198,7 @@ namespace ThunderRoad
             ConvertToHandOrFoot(type);
         }
 
+        [Group("Tabs"), Tab("Runtime (Ragdoll Part)")]
         [Button]
         public void ConvertToFoot()
         {
@@ -217,6 +248,7 @@ namespace ThunderRoad
         }
 #endif
 
+        [Group("Tabs"), Tab("Runtime (Ragdoll Part)")]
         [Button]
         public void IgnoreParentPart()
         {
@@ -226,6 +258,7 @@ namespace ThunderRoad
             ignoredParts.Add(parentPart);
         }
 
+        [Group("Tabs"), Tab("Runtime (Ragdoll Part)")]
         [Button]
         public void IgnoreAllParts()
         {
@@ -238,6 +271,7 @@ namespace ThunderRoad
             }
         }
 
+        [Group("Tabs"), Tab("Runtime (Ragdoll Part)")]
         [Button]
         public void FindBoneFromName()
         {
@@ -252,6 +286,7 @@ namespace ThunderRoad
             }
         }
 
+        [Group("Tabs"), Tab("Runtime (Ragdoll Part)")]
         [Button]
         public void AssignJointBodyFromParent()
         {
@@ -304,46 +339,40 @@ namespace ThunderRoad
             }
         }
 
-#if ODIN_INSPECTOR
-        [ShowInInspector] 
-#endif
-        [NonSerialized]
-        public List<RagdollPart> childParts = new List<RagdollPart>();
-#if ODIN_INSPECTOR
-        [ShowInInspector] 
-#endif
-        [NonSerialized]
-        public List<Creature.RendererData> renderers = new List<Creature.RendererData>();
-#if ODIN_INSPECTOR
-        [ShowInInspector] 
-#endif
-        [NonSerialized]
-        public List<SkinnedMeshRenderer> skinnedMeshRenderers = new List<SkinnedMeshRenderer>();
-#if ODIN_INSPECTOR
-        [ShowInInspector] 
-#endif
-        [NonSerialized]
-        public List<int> skinnedMeshRendererIndexes = new List<int>();
-#if ODIN_INSPECTOR
-        [ShowInInspector] 
-#endif
-        [NonSerialized]
-        public List<SkinnedMeshRenderer> meshpartSkinnedMeshRenderers = new List<SkinnedMeshRenderer>();
-#if ODIN_INSPECTOR
-        [ShowInInspector] 
-#endif
-        [NonSerialized]
-        public List<Creature.RendererData> meshpartRendererList = new List<Creature.RendererData>();
-#if ODIN_INSPECTOR
-        [ShowInInspector, ReadOnly]
-#endif
+        [Group("Tabs"), Tab("Runtime (Ragdoll Part)")]
+        [ShowInInspector]
+        [ReadOnly]
         [NonSerialized]
         public float standingMass = -1f;
-#if ODIN_INSPECTOR
-        [ShowInInspector] 
-#endif
+        [Group("Tabs"), Tab("Runtime (Ragdoll Part)")]
+        [ShowInInspector]
         [NonSerialized]
+        [HideLabel]
         public Ragdoll.Bone bone;
+        [Group("Tabs"), Tab("Runtime (Ragdoll Part)")]
+        [ShowInInspector]
+        [NonSerialized]
+        public List<RagdollPart> childParts = new();
+        [Group("Tabs"), Tab("Runtime (Ragdoll Part)")]
+        [ShowInInspector]
+        [NonSerialized]
+        public List<Creature.RendererData> renderers = new();
+        [Group("Tabs"), Tab("Runtime (Ragdoll Part)")]
+        [ShowInInspector]
+        [NonSerialized]
+        public List<SkinnedMeshRenderer> skinnedMeshRenderers = new();
+        [Group("Tabs"), Tab("Runtime (Ragdoll Part)")]
+        [ShowInInspector]
+        [NonSerialized]
+        public List<int> skinnedMeshRendererIndexes = new();
+        [Group("Tabs"), Tab("Runtime (Ragdoll Part)")]
+        [ShowInInspector]
+        [NonSerialized]
+        public List<SkinnedMeshRenderer> meshpartSkinnedMeshRenderers = new();
+        [Group("Tabs"), Tab("Runtime (Ragdoll Part)")]
+        [ShowInInspector]
+        [NonSerialized]
+        public List<Creature.RendererData> meshpartRendererList = new();
         [NonSerialized]
         public bool isSliced;
         [NonSerialized]
@@ -383,8 +412,6 @@ namespace ThunderRoad
 
         [NonSerialized]
         public bool characterJointLocked;
-
-        public int damagerTier = 0;
 
         public delegate void TouchActionDelegate(RagdollHand ragdollHand, Interactable interactable, Interactable.Action action);
         public event TouchActionDelegate OnTouchActionEvent;
@@ -513,7 +540,6 @@ namespace ThunderRoad
         }
 
 
-        [Button]
         public bool TrySlice()
         {
             return false;

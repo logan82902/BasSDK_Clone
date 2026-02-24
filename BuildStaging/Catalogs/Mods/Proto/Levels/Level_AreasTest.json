@@ -10,8 +10,10 @@
   "sceneAddress": "Level.AreaTest",
   "showOnlyDevMode": false,
   "showInLevelSelection": true,
-  "savePlayerInventoryOnUnload": false,
   "worldmapPrefabAddress": "Bas.Image.Map.Test",
+  "worldmapTextureAddress": "Bas.Worldmap.Eraden",
+  "worldmapLabel": null,
+  "worldMapTravelAudioContainerAddress": "Bas.AudioGroup.UI.LightClick",
   "mapLocationIndex": 1,
   "showOnMap": true,
   "hideOnAndroid": false,
@@ -28,40 +30,7 @@
         "Sandbox"
       ],
       "mapOrder": 0,
-      "difficultyMultipliers": [
-        {
-          "$type": "ThunderRoad.LevelData+Mode+DifficultyMultipliers, ThunderRoad",
-          "playerHealthMultiplier": 1.0,
-          "playerDamageMultiplier": 1.0,
-          "creatureDamageMultiplier": 1.0
-        },
-        {
-          "$type": "ThunderRoad.LevelData+Mode+DifficultyMultipliers, ThunderRoad",
-          "playerHealthMultiplier": 1.0,
-          "playerDamageMultiplier": 1.0,
-          "creatureDamageMultiplier": 1.0
-        },
-        {
-          "$type": "ThunderRoad.LevelData+Mode+DifficultyMultipliers, ThunderRoad",
-          "playerHealthMultiplier": 0.75,
-          "playerDamageMultiplier": 0.75,
-          "creatureDamageMultiplier": 1.5
-        },
-        {
-          "$type": "ThunderRoad.LevelData+Mode+DifficultyMultipliers, ThunderRoad",
-          "playerHealthMultiplier": 0.5,
-          "playerDamageMultiplier": 0.5,
-          "creatureDamageMultiplier": 2.0
-        },
-        {
-          "$type": "ThunderRoad.LevelData+Mode+DifficultyMultipliers, ThunderRoad",
-          "playerHealthMultiplier": 1.0,
-          "playerDamageMultiplier": 0.5,
-          "creatureDamageMultiplier": 3.0
-        }
-      ],
-      "playerCanDie": true,
-      "deathLossAddress": "Bas.Loss.Death",
+      "playerDeathAction": "AskReload",
       "modules": [
         {
           "$type": "ThunderRoad.LevelModuleMusic, ThunderRoad",
@@ -69,35 +38,10 @@
         },
         {
           "$type": "ThunderRoad.LevelAreaModule, ThunderRoad",
-          "areaSpawnDepth": 100,
-          "areaDespawnDepth": 101,
+          "areaFullMemoryDepth": 100,
+          "areaLiteMemoryDepth": 100,
           "areaCullDepth": 2,
-          "listAreaByLengthAndDifficulty": [
-            [
-              {
-                "$type": "ThunderRoad.LevelAreaModule+AreaSpawnerData, ThunderRoad",
-                "areaCollectionId": "ProtoDungeon",
-                "numberCreature": 50,
-                "isSharedNPCAlert": true
-              }
-            ],
-            [
-              {
-                "$type": "ThunderRoad.LevelAreaModule+AreaSpawnerData, ThunderRoad",
-                "areaCollectionId": "ProtoDungeon",
-                "numberCreature": 50,
-                "isSharedNPCAlert": true
-              }
-            ],
-            [
-              {
-                "$type": "ThunderRoad.LevelAreaModule+AreaSpawnerData, ThunderRoad",
-                "areaCollectionId": "ProtoDungeon",
-                "numberCreature": 50,
-                "isSharedNPCAlert": true
-              }
-            ]
-          ]
+          "areaByLength": null
         },
         {
           "$type": "ThunderRoad.LevelModuleCleaner, ThunderRoad",
@@ -107,25 +51,23 @@
       "availableOptions": [
         {
           "$type": "ThunderRoad.Option, ThunderRoad",
-          "name": "Difficulty",
-          "displayName": "Difficulty",
-          "description": "DifficultyDescription",
-          "type": "Stars",
           "minValue": 1,
           "maxValue": 3,
           "defaultValue": 2,
-          "valueList": []
+          "stepValue": 1,
+          "name": "Difficulty",
+          "displayName": "Difficulty",
+          "description": "DifficultyDescription"
         },
         {
           "$type": "ThunderRoad.Option, ThunderRoad",
-          "name": "DungeonLength",
-          "displayName": "Length",
-          "description": "LengthDescription",
-          "type": "Stars",
           "minValue": 1,
           "maxValue": 3,
           "defaultValue": 2,
-          "valueList": []
+          "stepValue": 1,
+          "name": "DungeonLength",
+          "displayName": "Length",
+          "description": "LengthDescription"
         }
       ]
     }
@@ -133,5 +75,6 @@
   "modePickCountPerRank": 2,
   "customCameras": [],
   "throwableRefType": "Item",
-  "improvisedThrowableID": null
+  "improvisedThrowableID": null,
+  "groupPath": null
 }

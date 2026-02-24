@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 4,
+  "groupPath": "Gladiator/",
   "localizationId": "GladiatorHeadband",
   "displayName": "Tribal Headband",
   "description": "A headband with cultural significance to the Northern tribes of Eraden.",
@@ -14,16 +15,18 @@
   "tier": 1,
   "flags": "Spinnable",
   "levelRequired": 0,
+  "type": "Wardrobe",
   "category": "Leather",
+  "update": "",
   "iconEffectId": null,
   "preferredItemCenter": "Mass",
   "drainImbueWhenIdle": true,
+  "forceImbueUseButton": "None",
   "prefabAddress": "Bas.Item.Apparel.Gladiator.Headband",
   "iconAddress": "Bas.Item.Apparel.Gladiator.Headband.Icon[ArmorItems_Gladiator_Head]",
   "closeUpIconAddress": null,
   "pooledCount": 0,
   "androidPooledCount": 0,
-  "type": "Wardrobe",
   "allowedStorage": "Inventory, Container, SandboxAllItems",
   "despawnOnStoredInInventory": false,
   "isStackable": false,
@@ -37,6 +40,7 @@
   "mass": 0.5,
   "drag": 1.0,
   "angularDrag": 1.0,
+  "density": 500.0,
   "focusRegenMultiplier": 1.06,
   "spellChargeSpeedPlayerMultiplier": 0.97,
   "spellChargeSpeedNPCMultiplier": 1.0,
@@ -150,58 +154,6 @@
     "preWrapMode": "ClampForever",
     "postWrapMode": "ClampForever"
   },
-  "modules": [
-    {
-      "$type": "ThunderRoad.ItemModuleWardrobe, ThunderRoad",
-      "castSpeedPerHand": null,
-      "category": "Apparel",
-      "castShadows": "PlayerAndNPC",
-      "wardrobes": [
-        {
-          "$type": "ThunderRoad.ItemModuleWardrobe+CreatureWardrobe, ThunderRoad",
-          "creatureName": "HumanMale",
-          "wardrobeDataAddress": "Bas.Creature.Wardrobe.HumanMale.Gladiator.Headband"
-        },
-        {
-          "$type": "ThunderRoad.ItemModuleWardrobe+CreatureWardrobe, ThunderRoad",
-          "creatureName": "HumanFemale",
-          "wardrobeDataAddress": "Bas.Creature.Wardrobe.HumanFemale.Gladiator.Headband"
-        }
-      ],
-      "isMetal": false,
-      "armorSoundEffectPriority": 1,
-      "armorSoundEffectID": "ArmorSFX(Leather)"
-    },
-    {
-      "$type": "ThunderRoad.ItemModuleStats, ThunderRoad",
-      "stats": [
-        {
-          "$type": "ThunderRoad.ItemStatInt, ThunderRoad",
-          "value": 1,
-          "useStarIcons": true,
-          "name": "Defense"
-        },
-        {
-          "$type": "ThunderRoad.ItemStatInt, ThunderRoad",
-          "value": 5,
-          "useStarIcons": true,
-          "name": "Mobility"
-        },
-        {
-          "$type": "ThunderRoad.ItemStatInt, ThunderRoad",
-          "value": 2,
-          "useStarIcons": true,
-          "name": "SpellCasting"
-        },
-        {
-          "$type": "ThunderRoad.ItemStatInt, ThunderRoad",
-          "value": 3,
-          "useStarIcons": true,
-          "name": "FocusRegen"
-        }
-      ]
-    }
-  ],
   "colliderGroups": [],
   "damagers": [
     {
@@ -240,6 +192,58 @@
       "dampening": 0.1
     }
   ],
-  "entityModules": [],
-  "groupPath": "Gladiator/"
+  "modules": [
+    {
+      "$type": "ThunderRoad.ItemModuleWardrobe, ThunderRoad",
+      "category": "Apparel",
+      "castShadows": "PlayerAndNPC",
+      "wardrobes": [
+        {
+          "$type": "ThunderRoad.ItemModuleWardrobe+CreatureWardrobe, ThunderRoad",
+          "creatureName": "HumanMale",
+          "wardrobeDataAddress": "Bas.Creature.Wardrobe.HumanMale.Gladiator.Headband",
+          "runtimeBlendshapeActivators": null
+        },
+        {
+          "$type": "ThunderRoad.ItemModuleWardrobe+CreatureWardrobe, ThunderRoad",
+          "creatureName": "HumanFemale",
+          "wardrobeDataAddress": "Bas.Creature.Wardrobe.HumanFemale.Gladiator.Headband",
+          "runtimeBlendshapeActivators": null
+        }
+      ],
+      "isMetal": false,
+      "armorSoundEffectPriority": 1,
+      "armorSoundEffectID": "ArmorSFX(Leather)"
+    },
+    {
+      "$type": "ThunderRoad.ItemModuleStats, ThunderRoad",
+      "stats": [
+        {
+          "$type": "ThunderRoad.ItemStatInt, ThunderRoad",
+          "value": 1,
+          "useStarIcons": true,
+          "name": "Defense"
+        },
+        {
+          "$type": "ThunderRoad.ItemStatInt, ThunderRoad",
+          "value": 5,
+          "useStarIcons": true,
+          "name": "Mobility"
+        },
+        {
+          "$type": "ThunderRoad.ItemStatInt, ThunderRoad",
+          "value": 2,
+          "useStarIcons": true,
+          "name": "SpellCasting"
+        },
+        {
+          "$type": "ThunderRoad.ItemStatInt, ThunderRoad",
+          "value": 3,
+          "useStarIcons": true,
+          "name": "FocusRegen"
+        }
+      ]
+    }
+  ],
+  "entityModules": []
 }

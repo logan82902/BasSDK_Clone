@@ -3,20 +3,18 @@ using ThunderRoad.AI;
 using ThunderRoad.AI.Action;
 using System.Collections;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
+    [System.Serializable]
+    [AutoLabelWidth(AddedWidth = 5f, MinWidth = 0f)]
+    [DeclareBoxGroup("Probability", Title = "Probability")]
     public class BrainModuleCast : BrainData.Module
     {
-#if ODIN_INSPECTOR
-        [MinMaxSlider(0, 60, showFields: true)] 
-#endif
-        public Vector2 castMinMaxDelay = new Vector2(8, 16);
+        [MinMaxSlider(0, 60, true)]
+        public Vector2 castMinMaxDelay = new(8, 16);
 
         public float aimArmLengthMultiplier = 0.99f;
 
@@ -31,18 +29,12 @@ namespace ThunderRoad
         public Vector2 spreadCone = new Vector2(0.6f, 0.6f);
         public float maxFireAngle = 60;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Probability")] 
-#endif
-        public Vector2 shortRangeMinMaxDist = new Vector2(0, 5);
-#if ODIN_INSPECTOR
-        [BoxGroup("Probability")] 
-#endif
-        public Vector2 midRangeMinMaxDist = new Vector2(5, 8);
-#if ODIN_INSPECTOR
-        [BoxGroup("Probability")] 
-#endif
-        public Vector2 longRangeMinMaxDist = new Vector2(8, 20);
+        [Group("Probability")]
+        public Vector2 shortRangeMinMaxDist = new(0, 5);
+        [Group("Probability")]
+        public Vector2 midRangeMinMaxDist = new(5, 8);
+        [Group("Probability")]
+        public Vector2 longRangeMinMaxDist = new(8, 20);
 
     }
 }

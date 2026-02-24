@@ -1,9 +1,6 @@
 ﻿using ThunderRoad.Skill.SpellPower;
 using UnityEngine;
-#if ODIN_INSPECTOR
-#else
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
@@ -14,9 +11,9 @@ namespace ThunderRoad
         //Experimental timeslicing test
         //Whooshpoints just update their sound intensity every frame, but it could be done every second frame
         //but we dont want all of them running every second frame, so we split it so half are on odd frames and half are on even frames
-        public static int timeSlice = 0;
+        private static int timeSlice = 0;
         //split between 2 frames
-        public static int timeSliceNumFrames = 2;
+        private static int timeSliceNumFrames = 2;
         private int myTimeSlice = 0;
         
         [Tooltip("Depicts how the whoosh is triggered.\n\"Always\" makes it so whoosh happens when velocity is met.\n\"On Grab\" makes Whoosh only play when grabbed.\n\"On Fly\" makes Whoosh only play when thrown/in air.")]

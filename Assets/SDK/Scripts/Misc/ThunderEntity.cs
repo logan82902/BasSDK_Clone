@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
+
 using TriInspector;
-#endif
 using UnityEngine;
 
 namespace ThunderRoad
@@ -47,6 +44,7 @@ namespace ThunderRoad
         }
     }
 
+    [DeclareTabGroup("Tabs")]
     public abstract class ThunderEntity : ThunderBehaviour
     {
         public static List<ThunderEntity> allEntities = new();

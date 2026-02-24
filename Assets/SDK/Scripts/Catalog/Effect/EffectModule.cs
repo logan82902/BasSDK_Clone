@@ -8,40 +8,41 @@ using System.Linq;
 using UnityEditor.AddressableAssets.Settings;
 #endif
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
-	public class EffectModule
+    [AutoLabelWidth(MinWidth = 0f)]
+    [DeclareHorizontalGroup("Split")]
+    [DeclareBoxGroup("Split/Module filters", Title = "Module filters")]
+    [DeclareBoxGroup("Split/Collision filters", Title = "Collision filters")]
+    [DeclareHorizontalGroup("Split2")]
+    [DeclareBoxGroup("Split2/Imbues filters", Title = "Imbues filters")]
+    [DeclareBoxGroup("Split2/Collider group filters", Title = "Collider group filters")]
+    [DeclareBoxGroup("Split2/Damagers filters", Title = "Damagers filters")]
+    [DeclareHorizontalGroup("Split3")]
+    [DeclareBoxGroup("Split3/Input modifiers", Title = "Input modifiers")]
+    public abstract class EffectModule
     {
-#if ODIN_INSPECTOR
-        [HorizontalGroup("Split", 0.5f, LabelWidth = 150)]
-        [BoxGroup("Split/Module filters")]
-#endif
+        [JsonMergeKey(MergeKeyValueProvider = nameof(GetMergeKey))]
+        [HideInInspector]
+        public string mergeKey = "";
+
+        [LabelWidth(150f)]
+        [Group("Split/Module filters")]
         public Effect.Step step = Effect.Step.Start;
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Module filters")]
+        [Group("Split/Module filters")]
         [ShowIf("step", Effect.Step.Custom)]
-#endif
         public string stepCustomId;
         [NonSerialized]
         public int stepCustomIdHash;
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Module filters")]
+        [Group("Split/Module filters")]
         [ShowIf("step", Effect.Step.Custom)]
-#endif
         public bool loopCustomStep;
-        
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Module filters")]
-#endif
+
+        [Group("Split/Module filters")]
         public PlatformFilter platformFilter = PlatformFilter.Windows | PlatformFilter.Android;
 
-#if ODIN_INSPECTOR
         [Newtonsoft.Json.JsonProperty("isGore")]
         private bool contentSetter
         {
@@ -58,78 +59,49 @@ namespace ThunderRoad
             }
         }
 
-        [BoxGroup("Split/Module filters")]
-#endif
+        [Group("Split/Module filters")]
         public BuildSettings.ContentFlag sensitiveContent = BuildSettings.ContentFlag.None;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Module filters")]
-#endif
+        [Group("Split/Module filters")]
         public BuildSettings.ContentFlagBehaviour sensitiveFilterBehaviour = BuildSettings.ContentFlagBehaviour.Discard;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Collision filters")]
-#endif
+        [Group("Split/Collision filters")]
         public DamagerFilter damagerStateFilter = DamagerFilter.Inactive | DamagerFilter.Active;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Collision filters")]
-#endif
+        [Group("Split/Collision filters")]
         public DamageTypeFilter damageTypeFilter = DamageTypeFilter.Energy | DamageTypeFilter.Blunt | DamageTypeFilter.Slash | DamageTypeFilter.Pierce;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Collision filters")]
-#endif
+        [Group("Split/Collision filters")]
         public PenetrationFilter penetrationFilter = PenetrationFilter.None | PenetrationFilter.Hit | PenetrationFilter.Pressure;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Split/Collision filters")]
-#endif
+        [Group("Split/Collision filters")]
         public bool reparentWithBreakable = true;
 
-#if ODIN_INSPECTOR
-        [HorizontalGroup("Split2", 0.25f, LabelWidth = 150)]
-        [BoxGroup("Split2/Imbues filters")]
-#endif
+        [LabelWidth(150f)]
+        [Group("Split2/Imbues filters")]
         public FilterLogic imbuesFilterLogic = FilterLogic.AnyExcept;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Split2/Imbues filters")]
-        [ValueDropdown("GetAllSpellCastChargeID", IsUniqueList = true)]
-#endif
+        [Group("Split2/Imbues filters")]
+        [DropdownList("GetAllSpellCastChargeID")]
         public string[] imbuesFilter = new string[0];
         protected int[] imbueHashes = new int[0];
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Split2/Collider group filters")]
-#endif
+        [Group("Split2/Collider group filters")]
         public FilterLogic colliderGroupFilterLogic = FilterLogic.AnyExcept;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Split2/Collider group filters")]
-        [ValueDropdown("GetAllColliderGroupID", IsUniqueList = true)]
-#endif
+        [Group("Split2/Collider group filters")]
+        [DropdownList("GetAllColliderGroupID")]
         public string[] colliderGroupsFilter = new string[0];
         protected int[] colliderGroupHashes = new int[0];
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Split2/Damagers filters")]
-#endif
+        [Group("Split2/Damagers filters")]
         public FilterLogic damagersFilterLogic = FilterLogic.AnyExcept;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Split2/Damagers filters")]
-        [ValueDropdown("GetAllDamagerID", IsUniqueList = true)]
-#endif
+        [Group("Split2/Damagers filters")]
+        [DropdownList("GetAllDamagerID")]
         public string[] damagersFilter = new string[0];
         protected int[] damagerHashes = new int[0];
-
-#if ODIN_INSPECTOR
-        [HorizontalGroup("Split3")]
-        [BoxGroup("Split3/Input modifiers")]
-#endif
-        public AnimationCurve intensityCurve = AnimationCurve.Linear(0f, 0f, 1f, 1f);
-
+        
         [NonSerialized]
         public EffectData rootData;
 
@@ -165,22 +137,25 @@ namespace ThunderRoad
             Pierce = 8
         }
 
-
-#if ODIN_INSPECTOR
-        public List<ValueDropdownItem<string>> GetAllSpellCastChargeID()
+        public static string GetMergeKey()
         {
-            return Catalog.GetDropdownAllID<SpellCastCharge>();
-        }
-        public List<ValueDropdownItem<string>> GetAllColliderGroupID()
-        {
-            return Catalog.GetDropdownAllID<ColliderGroupData>();
+            return Guid.NewGuid().ToString().Substring(0, 8);
         }
 
-        public List<ValueDropdownItem<string>> GetAllDamagerID()
+        public virtual void OnCatalogRefresh(EffectData effectData, bool editorLoad = false)
         {
-            return Catalog.GetDropdownAllID<DamagerData>();
+            rootData = effectData;
+            if (mergeKey.IsNullOrEmptyOrWhitespace())
+            {
+                mergeKey = GetMergeKey();
+            }
         }
-#endif
+
+
+        public TriDropdownList<string> GetAllSpellCastChargeID() => Catalog.GetDropdownAllID<SpellCastCharge>();
+        public TriDropdownList<string> GetAllColliderGroupID() => Catalog.GetDropdownAllID<ColliderGroupData>();
+
+        public TriDropdownList<string> GetAllDamagerID() => Catalog.GetDropdownAllID<DamagerData>();
 
         public virtual void Clean()
         { }

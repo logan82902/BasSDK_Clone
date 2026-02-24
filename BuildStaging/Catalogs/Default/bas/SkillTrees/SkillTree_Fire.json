@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
+  "groupPath": null,
   "localizationGroupID": "Skills",
   "displayName": "{Fire}",
   "description": "{FirePathDescription}",
@@ -31,5 +32,9 @@
   "videoAddress": "Bas.Video.Infuser.Fire",
   "iconEnabledAddress": "Bas.Ui.SkillTree.Icons[Fire_ButtonColor]",
   "iconDisabledAddress": "Bas.Ui.SkillTree.Icons[Fire_Button]",
-  "groupPath": null
+  "tierBlockers": [
+    "Fire",
+    "RemoteDetonation",
+    "FireMerge"
+  ]
 }

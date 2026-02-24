@@ -4,9 +4,9 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 1,
+  "groupPath": "Factions/Scavenger",
   "displayName": "Scavenger Charlatan",
   "description": "",
-  "contents": [],
   "containerContents": [
     {
       "$type": "ThunderRoad.TableContent, ThunderRoad",
@@ -16,14 +16,17 @@
         "holderName": "BackLeft"
       },
       "customDataList": [],
+      "mergeKey": "da620107",
       "referenceID": "WeaponScavengerStaff"
     },
     {
       "$type": "ThunderRoad.SpellContent, ThunderRoad",
+      "mergeKey": "9ea54043",
       "referenceID": "Fire"
     },
     {
       "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "7049c107",
       "referenceID": "ChargeSpeedBoost"
     },
     {
@@ -33,6 +36,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "c4cb8899",
       "referenceID": "ScavengerShirts"
     },
     {
@@ -42,6 +46,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "d2a72fd8",
       "referenceID": "ApparelImprovisedMageScarf"
     },
     {
@@ -51,6 +56,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "71f2e7fb",
       "referenceID": "ImprovisedMageHandL"
     },
     {
@@ -60,6 +66,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "09e950be",
       "referenceID": "ImprovisedMageHandR"
     },
     {
@@ -69,6 +76,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "a0586aad",
       "referenceID": "ApparelImprovisedMageSkirt"
     },
     {
@@ -78,6 +86,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "590dbf7a",
       "referenceID": "ApparelBattlemagePants"
     },
     {
@@ -87,6 +96,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "94c2065b",
       "referenceID": "ApparelCivilianBoots"
     },
     {
@@ -96,6 +106,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "c2c2b99e",
       "referenceID": "HairsScavenger"
     },
     {
@@ -105,8 +116,8 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "ab4d8832",
       "referenceID": "BeardsScavenger"
     }
-  ],
-  "groupPath": "Factions/Scavenger"
+  ]
 }

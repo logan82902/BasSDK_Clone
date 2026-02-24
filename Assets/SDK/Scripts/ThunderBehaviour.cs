@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
@@ -18,8 +19,9 @@ namespace ThunderRoad
     ///https://docs.unity3d.com/Manual/ExecutionOrder.html
     public class ThunderBehaviour : MonoBehaviour
     {
+        
         private string _typeName;
-        public string ThunderBehaviourTypeName => _typeName ??= GetType().Name;
+        public string ThunderBehaviourTypeName => _typeName ??= ThunderBehaviourType.Name;
         public Type ThunderBehaviourType
         {
             get
@@ -87,6 +89,12 @@ namespace ThunderRoad
         /// Defines which loops will be executed on this behaviour. It is checked during OnEnable and OnDisable
         /// </summary>
         public virtual ManagedLoops EnabledManagedLoops => 0;
+        
+        /// <summary>
+        /// The delta time adjusted for the time slicing of this behaviour
+        /// as in: deltaTime * SliceOverNumFrames to give an estimate of the time passed since the last execution of this behaviour
+        /// </summary>
+        protected float TimeSliceDeltaTime => Time.deltaTime * TimeSliceFrames;
         /// <summary>
         /// Defines how many frames behaviours of this class will be sliced over. 1 means it will be executed every frame
         /// </summary>
@@ -94,7 +102,18 @@ namespace ThunderRoad
         /// <summary>
         /// Get the next ID for this class, a counter should be implemented on the subclass to keep track of the next time slice id
         /// </summary>
-        protected virtual int GetNextTimeSliceId => 0;
+        protected virtual int GetNextTimeSliceId
+        {
+            get
+            {
+                var type = GetType();
+                int id = NextTimeSliceIds.GetValueOrDefault(type, 0);
+                NextTimeSliceIds[type] = id + 1;
+                return id;
+            }
+        }
+        private static readonly Dictionary<Type, int> NextTimeSliceIds = new();
+
         
         /// <summary>
         /// This instances timesliceId

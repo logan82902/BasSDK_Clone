@@ -1,0 +1,25 @@
+{
+  "$type": "ThunderRoad.MapData, ThunderRoad",
+  "id": "Sentara",
+  "sensitiveContent": "None",
+  "sensitiveFilterBehaviour": "Discard",
+  "version": 0,
+  "groupPath": null,
+  "worldmapPrefabAddress": "Bas.Image.Map.Default",
+  "worldmapTextureAddress": "Bas.Worldmap.Sentara",
+  "worldmapLocalisationId": "SentaraMap",
+  "bookmarkIconAddress": "Bas.Icon.Location.Sentara",
+  "bookmarkColor": {
+    "r": 0.286274523,
+    "g": 0.392156869,
+    "b": 0.396078438,
+    "a": 1.0
+  },
+  "iconColor": {
+    "r": 0.9372549,
+    "g": 0.6431373,
+    "b": 0.31764707,
+    "a": 1.0
+  },
+  "order": 3
+}

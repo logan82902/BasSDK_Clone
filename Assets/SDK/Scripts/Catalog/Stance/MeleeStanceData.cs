@@ -3,81 +3,77 @@ using System.Collections.Generic;
 using UnityEngine;
 using Newtonsoft.Json;
 using System.Collections;
-
+using TriInspector;
 
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
-using TriInspector;
-#endif
-
 namespace ThunderRoad
 {
+    [DeclareBoxGroup("Attacking", Title = "Attacking")]
+    [DeclareFoldoutGroup("Parrying", Expanded = true)]
+    [DeclareHorizontalGroup("Parrying/Upper")]
+    [DeclareHorizontalGroup("Parrying/Mid")]
+    [DeclareHorizontalGroup("Parrying/Lower")]
+    [DeclareFoldoutGroup("Parrying", Expanded = false)]
     public class MeleeStanceData : StanceIdlesData<MeleeIdle>
     {
-#if ODIN_INSPECTOR
-        [BoxGroup("Attacking")]
-#endif
+        [Group("Attacking")]
         public bool alternateAttackSides = false;
-#if ODIN_INSPECTOR
-        [BoxGroup("Attacking")]
-#endif
+        [Group("Attacking")]
         public BodyChainBehaviour chainAttacksOnBody = BodyChainBehaviour.Disabled;
-#if ODIN_INSPECTOR
-        [BoxGroup("Attacking"), OnValueChanged(nameof(SetOpenNoMovement))]
-#endif
-        public List<AttackMotion> openingAttacks = new List<AttackMotion>();
-#if ODIN_INSPECTOR
-        [BoxGroup("Attacking"), OnValueChanged(nameof(SetChainNoMovement))]
-#endif
-        public List<AttackMotion> chainAttacks = new List<AttackMotion>();
-#if ODIN_INSPECTOR
-        [FoldoutGroup("Parrying", expanded: true)]
-#endif
+        [Group("Attacking")]
+        [HideReferencePicker]
+        [InlineProperty]
+        [OnValueChanged(nameof(SetOpenNoMovement))]
+        public List<AttackMotion> openingAttacks = new();
+        [Group("Attacking")]
+        [HideReferencePicker]
+        [InlineProperty]
+        [OnValueChanged(nameof(SetChainNoMovement))]
+        public List<AttackMotion> chainAttacks = new();
+        [Group("Parrying")]
         public BrainModuleDefense.StanceDefenseSettings defenseSettings;
-#if ODIN_INSPECTOR
-        [HorizontalGroup("Parrying/Upper", Width = (1f / 3f) - 0.02f, MarginLeft = 0.01f + ((1f - (0.04f + (2 * ((1 / 3f) - 0.02f)))) / 2f), MarginRight = 0.01f)]
-        [BoxGroup("Parrying/Upper/Upper left", ShowLabel = false), HideLabel]
-#endif
-        public GuardPose upperLeftGuard = new GuardPose() { id = "GuardUpperLeft" };
-#if ODIN_INSPECTOR
-        [HorizontalGroup("Parrying/Upper", Width = (1f / 3f) - 0.02f, MarginLeft = 0.01f)]
-        [BoxGroup("Parrying/Upper/Upper right", ShowLabel = false), HideLabel]
-#endif
-        public GuardPose upperRightGuard = new GuardPose() { id = "GuardUpperRight" };
-#if ODIN_INSPECTOR
-        [HorizontalGroup("Parrying/Mid", Width = (1f / 3f) - 0.02f, MarginLeft = 0.01f, MarginRight = 0.01f)]
-        [BoxGroup("Parrying/Mid/Middle left", ShowLabel = false), HideLabel]
-#endif
-        public GuardPose midLeftGuard = new GuardPose() { id = "GuardMidLeft" };
-#if ODIN_INSPECTOR
-        [HorizontalGroup("Parrying/Mid", Width = (1f / 3f) - 0.02f, MarginLeft = 0.01f, MarginRight = 0.01f)]
-        [BoxGroup("Parrying/Mid/Neutral", ShowLabel = false), HideLabel]
-#endif
-        public GuardPose neutralGuard = new GuardPose() { id = "GuardNeutral" };
-#if ODIN_INSPECTOR
-        [HorizontalGroup("Parrying/Mid", Width = (1f / 3f) - 0.02f, MarginLeft = 0.01f, MarginRight = 0.01f)]
-        [BoxGroup("Parrying/Mid/Middle right", ShowLabel = false), HideLabel]
-#endif
-        public GuardPose midRightGuard = new GuardPose() { id = "GuardMidRight" };
-#if ODIN_INSPECTOR
-        [HorizontalGroup("Parrying/Lower", Width = (1f / 3f) - 0.02f, MarginLeft = 0.01f + ((1f - (0.04f + (2 * ((1 / 3f) - 0.02f)))) / 2f), MarginRight = 0.01f)]
-        [BoxGroup("Parrying/Lower/Lower left", ShowLabel = false), HideLabel]
-#endif
-        public GuardPose lowerLeftGuard = new GuardPose() { id = "GuardLowerLeft" };
-#if ODIN_INSPECTOR
-        [HorizontalGroup("Parrying/Lower", Width = (1f / 3f) - 0.02f, MarginLeft = 0.01f)]
-        [BoxGroup("Parrying/Lower/Lower right", ShowLabel = false), HideLabel]
-#endif
-        public GuardPose lowerRightGuard = new GuardPose() { id = "GuardLowerRight" };
-#if ODIN_INSPECTOR
-        [FoldoutGroup("Parrying"), OnValueChanged(nameof(SetRiposteNoMovement))]
-#endif
-        public List<AttackMotion> ripostes = new List<AttackMotion>();
+        [Group("Parrying/Upper")]
+        [HideLabel]
+        [HideReferencePicker]
+        [InlineProperty]
+        public GuardPose upperLeftGuard = new() { id = "GuardUpperLeft" };
+        [Group("Parrying/Upper")]
+        [HideLabel]
+        [HideReferencePicker]
+        [InlineProperty]
+        public GuardPose upperRightGuard = new() { id = "GuardUpperRight" };
+        [Group("Parrying/Mid")]
+        [HideLabel]
+        [HideReferencePicker]
+        [InlineProperty]
+        public GuardPose midLeftGuard = new() { id = "GuardMidLeft" };
+        [Group("Parrying/Mid")]
+        [HideLabel]
+        [HideReferencePicker]
+        [InlineProperty]
+        public GuardPose neutralGuard = new() { id = "GuardNeutral" };
+        [Group("Parrying/Mid")]
+        [HideLabel]
+        [HideReferencePicker]
+        [InlineProperty]
+        public GuardPose midRightGuard = new() { id = "GuardMidRight" };
+        [Group("Parrying/Lower")]
+        [HideLabel]
+        [HideReferencePicker]
+        [InlineProperty]
+        public GuardPose lowerLeftGuard = new() { id = "GuardLowerLeft" };
+        [Group("Parrying/Lower")]
+        [HideLabel]
+        [HideReferencePicker]
+        [InlineProperty]
+        public GuardPose lowerRightGuard = new() { id = "GuardLowerRight" };
+        [Group("Parrying")]
+        [HideReferencePicker]
+        [OnValueChanged(nameof(SetRiposteNoMovement))]
+        public List<AttackMotion> ripostes = new();
 
         public enum BodyChainBehaviour { Disabled, UseChance, Always }
 
@@ -105,6 +101,65 @@ namespace ThunderRoad
             }
             lastCount = list.Count;
         }
-        
+
+#if UNITY_EDITOR
+        [Button]
+        public void SetOpeningAttackZMotionCurves()
+        {
+            foreach (AttackMotion motion in openingAttacks)
+            {
+                if (motion.animationClip == null)
+                {
+                    motion.animationClip = Catalog.EditorLoad<AnimationClip>(motion.address);
+                }
+                foreach (EditorCurveBinding curve in AnimationUtility.GetCurveBindings(motion.animationClip))
+                {
+                    if (curve.propertyName == "RootT.z")
+                    {
+                        motion.rootZCurve = AnimationUtility.GetEditorCurve(motion.animationClip, curve);
+                        break;
+                    }
+                }
+            }
+        }
+
+        [Button]
+        public void NormalizeAllAttackTimings()
+        {
+            foreach (StanceNode node in AllStanceNodes())
+            {
+                if (node.animationClip == null)
+                {
+                    continue;
+                }
+                if (node is AttackMotion attackMotion)
+                {
+                    attackMotion.start = attackMotion.start / attackMotion.animationClip.length;
+                    attackMotion.peak = attackMotion.peak / attackMotion.animationClip.length;
+                    attackMotion.end = attackMotion.end / attackMotion.animationClip.length;
+                }
+            }
+        }
+#endif
+
+        public override IEnumerable<StanceNode> AllStanceNodes()
+        {
+            foreach (var node in base.AllStanceNodes())
+                yield return node;
+            for (int i = 0; i < openingAttacks.Count; i++)
+                yield return openingAttacks[i];
+            for (int i = 0; i < chainAttacks.Count; i++)
+                yield return chainAttacks[i];
+            yield return upperLeftGuard;
+            yield return upperRightGuard;
+            yield return midLeftGuard;
+            yield return neutralGuard;
+            yield return midRightGuard;
+            yield return lowerLeftGuard;
+            yield return lowerRightGuard;
+            for (int i = 0; i < ripostes.Count; i++)
+                yield return ripostes[i];
+        }
+
     }
 }

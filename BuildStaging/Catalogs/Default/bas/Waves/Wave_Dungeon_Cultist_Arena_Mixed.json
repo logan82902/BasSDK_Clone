@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 2,
+  "groupPath": "Dungeon",
   "category": "Dungeon Arena Room",
   "localizationId": "-",
   "title": "Cultist Arena Mixed",
@@ -16,13 +17,13 @@
     {
       "$type": "ThunderRoad.WaveData+WaveFaction, ThunderRoad",
       "factionID": 5,
-      "factionHealthMultiplier": 1.0,
       "factionMaxAlive": 8
     }
   ],
   "groups": [
     {
       "$type": "ThunderRoad.WaveData+Group, ThunderRoad",
+      "mergeKey": "df86ec72",
       "reference": "Table",
       "referenceID": "CultistPatrolMelee",
       "overrideFaction": false,
@@ -44,6 +45,7 @@
     },
     {
       "$type": "ThunderRoad.WaveData+Group, ThunderRoad",
+      "mergeKey": "38e2683c",
       "reference": "Table",
       "referenceID": "CultistAlertRanged",
       "overrideFaction": false,
@@ -65,6 +67,7 @@
     },
     {
       "$type": "ThunderRoad.WaveData+Group, ThunderRoad",
+      "mergeKey": "ff1d2110",
       "reference": "Table",
       "referenceID": "CultistAlertMix",
       "overrideFaction": false,
@@ -86,6 +89,7 @@
     },
     {
       "$type": "ThunderRoad.WaveData+Group, ThunderRoad",
+      "mergeKey": "d4ec5a74",
       "reference": "Table",
       "referenceID": "CultistAlertRanged",
       "overrideFaction": false,
@@ -107,6 +111,7 @@
     },
     {
       "$type": "ThunderRoad.WaveData+Group, ThunderRoad",
+      "mergeKey": "d8d4649d",
       "reference": "Table",
       "referenceID": "CultistAlertMix",
       "overrideFaction": false,
@@ -128,6 +133,7 @@
     },
     {
       "$type": "ThunderRoad.WaveData+Group, ThunderRoad",
+      "mergeKey": "7c92d707",
       "reference": "Table",
       "referenceID": "CultistRareMix",
       "overrideFaction": false,
@@ -148,5 +154,5 @@
       "prereqMaxRemainingAlive": 0
     }
   ],
-  "groupPath": "Dungeon"
+  "modules": null
 }

@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
+  "groupPath": null,
   "type": "MasterTree",
   "rootNode": {
     "$type": "ThunderRoad.AI.Control.Selector, ThunderRoad",
@@ -14,10 +15,7 @@
         "child": {
           "$type": "ThunderRoad.AI.Action.SetStance, ThunderRoad",
           "stance": "Idle",
-          "onlyOnce": true,
-          "blackboard": null,
-          "creature": null,
-          "brainData": null
+          "onlyOnce": true
         }
       },
       {
@@ -25,10 +23,7 @@
         "child": {
           "$type": "ThunderRoad.AI.Action.SaveTimeInBlackboard, ThunderRoad",
           "variableName": "BrainStart",
-          "onlyOnce": true,
-          "blackboard": null,
-          "creature": null,
-          "brainData": null
+          "onlyOnce": true
         }
       },
       {
@@ -78,18 +73,12 @@
                   "outputCreatureAsCurrentTarget": true,
                   "outputCreatureVariableName": "",
                   "outputTransform": "SightedPart",
-                  "outputTransformVariableName": "",
-                  "blackboard": null,
-                  "creature": null,
-                  "brainData": null
+                  "outputTransformVariableName": ""
                 }
               },
               {
                 "$type": "ThunderRoad.AI.Action.SetBrainState, ThunderRoad",
-                "brainState": "Grappled",
-                "blackboard": null,
-                "creature": null,
-                "brainData": null
+                "brainState": "Grappled"
               }
             ]
           }
@@ -113,6 +102,26 @@
           "reference": "ForceID",
           "childTreeID": "HumanGrappled",
           "childTreeName": null
+        }
+      },
+      {
+        "$type": "ThunderRoad.AI.Decorator.IfCondition, ThunderRoad",
+        "operation": "AND",
+        "ifConditions": [
+          {
+            "$type": "ThunderRoad.AI.Condition.IsSwimming, ThunderRoad",
+            "checkSwimModule": false
+          }
+        ],
+        "ifNotConditions": null,
+        "child": {
+          "$type": "ThunderRoad.AI.Decorator.AlwaysSuccess, ThunderRoad",
+          "child": {
+            "$type": "ThunderRoad.AI.Action.HolsterItem, ThunderRoad",
+            "holsterRight": true,
+            "holsterLeft": true,
+            "waitForFinished": false
+          }
         }
       },
       {
@@ -167,12 +176,8 @@
       },
       {
         "$type": "ThunderRoad.AI.Action.SetBrainState, ThunderRoad",
-        "brainState": "Idle",
-        "blackboard": null,
-        "creature": null,
-        "brainData": null
+        "brainState": "Idle"
       }
     ]
-  },
-  "groupPath": null
+  }
 }

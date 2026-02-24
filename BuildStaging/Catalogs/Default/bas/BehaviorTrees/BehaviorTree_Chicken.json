@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
+  "groupPath": null,
   "type": "MasterTree",
   "rootNode": {
     "$type": "ThunderRoad.AI.Control.Selector, ThunderRoad",
@@ -38,17 +39,11 @@
             "offsetHeightRatioWhenOnFloor": 1.0,
             "raycastOffset": 0.1,
             "outputPositionVariableName": "NoisePosition",
-            "outputOffsetPositionVariableName": "NoiseOffsetPosition",
-            "blackboard": null,
-            "creature": null,
-            "brainData": null
+            "outputOffsetPositionVariableName": "NoiseOffsetPosition"
           },
           {
             "$type": "ThunderRoad.AI.Action.SetBrainState, ThunderRoad",
-            "brainState": "Alert",
-            "blackboard": null,
-            "creature": null,
-            "brainData": null
+            "brainState": "Alert"
           },
           {
             "$type": "ThunderRoad.AI.Action.MoveTo, ThunderRoad",
@@ -85,10 +80,7 @@
             "angleMode": "Randomize",
             "changeAngleUntilUnobstructed": true,
             "targetRadiusMinAngle": 0.0,
-            "targetRadiusMaxAngle": 120.0,
-            "blackboard": null,
-            "creature": null,
-            "brainData": null
+            "targetRadiusMaxAngle": 120.0
           }
         ]
       },
@@ -100,17 +92,11 @@
             "$type": "ThunderRoad.AI.Get.GetTransform, ThunderRoad",
             "target": "NextWaypoint",
             "prioritizeShortestPath": true,
-            "outputTransformVariableName": "Waypoint",
-            "blackboard": null,
-            "creature": null,
-            "brainData": null
+            "outputTransformVariableName": "Waypoint"
           },
           {
             "$type": "ThunderRoad.AI.Action.SetBrainState, ThunderRoad",
-            "brainState": "Patrol",
-            "blackboard": null,
-            "creature": null,
-            "brainData": null
+            "brainState": "Patrol"
           },
           {
             "$type": "ThunderRoad.AI.Action.MoveTo, ThunderRoad",
@@ -147,19 +133,13 @@
             "angleMode": "None",
             "changeAngleUntilUnobstructed": false,
             "targetRadiusMinAngle": 0.0,
-            "targetRadiusMaxAngle": 0.0,
-            "blackboard": null,
-            "creature": null,
-            "brainData": null
+            "targetRadiusMaxAngle": 0.0
           },
           {
             "$type": "ThunderRoad.AI.Action.WayPointTask, ThunderRoad",
             "inputTransformVariableName": "Waypoint",
             "outputTargetVariableName": "WaypointTarget",
-            "resetInteruptAnimation": false,
-            "blackboard": null,
-            "creature": null,
-            "brainData": null
+            "resetInteruptAnimation": false
           }
         ]
       },
@@ -169,10 +149,7 @@
         "childs": [
           {
             "$type": "ThunderRoad.AI.Action.SetBrainState, ThunderRoad",
-            "brainState": "Idle",
-            "blackboard": null,
-            "creature": null,
-            "brainData": null
+            "brainState": "Idle"
           },
           {
             "$type": "ThunderRoad.AI.Get.GetCreature, ThunderRoad",
@@ -187,10 +164,7 @@
             "outputCreatureAsCurrentTarget": false,
             "outputCreatureVariableName": "CreatureSelf",
             "outputTransform": "None",
-            "outputTransformVariableName": "CreatureTransformSelf",
-            "blackboard": null,
-            "creature": null,
-            "brainData": null
+            "outputTransformVariableName": "CreatureTransformSelf"
           },
           {
             "$type": "ThunderRoad.AI.Get.GetRandomPositionAround, ThunderRoad",
@@ -201,10 +175,7 @@
             "minRadius": 0.0,
             "maxRadius": 1.0,
             "attempts": 1,
-            "outputPositionVariableName": "RandomPosition",
-            "blackboard": null,
-            "creature": null,
-            "brainData": null
+            "outputPositionVariableName": "RandomPosition"
           },
           {
             "$type": "ThunderRoad.AI.Action.MoveTo, ThunderRoad",
@@ -241,42 +212,29 @@
             "angleMode": "None",
             "changeAngleUntilUnobstructed": false,
             "targetRadiusMinAngle": 0.0,
-            "targetRadiusMaxAngle": 0.0,
-            "blackboard": null,
-            "creature": null,
-            "brainData": null
+            "targetRadiusMaxAngle": 0.0
           },
           {
             "$type": "ThunderRoad.AI.Action.Wait, ThunderRoad",
             "startWaiting": true,
             "minDuration": 0.0,
-            "maxDuration": 3.0,
-            "blackboard": null,
-            "creature": null,
-            "brainData": null
+            "maxDuration": 3.0
           },
           {
             "$type": "ThunderRoad.AI.Action.SetAnimator, ThunderRoad",
             "parameterID": "Peck",
             "parameterType": "Trigger",
             "boolValue": false,
-            "floatValue": 0.0,
-            "blackboard": null,
-            "creature": null,
-            "brainData": null
+            "floatValue": 0.0
           },
           {
             "$type": "ThunderRoad.AI.Action.Wait, ThunderRoad",
             "startWaiting": true,
             "minDuration": 4.5,
-            "maxDuration": 6.0,
-            "blackboard": null,
-            "creature": null,
-            "brainData": null
+            "maxDuration": 6.0
           }
         ]
       }
     ]
-  },
-  "groupPath": null
+  }
 }

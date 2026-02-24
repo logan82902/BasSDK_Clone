@@ -1,14 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
 using UnityEngine;
 
 namespace ThunderRoad
 {
+    [DeclareBoxGroup("Damage", Title = "Damage")]
+    [DeclareBoxGroup("Heat", Title = "Heat")]
+    [DeclareBoxGroup("Animation", Title = "Animation")]
+    [DeclareBoxGroup("Charring", Title = "Charring")]
+    [DeclareBoxGroup("Spread", Title = "Spread")]
+    [DeclareBoxGroup("Effect", Title = "Effect")]
     public class StatusDataBurning : StatusData
     {
         public const string Heat = "Heat";
@@ -16,116 +18,82 @@ namespace ThunderRoad
         public const string HeatLossMult = "HeatLossMult";
         public const string Char = "CharAmount";
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Damage")]
-#endif
-        public float burnDelay = 0.5f; 
-#if ODIN_INSPECTOR
-        [BoxGroup("Damage")]
-#endif
+        [Group("Damage")]
+        public float burnDelay = 0.5f;
+        [Group("Damage")]
         public float damagePerTick = 0.75f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Damage")]
-#endif
+        [Group("Damage")]
         public float damagePerTickPlayer = 0.75f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Heat")]
-#endif
+        [Group("Heat")]
         public float heatReductionPerSecond = 1f;
-        
-#if ODIN_INSPECTOR
-        [BoxGroup("Heat")]
-#endif
+
+        [Group("Heat")]
         public float heatReductionPerSecondKilled = 2f;
-        
-#if ODIN_INSPECTOR
-        [BoxGroup("Heat")]
-#endif
+
+        [Group("Heat")]
         public float heatReductionPerSecondPlayer = 4f;
-        
-#if ODIN_INSPECTOR
-        [BoxGroup("Heat"), ValueDropdown(nameof(GetAllAnimationID))] 
-#endif
+
+        [Group("Heat")]
+        [Dropdown(nameof(GetAllAnimationID))]
         public string heatAnimationId = "HumanFireDeaths";
         [NonSerialized]
         public AnimationData heatAnimationData;
 
-        [BoxGroup("Heat")]
+        [Group("Heat")]
         public float maxHeat = 100;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Animation")]
-#endif
+        [Group("Animation")]
         public float animationStartTimeMax = 0.5f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Charring")]
-#endif
+        [Group("Charring")]
         public float fullCharTime = 10f;
-        
-#if ODIN_INSPECTOR
-        [BoxGroup("Charring")]
-#endif
+
+        [Group("Charring")]
         public float charRevealStep = 0.02f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Charring")]
-#endif
+        [Group("Charring")]
         public AnimationCurve charResistanceCurve = AnimationCurve.Linear(0, 1, 1, 0.2f);
-        
-#if ODIN_INSPECTOR
-        [BoxGroup("Charring")]
-#endif
+
+        [Group("Charring")]
         public bool allowVisualCharring = true;
-        
-#if ODIN_INSPECTOR
-        [BoxGroup("Charring")]
-#endif
+
+        [Group("Charring")]
         public bool freezeOnFullChar = true;
-        
-#if ODIN_INSPECTOR
-        [BoxGroup("Charring")]
-#endif
+
+        [Group("Charring")]
         public bool weakenJointsOnFullChar = true;
-        
-#if ODIN_INSPECTOR
-        [BoxGroup("Charring")]
-#endif
+
+        [Group("Charring")]
         public float fullCharCharJointMultiplier = 1;
-    
-#if ODIN_INSPECTOR
-        [BoxGroup("Spread"), ValueDropdown(nameof(GetAllEffectID))]
-#endif
+
+        [Group("Spread")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string igniteEffectId = "SpellFireBurningSpread";
-        
-#if ODIN_INSPECTOR
-        [BoxGroup("Effect"), ValueDropdown(nameof(GetAllEffectID))]
-#endif
+
+        [Group("Effect")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string smokingMainEffectId;
 
         [NonSerialized]
         public EffectData smokingMainEffectData;
-        
-#if ODIN_INSPECTOR
-        [BoxGroup("Effect"), ValueDropdown(nameof(GetAllEffectID))]
-#endif
+
+        [Group("Effect")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string smokingLimbEffectId;
 
         [NonSerialized]
         public EffectData smokingLimbEffectData;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Effect"), ValueDropdown(nameof(GetAllEffectID))]
-#endif
+        [Group("Effect")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string burningMainEffectId;
 
         [NonSerialized]
         public EffectData burningMainEffectData;
-        
-#if ODIN_INSPECTOR
-        [BoxGroup("Effect"), ValueDropdown(nameof(GetAllEffectID))]
-#endif
+
+        [Group("Effect")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string burningLimbEffectId;
 
         [NonSerialized]

@@ -1,14 +1,9 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Object = UnityEngine.Object;
-
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
 
 
 namespace ThunderRoad
@@ -26,18 +21,11 @@ namespace ThunderRoad
         [Serializable]
         public class AreaSpawnerData
         {
-#if ODIN_INSPECTOR
-            [ValueDropdown(nameof(GetAllAreaCollectionID))]
-#endif
+            [Dropdown(nameof(GetAllAreaCollectionID))]
             public string areaCollectionId = "";
             public int numberCreature;
             public bool isSharedNPCAlert;
-#if ODIN_INSPECTOR
-            public List<ValueDropdownItem<string>> GetAllAreaCollectionID()
-            {
-                return Catalog.GetDropdownAllID(Category.AreaCollection);
-            }
-#endif
+            public TriDropdownList<string> GetAllAreaCollectionID() => Catalog.GetDropdownAllID(Category.AreaCollection);
         }
 
         #endregion InternalClass
@@ -54,12 +42,7 @@ namespace ThunderRoad
 
         #region Methods
 
-#if ODIN_INSPECTOR
-        public List<ValueDropdownItem<string>> GetAllAreaID()
-        {
-            return Catalog.GetDropdownAllID(Category.Area);
-        }
-#endif
+        public TriDropdownList<string> GetAllAreaID() => Catalog.GetDropdownAllID(Category.Area);
 
 
         #endregion Methods

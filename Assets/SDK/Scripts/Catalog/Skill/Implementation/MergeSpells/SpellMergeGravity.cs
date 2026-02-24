@@ -4,103 +4,68 @@ using System.Collections.Generic;
 using ThunderRoad.Skill.Spell;
 using UnityEngine;
 using Object = UnityEngine.Object;
-
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
 
 namespace ThunderRoad.Skill.SpellMerge
 {
     [Serializable]
+    [DeclareBoxGroup("Throw", Title = "Throw")]
+    [DeclareBoxGroup("Lift", Title = "Lift")]
+    [DeclareBoxGroup("Bubble", Title = "Bubble")]
     public class SpellMergeGravity : SpellMergeData
     {
-#if ODIN_INSPECTOR
-        [BoxGroup("Throw"), ShowIf("allowThrow")] 
-#endif
+
+        [Group("Throw")]
+        [ShowIf("allowThrow")]
         public float throwDefaultForce = 22;
-#if ODIN_INSPECTOR
-        [BoxGroup("Throw"), ShowIf("allowThrow")] 
-#endif
+        [Group("Throw")]
+        [ShowIf("allowThrow")]
         public float throwRagdollLimbForce = 6;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Lift")] 
-#endif
+        [Group("Lift")]
         public float mergingLiftRadius = 5f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Lift")] 
-#endif
+        [Group("Lift")]
         public float liftMinForce = 0.3f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Lift")] 
-#endif
+        [Group("Lift")]
         public float liftMaxForce = 0.6f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Lift")] 
-#endif
+        [Group("Lift")]
         public float liftRagdollForceMultiplier = 2f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Lift")] 
-#endif
+        [Group("Lift")]
         public float liftDrag = 1f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Lift")] 
-#endif
-        public Vector3 randomTorqueRange = new Vector3(0.2f, 0.2f, 0.2f);
-#if ODIN_INSPECTOR
-        [BoxGroup("Lift")] 
-#endif
+        [Group("Lift")]
+        public Vector3 randomTorqueRange = new(0.2f, 0.2f, 0.2f);
+        [Group("Lift")]
         public float playerGravityRatio = 0.5f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Bubble"), ValueDropdown(nameof(GetAllEffectID))] 
-#endif
+        [Group("Bubble")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string bubbleEffectId;
         protected EffectData bubbleEffectData;
-#if ODIN_INSPECTOR
-        [BoxGroup("Bubble")] 
-#endif
+        [Group("Bubble")]
         public float bubbleDuration = 10;
-#if ODIN_INSPECTOR
-        [BoxGroup("Bubble")] 
-#endif
+        [Group("Bubble")]
         public float bubbleEffectMaxScale = 15;
-#if ODIN_INSPECTOR
-        [BoxGroup("Bubble")] 
-#endif
+        [Group("Bubble")]
         public AnimationCurve bubbleScaleCurveOverTime;
-#if ODIN_INSPECTOR
-        [BoxGroup("Bubble")]
-#endif
+        [Group("Bubble")]
         public float bubbleEndNormalizedTime = 0.85f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Bubble")]
-#endif
+        [Group("Bubble")]
         public AnimationCurve bubbleEndCurve;
-#if ODIN_INSPECTOR
-        [BoxGroup("Bubble")] 
-#endif
+        [Group("Bubble")]
         public float bubbleHandSeparationMaxAngle = 45f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Bubble")] 
-#endif
+        [Group("Bubble")]
         public bool enableHandControl;
-        
-#if ODIN_INSPECTOR
-        [BoxGroup("Bubble"), ValueDropdown(nameof(GetAllStatusEffectID))] 
-#endif
+
+        [Group("Bubble")]
+        [Dropdown(nameof(GetAllStatusEffectID))]
         public string statusId = "BubbleGravity";
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Bubble"), ShowIf("enableHandControl")] 
-#endif
+        [Group("Bubble")]
+        [ShowIf("enableHandControl")]
         public float handControlForce = 0.5f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Bubble"), ShowIf("enableHandControl")] 
-#endif
+        [Group("Bubble")]
+        [ShowIf("enableHandControl")]
         public ForceMode handControlForceMode = ForceMode.VelocityChange;
 
         protected static Vector3[] randomTorqueArray;

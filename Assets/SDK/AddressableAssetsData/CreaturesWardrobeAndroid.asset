@@ -1,0 +1,2264 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: CreaturesWardrobeAndroid
+  m_EditorClassIdentifier: 
+  m_GroupName: CreaturesWardrobeAndroid
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 1769bd9312459864c9d291f8e0219569
+  m_SerializeEntries:
+  - m_GUID: 01949c7d97f64834285420f7d8128751
+    m_Address: Bas.Creature.Wardrobe.HumanMale.ImprovisedMage.Scarf
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - ImprovisedMage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 02cde54d753b1034a8bb0ce9c34a8936
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Officer.Shoulders02
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Officer
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 02d25977fe992674a87052da7a1adc37
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Officer.ShoulderL_01
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Officer
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0425a810e66c76b46a9a219a03855628
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Rogue.Helmet
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Rogue
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0433717269b99344fb9c8035ac8fcda7
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Shirt04
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Human
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0458766bccbd63c4e9ec7ef6b27eaec3
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Mercenary.Hand.L01
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Mercenary
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0472c70b60b657749b03fbb0ed41d6ed
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Mercenary.Hand.L03
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Mercenary
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0480aceb9c5b16a4587be19113681a9a
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Mercenary.Legs
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Mercenary
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 04e4fa680ef7f2a4b92480d97110f48f
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Body.Legs
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Human
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0576548f7dfe4c5489123583f0b29bc2
+    m_Address: Bas.Creature.Wardrobe.HumanMale.ImprovisedLeather.ShoulderL
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - ImprovisedLeather
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 086d7c8075d112146a0dba254db80ba1
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Bandit.Helmet
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Bandit
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 089d2e9c6dc4fa14b907c8171a7143a5
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.ImprovisedMage.Skirt
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - ImprovisedMage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0923dee9fb831e94c85cfb0fe9fd3ae1
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Soldier.GloveRight
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Soldier
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 09ce16c5f07509e479a97a3302a29124
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Officer.Helmet_Open
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Officer
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 09eec854d65b5ad4da72dc3a703d7568
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Battlemage.Boots
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Battlemage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0b8a06d33ad305c4eb6c2cde54298f13
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.WarMage.Feet
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - WarMage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0c4cd9dd296f9ed46a423eed5c89dbf7
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Officer.HandL
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Officer
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0cb3d62eb693592479d7b703bc86f275
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Sentari.Mouth_01
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Sentari
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0cd1f5739bd7a86469dd7941225b17d7
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Beard04
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Human
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0e12a289414a9794aafd886cc15d82d4
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Battlemage.Pants
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Battlemage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0eddebda8b4ebfe4f941dd7abfee24d4
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Shirt01
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Human
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0fd8b80a4f4488440991429fff8ddf4b
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Underwear.WristLeft
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Human
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 11a2888271dbaed4781e4bed7dbf3486
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Rakta.Chestplate
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - RaktaArmor
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 14480638fab0cc64a88127c904d4cc87
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Civilian.Feet
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Civilian
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 149e28a8602aac646b55dfd6d961c826
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Body.Head
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Human
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 14c3472a6c378fb4f9b2bb1fda2d142d
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.ImprovisedMage.Scarf
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - ImprovisedMage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 166807b042d230b48b965960715138a5
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Battlemage.Hood
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Battlemage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 16c228fd97f4a9b4a913d8a98ae33e41
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Madene.Head_01
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Madene
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1792741c241beec43bcdf356ceb62083
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Kharese.Mouth_01
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Kharese
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 18440cea3be548b409787141bedef130
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Mercenary.Shoulder.R02
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Mercenary
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 188991e478c90f94babdb5c1bc263da4
+    m_Address: Bas.Creature.Wardrobe.HumanFemale_Druid_Boots
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Druid
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 18c488f1f572a7a41a936bbbc62f8eca
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Rogue.Shoulders
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Rogue
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 18c551d487b29a44c9b160eda7d009e5
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Sentari.Head_01
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Sentari
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1926b31940f5c8d44b6294e4c5136755
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Civilian.HandR
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Civilian
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 19368cbcd23bc3440b3d97d21e69881d
+    m_Address: Bas.Creature.Wardrobe.HumanMale.WarMage.Legs
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - WarMage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 195bc2ea7c368634c9ea56bec18b14a5
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Rakta.Feet
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - RaktaArmor
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 19671801d5c614d4d8fae93b6fe24258
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Body.EyesLashes
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Human
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1adafb0297ba48c48b173805f5f7df1e
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.WarMage.Legs
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - WarMage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1afff1f1919d1b14a9422b27c51e6119
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Madene.Eyes_01
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Madene
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1b231076845877949b697f1e0a2529fe
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Rogue.HandL
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Rogue
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1c91288a7fd142a4baa4d0d44fad4316
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Hair05
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Human
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1d9b16eea6c15c34e941442528c1662b
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Officer.Legs
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Officer
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1f49ea16cc3c2734682df650d2e90d68
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Mercenary.Shoulders04
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Mercenary
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1fb0244a153f8e34b9957bcd9dbdbac5
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Mercenary.Shoulders03
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Mercenary
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 20c73c64c6b487343a3677297cc161c5
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Kharese.Eyelashes_01
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Kharese
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 237d2a5b9087d1b48ae43359386ed092
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Rogue.Shoulders
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Rogue
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 23aea7a8b436e534c8e3e492f6f7a66a
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Hair02
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Human
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2488ef408af87004f837d21bde95d31f
+    m_Address: Bas.Creature.Wardrobe.HumanFemale_Druid_Headband
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Druid
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 24a5860dad6a9c349beecffb0128f0fe
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Sentari.Head_01
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Sentari
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2526e7a4269e9484282fafb88f31b023
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Soldier.Shoulders
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Soldier
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2576365bcf6d7e145916ae08a258d313
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Soldier.ShoulderLeft
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Soldier
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 25ef8c30f44cd0249b80f15aae4d29b5
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Body.Eyes
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Human
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 26238328060f68e4eb0ec17b2c3aed22
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Rakta.Shoulders
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - RaktaArmor
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 26c02a53e8b04cf42b4c279c594528db
+    m_Address: Bas.Creature.Wardrobe.HumanMale.ImprovisedMage.Skirt
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - ImprovisedMage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 271da5eba4ffbb745ba483ae6a88be72
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Mercenary.Hand.R01
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Mercenary
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 279e91625663ac6449522c5e4ed74c29
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Rakta.Shoulders
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - RaktaArmor
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 27f6c8cf9a3f21d4da0af64732f1b57f
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Officer.Boots
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Officer
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2866b5b729eafaa45bfdab6dc24ebd3c
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.WarMage.HandR
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - WarMage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 29a4b16e06f902b488239d806ab241b7
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Mercenary.Shoulders04
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Mercenary
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 29f9ddf68cd65c7458fac4bcbd417f35
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Raike.Eyelashes_01
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Raike
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2a3c489591c64d8498fa88a56b9800f2
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Mercenary.Shoulder.L01
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Mercenary
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2a517984cfbb2e24ea8b7812406ad222
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Battlemage.GloveRight
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Battlemage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2a6fa062ba0b3834eb0dd79b44fed038
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Soldier.Pants
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Soldier
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2b99f01960b219044b1f17e25d80347a
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Civilian.HandR
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Civilian
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2ba54f8ffb30bd141a1eb0433ff784c1
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Hair06
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Human
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2c9528db1b708d94da20149dd9c167b7
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Body.Torso
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Human
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2e07231271f5bac4dae48b6da8051952
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Mercenary.Hand.R02
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Mercenary
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2fdb75ac820862942accf8dc61ec36a7
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Officer.ShoulderR_02
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Officer
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2fe61583cf6f6c143b89558d1a8b9806
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Beard05
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Human
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2fe9e450f8b08634cb8e9c1c1d8ca7c5
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Rakta.HandR
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - RaktaArmor
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2fed439b505a12f4ba0af865d1d26b8e
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Battlemage.Jacket
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Battlemage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 30cae351c2802b04788c92dbf08d9177
+    m_Address: Bas.Creature.Wardrobe.HumanMale.ImprovisedLeather.Shoulders
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - ImprovisedLeather
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 30ce41ddd8a09d74a805372a7f377fc5
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.WarMage.Chest
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - WarMage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3124726d453109a468c96633a11f1dc0
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Underwear.WristRight
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Human
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3164ffeced6bc464887c552f7af8ab12
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Shirt02
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Human
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 320e301328dace941beae9b8da126d39
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Civilian.Legs
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Civilian
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 32c38c41816fc2348abba3c7357977a9
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Body.Mouth
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Human
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 330e07215f421f3418ae2c87e6c19088
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Hair06
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Human
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 338b86a2e99ff00429ddd94a05fbb1c3
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Bandit.Boots
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Bandit
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 33c1079dbf0c8b345a009c69b40075df
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Raike.Eyelashes_01
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Raike
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 340dee852ec41464089c4936abbd7956
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Officer.Boots
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Officer
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 358966989af295a44acaf01a90aa2d6d
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Hat.Santa
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Hat
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 371bd729233560b429813a4d792bce4b
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Vfx
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Human
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 37355e6b53fe7754998cb919a7fba1bf
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Hair09
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Human
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3ab79f86725387d4f94030ab53b91df4
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Rogue.Helmet
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Rogue
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3abddfa9ab4f701448b7984c718b763b
+    m_Address: Bas.Creature.Wardrobe.HumanFemale_Druid_Legs
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Druid
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3bf312df8773db34ca4cbab92c5ee3e2
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Body.HandLeft
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Human
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3c5733229e19b41488d00e5232a9a24a
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Battlemage.Pants
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Battlemage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3d5531b7925a23f49872f2f73a28c233
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Battlemage.Jacket
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Battlemage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3dbf703dfbd74d74d8958f3eeedbd95d
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Madene.Eyelashes_01
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Madene
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3e469638e118ac747a534a2721f0e5e6
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Rogue.Pants
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Rogue
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3f84711270b512347bcd2264770c8480
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Officer.Shoulder01_R
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Officer
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3fc20d8d2ab07dd4683d22c07defdd6c
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Rakta.Helmet
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - RaktaArmor
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4005b458083e9e649905d0db39edcd6f
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.RaggedTrousers
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Human
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4186f8f4b6f771544a7a841d183a88c9
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.ImprovisedLeather.WristR
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - ImprovisedLeather
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 41beda89c6ec2d14cb5a11b171d34dc2
+    m_Address: Bas.Creature.Wardrobe.HumanFemale_Druid_Chest
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Druid
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 43bbd776e1b90f84e854e206b3cc9758
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Body.Torso
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Human
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 446b2220f8f3a3b48ab3b7f8ae6c794b
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Mercenary.Jacket
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Mercenary
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4548da0424ada4843b317e393357aa78
+    m_Address: Bas.Creature.Wardrobe.HumanMale.WarMage.HandR
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - WarMage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 455c031407d9bf940b7356eb1b0f8661
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Civilian.Feet
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Civilian
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4753f1f2335d0ab42be9a737e14c8ec2
+    m_Address: Bas.Creature.Wardrobe.HumanFemale_Druid_HandL
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Druid
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4794f6c5442f65d4e80aedbb549af2c1
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Battlemage.GloveRight
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Battlemage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 48180bdd8d7f54f44a336182cb77cf43
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.WarMage.Shoulder_Head
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - WarMage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4823e04aab51208468c451d014b1b74a
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Soldier.Helmet
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Soldier
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 485b7b6737a05c44caf1f24945719a95
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Officer.Helmet_Closed
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Officer
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 485f1262572bc124eb166e6d3842bce8
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.ImprovisedLeather.WristL
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - ImprovisedLeather
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 490bb51aed61e9c4dad8f0f77aac1eaf
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Officer.HandL
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Officer
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4ace61986086aec4684f10be2af7bc23
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Gladiator.GloveLeft
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Gladiator
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4adfffe5087145f4aabc8272885901db
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Officer.HandR
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Officer
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4c3cbd78a7b626b41bf53865219329a5
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Bandit.Boots
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Bandit
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4dce4c004da8e504788ca53ed3afc2f1
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Mercenary.Hand.L04
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Mercenary
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4e9d2ebed687da84fb5c8a6286fd09d3
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Gladiator.Headband
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Gladiator
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4eb89ccb356ee54419d14060cd73b3a6
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Madene.Mouth_01
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Madene
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4f06611bdde7bf34b96c7bcd1097baec
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Body.Feet
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Human
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5013ea0711914b14da14f536ea7f5fdd
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Kharese.Eyes_01
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Kharese
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 503119f719467bf428155050ae9884e8
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Gladiator.ShoulderRight
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Gladiator
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5066c25073bba9649afbde745d4cf137
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Shirt03
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Human
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 507939ecb5f72d24ca074a1cec634457
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Mercenary.Hand.L02
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Mercenary
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 507fbd69d020d9b43b3e124f76909ccd
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Battlemage.Boots
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Battlemage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 51019d350b1b3544097f0c4b3b43e294
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Kharese.Head_01
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Kharese
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 51476150eb4b8f244a9583fb9e3b48fe
+    m_Address: Bas.Creature.Wardrobe.HumanMale.ImprovisedMage.WristL
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - ImprovisedMage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5186a9a0feeea0941b786e7b0e4eb99b
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Soldier.Boots
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Soldier
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 52bd9452e54310a41bdaf511cd869b8e
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Mercenary.Hand.R04
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Mercenary
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5318062ae7f7b8541b79cc298525462e
+    m_Address: Bas.Creature.Wardrobe.HumanMale.RuggedTrousers
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Human
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 53511a4a44b750d4ca3ae8a0fc168a27
+    m_Address: Bas.Creature.Wardrobe.HumanMale.ImprovisedLeather.WristR
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - ImprovisedLeather
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5385f63f8fe690843869843980dc561f
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Body.HandRight
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Human
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 542ce974aca81e549ba06290517274ee
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Rakta.Helmet
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - RaktaArmor
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5540c851484a4714cb91a8bfb2efd16b
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Rakta.HandR
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - RaktaArmor
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5562a15852ef1ab4fa0407334383852e
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Officer.ShoulderR_01
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Officer
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 56474456b602202488d51f5fe7773252
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Hair04
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Human
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 56ca2e4a6d5598141abe0ec532df6f23
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Gladiator.Jacket
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Gladiator
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 572ad0595b246b24e9f62b07a1bd53f0
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Rakta.Feet
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - RaktaArmor
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 580b51af5639e62419b57922b228200f
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Rakta.Pants
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - RaktaArmor
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5907fbbe46a628f478989893ef81d677
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Shirt04
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Human
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5ca589f6f99a4334bbd4fcf03617fcdc
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Body.EyesBrow
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Human
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5d8d5cd12b616e147bbd513d966698de
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Hair01
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Human
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5dfb6c5e3bdfc9b47a32731f912f089b
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.WarMage.HandL
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - WarMage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5ed919cd8b9e244479523818f7bcefb4
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Mercenary.Shoulders01
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Mercenary
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5fa3d5680dda6334cabef2921b817dee
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Mercenary.Hand.L02
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Mercenary
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 60da28063f2e1bf49b1c4a2b738bb54b
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.ImprovisedLeather.ShoulderR
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - ImprovisedLeather
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6164bfe5803a8c541a13302db230d9db
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Officer.Legs
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Officer
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 62b57a853a4d38d4db9283921ed5eada
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Officer.Helmet_Closed
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Officer
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 639e9d8e2da5f82459dabf117bae6edd
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Civilian.HandL
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Civilian
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 63c9fdb473257394fbd16a01cbb71be1
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Battlemage.GloveLeft
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Battlemage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 63f8758530762184b8746501f3f0f940
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Gladiator.Headband
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Gladiator
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 643825f79ee559a41bcea887e64f2d47
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Beard03
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Human
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 659ec9968c1830c45a0e788ddebc80b0
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Officer.Torso
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Officer
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6810249ea08c98248bc0599bad633a54
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Soldier.GloveLeft
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Soldier
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 693d91eb11882634b9a314e399839a80
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.ImprovisedMage.WristR
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - ImprovisedMage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 69b95e3ae9e431e468a1a554f5f4eae5
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Officer.Shoulder02_R
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Officer
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6a5a9385d0bb26046bd0f652fd740d07
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Shirt03
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Human
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6b8996409b0068a4381d244a0443e2c2
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Rakta.HandL
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - RaktaArmor
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6bd5342770adf924ab1eea8716220c28
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Bandit.GloveLeft
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Bandit
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6d4edca971713a443984aa774058f4e5
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Hair08
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Human
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6f81bde30b7dee0448c1650680e1d7b2
+    m_Address: Bas.Creature.Wardrobe.HumanMale.WarMage.HandL
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - WarMage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 721870fb0418053419029428144e60ab
+    m_Address: Bas.Creature.Wardrobe.HumanMale.ImprovisedPants
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - ImprovisedLeather
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7287e03623421914f88a03f5d274f6e8
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Vfx
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Human
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 735e7d686a9e00e4f987c93b34d6f6ce
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Shirt02
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Human
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 73b73b8b4b9ec8c409d141d3aa90ec55
+    m_Address: Bas.Creature.Wardrobe.HumanMale.WarMage.Feet
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - WarMage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 73c16d238ff83ee47adbb5a1754840b5
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Hair01
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Human
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 744b03807ad9a0d41b9ff10ea2c87cfb
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Druid.Legs
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Druid
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 75341b0f81bf3344f929173dd5d2c37f
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Gladiator.Boots
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Gladiator
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 75ae5dd3cfc2b744496b95a0bc893ae8
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Mercenary.Headband
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Mercenary
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 76cd10d79b449604f89de07871e6a1fd
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Sentari.Eyelashes_01
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Sentari
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 77c8e6d93d1f40f4fa5dadfd0949bb98
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Body.Head
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Human
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 77f3f578e844df541b76a874eebfe6ac
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Mercenary.Jacket
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Mercenary
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 786e43ce7a308084695a1010e04171e2
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.ImprovisedLeather.Shoulders
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - ImprovisedLeather
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 78f3349299c360b4fb56fbaecc92f90b
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Hair10
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Human
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 79915adbd43eb56498dbc75c1ee96ebe
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Sentari.Eyes_01
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Sentari
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7baa48513878d714b8ad8f865afe4a60
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Mercenary.Shoulders03
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Mercenary
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7cd4a9a3463f9f0439f735b982364d2b
+    m_Address: Bas.Creature.Wardrobe.HumanMale.WornSandals
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Human
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7e2179320ff0a92479b6d166de136a0a
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Rakta.HandL
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - RaktaArmor
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 80b680cea6ea8e843a338c7c02ec4dcf
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Raike.Mouth_01
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Raike
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 80d501d3a52202140b46f5870edfb16d
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Bandit.GloveLeft
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Bandit
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 80f34cbe518405c4d8ec09a5339aa221
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Mercenary.Shoulder.R02
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Mercenary
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8113a900183b982479423a4d49bb6b4f
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Rogue.Chestplate
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Rogue
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 81e511d61f32b2746bb4bd0564de90f2
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Soldier.GloveLeft
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Soldier
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 83acb4e50b482e748831e10b4f3f7fa7
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Bandit.Jacket
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Bandit
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 85554dde7a2c78b40aef577741a18699
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Hair03
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Human
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8568e90bb28797746a4a32d5203e9d78
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Soldier.ShoulderRight
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Soldier
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 867a575794840e24d8715b1e3391d372
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Body.Mouth
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Human
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 86bf199198f19234c9debea17f94e6ab
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Bandit.Pants
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Bandit
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8816f14c1f0c1da4eae89d6824285e45
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Hair04
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Human
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 89141340c77648046a0ecde7293779e6
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Mercenary.Shoulders02
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Mercenary
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8a0e02bfbb91f0d49a8639a2c87c4119
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Soldier.Jacket
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Soldier
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8b22ed40c4e0ff74996671395a484e3f
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Soldier.Jacket
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Soldier
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8c73341ccf58fe4458f70c41f11dfde1
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Mercenary.Hand.R02
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Mercenary
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8edd11d68d6e4484badda9a3becc773b
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Mercenary.Headband
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Mercenary
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8f5b51d2a19cb4e4888ae1d982335081
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Gladiator.Jacket
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Gladiator
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 901c3a862c62fe94d830fc8c7a479126
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Mercenary.Feet
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Mercenary
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 90cd1dcdf7024c44f9f7e7f34d419d65
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Body.EyesBrow
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Human
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9188fac10c654944babb24fff42296af
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Shirt01
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Human
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 92a0907567cdf5143bb4ba6df56c711f
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Bandit.Jacket
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Bandit
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 92fa20bb52a932b4bbe31e47ee9bc909
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Hair07
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Human
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9311598a95732914eb774b4444ac854e
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Raike.Eyes_01
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Raike
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 935237ee8f7872f47b8c367bab9819c9
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Soldier.Shoulders
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Soldier
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 93b6c8764c6255e408360b2c9fa0573b
+    m_Address: Bas.Creature.Wardrobe.HumanMale.ImprovisedLeather.WristL
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - ImprovisedLeather
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 93c09e00ff176b8458d1883f53625378
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Druid.HandR
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Druid
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 93e4869a1270fcb40a3909250d1032c0
+    m_Address: Bas.Creature.Wardrobe.HumanMale.ImprovisedLeather.Torso
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - ImprovisedLeather
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 97fec771187648649b1df65dd9bb4131
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Officer.Shoulders01
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Officer
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 990ad4bff497eae42a12e21a2403a98a
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Officer.HandR
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Officer
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9a536ecfc2ccfc54b82f053cb153d202
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Rogue.Boots
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Rogue
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9f411522e00ad03459f9ff3d204f3028
+    m_Address: Bas.Creature.Wardrobe.HumanMale.ImprovisedMage.WristR
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - ImprovisedMage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9f5db0a3fbdd706458e3e3ca74666355
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Soldier.ShoulderLeft
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Soldier
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a15acbce014c09245be46b8f28a05b9e
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Underwear.Bottom
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Human
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a2b62f89cbcf12240becedd4c1c871af
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Druid.Torso
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Druid
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a36c318a28c9324428ab01ed0c423cd3
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Gladiator.Boots
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Gladiator
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a5b68cbb68394b347b67c9d0c50a8229
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Rogue.HandL
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Rogue
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a6b23cb68553b534a8a3213ee7fa7bd2
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Sentari.Eyelashes_01
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Sentari
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a9f37f83a7157ef4b850fa28d276253d
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Beard01
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Human
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: aaf01063709b6e44a9e7007d8f8aa9ea
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Raike.Head_01
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Raike
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ab0f76bcb36f3924bb66706bc0d24716
+    m_Address: Bas.Creature.Wardrobe.HumanMale.ImprovisedLeather.Feet
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - ImprovisedLeather
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ab23cf318701fc141871ff9952bcaf11
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Battlemage.Hood
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Battlemage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ab40f5784b91dad44b51e40404cbd90d
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Druid.Headband
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Druid
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ab7d2ae858f7fff4f8766495ad0b81b2
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Druid.HandL
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Druid
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: abfebe0e4fd57444780e9b32186da4a3
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Madene.Mouth_01
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Madene
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ac0e2ed1653c86444bad6a5eb3d1d448
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Officer.ShoulderL_02
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Officer
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ac69d48081a20074382a3c77ab734716
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Civilian.Chest
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Civilian
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ae2bd6a7afd29c146ae15787a0299780
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Body.EyesLashes
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Human
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ae511fcf6a3a3114abec309992277968
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Soldier.Pants
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Soldier
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: afab060a4aeb9cf45909828d16874739
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Battlemage.GloveLeft
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Battlemage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b0b586fc81f4ede48a1251f05af83ce7
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Civilian.Chest
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Civilian
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b0dfa7485ebb1874687f28a90b4cf6b6
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Mercenary.Feet
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Mercenary
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b117125e12f5b9a48ad4487c7cad89bf
+    m_Address: Creature.Wardrobe.ProtoFemaleHelmet
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b1b5f8a64680c714a9bd9b0c38ed7f61
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Mercenary.Legs
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Mercenary
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b1e732e3ba32ac3429c3a248e4c5fbf9
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Rogue.Chestplate
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Rogue
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b1fb7c5237fb89d4db092699b83620cf
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Sentari.Eyes_01
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Sentari
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b242c5276e8545a4e98427736e7a40f8
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Hair09
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Human
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b26517be985eedd4c9416a77530cfc2a
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Soldier.Helmet
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Soldier
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b274f2938e3f1bf40a63d9836ea740b8
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.ImprovisedMage.WristL
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - ImprovisedMage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b27942cc054e3c043ab872daa0309fb0
+    m_Address: Bas.Creature.Wardrobe.HumanMale.WarMage.Chest
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - WarMage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b3eb63b2b19636d49bc28b6be6f65b07
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Hair02
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Human
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b55bf7ba24266814786d2b5721091c3b
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Body.HandRight
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Human
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b676ccc5f6cb1324599bfdf176ccf1a9
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Bandit.GloveRight
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Bandit
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b740f12dc3a49c447b67d5633abf16c8
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Madene.Eyelashes_01
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Madene
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b88caaa2b7b05a5478702de6d74d6cf7
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Hair08
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Human
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b9577deae28ff774fa0543a9771f5998
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Madene.Eyes_01
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Madene
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b982fdb3aeddcf645b010753ceedfc3a
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Druid.Feet
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Druid
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b9beeaf660b8d3e488618c0474aee5f1
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Bandit.Pants
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Bandit
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ba2d97feb64cb814cbc9e1977b1a1b21
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Hat.Baron
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Hat
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: baa69fccfd3e5e64aa7523de185982d1
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Gladiator.GloveRight
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Gladiator
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bae9691774dd6ef419998f0a9ec6e93e
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.ImprovisedLeather.ShoulderL
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - ImprovisedLeather
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bedd31d6a0b24114a9d8d0ca58cb51be
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.WornSandals
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Human
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: beddce1306ee3d841ba8a6c2f8c36d79
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Kharese.Eyelashes_01
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Kharese
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bf536b0ed8733994fa54ebb85e27cb87
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Underwear.WristRight
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Human
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c0548467ae7566c42b9d51636f12e41b
+    m_Address: Creature.Wardrobe.ProtoMaleHelmet
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c0908d1d9798e1f48b65c4521491a0a2
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.ImprovisedLeather.Torso
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - ImprovisedLeather
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c1465490979aba04fa98baf27120865c
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Mercenary.Shoulder.R01
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Mercenary
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c2341a7e5218e9c49bab7ef994524248
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Underwear.WristLeft
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Human
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c2803d0df735a364c92eb2b98d95508f
+    m_Address: Bas.Creature.Wardrobe.HumanMale.ImprovisedLeather.ShoulderR
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - ImprovisedLeather
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c31525425202c774f94a29d8e5109470
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Officer.Shoulders_01
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Officer
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c522ce64541be604bb0b6d7dc6e21b89
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Kharese.Mouth_01
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Kharese
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c5aafbe64f5befc4fb43c2493c817fce
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Body.Legs
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Human
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c5c3266f60aa2f24ca776d795873387d
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Gladiator.GloveRight
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Gladiator
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c81aaa93eefb9564ea5279eeee806ba4
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Hat.Baron
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Hat
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c82e38cc54d1e0845b05cc5be3454f4e
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Rogue.Boots
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Rogue
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c89f9170f8a6c344780ac54057438756
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Body.Feet
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Human
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c917c22f4bc4e01478b56631aeea2bf8
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Sentari.Mouth_01
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Sentari
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ca3eec75e210e284eb044200bb0efd76
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Gladiator.GloveLeft
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Gladiator
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cc97ee242e2b79f45ad980de7fde80b5
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Soldier.GloveRight
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Soldier
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cdb4b95fa55137745b5976b4a0929c52
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Soldier.Boots
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Soldier
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cdd02fe67e09e29459e133c5b86378ce
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Rogue.Pants
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Rogue
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ce372516bdb28304886042187516ef0c
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Hair05
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Human
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ce5b7f40a09ea7b458fe20b64cb2d57d
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Mercenary.Shoulder.L02
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Mercenary
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cfbf1f916a6bb5345a929490726d7b34
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Raike.Eyes_01
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Raike
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d4010e1e90bcb964dad62cd6b9604546
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Mercenary.Hand.L01
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Mercenary
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d4b09b2c4b2097742bcb765cf69a35de
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Officer.Shoulder01_L
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Officer
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d546cae2704c64741b071e76249280c8
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Body.HandLeft
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Human
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d56644c2973da604eb16f3b86346fa0f
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Soldier.ShoulderRight
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Soldier
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d58c016d54546504ba0bd47e47aef200
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Officer.Shoulder02_L
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Officer
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d6fe86a28332d9142a47a7eaba2efac1
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Rakta.Pants
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - RaktaArmor
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d9d0032d46fa1464a9abc704d0cf383f
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Hair03
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Human
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d9f2db92d5fb6c34ba26f77532c0d854
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Hat.Santa
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Hat
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: dc0180e2644825b41b9ee29065d51028
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Druid.Shirt
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Druid
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: dc34d344e2c03e94daaa20468e99448d
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Gladiator.ShoulderLeft
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Gladiator
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: dd2f233af7e2ceb4fa05e1d675898516
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Mercenary.Shoulders02
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Mercenary
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: df06dbe2cdf3c1848adb97722b0e0ff6
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Mercenary.Hand.R03
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Mercenary
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e0bc5572d3ffd604e971e4ef63bca031
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Underwear
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Human
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e2a534e0908e9b94b8b5745b19f60b92
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Bandit.Helmet
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Bandit
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e2b291ac329f8e3439d150eb1c9df32c
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Underwear.Top
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Human
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e3a8c4979b3a5e844b902d00e38348aa
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Bandit.GloveRight
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Bandit
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e42185788e7eff146a5622ff52082ccd
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Rogue.HandR
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Rogue
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e4d3209db12569c4bb213a9f16ab96c3
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Rakta.Chestplate
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - RaktaArmor
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e6ce614b61dca724f9463a908b04096c
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Raike.Mouth_01
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Raike
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e7eafe48d5b93c742838ee968d8ec110
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.ImprovisedLeather.Feet
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - ImprovisedLeather
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e8efb69cfc840604289030bf908e7f21
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Mercenary.Shoulders01
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Mercenary
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ebebf28b3dbf0364084b1300eba7c488
+    m_Address: Bas.Creature.Wardrobe.HumanMale.WarMage.Shoulders.Head
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - WarMage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ee8402917f2ceb448a47fbacc412a1e7
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Mercenary.Shoulder.R01
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Mercenary
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ee885a5e29716f849b02aee572b0f3f4
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Mercenary.Shoulder.L01
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Mercenary
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f0730bac69852c94ba8fc7e69313b1e4
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Body.Eyes
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Human
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f20b8d4bf01153b48a34c912784af70f
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Officer.Torso
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Officer
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f3995ea9aa1e1de43a7a934bf3a832c9
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Hair10
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Human
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f4340e37f9737e14498865b96e12b11f
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Hair07
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Human
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f4d39c0a6b6b7fa4e93c586f315b48af
+    m_Address: Bas.Creature.Wardrobe.HumanFemale_Druid_HandR
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Druid
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f53cb4fbf48291f4c8363c9146070745
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Kharese.Head_01
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Kharese
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f595da3ddb4609b488cf5aff0ee90a06
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Civilian.HandL
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Civilian
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f7bedc26094c5f64885be36b36ec3e94
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Raike.Head_01
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Raike
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f7ffe36c9baa141448cd569ae4f6d881
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Officer.Shoulders_02
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Officer
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f9ab2bd55cdb7db4686147ee3f3bc75a
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Madene.Head_01
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Madene
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f9c6fa232a7ae074bbe8ca0efecd5093
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Rogue.HandR
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Rogue
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fbba4a2e6dd306345bcee5fac5819a3d
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Mercenary.Hand.R01
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Mercenary
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fbfcfd0053796e94f9da6a0a8803087c
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Civilian.Legs
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Civilian
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fc7b64f5c50cfa946838ff636102c287
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Mercenary.Shoulder.L02
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Mercenary
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fea05b92f0eab004fa7a3854b1848f5b
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Kharese.Eyes_01
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Android
+    - Kharese
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: baee5308bb7afbb40bd421af618b06e2
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Sentara.Bandana
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SentaraArmor
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 823bbba8c98246c4b9316901f9adb1e4
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Sentara.Boots
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SentaraArmor
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 497a942f0c5f44741ab0bdef4abd1170
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Sentara.Coat
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SentaraArmor
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0aa6b78849724a74286984c85dd91654
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Sentara.Hand_Left
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SentaraArmor
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7622ab92a9d3ce04786368c84119a40f
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Sentara.Hand_Right
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SentaraArmor
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1b8f7d2facb9b844eb9485724699acb4
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Sentara.Hat
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SentaraArmor
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d79bcddeca3b92844a5a5e81b8c364a8
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Sentara.Legs
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SentaraArmor
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f7bbe9095cc86604a8f3a3f596fcd41d
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.Sentara.Torso
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SentaraArmor
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 39b0ab63fadb78e439d8547d73be5906
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Sentara.Bandana
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SentaraArmor
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 269c0c648061bc643b012f62153cd0c8
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Sentara.Boots
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SentaraArmor
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 948c754ba69733d41b3dc83c2fcda48e
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Sentara.Coat
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SentaraArmor
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c0e8e1a39c6b4b24ab159581eec5baf3
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Sentara.Hand_Left
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SentaraArmor
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7e1314ff77e8a254db8ba3999293475f
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Sentara.Hand_Right
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SentaraArmor
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: db5e2d72cae6af445aea145c68b24e93
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Sentara.Hat
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SentaraArmor
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cdfe83c5b3db63a49873eb6ad7b484ab
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Sentara.Legs
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SentaraArmor
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d5252de43771e4b4e8ff54c0d9bdf96e
+    m_Address: Bas.Creature.Wardrobe.HumanMale.Sentara.Torso
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SentaraArmor
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: b14c4d9d8b63f3247be008fe8b53d3ae, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: b22e2adf688604643918885bbd8c653d, type: 2}
+    - {fileID: 11400000, guid: e62fb174301048840883d8ce9b300fb0, type: 2}
+    - {fileID: 11400000, guid: 5704092ead793cf4488f5b76e784a350, type: 2}

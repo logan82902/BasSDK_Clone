@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
+  "groupPath": "Dalgarian/Transi",
   "isUnique": true,
   "areaPrefabAddress": "Bas.Area.DA_Transi_Theater",
   "lightingPresetAddress": "Bas.Area.DA_Transi_Theater.LightingPreset",
@@ -76,6 +77,5 @@
       "fakeViewAddress": "Bas.Area.DA_Transi_Theater.FakeView.1"
     }
   ],
-  "areaGlobalParameters": [],
-  "groupPath": "Dalgarian/Transi"
+  "areaGlobalParameters": []
 }

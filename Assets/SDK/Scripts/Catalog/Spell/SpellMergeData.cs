@@ -1,80 +1,59 @@
 ﻿using System;
 using UnityEngine;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
+using Newtonsoft.Json;
 
 namespace ThunderRoad
 {
-	[Serializable]
+    [Serializable]
+    [DeclareBoxGroup("Merge", Title = "Merge")]
+    [DeclareBoxGroup("Charge", Title = "Charge")]
+    [DeclareBoxGroup("Hand force", Title = "Hand force")]
+    [DeclareBoxGroup("Throw", Title = "Throw")]
+    [DeclareBoxGroup("Hand pose", Title = "Hand pose")]
     public class SpellMergeData : SpellData
     {
-#if ODIN_INSPECTOR
-        [BoxGroup("Merge"), ValueDropdown(nameof(GetAllSpellID))]
-#endif
+        [Group("Merge")]
+        [Dropdown(nameof(GetAllSpellID))]
         [JsonMergeKey]
         public string leftSpellId;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Merge"), ValueDropdown(nameof(GetAllSpellID))]
-#endif
+        [Group("Merge")]
+        [Dropdown(nameof(GetAllSpellID))]
         [JsonMergeKey]
         public string rightSpellId;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Charge")]
-#endif
+        [Group("Charge")]
         public float chargeSpeed = 0.2f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Charge"), LabelText(@"@SkillPassiveLabel(""Charge Speed"", chargeSpeedPerSkill)")]
-#endif
+        [Group("Charge")]
+        [LabelText("$" + nameof(ChargeSpeedPerSkillLabel))]
         public float chargeSpeedPerSkill = 0.05f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Charge")]
-#endif
+        [JsonIgnore]
+        public string ChargeSpeedPerSkillLabel => SkillPassiveLabel("Charge Speed", chargeSpeedPerSkill);
+        [Group("Charge")]
         public float chargeStartHandsRatio = 0.5f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Charge")]
-#endif
+        [Group("Charge")]
         public float stopSpeed = 0.6f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Charge")]
-#endif
+        [Group("Charge")]
         public bool stopIfManaDepleted = true;
         [NonSerialized]
         public float currentCharge;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Merge")]
-#endif
+        [Group("Merge")]
         public float handEnterAngle = 30;
-#if ODIN_INSPECTOR
-        [BoxGroup("Merge")]
-#endif
+        [Group("Merge")]
         public float handEnterDistance = 0.2f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Merge")]
-#endif
+        [Group("Merge")]
         public float handExitAngle = 90;
-#if ODIN_INSPECTOR
-        [BoxGroup("Merge")]
-#endif
+        [Group("Merge")]
         public float handExitDistance = 0.6f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Merge")]
-#endif
+        [Group("Merge")]
         public float handCompletedDistance = 0.001f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Merge")]
-#endif
+        [Group("Merge")]
         public float minCharge = 0.9f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Merge")]
-#endif
+        [Group("Merge")]
         public AnimationCurve hapticIntensityCurve = AnimationCurve.EaseInOut(0, 0, 1, 1);
             // new Utils.CurveBuilder()
             // .WithKey(0, 0)
@@ -84,52 +63,34 @@ namespace ThunderRoad
             // .WithKey(1, 1)
             // .Build();
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Merge")]
-#endif
+        [Group("Merge")]
         public float hapticCurveModifier = 0.5f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Hand force")]
-#endif
-        public AnimationCurve handForceCurve = new AnimationCurve(new Keyframe[3] { new Keyframe(0f, 120f), new Keyframe(0.05f, 180f), new Keyframe(0.1f, 120f) });
-#if ODIN_INSPECTOR
-        [BoxGroup("Hand force")]
-#endif
-        public AnimationCurve handForceMultiplierDistanceCurve = new AnimationCurve(new Keyframe[2] { new Keyframe(0f, 1f), new Keyframe(0.2f, 0f) });
-#if ODIN_INSPECTOR
-        [BoxGroup("Hand force")]
-#endif
-        public AnimationCurve handForceChargeCurve = new AnimationCurve(new Keyframe[2] { new Keyframe(0f, 0f), new Keyframe(1f, 1f) });
-#if ODIN_INSPECTOR
-        [BoxGroup("Hand force")]
-#endif
+        [Group("Hand force")]
+        public AnimationCurve handForceCurve = new(new Keyframe[3] { new(0f, 120f), new(0.05f, 180f), new(0.1f, 120f) });
+        [Group("Hand force")]
+        public AnimationCurve handForceMultiplierDistanceCurve = new(new Keyframe[2] { new(0f, 1f), new(0.2f, 0f) });
+        [Group("Hand force")]
+        public AnimationCurve handForceChargeCurve = new(new Keyframe[2] { new(0f, 0f), new(1f, 1f) });
+        [Group("Hand force")]
         public float handPositionSpringMultiplier = 0.4f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Hand force")]
-#endif
+        [Group("Hand force")]
         public float handPositionDamperMultiplier = 1f;
-#if ODIN_INSPECTOR
-        [BoxGroup("Hand force")]
-#endif
+        [Group("Hand force")]
         public float handLocomotionVelocityCorrectionMultiplier = 0.3f;
 
         private bool reachedMinCharge = false;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Merge"), ValueDropdown(nameof(GetAllEffectID))]
-#endif
+        [Group("Merge")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string chargeEffectId;
         protected EffectData chargeEffectData;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Merge")]
-#endif
+        [Group("Merge")]
         [Tooltip("Set to zero for no lerping")]
         public float effectLerpFactor = 0;
-#if ODIN_INSPECTOR
-        [BoxGroup("Merge"), ValueDropdown(nameof(GetAllEffectID))]
-#endif
+        [Group("Merge")]
+        [Dropdown(nameof(GetAllEffectID))]
         public string fingerEffectId;
         protected EffectData fingerEffectData;
         
@@ -140,30 +101,24 @@ namespace ThunderRoad
         [NonSerialized]
         public EffectData overrideChargeEffect;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Throw")]
-#endif
+        [Group("Throw")]
         public bool allowThrow = false;
-#if ODIN_INSPECTOR
-        [BoxGroup("Throw"), ValueDropdown(nameof(GetAllEffectID)), ShowIf("allowThrow")]
-#endif
+        [Group("Throw")]
+        [Dropdown(nameof(GetAllEffectID))]
+        [ShowIf("allowThrow")]
         public string throwEffectId;
         protected EffectData throwEffectData;
-#if ODIN_INSPECTOR
-        [BoxGroup("Throw")]
-#endif
+        [Group("Throw")]
         public float throwMinHandVelocity = 2f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Hand pose"), ValueDropdown(nameof(GetAllHandPoseID))]
-#endif
+        [Group("Hand pose")]
+        [Dropdown(nameof(GetAllHandPoseID))]
         public string closeHandPoseId;
         [NonSerialized]
         public HandPoseData closeHandPoseData;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Hand pose"), ValueDropdown(nameof(GetAllHandPoseID))]
-#endif
+        [Group("Hand pose")]
+        [Dropdown(nameof(GetAllHandPoseID))]
         public string openHandPoseId;
         [NonSerialized]
         public HandPoseData openHandPoseData;

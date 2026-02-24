@@ -1,19 +1,13 @@
-﻿
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
-using TriInspector;
-#endif
+﻿using TriInspector;
 
 namespace ThunderRoad.AI.Action
 {
-	public class SetStance : ActionNode
+    [AutoLabelWidth(AddedWidth = 5f, MinWidth = 0f)]
+    public class SetStance : ActionNode
     {
         public BrainModuleStance.Stance stance = BrainModuleStance.Stance.Idle;
         public bool onlyOnce = false;
 
-#if ODIN_INSPECTOR
-#endif
 
     }
 }

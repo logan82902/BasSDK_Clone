@@ -4,9 +4,9 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 1,
+  "groupPath": "Factions/Tribal",
   "displayName": "Tribal Tracker",
   "description": "",
-  "contents": [],
   "containerContents": [
     {
       "$type": "ThunderRoad.TableContent, ThunderRoad",
@@ -16,6 +16,7 @@
         "holderName": "BackLeft"
       },
       "customDataList": [],
+      "mergeKey": "e4e9f42f",
       "referenceID": "WeaponTribalBow"
     },
     {
@@ -26,6 +27,7 @@
         "holderName": "BackRight"
       },
       "customDataList": [],
+      "mergeKey": "72a46173",
       "referenceID": "QuiverSmallNPC"
     },
     {
@@ -36,6 +38,7 @@
         "holderName": "HipsRight"
       },
       "customDataList": [],
+      "mergeKey": "2be1a2ea",
       "referenceID": "WeaponTribalBerserker"
     },
     {
@@ -45,6 +48,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "586d698b",
       "referenceID": "ApparelGladiatorJacket"
     },
     {
@@ -54,6 +58,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "097a63a2",
       "referenceID": "ApparelGladiatorBoots"
     },
     {
@@ -63,6 +68,7 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "0bd40330",
       "referenceID": "HairsTribal"
     },
     {
@@ -72,8 +78,8 @@
         "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
       },
       "customDataList": [],
+      "mergeKey": "a86d92b6",
       "referenceID": "BeardsTribal"
     }
-  ],
-  "groupPath": "Factions/Tribal"
+  ]
 }

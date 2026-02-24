@@ -1,30 +1,24 @@
 ﻿using UnityEngine;
-
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
 
 namespace ThunderRoad.AI.Get
 {
-	public class GetTransformAsSearchPosition : ActionNode
+    [DeclareBoxGroup("Input", Title = "Input")]
+    [DeclareBoxGroup("Output", Title = "Output")]
+    [AutoLabelWidth(AddedWidth = 5f, MinWidth = 0f)]
+    public class GetTransformAsSearchPosition : ActionNode
     {
         public float offsetHeightRatioWhenOnFloor = 1;
         public float raycastOffset = 0.1f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Input")] 
-#endif
+        [Group("Input")]
         public string inputTransformVariableName = "Transform";
-#if ODIN_INSPECTOR
-        [BoxGroup("Output")] 
-#endif
+        [Group("Output")]
         public string outputPositionVariableName = "Position";
-#if ODIN_INSPECTOR
-        [BoxGroup("Output")] 
-#endif
+        [Group("Output")]
         public string outputOffsetPositionVariableName = "OffsetPosition";
+
+        public GetTransformAsSearchPosition() { }
 
     }
 }

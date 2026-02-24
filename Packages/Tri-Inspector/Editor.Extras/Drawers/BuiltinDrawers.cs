@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using TriInspector;
 using TriInspector.Drawers;
 using UnityEditor;
@@ -14,15 +14,15 @@ using UnityEngine;
 [assembly: RegisterTriValueDrawer(typeof(Color32Drawer), TriDrawerOrder.Fallback)]
 [assembly: RegisterTriValueDrawer(typeof(LayerMaskDrawer), TriDrawerOrder.Fallback)]
 [assembly: RegisterTriValueDrawer(typeof(EnumDrawer), TriDrawerOrder.Fallback)]
-[assembly: RegisterTriValueDrawer(typeof(Vector2Drawer), TriDrawerOrder.Fallback)]
-[assembly: RegisterTriValueDrawer(typeof(Vector3Drawer), TriDrawerOrder.Fallback)]
-[assembly: RegisterTriValueDrawer(typeof(Vector4Drawer), TriDrawerOrder.Fallback)]
+[assembly: RegisterTriValueDrawer(typeof(Vector2PropDrawer), TriDrawerOrder.Drawer)]
+[assembly: RegisterTriValueDrawer(typeof(Vector3PropDrawer), TriDrawerOrder.Drawer)]
+[assembly: RegisterTriValueDrawer(typeof(Vector4PropDrawer), TriDrawerOrder.Drawer)]
+[assembly: RegisterTriValueDrawer(typeof(Vector2IntPropDrawer), TriDrawerOrder.Drawer)]
+[assembly: RegisterTriValueDrawer(typeof(Vector3IntPropDrawer), TriDrawerOrder.Drawer)]
 [assembly: RegisterTriValueDrawer(typeof(RectDrawer), TriDrawerOrder.Fallback)]
 [assembly: RegisterTriValueDrawer(typeof(AnimationCurveDrawer), TriDrawerOrder.Fallback)]
 [assembly: RegisterTriValueDrawer(typeof(BoundsDrawer), TriDrawerOrder.Fallback)]
 [assembly: RegisterTriValueDrawer(typeof(GradientDrawer), TriDrawerOrder.Fallback)]
-[assembly: RegisterTriValueDrawer(typeof(Vector2IntDrawer), TriDrawerOrder.Fallback)]
-[assembly: RegisterTriValueDrawer(typeof(Vector3IntDrawer), TriDrawerOrder.Fallback)]
 [assembly: RegisterTriValueDrawer(typeof(RectIntDrawer), TriDrawerOrder.Fallback)]
 [assembly: RegisterTriValueDrawer(typeof(BoundsIntDrawer), TriDrawerOrder.Fallback)]
 
@@ -104,33 +104,77 @@ namespace TriInspector.Drawers
         }
     }
 
-    public class Vector2Drawer : BuiltinDrawerBase<Vector2>
+    public class Vector2PropDrawer : BuiltinDrawerBase<Vector2>, IVectorDrawer<Vector2>
     {
-        public override int CompactModeLines => 2;
+        public int AxesCount => 2;
+
+        public float[] ToFloats(Vector2 value) => new float[2] { value.x, value.y };
+
+        public Vector2 ToVector(float[] axisValues) => new Vector2(axisValues[0], axisValues[1]);
 
         protected override Vector2 OnValueGUI(Rect position, GUIContent label, Vector2 value)
         {
-            return EditorGUI.Vector2Field(position, label, value);
+            return ((IVectorDrawer<Vector2>)this).DrawGUI(position, label, value);
         }
     }
 
-    public class Vector3Drawer : BuiltinDrawerBase<Vector3>
+    public class Vector3PropDrawer : BuiltinDrawerBase<Vector3>, IVectorDrawer<Vector3>
     {
-        public override int CompactModeLines => 2;
+        public int AxesCount => 3;
+
+        public float[] ToFloats(Vector3 value) => new float[3] { value.x, value.y, value.z };
+
+        public Vector3 ToVector(float[] axisValues) => new Vector3(axisValues[0], axisValues[1], axisValues[2]);
 
         protected override Vector3 OnValueGUI(Rect position, GUIContent label, Vector3 value)
         {
-            return EditorGUI.Vector3Field(position, label, value);
+            return ((IVectorDrawer<Vector3>) this).DrawGUI(position, label, value);
         }
     }
 
-    public class Vector4Drawer : BuiltinDrawerBase<Vector4>
+    public class Vector4PropDrawer : BuiltinDrawerBase<Vector4>, IVectorDrawer<Vector4>
     {
-        public override int CompactModeLines => 2;
+        public int AxesCount => 4;
+
+        public float[] ToFloats(Vector4 value) => new float[4] { value.x, value.y, value.z, value.w };
+
+        public Vector4 ToVector(float[] axisValues) => new Vector4(axisValues[0], axisValues[1], axisValues[2], axisValues[3]);
 
         protected override Vector4 OnValueGUI(Rect position, GUIContent label, Vector4 value)
         {
-            return EditorGUI.Vector4Field(position, label, value);
+            return ((IVectorDrawer<Vector4>) this).DrawGUI(position, label, value);
+        }
+    }
+
+    public class Vector2IntPropDrawer : BuiltinDrawerBase<Vector2Int>, IVectorDrawer<Vector2Int>
+    {
+        public bool IntegerVector => true;
+
+        public int AxesCount => 2;
+
+        public float[] ToFloats(Vector2Int value) => new float[2] { value.x, value.y };
+
+        public Vector2Int ToVector(float[] axisValues) => new Vector2Int((int) axisValues[0], (int) axisValues[1]);
+
+        protected override Vector2Int OnValueGUI(Rect position, GUIContent label, Vector2Int value)
+        {
+            return ((IVectorDrawer<Vector2Int>) this).DrawGUI(position, label, value);
+        }
+    }
+
+    public class Vector3IntPropDrawer : BuiltinDrawerBase<Vector3Int>, IVectorDrawer<Vector3Int>
+    {
+        public bool IntegerVector => true;
+
+        public int AxesCount => 3;
+
+        public float[] ToFloats(Vector3Int value) => new float[3] { value.x, value.y, value.z };
+
+        public Vector3Int ToVector(float[] axisValues) => new Vector3Int((int) axisValues[0], (int) axisValues[1], (int) axisValues[2]);
+
+        protected override Vector3Int OnValueGUI(Rect position, GUIContent label, Vector3Int value)
+        {
+            return ((IVectorDrawer<Vector3Int>) this).DrawGUI(position, label, value);
         }
     }
 
@@ -149,6 +193,7 @@ namespace TriInspector.Drawers
     {
         protected override AnimationCurve OnValueGUI(Rect position, GUIContent label, AnimationCurve value)
         {
+            if (value == null) value = new AnimationCurve();
             return EditorGUI.CurveField(position, label, value);
         }
     }
@@ -177,26 +222,6 @@ namespace TriInspector.Drawers
             }
 
             return EditorGUI.GradientField(position, label, value);
-        }
-    }
-
-    public class Vector2IntDrawer : BuiltinDrawerBase<Vector2Int>
-    {
-        public override int CompactModeLines => 2;
-
-        protected override Vector2Int OnValueGUI(Rect position, GUIContent label, Vector2Int value)
-        {
-            return EditorGUI.Vector2IntField(position, label, value);
-        }
-    }
-
-    public class Vector3IntDrawer : BuiltinDrawerBase<Vector3Int>
-    {
-        public override int CompactModeLines => 2;
-
-        protected override Vector3Int OnValueGUI(Rect position, GUIContent label, Vector3Int value)
-        {
-            return EditorGUI.Vector3IntField(position, label, value);
         }
     }
 

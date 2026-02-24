@@ -1,115 +1,72 @@
-using System;
+﻿using System;
 using UnityEngine;
 using UnityEngine.AI;
 using System.Collections.Generic;
 using System.Collections;
 using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
-
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
+    [DeclareTabGroup("GroupTabs")]
+    [DeclareTabGroup("GroupTabs/AI/CrystalTiers")]
     public class Golem : GolemController
     {
         public static Golem local;
 
         [Header("AI")]
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "AI", Order = 1)]
-#endif
+        //[TabGroup("GroupTabs", "AI", Order = 1)]
         public NavMeshAgent navMeshAgent;
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "AI")]
-#endif
+        [Group("GroupTabs"), Tab("AI")]
         public float cycleTime = 0.5f;
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "AI")]
-#endif
+        [Group("GroupTabs"), Tab("AI")]
         public float forwardAngle = 30f;
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "AI")]
-#endif
+        [Group("GroupTabs"), Tab("AI")]
         public float stopMoveDistance = 5.5f;
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "AI")]
-#endif
+        [Group("GroupTabs"), Tab("AI")]
         public float stopMoveSphereHeight = 1f;
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "AI")]
-#endif
+        [Group("GroupTabs"), Tab("AI")]
         public float minHeadToTargetDistance = 20f;
         private Vector2 velocity;
         private Vector2 smoothDeltaPosition;
         private float animationDampTime = 0.1f;
 
         [Header("Awake")]
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "AI")]
-#endif
+        [Group("GroupTabs"), Tab("AI")]
         public bool awakeWhenTargetClose = true;
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "AI")]
-#endif
+        [Group("GroupTabs"), Tab("AI")]
         public float awakeTargetDistance = 30;
         protected float awakeTime;
 
         [Header("Melee")]
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "AI")]
-#endif
+        [Group("GroupTabs"), Tab("AI")]
         public bool allowMelee = true;
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "AI")]
-#endif
+        [Group("GroupTabs"), Tab("AI")]
         public float meleeMaxAttackDistance = 7f;
-#if ODIN_INSPECTOR
         [FormerlySerializedAs("abilityCooldownInMelee")]
-        [TabGroup("GroupTabs", "AI")]
-#endif
+        [Group("GroupTabs"), Tab("AI")]
         public float abilityCooldown = 15;
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "AI")]
-#endif
-        public Vector2 meleeMinMaxCooldown = new Vector2(1f, 3f);
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "AI")]
-#endif
+        [Group("GroupTabs"), Tab("AI")]
+        public Vector2 meleeMinMaxCooldown = new(1f, 3f);
+        [Group("GroupTabs"), Tab("AI")]
         public List<MeleeAttackRange> attackRanges;
         private bool setMeleeCooldown = false;
         private float nextMeleeAttackTime;
 
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "AI")]
-#endif
+        [Group("GroupTabs"), Tab("AI")]
         public bool blockActionWhileClimbed = true;
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "AI")]
-#endif
+        [Group("GroupTabs"), Tab("AI")]
         public bool allowClimbReact = false;
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "AI")]
-#endif
+        [Group("GroupTabs"), Tab("AI")]
         public AudioSource climbReactWarningAudio;
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "AI")]
-#endif
+        [Group("GroupTabs"), Tab("AI")]
         public float climbReactWarningTime = 2f;
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "AI")]
-#endif
+        [Group("GroupTabs"), Tab("AI")]
         public float climbReactTime = 5f;
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "AI")]
-#endif
+        [Group("GroupTabs"), Tab("AI")]
         public float resetClimbedTime = 1f;
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "AI")]
-#endif
+        [Group("GroupTabs"), Tab("AI")]
         public List<GolemAbility> climbReacts;
         private bool wasClimbed = false;
         private float climbTime = 0f;
@@ -117,33 +74,25 @@ namespace ThunderRoad
         private float lastReactWarningTime = 0f;
 
         [Header("Crystals")]
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "AI")]
-#endif
+        [Group("GroupTabs"), Tab("AI")]
         public WeakPointRandomizer golemCrystalRandomizer;
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "AI")]
-#endif
+        [Group("GroupTabs"), Tab("AI")]
         public WeakPointRandomizer arenaCrystalRandomizer;
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs/AI/CrystalTiers", "Default Crystals")]
-        [InlineProperty, HideLabel]
-#endif
+        [Group("GroupTabs/AI/CrystalTiers"), Tab("Default Crystals")]
+        [InlineProperty]
+        [HideLabel]
         public CrystalConfig defaultConfig;
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs/AI/CrystalTiers", "Tier 1 Crystals")]
-        [InlineProperty, HideLabel]
-#endif
+        [Group("GroupTabs/AI/CrystalTiers"), Tab("Tier 1 Crystals")]
+        [InlineProperty]
+        [HideLabel]
         public CrystalConfig tier1Config;
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs/AI/CrystalTiers", "Tier 2 Crystals")]
-        [InlineProperty, HideLabel]
-#endif
+        [Group("GroupTabs/AI/CrystalTiers"), Tab("Tier 2 Crystals")]
+        [InlineProperty]
+        [HideLabel]
         public CrystalConfig tier2Config;
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs/AI/CrystalTiers", "Tier 3 Crystals")]
-        [InlineProperty, HideLabel]
-#endif
+        [Group("GroupTabs/AI/CrystalTiers"), Tab("Tier 3 Crystals")]
+        [InlineProperty]
+        [HideLabel]
         public CrystalConfig tier3Config;
 
         public CrystalConfig activeCrystalConfig
@@ -160,66 +109,44 @@ namespace ThunderRoad
             }
         }
 
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "AI")]
-#endif
+        [Group("GroupTabs"), Tab("AI")]
         public bool rampageOnCrystalBreak = true;
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "AI")]
-#endif
+        [Group("GroupTabs"), Tab("AI")]
         public List<GolemAbility> crystalBreakReactions = new();
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "AI")]
-#endif
+        [Group("GroupTabs"), Tab("AI")]
         public float normalRampageChance = 0.4f;
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "AI")]
-#endif
+        [Group("GroupTabs"), Tab("AI")]
         public float rampageDamageMult = 2f;
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "AI")]
-#endif
+        [Group("GroupTabs"), Tab("AI")]
         public float rampageForceMult = 1.5f;
-#if ODIN_INSPECTOR
-        public List<ValueDropdownItem<string>> GetAllItemID() => Catalog.GetDropdownAllID(Category.Item);
+        public TriDropdownList<string> GetAllItemID() => Catalog.GetDropdownAllID(Category.Item);
 
-        [TabGroup("GroupTabs", "AI"), ValueDropdown(nameof(GetAllItemID), AppendNextDrawer = true)]
-#endif
+        [Group("GroupTabs"), Tab("AI")]
+        [Dropdown(nameof(GetAllItemID))]
         public string shardItemId = "CrystalShard";
         protected ItemData shardItemData;
         protected int shardsToDrop = 0;
 
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "AI")]
-#endif
+        [Group("GroupTabs"), Tab("AI")]
         [Range(1, 10)]
         public int crystalsBrokenToWake = 1;
         private int crystalsBrokenDuringStun = 0;
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "AI")]
-#endif
+        [Group("GroupTabs"), Tab("AI")]
         public float shieldDisableDelay = 0f;
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "AI"), ColorUsage(true, true)]
-#endif
+        [Group("GroupTabs"), Tab("AI")]
+        [ColorPickerField(Alpha = true, HDR = true)]
         public Color defeatedEmissionColor;
 
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "Debug")]
-#endif
+        [Group("GroupTabs"), Tab("Debug")]
         public bool autoDefeatOnStart;
-#if ODIN_INSPECTOR
-        [TabGroup("GroupTabs", "Debug")]
-#endif
+        [Group("GroupTabs"), Tab("Debug")]
         public bool autoDefeatAndKillOnStart;
 
-#if ODIN_INSPECTOR
-        [ShowInInspector, TabGroup("GroupTabs", "Debug")]
-#endif
+        [ShowInInspector]
+        [Group("GroupTabs"), Tab("Debug")]
         public bool isProtected => (linkedArenaCrystals?.Count ?? 0) > 0;
-#if ODIN_INSPECTOR
-        [ShowInInspector, TabGroup("GroupTabs", "Debug")]
-#endif
+        [ShowInInspector]
+        [Group("GroupTabs"), Tab("Debug")]
         public int crystalsLeft => crystals.Count;
         [NonSerialized]
         public List<GolemCrystal> crystals = new List<GolemCrystal>();
@@ -235,15 +162,12 @@ namespace ThunderRoad
         public static event Action OnLocalGolemSet;
 
         [Serializable]
+        [DeclareHorizontalGroup("Counts")]
         public class CrystalConfig
         {
-#if ODIN_INSPECTOR
-            [HorizontalGroup("Counts")]
-#endif
+            [Group("Counts")]
             public int golemCrystals = 8;
-#if ODIN_INSPECTOR
-            [HorizontalGroup("Counts")]
-#endif
+            [Group("Counts")]
             public int arenaCrystals = 3;
             public float arenaCrystalNearbyStun = 10f;
             public float arenaCrystalMaxStun = 30f;
@@ -251,19 +175,16 @@ namespace ThunderRoad
         }
 
         [Serializable]
+        [DeclareFoldoutGroup("$dynamicTitle", Expanded = false)]
+        [DeclareVerticalGroup("$dynamicTitle/Fields")]
+        [DeclareHorizontalGroup("$dynamicTitle/Fields/MinMaxes")]
         public class AttackRange
         {
-#if ODIN_INSPECTOR
-            [FoldoutGroup("$dynamicTitle")]
-            [VerticalGroup("$dynamicTitle/Fields")]
-            [HorizontalGroup("$dynamicTitle/Fields/MinMaxes")]
+            [Group("$dynamicTitle/Fields/MinMaxes")]
             [LabelWidth(120f)]
-#endif
             public Vector2 angleMinMax;
-#if ODIN_INSPECTOR
-            [HorizontalGroup("$dynamicTitle/Fields/MinMaxes")]
+            [Group("$dynamicTitle/Fields/MinMaxes")]
             [LabelWidth(120f)]
-#endif
             public Vector2 distanceMinMax;
 
             public virtual string dynamicTitle => "Attack Range";
@@ -284,27 +205,23 @@ namespace ThunderRoad
         }
 
         [Serializable]
+        [DeclareVerticalGroup("$dynamicTitle/Fields")]
         public class MeleeAttackRange : AttackRange
         {
-#if ODIN_INSPECTOR
             [Space]
-            [VerticalGroup("$dynamicTitle/Fields")]
-            [ListDrawerSettings(Expanded = true)]
-#endif
+            [Group("$dynamicTitle/Fields")]
+            //[ListDrawerSettings(ShowFoldout = true)]
             public WeightedAttack[] attackOptions;
 
             [Serializable]
+            [DeclareHorizontalGroup("Attack")]
             public class WeightedAttack
             {
-#if ODIN_INSPECTOR
-                [HorizontalGroup("Attack")]
+                [Group("Attack")]
                 [LabelWidth(60f)]
-#endif
                 public AttackMotion attack;
-#if ODIN_INSPECTOR
-                [HorizontalGroup("Attack")]
+                [Group("Attack")]
                 [LabelWidth(60f)]
-#endif
                 public float weight = 1f;
             }
 
@@ -335,64 +252,53 @@ namespace ThunderRoad
         [Serializable]
         public class InflictedStatus
         {
-#if ODIN_INSPECTOR
-            private List<ValueDropdownItem<string>> GetAllStatuses => Catalog.GetDropdownAllID<StatusData>();
+            private TriDropdownList<string> GetAllStatuses => Catalog.GetDropdownAllID<StatusData>();
 
-            [ValueDropdown(nameof(GetAllStatuses))]
-#endif
+            [Dropdown(nameof(GetAllStatuses))]
             public string data;
             public float duration = 3f;
             public float parameter = 0f;
         }
 
-#if ODIN_INSPECTOR
-        [Button, TabGroup("GroupTabs", "Debug")]
-#endif
+
+        [Button]
+        [Group("GroupTabs"), Tab("Debug")]
         public override void SetAwake(bool awake)
         {
         }
 
-#if ODIN_INSPECTOR
-        [Button, TabGroup("GroupTabs", "Debug")]
-#endif
+        [Button]
+        [Group("GroupTabs"), Tab("Debug")]
         public virtual void SetAttackTarget(Transform targetTransform)
         {
         }
 
-#if ODIN_INSPECTOR
-        [Button, TabGroup("GroupTabs", "Debug")]
-#endif
-
-
+        [Button]
+        [Group("GroupTabs"), Tab("Debug")]
         public void Rampage()
         {
         }
 
-
-#if ODIN_INSPECTOR
-        [Button, TabGroup("GroupTabs", "Debug")]
-#endif
+        [Button]
+        [Group("GroupTabs"), Tab("Debug")]
         public void Rampage(RampageType type = RampageType.Melee)
         {
         }
 
-#if ODIN_INSPECTOR
-        [Button, TabGroup("GroupTabs", "Debug")]
-#endif
+        [Button]
+        [Group("GroupTabs"), Tab("Debug")]
         public virtual void Defeat()
         {
         }
 
-#if ODIN_INSPECTOR
-        [Button, TabGroup("GroupTabs", "Debug")]
-#endif
+        [Button]
+        [Group("GroupTabs"), Tab("Debug")]
         public void BreakCrystals(int num = 1)
         {
         }
 
-#if ODIN_INSPECTOR
-        [Button, TabGroup("GroupTabs", "Debug")]
-#endif
+        [Button]
+        [Group("GroupTabs"), Tab("Debug")]
         public void BreakArenaCrystals(int num = 1)
         {
         }

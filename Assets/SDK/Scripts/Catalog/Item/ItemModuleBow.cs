@@ -1,14 +1,13 @@
 ﻿using System.Collections.Generic;
-
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
+using UnityEngine;
 
 namespace ThunderRoad
 {
-	public class ItemModuleBow : ItemModule
+    [System.Serializable]
+    [DeclareBoxGroup("Audio", Title = "Audio")]
+    [DeclareBoxGroup("AI", Title = "AI")]
+    public class ItemModuleBow : ItemModule
     {
         public float velocityMultiplier = 1.5f;
         public float stringSpring = 500;
@@ -17,44 +16,27 @@ namespace ThunderRoad
         public bool autoSpawnArrow;
 
         public bool spawnArrow => autoSpawnArrow || forceAutoSpawnArrow;
-#if ODIN_INSPECTOR
-        [ValueDropdown(nameof(GetAllItemID))] 
-#endif
+        [Dropdown(nameof(GetAllItemID))]
         public string arrowProjectileID;
 
         public float audioShootMinPull = 0.1f;
         public float audioDrawPullSpeed = 0.02f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Audio")] 
-#endif
+        [Group("Audio")]
         public string audioStringAddress;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Audio")] 
-#endif
+        [Group("Audio")]
         public string audioGroupDrawAddress;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Audio")] 
-#endif
+        [Group("Audio")]
         public string audioGroupShootAddress;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("AI")] 
-#endif
+        [Group("AI")]
         public float maxPullRatioAI = 0.75f;
 
-#if ODIN_INSPECTOR
-        public List<ValueDropdownItem<string>> GetAllItemID()
-        {
-            return Catalog.GetDropdownAllID(Category.Item);
-        }
+        public TriDropdownList<string> GetAllItemID() => Catalog.GetDropdownAllID(Category.Item);
 
-        public List<ValueDropdownItem<string>> GetAllEffectID()
-        {
-            return Catalog.GetDropdownAllID(Category.Effect);
-        } 
-#endif
+        public TriDropdownList<string> GetAllEffectID() => Catalog.GetDropdownAllID(Category.Effect);
+
     }
 }

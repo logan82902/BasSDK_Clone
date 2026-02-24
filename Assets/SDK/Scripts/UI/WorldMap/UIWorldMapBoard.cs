@@ -4,12 +4,7 @@ using System.Collections.Generic;
 using ThunderRoad.Modules;
 using TMPro;
 using UnityEngine;
-
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
@@ -41,7 +36,9 @@ namespace ThunderRoad
         [Space]
         public GameObject mapSelectorPrevious;
         public GameObject mapSelectorNext;
-
+        
+        public List<UICustomisableButton> bookMarkButtons = new List<UICustomisableButton>();
+        
 
         /// <summary>
         /// Switches to the next map page

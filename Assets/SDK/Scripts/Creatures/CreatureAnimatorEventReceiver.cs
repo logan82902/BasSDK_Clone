@@ -30,7 +30,6 @@ public class CreatureAnimatorEventReceiver : MonoBehaviour
         {
             string s = hitboxes[i].Replace(" ", ""); //strip white space
             CreatureAbilityHitbox hitbox = hitboxDictionary[s];
-            //Debug.Log($"golem enabling hitbox {s}, hitbox is {hitbox}");
             hitbox?.EnableHitBox(ability); //pass the ability data for damage calculation, force, etc.
         }
     }
@@ -42,7 +41,6 @@ public class CreatureAnimatorEventReceiver : MonoBehaviour
         {
             string s = hitboxes[i].Replace(" ", ""); //strip white space
             CreatureAbilityHitbox hitbox = hitboxDictionary[s];
-            //Debug.Log($"golem disabling hitbox {s}, hitbox is {hitbox}");
             hitbox?.DisableHitBox();
         }
     }

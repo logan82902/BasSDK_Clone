@@ -4,6 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 2,
+  "groupPath": "Sandbox",
   "category": "6Special",
   "localizationId": "SpecialWarzoneVIP",
   "title": "Defend VIP",
@@ -22,19 +23,18 @@
     {
       "$type": "ThunderRoad.WaveData+WaveFaction, ThunderRoad",
       "factionID": 2,
-      "factionHealthMultiplier": 4.0,
       "factionMaxAlive": 1
     },
     {
       "$type": "ThunderRoad.WaveData+WaveFaction, ThunderRoad",
       "factionID": 8,
-      "factionHealthMultiplier": 1.0,
       "factionMaxAlive": 8
     }
   ],
   "groups": [
     {
       "$type": "ThunderRoad.WaveData+Group, ThunderRoad",
+      "mergeKey": "670540eb",
       "reference": "Table",
       "referenceID": "Civilian",
       "overrideFaction": false,
@@ -56,6 +56,7 @@
     },
     {
       "$type": "ThunderRoad.WaveData+Group, ThunderRoad",
+      "mergeKey": "ff97499a",
       "reference": "Table",
       "referenceID": "SoldierPatrolMix",
       "overrideFaction": false,
@@ -77,6 +78,7 @@
     },
     {
       "$type": "ThunderRoad.WaveData+Group, ThunderRoad",
+      "mergeKey": "bc4ae4fc",
       "reference": "Table",
       "referenceID": "SoldierAlertMix",
       "overrideFaction": false,
@@ -97,5 +99,5 @@
       "prereqMaxRemainingAlive": 0
     }
   ],
-  "groupPath": "Sandbox"
+  "modules": null
 }

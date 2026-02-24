@@ -1,34 +1,22 @@
-﻿#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#endif
+﻿
+using TriInspector;
 
 namespace ThunderRoad.Skill.Spell
 {
+    [DeclareBoxGroup("Focus", Title = "Focus")]
     public class SkillCombatFocus : SkillData
     {
-#if ODIN_INSPECTOR
-        [BoxGroup("Focus")]
-#endif
+        [Group("Focus")]
         public float killRegen = 15;
-#if ODIN_INSPECTOR
-        [BoxGroup("Focus")]
-#endif
+        [Group("Focus")]
         public float sliceRegen = 30;
-#if ODIN_INSPECTOR
-        [BoxGroup("Focus")]
-#endif
+        [Group("Focus")]
         public float parryRegen = 10;
-#if ODIN_INSPECTOR
-        [BoxGroup("Focus")]
-#endif
+        [Group("Focus")]
         public float deflectRegen = 15;
-#if ODIN_INSPECTOR
-        [BoxGroup("Focus")]
-#endif
+        [Group("Focus")]
         public float rangedHeadshotRegen = 30;
-#if ODIN_INSPECTOR
-        [BoxGroup("Focus")]
-#endif
+        [Group("Focus")]
         public float disarmRegen = 15;
 
     }

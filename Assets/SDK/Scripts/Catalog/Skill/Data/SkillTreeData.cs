@@ -1,12 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
-
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
 
 namespace ThunderRoad
 {
@@ -20,15 +15,13 @@ namespace ThunderRoad
         public bool showInInfuser = true;
 
         public Color color = Color.white;
-        [ColorUsage(true, true)]
+        [ColorPickerField(Alpha = true, HDR = true)]
         public Color emissionColor = Color.white;
 
         public float orbPitch = 1;
         public float costMultiplier = 1;
 
-#if ODIN_INSPECTOR
-        [ValueDropdown(nameof(GetAllItemIds))]
-#endif
+        [Dropdown(nameof(GetAllItemIds))]
         public string crystalItemId;
 
         public string orbIconAddress;
@@ -39,19 +32,17 @@ namespace ThunderRoad
         public string iconEnabledAddress;
         public string iconDisabledAddress;
 
+        public List<string> tierBlockers;
+
         [NonSerialized]
         public ItemData crystalItemData;
 
-#if ODIN_INSPECTOR
-        public List<ValueDropdownItem<string>> GetAllItemIds()
-        {
-            return Catalog.GetDropdownAllID(Category.Item);
-        }
-#endif
+        public TriDropdownList<string> GetAllItemIds() => Catalog.GetDropdownAllID(Category.Item);
 
         public override void OnCatalogRefresh()
         {
             base.OnCatalogRefresh();
+            tierBlockers = new List<string>();
             crystalItemData = Catalog.GetData<ItemData>(crystalItemId);
         }
     }

@@ -1,23 +1,15 @@
 ﻿using UnityEngine;
-
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#else
 using TriInspector;
-#endif
 
 namespace ThunderRoad.Skill
 {
+    [DeclareBoxGroup("Acceleration", Title = "Acceleration")]
     public class SkillFlykick : SkillData
     {
-#if ODIN_INSPECTOR
-        [BoxGroup("Acceleration")]
-#endif
+        [Group("Acceleration")]
         public float speed = 3f;
 
-#if ODIN_INSPECTOR
-        [BoxGroup("Acceleration")]
-#endif
+        [Group("Acceleration")]
         public float downwardVelocityCorrection = 0f;
 
     }

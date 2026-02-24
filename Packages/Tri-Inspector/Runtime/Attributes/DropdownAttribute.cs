@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Diagnostics;
 
 namespace TriInspector
@@ -8,6 +8,8 @@ namespace TriInspector
     public class DropdownAttribute : Attribute
     {
         public string Values { get; }
+        public bool Searchable { get; set; } = true;
+        public bool AppendToField { get; set; } = false;
 
         public TriMessageType ValidationMessageType { get; set; } = TriMessageType.Error;
 

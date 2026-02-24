@@ -2,9 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-#if ODIN_INSPECTOR
-using Sirenix.Utilities;
-#endif
 using UnityEngine;
 using UnityEditor;
 using UnityEditor.AssetImporters;
