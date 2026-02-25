@@ -130,6 +130,11 @@ namespace ThunderRoad
             [NonSerialized]
             public float probabilityRangeTo;
 
+            public Drop()
+            {
+                mergeKey = GetMergeKey();
+            }
+
             public static string GetMergeKey()
             {
                 return Guid.NewGuid().ToString().Substring(0, 8);
