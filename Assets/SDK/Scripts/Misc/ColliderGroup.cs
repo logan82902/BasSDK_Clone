@@ -37,7 +37,7 @@ namespace ThunderRoad
         public TriDropdownList<string> GetAllColliderGroupID()
             => Catalog.GetDropdownAllID(Category.ColliderGroup);
 
-        [Dropdown(nameof(GetAllColliderGroupID))]
+        [Dropdown(nameof(GetAllColliderGroupID), AppendToField = true)]
 #endif
         public string colliderGroupId;
 
@@ -47,16 +47,12 @@ namespace ThunderRoad
         [NonSerialized]
         public List<Collider> colliders;
 
-        [ShowInInspector]
         [NonSerialized]
-        [HideInInspector]
         public ColliderGroupData data;
 
-        [ShowInInspector]
         [NonSerialized]
         public CollisionHandler collisionHandler;
 
-        [ShowInInspector]
         [NonSerialized]
         public ColliderGroupData.Modifier modifier;
 

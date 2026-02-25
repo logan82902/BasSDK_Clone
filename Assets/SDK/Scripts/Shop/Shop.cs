@@ -14,7 +14,7 @@ namespace ThunderRoad
 
         public TriDropdownList<string> GetAllShopID() => Catalog.GetDropdownAllID(Category.Shop);
 
-        [Dropdown(nameof(GetAllShopID))]
+        [Dropdown(nameof(GetAllShopID), AppendToField = true)]
         public string shopDataID;
         [NonSerialized]
         [ShowInInspector]

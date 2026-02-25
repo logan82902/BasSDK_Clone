@@ -122,7 +122,7 @@ namespace ThunderRoad
         public TriDropdownList<string> GetAllItemID() => Catalog.GetDropdownAllID(Category.Item);
 
         [Group("GroupTabs"), Tab("AI")]
-        [Dropdown(nameof(GetAllItemID))]
+        [Dropdown(nameof(GetAllItemID), AppendToField = true)]
         public string shardItemId = "CrystalShard";
         protected ItemData shardItemData;
         protected int shardsToDrop = 0;
@@ -254,7 +254,7 @@ namespace ThunderRoad
         {
             private TriDropdownList<string> GetAllStatuses => Catalog.GetDropdownAllID<StatusData>();
 
-            [Dropdown(nameof(GetAllStatuses))]
+            [Dropdown(nameof(GetAllStatuses), AppendToField = true)]
             public string data;
             public float duration = 3f;
             public float parameter = 0f;

@@ -9,7 +9,7 @@ namespace ThunderRoad
     [DeclareHorizontalGroup("Effect")]
     public class EffectBundle
     {
-        [Dropdown(nameof(GetAllEffectID))]
+        [Dropdown(nameof(GetAllEffectID), AppendToField = true)]
         [HideLabel]
         [Group("Effect")]
         public string effectId;

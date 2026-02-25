@@ -39,7 +39,7 @@ namespace ThunderRoad
             RareRanged
         }
 
-        [Dropdown(nameof(GetAllCreatureTableID))]
+        [Dropdown(nameof(GetAllCreatureTableID), AppendToField = true)]
         [ShowIf("referenceType", ReferenceType.None)]
         public string creatureTableID;
         public ReferenceType referenceType = ReferenceType.EnemyConfig;

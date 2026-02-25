@@ -38,6 +38,11 @@ namespace ThunderRoad
         [JsonIgnore]
         public abstract CatalogData catalogData { get; }
 
+        public ContainerContent()
+        {
+            mergeKey = GetMergeKey();
+        }
+
         public static string GetMergeKey()
         {
             return Guid.NewGuid().ToString().Substring(0, 8);

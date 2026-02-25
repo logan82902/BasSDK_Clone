@@ -15,7 +15,7 @@ namespace ThunderRoad
         public LoadContent loadContent = LoadContent.None;
         public string loadPlayerContainerID;
 
-        [Dropdown(nameof(GetAllContainerID))]
+        [Dropdown(nameof(GetAllContainerID), AppendToField = true)]
         public string containerID;
         public bool loadOnStart = true;
 

@@ -13,7 +13,7 @@ namespace ThunderRoad
     {
 
         [Group("Data")]
-        [Dropdown(nameof(GetAllInteractableID))]
+        [Dropdown(nameof(GetAllInteractableID), AppendToField = true)]
         [Tooltip("(Only needed for non-json handles)\nInsert Interactable ID here.")]
         public string interactableId;
 
