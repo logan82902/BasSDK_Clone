@@ -148,7 +148,7 @@ namespace ThunderRoad
         [MinMaxSlider(0, 50, true)]
         public Vector2 swingVelocity = new(2, 5);
         [Group("GroupTabs"), Tab("Abilities")]
-        [Dropdown(nameof(GetAllEffectID))]
+        [Dropdown(nameof(GetAllEffectID), AppendToField = true)]
         public string swingEffectId = "GolemSwingArm";
         protected EffectData swingEffectData;
 

@@ -12,7 +12,7 @@ namespace ThunderRoad
         #region VARIABLES
 
         [Group("Properties")]
-        [Dropdown(nameof(GetAllContainerId))]
+        [Dropdown(nameof(GetAllContainerId), AppendToField = true)]
         public string containerId;
 
         [Group("Properties")]

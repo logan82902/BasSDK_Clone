@@ -25,7 +25,7 @@ namespace ThunderRoad
         [Header("Animation")]
         [Tooltip("When enabled, the creature will play the listed animation when at the waypoint")]
         public bool playAnimation;
-        [Dropdown(nameof(GetAllAnimationID))]
+        [Dropdown(nameof(GetAllAnimationID), AppendToField = true)]
         [Tooltip("ID of the animation you want the creature to play")]
         public string animationId;
         [Tooltip("The minimum angle of which the creature turns during the animation")]

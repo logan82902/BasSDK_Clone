@@ -17,7 +17,7 @@ namespace ThunderRoad
     [AddComponentMenu("ThunderRoad/Levels/Spawners/Item Spawner")]
     public class ItemSpawner : MonoBehaviour, ICheckAsset, IToolControllable
     {
-        [Dropdown(nameof(GetAllItemOrLootTableID))]
+        [Dropdown(nameof(GetAllItemOrLootTableID), AppendToField = true)]
         [ShowIf("spawnerType", SpawnerType.UseReferenceId)]
         [Tooltip("The ID of the item/table specified in the Catelog")]
         [FormerlySerializedAs("itemId")]

@@ -15,7 +15,7 @@ namespace ThunderRoad
         public float transferRate = 0.1f;
         public float transferMaxPercent = 50f;
 
-        [Dropdown(nameof(GetAllSpellCastChargeID))]
+        [Dropdown(nameof(GetAllSpellCastChargeID), AppendToField = true)]
         public string imbueSpellId;
         [FormerlySerializedAs("imbueSkillIds")]
         [DropdownList(nameof(GetAllSkillID))]
