@@ -415,9 +415,7 @@ namespace ThunderRoad
                         foreach (GameData overrider in Catalog.gameData.overriders)
                         {
                             Rect overriderButtonRect = new Rect(indentWidth, height, treePaneWidth - (30f + indentWidth), buttonStyle.fixedHeight);
-                            string overriderFolder = Path.GetDirectoryName(overrider.filePath);
-                            overriderFolder = overriderFolder.Substring(overriderFolder.LastIndexOf('\\') + 1);
-                            if (GUI.Button(overriderButtonRect, $"Game ({overriderFolder})", buttonStyle))
+                            if (GUI.Button(overriderButtonRect, $"Game ({overrider.GetFolderName()})", buttonStyle))
                             {
                                 GUI.FocusControl(null);
                                 SetSide(Side.Right, initialGameDatas[overrider.editorId]);

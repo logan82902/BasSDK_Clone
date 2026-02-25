@@ -42,6 +42,12 @@ namespace ThunderRoad
         [JsonIgnore]
         [HideInInspector]
         public bool isOverrider => editorId != defaultEditorId;
+
+        public string GetFolderName()
+        {
+            string path = System.IO.Path.GetDirectoryName(filePath);
+            return path.Substring(path.LastIndexOf('\\') + 1);
+        }
 #endif
 
         public bool overrideSaveCharacters = false;
@@ -384,6 +390,19 @@ namespace ThunderRoad
             {
                 dropdownList.Add(category.name, category.name);
             }
+#if UNITY_EDITOR
+            foreach (GameData overrider in overriders)
+            {
+                foreach (Category category in overrider.categories)
+                {
+                    if (dropdownList.Contains(new TriDropdownItem<string>() { Value = category.name }, new TriDropdownItemComparer<string>()))
+                    {
+                        continue;
+                    }
+                    dropdownList.Add($"{category.name} ({overrider.GetFolderName()})", category.name);
+                }
+            }
+#endif
             return dropdownList;
         }
 
@@ -392,13 +411,25 @@ namespace ThunderRoad
             TriDropdownList<string> categoryGoups = new();
             foreach (Category category in categories)
             {
-                if (categoryGoups.Contains(new TriDropdownItem<string>() { Text = category.group, Value = category.group }))
+                if (categoryGoups.Contains(new TriDropdownItem<string>() { Value = category.group }, new TriDropdownItemComparer<string>()))
                 {
                     continue;
                 }
-
                 categoryGoups.Add(category.group, category.group);
             }
+#if UNITY_EDITOR
+            foreach (GameData overrider in overriders)
+            {
+                foreach (Category category in overrider.categories)
+                {
+                    if (categoryGoups.Contains(new TriDropdownItem<string>() { Value = category.group }, new TriDropdownItemComparer<string>()))
+                    {
+                        continue;
+                    }
+                    categoryGoups.Add($"{category.group} ({overrider.GetFolderName()})", category.group);
+                }
+            }
+#endif
             return categoryGoups;
         }
 
@@ -422,6 +453,19 @@ namespace ThunderRoad
             {
                 dropdownList.Add(faction.name, faction.id);
             }
+#if UNITY_EDITOR
+            foreach (GameData overrider in overriders)
+            {
+                foreach (Faction faction in overrider.factions)
+                {
+                    if (dropdownList.Contains(new TriDropdownItem<int>() { Value = faction.id }, new TriDropdownItemComparer<int>()))
+                    {
+                        continue;
+                    }
+                    dropdownList.Add($"{faction.name} ({overrider.GetFolderName()})", faction.id);
+                }
+            }
+#endif
             return dropdownList;
         }
 
