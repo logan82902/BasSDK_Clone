@@ -91,7 +91,7 @@ namespace ThunderRoad
 
 
         [Header("Skill tree")]
-        [Dropdown(nameof(GetAllSkillTreeID))]
+        [Dropdown(nameof(GetAllSkillTreeID), AppendToField = true)]
         public string treeName;
 
         [ColorPickerField(Alpha = true, HDR = true)]

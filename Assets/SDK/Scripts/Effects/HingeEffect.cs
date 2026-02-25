@@ -9,7 +9,7 @@ namespace ThunderRoad
     [AddComponentMenu("ThunderRoad/Effects/Hinge effect")]
     public class HingeEffect : ThunderBehaviour
     {
-        [Dropdown(nameof(GetAllEffectID))]
+        [Dropdown(nameof(GetAllEffectID), AppendToField = true)]
         public string effectId;
         public float minTorque = 5;
         public float maxTorque = 12;

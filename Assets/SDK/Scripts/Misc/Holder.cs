@@ -47,15 +47,6 @@ namespace ThunderRoad
             HipsLeft,
         }
 
-        [Serializable]
-        public class HolderSize
-        {
-            [Dropdown(nameof(GetAllHolderSlots))]
-            public string slot;
-
-            public TriDropdownList<string> GetAllHolderSlots() => Catalog.GetDropdownHolderSlots();
-        }
-
         [NonSerialized]
         public List<Item> items = new List<Item>();
 

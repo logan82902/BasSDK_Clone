@@ -57,7 +57,7 @@ namespace ThunderRoad
         [Tooltip("When ticked, items and dead bodies will despawn when the wave starts. When disabled, bodies and items do not despawn on start.")]
         public bool cleanBodiesAndItemsOnWaveStart = true;
 
-        [Dropdown(nameof(GetAllFactionID))]
+        [Dropdown(nameof(GetAllFactionID), Searchable = false)]
         [Tooltip("ID of the faction that is ignored by the NPCs of this wave.")]
         public int ignoredFactionId = -1;
         [Tooltip("Determines how often the spawner checks to see if it can spawn a new creature.")]

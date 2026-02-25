@@ -9,7 +9,7 @@ namespace ThunderRoad
     [AddComponentMenu("ThunderRoad/Liquid receiver")]
     public class LiquidReceiver : MonoBehaviour
     {
-        [Dropdown(nameof(GetAllEffectID))]
+        [Dropdown(nameof(GetAllEffectID), AppendToField = true)]
         public string drinkEffectId;
 
         public float maxAngle = 30;

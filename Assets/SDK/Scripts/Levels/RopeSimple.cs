@@ -33,7 +33,7 @@ namespace ThunderRoad
         public Material material;
 
         [Header("Audio")]
-        [Dropdown(nameof(GetAllEffectID))]
+        [Dropdown(nameof(GetAllEffectID), AppendToField = true)]
         [Tooltip("Depicts the Effect ID from JSON to make sounds when the rope moves")]
         public string effectId;
         [Tooltip("The minimum force required to play the Effect sound")]

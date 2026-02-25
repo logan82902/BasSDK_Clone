@@ -15,6 +15,7 @@ namespace ThunderRoad
     {
         [Tooltip("Select if it accepts any but selected or accepts only selected.")]
         public FilterLogic tagFilter = FilterLogic.AnyExcept;
+        [Dropdown(nameof(GetAllHolderSlots), AppendToField = true)]
         [Tooltip("Slots that accept the magnet.")]
         public List<string> slots;
 
@@ -76,7 +77,7 @@ namespace ThunderRoad
         [NonSerialized]
         public bool isLocked;
 
-
+        public TriDropdownList<string> GetAllHolderSlots() => Catalog.GetDropdownHolderSlots();
 
         public void Lock()
         {

@@ -8,7 +8,7 @@ namespace ThunderRoad
 {
 	public class EffectSpawner : MonoBehaviour
     {
-        [Dropdown(nameof(GetAllEffectID))]
+        [Dropdown(nameof(GetAllEffectID), AppendToField = true)]
         public string effectId;
 
         public bool autoIntensity;

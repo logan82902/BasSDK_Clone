@@ -24,7 +24,7 @@ namespace ThunderRoad
         public RadialPushMode pushMode = RadialPushMode.Absolute;
 
         public TriDropdownList<string> GetAllEffectID() => Catalog.GetDropdownAllID(Category.Effect);
-        [Dropdown(nameof(GetAllEffectID))]
+        [Dropdown(nameof(GetAllEffectID), AppendToField = true)]
         public string effectId = "Shockwave";
  // ProjectCore
     }
