@@ -9,6 +9,8 @@ using UnityEngine.UI;
 using System.IO;
 using UnityEngine.Audio;
 using Object = UnityEngine.Object;
+using TriInspector;
+
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -288,6 +290,16 @@ namespace ThunderRoad
     {
         public string name;
         public Component transform;
+    }
+
+    public class TriDropdownItemComparer<T> : IEqualityComparer<TriDropdownItem<T>>
+    {
+        public bool Equals(TriDropdownItem<T> x, TriDropdownItem<T> y)
+        {
+            return x.Value.Equals(y.Value);
+        }
+
+        public int GetHashCode(TriDropdownItem<T> obj) => base.GetHashCode();
     }
 
     public static class Common
