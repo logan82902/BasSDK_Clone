@@ -354,6 +354,11 @@ namespace ThunderRoad
                 Table,
             }
 
+            public Group()
+            {
+                mergeKey = GetMergeKey();
+            }
+
             public static string GetMergeKey()
             {
                 return Guid.NewGuid().ToString().Substring(0, 8);
