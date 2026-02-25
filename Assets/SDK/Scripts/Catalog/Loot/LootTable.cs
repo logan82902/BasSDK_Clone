@@ -26,6 +26,58 @@ namespace ThunderRoad
         [DeclareVerticalGroup("$elementName/Bottom")]
         public class DropLevel
         {
+            [JsonMergeKey]
+            [HideInInspector]
+            public int dropLevel = -1;
+#if UNITY_EDITOR
+            [Button]
+            [Group("$elementName/Top/Row")]
+            [PropertyOrder(0)]
+            public void RemoveThisLevel()
+            {
+                lootTable.levelledDrops.Remove(this);
+                // Update the drop levels
+                for (int i = 0; i < lootTable.levelledDrops.Count; i++)
+                {
+                    lootTable.levelledDrops[i].dropLevel = i;
+                }
+                //reorder the drop levels based on their drop level
+                lootTable.levelledDrops = lootTable.levelledDrops.OrderBy(x => x.dropLevel).ToList();
+            }
+
+            [Button]
+            [Group("$elementName/Top/Row")]
+            [PropertyOrder(0)]
+            public void MoveDown()
+            {
+                //move down the drop level
+                int index = lootTable.levelledDrops.IndexOf(this);
+                if (index >= 0 && index < lootTable.levelledDrops.Count)
+                {
+                    if (index - 1 < 0) return;
+                    lootTable.levelledDrops[index] = lootTable.levelledDrops[index - 1];
+                    lootTable.levelledDrops[index - 1] = this;
+                    lootTable.levelledDrops[index].dropLevel = index;
+                    dropLevel = index - 1;
+                }
+            }
+            [Button]
+            [Group("$elementName/Top/Row")]
+            [PropertyOrder(0)]
+            public void MoveUp()
+            {
+                //move up the drop level
+                int index = lootTable.levelledDrops.IndexOf(this);
+                if (index >= 0 && index < lootTable.levelledDrops.Count)
+                {
+                    if (index + 1 == lootTable.levelledDrops.Count) return;
+                    lootTable.levelledDrops[index] = lootTable.levelledDrops[index + 1];
+                    lootTable.levelledDrops[index + 1] = this;
+                    lootTable.levelledDrops[index].dropLevel = index;
+                    dropLevel = index + 1;
+                }
+            }
+#endif
 
             [LabelWidth(120f)]
             [Group("$elementName/Top/Row")]
@@ -38,6 +90,8 @@ namespace ThunderRoad
             [PropertyOrder(4)]
             public List<Drop> drops;
 
+            [JsonIgnore]
+            public string elementName => $"Drop level {dropLevel}";
 
             [NonSerialized]
             public LootTable lootTable;
