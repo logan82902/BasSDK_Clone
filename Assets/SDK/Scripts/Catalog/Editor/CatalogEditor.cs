@@ -30,6 +30,8 @@ namespace ThunderRoad
         private SearchField searchField;
         private string searchString;
 
+        private ModManager.ModData activeModData;
+
         private Vector2 treeScrollPosition;
 
         private PaneMode currentPaneMode;
@@ -98,6 +100,7 @@ namespace ThunderRoad
             Unload,
             View,
             Override,
+            ActiveMod
         }
 
         private class TreeBranch
@@ -142,6 +145,7 @@ namespace ThunderRoad
         private void OnEnable()
         {
             searchField = new SearchField();
+            activeModData = null;
             currentPaneMode = PaneMode.SinglePane;
         }
 
@@ -151,7 +155,8 @@ namespace ThunderRoad
             try
             {
                 if (EditorStyles.toolbarButton == null || EditorStyles.toolbarDropDown == null) return;
-            } catch (Exception)
+            }
+            catch (Exception)
             {
                 return;
             }
@@ -212,6 +217,7 @@ namespace ThunderRoad
             else
             {
                 searchField = new SearchField();
+                activeModData = null;
                 loadedJsons = null;
                 rootBranch = null;
                 leftContainerA = null;
@@ -226,6 +232,7 @@ namespace ThunderRoad
         private void OnDisable()
         {
             searchField = null;
+            activeModData = null;
         }
 
         private void OnGUI()
@@ -285,6 +292,18 @@ namespace ThunderRoad
                     GUILayout.Space(1f);
                     DrawDataPanes();
                 }
+            }
+        }
+
+        private void UpdateModFilter(object mod)
+        {
+            if (mod == null)
+            {
+                activeModData = null;
+            }
+            else if (mod is ModManager.ModData modData)
+            {
+                activeModData = modData;
             }
         }
 
@@ -362,7 +381,7 @@ namespace ThunderRoad
             {
                 if (catalogData.isOverrider) continue;
                 DrawCatalogEntry(catalogData, 0, !firstElement, height, viewRect);
-                height += (EditorGUIUtility.singleLineHeight * 1.5f + 2f) * (1 + (catalogData.overriderDatas?.Count ?? 0));
+                height += (EditorGUIUtility.singleLineHeight * 1.5f + 2f) * (1 + GetOverriderCount(catalogData));
                 firstElement = false;
             }
         }
@@ -414,6 +433,7 @@ namespace ThunderRoad
                     {
                         foreach (GameData overrider in Catalog.gameData.overriders)
                         {
+                            if (activeModData != null && overrider.GetFolderName() != activeModData.folderName) continue;
                             Rect overriderButtonRect = new Rect(indentWidth, height, treePaneWidth - (30f + indentWidth), buttonStyle.fixedHeight);
                             if (GUI.Button(overriderButtonRect, $"Game ({overrider.GetFolderName()})", buttonStyle))
                             {
@@ -444,14 +464,29 @@ namespace ThunderRoad
                         {
                             RecursiveTreeBranchDraw(child, childIndent);
                         }
+                        int skipped = branch.dataGUIDs.Count;
                         foreach (string dataGUID in branch.dataGUIDs)
                         {
                             if (loadedJsons.TryGetValue(dataGUID, out CatalogData catalogData))
                             {
                                 if (catalogData.isOverrider) continue;
+                                if (activeModData != null && catalogData.owner != null && catalogData.owner != activeModData) continue;
                                 DrawCatalogEntry(catalogData, childIndent, true, height, viewRect);
-                                height += (buttonStyle.fixedHeight + 2f) * (1 + (catalogData.overriderDatas?.Count ?? 0));
+                                height += (buttonStyle.fixedHeight + 2f) * (1 + GetOverriderCount(catalogData));
+                                skipped--;
                             }
+                        }
+                        if (skipped > 0)
+                        {
+                            float skipIndent = childIndent * indentWidth;
+                            GUIStyle skipTextStyle = new GUIStyle(EditorStyles.label)
+                            {
+                                fontStyle = FontStyle.Italic,
+                                alignment = TextAnchor.MiddleCenter,
+                            };
+                            GUIContent skipContent = new GUIContent($"({skipped} entries not drawn)");
+                            GUI.Label(new Rect(skipIndent, height, treePaneWidth - (30f + skipIndent), buttonStyle.fixedHeight + 2f), skipContent, skipTextStyle);
+                            height += (buttonStyle.fixedHeight + 2f);
                         }
                     }
                 }
@@ -477,6 +512,18 @@ namespace ThunderRoad
                     }
                 }
             }
+        }
+
+        private int GetOverriderCount(CatalogData catalogData)
+        {
+            if (catalogData.overriderDatas == null) return 0;
+            int count = 0;
+            foreach (CatalogData overrider in catalogData.overriderDatas)
+            {
+                if (activeModData != null && overrider.owner != null && overrider.owner != activeModData) continue;
+                count++;
+            }
+            return count;
         }
 
         private void DrawCatalogEntry(CatalogData catalogData, int indent, bool drawSeparator, float height, Rect viewRect)
@@ -543,9 +590,12 @@ namespace ThunderRoad
             }
             if (drawSeparator) DrawSeparator();
             if (catalogData.overriderDatas.IsNullOrEmpty()) return;
+            int overriderIndex = 0;
             foreach (CatalogData overrider in catalogData.overriderDatas)
             {
-                DrawCatalogEntry(loadedJsons[overrider.editorGuid], indent + 1, true, height + buttonStyle.fixedHeight + 2f, viewRect);
+                if (activeModData != null && overrider.owner != null && overrider.owner != activeModData) continue;
+                DrawCatalogEntry(loadedJsons[overrider.editorGuid], indent + 1, true, height + ((buttonStyle.fixedHeight + 2f) * (1 + overriderIndex)), viewRect);
+                overriderIndex++;
             }
         }
 
@@ -791,6 +841,7 @@ namespace ThunderRoad
                 storing = false;
                 bool loadMods = loadJSONs == 2;
                 if (loadMods) hasModsLoaded = true;
+                activeModData = null;
                 // these events are all unsubscribed directly below
 #pragma warning disable UDR0005 // Domain Reload Analyzer
                 Catalog.OnJSONOpenProgress += CatalogJSONReadProgress;
@@ -831,6 +882,27 @@ namespace ThunderRoad
                 rootBranch = null;
                 leftEditor = null;
                 rightEditor = null;
+            }
+            if (Catalog.IsJsonLoaded() && hasModsLoaded)
+            {
+                string activeModText = $" Active Mod: {(activeModData != null ? $"{activeModData.Name} - {activeModData.Author}" : "None (All modded JSONs visible)")}";
+                GUIContent activeModContent = new GUIContent(activeModText, GetIcon(Icon.ActiveMod, customDropdownStyle.fontSize), "Set a loaded mod as active in the Catalog Editor; hides all other mod JSONs, sets default folder for new JSONs.");
+                float activeModWidth = customDropdownStyle.CalcSize(activeModContent).x + widthAddition;
+                toolbarWidth += activeModWidth;
+                if (draw)
+                {
+                    GUILayout.Space(position.width - (treePaneWidth + toolbarWidth));
+                    if (GUILayout.Button(activeModContent, customDropdownStyle, GUILayout.Width(activeModWidth)))
+                    {
+                        GenericMenu modFilterMenu = new GenericMenu();
+                        modFilterMenu.AddItem(new GUIContent("None"), activeModData == null, UpdateModFilter, null);
+                        foreach (ModManager.ModData loadedMod in ModManager.loadedMods)
+                        {
+                            modFilterMenu.AddItem(new GUIContent(loadedMod.Name), activeModData == loadedMod, UpdateModFilter, loadedMod);
+                        }
+                        modFilterMenu.ShowAsContext();
+                    }
+                }
             }
             if (draw) GUILayout.EndHorizontal();
             GUI.enabled = true;
@@ -1143,13 +1215,30 @@ namespace ThunderRoad
             return JsonConvert.SerializeObject(strippedGameData, strippedGameData.GetType(), Catalog.GetJsonNetSerializerSettings());
         }
 
+        private ModManager.ModData GetModDataReference()
+        {
+            if (activeModData == null) return new ModManager.ModData() { Name = "New JSON", Author = "User" };
+            return activeModData;
+        }
+
+        private bool TryGetActiveModFolder(out string modFolder)
+        {
+            if (activeModData != null)
+            {
+                modFolder = activeModData.fullPath.Replace("manifest.json", "");
+                return true;
+            }
+            modFolder = null;
+            return false;
+        }
+
         private void CreateNewData(object type)
         {
             Type selectedType = type as Type;
             CatalogData newCatalogData = (CatalogData)Activator.CreateInstance(selectedType);
             newCatalogData.id = $"New{selectedType.Name}";
             string defaultFolderPath = FileManager.GetFullPath(FileManager.Type.JSONCatalog, hasModsLoaded ? FileManager.Source.Mods : FileManager.Source.Default);
-            string filePath = EditorUtility.SaveFilePanel("New JSON", defaultFolderPath, newCatalogData.GetFileNameString(), "json");
+            string filePath = EditorUtility.SaveFilePanel("New JSON", TryGetActiveModFolder(out string modFolder) ? modFolder : defaultFolderPath, newCatalogData.GetFileNameString(), "json");
             if (filePath.IsNullOrEmptyOrWhitespace())
             {
                 Debug.LogWarning("Cancelled create new JSON");
@@ -1164,7 +1253,7 @@ namespace ThunderRoad
                 newCatalogData.OnCatalogRefresh();
                 newCatalogData.editorGuid = GUID.Generate().ToString();
                 newCatalogData.filePath = $"{filePath}";
-                if (hasModsLoaded) newCatalogData.owner = new ModManager.ModData() { Name = "New JSON", Author = "User" };
+                if (hasModsLoaded) newCatalogData.owner = GetModDataReference();
                 loadedJsons[newCatalogData.editorGuid] = newCatalogData;
                 loadedJsons.OrderBy(catalogData => catalogData.Value.id);
                 SetSide(Side.Left, newCatalogData);
@@ -1179,7 +1268,7 @@ namespace ThunderRoad
         private void CreateOverrider(CatalogData catalogData)
         {
             string defaultFolderPath = FileManager.GetFullPath(FileManager.Type.JSONCatalog, hasModsLoaded ? FileManager.Source.Mods : FileManager.Source.Default);
-            string filePath = EditorUtility.SaveFilePanel("Override JSON", defaultFolderPath, catalogData.GetFileNameString(), "json");
+            string filePath = EditorUtility.SaveFilePanel("Override JSON", TryGetActiveModFolder(out string modFolder) ? modFolder : defaultFolderPath, catalogData.GetFileNameString(), "json");
             if (filePath.IsNullOrEmptyOrWhitespace())
             {
                 Debug.LogWarning("Cancelled create override JSON");
@@ -1191,7 +1280,7 @@ namespace ThunderRoad
             newCatalogData.overrideID = catalogData.id;
             newCatalogData.editorGuid = GUID.Generate().ToString();
             newCatalogData.filePath = $"{filePath}";
-            newCatalogData.owner = new ModManager.ModData() { Name = "New JSON", Author = "User" };
+            newCatalogData.owner = GetModDataReference();
             loadedJsons[newCatalogData.editorGuid] = newCatalogData;
             CreateInitialJSON(newCatalogData);
             loadedJsons.OrderBy(c => c.Value.id);
@@ -1204,7 +1293,7 @@ namespace ThunderRoad
         private void CreateGameDataOverrider()
         {
             string defaultFolderPath = FileManager.GetFullPath(FileManager.Type.JSONCatalog, hasModsLoaded ? FileManager.Source.Mods : FileManager.Source.Default);
-            string filePath = EditorUtility.SaveFilePanel("Override Game JSON", defaultFolderPath, "Game", "json");
+            string filePath = EditorUtility.SaveFilePanel("Override Game JSON", TryGetActiveModFolder(out string modFolder) ? modFolder : defaultFolderPath, "Game", "json");
             if (filePath.IsNullOrEmptyOrWhitespace())
             {
                 Debug.LogWarning("Cancelled create Game JSON overrider");
@@ -1221,16 +1310,26 @@ namespace ThunderRoad
 
         private void CloneData(CatalogData catalogData)
         {
-            Side openSide = catalogData == leftData ? Side.Left : Side.Right;
+            string startFolder = catalogData.realFilePath.Replace($"{Path.GetFileName(catalogData.realFilePath)}", "");
+            string filePath = EditorUtility.SaveFilePanel("Clone JSON", TryGetActiveModFolder(out string modFolder) ? modFolder : startFolder, $"{catalogData.GetFileNameString()}_Copy", "json");
+            if (filePath.IsNullOrEmptyOrWhitespace())
+            {
+                Debug.LogWarning("Cancelled clone JSON");
+                return;
+            }
             if (Catalog.TryGetCategory(catalogData.GetType(), out Category category))
             {
                 CatalogData clone = catalogData.CloneJson();
-                clone.id = $"{clone.id} Copy";
+                Side openSide = catalogData == leftData ? Side.Left : Side.Right;
+                string newName = Path.GetFileNameWithoutExtension(filePath);
+                newName = newName.Substring(newName.LastIndexOf('_') + 1);
+                clone.id = newName;
                 Catalog.GetDataList(category).Add(clone);
                 clone.OnCatalogRefresh();
                 clone.editorGuid = GUID.Generate().ToString();
+                clone.filePath = filePath;
                 clone.sourceFolders = catalogData.sourceFolders;
-                if (hasModsLoaded) clone.owner = new ModManager.ModData() { Name = "New JSON", Author = "User" };
+                if (hasModsLoaded) clone.owner = GetModDataReference();
                 loadedJsons[clone.editorGuid] = clone;
                 CatalogData cloneInitial = clone.CloneJson();
                 cloneInitial.editorGuid = clone.editorGuid;

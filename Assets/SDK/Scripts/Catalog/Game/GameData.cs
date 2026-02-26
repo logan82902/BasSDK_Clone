@@ -391,6 +391,7 @@ namespace ThunderRoad
                 dropdownList.Add(category.name, category.name);
             }
 #if UNITY_EDITOR
+            if (overriders.IsNullOrEmpty()) return dropdownList;
             foreach (GameData overrider in overriders)
             {
                 foreach (Category category in overrider.categories)
@@ -418,6 +419,7 @@ namespace ThunderRoad
                 categoryGoups.Add(category.group, category.group);
             }
 #if UNITY_EDITOR
+            if (overriders.IsNullOrEmpty()) return categoryGoups;
             foreach (GameData overrider in overriders)
             {
                 foreach (Category category in overrider.categories)
@@ -454,6 +456,7 @@ namespace ThunderRoad
                 dropdownList.Add(faction.name, faction.id);
             }
 #if UNITY_EDITOR
+            if (overriders.IsNullOrEmpty()) return dropdownList;
             foreach (GameData overrider in overriders)
             {
                 foreach (Faction faction in overrider.factions)

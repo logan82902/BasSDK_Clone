@@ -18,13 +18,13 @@ namespace ThunderRoad
 
     public class KeyedListMergeConverter : JsonConverter
     {
-        readonly IContractResolver contractResolver;
-
+        private readonly IContractResolver _contractResolver;
+        private static readonly object ContractResolverLock = new object();
         public KeyedListMergeConverter(IContractResolver contractResolver)
         {
             if (contractResolver == null)
-                throw new ArgumentNullException("contractResolver");
-            this.contractResolver = contractResolver;
+                throw new ArgumentNullException(nameof(contractResolver));
+            this._contractResolver = contractResolver;
         }
 
         static bool CanConvert(IContractResolver contractResolver, Type objectType, out Type elementType, out JsonProperty keyProperty, out JsonMergeKeyAttribute keyAttribute)
@@ -43,36 +43,47 @@ namespace ThunderRoad
                 keyAttribute = null;
                 return false;
             }
-            keyProperty = contract.Properties.Where(p => p.AttributeProvider.GetAttributes(typeof(JsonMergeKeyAttribute), true).Count > 0).SingleOrDefault();
-            keyAttribute = (JsonMergeKeyAttribute)(keyProperty?.AttributeProvider.GetAttributes(typeof(JsonMergeKeyAttribute), true).SingleOrDefault());
+            keyProperty = null; keyAttribute = null;
+            for (var i = 0; i < contract.Properties.Count; i++)
+            {
+                var property = contract.Properties[i];
+                if (property.AttributeProvider == null) continue;
+                var attributes = property.AttributeProvider.GetAttributes(typeof(JsonMergeKeyAttribute), true);
+                if (attributes.Count <= 0) continue;
+                keyProperty = property;
+                keyAttribute = attributes[0] as JsonMergeKeyAttribute;
+                break;
+            }
             return keyProperty != null;
         }
 
-        public override bool CanConvert(Type objectType)
-        {
-            Type elementType;
-            JsonProperty keyProperty;
-            return CanConvert(contractResolver, objectType, out elementType, out keyProperty, out _);
-        }
+        public override bool CanConvert(Type objectType) => CanConvert(_contractResolver, objectType, out _, out _, out _);
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
-            if (contractResolver != serializer.ContractResolver)
-                throw new InvalidOperationException("Inconsistent contract resolvers");
-            Type elementType;
-            JsonProperty keyProperty;
-            JsonMergeKeyAttribute keyAttribute;
-            if (!CanConvert(contractResolver, objectType, out elementType, out keyProperty, out keyAttribute))
-                throw new JsonSerializationException(string.Format("Invalid input type {0}", objectType));
+            if (_contractResolver != serializer.ContractResolver) throw new InvalidOperationException("Inconsistent contract resolvers");
+            if (!CanConvert(_contractResolver, objectType, out var elementType, out var keyProperty, out var keyAttribute)) throw new JsonSerializationException($"Invalid input type {objectType}");
 
-            if (reader.TokenType == JsonToken.Null)
-                return existingValue;
+            if (reader.TokenType == JsonToken.Null) return existingValue;
 
             var list = existingValue as IList;
             if (list == null || list.Count == 0)
             {
-                list = list ?? (IList)contractResolver.ResolveContract(objectType).DefaultCreator();
-                serializer.Populate(reader, list);
+                try
+                {
+                    lock (ContractResolverLock) // Contract resolver is not thread safe when creating objects, so lock to prevent issues in multithreaded scenarios
+                    {
+                        var defaultCreator = _contractResolver.ResolveContract(objectType).DefaultCreator;
+                        if (defaultCreator != null) list = (IList)defaultCreator();
+                    }
+                    if(list != null) serializer.Populate(reader, list);
+                } 
+                catch (Exception ex)
+                {
+                    Debug.LogError($"Exception when trying to read JSON into list of type {objectType}: {ex}");
+                    // rethrow the exception
+                    throw;
+                }
             }
             else
             {
@@ -83,23 +94,24 @@ namespace ThunderRoad
                 MethodInfo keyNotSetHandlerMethod = null;
                 if (!keyAttribute.MergeKeyValueProvider.IsNullOrEmptyOrWhitespace())
                 {
-                    keyNotSetHandlerMethod = keyProperty.DeclaringType.GetMethod(keyAttribute.MergeKeyValueProvider, BindingFlags.Public | BindingFlags.Static);
+                    if (keyProperty.DeclaringType != null) keyNotSetHandlerMethod = keyProperty.DeclaringType.GetMethod(keyAttribute.MergeKeyValueProvider, BindingFlags.Public | BindingFlags.Static);
                 }
 
                 // Custom change to throw error if JsonMergeKey do not exist in the JSON
-                JToken jToken = jArray.FirstOrDefault(i => i[keyProperty.PropertyName] != null);
+                string propertyName = keyProperty.PropertyName;
+                JToken jToken = jArray.FirstOrDefault(i => i[propertyName] != null);
                 if (jToken == null)
                 {
                     if (keyNotSetHandlerMethod != null)
                     {
                         object keyValue = keyNotSetHandlerMethod.Invoke(null, null);
-                        jToken = new JProperty(keyProperty.PropertyName, keyValue);
+                        jToken = new JProperty(propertyName, keyValue);
                         jArray.Children().Append(jToken);
-                        Debug.LogWarning($"JSON loaded with missing JsonMergeKey [\"{keyProperty.PropertyName}\"] but was automatically populated during read: {keyValue.ToString()}");
+                        Debug.LogWarning($"JSON loaded with missing JsonMergeKey [\"{propertyName}\"] but was automatically populated during read: {keyValue.ToString()}");
                     }
                     else
                     {
-                        throw new InvalidOperationException($"JsonMergeKey [\"{keyProperty.PropertyName}\"] is missing");
+                        throw new InvalidOperationException($"JsonMergeKey [\"{propertyName}\"] is missing");
                     }
                 }
                 else if (jToken is JProperty jProperty && jProperty.Value.Type == JTokenType.Null)
@@ -108,15 +120,15 @@ namespace ThunderRoad
                     {
                         object keyValue = keyNotSetHandlerMethod.Invoke(null, null);
                         jProperty.Value.Replace(JValue.FromObject(keyValue));
-                        Debug.LogWarning($"JSON loaded with null JsonMergeKey [\"{keyProperty.PropertyName}\"] but was automatically populated during read: {keyValue.ToString()}");
+                        Debug.LogWarning($"JSON loaded with null JsonMergeKey [\"{propertyName}\"] but was automatically populated during read: {keyValue.ToString()}");
                     }
                     else
                     {
-                        throw new InvalidOperationException($"JsonMergeKey [\"{keyProperty.PropertyName}\"] is null");
+                        throw new InvalidOperationException($"JsonMergeKey [\"{propertyName}\"] is null");
                     }
                 }
 
-                var lookup = jArray.ToLookup(i => i[keyProperty.PropertyName]?.ToObject(keyProperty.PropertyType, serializer), comparer);
+                var lookup = jArray.ToLookup(i => i[propertyName]?.ToObject(keyProperty.PropertyType, serializer), comparer);
                 var done = new HashSet<JToken>();
                 foreach (var item in list)
                 {
