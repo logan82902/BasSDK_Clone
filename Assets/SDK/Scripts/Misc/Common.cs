@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
@@ -183,11 +184,11 @@ namespace ThunderRoad
     public static class LevelOptionExtensions
     {
         
-        private static Dictionary<LevelOption, string> _cache;
+        private static ConcurrentDictionary<LevelOption, string> _cache;
 
         public static string Get(this LevelOption option)
         {
-            _cache ??= new Dictionary<LevelOption, string>();
+            _cache ??= new ConcurrentDictionary<LevelOption, string>();
             if (_cache.TryGetValue(option, out var value) && !string.IsNullOrEmpty(value))
             {
                 return value;
