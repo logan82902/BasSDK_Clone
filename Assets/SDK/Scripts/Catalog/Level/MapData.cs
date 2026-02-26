@@ -28,8 +28,16 @@ namespace ThunderRoad
         public IResourceLocation worldmapTextureLocation;
         [NonSerialized]
         public Texture2D worldmapTexture2D;
- 
-        
+
+
+#if UNITY_EDITOR
+        public override string GetCatalogPath()
+        {
+            return base.GetCatalogPath().Replace("Customs", "Maps");
+        }
+#endif
+
+
         public override IEnumerator OnCatalogRefreshCoroutine()
         {
                 yield return Catalog.LoadLocationCoroutine<GameObject>(worldmapPrefabAddress, value => worldmapPrefabLocation = value, id);

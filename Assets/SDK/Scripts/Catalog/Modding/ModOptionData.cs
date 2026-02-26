@@ -56,5 +56,12 @@ namespace ThunderRoad
         [HideReferencePicker]
         public List<Option> options;
 
+#if UNITY_EDITOR
+        public override string GetCatalogPath()
+        {
+            return base.GetCatalogPath().Replace("Customs", "Mod Options");
+        }
+#endif
+
     }
 }
