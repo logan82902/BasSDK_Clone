@@ -543,9 +543,11 @@ namespace ThunderRoad
             }
             if (drawSeparator) DrawSeparator();
             if (catalogData.overriderDatas.IsNullOrEmpty()) return;
+            int overriderIndex = 0;
             foreach (CatalogData overrider in catalogData.overriderDatas)
             {
-                DrawCatalogEntry(loadedJsons[overrider.editorGuid], indent + 1, true, height + buttonStyle.fixedHeight + 2f, viewRect);
+                DrawCatalogEntry(loadedJsons[overrider.editorGuid], indent + 1, true, height + ((buttonStyle.fixedHeight + 2f) * (1 + overriderIndex)), viewRect);
+                overriderIndex++;
             }
         }
 
