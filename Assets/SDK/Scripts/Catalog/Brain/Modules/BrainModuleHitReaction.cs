@@ -66,7 +66,6 @@ namespace ThunderRoad
         public class PushBehaviour
         {
             [HideInInspector]
-            [JsonIgnore]
             [JsonMergeKey]
             public string mergeKey
             {
@@ -79,7 +78,7 @@ namespace ThunderRoad
                     {
                         combinedTypeEnum |= type;
                     }
-                    return $"{level}.{combinedTypeEnum}";
+                    return $"{level}.{(int)combinedTypeEnum}";
                 }
             }
 
