@@ -469,7 +469,11 @@ namespace ThunderRoad
                         {
                             if (loadedJsons.TryGetValue(dataGUID, out CatalogData catalogData))
                             {
-                                if (catalogData.isOverrider) continue;
+                                if (catalogData.isOverrider)
+                                {
+                                    skipped--;
+                                    continue;
+                                }
                                 if (activeModData != null && catalogData.owner != null && catalogData.owner != activeModData) continue;
                                 DrawCatalogEntry(catalogData, childIndent, true, height, viewRect);
                                 height += (buttonStyle.fixedHeight + 2f) * (1 + GetOverriderCount(catalogData));
