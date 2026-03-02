@@ -21,7 +21,6 @@ namespace ThunderRoad
         public string languageCode;
 
         [Group("Group"), Tab("Texts")]
-        [JsonMergeKey]
         [HideReferencePicker]
         [ListDrawerSettings(ItemsPerPage = 25)]
         public List<TextGroup> textGroups;
