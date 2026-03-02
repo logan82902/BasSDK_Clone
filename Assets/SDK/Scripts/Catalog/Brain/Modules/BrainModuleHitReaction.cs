@@ -78,7 +78,7 @@ namespace ThunderRoad
                     {
                         combinedTypeEnum |= type;
                     }
-                    return $"{level}.{(int)combinedTypeEnum}";
+                    return $"{level}-{(int)combinedTypeEnum}";
                 }
             }
 
