@@ -91,6 +91,7 @@ namespace ThunderRoad
                         //ensure the path exists
                         if (!Directory.Exists(bundleGroupPath)) Directory.CreateDirectory(bundleGroupPath);
                         AssetBundleGroup newGroup = CreateInstance<AssetBundleGroup>();
+                        newGroup.modName = assetName;
                         newGroup.folderName = assetName;
                         newGroup.addressableAssetGroups = new List<AddressableAssetGroup>();
 
@@ -521,8 +522,9 @@ namespace ThunderRoad
                     if (assetBundleGroup.isMod && assetBundleGroup.zipCatalogFiles)
                     {
                         string jsonDbPath = ZipCatalogFiles(catalogFullPath, assetBundleGroup.folderName);
-                        AssetBundleBuilder.CopyDirectory(jsonDbPath, manualFolderPath);
-                        Debug.Log($"Copied jsondb {jsonDbPath} to {manualFolderPath}");
+                        string file = $"{assetBundleGroup.folderName}.jsondb";
+                        AssetBundleBuilder.CopyFile($"{jsonDbPath}/{file}", $"{manualFolderPath}/{file}");
+                        Debug.Log($"Copied jsondb {jsonDbPath}/{assetBundleGroup.folderName}.jsondb to {manualFolderPath}");
                     }
                     else
                     {
@@ -675,7 +677,7 @@ namespace ThunderRoad
         public static string GenerateManifest(AssetBundleGroup assetBundleGroup)
         {
             ModManager.ModData modData = new ModManager.ModData();
-            modData.Name = assetBundleGroup.folderName;
+            modData.Name = assetBundleGroup.modName;
             modData.Description = assetBundleGroup.modDescription;
             modData.Author = assetBundleGroup.modAuthor;
             modData.ModVersion = assetBundleGroup.modVersion;

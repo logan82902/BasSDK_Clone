@@ -10,14 +10,26 @@ using UnityEditor;
 
 namespace ThunderRoad
 {
+    
+    [DeclareVerticalGroup("folder")]
+    [DeclareHorizontalGroup("folder/folderButtons")]
+    [DeclareHorizontalGroup("manifest")]
+    [DeclareVerticalGroup("manifest/fields")]
+    [DeclareHorizontalGroup("assets")]
+    [DeclareVerticalGroup("assets/fields")]
     [CreateAssetMenu(menuName = "ThunderRoad/Editor/Asset bundles group")]
     public class AssetBundleGroup : ScriptableObject
     {
+        [ReadOnly]
+        [Group("folder")]
+        [Title("Mod Folder")]
+        [HideLabel]
         public string folderName;
 
         [HideInInspector]
         public bool isDefault;
-
+        [Title("Asset Groups")]
+        [Group("assets/fields")]
         public List<AddressableAssetGroup> addressableAssetGroups;
 
         [HideInInspector]
@@ -32,12 +44,20 @@ namespace ThunderRoad
         [HideInInspector]
         public bool zipCatalogFiles = false;
         
+        [Title("Manifest")]
+        [Group("manifest/fields")]
+        [ShowIf("isMod")]
+        public string modName;
+        [Group("manifest/fields")]
         [ShowIf("isMod")]
         public string modDescription = "Unknown";
+        [Group("manifest/fields")]
         [ShowIf("isMod")]
         public string modAuthor = "Unknown";
+        [Group("manifest/fields")]
         [ShowIf("isMod")]
         public string modVersion = "1.0";
+        [Group("manifest/fields")]
         [ShowIf("isMod")]
         public string modThumbnail;
 
@@ -48,9 +68,69 @@ namespace ThunderRoad
             {
                 folderName = this.name;
             }
+            if(isMod && string.IsNullOrEmpty(modName))
+            {
+                modName = this.name;
+            }
         }
         
         [Button]
+        [Group("folder/folderButtons")]
+        public void RenameFolder()
+        {
+            //display a dialog to ask for the new folder name
+            if (!EditorInputDialog.Show("Folder Name", "Please type the folder name to use for the mod", folderName, "OK", "Cancel", out string newFolderName))
+            {
+                return;
+            }
+            if (string.IsNullOrEmpty(newFolderName)) return;
+            newFolderName = Path.GetFileNameWithoutExtension(newFolderName);
+            string oldPath = Path.Combine(Application.dataPath, $"../BuildStaging/Catalogs/Mods/{folderName}");
+            string newPath = Path.Combine(Application.dataPath, $"../BuildStaging/Catalogs/Mods/{newFolderName}");
+            
+            if (!Directory.Exists(oldPath))
+            {
+                CreateModCatalogFolder();
+            }
+            else
+            {
+                if (oldPath != newPath)
+                {
+                    Directory.Move(oldPath, newPath);
+                    Debug.Log($"Renamed Catalog folder renamed from {oldPath} to {newPath}");
+                }
+            }
+            //need to rename the addressable asset folders as well, for Windows and Android
+            string oldWindowsPath = Path.Combine(Application.dataPath, $"../BuildStaging/AddressableAssets/Windows/{folderName}");
+            if (Directory.Exists(oldWindowsPath))
+            {
+                string newWindowsPath = Path.Combine(Application.dataPath, $"../BuildStaging/AddressableAssets/Windows/{newFolderName}");
+                if (oldWindowsPath != newWindowsPath)
+                {
+                    Directory.Move(oldWindowsPath, newWindowsPath);
+                    Debug.Log($"Renamed Windows addressable assets folder from {oldWindowsPath} to {newWindowsPath}");
+                }
+            }
+            string oldAndroidPath = Path.Combine(Application.dataPath, $"../BuildStaging/AddressableAssets/Android/{folderName}");
+            if (Directory.Exists(oldAndroidPath))
+            {
+                string newAndroidPath = Path.Combine(Application.dataPath, $"../BuildStaging/AddressableAssets/Android/{newFolderName}");
+                if (oldAndroidPath != newAndroidPath)
+                {
+                    Directory.Move(oldAndroidPath, newAndroidPath);
+                    Debug.Log($"Renamed Android addressable assets folder from {oldAndroidPath} to {newAndroidPath}");
+                }
+            }
+            //rename this asset to match the new folder name
+            string assetPath = AssetDatabase.GetAssetPath(this);
+            AssetDatabase.RenameAsset(assetPath, $"{newFolderName}.asset");
+            Debug.Log($"Renamed asset from {assetPath} to {newFolderName}.asset");
+            AssetDatabase.SaveAssets();
+            folderName = newFolderName;
+            
+        }
+        [Button("Update manifest")]
+        [Group("manifest/fields")]
         [ShowIf("isMod")]
         public void CreateModCatalogFolder()
         {
@@ -64,6 +144,7 @@ namespace ThunderRoad
             Debug.Log($"Mod manifest created at {path}");
         }
         [Button]
+        [Group("folder/folderButtons")]
         [ShowIf("isMod")]
         public void OpenCatalogFolder()
         {
@@ -85,10 +166,19 @@ namespace ThunderRoad
         }
         
         [Button]
+        [Group("assets/fields")]
         public void CheckLabels()
         {
             CheckAddressableLabels(out string message);
-            Debug.Log(message);
+            //do a popup with the message
+            if (!string.IsNullOrEmpty(message))
+            {
+                EditorUtility.DisplayDialog("Missing labels", $"The following entries are missing Android or Windows labels:\n{message}", "OK");
+            }
+            else
+            {
+                EditorUtility.DisplayDialog("All good", "All entries have Android or Windows labels.", "OK");
+            }
         }
         public bool CheckAddressableLabels(out string message)
         {

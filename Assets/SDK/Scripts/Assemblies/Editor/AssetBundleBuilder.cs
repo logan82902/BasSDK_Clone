@@ -82,6 +82,17 @@ namespace ThunderRoad
         }
 
 
+        public static void CopyFile(string strSource, string strDestination)
+        {
+            string destinationDirectory = Path.GetDirectoryName(strDestination);
+            if (!Directory.Exists(destinationDirectory))
+            {
+                Directory.CreateDirectory(destinationDirectory);
+            }
+            
+            File.Copy(strSource, strDestination, true);
+        }
+        
         public static void CopyDirectory(string strSource, string strDestination, string searchPattern = "*.*")
         {
             if (!Directory.Exists(strDestination))
