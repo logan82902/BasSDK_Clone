@@ -569,8 +569,9 @@ namespace ThunderRoad
                     if (assetBundleGroup.isMod && assetBundleGroup.zipCatalogFiles)
                     {
                         string jsonDbPath = ZipCatalogFiles(catalogFullPath, assetBundleGroup.folderName);
-                        AssetBundleBuilder.CopyDirectory(jsonDbPath, manualFolderPath);
-                        Debug.Log($"Copied jsondb {jsonDbPath} to {manualFolderPath}");
+                        string file = $"{assetBundleGroup.folderName}.jsondb";
+                        AssetBundleBuilder.CopyFile($"{jsonDbPath}/{file}", $"{manualFolderPath}/{file}");
+                        Debug.Log($"Copied jsondb {jsonDbPath}/{assetBundleGroup.folderName}.jsondb to {manualFolderPath}");
                     }
                     else
                     {
