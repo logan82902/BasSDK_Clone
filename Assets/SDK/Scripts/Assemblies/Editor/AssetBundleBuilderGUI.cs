@@ -91,6 +91,7 @@ namespace ThunderRoad
                         //ensure the path exists
                         if (!Directory.Exists(bundleGroupPath)) Directory.CreateDirectory(bundleGroupPath);
                         AssetBundleGroup newGroup = CreateInstance<AssetBundleGroup>();
+                        newGroup.modName = assetName;
                         newGroup.folderName = assetName;
                         newGroup.addressableAssetGroups = new List<AddressableAssetGroup>();
 
@@ -147,6 +148,23 @@ namespace ThunderRoad
                     if (GUILayout.Button("Export now", GUILayout.Width(80)))
                     {
                         AssetBundleBuilder.exportFolderName = assetBundleGroup.folderName;
+                        // Check for connected Android device before exporting to game
+                        if (assetBundleGroup.exportMode == ExportMode.ToGame
+                            && EditorUserBuildSettings.activeBuildTarget == BuildTarget.Android)
+                        {
+                            AdbHelper deviceCheckAdb = new AdbHelper(GetAdbPath());
+                            if (!deviceCheckAdb.CheckDevicesConnected(out _))
+                            {
+                                bool continueAnyway = EditorUtility.DisplayDialog("No Android Device Connected",
+                                    "No Android devices were detected by ADB.\nPlease connect a device with USB debugging enabled.\n\nDo you want to attempt the export anyway?",
+                                    "Try Anyway", "Cancel Export");
+                                if (!continueAnyway)
+                                {
+                                    Debug.LogWarning("Export cancelled: no Android device connected.");
+                                    return;
+                                }
+                            }
+                        }
                         Export(assetBundleGroup, assetBundleGroup.exportMode == ExportMode.ToFolder);
                     }
                     string buildTarget = "Windows";
@@ -416,8 +434,23 @@ namespace ThunderRoad
             else if (EditorUserBuildSettings.activeBuildTarget == BuildTarget.Android)
             {
                 AdbHelper adb = new AdbHelper(GetAdbPath());
-                Debug.Log($"Starting game.");
-                adb.StartAppAsync(ThunderRoadSettings.current.game.appIdentifier, "com.unity3d.player.UnityPlayerActivity", runGameArguments);
+                Debug.Log($"Starting game...");
+                EditorUtility.DisplayProgressBar("ADB", "Starting app on device...", 0.5f);
+                adb.StartAppAsync(ThunderRoadSettings.current.game.appIdentifier, "com.unity3d.player.UnityPlayerActivity", runGameArguments,
+                    onOutputLine: null,
+                    onErrorLine: null,
+                    onComplete: result =>
+                    {
+                        EditorUtility.ClearProgressBar();
+                        if (!result.Success)
+                        {
+                            EditorUtility.DisplayDialog("ADB Error", $"Failed to start app on device:\n{result.Error}", "OK");
+                        }
+                        else
+                        {
+                            Debug.Log("App started successfully on device.");
+                        }
+                    });
             }
         }
 
@@ -433,8 +466,23 @@ namespace ThunderRoad
             else if (EditorUserBuildSettings.activeBuildTarget == BuildTarget.Android)
             {
                 AdbHelper adb = new AdbHelper(GetAdbPath());
-                Debug.Log($"Stopping game");
-                adb.StopAppAsync(ThunderRoadSettings.current.game.appIdentifier);
+                Debug.Log($"Stopping game...");
+                EditorUtility.DisplayProgressBar("ADB", "Stopping app on device...", 0.5f);
+                adb.StopAppAsync(ThunderRoadSettings.current.game.appIdentifier,
+                    onOutputLine: null,
+                    onErrorLine: null,
+                    onComplete: result =>
+                    {
+                        EditorUtility.ClearProgressBar();
+                        if (!result.Success)
+                        {
+                            EditorUtility.DisplayDialog("ADB Error", $"Failed to stop app on device:\n{result.Error}", "OK");
+                        }
+                        else
+                        {
+                            Debug.Log("App stopped successfully on device.");
+                        }
+                    });
             }
         }
 
@@ -564,6 +612,14 @@ namespace ThunderRoad
                 // Clean destination path
                 if (cleanDestination)
                 {
+                    bool userResponse = EditorUtility.DisplayDialog("Clean Destination",
+                        $"Clean Destination checked: This will DELETE all files and folders inside the game destination:\n{destinationAssetsPath}\n\nDo you wish to continue?",
+                        "Yes", "Abort Export");
+                    if (!userResponse)
+                    {
+                        Debug.Log("User cancelled the export.");
+                        return;
+                    }
                     foreach (string filePath in Directory.GetFiles(destinationAssetsPath, "*.*", SearchOption.AllDirectories)) File.Delete(filePath);
                     foreach (string filePath in Directory.GetFiles(destinationCatalogPath, "*.*", SearchOption.AllDirectories)) File.Delete(filePath);
                     foreach(string folderPath in Directory.GetDirectories(destinationAssetsPath, "*", SearchOption.AllDirectories)) Directory.Delete(folderPath, true);
@@ -611,11 +667,43 @@ namespace ThunderRoad
                 {
                     Debug.LogError("Android SDK is not installed!");
                     Debug.LogError($"Path not found {adbPath}");
+                    EditorUtility.DisplayDialog("Android SDK Error",
+                        $"Android SDK is not installed or adb.exe was not found.\n\nExpected path:\n{adbPath}", "OK");
                     return;
+                }
+
+                // Check if any device is connected before proceeding
+                AdbHelper deviceCheckAdb = new AdbHelper(GetAdbPath());
+                if (!deviceCheckAdb.CheckDevicesConnected(out string deviceList))
+                {
+                    bool continueAnyway = EditorUtility.DisplayDialog("No Android Device Connected",
+                        "No Android devices were detected by ADB.\nPlease connect a device with USB debugging enabled.\n\nDo you want to attempt the export anyway?",
+                        "Try Anyway", "Cancel Export");
+                    if (!continueAnyway)
+                    {
+                        Debug.LogWarning("Export cancelled: no Android device connected.");
+                        return;
+                    }
                 }
 
                 if (assetBundleGroup.isDefault)
                 {
+                    string destination = $"/sdcard/Android/obb/{ThunderRoadSettings.current.game.appIdentifier}";
+                    
+                    // Clean destination on device
+                    if (cleanDestination)
+                    {
+                        bool userResponse = EditorUtility.DisplayDialog("Clean Destination",
+                            $"Clean Destination checked: This will DELETE all files inside the device destination:\n{destination}\n\nDo you wish to continue?",
+                            "Yes", "Abort Export");
+                        if (!userResponse)
+                        {
+                            Debug.Log("User cancelled the export.");
+                            return;
+                        }
+                        AndroidCleanDestination(deviceCheckAdb, destination);
+                    }
+                    
                     AndroidPushAssets(assetsFullPath);
                     if (Directory.Exists(catalogFullPath))
                     {
@@ -625,27 +713,39 @@ namespace ThunderRoad
                 }
                 else
                 {
+                    string destination = $"/sdcard/Android/data/{ThunderRoadSettings.current.game.appIdentifier}/files/Mods/{assetBundleGroup.folderName}";
+                    
+                    // Clean destination on device
+                    if (cleanDestination)
+                    {
+                        bool userResponse = EditorUtility.DisplayDialog("Clean Destination",
+                            $"Clean Destination checked: This will DELETE all files inside the device destination:\n{destination}\n\nDo you wish to continue?",
+                            "Yes", "Abort Export");
+                        if (!userResponse)
+                        {
+                            Debug.Log("User cancelled the export.");
+                            return;
+                        }
+                        AndroidCleanDestination(deviceCheckAdb, destination);
+                    }
+                    
                     AndroidPushAssets(assetsFullPath, assetBundleGroup.folderName);
-                    Debug.Log($"Pushed addressable asset folder {assetsFullPath} to {assetBundleGroup.folderName} on device");
                     if (Directory.Exists(catalogFullPath))
                     {
                         if (assetBundleGroup.isMod && assetBundleGroup.zipCatalogFiles)
                         {
                             string jsonDbPath = ZipCatalogFiles(catalogFullPath, assetBundleGroup.folderName);
                             AndroidPushAssets(jsonDbPath, assetBundleGroup.folderName); 
-                            Debug.Log($"Pushed jsondb {jsonDbPath} to {assetBundleGroup.folderName} on device");
                         }
                         else
                         {
                             AndroidPushAssets(catalogFullPath, assetBundleGroup.folderName);    
-                            Debug.Log($"Pushed json folder {catalogFullPath} to {assetBundleGroup.folderName} on device");
                         }
                     }
                     if (assetBundleGroup.isMod)
                     {
                         string manifestTempFolderPath = GenerateManifest(assetBundleGroup);
                         AndroidPushAssets(manifestTempFolderPath, assetBundleGroup.folderName);
-                        Debug.Log($"Pushed manifest {manifestTempFolderPath} to {assetBundleGroup.folderName} on device");
                     }
                 }
             }
@@ -675,7 +775,7 @@ namespace ThunderRoad
         public static string GenerateManifest(AssetBundleGroup assetBundleGroup)
         {
             ModManager.ModData modData = new ModManager.ModData();
-            modData.Name = assetBundleGroup.folderName;
+            modData.Name = assetBundleGroup.modName;
             modData.Description = assetBundleGroup.modDescription;
             modData.Author = assetBundleGroup.modAuthor;
             modData.ModVersion = assetBundleGroup.modVersion;
@@ -694,11 +794,31 @@ namespace ThunderRoad
         public static void AndroidListDevices()
         {
             AdbHelper adb = new AdbHelper(GetAdbPath());
-            Debug.Log($"Connected Android devices:");
-            adb.ListDevicesAsync();
+            Debug.Log($"Checking connected Android devices...");
+            EditorUtility.DisplayProgressBar("ADB", "Checking connected devices...", 0f);
+            adb.ListDevicesAsync(
+                onOutputLine: null,
+                onErrorLine: null,
+                onComplete: result =>
+                {
+                    EditorUtility.ClearProgressBar();
+                    if (!result.Success)
+                    {
+                        EditorUtility.DisplayDialog("ADB Error", $"Failed to list devices:\n{result.Error}", "OK");
+                        return;
+                    }
+                    if (adb.CheckDevicesConnected(out string deviceList))
+                    {
+                        EditorUtility.DisplayDialog("Connected Devices", deviceList, "OK");
+                    }
+                    else
+                    {
+                        EditorUtility.DisplayDialog("No Devices Found", "No Android devices are connected.\nPlease connect a device and enable USB debugging.", "OK");
+                    }
+                });
         }
 
-        public static void AndroidPushAssets(string sourcePath, string modFolderName = null)
+        public static void AndroidPushAssets(string sourcePath, string modFolderName = null, Action<bool> onComplete = null)
         {
             AdbHelper adb = new AdbHelper(GetAdbPath());
             string source = $"{sourcePath}\\.";
@@ -709,7 +829,66 @@ namespace ThunderRoad
                 destination = $"/sdcard/Android/data/{ThunderRoadSettings.current.game.appIdentifier}/files/Mods/{modFolderName}";
             }
             Debug.Log($"Pushing: {source} to {destination}");
-            adb.PushAsync(source, destination);
+            string lastOutputLine = "Starting push...";
+            EditorUtility.DisplayProgressBar("ADB Push", $"Pushing to {destination}...", 0f);
+
+            adb.PushAsync(source, destination,
+                onOutputLine: line =>
+                {
+                    lastOutputLine = line;
+                    // adb push output often contains progress percentages, show in progress bar
+                    EditorUtility.DisplayProgressBar("ADB Push", line, 0.5f);
+                },
+                onErrorLine: line =>
+                {
+                    // Still update the bar so user sees what's happening
+                    EditorUtility.DisplayProgressBar("ADB Push", $"stderr: {line}", 0.5f);
+                },
+                onComplete: result =>
+                {
+                    EditorUtility.ClearProgressBar();
+                    if (!result.Success)
+                    {
+                        string errorMsg = !string.IsNullOrEmpty(result.Error) ? result.Error : lastOutputLine;
+                        EditorUtility.DisplayDialog("ADB Push Failed",
+                            $"Failed to push assets to device.\n\nDestination: {destination}\n\nError:\n{errorMsg}", "OK");
+                        Debug.LogError($"ADB push failed: {errorMsg}");
+                        onComplete?.Invoke(false);
+                    }
+                    else
+                    {
+                        Debug.Log($"Successfully pushed {source} to {destination}");
+                        onComplete?.Invoke(true);
+                    }
+                });
+        }
+
+        /// <summary>
+        /// Cleans a destination directory on the Android device using adb shell rm -rf.
+        /// Runs synchronously so the clean completes before any push operations begin.
+        /// </summary>
+        public static void AndroidCleanDestination(AdbHelper adb, string remotePath)
+        {
+            Debug.Log($"Cleaning device destination: {remotePath}");
+            EditorUtility.DisplayProgressBar("ADB Clean", $"Cleaning {remotePath} on device...", 0.5f);
+            
+            // Remove contents inside the folder, then recreate it
+            var result = adb.RunCommandSync($"shell rm -rf \"{remotePath}\"");
+            
+            EditorUtility.ClearProgressBar();
+            
+            if (!result.Success)
+            {
+                EditorUtility.DisplayDialog("ADB Clean Failed",
+                    $"Failed to clean destination on device.\n\nPath: {remotePath}\n\nError:\n{result.Error}", "OK");
+                Debug.LogError($"ADB clean failed for {remotePath}: {result.Error}");
+            }
+            else
+            {
+                // Recreate the directory so subsequent push operations work
+                adb.RunCommandSync($"shell mkdir -p \"{remotePath}\"");
+                Debug.Log($"Cleaned device destination: {remotePath}");
+            }
         }
 
         public static string GetAdbPath()

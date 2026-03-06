@@ -245,7 +245,8 @@
           "duringStagger": "Destabilize",
           "duringStaggerFull": "Destabilize",
           "duringAttack": "Destabilize",
-          "duringAttackJump": "Destabilize"
+          "duringAttackJump": "Destabilize",
+          "mergeKey": "0-0"
         },
         {
           "$type": "ThunderRoad.BrainModuleHitReaction+PushBehaviour, ThunderRoad",
@@ -256,7 +257,8 @@
           "duringStagger": "Destabilize",
           "duringStaggerFull": "Destabilize",
           "duringAttack": "Destabilize",
-          "duringAttackJump": "Destabilize"
+          "duringAttackJump": "Destabilize",
+          "mergeKey": "1-0"
         },
         {
           "$type": "ThunderRoad.BrainModuleHitReaction+PushBehaviour, ThunderRoad",
@@ -267,7 +269,8 @@
           "duringStagger": "Destabilize",
           "duringStaggerFull": "Destabilize",
           "duringAttack": "Destabilize",
-          "duringAttackJump": "Destabilize"
+          "duringAttackJump": "Destabilize",
+          "mergeKey": "2-0"
         },
         {
           "$type": "ThunderRoad.BrainModuleHitReaction+PushBehaviour, ThunderRoad",
@@ -278,7 +281,8 @@
           "duringStagger": "Destabilize",
           "duringStaggerFull": "Destabilize",
           "duringAttack": "Destabilize",
-          "duringAttackJump": "Destabilize"
+          "duringAttackJump": "Destabilize",
+          "mergeKey": "3-0"
         }
       ],
       "pushGrabThrowBehaviors": [
@@ -291,7 +295,8 @@
           "duringStagger": "Destabilize",
           "duringStaggerFull": "Destabilize",
           "duringAttack": "Destabilize",
-          "duringAttackJump": "Destabilize"
+          "duringAttackJump": "Destabilize",
+          "mergeKey": "0-0"
         },
         {
           "$type": "ThunderRoad.BrainModuleHitReaction+PushBehaviour, ThunderRoad",
@@ -302,7 +307,8 @@
           "duringStagger": "Destabilize",
           "duringStaggerFull": "Destabilize",
           "duringAttack": "Destabilize",
-          "duringAttackJump": "Destabilize"
+          "duringAttackJump": "Destabilize",
+          "mergeKey": "1-0"
         },
         {
           "$type": "ThunderRoad.BrainModuleHitReaction+PushBehaviour, ThunderRoad",
@@ -313,7 +319,8 @@
           "duringStagger": "Destabilize",
           "duringStaggerFull": "Destabilize",
           "duringAttack": "Destabilize",
-          "duringAttackJump": "Destabilize"
+          "duringAttackJump": "Destabilize",
+          "mergeKey": "2-0"
         }
       ],
       "pushHitBehaviors": [
@@ -326,7 +333,8 @@
           "duringStagger": "None",
           "duringStaggerFull": "None",
           "duringAttack": "None",
-          "duringAttackJump": "Destabilize"
+          "duringAttackJump": "Destabilize",
+          "mergeKey": "0-0"
         },
         {
           "$type": "ThunderRoad.BrainModuleHitReaction+PushBehaviour, ThunderRoad",
@@ -337,7 +345,8 @@
           "duringStagger": "StaggerMedium",
           "duringStaggerFull": "StaggerMedium",
           "duringAttack": "StaggerMedium",
-          "duringAttackJump": "Destabilize"
+          "duringAttackJump": "Destabilize",
+          "mergeKey": "1-0"
         },
         {
           "$type": "ThunderRoad.BrainModuleHitReaction+PushBehaviour, ThunderRoad",
@@ -352,7 +361,8 @@
           "duringStagger": "StaggerFull",
           "duringStaggerFull": "StaggerFull",
           "duringAttack": "StaggerFull",
-          "duringAttackJump": "Destabilize"
+          "duringAttackJump": "Destabilize",
+          "mergeKey": "1-385"
         },
         {
           "$type": "ThunderRoad.BrainModuleHitReaction+PushBehaviour, ThunderRoad",
@@ -363,7 +373,8 @@
           "duringStagger": "StaggerMedium",
           "duringStaggerFull": "StaggerFull",
           "duringAttack": "StaggerMedium",
-          "duringAttackJump": "Destabilize"
+          "duringAttackJump": "Destabilize",
+          "mergeKey": "2-0"
         },
         {
           "$type": "ThunderRoad.BrainModuleHitReaction+PushBehaviour, ThunderRoad",
@@ -378,7 +389,8 @@
           "duringStagger": "StaggerFull",
           "duringStaggerFull": "Destabilize",
           "duringAttack": "StaggerFull",
-          "duringAttackJump": "Destabilize"
+          "duringAttackJump": "Destabilize",
+          "mergeKey": "2-385"
         },
         {
           "$type": "ThunderRoad.BrainModuleHitReaction+PushBehaviour, ThunderRoad",
@@ -389,7 +401,8 @@
           "duringStagger": "StaggerFull",
           "duringStaggerFull": "Destabilize",
           "duringAttack": "StaggerFull",
-          "duringAttackJump": "Destabilize"
+          "duringAttackJump": "Destabilize",
+          "mergeKey": "3-0"
         },
         {
           "$type": "ThunderRoad.BrainModuleHitReaction+PushBehaviour, ThunderRoad",
@@ -404,7 +417,8 @@
           "duringStagger": "Destabilize",
           "duringStaggerFull": "Destabilize",
           "duringAttack": "Destabilize",
-          "duringAttackJump": "Destabilize"
+          "duringAttackJump": "Destabilize",
+          "mergeKey": "3-385"
         }
       ],
       "resistDestabilizeFromMagic": false

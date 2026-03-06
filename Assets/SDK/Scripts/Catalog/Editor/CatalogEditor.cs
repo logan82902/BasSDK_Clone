@@ -54,7 +54,7 @@ namespace ThunderRoad
         private float initialStoreStart = 0f;
         private List<string> storeInitialQueue;
         private SlowStoreState slowStoreState;
-        private bool hasModsLoaded = false;
+        private bool hasModsLoaded => (ModManager.loadedMods?.Count ?? 0) > 0;
         private bool storing = false;
         private Dictionary<string, CatalogData> initialJsons;
         private TreeBranch rootBranch;
@@ -469,7 +469,11 @@ namespace ThunderRoad
                         {
                             if (loadedJsons.TryGetValue(dataGUID, out CatalogData catalogData))
                             {
-                                if (catalogData.isOverrider) continue;
+                                if (catalogData.isOverrider)
+                                {
+                                    skipped--;
+                                    continue;
+                                }
                                 if (activeModData != null && catalogData.owner != null && catalogData.owner != activeModData) continue;
                                 DrawCatalogEntry(catalogData, childIndent, true, height, viewRect);
                                 height += (buttonStyle.fixedHeight + 2f) * (1 + GetOverriderCount(catalogData));
@@ -835,12 +839,10 @@ namespace ThunderRoad
             }
             if (loadJSONs > 0)
             {
-                hasModsLoaded = false;
                 storeInitialQueue = new List<string>();
                 slowStoreState = SlowStoreState.NotStarted;
                 storing = false;
                 bool loadMods = loadJSONs == 2;
-                if (loadMods) hasModsLoaded = true;
                 activeModData = null;
                 // these events are all unsubscribed directly below
 #pragma warning disable UDR0005 // Domain Reload Analyzer
@@ -877,7 +879,6 @@ namespace ThunderRoad
                 storeInitialQueue = new List<string>();
                 slowStoreState = SlowStoreState.NotStarted;
                 storing = false;
-                hasModsLoaded = false;
                 loadedJsons = null;
                 rootBranch = null;
                 leftEditor = null;
@@ -1188,11 +1189,11 @@ namespace ThunderRoad
                     {
                         if (data is CatalogData catalogData)
                         {
-                            System.Diagnostics.Process.Start(catalogData.realFilePath.Substring(0, catalogData.realFilePath.LastIndexOf('\\')));
+                            System.Diagnostics.Process.Start(Path.GetDirectoryName(catalogData.realFilePath));
                         }
-                        else
+                        else if (data is GameData gameData)
                         {
-                            System.Diagnostics.Process.Start(FileManager.GetFullPath(FileManager.Type.JSONCatalog, FileManager.Source.Default, Catalog.gameData.GetLatestOverrideFolder()));
+                            System.Diagnostics.Process.Start(Path.GetDirectoryName(gameData.filePath));
                         }
                     }
                 }

@@ -69,11 +69,11 @@ namespace ThunderRoad
         public bool useShuffle;
         public bool showSubtitles = true;
 #if UNITY_EDITOR
-        public void UpdateAllExpressions(FaceAnimator.Expression exp)
+        public void UpdateAllExpressions()
         {
             foreach (AudioClipData clip in clips)
             {
-                clip.dialogExpression = exp;
+                clip.dialogExpression = setAllExpressions;
             }
         }
 
