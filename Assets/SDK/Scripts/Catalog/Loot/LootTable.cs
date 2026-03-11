@@ -17,7 +17,20 @@ namespace ThunderRoad
         public List<DropLevel> levelledDrops = new List<DropLevel>();
         private const int maxPickCount = 20;
 
-        
+#if UNITY_EDITOR
+        [Button]
+        public void AddLevel()
+        {
+            DropLevel dropLevel = new DropLevel()
+            {
+                lootTable = this,
+                dropLevel = levelledDrops.Count,
+            };
+            levelledDrops.Add(dropLevel);
+            //reorder the drop levels based on their drop level
+            levelledDrops = levelledDrops.OrderBy(x => x.dropLevel).ToList();
+        }
+#endif
 
         [Serializable]
         [DeclareBoxGroup("$elementName", Title = "$elementName")]
