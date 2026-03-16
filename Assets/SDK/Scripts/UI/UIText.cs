@@ -8,7 +8,7 @@ namespace ThunderRoad
 {
     public class UIText : MonoBehaviour
     {
-        [Dropdown(nameof(GetAllTextGroupID))]
+        [Dropdown(nameof(GetAllTextGroupID), AppendToField = true)]
         public string textGroupId;
 
         [Tooltip("Enable this flag to have dynamic localized texts set from script. *The group id must be set on the inspector.")]

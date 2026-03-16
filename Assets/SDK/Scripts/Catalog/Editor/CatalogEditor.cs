@@ -155,8 +155,7 @@ namespace ThunderRoad
             try
             {
                 if (EditorStyles.toolbarButton == null || EditorStyles.toolbarDropDown == null) return;
-            }
-            catch (Exception)
+            } catch (Exception)
             {
                 return;
             }
@@ -300,7 +299,7 @@ namespace ThunderRoad
             if (mod == null)
             {
                 activeModData = null;
-            }
+            } 
             else if (mod is ModManager.ModData modData)
             {
                 activeModData = modData;

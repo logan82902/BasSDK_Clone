@@ -181,7 +181,7 @@
             }
           ],
           "weaponWeight": 3.0,
-          "offensiveSkillWeight": 2.5,
+          "offensiveSkillWeight": 1.0,
           "miscSkillWeight": 0.5,
           "potionWeight": 1.0,
           "armorWeight": 1.0,

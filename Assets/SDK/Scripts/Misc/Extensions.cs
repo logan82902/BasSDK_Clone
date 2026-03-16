@@ -22,6 +22,37 @@ namespace ThunderRoad
     public static class Extensions
     {
 #if UNITY_EDITOR
+        
+        public static bool TryDestroyImmediate(this Component component)
+        {
+            if (component == null) return true;
+            UnityEngine.Object.DestroyImmediate(component);
+            return component == null;
+        }
+        
+        public static void DestroyComponentAndDependenciesImmediate(this Component component)
+        {
+            if (component == null)
+                return;
+            
+            var dependents = GetDependentComponents(component);
+
+            foreach (var dependent in dependents)
+            {
+                if (dependent == null) continue;
+
+                Debug.Log($"[DestroyDependencies] Removing dependent component {dependent.GetType().Name} before destroying {component.GetType().Name}");
+                dependent.DestroyComponentAndDependenciesImmediate();
+            }
+
+            if (!component.TryDestroyImmediate())
+            {
+                Debug.LogError($"[DestroyDependencies] Failed to destroy component {component.GetType().Name}");
+                throw new Exception($"Failed to destroy component {component.GetType().Name}");
+            }
+        }
+
+        
 	    //ShaderVariantCollection extensions, because unity sucks and makes us do this
 	    public static SerializedProperty GetShaders(this ShaderVariantCollection svc)
 	    {
@@ -165,6 +196,35 @@ namespace ThunderRoad
             }
         }
 #endif
+        
+        private static List<Component> GetDependentComponents(Component target)
+        {
+            var result = new List<Component>();
+            var components = target.GetComponents<Component>();
+            var targetType = target.GetType();
+
+            foreach (var comp in components)
+            {
+                if (comp == null || comp == target)
+                    continue;
+
+                var attrs = comp.GetType().GetCustomAttributes(typeof(RequireComponent), true);
+
+                foreach (RequireComponent attr in attrs)
+                {
+                    if (attr.m_Type0 == targetType ||
+                        attr.m_Type1 == targetType ||
+                        attr.m_Type2 == targetType)
+                    {
+                        result.Add(comp);
+                        break;
+                    }
+                }
+            }
+
+            return result;
+        }
+        
         public static void PlayFade(this AudioSource audioSource, ref Coroutine coroutine, MonoBehaviour coroutineOwner, float delay, bool oneShot = false, AudioClip audioClip = null)
         {
             if (coroutine != null)
@@ -860,6 +920,11 @@ namespace ThunderRoad
         public static bool HasFlagNoGC(this EffectModule.PlatformFilter flags, EffectModule.PlatformFilter value)
         {
             return ((flags & value) > 0);
+        }
+
+        public static bool HasFlagNoGC(this ItemFlags flags, ItemFlags value)
+        {
+            return (flags & value) > 0;
         }
 
         public static bool HasFlagNoGC(this ItemData.Storage flags, ItemData.Storage value)

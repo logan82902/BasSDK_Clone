@@ -59,7 +59,15 @@ namespace ThunderRoad
 
 #if UNITY_EDITOR
                     Debug.LogWarning($"[ThunderBatcher] No objects to static batch in this group!");
-                    
+#endif
+                    return;
+                }
+                
+                if (gameObjects.Count == 1)
+                {
+
+#if UNITY_EDITOR
+                    Debug.LogWarning($"[ThunderBatcher] Only 1 object in this group, skipping static batching[Obj:{gameObjects[0].name}][Vert:{vertexCount}]");
 #endif
                     return;
                 }

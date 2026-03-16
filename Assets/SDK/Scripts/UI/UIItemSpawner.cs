@@ -143,6 +143,7 @@ namespace ThunderRoad
         {
             yield break;
         }
+        
         public virtual void OnItemChanged(ItemInfo itemInfo, UiItemSpawnerItemElement itemElement)
         {
         }
