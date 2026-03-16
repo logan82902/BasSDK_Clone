@@ -13,7 +13,7 @@
   "value": 1030.0,
   "rewardValue": 0.0,
   "tier": 3,
-  "flags": "Throwable, Spinnable, Jabbing, Piercing",
+  "flags": "Throwable, Spinnable, Jabbing",
   "levelRequired": 0,
   "type": "Weapon",
   "category": "Rakta Weapons",

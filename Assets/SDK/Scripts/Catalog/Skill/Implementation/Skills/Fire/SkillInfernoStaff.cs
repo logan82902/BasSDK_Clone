@@ -28,6 +28,8 @@ namespace ThunderRoad.Skill.Spell
         [Group("Flamethrower")]
         public float forceMult = 2;
         [Group("Flamethrower")]
+        public float imbueTransferPerSecond = 10000;
+        [Group("Flamethrower")]
         public float heatTransferPerSecond = 70;
         [Group("Flamethrower")]
         [Dropdown(nameof(GetAllStatusEffectID))]

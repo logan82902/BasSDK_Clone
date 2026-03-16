@@ -28,7 +28,8 @@ namespace ThunderRoad
         Electromagnetic = 128,
         Blunt = 256,
         NoChargeSapping = 512,
-        NoMoltenArc = 1024
+        NoMoltenArc = 1024,
+        Burnable = 2048
     }
 
     [Serializable]
