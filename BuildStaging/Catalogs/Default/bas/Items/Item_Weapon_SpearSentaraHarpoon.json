@@ -13,7 +13,7 @@
   "value": 287.0,
   "rewardValue": 0.0,
   "tier": 1,
-  "flags": "Throwable, Spinnable, Jabbing, Piercing",
+  "flags": "Throwable, Spinnable, Jabbing",
   "levelRequired": 0,
   "type": "Weapon",
   "category": "Sentara Weapons",

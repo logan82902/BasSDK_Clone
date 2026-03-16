@@ -79,6 +79,7 @@ namespace ThunderRoad
 
         public TriDropdownList<string> GetAllHolderSlots() => Catalog.GetDropdownHolderSlots();
 
+
         public void Lock()
         {
         }

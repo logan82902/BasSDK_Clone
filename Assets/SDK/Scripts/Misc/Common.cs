@@ -520,6 +520,26 @@ return true;
         public static bool IsAndroid => GetQualityLevel() is QualityLevel.Android;
         public static bool IsWindows => GetQualityLevel() is QualityLevel.Windows;
 
+#if UNITY_ANDROID
+        public static bool TryGetAPKPath(out string path)
+        {
+            try
+            {
+                using var unityPlayer = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
+                using var activity = unityPlayer.GetStatic<AndroidJavaObject>("currentActivity");
+                using var appInfo = activity.Call<AndroidJavaObject>("getApplicationInfo");
+                path = appInfo.Get<string>("sourceDir");
+                return !string.IsNullOrEmpty(path);
+            }
+            catch (Exception e)
+            {
+                Debug.LogError($"Exception occurred getting APK path - {e.Message}");
+                path = null;
+                return false;
+            }
+        }
+#endif
+        
         public static int GetRandomWeightedIndex(float[] weights)
         {
             if (weights == null || weights.Length == 0)
@@ -925,6 +945,8 @@ return true;
 
         public static bool TryGetHigherLodMeshFilter(MeshFilter lod0MeshFilter, LOD[] lods, out MeshFilter meshFilter)
         {
+            Mesh lod0SharedMesh = lod0MeshFilter.sharedMesh;
+            string lod0MeshName = StripLODStringPart(lod0SharedMesh.name);
             for (int lodIndex = 0; lodIndex < lods.Length; lodIndex++)
             {
                 for (int i = 0; i < lods[lodIndex].renderers.Length; i++)
@@ -934,10 +956,11 @@ return true;
                     MeshFilter currentMeshFilter = lods[lodIndex].renderers[i].GetComponent<MeshFilter>();
                     if (!currentMeshFilter || !currentMeshFilter.sharedMesh)
                         continue;
-                    if (currentMeshFilter.sharedMesh == lod0MeshFilter.sharedMesh)
+                    
+                    if (currentMeshFilter.sharedMesh == lod0SharedMesh)
                         continue;
                     meshFilter = currentMeshFilter;
-                    if (StripLODStringPart(lod0MeshFilter.sharedMesh.name) == StripLODStringPart(meshFilter.sharedMesh.name))
+                    if (lod0MeshName == StripLODStringPart(meshFilter.sharedMesh.name))
                     {
                         return true;
                     }
