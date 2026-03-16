@@ -44,7 +44,7 @@
       "descriptionText": null,
       "titleImageAddress": "Bas.Ui.SkillTree.Icons[ElementarySorcerer]",
       "currencies": {
-        "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Single, mscorlib]], mscorlib",
+        "$type": "ThunderRoad.InventoryStart+CurrencyDictionary, ThunderRoad",
         "Gold": "Infinity",
         "CrystalShard": "Infinity"
       }
@@ -59,7 +59,7 @@
       "descriptionText": null,
       "titleImageAddress": "Bas.Ui.SkillTree.Icons[Commoner]",
       "currencies": {
-        "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Single, mscorlib]], mscorlib",
+        "$type": "ThunderRoad.InventoryStart+CurrencyDictionary, ThunderRoad",
         "Gold": "Infinity",
         "CrystalShard": "Infinity"
       }
@@ -74,7 +74,7 @@
       "descriptionText": null,
       "titleImageAddress": "Bas.Ui.SkillTree.Icons[FireColor]",
       "currencies": {
-        "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Single, mscorlib]], mscorlib",
+        "$type": "ThunderRoad.InventoryStart+CurrencyDictionary, ThunderRoad",
         "Gold": "Infinity",
         "CrystalShard": "Infinity"
       }
@@ -89,7 +89,7 @@
       "descriptionText": null,
       "titleImageAddress": "Bas.Ui.SkillTree.Icons[LightningColor]",
       "currencies": {
-        "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Single, mscorlib]], mscorlib",
+        "$type": "ThunderRoad.InventoryStart+CurrencyDictionary, ThunderRoad",
         "Gold": "Infinity",
         "CrystalShard": "Infinity"
       }
@@ -104,7 +104,7 @@
       "descriptionText": null,
       "titleImageAddress": "Bas.Ui.SkillTree.Icons[GravityColor]",
       "currencies": {
-        "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Single, mscorlib]], mscorlib",
+        "$type": "ThunderRoad.InventoryStart+CurrencyDictionary, ThunderRoad",
         "Gold": "Infinity",
         "CrystalShard": "Infinity"
       }
@@ -119,7 +119,7 @@
       "descriptionText": null,
       "titleImageAddress": "Bas.Ui.SkillTree.Icons[MindColor]",
       "currencies": {
-        "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Single, mscorlib]], mscorlib",
+        "$type": "ThunderRoad.InventoryStart+CurrencyDictionary, ThunderRoad",
         "Gold": "Infinity",
         "CrystalShard": "Infinity"
       }
@@ -134,7 +134,7 @@
       "descriptionText": null,
       "titleImageAddress": "Bas.Ui.SkillTree.Icons[BodyColor]",
       "currencies": {
-        "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Single, mscorlib]], mscorlib",
+        "$type": "ThunderRoad.InventoryStart+CurrencyDictionary, ThunderRoad",
         "Gold": "Infinity",
         "CrystalShard": "Infinity"
       }
@@ -149,7 +149,7 @@
       "descriptionText": null,
       "titleImageAddress": "Bas.Ui.SkillTree.Icons[MasterStory]",
       "currencies": {
-        "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Single, mscorlib]], mscorlib",
+        "$type": "ThunderRoad.InventoryStart+CurrencyDictionary, ThunderRoad",
         "Gold": "Infinity",
         "CrystalShard": "Infinity"
       }
