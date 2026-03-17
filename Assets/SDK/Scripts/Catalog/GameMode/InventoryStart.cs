@@ -18,13 +18,13 @@ namespace ThunderRoad
         [Dropdown(nameof(GetAllTextId))]
         public string titleTextID;
 
-        [ShowIf(nameof(titleTextID), null)]
+        [ShowIf(nameof(titleTextID), "")]
         public string titleText;
 
         [Dropdown(nameof(GetAllTextId))]
         public string descriptionTextID;
         
-        [ShowIf(nameof(descriptionTextID), null)]
+        [ShowIf(nameof(descriptionTextID), "")]
         public string descriptionText;
 
         public string titleImageAddress;
