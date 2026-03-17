@@ -100,17 +100,37 @@ namespace ThunderRoad
 
         public TriDropdownList<string> GetDropdownAllTextGroups()
         {
+            HashSet<string> groupIds = new HashSet<string>();
             TriDropdownList<string> dropdownList = new();
             foreach (TextGroup textGroup in textGroups)
             {
                 dropdownList.Add(textGroup.id, textGroup.id);
+                groupIds.Add(textGroup.id.ToLowerInvariant());
             }
+#if UNITY_EDITOR
+            if (!overriderDatas.IsNullOrEmpty())
+            {
+                foreach (TextData overrider in overriderDatas)
+                {
+                    foreach (TriDropdownItem<string> item in overrider.GetDropdownAllTextGroups())
+                    {
+                        if (groupIds.Contains(item.Value.ToLowerInvariant())) continue;
+                        dropdownList.Add(item.Value, item.Value);
+                        groupIds.Add(item.Value.ToLowerInvariant());
+                    }
+                }
+            }
+#endif
             return dropdownList;
         }
 
         public TriDropdownList<string> GetDropdownAllTexts(string groupId)
         {
-            TriDropdownList<string> dropdownList = new();
+            HashSet<string> textIds = new HashSet<string>();
+            TriDropdownList<string> dropdownList = new()
+            {
+                { "None", "" }
+            };
             foreach (TextGroup textGroup in textGroups)
             {
                 if (string.Equals(textGroup.id, groupId, StringComparison.OrdinalIgnoreCase))
@@ -118,10 +138,25 @@ namespace ThunderRoad
                     foreach (TextID textId in textGroup.texts)
                     {
                         dropdownList.Add(textId.id, textId.id);
+                        textIds.Add(textId.id.ToLowerInvariant());
                     }
                     break;
                 }
             }
+#if UNITY_EDITOR
+            if (!overriderDatas.IsNullOrEmpty())
+            {
+                foreach (TextData overrider in overriderDatas)
+                {
+                    foreach (TriDropdownItem<string> item in overrider.GetDropdownAllTexts(groupId))
+                    {
+                        if (textIds.Contains(item.Value.ToLowerInvariant())) continue;
+                        dropdownList.Add(item.Value, item.Value);
+                        textIds.Add(item.Value.ToLowerInvariant());
+                    }
+                }
+            }
+#endif
             return dropdownList;
         }
 
