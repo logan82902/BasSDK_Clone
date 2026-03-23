@@ -238,6 +238,12 @@ namespace ThunderRoad
         {
             return base.GetFileNameString().Replace("_", $"_{type.ToString()}_");
         }
+
+        public override string ParseIDFromFileNameString(string filenameString)
+        {
+            string nameWithoutType = base.ParseIDFromFileNameString(filenameString);
+            return nameWithoutType.Substring(nameWithoutType.IndexOf('_') + 1);
+        }
 #endif
 
         [Group("Split/Left/Prefab")]

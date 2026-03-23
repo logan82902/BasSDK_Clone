@@ -1244,9 +1244,7 @@ namespace ThunderRoad
                 Debug.LogWarning("Cancelled create new JSON");
                 return;
             }
-            string idFromFile = filePath.Substring(filePath.LastIndexOf('/') + 1).Replace(".json", "");
-            if (idFromFile.Contains("_")) idFromFile = idFromFile.Substring(idFromFile.LastIndexOf("_") + 1);
-            newCatalogData.id = idFromFile;
+            newCatalogData.id = newCatalogData.ParseIDFromFileNameString(Path.GetFileNameWithoutExtension(filePath));
             if (Catalog.TryGetCategory(selectedType, out Category category))
             {
                 Catalog.GetDataList(category).Add(newCatalogData);
@@ -1321,9 +1319,7 @@ namespace ThunderRoad
             {
                 CatalogData clone = catalogData.CloneJson();
                 Side openSide = catalogData == leftData ? Side.Left : Side.Right;
-                string newName = Path.GetFileNameWithoutExtension(filePath);
-                newName = newName.Substring(newName.LastIndexOf('_') + 1);
-                clone.id = newName;
+                clone.id = catalogData.ParseIDFromFileNameString(Path.GetFileNameWithoutExtension(filePath));
                 Catalog.GetDataList(category).Add(clone);
                 clone.OnCatalogRefresh();
                 clone.editorGuid = GUID.Generate().ToString();
