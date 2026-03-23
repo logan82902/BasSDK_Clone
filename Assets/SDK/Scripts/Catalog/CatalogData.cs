@@ -115,6 +115,13 @@ namespace ThunderRoad
             Catalog.TryGetCategory(GetType(), out category);
             return $"{category}_{id}";
         }
+
+        public virtual string ParseIDFromFileNameString(string filenameString)
+        {
+            Category category = Category.Custom;
+            Catalog.TryGetCategory(GetType(), out category);
+            return filenameString.Replace($"{category}_", "");
+        }
 #endif
 
         public virtual int GetCurrentVersion() => 0;
