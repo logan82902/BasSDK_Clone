@@ -13,10 +13,12 @@ namespace ThunderRoad
     
     [DeclareVerticalGroup("folder")]
     [DeclareHorizontalGroup("folder/folderButtons")]
-    [DeclareHorizontalGroup("manifest")]
-    [DeclareVerticalGroup("manifest/fields")]
     [DeclareHorizontalGroup("assets")]
     [DeclareVerticalGroup("assets/fields")]
+    [DeclareHorizontalGroup("scripts")]
+    [DeclareVerticalGroup("scripts/fields")]
+    [DeclareHorizontalGroup("manifest")]
+    [DeclareVerticalGroup("manifest/fields")]
     [CreateAssetMenu(menuName = "ThunderRoad/Editor/Asset bundles group")]
     public class AssetBundleGroup : ScriptableObject
     {
@@ -43,6 +45,13 @@ namespace ThunderRoad
         public bool isMod => !isDefault;
         [HideInInspector]
         public bool zipCatalogFiles = false;
+
+        [Title("Scripts")]
+        [Group("scripts/fields")]
+        [ReadOnly]
+        [ShowIf(nameof(isMod))]
+        [ListDrawerSettings(HideAddButton = true, HideRemoveButton = true, Draggable = false)]
+        public List<ScriptBridge> scriptBridges;
         
         [Title("Manifest")]
         [Group("manifest/fields")]
@@ -143,12 +152,15 @@ namespace ThunderRoad
             AssetBundleBuilder.CopyDirectory(manifestTempFolderPath, path);
             Debug.Log($"Mod manifest created at {path}");
         }
+
+        public string GetCatalogFolderPath() => Path.Combine(Application.dataPath, $"../BuildStaging/Catalogs/Mods/{folderName}");
+
         [Button]
         [Group("folder/folderButtons")]
         [ShowIf("isMod")]
         public void OpenCatalogFolder()
         {
-            string path = Path.Combine(Application.dataPath, $"../BuildStaging/Catalogs/Mods/{folderName}");
+            string path = GetCatalogFolderPath();
             if (!Directory.Exists(path))
             {
                 //display a dialog to ask if the user wants to create the folder
@@ -164,7 +176,9 @@ namespace ThunderRoad
             //open the folder in explorer
             EditorUtility.RevealInFinder(path);
         }
-        
+
+        public string GetAssemblyStagingPath(QualityLevel platform) => Application.dataPath.Replace("Assets", Path.Combine(ThunderRoadSettings.current.assembliesEditorPath, platform.ToString(), folderName));
+
         [Button]
         [Group("assets/fields")]
         public void CheckLabels()

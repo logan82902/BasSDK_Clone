@@ -64,6 +64,8 @@ namespace ThunderRoad
 
 #if UNITY_EDITOR
         [Group("General")]
+        public string assembliesEditorPath = "BuildStaging/Assemblies";
+        [Group("General")]
         public string addressableEditorPath = "BuildStaging/AddressableAssets";
         [Group("General")]
         public string catalogsEditorPath = "BuildStaging/Catalogs";

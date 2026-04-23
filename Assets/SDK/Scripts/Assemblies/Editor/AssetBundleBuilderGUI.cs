@@ -523,6 +523,7 @@ namespace ThunderRoad
 
         public static void Export(AssetBundleGroup assetBundleGroup, bool toFolder = false)
         {
+            string assembliesFullPath = Path.Combine(Directory.GetCurrentDirectory(), AssetBundleBuilder.assembliesLocalPath);
             string assetsFullPath = Path.Combine(Directory.GetCurrentDirectory(), AssetBundleBuilder.assetsLocalPath);
             string folderName = assetBundleGroup.isDefault ? FileManager.defaultFolderName : FileManager.modsFolderName;
             string catalogFullPath = Path.Combine(Directory.GetCurrentDirectory(), ThunderRoadSettings.current.catalogsEditorPath, folderName, AssetBundleBuilder.exportFolderName);
@@ -563,6 +564,9 @@ namespace ThunderRoad
                 // Copy addressable assets to destination path
                 AssetBundleBuilder.CopyDirectory(assetsFullPath, manualFolderPath);
                 Debug.Log($"Copied addressable asset folder {assetsFullPath} to {manualFolderPath}");
+
+                AssetBundleBuilder.CopyDirectory(assembliesFullPath, manualFolderPath);
+                Debug.Log($"Copied assemblies folder {assembliesFullPath} to {manualFolderPath}");
 
                 if (Directory.Exists(catalogFullPath))
                 {
@@ -638,6 +642,9 @@ namespace ThunderRoad
                 // Copy addressable assets to destination path
                 AssetBundleBuilder.CopyDirectory(assetsFullPath, destinationAssetsPath);
                 Debug.Log($"Copied addressable asset folder {assetsFullPath} to {destinationAssetsPath}");
+
+                AssetBundleBuilder.CopyDirectory(assembliesFullPath, destinationAssetsPath);
+                Debug.Log($"Copied assemblies folder {assembliesFullPath} to {destinationAssetsPath}");
 
                 if (Directory.Exists(catalogFullPath))
                 {
@@ -732,6 +739,9 @@ namespace ThunderRoad
                     }
                     
                     AndroidPushAssets(assetsFullPath, assetBundleGroup.folderName);
+
+                    AndroidPushAssets(assembliesFullPath, assetBundleGroup.folderName);
+
                     if (Directory.Exists(catalogFullPath))
                     {
                         if (assetBundleGroup.isMod && assetBundleGroup.zipCatalogFiles)
@@ -774,6 +784,7 @@ namespace ThunderRoad
             Debug.Log($"Zipped json {folderName} to {jsondbPath}");
             return tempFolder;
         }
+
         public static string GenerateManifest(AssetBundleGroup assetBundleGroup)
         {
             ModManager.ModData modData = new ModManager.ModData();

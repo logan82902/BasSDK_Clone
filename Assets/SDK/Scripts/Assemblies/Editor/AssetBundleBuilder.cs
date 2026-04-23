@@ -1,12 +1,14 @@
 ﻿using Ionic.Zip;
 using System;
 using System.Collections;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Threading.Tasks;
 using Unity.EditorCoroutines.Editor;
 using UnityEditor;
 using UnityEditor.AddressableAssets;
@@ -31,6 +33,19 @@ namespace ThunderRoad
         public static event BuildEvent OnBuildEvent;
 
         public const string androidAssetFolderName = "obb";
+
+        public static string assembliesLocalPath
+        {
+            get
+            {
+                string buildtarget = "Windows";
+                if (EditorUserBuildSettings.activeBuildTarget == BuildTarget.Android)
+                {
+                    buildtarget = "Android";
+                }
+                return (Path.Combine(ThunderRoadSettings.current.assembliesEditorPath, buildtarget, exportFolderName));
+            }
+        }
 
         public static string assetsLocalPath
         {
@@ -125,6 +140,41 @@ namespace ThunderRoad
             DateTime timeStart = DateTime.Now;
 
             exportFolderName = assetBundleGroup.folderName;
+
+            if (assetBundleGroup.isMod && !assetBundleGroup.scriptBridges.IsNullOrEmpty())
+            {
+                Debug.Log($"Building mod assemblies to destination: {assembliesLocalPath}");
+                ConcurrentBag<ScriptBridge.BuildResult> results = new ConcurrentBag<ScriptBridge.BuildResult>();
+                QualityLevel qualityLevel = Common.GetQualityLevel();
+                string buildPath = assetBundleGroup.GetAssemblyStagingPath(qualityLevel);
+                Task buildDllsTask = Task.Run(() =>
+                {
+                    foreach (ScriptBridge scriptBridge in assetBundleGroup.scriptBridges)
+                    {
+                        scriptBridge.BuildDlls(buildPath, qualityLevel, result =>
+                        {
+                            results.Add(result);
+                        });
+                    }
+                });
+                buildDllsTask.Wait();
+                int lastCount = -1;
+                int totalCount = assetBundleGroup.scriptBridges.Count;
+                while (results.Count < assetBundleGroup.scriptBridges.Count)
+                {
+                    if (results.Count != lastCount)
+                    {
+                        lastCount = results.Count;
+                        EditorUtility.DisplayProgressBar("Build Assemblies", $"Waiting for assemblies to finish building... {lastCount}/{totalCount} built.", (float)lastCount / (float)totalCount);
+                    }
+                }
+                EditorUtility.ClearProgressBar();
+                if (results.Contains(ScriptBridge.BuildResult.Exception) || results.Contains(ScriptBridge.BuildResult.Failure))
+                {
+                    Debug.LogError("Assembly build failed, aborting asset build, check the console for more information.");
+                    return false;
+                }
+            }
 
             Debug.Log($"Building asset bundles to destination: {assetsLocalPath}");
 
