@@ -15,7 +15,7 @@ namespace ThunderRoad
     {
         [Tooltip("Select if it accepts any but selected or accepts only selected.")]
         public FilterLogic tagFilter = FilterLogic.AnyExcept;
-        [Dropdown(nameof(GetAllHolderSlots), AppendToField = true)]
+        [DropdownList(nameof(GetAllHolderSlots))]
         [Tooltip("Slots that accept the magnet.")]
         public List<string> slots;
 
@@ -77,8 +77,25 @@ namespace ThunderRoad
         [NonSerialized]
         public bool isLocked;
 
+        [HideInInspector]
+        public Collider trigger;
+        [HideInInspector]
+        public Rigidbody rb;
+
         public TriDropdownList<string> GetAllHolderSlots() => Catalog.GetDropdownHolderSlots();
 
+        protected virtual void OnValidate()
+        {
+            if (!gameObject.activeInHierarchy) return;
+            SetReferences();
+        }
+
+        private void SetReferences()
+        {
+            rb = this.GetComponentInParent<Rigidbody>();
+            trigger = this.GetComponent<Collider>();
+            trigger.gameObject.layer = Common.GetLayer(LayerName.MovingItem);
+        }
 
         public void Lock()
         {

@@ -1088,7 +1088,8 @@ namespace ThunderRoad
                     float widthAddition = 20f;
                     GUILayout.FlexibleSpace();
                     bool showNonGameDataButtons = data is CatalogData;
-                    bool hasOwner = data is CatalogData cData && cData.owner != null;
+                    bool hasOwner = (data is CatalogData cData && cData.owner != null)
+                        || (data is GameData gData && gData.isOverrider);
                     GUI.enabled = hasModsLoaded;
                     if (showNonGameDataButtons)
                     {
@@ -1101,7 +1102,7 @@ namespace ThunderRoad
                             }
                         }
                     }
-                    if (!hasOwner || data == Catalog.gameData) GUI.enabled = false;
+                    if (!hasOwner) GUI.enabled = false;
                     GUIContent saveContent = new(" Save", GetIcon(Icon.Save, customToolbarStyle.fontSize), "Save the currently open JSON");
                     if (GUILayout.Button(saveContent, customToolbarStyle, GUILayout.Width(customToolbarStyle.CalcSize(saveContent).x + widthAddition)))
                     {
@@ -1168,7 +1169,7 @@ namespace ThunderRoad
                             CloneData(data as CatalogData);
                         }
                     }
-                    if (!hasOwner || data == Catalog.gameData) GUI.enabled = false;
+                    if (!hasOwner) GUI.enabled = false;
                     GUIContent resetContent = new(" Reset", GetIcon(Icon.Reset, customToolbarStyle.fontSize), "Reset all modified values in currently open JSON");
                     if (GUILayout.Button(resetContent, customToolbarStyle, GUILayout.Width(customToolbarStyle.CalcSize(resetContent).x + widthAddition)))
                     {
@@ -1244,9 +1245,7 @@ namespace ThunderRoad
                 Debug.LogWarning("Cancelled create new JSON");
                 return;
             }
-            string idFromFile = filePath.Substring(filePath.LastIndexOf('/') + 1).Replace(".json", "");
-            if (idFromFile.Contains("_")) idFromFile = idFromFile.Substring(idFromFile.LastIndexOf("_") + 1);
-            newCatalogData.id = idFromFile;
+            newCatalogData.id = newCatalogData.ParseIDFromFileNameString(Path.GetFileNameWithoutExtension(filePath));
             if (Catalog.TryGetCategory(selectedType, out Category category))
             {
                 Catalog.GetDataList(category).Add(newCatalogData);
@@ -1321,9 +1320,7 @@ namespace ThunderRoad
             {
                 CatalogData clone = catalogData.CloneJson();
                 Side openSide = catalogData == leftData ? Side.Left : Side.Right;
-                string newName = Path.GetFileNameWithoutExtension(filePath);
-                newName = newName.Substring(newName.LastIndexOf('_') + 1);
-                clone.id = newName;
+                clone.id = catalogData.ParseIDFromFileNameString(Path.GetFileNameWithoutExtension(filePath));
                 Catalog.GetDataList(category).Add(clone);
                 clone.OnCatalogRefresh();
                 clone.editorGuid = GUID.Generate().ToString();

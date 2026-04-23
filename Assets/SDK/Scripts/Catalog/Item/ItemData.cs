@@ -236,7 +236,13 @@ namespace ThunderRoad
 
         public override string GetFileNameString()
         {
-            return base.GetFileNameString().Replace("_", $"_{type.ToString()}_");
+            return base.GetFileNameString().Replace("Item_", $"Item_{type.ToString()}_");
+        }
+
+        public override string ParseIDFromFileNameString(string filenameString)
+        {
+            string nameWithoutType = base.ParseIDFromFileNameString(filenameString);
+            return nameWithoutType.Substring(nameWithoutType.IndexOf('_') + 1);
         }
 #endif
 
