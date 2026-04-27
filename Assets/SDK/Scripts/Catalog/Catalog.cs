@@ -628,9 +628,10 @@ namespace ThunderRoad
 
         #region LOAD CATALOG
 
-        public static void EditorLoadAllJson(bool requiresRefresh = false, bool force = false, bool includeMods = true)
+        public static void EditorLoadAllJson(bool requiresRefresh = false, bool force = false, bool includeMods = true, bool mergeMods = false)
         {
 #if UNITY_EDITOR
+            loadOverridesSeparately = includeMods && !mergeMods;
             if (gameData != null && !force)
             {
                 return;
@@ -646,6 +647,7 @@ namespace ThunderRoad
             {
                 Refresh();
             }
+            loadOverridesSeparately = false;
 #endif
         }
 

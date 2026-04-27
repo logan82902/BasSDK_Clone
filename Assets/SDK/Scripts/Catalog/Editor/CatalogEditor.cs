@@ -850,13 +850,11 @@ namespace ThunderRoad
                 Catalog.OnJSONLoadProgress += CatalogJSONLoadProgress;
                 Catalog.OnRefreshProgress += CatalogJSONRefreshProgress;
 #pragma warning restore UDR0005 // Domain Reload Analyzer
-                Catalog.loadOverridesSeparately = loadMods;
                 Catalog.EditorLoadAllJson(true, true, loadMods);
                 Catalog.OnJSONOpenProgress -= CatalogJSONReadProgress;
                 Catalog.OnJSONDeserializeProgress -= CatalogJSONDeserializeProgress;
                 Catalog.OnJSONLoadProgress -= CatalogJSONLoadProgress;
                 Catalog.OnRefreshProgress -= CatalogJSONRefreshProgress;
-                Catalog.loadOverridesSeparately = false;
                 InitializeJSONsForEditing();
                 BuildTree();
                 leftEditor = null;
