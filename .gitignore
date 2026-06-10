@@ -49,6 +49,7 @@ MemoryCaptures
 SerializedBuildInfo
 *_state.bin
 BuildStaging/AddressableAssets
+BuildStaging/Assemblies
 BuildStaging/Builds
 BuildStaging/Tools/Steambuilder/logs
 addressables_content_state.bin
