@@ -25,7 +25,8 @@ namespace ThunderRoad
     {
         [ShowInInspector]
         [Group("Status")]
-        public Type type;
+        [Dropdown(nameof(GetStatusTypes))]
+        public Type type = typeof(Burning);
 
         [Group("Status")]
         public CreatureType bypassImmunity;
@@ -34,6 +35,7 @@ namespace ThunderRoad
         public bool ignoreClearByType;
 
         [Group("Status")]
+        [InfoBox("$" + nameof(StackTypeDescription), TriMessageType.None)]
         public StackType stackType;
         
         public string StackTypeDescription => stackType switch
@@ -76,7 +78,7 @@ namespace ThunderRoad
 
         public TriDropdownList<Type> GetStatusTypes()
         {
-            TriDropdownList<Type> dropdownList = new() { new TriDropdownItem<Type>() { Text = "None", Value = null } };
+            TriDropdownList<Type> dropdownList = new();
 
             foreach (Type statusType in AppDomain.CurrentDomain
                          .GetAssemblies()

@@ -30,6 +30,8 @@ namespace ThunderRoad
 
         private const string dllListPath = "Assets\\SDK\\Scripts\\Assemblies\\Editor\\GameAssemblies.txt";
 
+        public static string GetDataPath() => Path.Combine(Directory.GetCurrentDirectory(), "Assets").Replace('\\', '/');
+
         [Group("Path/Horiz")]
         [ReadOnly]
         [HideLabel]
@@ -59,9 +61,19 @@ namespace ThunderRoad
             get => _linkedMod;
             set
             {
-                if (_linkedMod != null && _linkedMod.scriptBridges.Contains(this)) _linkedMod.scriptBridges.Remove(this);
+                if (_linkedMod != null && _linkedMod.scriptBridges.Contains(this))
+                {
+                    _linkedMod.scriptBridges.Remove(this);
+                    EditorUtility.SetDirty(_linkedMod);
+                    AssetDatabase.SaveAssetIfDirty(_linkedMod);
+                }
                 _linkedMod = value;
-                if (_linkedMod != null && !_linkedMod.scriptBridges.Contains(this)) _linkedMod.scriptBridges.Add(this);
+                if (_linkedMod != null && !_linkedMod.scriptBridges.Contains(this))
+                {
+                    _linkedMod.scriptBridges.Add(this);
+                    EditorUtility.SetDirty(_linkedMod);
+                    AssetDatabase.SaveAssetIfDirty(_linkedMod);
+                }
             }
         }
         [SerializeReference]
@@ -83,7 +95,7 @@ namespace ThunderRoad
         }
 
         [System.Serializable]
-        [DeclareHorizontalGroup("Horiz", Sizes = new float[] { 0f, 0f, 160f})]
+        [DeclareHorizontalGroup("Horiz", Sizes = new float[] { 0f, 0f, 160f })]
         public class CsProjInfo
         {
             [HideInInspector]
@@ -328,7 +340,7 @@ namespace ThunderRoad
             CsProjInfo.BuildConfig activeConfig = platform == QualityLevel.Windows ? csProj.pcvrBuildConfig : csProj.androidBuildConfig;
             bool customOutputPath = outputPath != null;
             string outputPathArgument = customOutputPath ? $"-p:OutputPath=\"{outputPath}\"" : "";
-            ProcessRunner.RunProcessAsync("dotnet", $"build \"{csProj.path}\" -c {activeConfig.name} {outputPathArgument}", null, null, processResult =>
+            ProcessRunner.RunProcessAsync("dotnet", $"build \"{csProj.path}\" -c \"{activeConfig.name}\" {outputPathArgument}", null, null, processResult =>
             {
                 string consoleOutput = $"{processResult.Output}\n{processResult.Error}";
                 bool buildFail = consoleOutput.Contains("Build FAILED.");
@@ -363,7 +375,7 @@ namespace ThunderRoad
             }, true, false, false);
         }
 
-        private static string GetAllDllsPath() => Path.Combine(Path.GetDirectoryName(Application.dataPath), dllListPath);
+        private static string GetAllDllsPath() => Path.Combine(Path.GetDirectoryName(GetDataPath()), dllListPath);
 
         private TriDropdownList<AssetBundleGroup> GetAllAssetBundleGroups()
         {
@@ -375,7 +387,7 @@ namespace ThunderRoad
             return results;
         }
 
-        private string GetAssetFolder() => Path.GetDirectoryName(Path.Combine(Path.GetDirectoryName(Application.dataPath), AssetDatabase.GetAssetPath(this)));
+        private string GetAssetFolder() => Path.GetDirectoryName(Path.Combine(Path.GetDirectoryName(GetDataPath()), AssetDatabase.GetAssetPath(this)));
 
         [Group("Path/Horiz")]
         [Button("Select CsProj")]
@@ -434,20 +446,40 @@ namespace ThunderRoad
         [DisableIf(nameof(linkedMod), null)]
         [Group("Mod/Horiz")]
         [Button("Build PCVR DLL(s) to BuildStaging")]
-        public void BuildPCVRDllsToStaging() => BuildDllsToStaging(QualityLevel.Windows);
+        public void BuildPCVRDllsToStaging() => BuildDllsToStaging(true, false);
 
         [DisableIf(nameof(linkedMod), null)]
         [Group("Mod/Horiz")]
         [Button("Build Android DLL(s) to BuildStaging")]
-        public void BuildAndroidDllsToStaging() => BuildDllsToStaging(QualityLevel.Android);
+        public void BuildAndroidDllsToStaging() => BuildDllsToStaging(false, true);
 
         [DisableIf(nameof(linkedMod), null)]
         [Group("Mod")]
         [Button("Build DLL(s) to BuildStaging (Both platforms)")]
-        public void BuildDllsToStaging()
+        public void BuildDllsToStaging() => BuildDllsToStaging(true, true);
+
+        private void BuildDllsToStaging(bool windows, bool android)
         {
-            BuildDllsToStaging(QualityLevel.Windows);
-            BuildDllsToStaging(QualityLevel.Android);
+            Action<BuildResult> logCallback = result =>
+            {
+                switch (result)
+                {
+                    case BuildResult.CleanSuccess:
+                        Debug.Log("Build completed and cleaned!");
+                        break;
+                    case BuildResult.Success:
+                        Debug.Log("Build completed, could not clean.");
+                        break;
+                    case BuildResult.Failure:
+                        Debug.LogError("Build failed, see console for more details.");
+                        break;
+                    case BuildResult.Exception:
+                        Debug.LogError("Exception encountered, build failed. See console for more details.");
+                        break;
+                }
+            };
+            if (windows) BuildDllsToStaging(QualityLevel.Windows, logCallback);
+            if (android) BuildDllsToStaging(QualityLevel.Android, logCallback);
         }
 
         public string GetStagingPath(QualityLevel platform) => linkedMod.GetAssemblyStagingPath(platform);
