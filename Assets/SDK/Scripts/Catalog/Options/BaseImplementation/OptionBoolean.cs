@@ -1,4 +1,5 @@
 ﻿using System;
+using TriInspector;
 
 namespace ThunderRoad
 {
@@ -7,9 +8,11 @@ namespace ThunderRoad
 	{
 		public override bool IsHidden() => false; // should be visible by default
 		public override bool IsLevelOption() => true; // should be set as level option by default
-		
-		public bool defaultValue;
-		protected bool currentValue;
+
+        [Group("Foldout")]
+        public bool defaultValue;
+        [Group("Foldout")]
+        protected bool currentValue;
 		public OptionBoolean()
 		{ }
 		public override OptionValue DefaultValue() => new OptionBooleanValue { value = defaultValue };

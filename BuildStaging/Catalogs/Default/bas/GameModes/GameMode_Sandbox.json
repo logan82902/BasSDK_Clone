@@ -130,7 +130,7 @@
       "textGroupId": "CrystalHunt",
       "titleTextID": "SandboxLoadoutBodyTitle",
       "titleText": null,
-      "descriptionTextID": "StartingItemBody",
+      "descriptionTextID": "StartingItemBodyDesc",
       "descriptionText": null,
       "titleImageAddress": "Bas.Ui.SkillTree.Icons[BodyColor]",
       "currencies": {

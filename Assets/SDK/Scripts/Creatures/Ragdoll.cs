@@ -263,24 +263,59 @@ namespace ThunderRoad
 
 
         [System.Serializable]
+        [DeclareBoxGroup("Bone", HideTitle = true)]
+        [DeclareHorizontalGroup("Bone/Transforms")]
+        [DeclareHorizontalGroup("Bone/Joints")]
+        [DeclareFoldoutGroup("Bone/Parent", Title = "Parent")]
+        [DeclareHorizontalGroup("Bone/OrgLocals")]
+        [DeclareBoxGroup("Bone/OrgLocals/Vert1", HideTitle = true)]
+        [DeclareBoxGroup("Bone/OrgLocals/Vert2", HideTitle = true)]
         public class Bone
         {
+            [Group("Bone")]
+            [AutoLabelWidth]
             public int[] boneHashes;
+            [Group("Bone/Transforms")]
+            [AutoLabelWidth]
             public Transform mesh;
+            [Group("Bone/Transforms")]
+            [AutoLabelWidth]
             public Transform animation;
+            [Group("Bone/Transforms")]
+            [AutoLabelWidth]
             public Transform meshSplit;
+            [Group("Bone/Joints")]
+            [AutoLabelWidth]
             public ConfigurableJoint animationJoint;
+            [Group("Bone/Joints")]
+            [AutoLabelWidth]
             public FixedJoint fixedJoint;
-
-            public RagdollPart part;
-            public Bone parent;
-            public List<Bone> childs;
+            [Group("Bone/Joints")]
+            [AutoLabelWidth]
             public bool hasChildAnimationJoint;
 
+            [Group("Bone")]
+            [AutoLabelWidth(AddedWidth = 20f)]
+            public RagdollPart part;
+            [Group("Bone/Parent")]
+            [NoRecursion]
+            [HideReferencePicker]
+            [InlineProperty]
+            public Bone parent;
+            [Group("Bone")]
+            [NoRecursion]
+            [HideReferencePicker]
+            [ListDrawerSettings(HideAddButton = true, HideRemoveButton = true, Draggable = false)]
+            public List<Bone> childs;
+
+            [Group("Bone/OrgLocals/Vert1")]
             public Vector3 orgLocalPosition;
+            [Group("Bone/OrgLocals/Vert1")]
             public Quaternion orgLocalRotation;
 
+            [Group("Bone/OrgLocals/Vert2")]
             public Vector3 orgCreatureLocalPosition;
+            [Group("Bone/OrgLocals/Vert2")]
             public Quaternion orgCreatureLocalRotation;
 
         }

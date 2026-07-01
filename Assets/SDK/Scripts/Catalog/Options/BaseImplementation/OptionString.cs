@@ -58,7 +58,7 @@ namespace ThunderRoad
     }
 
     [Serializable]
-    [DeclareHorizontalGroup("Horiz")]
+    [DeclareHorizontalGroup("Foldout/Horiz")]
     public abstract class OptionStringList : OptionStringBase
     {
         public override bool IsHidden() => false; // should be visible by default
@@ -92,7 +92,7 @@ namespace ThunderRoad
     [Serializable]
     public class OptionString : OptionStringList
     {
-        [Group("Horiz")]
+        [Group("Foldout/Horiz")]
         public List<string> valueList = new();
 
         public override List<string> GetOptionList() => valueList;
@@ -102,7 +102,7 @@ namespace ThunderRoad
     [Serializable]
     public class OptionStringLabel : OptionString
     {
-        [Group("Horiz")]
+        [Group("Foldout/Horiz")]
         public List<string> labelList = new();
 
         public override string GetCurrentValueLabel()
@@ -126,7 +126,7 @@ namespace ThunderRoad
 
     public abstract class OptionStringDropdown : OptionStringList
     {
-        [Group("Horiz")]
+        [Group("Foldout/Horiz")]
         [DropdownList(nameof(GetValueOptions))]
         public List<string> valueList = new();
 
@@ -139,7 +139,7 @@ namespace ThunderRoad
     [Serializable]
     public class OptionStringLabelDropdown : OptionStringDropdown
     {
-        [Group("Horiz")]
+        [Group("Foldout/Horiz")]
         public List<string> labelList = new();
 
         public override string GetCurrentValueLabel()

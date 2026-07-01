@@ -88,19 +88,79 @@
           "id": "LightningRum",
           "buy": true,
           "sell": false
+        },
+        "WristBlade": {
+          "$type": "ThunderRoad.BrainModuleShopkeeper+DialogId, ThunderRoad",
+          "id": "WristBlade",
+          "buy": true,
+          "sell": false
+        },
+        "SwordGreatDalgarian": {
+          "$type": "ThunderRoad.BrainModuleShopkeeper+DialogId, ThunderRoad",
+          "id": "SwordOfNaa",
+          "buy": false,
+          "sell": true
+        },
+        "SpellBombFire": {
+          "$type": "ThunderRoad.BrainModuleShopkeeper+DialogId, ThunderRoad",
+          "id": "KharTibBombFire",
+          "buy": true,
+          "sell": false
+        },
+        "BombQuiverFire": {
+          "$type": "ThunderRoad.BrainModuleShopkeeper+DialogId, ThunderRoad",
+          "id": "KharTibBombFire",
+          "buy": true,
+          "sell": false
+        },
+        "SpellBombGravity": {
+          "$type": "ThunderRoad.BrainModuleShopkeeper+DialogId, ThunderRoad",
+          "id": "KharTibBombGravity",
+          "buy": true,
+          "sell": false
+        },
+        "BombQuiverGravity": {
+          "$type": "ThunderRoad.BrainModuleShopkeeper+DialogId, ThunderRoad",
+          "id": "KharTibBombGravity",
+          "buy": true,
+          "sell": false
+        },
+        "SpellBombLightning": {
+          "$type": "ThunderRoad.BrainModuleShopkeeper+DialogId, ThunderRoad",
+          "id": "KharTibBombLightning",
+          "buy": true,
+          "sell": false
+        },
+        "BombQuiverLightning": {
+          "$type": "ThunderRoad.BrainModuleShopkeeper+DialogId, ThunderRoad",
+          "id": "KharTibBombLightning",
+          "buy": true,
+          "sell": false
+        },
+        "KharTibCrossbow": {
+          "$type": "ThunderRoad.BrainModuleShopkeeper+DialogId, ThunderRoad",
+          "id": "KharTibCrossbow",
+          "buy": true,
+          "sell": false
+        },
+        "QuiverBolts": {
+          "$type": "ThunderRoad.BrainModuleShopkeeper+DialogId, ThunderRoad",
+          "id": "KharTibCrossbow",
+          "buy": true,
+          "sell": false
         }
       },
       "idPartialMatchDialogs": {
         "$type": "ThunderRoad.BrainModuleShopkeeper+DialogDictionary, ThunderRoad",
-        "Rakta": {
-          "$type": "ThunderRoad.BrainModuleShopkeeper+DialogId, ThunderRoad",
-          "id": "RaktaNormalWeapon",
-          "buy": true,
-          "sell": false
-        },
         "Egg": {
           "$type": "ThunderRoad.BrainModuleShopkeeper+DialogId, ThunderRoad",
           "id": "ItemEggs",
+          "buy": true,
+          "sell": false
+        },
+        "Rakta": {
+          "$type": "ThunderRoad.BrainModuleShopkeeper+DialogId, ThunderRoad",
+          "id": "RaktaNormalWeapon",
           "buy": true,
           "sell": false
         },
@@ -121,6 +181,48 @@
           "id": "SentaraApparel",
           "buy": true,
           "sell": false
+        },
+        "KharTib": {
+          "$type": "ThunderRoad.BrainModuleShopkeeper+DialogId, ThunderRoad",
+          "id": "KharTibWeapon",
+          "buy": true,
+          "sell": false
+        },
+        "ApparelKharTib": {
+          "$type": "ThunderRoad.BrainModuleShopkeeper+DialogId, ThunderRoad",
+          "id": "KharTibArmour",
+          "buy": true,
+          "sell": false
+        },
+        "CrystalMind": {
+          "$type": "ThunderRoad.BrainModuleShopkeeper+DialogId, ThunderRoad",
+          "id": "CrystalCore",
+          "buy": false,
+          "sell": true
+        },
+        "CrystalBody": {
+          "$type": "ThunderRoad.BrainModuleShopkeeper+DialogId, ThunderRoad",
+          "id": "CrystalCore",
+          "buy": false,
+          "sell": true
+        },
+        "CrystalFire": {
+          "$type": "ThunderRoad.BrainModuleShopkeeper+DialogId, ThunderRoad",
+          "id": "CrystalCore",
+          "buy": false,
+          "sell": true
+        },
+        "CrystalGravity": {
+          "$type": "ThunderRoad.BrainModuleShopkeeper+DialogId, ThunderRoad",
+          "id": "CrystalCore",
+          "buy": false,
+          "sell": true
+        },
+        "CrystalLightning": {
+          "$type": "ThunderRoad.BrainModuleShopkeeper+DialogId, ThunderRoad",
+          "id": "CrystalCore",
+          "buy": false,
+          "sell": true
         }
       },
       "categoryDialogs": {
@@ -247,6 +349,20 @@
             "SentaraLoreC",
             "SentaraLoreD",
             "SentaraLoreE"
+          ]
+        },
+        {
+          "$type": "ThunderRoad.BrainModuleShopkeeper+UpdateLoreDialogSet, ThunderRoad",
+          "updateName": "Khar-Tib",
+          "firstLore": "KharTibIntroLore",
+          "purchaseDialogs": [
+            "KharTibLoreA",
+            "KharTibLoreB",
+            "KharTibLoreC",
+            "KharTibLoreD",
+            "KharTibLoreE",
+            "KharTibLoreF",
+            "KharTibLoreG"
           ]
         }
       ]

@@ -4,10 +4,10 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 4,
-  "groupPath": null,
+  "groupPath": "",
   "localizationId": "WristBlade",
   "displayName": "Wrist Blade",
-  "description": "An assassination blade from Khar-Tib. The wrist mount allows the user to stab with much more force than normal.",
+  "description": "An assassin's blade of exotic origin. The blade can be concealed for discretion, while the wrist mount allows the user to stab with much more force than normal.",
   "author": "Glitch",
   "valueType": "Gold",
   "value": 1393.0,
@@ -18,20 +18,20 @@
   "type": "Weapon",
   "category": "Daggers",
   "update": "",
-  "iconEffectId": null,
+  "iconEffectId": "",
   "preferredItemCenter": "Mass",
   "drainImbueWhenIdle": true,
   "forceImbueUseButton": "None",
   "prefabAddress": "Bas.Item.Melee.Exotic.Wristblade",
   "iconAddress": "Bas.Item.Melee.Exotic.Wristblade.Icon[wpn_EX_wristblade]",
-  "closeUpIconAddress": null,
+  "closeUpIconAddress": "",
   "pooledCount": 0,
   "androidPooledCount": 0,
   "allowedStorage": "Container, SandboxAllItems",
   "despawnOnStoredInInventory": false,
   "isStackable": false,
-  "consumableId": null,
-  "inventoryAudioContainerAddress": null,
+  "consumableId": "",
+  "inventoryAudioContainerAddress": "",
   "inventoryAudioVolume_dB": 0.0,
   "slot": "Small",
   "snapAudioContainerAddress": "Bas.AudioGroup.Snap.Dagger",
@@ -122,7 +122,22 @@
   "grippable": true,
   "grabAndGripClimb": false,
   "playerGrabAndGripChangeLayer": true,
-  "customSnaps": [],
+  "customSnaps": [
+    {
+      "$type": "ThunderRoad.ItemData+CustomSnap, ThunderRoad",
+      "holderName": "HipsLeft",
+      "localPosition": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "localRotation": {
+        "x": 180.0,
+        "y": 0.0,
+        "z": 0.0
+      }
+    }
+  ],
   "drainImbueOnSnap": true,
   "imbueEnergyOverTimeOnSnap": {
     "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
@@ -175,7 +190,7 @@
     {
       "$type": "ThunderRoad.ItemData+Damager, ThunderRoad",
       "transformName": "Blunt",
-      "damagerID": "Punch"
+      "damagerID": "Mace1H"
     }
   ],
   "Interactables": [
@@ -291,6 +306,13 @@
           "name": "Handling"
         }
       ]
+    },
+    {
+      "$type": "ThunderRoad.ItemModuleBladeExtender, ThunderRoad",
+      "openEffectId": "WristBladeOpen",
+      "closeEffectId": "WristBladeClose",
+      "openCloseSpeed": 10.0,
+      "extensionPierceJoint": true
     }
   ],
   "entityModules": []

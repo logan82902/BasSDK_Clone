@@ -110,23 +110,34 @@
   "imbueHitProjectileEffectId": "StaffFireball",
   "staffSlamNumFireballs": 6,
   "slamOnCrystalDistance": 1.0,
-  "musketDamage": 30.0,
-  "musketRadius": 1.0,
-  "musketDecapitateLayerMask": 134230017,
-  "fireSparkCount": 6,
-  "musketStatusId": "Burning",
-  "musketSparkEffectId": "MusketFireSpark",
-  "musketForce": 20.0,
-  "musketStatusDuration": "Infinity",
-  "musketStatusParameterCone": 200.0,
-  "musketStatusParameterParticle": 40.0,
-  "musketSparkVelocity": {
-    "x": 15.0,
-    "y": 25.0
-  },
   "castDescription": "{FireDescriptionCast}",
   "imbueDescription": "{FireDescriptionImbue}",
   "slamDescription": "{FireDescriptionSlam}",
+  "modules": [
+    {
+      "$type": "ThunderRoad.SpellModuleBombFire, ThunderRoad"
+    },
+    {
+      "$type": "ThunderRoad.SpellModuleMusketFire, ThunderRoad",
+      "musketDamage": 30.0,
+      "musketRadius": 1.0,
+      "musketDecapitateLayerMask": 134230017,
+      "fireSparkCount": 6,
+      "musketStatusId": "Burning",
+      "musketSparkEffectId": "MusketFireSpark",
+      "musketForce": 20.0,
+      "musketStatusDuration": "Infinity",
+      "musketStatusParameterCone": 200.0,
+      "musketStatusParameterParticle": 40.0,
+      "musketSparkVelocity": {
+        "x": 15.0,
+        "y": 25.0
+      },
+      "musketHammerEffectId": "MusketHammerFire",
+      "musketShootEffectId": "MusketShootFire",
+      "musketChargeEffectId": "MusketCrystalFire"
+    }
+  ],
   "chargeEffectId": "SpellFireCharge",
   "readyEffectId": "SpellFireReady",
   "readyMinorEffectId": "SpellFlourishMinorFire",
@@ -201,17 +212,12 @@
   "orbVariationAmount": 0.2,
   "chargeSpeed": 1.1,
   "allowStaffBuff": false,
-  "heldStaffModifiers": {
-    "$type": "System.Collections.Generic.Dictionary`2[[ThunderRoad.Modifier, ThunderRoad],[System.Single, mscorlib]], mscorlib",
-    "ChargeSpeed": 1.5,
-    "Intensity": 1.2
-  },
   "chargeSpeedPerSkill": 0.24,
   "grabbedFireMaxCharge": 0.25,
   "endOnGrip": true,
   "allowCharge": true,
-  "chargeMinHaptic": 0.05,
-  "chargeMaxHaptic": 0.3,
+  "chargeMinHaptic": 0.0,
+  "chargeMaxHaptic": 0.0,
   "handSpringMultiplier": 0.8,
   "handLocomotionVelocityCorrectionMultiplier": 1.0,
   "allowThrow": true,
@@ -253,9 +259,9 @@
   "staffSlamTipEffectId": "SpellFireStaffSlamTop",
   "staffSlamCollisionEffectId": "SpellFireStaffSlamBottom",
   "allowEnemySelfSlam": false,
-  "musketHammerEffectId": "MusketHammerFire",
-  "musketShootEffectId": "MusketShootFire",
-  "musketChargeEffectId": "MusketCrystalFire",
+  "musketHammerEffectId": null,
+  "musketShootEffectId": null,
+  "musketChargeEffectId": null,
   "wheelDisplayName": "{SpellFire}",
   "hasOrder": true,
   "order": 0,
@@ -265,7 +271,6 @@
   "aiCastMinDistance": 4.0,
   "aiCastMaxDistance": 50.0,
   "aiCastGestureLength": 0.5,
-  "minMana": 40.0,
   "shardId": "Crystal_Small_01_Shard",
   "prefabAddress": "Bas.Item.Misc.SkillOrb",
   "meshAddress": "Bas.Mesh.SkillTree.TierCrystal.Fire.T1",
@@ -294,5 +299,10 @@
   "allowOnFirstWave": true,
   "requiredSkills": [],
   "Order": 0,
-  "IsCombinedSkill": false
+  "IsCombinedSkill": false,
+  "heldStaffModifiers": {
+    "$type": "ThunderRoad.SpellCastCharge+SpellModifierDictionary, ThunderRoad",
+    "ChargeSpeed": 1.5,
+    "Intensity": 1.2
+  }
 }

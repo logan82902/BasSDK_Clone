@@ -17,6 +17,7 @@ namespace ThunderRoad
         public delegate void OnArmourEquipped(Wearable slot, Item item);
         public delegate void OnArmourUnEquipped(Wearable slot, Item item);
 
+        [System.Serializable]
         public class WeaponDrawInfo
         {
             public ItemModuleAI.WeaponClass weaponClass = ItemModuleAI.WeaponClass.None;

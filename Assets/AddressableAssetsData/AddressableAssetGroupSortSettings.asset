@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dea69d41f90c6ea4fa55c27c1d60c145, type: 3}
+  m_Name: AddressableAssetGroupSortSettings
+  m_EditorClassIdentifier: 
+  sortOrder:
+  - 9796d9b4c770b8b43999c654adb69dd8
+  - 2bcf53d81eea8e84a9445ad1dd1b1087
+  - d53d0d2fc1deeea45888307954858caa
+  - 2eca2e9218e3f034eb7d72c7c4de94a1
+  - ebb1fce7e096dd44e85021ba4c2f2380
+  - f25f61cd0bb9bc84caaf2e051e45d757
+  - 90f4033c970bd0447964019c2ebde99c
+  - a70c9dbb0f6d9f4439e94701b8dae41f
+  - 1a567607e2dbbde4789f23392847edca
+  - 1769bd9312459864c9d291f8e0219569
+  - 24587d5c6705a494eaac7bb8b76cb6cb
+  - 56ef37a0cd322b9459ce287686baf92e
+  - 17b99871b7ac20e49a4d694a0048d875
+  - 8524b7759b4f61e4fa96bbd54e027d7f
+  - ae561417334ffa548a96254bd75a4501
+  - dce8d8d2fd6af7f4f9ba19c975377018
+  - 863d0393ea1966941b360e49dd246df1
+  - de43681218a0fc2409e418a9cf3027e3
+  - 2b094da6c7902d445a45f67b1c130457
+  - 62de42e60e0dc9049851038b2f74bae8
+  - 5c110f051b11d79488ed864bfc0730a8
+  - 0c1929aae5df7ee41899d709043fad53
+  - 1ed9a9f7acf931743830b3b73afe69a4
+  - bf7a38131e85370469eb549f1b8320f3
+  - 783c4cc728f5e7944a9b0c1334f78a33
+  - 018523a856dc881419a1e3ce9e2afa11
+  - e1af896c16eeff447a4d93f42ab90d1f
+  - 8e459a40020068f4d8d406e5d078bf80
+  - 667cd0e30b10a3640b1fdf8a78f72e6d
+  - 4b0bcd9bdc770f64d8f1229ac96c315b
+  - afcd6bb56bb965f4f98022a1cf87ff5b
+  - 74f43a680af103745a7693bd69177189
+  - ebd7dfa106715cd4388d0f6ffbd1f323
+  - 54a2b12ff0c91264f8b4e694879cf316
+  - 19c3f1f9494ae7a41ba178c1321905b5
+  - 6237709eb85317c489c81cd5ed115742
+  - 7ae0240c4705dd34296543284aae24f6
+  - 230a76f1bba692e4b9bff48952144e59
+  - 730e35149f20b7546b7077262b5e5b2b
+  - e82016e00028b2245815b3c994e75ca0
+  - cae635ce2d7593743ab54edbbea93b75
+  - 6d3ff0abfdf5a474988d0d7300c2ffc9
+  - 0fb2f3bbb6e5f1d4eb0d33934bea5af4
+  - c5fe1e93723a0e2449e115b21aa1b8bd
+  - 1fe5b72e7ac05ee4d8cfbb69993dffd3
+  - 5d6fd22d0eda63b41ad0c5d61d0d32cd

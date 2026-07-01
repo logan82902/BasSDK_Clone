@@ -212,9 +212,9 @@ namespace ThunderRoad
 
                 foreach (RequireComponent attr in attrs)
                 {
-                    if (attr.m_Type0 == targetType ||
-                        attr.m_Type1 == targetType ||
-                        attr.m_Type2 == targetType)
+                    if ((attr.m_Type0 != null && targetType.IsSameOrSubclassOf(attr.m_Type0)) ||
+                        (attr.m_Type1 != null && targetType.IsSameOrSubclassOf(attr.m_Type1)) ||
+                        (attr.m_Type2 != null && targetType.IsSameOrSubclassOf(attr.m_Type2)))
                     {
                         result.Add(comp);
                         break;
@@ -932,6 +932,11 @@ namespace ThunderRoad
             return ((flags & value) > 0);
         }
 
+        public static bool HasFlagNoGC(this SimpleBreakable.DamageType flags, SimpleBreakable.DamageType value)
+        {
+            return ((flags & value) > 0);
+        }
+
         public static bool HasFlagNoGC(this BuildSettings.ContentFlag flags, BuildSettings.ContentFlag value)
         {
             return ((flags & value) > 0);
@@ -1113,6 +1118,12 @@ namespace ThunderRoad
         {
             fromdir.x = 0;
             return fromdir;
+        }
+
+        public static bool IsInsideMinMax(this Vector2 minMax, float value, bool inclusive = true)
+        {
+            if (inclusive) return value >= minMax.x && value <= minMax.y;
+            return value > minMax.x && value < minMax.y;
         }
 
         public static Vector2 ClampMinMax(this Vector2 vector, float min, float max)

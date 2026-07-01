@@ -3872,6 +3872,13 @@
         },
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "LoadAchievements",
+          "text": "実績を読み込み中",
+          "spriteAddress": "",
+          "videoAddress": ""
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
           "id": "GeneratePools",
           "text": "プールを生成中",
           "spriteAddress": null,
@@ -6123,6 +6130,20 @@
       "texts": [
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "LevelDayVariantName",
+          "text": "昼",
+          "spriteAddress": "",
+          "videoAddress": ""
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "LevelNightVariantName",
+          "text": "夜",
+          "spriteAddress": "",
+          "videoAddress": ""
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
           "id": "Arena",
           "text": "アリーナ",
           "spriteAddress": null,
@@ -6186,7 +6207,14 @@
         },
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
-          "id": "MarketDescription",
+          "id": "MarketDayVariantDescription",
+          "text": "エラデンの町の中心にある市場。晴れ渡った日の光の下で活気に満ちている。",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "MarketNightVariantDescription",
           "text": "エラデンの町の中心にある市場。真夜中の賑わいはさほどでもない。",
           "spriteAddress": null,
           "videoAddress": null
@@ -6299,35 +6327,35 @@
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
           "id": "OutpostLibraryDescription",
-          "text": "忘れ去られた本で埋め尽くされた古い書庫。",
+          "text": "忘れ去られた書物で満たされた、古く密度の高い図書館。",
           "spriteAddress": null,
           "videoAddress": null
         },
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
           "id": "OutpostWatermillDescription",
-          "text": "要塞化された前哨基地の間を流れる小川に建てられた小さな水車。",
+          "text": "前哨地の防衛施設の間を流れる小川の上に建てられた小さな水車小屋。",
           "spriteAddress": null,
           "videoAddress": null
         },
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
           "id": "OutpostFallenCorridorDescription",
-          "text": "間に合わせの訓練場として使われている小さな中庭。",
+          "text": "即席の訓練場として使われる小さな中庭。",
           "spriteAddress": null,
           "videoAddress": null
         },
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
           "id": "OutpostChapelDescription",
-          "text": "古代アルダリク王に捧げられた礼拝所。",
+          "text": "古の王アルダリックに捧げられた礼拝所。",
           "spriteAddress": null,
           "videoAddress": null
         },
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
           "id": "OutpostCoastalFortDescription",
-          "text": "侵略者たちを監視し、防衛する目的で浜辺に建てられた要塞。",
+          "text": "侵入者への防衛と監視のため、海岸に築かれた防衛要塞。",
           "spriteAddress": null,
           "videoAddress": null
         },
@@ -6386,6 +6414,139 @@
           "text": "マドゥル",
           "spriteAddress": null,
           "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "OutpostLibrary",
+          "text": "アウトポストライブラリー",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "OutpostWatermill",
+          "text": "アウトポストウォーターミル",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "OutpostFallenCorridor",
+          "text": "アウトポストフォールンコリドー",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "OutpostChapel",
+          "text": "アウトポストチャペル",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "OutpostCoastalFort",
+          "text": "アウトポストコースタルフォート",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "DalgarianMuseum",
+          "text": "ダルガリアン・ミュージアム",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "DalgarianMuseumDescription",
+          "text": "いくつかの台座や展示物がある、半分崩れたダルガリアンの部屋。おそらく博物館。",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "DalgarianRefinary",
+          "text": "ダルガリアン・リファイナリー",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "DalgarianRefinaryDescription",
+          "text": "大型の結晶精製装置を備えた高い天井の部屋。液体結晶の流路が、用途不明の重力結晶の周囲を巡っている。",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "DalgarianSenate",
+          "text": "ダルガリアン・セネート",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "DalgarianSenateDescription",
+          "text": "ダルガリアンの元老院の部屋。かつてはダルガリアン評議会がここで会合を開いていたと考えられる。",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "DalgarianForge",
+          "text": "ダルガリアン・フォージ",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "DalgarianForgeDescription",
+          "text": "ダルガリアンの鍛冶場。おそらくアスタリウムの精製と加工に使われていた。",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "DalgarianTemple",
+          "text": "ダルガリアン・テンプル",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "DalgarianTempleDescription",
+          "text": "古代の祭壇へと続く壮大な大広間。",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibDesert",
+          "text": "カレセ要塞",
+          "spriteAddress": "",
+          "videoAddress": ""
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibDesertDescription",
+          "text": "カル・ティブの灼熱の砂漠に戦略的に位置する、長い間廃墟と化していた要塞。",
+          "spriteAddress": "",
+          "videoAddress": ""
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "OutpostArenasMap",
+          "text": "前哨基地アリーナ",
+          "spriteAddress": "",
+          "videoAddress": ""
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "DalgarianArenasMap",
+          "text": "ダルガリアン・アリーナ",
+          "spriteAddress": "",
+          "videoAddress": ""
         }
       ]
     },
@@ -12867,49 +13028,21 @@
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
           "id": "ItemFalchion_1",
-          "text": "おいおい、こりゃなんだ？こいつはカーティブ製のファルシオンじゃねぇか！それは売らないほうがいいぞ！",
+          "text": "おお、センタリの剣じゃないか！これは売らないほうがいいぞ、あんた！",
           "spriteAddress": null,
           "videoAddress": null
         },
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
-          "id": "ItemFalchion_4",
-          "text": "おいおい、こりゃなんだ？こいつはカーティブ製のファルシオンじゃねぇか！それは売らないほうがいいぞ！",
+          "id": "ItemFalchion_2",
+          "text": "おっ、それはファルシオンか？この辺りじゃ珍しい剣だ、持っておいたほうがいいぞ。",
           "spriteAddress": null,
           "videoAddress": null
         },
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
-          "id": "ItemFalchion_6",
-          "text": "珍しい剣だからな！カーティブの船乗りたちが使うやつだ。それは持っておいたほうがいい。",
-          "spriteAddress": null,
-          "videoAddress": null
-        },
-        {
-          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
-          "id": "ItemFalchion_9",
-          "text": "珍しい剣だからな！カーティブの船乗りたちが使うやつだ。それは持っておいたほうがいい。",
-          "spriteAddress": null,
-          "videoAddress": null
-        },
-        {
-          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
-          "id": "ItemFalchion_11",
-          "text": "どうやらここらの海岸じゃあまり見ない武器を手に入れたようだな。その丸みを帯びた刃はカーティブ製のファルシオンじゃねぇか！",
-          "spriteAddress": null,
-          "videoAddress": null
-        },
-        {
-          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
-          "id": "ItemFalchion_13",
-          "text": "どうやらここらの海岸じゃあまり見ない武器を手に入れたようだな。その丸みを帯びた刃はカーティブの砂漠で作られたもんだ。",
-          "spriteAddress": null,
-          "videoAddress": null
-        },
-        {
-          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
-          "id": "ItemFalchion_18",
-          "text": "どうやらここらの海岸じゃあまり見ない武器を手に入れたようだな。その丸みを帯びた刃はカーティブの砂漠で作られたファルシオンだ。",
+          "id": "ItemFalchion_3",
+          "text": "おお、すごい！センタリのファルシオンか。冒険者時代、俺の一番のお気に入りだったんだ。珍しい代物だぞ、俺なら手放さないな。",
           "spriteAddress": null,
           "videoAddress": null
         },
@@ -14837,6 +14970,321 @@
           "text": "装填完了、相棒！",
           "spriteAddress": null,
           "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibArmour_1",
+          "text": "そのタフな装甲、感じるかい？カレス族は砂漠に棲むエキゾチックなクリーチャーの甲殻からアーマーを作ってるんだ。",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibArmour_2",
+          "text": "砂漠で生きていると、一般的な金属や繊維はほとんど手に入らない。でもカレス族は、手に入るもので最大限やっている。",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibArmour_3",
+          "text": "個人的には砂は好きじゃないね。ザラザラで、粗くて、イライラするし、どこにでも入り込む。だから装備する前にちゃんと払っておいた方がいい。",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibBombFire_1",
+          "text": "よう！そいつはまるで、ボトルに入ったインフェルノだな。扱いは慎重に、特にパイプなんか絶対近づけるなよ。",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibBombFire_2",
+          "text": "カール＝ティブの砂漠の暑さは過酷そのものだ。でも、あの爆弾を正面から食らうくらいなら、そこに数週間閉じ込められる方がまだマシだね。",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibBombGravity_1",
+          "text": "もし壁を一気に越えたいなら、これを足元に投げてみな。そしたら一気にブーストされるぞ。",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibBombLightning_1",
+          "text": "強力な魔術師が杖から放つライトニング・アークで敵を真っ二つにするだろ？あれを…カレス族はなぜかボトルに詰めたんだ。",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibBombLightning_2",
+          "text": "このボムはカレス族の間では、その殺傷力と惨状でよく知られている。かなりヤバい代物だよ。",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibBombGeneric_Special",
+          "text": "ランプオイル？ロープ？ボム？欲しいならあるよ、コインさえあればね。",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibCrossbow_1",
+          "text": "クロスボウは弓に不慣れな人にはいい代替品だ。狙いやすいし、構えたまま力を維持する必要もない。",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibCrossbow_2",
+          "text": "クロスボウは撃ちやすいから、カール＝ティブの小規模な部族では特に人気だ。訓練されていない民でも防衛に使えるからね。",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibCrossbow_3",
+          "text": "センタリの技術者がカレス・クロスボウを改良しようとして、変な設計図を見せてくれたことがある。回転する“シリンダー”付きとかね。発想は面白いけど、さすがに動かないだろって思ったよ。",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibCrystalCore_1",
+          "text": "クリスタル・コアだ！ものすごくレアだぞ…。もし俺がこれを扱ってるって噂になったら、この島は力に飢えた魔術師で埋まっちまう。すまないが、いくらでも受け取れないね。",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibCrystalCore_2",
+          "text": "クリスタル・コア…やったな、見事だ。かなりの力を持ってるけどな、聞いてくれ。力を持てば持つほど、人はそれを正しく見られなくなる。",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibCrystalCore_3",
+          "text": "ほぅ…ギルドは今ごろ俺に激怒してるだろうが、原則としてこのクリスタル・コアはどんな値段でも再販できない。その力は強すぎるし、危険ってのは人を変えることじゃない…自分がそれに値すると思い込ませることなんだ。",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibGenericWeapon_1",
+          "text": "カレスのクラフトはいつ見ても驚かされる。骨の装飾が上品で、かなり見事だよ。",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibGenericWeapon_2",
+          "text": "カーブした刃はカール＝ティブの得意分野だ。皮膚を“噛む”んじゃなくて、沿うようにスライスするからよく切れる。だから当たらない方がいい。",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibGenericWeapon_3",
+          "text": "カレス族は本当に器用だよ。あの武器に使われている骨の多くは、砂漠に棲む生物から取られている。",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibGenericWeapon_4",
+          "text": "いい買い物だね。正真正銘のカレス武器だ。",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibGenericWeapon_5",
+          "text": "その武器はカール＝ティブ産だ。きっと役に立つはずだよ。",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibGenericWeapon_6",
+          "text": "エラディアンは「カレスの戦士は戦いの前に太陽で刃を清めることで追加の火傷ダメージを与える」とか言うけど…あれは完全な作り話だね。",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibGenericWeapon_7",
+          "text": "両端に刃が付いたスピアを見たことあるかい？南方のソーサラーには意外と人気らしいよ。",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibSwordOfNaa_1",
+          "text": "おや…それは何を持ってきたんだ？ダルガリアンか？これは…こんな“熱い”ものは扱えないね。自分で持っておいた方がいい。",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibSwordOfNaa_2",
+          "text": "神々よ…ダルガリアン・ブレードだと？これには値段なんて付けられないよ、相棒。これは自分で持っておくべきだ。",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibSwordOfNaa_3",
+          "text": "信じられない…本物のダルガリアン・ブレードだ。これを巡って人は喉を掻き切るぞ。こんな危険なものは再販できない。",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibWristBlade_1",
+          "text": "これは究極のアサシン・ツールだね。必要な瞬間まで刃は隠されている。",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibWristBlade_2",
+          "text": "正確な起源は不明だが、カール＝ティブのアサシンギルドで使われているという説が有力だ。ただ、カレスのクラフトには見えないね。",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibWristBlade_3",
+          "text": "この機構は本当に催眠的だな。正直、俺にもよく分からない。",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibCheckout_Special",
+          "text": "うちの客としてはありがたいよ、君みたいなのはね。昨日なんか変な放浪者が来てさ…店中を走り回って独り言を喋ってて、正直かなり怖かったよ。",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibFirstLore_0",
+          "text": "さて…それが何か分かるかい？カール＝ティブの品だよ。あそこは一度見たら忘れない場所だが、かなり複雑でね…単純な文化じゃない。",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibFirstLore_1",
+          "text": "砂の海に散らばった部族の寄せ集めで、それぞれに戦争主、風習、因縁がある。",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibFirstLore_2",
+          "text": "昼は灼熱、夜は極寒、その間に慈悲は一切ない。でも人は…とにかくタフだ。",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibFirstLore_3",
+          "text": "ああならざるを得ない。砂の下には、もっと厄介なものが潜んでいるからね…知りたくない方がいい。",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibLore_A_0",
+          "text": "カール＝ティブの部族は皆、自分たちが最古で最強で正統だと主張している。",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibLore_A_1",
+          "text": "面白いのは、長く話していると全部それが正しく思えてくることだ。",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibLore_B_0",
+          "text": "カール＝ティブは分散した部族の集合体だが、今それを統一しようという強力なワーロードの噂がある。",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibLore_B_1",
+          "text": "それは危険な考えだね。今までの強さは“まとまっていないこと”に支えられていたんだ。",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibLore_B_2",
+          "text": "統一されれば、世界が警戒すべき存在になる。",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibLore_C_0",
+          "text": "カール＝ティブではまず「砂漠はミスを許さない」と学ぶ。昔、キャラバンが一夜で消えたのを見たことがある。跡形もなく、翌朝にはただの平らな砂だけだった。",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibLore_C_1",
+          "text": "低い地鳴りを聞いたら、絶対に立ち止まるなよ。",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibLore_D",
+          "text": "サンド・スキマーを見たことあるかい？カール＝ティブの奇妙な乗り物で、船と奇跡の中間みたいな存在だ。普通は渡れない砂漠を滑るように進むんだ。",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibLore_E_0",
+          "text": "カール＝ティブの市場はカオスだ…いや、美しいカオスだね。",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibLore_E_1",
+          "text": "空気はスパイスで満ち、布は宝石より鮮やかで、どの商人も「これを売ったら破産する」と本気で言ってくる。",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibLore_F",
+          "text": "カール＝ティブの夜はハンマーみたいに落ちてくる。さっきまで汗だくでも、次の瞬間には凍えるほど寒い。そして空は手が届きそうなほど澄んでいる。",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibLore_G",
+          "text": "カール＝ティブの交易は面白いよ。鉄と木材は王族級の値が付くのに、その代わりに他では見ない布や果物が手に入る。",
+          "spriteAddress": null,
+          "videoAddress": null
         }
       ]
     },
@@ -15002,6 +15450,27 @@
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
           "id": "Rakta",
           "text": "ラクタ",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTib",
+          "text": "カル・ティブ",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibOutpostDesc",
+          "text": "カル・ティブ前哨基地",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibDalgDesc",
+          "text": "カル・ティブのダルガリアン遺跡",
           "spriteAddress": null,
           "videoAddress": null
         }
@@ -15975,6 +16444,20 @@
           "text": "サイオニックバンドル",
           "spriteAddress": null,
           "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleArmorKharTibName",
+          "text": "カレス・ウォリアー・バンドル",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleKharTibBundleT2Name",
+          "text": "ソードアンドボードバンドル",
+          "spriteAddress": null,
+          "videoAddress": null
         }
       ]
     }
@@ -16157,8 +16640,8 @@
     {
       "$type": "ThunderRoad.TextData+Item, ThunderRoad",
       "id": "DualBladeStaff",
-      "name": "ブレードスタッフ",
-      "description": "カーティブの奇抜な武器。戦闘というよりは舞踊に使用したとされるものだが、刃は鋭く品質も申し分ない。"
+      "name": "デュアル・ブレード杖",
+      "description": "戦闘ではなく舞踏の一種に使われるとされる異形の武器。しかし刃は鋭く、高品質である。"
     },
     {
       "$type": "ThunderRoad.TextData+Item, ThunderRoad",
@@ -16235,8 +16718,8 @@
     {
       "$type": "ThunderRoad.TextData+Item, ThunderRoad",
       "id": "WristBlade",
-      "name": "手甲剣",
-      "description": "カーティブの暗殺用の剣。手首に固定した刃は、通常よりも力を込めて刺すことができる。"
+      "name": "リスト・ブレード",
+      "description": "異国由来の暗殺者用ブレード。刃は隠して携行でき、手首装着により通常より強い突きを可能にする。"
     },
     {
       "$type": "ThunderRoad.TextData+Item, ThunderRoad",
@@ -16800,7 +17283,7 @@
       "$type": "ThunderRoad.TextData+Item, ThunderRoad",
       "id": "SwordOldieFalchion",
       "name": "ファルシオン",
-      "description": "カーティブ発祥の古いファルシオン。よく海戦でセンタラの海賊から身を守るために使われる。"
+      "description": "センタリ由来の古いファルシオン。世界中の船乗りや私掠船員、海賊に使用されている。"
     },
     {
       "$type": "ThunderRoad.TextData+Item, ThunderRoad",
@@ -17971,6 +18454,162 @@
       "id": "Dojo_Gong_Mallet",
       "name": "ゴングマレット",
       "description": null
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "AxeKharTibDouble",
+      "name": "デュアル・ヘッド・アックス",
+      "description": "重厚で威圧的なカレス製戦闘アックス。扱うにはストレングスとスタミナが必要だが、非常に高いパワーと汎用性を持つ。"
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "AxeLongKharTibWarpick",
+      "name": "戦闘用タロン",
+      "description": "カレス製のウォーピックと大鎌を融合させた武器。カール＝ティブの獰猛なクリーチャーの爪に着想を得ている。"
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "DaggerKharTibHaladie",
+      "name": "デュアル・ブレード・ダガー",
+      "description": "特殊なテクニックを必要とするカレス製ダガー。カール＝ティブでは、エリートソルジャーのスキルの証として公然と装備される。"
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "ShieldKharTib",
+      "name": "カレス・シールド",
+      "description": "カール＝ティブの兵士に広く使われるシールド。攻防一体の性能を持つ。"
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "SwordKharTibKhopesh",
+      "name": "シックル・ソード",
+      "description": "カール＝ティブ由来のエリートウェポン。アックスとソードの長所を兼ね備えている。"
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "SwordKharTibScimitar",
+      "name": "シミター",
+      "description": "シンプルながら優れたスラッシング性能を持つ、一般的なカレス製ソード。"
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "DualBladeStaffKharTib",
+      "name": "カレス・デュアル・ブレード杖",
+      "description": "カール＝ティブのウォースタッフ。使用者に味方がいない状況で複数の敵と戦うために作られたと言われ、実戦で見かけることは稀。"
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "SpellBombLightning",
+      "name": "ライトニング・クリスタル・ボム",
+      "description": "エレメンタル・クリスタルから作られた爆発デバイス。起動後に投擲する。一定時間後、ライトニングのワイヤー状エネルギーを放出する。"
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "SpellBombFire",
+      "name": "ファイア・クリスタル・ボム",
+      "description": "エレメンタル・クリスタルから作られた爆発デバイス。起動後に投擲する。敵の近くでのみファイア爆発を引き起こす。"
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "SpellBombGravity",
+      "name": "グラビティ・クリスタル・ボム",
+      "description": "エレメンタル・クリスタルから作られた爆発デバイス。起動後に投擲する。接触時にグラビティインパルスを発生させる。"
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "BombQuiverLightning",
+      "name": "ライトニング・クリスタル・ボムス",
+      "description": "エレメンタル・クリスタルから作られた爆発デバイス。起動後に投擲する。一定時間後、ライトニングのワイヤー状エネルギーを放出する。"
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "BombQuiverFire",
+      "name": "ファイア・クリスタル・ボムス",
+      "description": "エレメンタル・クリスタルから作られた爆発デバイス。起動後に投擲する。敵の近くでのみファイア爆発を引き起こす。"
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "BombQuiverGravity",
+      "name": "グラビティ・クリスタル・ボムス",
+      "description": "エレメンタル・クリスタルから作られた爆発デバイス。起動後に投擲する。接触時にグラビティインパルスを発生させる。"
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "KharTibCrossbow",
+      "name": "クロスボウ",
+      "description": "高度でコンパクトなクロスボウ。通常のボウより威力は劣るが、連射性能と扱いやすさでそれを補う。複数のプロジェクタイルを内部に保持でき、毎回矢を装填する必要がない。"
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "KharTibCrossbowBolt",
+      "name": "クロスボウの矢",
+      "description": "クロスボウ用の小型プロジェクタイル。"
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "QuiverBolts",
+      "name": "クロスボウの矢",
+      "description": "クロスボウ用の小型プロジェクタイル。"
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "ApparelKharTibBoots",
+      "name": "カレス・ウォリアー・ブーツ",
+      "description": "カール＝ティブ由来の砂地用ブーツ。砂漠の環境からの防護に非常に優れている。"
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "ApparelKharTibGloveL",
+      "name": "カレス・ウォリアー・ヴァンブレイス（左）",
+      "description": "カール＝ティブの前腕用防具。"
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "ApparelKharTibGloveR",
+      "name": "カレス・ウォリアー・ヴァンブレイス（右）",
+      "description": "カール＝ティブの前腕用防具。"
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "ApparelKharTibHelmet",
+      "name": "カレス・ウォリアー・ヘルメット",
+      "description": "砂漠環境と敵の攻撃から身を守る、威圧的なカレス製ヘルメット。"
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "ApparelKharTibJacket",
+      "name": "カレス・ウォリアー・胸当て",
+      "description": "カール＝ティブの獣の硬化した革で作られた、カレス戦士の鎧。"
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "ApparelKharTibPants",
+      "name": "カレス・ウォリアー・腿当て",
+      "description": "カール＝ティブの脚部防具。"
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "ApparelKharTibShoulder",
+      "name": "カレス・ウォリアー・肩当て",
+      "description": "素材となった獣の特徴を一部残す、カレス製ショルダーアーマー。"
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "Cushion",
+      "name": "クッション",
+      "description": null
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "GenieLamp",
+      "name": "ランプ",
+      "description": null
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "KharTibDrum",
+      "name": "ドラム",
+      "description": null
     }
   ],
   "waves": [
@@ -18213,6 +18852,30 @@
       "id": "SentaraDuel",
       "title": "センタリキャプテンデュエル",
       "description": "センタリのキャプテンたちと死闘を繰り広げる。"
+    },
+    {
+      "$type": "ThunderRoad.TextData+Wave, ThunderRoad",
+      "id": "KharTibDuel",
+      "title": "カレスウォリアーデュエル",
+      "description": "カール＝ティブの戦士たちと、死を賭けた決闘で戦え。"
+    },
+    {
+      "$type": "ThunderRoad.TextData+Wave, ThunderRoad",
+      "id": "KharTibFull",
+      "title": "標準",
+      "description": "この派閥のすべての敵タイプと戦う。"
+    },
+    {
+      "$type": "ThunderRoad.TextData+Wave, ThunderRoad",
+      "id": "KharTibMeleeOnly",
+      "title": "近接のみ",
+      "description": "近接武器を使う敵とだけ戦う。"
+    },
+    {
+      "$type": "ThunderRoad.TextData+Wave, ThunderRoad",
+      "id": "KharTibSorceryOnly",
+      "title": "魔法のみ",
+      "description": "この派閥の魔法使いと戦う。"
     }
   ]
 }

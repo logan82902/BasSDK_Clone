@@ -283,7 +283,13 @@ namespace ThunderRoad
         [ReadOnly]
         public bool isAwake
         {
-            get { return animator.GetBool(awakeHash); }
+            get
+            {
+#if UNITY_EDITOR
+                if (!Application.isPlaying || UnityEditor.BuildPipeline.isBuildingPlayer || this.InPrefabScene()) return false;
+#endif
+                return animator.GetBool(awakeHash);
+            }
             set { animator.SetBool(awakeHash, value); }
         }
         [Group("GroupTabs"), Tab("Debug")]
@@ -291,7 +297,13 @@ namespace ThunderRoad
         [ReadOnly]
         public bool isBusy
         {
-            get { return animator.GetBool(isBusyHash); }
+            get
+            {
+#if UNITY_EDITOR
+                if (!Application.isPlaying || UnityEditor.BuildPipeline.isBuildingPlayer || this.InPrefabScene()) return false;
+#endif
+                return animator.GetBool(isBusyHash);
+            }
             set { animator.SetBool(isBusyHash, value); }
         }
         [Group("GroupTabs"), Tab("Debug")]
@@ -299,14 +311,26 @@ namespace ThunderRoad
         [ReadOnly]
         public bool inMovement
         {
-            get { return animator.GetBool(inMovementHash); }
+            get
+            {
+#if UNITY_EDITOR
+                if (!Application.isPlaying || UnityEditor.BuildPipeline.isBuildingPlayer || this.InPrefabScene()) return false;
+#endif
+                return animator.GetBool(inMovementHash);
+            }
         }
         [Group("GroupTabs"), Tab("Debug")]
         [ShowInInspector]
         [ReadOnly]
         public bool inAttackMotion
         {
-            get { return animator.GetBool(inAttackMotionHash); }
+            get
+            {
+#if UNITY_EDITOR
+                if (!Application.isPlaying || UnityEditor.BuildPipeline.isBuildingPlayer || this.InPrefabScene()) return false;
+#endif
+                return animator.GetBool(inAttackMotionHash);
+            }
             set { animator.SetBool(inAttackMotionHash, value); }
         }
         [Group("GroupTabs"), Tab("Debug")]
@@ -314,34 +338,70 @@ namespace ThunderRoad
         [ReadOnly]
         public bool isDeployed
         {
-            get => animator.GetBool(isDeployedHash);
+            get
+            {
+#if UNITY_EDITOR
+                if (!Application.isPlaying || UnityEditor.BuildPipeline.isBuildingPlayer || this.InPrefabScene()) return false;
+#endif
+                return animator.GetBool(isDeployedHash);
+            }
             protected set => animator.SetBool(isDeployedHash, value);
         }
+
         [Group("GroupTabs"), Tab("Debug")]
         [ShowInInspector]
         [ReadOnly]
         public bool deployInProgress
         {
-            get { return animator.GetBool(isDeployedHash) || animator.GetBool(deployStartedHash); }
+            get
+            {
+#if UNITY_EDITOR
+                if (!Application.isPlaying || UnityEditor.BuildPipeline.isBuildingPlayer || this.InPrefabScene()) return false;
+#endif
+                return animator.GetBool(isDeployedHash) || animator.GetBool(deployStartedHash);
+            }
         }
         [Group("GroupTabs"), Tab("Debug")]
         [ShowInInspector]
         [ReadOnly]
         public bool isStunned
         {
-            get { return animator.GetBool(isStunnedHash); }
+            get
+            {
+#if UNITY_EDITOR
+                if (!Application.isPlaying || UnityEditor.BuildPipeline.isBuildingPlayer || this.InPrefabScene()) return false;
+#endif
+                return animator.GetBool(isStunnedHash);
+            }
         }
         [Group("GroupTabs"), Tab("Debug")]
         [ShowInInspector]
         [ReadOnly]
         public bool stunInProgress
         {
-            get { return animator.GetBool(isStunnedHash) || animator.GetBool(stunStartedHash); }
+            get
+            {
+#if UNITY_EDITOR
+                if (!Application.isPlaying || UnityEditor.BuildPipeline.isBuildingPlayer || this.InPrefabScene()) return false;
+#endif
+                return animator.GetBool(isStunnedHash) || animator.GetBool(stunStartedHash);
+            }
         }
         [Group("GroupTabs"), Tab("Debug")]
         [ShowInInspector]
         [ReadOnly]
-        public bool isActiveState => isBusy || inAttackMotion || deployInProgress || stunInProgress;
+        public bool isActiveState
+        {
+            get
+            {
+#if UNITY_EDITOR
+                if (!Application.isPlaying || UnityEditor.BuildPipeline.isBuildingPlayer || this.InPrefabScene()) return false;
+#endif             
+                return isBusy || inAttackMotion || deployInProgress || stunInProgress;
+            }
+            
+        }
+
         [ShowInInspector]
         [Group("GroupTabs"), Tab("Debug")]
 

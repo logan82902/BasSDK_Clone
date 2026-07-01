@@ -81,7 +81,7 @@
         "bodyAttackDamagerID": "",
         "sliceParentEffectid": "SliceFleshParent",
         "sliceChildEffectId": "SliceFleshChild",
-        "damageMultiplier": 2.0,
+        "damageMultiplier": 6.0,
         "penetrationPierceDeepDepth": 0.04,
         "penetrationPierceDeepDamageMultiplier": 4.0,
         "penetrationSlashDamageMultiplier": 2.0,
@@ -202,11 +202,6 @@
       }
     ]
   },
-  "expressionAttackId": "",
-  "expressionPainId": "",
-  "expressionDeathId": "",
-  "expressionChokeId": "",
-  "expressionAngryId": "",
   "eyeVerticalAngleClamps": {
     "x": -10.0,
     "y": 15.0

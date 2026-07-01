@@ -10,6 +10,7 @@
   "castDescription": "{CupbendingDescriptionCast}",
   "imbueDescription": null,
   "slamDescription": null,
+  "modules": null,
   "chargeEffectId": null,
   "readyEffectId": null,
   "readyMinorEffectId": "",
@@ -51,10 +52,6 @@
   "orbVariationAmount": 0.2,
   "chargeSpeed": 0.5,
   "allowStaffBuff": false,
-  "heldStaffModifiers": {
-    "$type": "System.Collections.Generic.Dictionary`2[[ThunderRoad.Modifier, ThunderRoad],[System.Single, mscorlib]], mscorlib",
-    "ChargeSpeed": 1.5
-  },
   "chargeSpeedPerSkill": 0.05,
   "grabbedFireMaxCharge": 0.5,
   "endOnGrip": true,
@@ -114,7 +111,6 @@
   "aiCastMinDistance": 1.0,
   "aiCastMaxDistance": 20.0,
   "aiCastGestureLength": 0.7,
-  "minMana": 5.0,
   "shardId": "Crystal_Small_01_Shard",
   "prefabAddress": "Bas.Item.Misc.SkillOrb",
   "meshAddress": null,
@@ -143,5 +139,9 @@
   "allowOnFirstWave": true,
   "requiredSkills": [],
   "Order": null,
-  "IsCombinedSkill": false
+  "IsCombinedSkill": false,
+  "heldStaffModifiers": {
+    "$type": "ThunderRoad.SpellCastCharge+SpellModifierDictionary, ThunderRoad",
+    "ChargeSpeed": 1.5
+  }
 }

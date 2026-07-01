@@ -74,6 +74,7 @@ public class PositionEventLinker : MonoBehaviour
 
     private void UpdateDetection()
     {
+        if (target == null) return;
         if (axis == Axis.Z) axisDistance = this.transform.InverseTransformPoint(target.position).z;
         else if (axis == Axis.Y) axisDistance = this.transform.InverseTransformPoint(target.position).y;
         else if (axis == Axis.X) axisDistance = this.transform.InverseTransformPoint(target.position).x;

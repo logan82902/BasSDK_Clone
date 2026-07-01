@@ -60,7 +60,9 @@ namespace ThunderRoad
             OnItemBought = 41,
             OnItemSold = 42,
             OnItemEnterWater = 43,
-            OnItemExitWater = 44
+            OnItemExitWater = 44,
+            OnItemNockedIntoBow = 45,
+            OnItemFiredFromBow = 46,
         }
 
         [System.Serializable]

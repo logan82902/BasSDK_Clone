@@ -2255,6 +2255,104 @@ MonoBehaviour:
     - SentaraArmor
     - Android
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d2e5ac01ee258c64782ac5ee67ea484f
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.KharTib.Feet
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - KharTibArmor
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fb14275b8d34ebb478522fd0dbe7141e
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.KharTib.HandLeft
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - KharTibArmor
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 862de5c0044749446a98a52f29979b02
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.KharTib.HandRight
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - KharTibArmor
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 34fbfbd0a2e6bc14a8fcfa971f715ab9
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.KharTib.Helmet
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - KharTibArmor
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1846fd86744f8234fa95e8a477ce55a7
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.KharTib.Legs
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - KharTibArmor
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7f40ecafa43691340967614b68c7fa4a
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.KharTib.Shoulder
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - KharTibArmor
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 26c97c15c10d0c7478e25194c1ed21f6
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.KharTib.Torso
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - KharTibArmor
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1def9ba7f77f7024d9466b502d1cd120
+    m_Address: Bas.Creature.Wardrobe.HumanMale.KharTib.Feet
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - KharTibArmor
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3ed6ff78115286b4da57726887b57e70
+    m_Address: Bas.Creature.Wardrobe.HumanMale.KharTib.HandLeft
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - KharTibArmor
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8a52d69e1d56a984c92dd6166f694c6e
+    m_Address: Bas.Creature.Wardrobe.HumanMale.KharTib.HandRight
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - KharTibArmor
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b5d56f2396c7f32458682280ae693510
+    m_Address: Bas.Creature.Wardrobe.HumanMale.KharTib.Helmet
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - KharTibArmor
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 28edaf7f68f308a4b96e3ed4d40606b2
+    m_Address: Bas.Creature.Wardrobe.HumanMale.KharTib.Legs
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - KharTibArmor
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bffd78088eb823842870585e5c6c74b1
+    m_Address: Bas.Creature.Wardrobe.HumanMale.KharTib.Shoulder
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - KharTibArmor
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 77de70e23a31dc14383506122d0d72d7
+    m_Address: Bas.Creature.Wardrobe.HumanMale.KharTib.Torso
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - KharTibArmor
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: b14c4d9d8b63f3247be008fe8b53d3ae, type: 2}
   m_SchemaSet:

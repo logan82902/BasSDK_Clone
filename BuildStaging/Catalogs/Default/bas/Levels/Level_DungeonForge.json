@@ -1,0 +1,838 @@
+{
+  "$type": "ThunderRoad.LevelData, ThunderRoad",
+  "id": "DungeonForge",
+  "sensitiveContent": "None",
+  "sensitiveFilterBehaviour": "Discard",
+  "version": 3,
+  "groupPath": "DungeonAreas/Dalgarian",
+  "name": "DalgarianForge",
+  "description": "{DalgarianForgeDescription}",
+  "descriptionLocalizationId": "DalgarianForgeDescription",
+  "sceneAddress": "Level.Areas",
+  "sceneVariants": [],
+  "showOnlyDevMode": false,
+  "showInLevelSelection": false,
+  "worldMapId": "DalgarianArenas",
+  "worldMapTravelAudioContainerAddress": "Bas.AudioGroup.Dungeon.DalgarianStart",
+  "mapLocationIndex": 4,
+  "showOnMap": true,
+  "hideOnAndroid": false,
+  "mapLocationIconAddress": "Bas.Icon.Location.Arena",
+  "mapLocationIconHoverAddress": "Bas.Icon.Location.Arena_Highlight",
+  "mapPreviewImageAddress": "Bas.Image.Preview.Forge",
+  "modes": [
+    {
+      "$type": "ThunderRoad.LevelData+Mode, ThunderRoad",
+      "name": "Sandbox",
+      "displayName": "Sandbox",
+      "description": "DungeonSandboxDescription",
+      "allowGameModes": [
+        "Sandbox"
+      ],
+      "mapOrder": 0,
+      "playerDeathAction": "AskReload",
+      "modules": [
+        {
+          "$type": "ThunderRoad.LevelModuleOptionSetter, ThunderRoad",
+          "levelOptions": [
+            {
+              "$type": "ThunderRoad.LevelModuleOptionSetter+Option, ThunderRoad",
+              "option": "PlayerSpawnerId",
+              "value": "arena"
+            }
+          ]
+        },
+        {
+          "$type": "ThunderRoad.LevelModuleMusic, ThunderRoad",
+          "dynamicMusic": "MusicArenaDalgarianRoom"
+        },
+        {
+          "$type": "ThunderRoad.LevelAreaModule, ThunderRoad",
+          "areaFullMemoryDepth": 3,
+          "areaLiteMemoryDepth": 4,
+          "areaCullDepth": 2,
+          "areaByLength": [
+            {
+              "$type": "ThunderRoad.LevelAreaModule+AreaSpawnerData, ThunderRoad",
+              "areaCollectionId": "DA_Forge",
+              "numberCreature": 0,
+              "isSharedNPCAlert": false
+            }
+          ]
+        },
+        {
+          "$type": "ThunderRoad.LevelModuleCleaner, ThunderRoad",
+          "cleanerRate": 5.0
+        },
+        {
+          "$type": "ThunderRoad.LevelModuleAddressableSpawner, ThunderRoad",
+          "prefabs": [
+            {
+              "$type": "ThunderRoad.ItemSpawnerSpawnConfig, ThunderRoad",
+              "overrideSpawnPosition": false,
+              "spawnPosition": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+              },
+              "spawnRotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+              },
+              "address": "Bas.Arena.Prefab.ItemBook",
+              "spawnAtLevelReference": false,
+              "referenceName": null,
+              "position": {
+                "x": -78.557,
+                "y": -3.87851024,
+                "z": 25.2579975
+              },
+              "rotation": {
+                "x": 0.0,
+                "y": 179.999939,
+                "z": 0.0
+              },
+              "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+              },
+              "spawnInsideArea": true
+            },
+            {
+              "$type": "ThunderRoad.PrefabSpawnConfig, ThunderRoad",
+              "address": "Bas.Arena.Prefab.Rack.Melee",
+              "spawnAtLevelReference": false,
+              "referenceName": null,
+              "position": {
+                "x": -86.0079956,
+                "y": -4.68701029,
+                "z": 24.960989
+              },
+              "rotation": {
+                "x": 0.0,
+                "y": 179.999939,
+                "z": 0.0
+              },
+              "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+              },
+              "spawnInsideArea": true
+            },
+            {
+              "$type": "ThunderRoad.PrefabSpawnConfig, ThunderRoad",
+              "address": "Bas.Arena.Prefab.ItemTable.Sand",
+              "spawnAtLevelReference": false,
+              "referenceName": null,
+              "position": {
+                "x": -79.1570053,
+                "y": -4.68701029,
+                "z": 25.4479961
+              },
+              "rotation": {
+                "x": 0.0,
+                "y": 179.999939,
+                "z": 0.0
+              },
+              "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+              },
+              "spawnInsideArea": true
+            },
+            {
+              "$type": "ThunderRoad.WaveSpawnerSpawnConfig, ThunderRoad",
+              "useWaveSpawnerAtReference": true,
+              "waveSpawnerReference": "DA_Arena_Forge_WaveSpawner",
+              "waveSpawnerIndex": 0,
+              "address": "Bas.Arena.Prefab.WaveTable.Sand",
+              "spawnAtLevelReference": false,
+              "referenceName": null,
+              "position": {
+                "x": -76.128,
+                "y": -4.68701029,
+                "z": 25.448
+              },
+              "rotation": {
+                "x": 0.0,
+                "y": 179.999939,
+                "z": 0.0
+              },
+              "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+              },
+              "spawnInsideArea": true
+            }
+          ]
+        }
+      ],
+      "availableOptions": [
+        {
+          "$type": "ThunderRoad.EnableSandboxBooksOption, ThunderRoad",
+          "defaultValue": true,
+          "name": "SandboxItemAndWaveBook",
+          "localizationGroup": "Default",
+          "displayName": "Enable Sandbox Books",
+          "description": "Enable Sandbox Wave and Item books"
+        }
+      ]
+    },
+    {
+      "$type": "ThunderRoad.LevelData+Mode, ThunderRoad",
+      "name": "Survival",
+      "displayName": "Survival",
+      "description": "SurvivalDescription",
+      "allowGameModes": [
+        "Sandbox",
+        "Arcade"
+      ],
+      "mapOrder": 1,
+      "playerDeathAction": "AskReload",
+      "modules": [
+        {
+          "$type": "ThunderRoad.LevelModuleOptionSetter, ThunderRoad",
+          "levelOptions": [
+            {
+              "$type": "ThunderRoad.LevelModuleOptionSetter+Option, ThunderRoad",
+              "option": "PlayerSpawnerId",
+              "value": "arena"
+            }
+          ]
+        },
+        {
+          "$type": "ThunderRoad.LevelModuleMusic, ThunderRoad",
+          "dynamicMusic": "MusicArenaDalgarianRoom"
+        },
+        {
+          "$type": "ThunderRoad.LevelAreaModule, ThunderRoad",
+          "areaFullMemoryDepth": 3,
+          "areaLiteMemoryDepth": 4,
+          "areaCullDepth": 2,
+          "areaByLength": [
+            {
+              "$type": "ThunderRoad.LevelAreaModule+AreaSpawnerData, ThunderRoad",
+              "areaCollectionId": "DA_Forge",
+              "numberCreature": 0,
+              "isSharedNPCAlert": false
+            }
+          ]
+        },
+        {
+          "$type": "ThunderRoad.LevelModuleCleaner, ThunderRoad",
+          "cleanerRate": 5.0
+        },
+        {
+          "$type": "ThunderRoad.LevelModuleSurvival, ThunderRoad",
+          "trueRandomInProgressive": false,
+          "shockGradient": {
+            "$type": "UnityEngine.Gradient, UnityEngine.CoreModule",
+            "colorKeys": [
+              {
+                "$type": "UnityEngine.GradientColorKey, UnityEngine.CoreModule",
+                "color": {
+                  "r": 0.8,
+                  "g": 0.8,
+                  "b": 0.8,
+                  "a": 1.0
+                },
+                "time": 0.0
+              },
+              {
+                "$type": "UnityEngine.GradientColorKey, UnityEngine.CoreModule",
+                "color": {
+                  "r": 0.6,
+                  "g": 0.6,
+                  "b": 0.6,
+                  "a": 1.0
+                },
+                "time": 1.0
+              }
+            ],
+            "alphaKeys": [
+              {
+                "$type": "UnityEngine.GradientAlphaKey, UnityEngine.CoreModule",
+                "alpha": 1.0,
+                "time": 0.0
+              },
+              {
+                "$type": "UnityEngine.GradientAlphaKey, UnityEngine.CoreModule",
+                "alpha": 1.0,
+                "time": 1.0
+              }
+            ],
+            "mode": "Blend"
+          },
+          "forceAllowedGrabbables": [],
+          "dualTreeWeight": 0.4,
+          "subSkillWeight": 0.6,
+          "skillTierWeightPerWave": [
+            {
+              "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
+              "keys": [
+                {
+                  "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
+                  "time": 0.0,
+                  "value": 0.0,
+                  "inTangent": 1.0,
+                  "outTangent": 1.0,
+                  "inWeight": 0.0,
+                  "outWeight": 0.333333343,
+                  "weightedMode": "None",
+                  "tangentMode": 34
+                },
+                {
+                  "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
+                  "time": 1.0,
+                  "value": 1.0,
+                  "inTangent": -0.0929158255,
+                  "outTangent": -0.0929158255,
+                  "inWeight": 0.333333343,
+                  "outWeight": 0.333333343,
+                  "weightedMode": "None",
+                  "tangentMode": 0
+                },
+                {
+                  "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
+                  "time": 10.0,
+                  "value": 0.25,
+                  "inTangent": -0.05263158,
+                  "outTangent": -0.05263158,
+                  "inWeight": 0.333333343,
+                  "outWeight": 0.333333343,
+                  "weightedMode": "None",
+                  "tangentMode": 136
+                },
+                {
+                  "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
+                  "time": 20.0,
+                  "value": 0.0,
+                  "inTangent": -0.025,
+                  "outTangent": -0.025,
+                  "inWeight": 0.333333343,
+                  "outWeight": 0.0,
+                  "weightedMode": "None",
+                  "tangentMode": 34
+                }
+              ],
+              "length": 4,
+              "preWrapMode": "ClampForever",
+              "postWrapMode": "ClampForever"
+            },
+            {
+              "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
+              "keys": [
+                {
+                  "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
+                  "time": 0.0,
+                  "value": 0.0,
+                  "inTangent": 0.0833333358,
+                  "outTangent": 0.0833333358,
+                  "inWeight": 0.0,
+                  "outWeight": 0.333333343,
+                  "weightedMode": "None",
+                  "tangentMode": 34
+                },
+                {
+                  "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
+                  "time": 12.0,
+                  "value": 1.0,
+                  "inTangent": 0.0833333358,
+                  "outTangent": 0.0833333358,
+                  "inWeight": 0.333333343,
+                  "outWeight": 0.0,
+                  "weightedMode": "None",
+                  "tangentMode": 34
+                }
+              ],
+              "length": 2,
+              "preWrapMode": "ClampForever",
+              "postWrapMode": "ClampForever"
+            },
+            {
+              "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
+              "keys": [
+                {
+                  "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
+                  "time": 0.0,
+                  "value": 0.0,
+                  "inTangent": 0.05,
+                  "outTangent": 0.05,
+                  "inWeight": 0.0,
+                  "outWeight": 0.333333343,
+                  "weightedMode": "None",
+                  "tangentMode": 34
+                },
+                {
+                  "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
+                  "time": 20.0,
+                  "value": 1.0,
+                  "inTangent": 0.05,
+                  "outTangent": 0.05,
+                  "inWeight": 0.333333343,
+                  "outWeight": 0.0,
+                  "weightedMode": "None",
+                  "tangentMode": 34
+                }
+              ],
+              "length": 2,
+              "preWrapMode": "ClampForever",
+              "postWrapMode": "ClampForever"
+            }
+          ],
+          "weaponWeight": 3.0,
+          "offensiveSkillWeight": 1.0,
+          "miscSkillWeight": 0.5,
+          "potionWeight": 1.0,
+          "armorWeight": 1.0,
+          "bundleWeight": 2.0,
+          "equipmentSettings": "None",
+          "rewardTypes": "Weapons, OffensiveSkills",
+          "startingContainerId": "SurvivalStartingContainer",
+          "rewardPillarAddress": "Bas.LevelModule.RewardPillar",
+          "raiseSoundAudioContainerAddress": "Bas.AudioGroup.Survival.Pillar.Raise.Stone",
+          "lowerSoundAudioContainerAddress": "Bas.AudioGroup.Survival.Pillar.Lower.Stone",
+          "mainPillarIndex": 1,
+          "autoConfigureTeleportZone": true,
+          "autoConfigureTeleportBoundsSize": 20.0,
+          "useCustomTeleportPoint": false,
+          "customTeleportPoint": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "pillarZone": null,
+          "rewardsToSpawn": 3,
+          "normalizeItemScale": false,
+          "getRewardEffectId": "GetReward",
+          "victoryEffectId": "SurvivalVictory",
+          "lightningZapEffectId": "SpellLightningBoltZapSingle",
+          "dropItemEffectId": "SurvivalDropItem",
+          "rewardEffectId": "SurvivalRewardHighlight",
+          "skillItemId": "SkillOrbItem",
+          "startDelay": 3.0,
+          "loop": "Loop",
+          "wavesNumberForReward": 1,
+          "waves": [
+            {
+              "$type": "ThunderRoad.LevelModuleSurvival+Waves, ThunderRoad",
+              "waveID": "Survival_Wave0",
+              "weaponTable": "SurvivalWeaponRewards_Stage0",
+              "armorTable": "",
+              "potionTable": "",
+              "bundleTable": "SurvivalBundleRewards_Stage0"
+            },
+            {
+              "$type": "ThunderRoad.LevelModuleSurvival+Waves, ThunderRoad",
+              "waveID": "Survival_Wave1",
+              "weaponTable": "SurvivalWeaponRewards_Stage0",
+              "armorTable": "",
+              "potionTable": "",
+              "bundleTable": "SurvivalBundleRewards_Stage0"
+            },
+            {
+              "$type": "ThunderRoad.LevelModuleSurvival+Waves, ThunderRoad",
+              "waveID": "Survival_Wave2",
+              "weaponTable": "SurvivalWeaponRewards_Stage0",
+              "armorTable": "",
+              "potionTable": "",
+              "bundleTable": "SurvivalBundleRewards_Stage0"
+            },
+            {
+              "$type": "ThunderRoad.LevelModuleSurvival+Waves, ThunderRoad",
+              "waveID": "Survival_Wave3",
+              "weaponTable": "SurvivalWeaponRewards_Stage1",
+              "armorTable": "ArmorT1",
+              "potionTable": "",
+              "bundleTable": "SurvivalBundleRewards_Stage1"
+            },
+            {
+              "$type": "ThunderRoad.LevelModuleSurvival+Waves, ThunderRoad",
+              "waveID": "Survival_Wave4",
+              "weaponTable": "SurvivalWeaponRewards_Stage1",
+              "armorTable": "ArmorT1",
+              "potionTable": "",
+              "bundleTable": "SurvivalBundleRewards_Stage1"
+            },
+            {
+              "$type": "ThunderRoad.LevelModuleSurvival+Waves, ThunderRoad",
+              "waveID": "Survival_Wave5",
+              "weaponTable": "SurvivalWeaponRewards_Stage1",
+              "armorTable": "ArmorT1",
+              "potionTable": "",
+              "bundleTable": "SurvivalBundleRewards_Stage1"
+            },
+            {
+              "$type": "ThunderRoad.LevelModuleSurvival+Waves, ThunderRoad",
+              "waveID": "Survival_Wave6",
+              "weaponTable": "SurvivalWeaponRewards_Stage1",
+              "armorTable": "ArmorT1",
+              "potionTable": "",
+              "bundleTable": "SurvivalBundleRewards_Stage1"
+            },
+            {
+              "$type": "ThunderRoad.LevelModuleSurvival+Waves, ThunderRoad",
+              "waveID": "Survival_Wave7",
+              "weaponTable": "SurvivalWeaponRewards_Stage2",
+              "armorTable": "ArmorT2",
+              "potionTable": "SurvivalHealing",
+              "bundleTable": "SurvivalBundleRewards_Stage2"
+            },
+            {
+              "$type": "ThunderRoad.LevelModuleSurvival+Waves, ThunderRoad",
+              "waveID": "Survival_Wave8",
+              "weaponTable": "SurvivalWeaponRewards_Stage2",
+              "armorTable": "ArmorT2",
+              "potionTable": "SurvivalHealing",
+              "bundleTable": "SurvivalBundleRewards_Stage2"
+            },
+            {
+              "$type": "ThunderRoad.LevelModuleSurvival+Waves, ThunderRoad",
+              "waveID": "Survival_Wave9",
+              "weaponTable": "SurvivalWeaponRewards_Stage2",
+              "armorTable": "ArmorT2",
+              "potionTable": "SurvivalHealing",
+              "bundleTable": "SurvivalBundleRewards_Stage2"
+            },
+            {
+              "$type": "ThunderRoad.LevelModuleSurvival+Waves, ThunderRoad",
+              "waveID": "Survival_Wave10",
+              "weaponTable": "SurvivalWeaponRewards_Stage2",
+              "armorTable": "ArmorT2",
+              "potionTable": "SurvivalHealing",
+              "bundleTable": "SurvivalBundleRewards_Stage2"
+            },
+            {
+              "$type": "ThunderRoad.LevelModuleSurvival+Waves, ThunderRoad",
+              "waveID": "Survival_Wave11",
+              "weaponTable": "SurvivalWeaponRewards_Stage2",
+              "armorTable": "ArmorT2",
+              "potionTable": "SurvivalHealing",
+              "bundleTable": "SurvivalBundleRewards_Stage2"
+            },
+            {
+              "$type": "ThunderRoad.LevelModuleSurvival+Waves, ThunderRoad",
+              "waveID": "Survival_Wave12",
+              "weaponTable": "SurvivalWeaponRewards_Stage2",
+              "armorTable": "ArmorT2",
+              "potionTable": "SurvivalHealing",
+              "bundleTable": "SurvivalBundleRewards_Stage2"
+            },
+            {
+              "$type": "ThunderRoad.LevelModuleSurvival+Waves, ThunderRoad",
+              "waveID": "Survival_Wave13",
+              "weaponTable": "SurvivalWeaponRewards_Stage2",
+              "armorTable": "ArmorT2",
+              "potionTable": "SurvivalHealing",
+              "bundleTable": "SurvivalBundleRewards_Stage2"
+            },
+            {
+              "$type": "ThunderRoad.LevelModuleSurvival+Waves, ThunderRoad",
+              "waveID": "Survival_Wave14",
+              "weaponTable": "SurvivalWeaponRewards_Stage3",
+              "armorTable": "ArmorT3",
+              "potionTable": "SurvivalHealing",
+              "bundleTable": "SurvivalBundleRewards_Stage3"
+            },
+            {
+              "$type": "ThunderRoad.LevelModuleSurvival+Waves, ThunderRoad",
+              "waveID": "Survival_Wave15",
+              "weaponTable": "SurvivalWeaponRewards_Stage3",
+              "armorTable": "ArmorT3",
+              "potionTable": "SurvivalHealing",
+              "bundleTable": "SurvivalBundleRewards_Stage3"
+            },
+            {
+              "$type": "ThunderRoad.LevelModuleSurvival+Waves, ThunderRoad",
+              "waveID": "Survival_Wave16",
+              "weaponTable": "SurvivalWeaponRewards_Stage3",
+              "armorTable": "ArmorT3",
+              "potionTable": "SurvivalHealing",
+              "bundleTable": "SurvivalBundleRewards_Stage3"
+            },
+            {
+              "$type": "ThunderRoad.LevelModuleSurvival+Waves, ThunderRoad",
+              "waveID": "Survival_Wave17",
+              "weaponTable": "SurvivalWeaponRewards_Stage3",
+              "armorTable": "ArmorT3",
+              "potionTable": "SurvivalHealing",
+              "bundleTable": "SurvivalBundleRewards_Stage3"
+            },
+            {
+              "$type": "ThunderRoad.LevelModuleSurvival+Waves, ThunderRoad",
+              "waveID": "Survival_Wave18",
+              "weaponTable": "SurvivalWeaponRewards_Stage3",
+              "armorTable": "ArmorT3",
+              "potionTable": "SurvivalHealing",
+              "bundleTable": "SurvivalBundleRewards_Stage3"
+            },
+            {
+              "$type": "ThunderRoad.LevelModuleSurvival+Waves, ThunderRoad",
+              "waveID": "Survival_Wave19",
+              "weaponTable": "SurvivalWeaponRewards_Stage3",
+              "armorTable": "ArmorT3",
+              "potionTable": "SurvivalHealing",
+              "bundleTable": "SurvivalBundleRewards_Stage3"
+            },
+            {
+              "$type": "ThunderRoad.LevelModuleSurvival+Waves, ThunderRoad",
+              "waveID": "Survival_Wave20",
+              "weaponTable": "SurvivalWeaponRewards_Stage3",
+              "armorTable": "ArmorT3",
+              "potionTable": "SurvivalHealing",
+              "bundleTable": "SurvivalBundleRewards_Stage3"
+            },
+            {
+              "$type": "ThunderRoad.LevelModuleSurvival+Waves, ThunderRoad",
+              "waveID": "Survival_Wave21",
+              "weaponTable": "SurvivalWeaponRewards_Stage4",
+              "armorTable": "ArmorT3",
+              "potionTable": "SurvivalHealing",
+              "bundleTable": "SurvivalBundleRewards_Stage4"
+            },
+            {
+              "$type": "ThunderRoad.LevelModuleSurvival+Waves, ThunderRoad",
+              "waveID": "Survival_Wave22",
+              "weaponTable": "SurvivalWeaponRewards_Stage4",
+              "armorTable": "ArmorT3",
+              "potionTable": "SurvivalHealing",
+              "bundleTable": "SurvivalBundleRewards_Stage4"
+            },
+            {
+              "$type": "ThunderRoad.LevelModuleSurvival+Waves, ThunderRoad",
+              "waveID": "Survival_Wave23",
+              "weaponTable": "SurvivalWeaponRewards_Stage4",
+              "armorTable": "ArmorT3",
+              "potionTable": "SurvivalHealing",
+              "bundleTable": "SurvivalBundleRewards_Stage4"
+            },
+            {
+              "$type": "ThunderRoad.LevelModuleSurvival+Waves, ThunderRoad",
+              "waveID": "Survival_Wave24",
+              "weaponTable": "SurvivalWeaponRewards_Stage4",
+              "armorTable": "ArmorT3",
+              "potionTable": "SurvivalHealing",
+              "bundleTable": "SurvivalBundleRewards_Stage4"
+            }
+          ],
+          "textGroupId": "Survival",
+          "textNextWaveId": "NextWave",
+          "textFightId": "Fight",
+          "textWaveId": "Wave"
+        },
+        {
+          "$type": "LevelModuleResetSpawners, ThunderRoad"
+        }
+      ],
+      "availableOptions": [
+        {
+          "$type": "ThunderRoad.OptionSurvivalPreset, ThunderRoad",
+          "defaultValue": 0,
+          "currentValue": 0,
+          "presets": [
+            {
+              "$type": "ThunderRoad.SurvivalPreset, ThunderRoad",
+              "displayName": "PresetProgressionName",
+              "description": "PresetProgressionDescription",
+              "loopBehavior": "NoLoop",
+              "rouletteMode": false,
+              "forbidEnemyWeapons": true,
+              "spawnWeapons": true,
+              "spawnCombatSkills": true,
+              "spawnUtilitySkills": true,
+              "spawnPotions": true,
+              "spawnArmor": true,
+              "spawnBundles": true,
+              "removePlayerArmor": true,
+              "removePlayerSkills": true,
+              "removePlayerWeapons": true
+            },
+            {
+              "$type": "ThunderRoad.SurvivalPreset, ThunderRoad",
+              "displayName": "PresetProgressionUnrestrictedName",
+              "description": "PresetProgressionUnrestrictedDescription",
+              "loopBehavior": "NoLoop",
+              "rouletteMode": false,
+              "forbidEnemyWeapons": true,
+              "spawnWeapons": true,
+              "spawnCombatSkills": true,
+              "spawnUtilitySkills": false,
+              "spawnPotions": true,
+              "spawnArmor": false,
+              "spawnBundles": true,
+              "removePlayerArmor": false,
+              "removePlayerSkills": true,
+              "removePlayerWeapons": true
+            },
+            {
+              "$type": "ThunderRoad.SurvivalPreset, ThunderRoad",
+              "displayName": "PresetRouletteModeName",
+              "description": "PresetRouletteModeDescription",
+              "loopBehavior": "NoLoop",
+              "rouletteMode": true,
+              "forbidEnemyWeapons": true,
+              "spawnWeapons": true,
+              "spawnCombatSkills": true,
+              "spawnUtilitySkills": false,
+              "spawnPotions": false,
+              "spawnArmor": false,
+              "spawnBundles": true,
+              "removePlayerArmor": true,
+              "removePlayerSkills": true,
+              "removePlayerWeapons": true
+            },
+            {
+              "$type": "ThunderRoad.SurvivalPreset, ThunderRoad",
+              "displayName": "PresetClassicName",
+              "description": "PresetClassicDescription",
+              "loopBehavior": "NoLoop",
+              "rouletteMode": false,
+              "forbidEnemyWeapons": false,
+              "spawnWeapons": true,
+              "spawnCombatSkills": false,
+              "spawnUtilitySkills": false,
+              "spawnPotions": false,
+              "spawnArmor": false,
+              "spawnBundles": false,
+              "removePlayerArmor": false,
+              "removePlayerSkills": false,
+              "removePlayerWeapons": false
+            }
+          ],
+          "name": "SurvivalPreset",
+          "localizationGroup": "Survival",
+          "displayName": "OptionPresetName",
+          "description": "Start from nothing and earn skills, weapons and armor as you complete waves. No enemy weapons are allowed and you start with no armor.",
+          "Count": 4
+        },
+        {
+          "$type": "ThunderRoad.SurvivalEndlessModeOption, ThunderRoad",
+          "defaultValue": "NoLoop",
+          "name": "SurvivalWaves",
+          "localizationGroup": "Survival",
+          "displayName": "OptionWaveModeName",
+          "description": "Repeat the last wave infinitely."
+        },
+        {
+          "$type": "ThunderRoad.SurvivalWeaponRestrictionOption, ThunderRoad",
+          "invert": false,
+          "flagValue": "RouletteMode",
+          "defaultValue": false,
+          "name": "SurvivalRestriction",
+          "localizationGroup": "Survival",
+          "displayName": "RouletteChallengeName",
+          "description": "RouletteChallengeDescription"
+        },
+        {
+          "$type": "ThunderRoad.SurvivalWeaponRestrictionOption, ThunderRoad",
+          "invert": false,
+          "flagValue": "ForbidEnemyWeapons",
+          "defaultValue": false,
+          "name": "SurvivalRestriction",
+          "localizationGroup": "Survival",
+          "displayName": "ForbidEnemyWeaponsName",
+          "description": "ForbidEnemyWeaponsDescription"
+        },
+        {
+          "$type": "ThunderRoad.SurvivalRewardTypeOption, ThunderRoad",
+          "invert": false,
+          "flagValue": "Weapons",
+          "defaultValue": true,
+          "name": "SurvivalRewards",
+          "localizationGroup": "Survival",
+          "displayName": "SpawnWeaponsName",
+          "description": "SpawnWeaponsDescription"
+        },
+        {
+          "$type": "ThunderRoad.SurvivalRewardTypeOption, ThunderRoad",
+          "invert": false,
+          "flagValue": "OffensiveSkills",
+          "defaultValue": true,
+          "name": "SurvivalRewards",
+          "localizationGroup": "Survival",
+          "displayName": "SpawnSkillsCombatName",
+          "description": "SpawnSkillsCombatDescription"
+        },
+        {
+          "$type": "ThunderRoad.SurvivalRewardTypeOption, ThunderRoad",
+          "invert": false,
+          "flagValue": "MiscSkills",
+          "defaultValue": false,
+          "name": "SurvivalRewards",
+          "localizationGroup": "Survival",
+          "displayName": "SpawnSkillsNonCombatName",
+          "description": "SpawnSkillsNonCombatDescription"
+        },
+        {
+          "$type": "ThunderRoad.SurvivalRewardTypeOption, ThunderRoad",
+          "invert": false,
+          "flagValue": "Potions",
+          "defaultValue": true,
+          "name": "SurvivalRewards",
+          "localizationGroup": "Survival",
+          "displayName": "SpawnPotionsName",
+          "description": "SpawnPotionsDescription"
+        },
+        {
+          "$type": "ThunderRoad.SurvivalRewardTypeOption, ThunderRoad",
+          "invert": false,
+          "flagValue": "Bundles",
+          "defaultValue": true,
+          "name": "SurvivalRewards",
+          "localizationGroup": "Survival",
+          "displayName": "SpawnBundlesName",
+          "description": "SpawnBundlesDescription"
+        },
+        {
+          "$type": "ThunderRoad.SurvivalRewardTypeOption, ThunderRoad",
+          "invert": false,
+          "flagValue": "Armor",
+          "defaultValue": true,
+          "name": "SurvivalRewards",
+          "localizationGroup": "Survival",
+          "displayName": "SpawnArmorName",
+          "description": "SpawnArmorDescription"
+        },
+        {
+          "$type": "ThunderRoad.SurvivalWeaponRestrictionOption, ThunderRoad",
+          "invert": false,
+          "flagValue": "RemovePlayerWeapons",
+          "defaultValue": false,
+          "name": "SurvivalRestriction",
+          "localizationGroup": "Survival",
+          "displayName": "RemovePlayerWeaponsName",
+          "description": "RemovePlayerWeaponsDescription"
+        },
+        {
+          "$type": "ThunderRoad.SurvivalWeaponRestrictionOption, ThunderRoad",
+          "invert": false,
+          "flagValue": "RemovePlayerSkills",
+          "defaultValue": false,
+          "name": "SurvivalRestriction",
+          "localizationGroup": "Survival",
+          "displayName": "RemovePlayerSkillsName",
+          "description": "RemovePlayerSkillsDescription"
+        },
+        {
+          "$type": "ThunderRoad.SurvivalWeaponRestrictionOption, ThunderRoad",
+          "invert": false,
+          "flagValue": "RemovePlayerArmor",
+          "defaultValue": false,
+          "name": "SurvivalRestriction",
+          "localizationGroup": "Survival",
+          "displayName": "RemovePlayerArmorName",
+          "description": "RemovePlayerArmorDescription"
+        }
+      ]
+    }
+  ],
+  "customCameras": [],
+  "throwableRefType": "Item",
+  "improvisedThrowableID": "",
+  "HasSceneVariants": false
+}

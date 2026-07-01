@@ -82,8 +82,10 @@ QualitySettings:
     resolutionScalingFixedDPIFactor: 1
     customRenderPipeline: {fileID: 11400000, guid: f440ce345ac180048a911cea6e824fba,
       type: 2}
-    excludedTargetPlatforms: []
+    excludedTargetPlatforms:
+    - PS5
   m_PerPlatformDefaultQuality:
     Android: 0
+    PS5: 0
     Server: 0
     Standalone: 0

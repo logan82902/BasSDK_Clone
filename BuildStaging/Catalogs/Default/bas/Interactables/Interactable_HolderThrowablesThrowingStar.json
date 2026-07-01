@@ -13,14 +13,14 @@
   "targetAnchor": "",
   "forceAllowTouchOnPlayer": false,
   "highlighterPlayerView": false,
-  "tagFilter": "NoneExcept",
-  "slots": [
-    "Throwables"
-  ],
+  "tagFilter": "AnyExcept",
+  "slots": [],
   "typeFilter": "AnyExcept",
   "itemTypes": [],
-  "itemFilter": "AnyExcept",
-  "itemIds": [],
+  "itemFilter": "NoneExcept",
+  "itemIds": [
+    "ThrowablesRaktaThrowingStar"
+  ],
   "locked": false,
   "warnIfNotAllowed": true,
   "warnIfInUse": false,
@@ -31,9 +31,11 @@
   "disableWhenHolstered": false,
   "allowTeleGrab": false,
   "hideFromFpv": false,
+  "unsnapColliderEnableDelay": 0.0,
   "grabTeleport": "Enabled",
   "disableObjectProximityHighlighter": false,
   "delegateToParentHolder": true,
+  "ignoreEmptyChildHolders": false,
   "cleanItemsDuration": 0.0,
   "cleanItemsStep": 10.0,
   "audioContainerAddress": "Bas.AudioGroup.Snap.Dagger",

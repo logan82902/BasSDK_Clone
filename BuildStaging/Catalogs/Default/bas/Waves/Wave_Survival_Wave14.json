@@ -25,13 +25,13 @@
       "$type": "ThunderRoad.WaveData+Group, ThunderRoad",
       "mergeKey": "00dad926",
       "reference": "Table",
-      "referenceID": "SentaraAlertMix",
+      "referenceID": "KharTibAlertMix",
       "overrideFaction": true,
       "factionID": 3,
       "overrideContainer": false,
-      "overrideContainerID": null,
+      "overrideContainerID": "",
       "overrideBrain": false,
-      "overrideBrainID": null,
+      "overrideBrainID": "",
       "overrideMaxMelee": false,
       "overrideMaxMeleeCount": 0,
       "groupHealthMultiplier": 1.0,
@@ -51,9 +51,9 @@
       "overrideFaction": true,
       "factionID": 3,
       "overrideContainer": false,
-      "overrideContainerID": null,
+      "overrideContainerID": "",
       "overrideBrain": false,
-      "overrideBrainID": null,
+      "overrideBrainID": "",
       "overrideMaxMelee": false,
       "overrideMaxMeleeCount": 0,
       "groupHealthMultiplier": 1.0,
@@ -66,5 +66,5 @@
       "prereqMaxRemainingAlive": 0
     }
   ],
-  "modules": null
+  "modules": []
 }

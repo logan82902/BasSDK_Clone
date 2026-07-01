@@ -114,6 +114,9 @@ namespace ThunderRoad
         [NonSerialized]
         public EffectData collisionEffectData;
         [Group("Collision")]
+        [Tooltip("If this value is greater than zero, stop + despawn the effect after that duration.")]
+        public float collisionEffectDuration = 0f;
+        [Group("Collision")]
         public LayerMask collisionLayerMask = ~0;
         [Group("Collision")]
         public float collisionMaxGroundAngle = 45;

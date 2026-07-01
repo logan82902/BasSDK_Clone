@@ -167,6 +167,17 @@ namespace ThunderRoad
         UnBlockable
     }
 
+    [System.Flags]
+    public enum ObjectClassification
+    {
+        None = 0,
+        StaticEnvironment = 1,
+        DynamicEnvironment = 2,
+        Items = 4,
+        Npcs = 8,
+        Player = 16,
+    }
+
     public enum ImbueUseButton
     {
         None,
@@ -224,6 +235,7 @@ namespace ThunderRoad
         SurvivalWaves,
         SurvivalRewards,
         SurvivalRestriction,
+        SceneVariantId
     }
 
     [Flags]
@@ -243,29 +255,7 @@ namespace ThunderRoad
         Transform,
         PlayerForwardWorldPosition
     }
-
-    [Serializable]
-    public class PcmData
-    {
-        public float[] data;
-        public byte[] samples;
-
-        public int buffersize;
-        public int sampleRate;
-        public int channelMask;
-
-        public PcmData(AudioClip audioClip)
-        {
-            data = new float[audioClip.samples * audioClip.channels];
-            buffersize = audioClip.samples * audioClip.channels;
-            audioClip.GetData(data, 0);
-            sampleRate = audioClip.frequency;
-            channelMask = audioClip.channels;
-            //UpdateSamples(data, sampleRate, channelMask, 0);
-        }
-
-    }
-
+    
     [Serializable]
     public class AssetReferenceAudioClip : AssetReferenceT<AudioClip>
     {

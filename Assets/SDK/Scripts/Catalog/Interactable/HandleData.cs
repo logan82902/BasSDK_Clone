@@ -87,6 +87,8 @@ namespace ThunderRoad
         public float rotationDamper2hMultiplier = 1;
         [Group("Handle/Forces")]
         public bool forceClimbing = false;
+        [Group("Handle/Forces")]
+        public bool affectedByBowHandling = false;
 
         public enum RotationDrive
         {

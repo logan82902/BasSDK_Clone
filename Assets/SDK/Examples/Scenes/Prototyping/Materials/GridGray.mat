@@ -10,12 +10,12 @@ Material:
   m_Name: GridGray
   m_Shader: {fileID: -6465566751694194690, guid: f2ccc783dd448614ebfe96a78331e1de,
     type: 3}
-  m_ValidKeywords:
-  - _CAUSTICSENABLE_ON
+  m_ValidKeywords: []
   m_InvalidKeywords:
   - LAYER_MAX3
   - MODED_MOSS
   - TEXTURE_MAX8
+  - _CAUSTICSENABLE_ON
   - _EMISSION
   - _METALLICSPECGLOSSMAP_ON
   - _REMAPPERS_ON
@@ -152,6 +152,7 @@ Material:
     - HeaderDetailMaps: 0
     - HeaderDetailMaps1: 0
     - HeaderDetailMaps2: 0
+    - HeaderDetailMapsSpace: 0
     - HeaderFresnel: 0
     - HeaderFresnel1: 0
     - HeaderGeneral: 0
@@ -184,16 +185,19 @@ Material:
     - Label_UseMossMaskWithAlpha2: 0
     - MODED: 0
     - TEXTURE: 1
+    - WarningTexMissing: 0
     - _ALPHAMODE: 0
     - _AUTONORMAL: 0
     - _AlphaClip: 0
     - _AlphaClipThreshold: 0.5
     - _AlphaCutoff: 0.5
     - _AlphaTestRef: 0.5
+    - _Anisotrophy: 0
     - _ArrayLengthUsed: 16
     - _Bitmask: 0
     - _Blend: 0
     - _BlendMode_UseColorMask: 0
+    - _BlendOp: 0
     - _BumpScale: 1
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
@@ -205,6 +209,7 @@ Material:
     - _DRAWERMinMax_MossDetailRemapz_MossDetailRemapwClamp_MOSS_UseMossDetails: 0
     - _DRAWERMinMax_MossSlopeMM: 0
     - _DRAWERMinMax_MossVertexMaskMM: 0
+    - _DRAWERPacked_BaseMapMoss_Alpha_Remap_Albedo_AAMode_Negative_MossAlphaMaskMM_MOSS_UseMossMaskWithAlpha_UseAlbedoAlpha: 0
     - _DRAWERPacked_BaseMapMoss_Alpha_Remap_Albedo_AAMode_Negative_MossAlphaMaskMM_MOSS_UseMossMaskWithAlpha_UseAlbedoAlpha_Remappers: 0
     - _DRAWERPacked_MetallicGlossMapMetallic_Remap_Metal_RR_MetallicRemap_MOSSMETALMODE_ON_MetallicSpecGlossMap_Remappers: 0
     - _DRAWERPacked_MetallicGlossMapOcclusion_Remap_Metal_GG_OcclusionRemap_MOSSMETALMODE_ON_UseOcclusion: 0
@@ -235,14 +240,18 @@ Material:
     - _Int0: 0
     - _Layer0Metallic: 0
     - _Layer0NormalStrength: 1
+    - _Layer0Red: 0
     - _Layer0Red_UseReveal: 0
     - _Layer0Smoothness: 0.5
+    - _Layer1Green: 0
     - _Layer1Green_UseReveal: 0
     - _Layer1Metallic: 0
     - _Layer1NormalStrength: 1
     - _Layer1Smoothness: 0.5
+    - _Layer2Blue: 0
     - _Layer2Blue_UseReveal: 0
     - _Layer2Height: -1
+    - _Layer3Alpha: 0
     - _Layer3Alpha_UseReveal: 0
     - _Lightmapping: 1
     - _MODE: 1
@@ -271,15 +280,18 @@ Material:
     - _MossSlopeDistort: 1
     - _MossSlopeNormRotate: 0
     - _MossSmoothness: 0
+    - _MossStochasticContrast: 0.5
+    - _MossStochasticScale: 1
     - _MossUV: 0
     - _NormalMossMask_MOSS_UseNormalMap: -1
     - _NormalStrength: 1
+    - _NormalStrength_USE_SSS: 0.5
     - _Occlusion: 0
     - _OcclusionMossMask: -1
     - _OcclusionStrength: 1
     - _PRVOL: 0
     - _Parallax: 0.02
-    - _QueueControl: -1
+    - _QueueControl: 0
     - _QueueOffset: 0
     - _REFLECTIONBILLBOARDSTOCHASTIC: 0
     - _ReceiveShadows: 1
@@ -288,8 +300,10 @@ Material:
     - _RevealLayers: 0
     - _SIMPLESTOCHASTIC: 1
     - _SKYFOG: 0
+    - _SSSDimAlbedo: 0.5
     - _SSSRadius: 0.6
     - _SSScattering: 0.6
+    - _SSShadcowMix: 1
     - _ShadowThreshold: 0.5
     - _SimLighting: 0
     - _SkyFogHeader: 0
@@ -303,6 +317,9 @@ Material:
     - _USE_SSS: 0
     - _USE_TRANSPARENT: 0
     - _UVSec: 0
+    - _UseCausticExtraSampler: 1
+    - _UseCausticRainbow: 1
+    - _UseCausticsFromAbove: 1
     - _UseColorMask: 0
     - _UseDetailMask: 1
     - _UseEmission: 1

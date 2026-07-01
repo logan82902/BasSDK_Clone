@@ -143,7 +143,7 @@ namespace ThunderRoad
                     }
                     targetMeshRenderer.lightmapIndex = meshRenderer.lightmapIndex;
                     targetMeshRenderer.realtimeLightmapIndex = meshRenderer.realtimeLightmapIndex;
-                    targetMeshRenderer.lightProbeUsage = meshRenderer.lightProbeUsage;
+                    targetMeshRenderer.lightProbeUsage = 0; // explicitly disable since we are applying baked lightmaps. Issue seen with lodgroups sampling light probes even when "baked"
                     targetMeshRenderer.realtimeLightmapScaleOffset = meshRenderer.realtimeLightmapScaleOffset;
                     if (!targetMeshRenderer.isPartOfStaticBatch)
                     {

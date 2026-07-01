@@ -18,7 +18,7 @@
   "type": "Weapon",
   "category": "Bows",
   "update": "",
-  "iconEffectId": null,
+  "iconEffectId": "",
   "preferredItemCenter": "Mass",
   "drainImbueWhenIdle": true,
   "forceImbueUseButton": "None",
@@ -200,7 +200,12 @@
       "secondaryHandling": "None",
       "weaponAttackTypes": "None",
       "alwaysPrimary": false,
-      "defaultStanceInfo": null,
+      "defaultStanceInfo": {
+        "$type": "ThunderRoad.ItemModuleAI+StanceInfo, ThunderRoad",
+        "offhand": "Empty",
+        "grabAIHandleRadius": 0.0,
+        "stanceDataID": null
+      },
       "stanceInfosByOffhand": null,
       "rangedWeaponData": {
         "$type": "ThunderRoad.ItemModuleAI+RangedWeaponData, ThunderRoad",
@@ -238,15 +243,17 @@
       "$type": "ThunderRoad.ItemModuleBow, ThunderRoad",
       "velocityMultiplier": 2.5,
       "stringSpring": 350.0,
+      "firedBounciness": 0.33,
+      "audioShootMinPull": 0.1,
       "autoSpawnArrow": false,
       "arrowProjectileID": "Arrow",
-      "audioShootMinPull": 0.1,
+      "arrowDamageMultiplier": 1.0,
+      "arrowForceMultiplier": 1.0,
       "audioDrawPullSpeed": 0.02,
       "audioStringAddress": "Bas.Audio.Item.BowString",
       "audioGroupDrawAddress": "Bas.AudioGroup.Item.BowDraw",
       "audioGroupShootAddress": "Bas.AudioGroup.Item.BowShoot",
-      "maxPullRatioAI": 0.75,
-      "spawnArrow": false
+      "maxPullRatioAI": 0.75
     },
     {
       "$type": "ThunderRoad.ItemModuleStats, ThunderRoad",

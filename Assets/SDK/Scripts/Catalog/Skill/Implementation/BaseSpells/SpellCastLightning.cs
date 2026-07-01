@@ -10,77 +10,74 @@ using TriInspector;
 
 namespace ThunderRoad.Skill.Spell
 {
-    [DeclareBoxGroup("Imbue hit", Title = "Imbue hit")]
-    [DeclareBoxGroup("Staff Slam", Title = "Staff Slam")]
-    [DeclareBoxGroup("Bolts", Title = "Bolts")]
-    [DeclareBoxGroup("Electrocution", Title = "Electrocution")]
-    [DeclareBoxGroup("Chaining", Title = "Chaining")]
-    [DeclareBoxGroup("Arcing Bolt", Title = "Arcing Bolt")]
-    [DeclareBoxGroup("Musket")]
+    [DeclareBoxGroup("Split/Right/Imbue hit", Title = "Imbue hit")]
+    [DeclareBoxGroup("Split/Right/Staff Slam", Title = "Staff Slam")]
+    [DeclareBoxGroup("Split/Right/Bolts", Title = "Bolts")]
+    [DeclareBoxGroup("Split/Right/Electrocution", Title = "Electrocution")]
+    [DeclareBoxGroup("Split/Right/Chaining", Title = "Chaining")]
+    [DeclareBoxGroup("Split/Right/Arcing Bolt", Title = "Arcing Bolt")]
     public class SpellCastLightning : SpellCastCharge
     {
-        public static readonly Type[] MUSKET_IGNORED_EFFECT_MODULES = { typeof(EffectModuleAudio) };
-        
         public bool speedUpByTimeScale = false;
         public static int modifierChainRange = Animator.StringToHash("ChainRange");
-        [Group("Imbue hit")]
+        [Group("Split/Right/Imbue hit")]
         [Dropdown(nameof(GetAllEffectID))]
         public string imbueHitEffectId;
 
         [NonSerialized]
         public EffectData imbueHitEffectData;
 
-        [Group("Imbue hit")]
+        [Group("Split/Right/Imbue hit")]
         [Dropdown(nameof(GetAllEffectID))]
         public string imbueHitRagdollEffectId;
 
         [NonSerialized]
         public EffectData imbueHitRagdollEffectData;
 
-        [Group("Staff Slam")]
+        [Group("Split/Right/Staff Slam")]
         public float staffSlamRadius = 10f;
 
-        [Group("Staff Slam")]
+        [Group("Split/Right/Staff Slam")]
         public float staffSlamStunDuration = 5f;
 
-        [Group("Staff Slam")]
+        [Group("Split/Right/Staff Slam")]
         public float staffSlamExpandDuration = 1f;
 
-        [Group("Bolts")]
+        [Group("Split/Right/Bolts")]
         public AnimationCurve boltIntensityCurve;
 
-        [Group("Bolts")]
+        [Group("Split/Right/Bolts")]
         [Dropdown(nameof(GetAllEffectID))]
         public string boltEffectId;
         [NonSerialized]
         public EffectData boltEffectData;
 
-        [Group("Bolts")]
+        [Group("Split/Right/Bolts")]
         [Dropdown(nameof(GetAllEffectID))]
         public string boltLoopEffectId;
         [NonSerialized]
         public EffectData boltLoopEffectData;
 
-        [Group("Bolts")]
+        [Group("Split/Right/Bolts")]
         [Dropdown(nameof(GetAllEffectID))]
         public string boltHitEffectId;
         [NonSerialized]
         public EffectData boltHitEffectData;
 
-        [Group("Bolts")]
+        [Group("Split/Right/Bolts")]
         [Dropdown(nameof(GetAllEffectID))]
         public string boltHitImbueEffectId;
         [NonSerialized]
         public EffectData boltHitImbueEffectData;
 
-        [Group("Bolts")]
+        [Group("Split/Right/Bolts")]
         public int simultaneousBolts = 3;
 
-        [Group("Bolts")]
+        [Group("Split/Right/Bolts")]
         [MinMaxSlider(0.01f, 0.5f, ShowFields = true)]
         public Vector2 intervalMinRange = new(0.1f, 0.2f);
 
-        [Group("Bolts")]
+        [Group("Split/Right/Bolts")]
         [MinMaxSlider(0.01f, 0.5f, ShowFields = true)]
         public Vector2 intervalMaxRange = new(0.05f, 0.1f);
 
@@ -93,80 +90,80 @@ namespace ThunderRoad.Skill.Spell
         [JsonIgnore]
         public string StunDurationPerSkillLabel => $"Stun Duration per Skill ({boltElectrocuteDuration}s base, {boltElectrocuteDuration * (1 + durationPerSkill * 3)}s with unlocks)";
 
-        [Group("Bolts")]
+        [Group("Split/Right/Bolts")]
         [LabelText("$" + nameof(DrainPerBoltLabel))]
         public float drainPerBolt = 0.015f;
 
-        [Group("Bolts")]
+        [Group("Split/Right/Bolts")]
         [LabelText("$" + nameof(EfficiencyPerSkillLabel))]
         public float efficiencyPerSkill = 0.05f;
-        [Group("Bolts")]
+        [Group("Split/Right/Bolts")]
         [LabelText("$" + nameof(StunDurationPerSkillLabel))]
         public float durationPerSkill = 0.1f;
 
         [JsonIgnore]
         public string EfficiencyPerSkillLabel => SkillPassiveLabel("Efficiency", efficiencyPerSkill);
 
-        [Group("Bolts")]
+        [Group("Split/Right/Bolts")]
         public float coneAngle = 30;
 
-        [Group("Bolts")]
+        [Group("Split/Right/Bolts")]
         public float boltMaxRange = 5;
 
-        [Group("Bolts")]
+        [Group("Split/Right/Bolts")]
         public float fireDirectionAngle = 70;
 
-        [Group("Bolts")]
+        [Group("Split/Right/Bolts")]
         public float boltDamage = 1;
 
-        [Group("Bolts")]
+        [Group("Split/Right/Bolts")]
         public int pushLevel = 1;
 
-        [Group("Bolts")]
+        [Group("Split/Right/Bolts")]
         public float boltHaptic = 0.2f;
 
-        [Group("Bolts")]
+        [Group("Split/Right/Bolts")]
         public int boltElectrocuteDuration = 2;
-        [Group("Bolts")]
+        [Group("Split/Right/Bolts")]
         public int boltElectrocuteDurationMetal = 6;
 
-        [Group("Bolts")]
+        [Group("Split/Right/Bolts")]
         public float boltPushForce = 5f;
 
-        [Group("Bolts")]
+        [Group("Split/Right/Bolts")]
         public float headToFireMaxAngle = 45;
-        [Group("Bolts")]
+        [Group("Split/Right/Bolts")]
         public float boltLoopFadoutDelay = 0.5f;
 
-        [Group("Bolts")]
+        [Group("Split/Right/Bolts")]
         public LayerMask rayMaskPlayer;
-        [Group("Bolts")]
+        [Group("Split/Right/Bolts")]
         public LayerMask rayMaskNpc;
 
-        [Group("Bolts")]
+        [Group("Split/Right/Bolts")]
         public float hitLookupMaxDiffRange = 0.25f;
-        [Group("Bolts")]
+        [Group("Split/Right/Bolts")]
         public float boltEnergyTransfer = 2f;
-        [Group("Bolts")]
+        [Group("Split/Right/Bolts")]
         public float boltElectrocuteChance = 0.3f;
 
-        [Group("Electrocution")]
+        [Group("Split/Right/Electrocution")]
         [Dropdown(nameof(GetAllStatusEffectID))]
         public string electrocuteStatusId = "Electrocute";
         [NonSerialized]
         public StatusData electrocuteStatusData;
 
-        [Group("Chaining")]
+        [Group("Split/Right/Chaining")]
         public float minChainIntensity = 0.6f;
-        [Group("Chaining")]
+        [Group("Split/Right/Chaining")]
         public float minChainLength = 0.4f;
-        [Group("Chaining")]
+        [Group("Split/Right/Chaining")]
         public float maxChainLength = 1.2f;
-        [Group("Chaining")]
+        [Group("Split/Right/Chaining")]
         public float chainIntensityMultiplier = 0.75f;
-        [Group("Chaining")]
+        [Group("Split/Right/Chaining")]
         public int maxChainsPerBolt = 3;
-        [Group("Chaining")]
+        [Group("Split/Right/Chaining")]
         public float chainChance = 0.5f;
         
         [NonSerialized]
@@ -175,58 +172,22 @@ namespace ThunderRoad.Skill.Spell
         public bool allowChainItems;
 
 
-        [Group("Arcing Bolt")]
+        [Group("Split/Right/Arcing Bolt")]
         [ShowIf("allowThrow")]
         public float arcDuration = 10f;
-        [Group("Arcing Bolt")]
+        [Group("Split/Right/Arcing Bolt")]
         [ShowIf("allowThrow")]
         public float arcJumpRadius = 5f;
-        [Group("Arcing Bolt")]
+        [Group("Split/Right/Arcing Bolt")]
         [ShowIf("allowThrow")]
         public float arcThrowAngle = 30f;
-        [Group("Arcing Bolt")]
+        [Group("Split/Right/Arcing Bolt")]
         [ShowIf("allowThrow")]
         public float arcShockDuration = 1.5f;
-        [Group("Arcing Bolt")]
+        [Group("Split/Right/Arcing Bolt")]
         [ShowIf("allowThrow")]
         public float arcJumpDelay = 1.5f;
 
-        [Group("Musket")]
-        [Dropdown(nameof(GetAllSkillID))]
-        public string musketThunderboltId;
-        [JsonIgnore]
-        public SkillThunderbolt musketThunderboltData;
-
-        [Group("Musket")]
-        [Dropdown(nameof(GetAllEffectID))]
-        public string musketProjectileEffectId;
-        [JsonIgnore]
-        public EffectData musketProjectileEffectData;
-
-        [Group("Musket")]
-        [Dropdown(nameof(GetAllItemID))]
-        public string musketProjectileId;
-        [JsonIgnore]
-        public ItemData musketProjectileData;
-
-        [Group("Musket")]
-        [Dropdown(nameof(GetAllDamagerID))]
-        public string musketProjectileDamagerId;
-        [JsonIgnore]
-        protected DamagerData musketProjectileDamagerData;
-
-        [Group("Musket")]
-        public int musketProjectileCount = 6;
-
-        [Group("Musket")]
-        public float musketProjectileSpeed = 30;
-
-        [Group("Musket")]
-        public float musketTargetRadius = 3;
-
-        [Group("Musket")]
-        public float musketProjectileAngle = 35;
-        
         public delegate void SprayEvent(SpellCastLightning spell);
 
         public event SprayEvent OnSprayLoopEvent;

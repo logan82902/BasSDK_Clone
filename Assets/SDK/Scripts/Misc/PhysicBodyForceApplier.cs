@@ -29,6 +29,8 @@ namespace ThunderRoad
         public ForceMode linearForceType;
         public Vector3 linearForce;
 
+        public bool limitLinearSpeed = false;
+        public float absSpeedLimit;
 
         [Header("Angular force")]
         public bool angularForceActive;
@@ -38,6 +40,9 @@ namespace ThunderRoad
         public bool localAngularForce = false;
         public ForceMode angularForceType;
         public Vector3 angularForce;
+
+        public bool overrideMaxAngularVelocity = false;
+        public float maxAngularVelocity = 7f;
 
         public void ToggleLinearForce() => linearForceActive = !linearForceActive;
 

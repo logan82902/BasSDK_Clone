@@ -1,4 +1,5 @@
 ﻿using System;
+using TriInspector;
 
 namespace ThunderRoad
 {
@@ -61,6 +62,7 @@ namespace ThunderRoad
         public override bool IsHidden() => false; // should be visible by default
         public override bool IsLevelOption() => true; // should be set as level option by default
 
+        [Group("Foldout")]
         public T defaultValue;
         protected T currentValue;
 
@@ -123,7 +125,9 @@ namespace ThunderRoad
         public override bool IsHidden() => false; // should be visible by default
         public override bool IsLevelOption() => true; // should be set as level option by default
 
+        [Group("Foldout")]
         public bool invert;
+        [Group("Foldout")]
         public T flagValue;
 
         public override Type GetEnumType() => typeof(T);

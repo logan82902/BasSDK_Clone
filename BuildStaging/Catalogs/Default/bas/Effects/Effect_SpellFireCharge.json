@@ -387,11 +387,11 @@
       "globalOnPlayerOnly": false,
       "playDelay": 0.0,
       "dopplerLevel": 0.0,
-      "useAudioForHaptic": false,
+      "useAudioForHaptic": true,
       "intensitySmoothingSampleCount": 0,
       "speedSmoothingSampleCount": 0,
       "cullMinVolume": 0.05,
-      "volumeDb": -124.8,
+      "volumeDb": 0.0,
       "useVolumeIntensity": true,
       "volumeIntensityCurve": {
         "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
@@ -753,6 +753,7 @@
         "z": 0.0
       },
       "collisionEffectId": null,
+      "collisionEffectDuration": 0.0,
       "collisionLayerMask": -2162889,
       "collisionMaxGroundAngle": 45.0,
       "collisionEmitRate": 0.2,

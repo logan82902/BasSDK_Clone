@@ -1,0 +1,27 @@
+{
+  "$type": "ThunderRoad.CreatureTable, ThunderRoad",
+  "id": "KharTib_Base_RangedWeak",
+  "sensitiveContent": "None",
+  "sensitiveFilterBehaviour": "Discard",
+  "version": 1,
+  "groupPath": "Factions/Base",
+  "description": "Base tables for factions contain the settings used for each unit type, so we only have to edit them from one place. These should be used in other creature tables and waves instead of overriding containers.",
+  "linkedToGenderRatio": false,
+  "drops": [
+    {
+      "$type": "ThunderRoad.CreatureTable+Drop, ThunderRoad",
+      "mergeKey": "5d158817",
+      "reference": "Table",
+      "referenceID": "Humans",
+      "overrideFaction": true,
+      "factionID": 5,
+      "overrideContainer": true,
+      "overrideContainerID": "KharTibArcher",
+      "overrideBrain": true,
+      "overrideBrainID": "HumanMedium",
+      "overrideEthnicity": true,
+      "overrideEthnicityID": "Kharese",
+      "probabilityWeight": 1.0
+    }
+  ]
+}

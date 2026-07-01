@@ -1,203 +1,157 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using Newtonsoft.Json;
 using ThunderRoad.Skill.SpellMerge;
+using TriInspector;
 using UnityEngine;
 using Object = UnityEngine.Object;
-using TriInspector;
 
 namespace ThunderRoad.Skill.Spell
 {
-    [DeclareBoxGroup("Misc", Title = "Misc")]
-    [DeclareBoxGroup("Throw", Title = "Throw")]
-    [DeclareBoxGroup("Dual Push", Title = "Dual Push")]
-    [DeclareBoxGroup("Push Status Effect", Title = "Push Status Effect")]
-    [DeclareBoxGroup("Imbue", Title = "Imbue")]
-    [DeclareBoxGroup("Imbue hit", Title = "Imbue hit")]
-    [DeclareBoxGroup("Staff Slam", Title = "Staff Slam")]
-    [DeclareBoxGroup("Musket")]
+    [DeclareBoxGroup("Split/Right/Misc", Title = "Misc")]
+    [DeclareBoxGroup("Split/Right/Throw", Title = "Throw")]
+    [DeclareBoxGroup("Split/Right/Dual Push", Title = "Dual Push")]
+    [DeclareBoxGroup("Split/Right/Push Status Effect", Title = "Push Status Effect")]
+    [DeclareBoxGroup("Split/Right/Imbue", Title = "Imbue")]
+    [DeclareBoxGroup("Split/Right/Imbue hit", Title = "Imbue hit")]
+    [DeclareBoxGroup("Split/Right/Staff Slam", Title = "Staff Slam")]
     public class SpellCastGravity : SpellCastCharge
     {
         public const string LastPushTimeVariable = "LastPushTime";
         public const string LastPushDirection = "LastPushDirection";
 
-        [Group("Misc")]
+        [Group("Split/Right/Misc")]
         public bool enableCreatureControl = false;
 
-        [Group("Throw")]
+        [Group("Split/Right/Throw")]
         public float halfSphereRadius = 2;
-        [Group("Throw")]
+        [Group("Split/Right/Throw")]
         [MinMaxSlider(0, 4f, true)]
         public Vector2 pushLevel = new(1, 3);
-        [Group("Throw")]
+        [Group("Split/Right/Throw")]
         public float pushMaxForce = 10;
-        [Group("Throw")]
+        [Group("Split/Right/Throw")]
         public float pushForceOnPlayer = 0.3f;
-        [Group("Throw")]
+        [Group("Split/Right/Throw")]
         public float upwardsForceLerpOnPlayer = 0.3f;
-        [Group("Throw")]
+        [Group("Split/Right/Throw")]
         public float playerLocomotionDeactivate = 0.2f;
-        [Group("Throw")]
+        [Group("Split/Right/Throw")]
         public bool pushUseExplosionForce = true;
-        [Group("Throw")]
+        [Group("Split/Right/Throw")]
         [ShowIf("pushUseExplosionForce")]
         public float pushExplosionUpwardModifier = 1f;
-        [Group("Throw")]
+        [Group("Split/Right/Throw")]
         public ForceMode pushForceMode = ForceMode.Impulse;
-        [Group("Throw")]
+        [Group("Split/Right/Throw")]
         public LayerMask pushLayerMask;
-        [Group("Throw")]
+        [Group("Split/Right/Throw")]
         public float minChargeToPushCreature = 0.5f;
-        [Group("Throw")]
+        [Group("Split/Right/Throw")]
         [LabelText("$" + nameof(IntensityPerSkillLabel))]
         public float intensityPerSkill = 0.05f;
 
         [JsonIgnore]
         public string IntensityPerSkillLabel => SkillPassiveLabel("Push Force", intensityPerSkill);
 
-        [Group("Throw")]
+        [Group("Split/Right/Throw")]
         public float pushStatusExtension = 3f;
 
-        [Group("Throw")]
+        [Group("Split/Right/Throw")]
         public float pushStatusForce = 1.3f;
 
-        [Group("Dual Push")]
+        [Group("Split/Right/Dual Push")]
         public float dualPushIntensityMultiplier = 0.4f;
 
-        [Group("Dual Push")]
+        [Group("Split/Right/Dual Push")]
         public float dualPushTimeWindow = 0.3f;
 
-        [Group("Dual Push")]
+        [Group("Split/Right/Dual Push")]
         public float dualPushAngleWindow = 50;
 
-        [Group("Dual Push")]
+        [Group("Split/Right/Dual Push")]
         [Range(0, 3)]
         public float dualPushLevelReduction = 0.5f;
-        [Group("Dual Push")]
+        [Group("Split/Right/Dual Push")]
         [Dropdown(nameof(GetAllEffectID))]
         public string dualPushEffectId;
         protected EffectData dualPushEffectData;
 
-        [Group("Throw")]
+        [Group("Split/Right/Throw")]
         [Dropdown(nameof(GetAllEffectID))]
         public string pushEffectId;
         protected EffectData pushEffectData;
 
-        [Group("Push Status Effect")]
+        [Group("Split/Right/Push Status Effect")]
         [Dropdown(nameof(GetAllStatusEffectID))]
         public string pushStatusEffectId = "Floating";
         
         [NonSerialized]
         public StatusData pushStatusEffect;
-        [Group("Push Status Effect")]
+        [Group("Split/Right/Push Status Effect")]
         public float pushStatusDuration = 2;
-        [Group("Imbue")]
+        [Group("Split/Right/Imbue")]
         public float imbueGravityRatio = 0;
-        [Group("Imbue")]
+        [Group("Split/Right/Imbue")]
         public float imbueDrag = -1;
-        [Group("Imbue")]
+        [Group("Split/Right/Imbue")]
         public float imbueAngularDrag = -1;
-        [Group("Imbue")]
+        [Group("Split/Right/Imbue")]
         public float imbueGravityFalloffThreshold = 0.3f;
 
-        [Group("Imbue hit")]
+        [Group("Split/Right/Imbue hit")]
         [Dropdown(nameof(GetAllEffectID))]
         public string imbueHitEffectId;
         protected EffectData imbueHitEffectData;
-        [Group("Imbue hit")]
+        [Group("Split/Right/Imbue hit")]
         [Dropdown(nameof(GetAllEffectID))]
         public string imbueHitItemEffectId;
         protected EffectData imbueHitItemEffectData;
-        [Group("Imbue hit")]
+        [Group("Split/Right/Imbue hit")]
         [Dropdown(nameof(GetAllEffectID))]
         public string imbueHitRagdollEffectId;
         protected EffectData imbueHitRagdollEffectData;
 
-        [Group("Imbue hit")]
+        [Group("Split/Right/Imbue hit")]
         [Dropdown(nameof(GetAllStatusEffectID))]
         public string imbueStatusEffectId = "Floating";
         
         [NonSerialized]
         public StatusData imbueStatusEffect;
 
-        [Group("Imbue hit")]
+        [Group("Split/Right/Imbue hit")]
         public float imbueHitItemZeroGravityDuration = 5;
-        [Group("Imbue hit")]
+        [Group("Split/Right/Imbue hit")]
         public float imbueHitRagdollZeroGravityDuration = 5;
-        [Group("Imbue hit")]
+        [Group("Split/Right/Imbue hit")]
         public float imbueHitGravityRatio = 0.1f;
-        [Group("Imbue hit")]
+        [Group("Split/Right/Imbue hit")]
         public float imbueHitMassRatio = 0.5f;
 
 
-        [Group("Staff Slam")]
+        [Group("Split/Right/Staff Slam")]
         public int staffSlamPushLevel = 2;
-        [Group("Staff Slam")]
+        [Group("Split/Right/Staff Slam")]
         public float staffSlamExplosionUpwardModifier = 1f;
-        [Group("Staff Slam")]
+        [Group("Split/Right/Staff Slam")]
         public float staffSlamWaveSpeed = 12f;
-        [Group("Staff Slam")]
+        [Group("Split/Right/Staff Slam")]
         public float staffSlamWaveUpdateRate = 0.05f;
-        [Group("Staff Slam")]
+        [Group("Split/Right/Staff Slam")]
         public float staffSlamMinRadius = 2f;
-        [Group("Staff Slam")]
+        [Group("Split/Right/Staff Slam")]
         public float staffSlamMaxRadius = 8f;
-        [Group("Staff Slam")]
+        [Group("Split/Right/Staff Slam")]
         public float staffSlamMinForce = 10f;
-        [Group("Staff Slam")]
+        [Group("Split/Right/Staff Slam")]
         public float staffSlamMaxForce = 15f;
-        [Group("Staff Slam")]
+        [Group("Split/Right/Staff Slam")]
         public ForceMode staffSlamForceMode = ForceMode.VelocityChange;
-        [Group("Staff Slam")]
+        [Group("Split/Right/Staff Slam")]
         public float staffSlamStatusDuration = 5;
-        [Group("Staff Slam")]
+        [Group("Split/Right/Staff Slam")]
         public EffectOnPlayer staffSlamPlayerEffect = EffectOnPlayer.PushWhenJumping;
-
-        [Group("Musket")]
-        public float musketRadius = 2;
-
-        [Group("Musket")]
-        public LayerMask musketDecapitateLayerMask;
-
-        [Group("Musket")]
-        public float musketForce = 50;
-
-        [Group("Musket")]
-        public float musketExplosionRadius = 5;
-
-        [Group("Musket")]
-        public float musketExplosionForce = 2;
-
-        [Group("Musket")]
-        public float musketHitCrystalDamage = 60;
-
-        [Group("Musket")]
-        public float musketExplosionCrystalDamage = 15;
-
-        [Group("Musket")]
-        [Dropdown(nameof(GetAllItemID))]
-        public string musketProjectileId;
-        protected ItemData musketProjectileData;
-
-        [Group("Musket")]
-        [Dropdown(nameof(GetAllDamagerID))]
-        public string musketProjectileDamagerId;
-        protected DamagerData musketProjectileDamagerData;
-
-        [Group("Musket")]
-        public float musketShootSpeed = 40;
-
-        [Group("Musket")]
-        public float musketPlayerForce = 10f;
-
-        [Group("Musket")]
-        public string musketProjectileExplosionEffectId;
-        protected EffectData musketProjectileExplosionEffectData;
-
-        [Group("Musket")]
-        public string musketProjectileEffectId;
-        protected EffectData musketProjectileEffectData;
 
         [NonSerialized]
         protected float lastImbueFalloffAmount;
@@ -228,10 +182,6 @@ namespace ThunderRoad.Skill.Spell
             imbueHitEffectData = Catalog.GetData<EffectData>(imbueHitEffectId);
             imbueHitItemEffectData = Catalog.GetData<EffectData>(imbueHitItemEffectId);
             imbueHitRagdollEffectData = Catalog.GetData<EffectData>(imbueHitRagdollEffectId);
-            musketProjectileData = Catalog.GetData<ItemData>(musketProjectileId);
-            musketProjectileDamagerData = Catalog.GetData<DamagerData>(musketProjectileDamagerId);
-            musketProjectileEffectData = Catalog.GetData<EffectData>(musketProjectileEffectId);
-            musketProjectileExplosionEffectData = Catalog.GetData<EffectData>(musketProjectileExplosionEffectId);
         }
 
     }

@@ -1,0 +1,83 @@
+{
+  "$type": "ThunderRoad.Music, ThunderRoad",
+  "id": "MusicArenaDalgarianRoom",
+  "sensitiveContent": "None",
+  "sensitiveFilterBehaviour": "Discard",
+  "version": 0,
+  "groupPath": null,
+  "volumeDb": -1.0,
+  "groupsToLoad": [
+    "MusicDalgarianXriserFight",
+    "MusicDalgarianFight",
+    "MusicDalgarianLowerFight"
+  ],
+  "transitions": [
+    {
+      "$type": "ThunderRoad.Music+MusicTransition, ThunderRoad",
+      "sourceGroup": "",
+      "destinationGroup": "MusicDalgarianFight",
+      "musicGroup": "MusicDalgarianXriserFight",
+      "timeBeforeTransition": 0,
+      "transitionType": "Immediate",
+      "timePreTransition": 0,
+      "preTransitionType": "Immediate",
+      "timeBeforeDestStart": 2,
+      "transitionDestStartType": "OnBeat"
+    },
+    {
+      "$type": "ThunderRoad.Music+MusicTransition, ThunderRoad",
+      "sourceGroup": "MusicDalgarianFight",
+      "destinationGroup": "",
+      "musicGroup": "MusicDalgarianLowerFight",
+      "timeBeforeTransition": 2,
+      "transitionType": "OnGrid",
+      "timePreTransition": 0,
+      "preTransitionType": "Immediate",
+      "timeBeforeDestStart": 0,
+      "transitionDestStartType": "Immediate"
+    }
+  ],
+  "dynamicModules": {
+    "$type": "ThunderRoad.MusicDynamicModuleMap, ThunderRoad",
+    "WaveSpawnerTransition": {
+      "$type": "ThunderRoad.MusicWaveSpawnerTransitionModule, ThunderRoad",
+      "ambianceMusicGroupId": "",
+      "waveMusicGroupId": "MusicDalgarianFight",
+      "isDefault": true,
+      "IsConnected": false
+    },
+    "CombatKillStingerMele": {
+      "$type": "ThunderRoad.MusicStingerCombatKillModule, ThunderRoad",
+      "killType": "mele",
+      "damageRatioThreshold": 0.75,
+      "timeComboKill": 0.01,
+      "stingerEffectIdList": [
+        "ArenaOnKillStingerMele"
+      ],
+      "isDefault": true,
+      "IsConnected": false
+    },
+    "CombatKillStingerRange": {
+      "$type": "ThunderRoad.MusicStingerCombatKillModule, ThunderRoad",
+      "killType": "range",
+      "damageRatioThreshold": 0.75,
+      "timeComboKill": 0.01,
+      "stingerEffectIdList": [
+        "ArenaOnKillStingerRange"
+      ],
+      "isDefault": true,
+      "IsConnected": false
+    },
+    "CombatKillStingerIndirect": {
+      "$type": "ThunderRoad.MusicStingerCombatKillModule, ThunderRoad",
+      "killType": "indirectCause",
+      "damageRatioThreshold": 0.75,
+      "timeComboKill": 0.01,
+      "stingerEffectIdList": [
+        "ArenaOnKillStingerIndirect"
+      ],
+      "isDefault": true,
+      "IsConnected": false
+    }
+  }
+}

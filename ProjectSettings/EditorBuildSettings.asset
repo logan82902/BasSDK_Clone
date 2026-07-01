@@ -17,9 +17,15 @@ EditorBuildSettings:
       type: 2}
     Unity.XR.WindowsMR.Settings: {fileID: 11400000, guid: 679f1a79868253e4d98cd80beabf7f20,
       type: 2}
+    UnityEngine.XR.PSVR2.PSVR2Settings: {fileID: 11400000, guid: 7807d2652c8ea62418d9e4d9bc0f1b54,
+      type: 2}
     com.unity.addressableassets: {fileID: 11400000, guid: 44ece3deb61a9814daba561dec1ae503,
       type: 2}
+    com.unity.input.settings: {fileID: 11400000, guid: eac538d8e0f482d4380c10b8670556a7,
+      type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 6684263135e52884aa65014013df11e8,
+      type: 2}
+    com.unity.xr.openxr.settings4: {fileID: 11400000, guid: f9278335087c33a4ea118e6c93699e46,
       type: 2}
     xr.sdk.mock-hmd.settings: {fileID: 11400000, guid: 872486af1100f414591bcd7f3b0b6fd5,
       type: 2}

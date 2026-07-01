@@ -91,6 +91,12 @@
       "id": "breathlessdeath",
       "mixerChannel": "Voice",
       "audioGroupAddress": "Bas.AudioGroup.Voice.Male.BreathlessDeath"
+    },
+    {
+      "$type": "ThunderRoad.VoiceData+Dialog, ThunderRoad",
+      "id": "heavybreath",
+      "mixerChannel": "Voice",
+      "audioGroupAddress": "Bas.AudioGroup.Voice.Male.Exhausted"
     }
   ]
 }

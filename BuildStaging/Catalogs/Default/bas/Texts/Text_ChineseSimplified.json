@@ -3872,6 +3872,13 @@
         },
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "LoadAchievements",
+          "text": "成就加载中",
+          "spriteAddress": "",
+          "videoAddress": ""
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
           "id": "GeneratePools",
           "text": "正在生成数据池",
           "spriteAddress": "",
@@ -6123,6 +6130,20 @@
       "texts": [
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "LevelDayVariantName",
+          "text": "白天",
+          "spriteAddress": "",
+          "videoAddress": ""
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "LevelNightVariantName",
+          "text": "夜晚",
+          "spriteAddress": "",
+          "videoAddress": ""
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
           "id": "Arena",
           "text": "竞技场",
           "spriteAddress": "",
@@ -6186,7 +6207,14 @@
         },
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
-          "id": "MarketDescription",
+          "id": "MarketDayVariantDescription",
+          "text": "埃拉登城镇中心的市场，在晴朗的阳光下显得格外明亮。",
+          "spriteAddress": "",
+          "videoAddress": ""
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "MarketNightVariantDescription",
           "text": "埃拉登人城镇中心的广场。到了深夜，这里便不再熙熙攘攘。",
           "spriteAddress": "",
           "videoAddress": ""
@@ -6299,35 +6327,35 @@
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
           "id": "OutpostLibraryDescription",
-          "text": "老旧的图书馆，库藏不少早已被世人遗忘的书籍。",
+          "text": "一座古老而相当密集的图书馆，堆满了被遗忘的书籍。",
           "spriteAddress": "",
           "videoAddress": ""
         },
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
           "id": "OutpostWatermillDescription",
-          "text": "小溪旁边的小磨坊，位于前哨站的防御工事中间。",
+          "text": "一座建在前哨站防御工事之间溪流上的小型磨坊。",
           "spriteAddress": "",
           "videoAddress": ""
         },
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
           "id": "OutpostFallenCorridorDescription",
-          "text": "临时充当训练场的小院子。",
+          "text": "一个被用作临时训练场的小庭院。",
           "spriteAddress": "",
           "videoAddress": ""
         },
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
           "id": "OutpostChapelDescription",
-          "text": "献给老国王阿尔达里克的祭拜场所。",
+          "text": "一个供奉古老国王阿尔达里克的礼拜场所。",
           "spriteAddress": "",
           "videoAddress": ""
         },
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
           "id": "OutpostCoastalFortDescription",
-          "text": "修建在海边的堡垒，用于防备入侵者。",
+          "text": "一座建在海滩上用于防御和监视入侵者的防御工事。",
           "spriteAddress": "",
           "videoAddress": ""
         },
@@ -6384,6 +6412,139 @@
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
           "id": "MadluMap",
           "text": "马德鲁",
+          "spriteAddress": "",
+          "videoAddress": ""
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "OutpostLibrary",
+          "text": "前哨站图书馆",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "OutpostWatermill",
+          "text": "前哨站水车磨坊",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "OutpostFallenCorridor",
+          "text": "前哨站坍塌走廊",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "OutpostChapel",
+          "text": "前哨站小教堂",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "OutpostCoastalFort",
+          "text": "前哨站海岸堡垒",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "DalgarianMuseum",
+          "text": "达尔加里亚博物馆",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "DalgarianMuseumDescription",
+          "text": "一个半坍塌的达尔加里亚房间，内有数个基座和展品，可能是一座博物馆。",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "DalgarianRefinary",
+          "text": "达尔加里亚精炼厂",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "DalgarianRefinaryDescription",
+          "text": "一个高大的房间，内有一座大型水晶精炼厂。液态水晶的通道围绕着一个用途未知的重力水晶旋转。",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "DalgarianSenate",
+          "text": "达尔加里亚元老院",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "DalgarianSenateDescription",
+          "text": "一个达尔加里亚元老院议事厅。在过去的年代，达尔加里亚议会可能曾在此开会。",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "DalgarianForge",
+          "text": "达尔加里亚熔炉",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "DalgarianForgeDescription",
+          "text": "一座达尔加里亚熔炉，可能用于精炼和塑造阿斯塔里姆。",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "DalgarianTemple",
+          "text": "达尔加里亚神庙",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "DalgarianTempleDescription",
+          "text": "一个通往古老祭坛的宏伟大厅。",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibDesert",
+          "text": "卡雷什堡垒",
+          "spriteAddress": "",
+          "videoAddress": ""
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibDesertDescription",
+          "text": "一座废弃已久的堡垒，战略性地位于卡尔提布灼热的沙漠之中。",
+          "spriteAddress": "",
+          "videoAddress": ""
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "OutpostArenasMap",
+          "text": "前哨站竞技场",
+          "spriteAddress": "",
+          "videoAddress": ""
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "DalgarianArenasMap",
+          "text": "达尔加里亚竞技场",
           "spriteAddress": "",
           "videoAddress": ""
         }
@@ -12867,49 +13028,21 @@
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
           "id": "ItemFalchion_1",
-          "text": "快看，这是什么？这可是卡尔·提布出产的弯刃大刀！绝对不能轻易出售，老兄！",
+          "text": "喔，那是森塔利刀！朋友，你肯定不想卖掉它的！",
           "spriteAddress": "",
           "videoAddress": ""
         },
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
-          "id": "ItemFalchion_4",
-          "text": "快看，这是什么？这可是卡尔·提布出产的弯刃大刀！绝对不能轻易出售！",
+          "id": "ItemFalchion_2",
+          "text": "你手里拿的是什么，一把弯刀？这在咱们这儿可是稀罕货，留着吧，朋友。",
           "spriteAddress": "",
           "videoAddress": ""
         },
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
-          "id": "ItemFalchion_6",
-          "text": "充满异国风情的利刃！卡尔·提布水手专属武器，极具收藏价值。",
-          "spriteAddress": "",
-          "videoAddress": ""
-        },
-        {
-          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
-          "id": "ItemFalchion_9",
-          "text": "充满异国风情的利刃！卡尔·提布水手专属武器，极具收藏价值。",
-          "spriteAddress": "",
-          "videoAddress": ""
-        },
-        {
-          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
-          "id": "ItemFalchion_11",
-          "text": "看来你给自己找了一件异域武器，这把弯刀是来自卡尔·提布大陆的弯刃大刀。",
-          "spriteAddress": "",
-          "videoAddress": ""
-        },
-        {
-          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
-          "id": "ItemFalchion_13",
-          "text": "看来你给自己找了一件异域武器，这把弯刀是来自卡尔·提布沙漠的弯刃大刀。",
-          "spriteAddress": "",
-          "videoAddress": ""
-        },
-        {
-          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
-          "id": "ItemFalchion_18",
-          "text": "看来你给自己找了一件异域武器，这把弯刀是来自卡尔·提布沙漠大陆的弯刃大刀。",
+          "id": "ItemFalchion_3",
+          "text": "哇！一把森塔利弯刀。我以前冒险的时候最喜欢这种武器了。这可是稀罕物，朋友，要是我的话肯定留着。",
           "spriteAddress": "",
           "videoAddress": ""
         },
@@ -14837,6 +14970,321 @@
           "text": "装弹上膛，伙计！",
           "spriteAddress": "",
           "videoAddress": ""
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibArmour_1",
+          "text": "感受到那坚硬的甲片了吗？卡雷什人用他们沙漠中奇异生物的甲壳制作盔甲。",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibArmour_2",
+          "text": "生活在沙漠中，很难找到常规的金属和纤维，但卡雷什人用他们拥有的资源做到了最好。",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibArmour_3",
+          "text": "说实话，我不喜欢沙子。它又粗又糙又扎人，还到处都是。所以穿上这个之前，一定要把它抖干净。",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibBombFire_1",
+          "text": "伙计，你这瓶子里装的可是一片炼狱！小心处理，尤其别在旁边点烟斗。",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibBombFire_2",
+          "text": "卡尔提布沙漠的高温很残酷，但我宁愿被困在那里几周，也不愿挨上这些东西一下。",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibBombGravity_1",
+          "text": "如果你需要快速翻墙，把这东西扔在脚下，你就能飞起来！",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibBombLightning_1",
+          "text": "你知道强大的巫师是如何用法杖发出的闪电弧将人劈成两半的吗？是的，嗯……卡雷什人不知怎么把这种体验装进了瓶子里！",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibBombLightning_2",
+          "text": "这种炸弹在卡雷什人中以其致命性和造成的屠戮而闻名。可怕的东西。",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibBombGeneric_Special",
+          "text": "灯油？绳子？炸弹？只要你出得起钱，伙计，它们就是你的！",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibCrossbow_1",
+          "text": "对于不熟悉射箭的人来说，弩是弓的绝佳替代品。更容易瞄准，上弦后无需费力保持拉弓状态！",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibCrossbow_2",
+          "text": "弩很容易射击，这对卡尔提布的小部落很有吸引力，他们有时需要依靠未经训练的民众来防御。",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibCrossbow_3",
+          "text": "我见过一些森塔利发明家试图改进卡雷什弩的疯狂图纸。其中一种设计上有一个旋转的“气缸”。想法很酷，但绝对行不通！",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibCrystalCore_1",
+          "text": "一个水晶核心！极其稀有……但如果我兜售水晶核心的消息传出去，这个岛就会被渴望力量的巫师们蜂拥而至，他们会用武力夺走一切。恐怕无论什么价格，我都不能收下这个。",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibCrystalCore_2",
+          "text": "一个水晶核心……你做到了！干得好，伙计。你手上握有巨大的力量，但听着……一个人拥有的力量越大，他的眼光往往就越不清晰。",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibCrystalCore_3",
+          "text": "嚯……公会现在肯定对我极为不满，但原则上，无论什么价格我都不能转卖这个水晶核心。它们的力量太强大了，而力量的危险之处并不在于它会改变一个人……而在于它让他相信自己配得上这种力量……不惜一切代价。",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibGenericWeapon_1",
+          "text": "卡雷什的工艺总是令人惊叹。武器上装饰着优雅的骨质点缀。真是令人印象深刻。",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibGenericWeapon_2",
+          "text": "弯刀是卡尔提布的拿手好戏。它们更容易切割，因为刀刃是顺着皮肤划开，而非直接切入。所以，你最好别挨上一下。",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibGenericWeapon_3",
+          "text": "卡雷什人真是足智多谋。你在那些武器上看到的骨头，大部分来源于栖息在沙漠沙土中的生物。",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibGenericWeapon_4",
+          "text": "买得好。那是正宗的卡雷什武器。",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibGenericWeapon_5",
+          "text": "那件武器源自卡尔提布。它会很好地为你所用。",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibGenericWeapon_6",
+          "text": "我听过埃拉登人吹嘘卡雷什战士在战前将刀刃沐浴在阳光下，据称是为了对敌人造成额外的燃烧伤害。呵，纯属捏造。",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibGenericWeapon_7",
+          "text": "你见过有人使用两端都有刀刃的长矛吗？我听说它在南方的巫师中出奇地受欢迎。",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibSwordOfNaa_1",
+          "text": "你在拜斯那儿搞到了什么？这是达尔加里亚的东西？哇，伙计，这么烫手的东西我可没法脱手。你还是自己留着吧。",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibSwordOfNaa_2",
+          "text": "老天爷……一把达尔加里亚剑？这玩意可没法定价，伙计！你还是自己留着吧。",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibSwordOfNaa_3",
+          "text": "我简直不敢相信自己的眼睛！一把真正的达尔加里亚剑……外面有些人为了得到它会割开你的喉咙，伙计。这么烫手的东西，我可不敢冒险转卖。",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibWristBlade_1",
+          "text": "这就是终极的刺客工具。刀刃在你需要使用的那一刻之前一直保持隐藏状态。",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibWristBlade_2",
+          "text": "那把刀刃的确切来源未知，但普遍认为它被用于卡尔提布的刺客公会。不过我觉得不太可能；它看起来一点都不像卡雷什的工艺。",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibWristBlade_3",
+          "text": "那个装置确实令人着迷。我自己也搞不太明白。",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibCheckout_Special",
+          "text": "真的很高兴有你这样的顾客，伙计。我这儿总会经过一些古怪的家伙。就在昨天，一个流浪汉晃了进来……到处乱跑，自言自语，把我吓坏了！",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibFirstLore_0",
+          "text": "哎呀……你知道你手里的是什么吗？那东西来自卡尔提布！不是个会轻易忘记的地方，但我要告诉你，那地方很复杂……不是一种容易定义的文化；",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibFirstLore_1",
+          "text": "更像是由散布在沙海中的部落拼凑而成，每个部落都有自己的军阀、习俗和积怨。",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibFirstLore_2",
+          "text": "白天酷热难耐，夜晚寒冷刺骨，中间没有一丝仁慈。但那里的人呢？个个都坚韧不拔。",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibFirstLore_3",
+          "text": "当然，他们必须如此，想想那些潜伏在沙土下的生物……你不会想知道的！",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibLore_A_0",
+          "text": "卡尔提布的每个部落都发誓自己是最古老、最强大、最正统的统治者。",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibLore_A_1",
+          "text": "有趣的是，如果你和他们待在一起足够久，你会开始相信他们每一个。",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibLore_B_0",
+          "text": "卡尔提布一直是由分散的部落组成的，靠着共同的文化认同而松散地联系在一起。",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibLore_B_1",
+          "text": "现在有传言说，一位强大的军阀正将所有部落统一在同一旗帜下。这是个危险的念头。",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibLore_B_2",
+          "text": "卡尔提布的力量一直因其缺乏凝聚力而被削弱……一旦统一，你将得到整个世界都该担心的东西。",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibLore_C_0",
+          "text": "啊，卡尔提布……你首先学到的是，沙漠不会原谅错误。我曾亲眼看见一支商队一夜之间消失——没有踪迹，没有残骸，早晨只剩下平整的沙地。",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibLore_C_1",
+          "text": "如果你在那听到低沉的轰鸣声？别站在那里试图弄清楚怎么回事。这点相信我。",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibLore_D",
+          "text": "你见过沙地滑翔船吗？一种奇怪的卡尔提布装置；一半是船，一半是奇迹，旨在穿越原本无法通行的沙漠。",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibLore_E_0",
+          "text": "卡尔提布的集市是混乱的……美丽的混乱。",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibLore_E_1",
+          "text": "空气中弥漫着浓郁的香料，织物比宝石还要鲜艳，每个商贩都让你相信他们给你的价格会让他们破产。",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibLore_F",
+          "text": "卡尔提布的夜幕像锤子一样砸下来。前一秒你还汗湿靴子，下一秒你就冻结在清澈得仿佛伸手就能触碰到奥隆星球的天空下。",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibLore_G",
+          "text": "贸易在卡尔提布是一件有趣的事情。铁和木材能换来国王的赎金，作为回报，你会看到在拜斯其他任何地方都找不到的纺织品和水果。",
+          "spriteAddress": null,
+          "videoAddress": null
         }
       ]
     },
@@ -15002,6 +15450,27 @@
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
           "id": "Rakta",
           "text": "拉克塔",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTib",
+          "text": "卡尔提布",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibOutpostDesc",
+          "text": "卡尔提布前哨站",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibDalgDesc",
+          "text": "卡尔提布达尔加里亚遗迹",
           "spriteAddress": null,
           "videoAddress": null
         }
@@ -15975,6 +16444,20 @@
           "text": "灵能者套装",
           "spriteAddress": "",
           "videoAddress": ""
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleArmorKharTibName",
+          "text": "卡雷什战士组合",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleKharTibBundleT2Name",
+          "text": "剑盾组合",
+          "spriteAddress": null,
+          "videoAddress": null
         }
       ]
     }
@@ -16151,8 +16634,8 @@
     {
       "$type": "ThunderRoad.TextData+Item, ThunderRoad",
       "id": "DualBladeStaff",
-      "name": "刃杖",
-      "description": "来自卡尔·提布的非正统武器，据说用于舞蹈而非战斗，但杖刃仍然锋利且品质上乘。"
+      "name": "双刃法杖",
+      "description": "一种非传统武器，据说更多用于某种舞蹈而非战斗，但其刀刃依然锋利且品质上乘。"
     },
     {
       "$type": "ThunderRoad.TextData+Item, ThunderRoad",
@@ -16224,7 +16707,7 @@
       "$type": "ThunderRoad.TextData+Item, ThunderRoad",
       "id": "WristBlade",
       "name": "腕刃",
-      "description": "来自卡尔·提布的暗杀利刃，采用腕部固定设计，使用者可以施展出远超常规的刺击力度。"
+      "description": "一把来源异域的刺客之刃。刀刃可以隐藏以保持隐秘，而腕部装置使使用者能够比平常施加更大的刺击力量。"
     },
     {
       "$type": "ThunderRoad.TextData+Item, ThunderRoad",
@@ -16787,8 +17270,8 @@
     {
       "$type": "ThunderRoad.TextData+Item, ThunderRoad",
       "id": "SwordOldieFalchion",
-      "name": "弯刃大刀",
-      "description": "源自卡尔·提布的古老弯刃大刀，常用于在海战中对抗森塔拉海盗。"
+      "name": "法尔西昂弯刀",
+      "description": "一把源自森塔利的古老法尔西昂弯刀，被世界各地的水手、私掠者和海盗使用。"
     },
     {
       "$type": "ThunderRoad.TextData+Item, ThunderRoad",
@@ -17971,6 +18454,162 @@
       "id": "Dojo_Gong_Mallet",
       "name": "锣槌",
       "description": ""
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "AxeKharTibDouble",
+      "name": "双刃战斧",
+      "description": "一把沉重而威风的卡雷什战斧。需要力量和体力才能有效使用，但相当强大且用途广泛。"
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "AxeLongKharTibWarpick",
+      "name": "战爪",
+      "description": "一种卡雷什战镐与镰刀的混合武器，灵感来自卡尔提布土地上生物的凶猛利爪。"
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "DaggerKharTibHaladie",
+      "name": "双刃匕首",
+      "description": "一把需要特殊技巧才能充分发挥的卡雷什匕首。在卡尔提布，它被公开佩戴，作为精英士兵技能的标志。"
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "ShieldKharTib",
+      "name": "卡雷什盾牌",
+      "description": "一面来自卡尔提布的盾牌，因其兼具攻防能力而被许多士兵使用。"
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "SwordKharTibKhopesh",
+      "name": "镰形剑",
+      "description": "一把源自卡尔提布的精英武器，结合了斧与剑的优势。"
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "SwordKharTibScimitar",
+      "name": "弯刀",
+      "description": "一把常见的卡雷什剑，被设计为简单而卓越的劈砍武器。"
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "DualBladeStaffKharTib",
+      "name": "卡雷什双刃法杖",
+      "description": "一把来自卡尔-提布的战杖。据说它专为使用者在附近没有盟友时同时对抗多个敌人而打造，因此在战斗中极其罕见。"
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "SpellBombLightning",
+      "name": "雷电水晶炸弹",
+      "description": "一种由元素水晶制成的爆炸装置。必须装备后投掷。短暂延迟后，这枚炸弹将释放出切割般的闪电丝线。"
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "SpellBombFire",
+      "name": "火焰水晶炸弹",
+      "description": "一种由元素水晶制成的爆炸装置。必须装备后投掷。只有当接近敌人时，才会产生火焰爆炸"
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "SpellBombGravity",
+      "name": "重力水晶炸弹",
+      "description": "一种由元素水晶制成的爆炸装置。必须装备后投掷。接触时，这枚炸弹将产生重力脉冲。"
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "BombQuiverLightning",
+      "name": "雷电水晶炸弹（复数）",
+      "description": "一种由元素水晶制成的爆炸装置。必须装备后投掷。短暂延迟后，这枚炸弹将释放出切割般的闪电丝线。"
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "BombQuiverFire",
+      "name": "火焰水晶炸弹（复数）",
+      "description": "一种由元素水晶制成的爆炸装置。必须装备后投掷。只有当接近敌人时，才会产生火焰爆炸。"
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "BombQuiverGravity",
+      "name": "重力水晶炸弹（复数）",
+      "description": "一种由元素水晶制成的爆炸装置。必须装备后投掷。接触时，这枚炸弹将产生重力脉冲。"
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "KharTibCrossbow",
+      "name": "弩",
+      "description": "一种先进、紧凑的弩，威力不及普通弓，但以快速射击和易用性弥补了这一点。它可以在内部储存多发弹药，因此使用者无需为每次射击搭箭。"
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "KharTibCrossbowBolt",
+      "name": "弩箭",
+      "description": "一种用于弩的小型弹丸。"
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "QuiverBolts",
+      "name": "弩箭袋",
+      "description": "一种用于弩的小型弹丸。"
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "ApparelKharTibBoots",
+      "name": "卡雷什战士靴",
+      "description": "一双源自卡尔提布的涉沙靴。非常适合抵御沙漠的恶劣环境。"
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "ApparelKharTibGloveL",
+      "name": "卡雷什战士护臂（左）",
+      "description": "来自卡尔提布的护臂甲。"
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "ApparelKharTibGloveR",
+      "name": "卡雷什战士护臂（右）",
+      "description": "来自卡尔提布的护臂甲。"
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "ApparelKharTibHelmet",
+      "name": "卡雷什战士头盔",
+      "description": "一顶威风凛凛的卡雷什头盔，既能抵御沙漠环境，也能抵挡敌人的攻击。"
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "ApparelKharTibJacket",
+      "name": "卡雷什战士胸甲",
+      "description": "由卡尔提布野兽的硬化皮革制成的卡雷什战士盔甲。"
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "ApparelKharTibPants",
+      "name": "卡雷什战士腿甲",
+      "description": "来自卡尔提布的护腿甲。"
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "ApparelKharTibShoulder",
+      "name": "卡雷什战士肩甲",
+      "description": "卡雷什肩甲，仍保留着其取材野兽的部分特征。"
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "Cushion",
+      "name": "坐垫",
+      "description": null
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "GenieLamp",
+      "name": "灯",
+      "description": null
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "KharTibDrum",
+      "name": "鼓",
+      "description": null
     }
   ],
   "waves": [
@@ -18213,6 +18852,30 @@
       "id": "SentaraDuel",
       "title": "森塔利队长决斗",
       "description": "与森塔利队长进行一场至死方休的决斗。"
+    },
+    {
+      "$type": "ThunderRoad.TextData+Wave, ThunderRoad",
+      "id": "KharTibDuel",
+      "title": "卡雷什战士决斗",
+      "description": "与卡尔提布的战士进行一场至死方休的决斗。"
+    },
+    {
+      "$type": "ThunderRoad.TextData+Wave, ThunderRoad",
+      "id": "KharTibFull",
+      "title": "标准",
+      "description": "与这个派系的每一种敌人战斗。"
+    },
+    {
+      "$type": "ThunderRoad.TextData+Wave, ThunderRoad",
+      "id": "KharTibMeleeOnly",
+      "title": "仅近战",
+      "description": "只与使用近战武器的敌人战斗。"
+    },
+    {
+      "$type": "ThunderRoad.TextData+Wave, ThunderRoad",
+      "id": "KharTibSorceryOnly",
+      "title": "仅魔法",
+      "description": "与这个派系的法师战斗。"
     }
   ]
 }

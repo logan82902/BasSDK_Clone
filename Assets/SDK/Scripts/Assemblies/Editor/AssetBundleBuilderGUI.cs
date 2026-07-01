@@ -517,7 +517,7 @@ namespace ThunderRoad
 
             if (assetBundleGroup.exportAfterBuild)
             {
-                Export(assetBundleGroup);
+                Export(assetBundleGroup, assetBundleGroup.exportMode == ExportMode.ToFolder);
             }
         }
 

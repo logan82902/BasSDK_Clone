@@ -87,6 +87,7 @@ namespace ThunderRoad
 
     }
 
+    [AutoLabelWidth]
     [Serializable]
     public abstract class ContentCustomData { }
 
@@ -117,6 +118,7 @@ namespace ThunderRoad
             public int intVal;
             public float floatVal;
 
+            public AnimatorParam() { }
 
             public AnimatorParam(Animator animator, AnimatorControllerParameter param)
             {
@@ -168,6 +170,7 @@ namespace ThunderRoad
 
     }
 
+    [AutoLabelWidth]
     [System.Serializable]
     public abstract class ContentState
     {

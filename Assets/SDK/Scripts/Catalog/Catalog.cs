@@ -59,7 +59,6 @@ namespace ThunderRoad
             (typeof(TextData), Category.Text),
             (typeof(InteractableData), Category.Interactable),
             (typeof(HandPoseData), Category.HandPose),
-            (typeof(ExpressionData), Category.Expression),
             (typeof(LevelData), Category.Level),
             (typeof(DamagerData), Category.Damager),
             (typeof(MaterialData), Category.Material),

@@ -121,7 +121,7 @@
       "volumeSpeedCurve": null,
       "volumeBlendMode": "Min",
       "reverbZoneMix": 1.0,
-      "isNoiseForAI": false,
+      "isNoiseForAI": true,
       "onDynamicMusic": false,
       "dynamicMusicTiming": "OnBeat",
       "randomPlay": false,

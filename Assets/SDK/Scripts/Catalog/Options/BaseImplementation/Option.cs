@@ -1,4 +1,5 @@
 ﻿using System;
+using TriInspector;
 
 namespace ThunderRoad
 {
@@ -7,11 +8,15 @@ namespace ThunderRoad
 	/// </summary>
 	[Serializable]
 	public class Option : OptionBase<OptionIntValue>
-	{
-		public int minValue;
-		public int maxValue;
-		public int defaultValue;
-		public int stepValue = 1;
+    {
+        [Group("Foldout")]
+        public int minValue;
+        [Group("Foldout")]
+        public int maxValue;
+        [Group("Foldout")]
+        public int defaultValue;
+        [Group("Foldout")]
+        public int stepValue = 1;
 		protected int currentValue;
 		
 		public Option()

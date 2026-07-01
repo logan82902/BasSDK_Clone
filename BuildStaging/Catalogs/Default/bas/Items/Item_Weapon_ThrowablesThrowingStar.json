@@ -219,31 +219,19 @@
       "weaponHandling": "OneHanded",
       "secondaryHandling": "None",
       "weaponAttackTypes": "Swing, Thrust",
-      "alwaysPrimary": false,
+      "alwaysPrimary": true,
       "defaultStanceInfo": {
         "$type": "ThunderRoad.ItemModuleAI+StanceInfo, ThunderRoad",
-        "offhand": "Anything",
+        "offhand": "Empty",
         "grabAIHandleRadius": 0.0,
-        "stanceDataID": "HumanMelee1hStance"
+        "stanceDataID": "HumanMeleeShieldStance"
       },
       "stanceInfosByOffhand": [
         {
           "$type": "ThunderRoad.ItemModuleAI+StanceInfo, ThunderRoad",
-          "offhand": "Empty",
-          "grabAIHandleRadius": 0.0,
-          "stanceDataID": "HumanMelee1hStance"
-        },
-        {
-          "$type": "ThunderRoad.ItemModuleAI+StanceInfo, ThunderRoad",
-          "offhand": "AnyShield",
-          "grabAIHandleRadius": 0.0,
-          "stanceDataID": "HumanMeleeShieldStance"
-        },
-        {
-          "$type": "ThunderRoad.ItemModuleAI+StanceInfo, ThunderRoad",
           "offhand": "AnyMelee",
           "grabAIHandleRadius": 0.0,
-          "stanceDataID": "HumanMeleeDualWieldStance"
+          "stanceDataID": "HumanMelee1hStance"
         }
       ],
       "rangedWeaponData": {

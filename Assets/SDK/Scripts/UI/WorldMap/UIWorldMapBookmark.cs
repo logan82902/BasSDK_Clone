@@ -11,6 +11,10 @@ namespace ThunderRoad
         public int order;
         [NonSerialized]
         public UIWorldMapBoard mapBoard;
+        [NonSerialized]
+        public UIWorldMap worldMap;
+        [NonSerialized]
+        public UICustomisableButton button;
         
     }
 }

@@ -1,7 +1,7 @@
-﻿using UnityEngine;
-
-
+﻿using System.Collections.Generic;
+using ThunderRoad.Skill;
 using TriInspector;
+using UnityEngine;
 
 namespace ThunderRoad
 {
@@ -15,7 +15,13 @@ namespace ThunderRoad
         public float imbueRate;
         [Range(0f, 100f)]
         public float imbueMaxPercent = 50f;
+        [Dropdown(nameof(GetAllSpellCastChargeID), AppendToField = true)]
         public string imbueSpellId;
+        [DropdownList(nameof(GetAllSpellSkillID))]
+        public List<string> imbueSkillIDs;
+
+        public TriDropdownList<string> GetAllSpellCastChargeID() => Catalog.GetDropdownAllID<SpellCastCharge>();
+        public TriDropdownList<string> GetAllSpellSkillID() => Catalog.GetDropdownAllID<SpellSkillData>();
 
         private void OnValidate()
         {

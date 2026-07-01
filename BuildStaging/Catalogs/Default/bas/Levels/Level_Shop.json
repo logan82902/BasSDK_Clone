@@ -9,6 +9,7 @@
   "description": "Best wares in Eraden!",
   "descriptionLocalizationId": "ShipShopDescription",
   "sceneAddress": "Bas.Level.Shop",
+  "sceneVariants": null,
   "showOnlyDevMode": false,
   "showInLevelSelection": false,
   "worldMapId": "Eraden",
@@ -65,5 +66,6 @@
   ],
   "customCameras": [],
   "throwableRefType": "Item",
-  "improvisedThrowableID": null
+  "improvisedThrowableID": null,
+  "HasSceneVariants": false
 }

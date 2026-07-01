@@ -63,13 +63,13 @@ namespace ThunderRoad
         public float maxTotalCount;
         [ListDrawerSettings(HideAddButton = true, HideRemoveButton = true, Draggable = false)]
         [HideReferencePicker]
-        public List<WaveFaction> factions = new();
+        public List<WaveFaction> factions = new List<WaveFaction>();
 
         [HideReferencePicker]
         [OnValueChanged(nameof(RefreshInfo))]
         public List<Group> groups;
 
-        public List<WaveModule> modules;
+        public List<WaveModule> modules = new List<WaveModule>();
 
         public override int GetCurrentVersion()
         {
@@ -81,6 +81,7 @@ namespace ThunderRoad
             base.OnCatalogRefresh();
             if (Application.isPlaying) ClearNullOrEmptyRefGroups();
             RefreshInfo();
+            if (modules == null) modules = new List<WaveModule>();
             if (modules is { Count: > 0 })
             {
                 for (var i = 0; i < modules.Count; i++)

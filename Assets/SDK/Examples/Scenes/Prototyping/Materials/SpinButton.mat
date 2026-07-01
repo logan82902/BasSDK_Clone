@@ -10,12 +10,12 @@ Material:
   m_Name: SpinButton
   m_Shader: {fileID: -6465566751694194690, guid: f2ccc783dd448614ebfe96a78331e1de,
     type: 3}
-  m_ValidKeywords:
-  - _CAUSTICSENABLE_ON
+  m_ValidKeywords: []
   m_InvalidKeywords:
   - LAYER_MAX3
   - MODED_MOSS
   - TEXTURE_MAX8
+  - _CAUSTICSENABLE_ON
   - _SIMPLESTOCHASTIC
   - _USECAUSTICEXTRASAMPLER_ON
   - _USECAUSTICRAINBOW_ON
@@ -248,14 +248,18 @@ Material:
     - _Int0: 0
     - _Layer0Metallic: 0
     - _Layer0NormalStrength: 1
+    - _Layer0Red: 0
     - _Layer0Red_UseReveal: 0
     - _Layer0Smoothness: 0.5
+    - _Layer1Green: 0
     - _Layer1Green_UseReveal: 0
     - _Layer1Metallic: 0
     - _Layer1NormalStrength: 1
     - _Layer1Smoothness: 0.5
+    - _Layer2Blue: 0
     - _Layer2Blue_UseReveal: 0
     - _Layer2Height: -1
+    - _Layer3Alpha: 0
     - _Layer3Alpha_UseReveal: 0
     - _MODE: 0
     - _MapContrast: 0.5
@@ -293,7 +297,7 @@ Material:
     - _OcclusionStrength: 1
     - _PRVOL: 0
     - _Parallax: 0.005
-    - _QueueControl: -1
+    - _QueueControl: 0
     - _QueueOffset: 0
     - _REFLECTIONBILLBOARDSTOCHASTIC: 0
     - _ReceiveShadows: 1

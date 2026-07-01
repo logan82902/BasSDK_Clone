@@ -16,7 +16,8 @@ namespace ThunderRoad
         public RectTransform levelTitleBox;
         public TextMeshProUGUI levelTitleText;
         public Image mapPreview = null;
-        public TextMeshProUGUI modeDescriptionText;
+        public UISelectionListButtonsLevelVariantOption levelVariantOption;
+        public TextMeshProUGUI mapDescriptionText;
 
         [Header("Faction Banner")]
         public GameObject enemyBanner;
@@ -24,7 +25,6 @@ namespace ThunderRoad
         public Image enemyBannerIcon;
         public Image enemyBannerBackground;
         public float titleBannerOffset;
-
 
         [Header("Level Options selection")]
         public int optionsPerPage = 6;

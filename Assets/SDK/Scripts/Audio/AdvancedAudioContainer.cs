@@ -14,24 +14,64 @@ namespace ThunderRoad
 {
     [HelpURL("https://kospy.github.io/BasSDK/Components/ThunderRoad/AdvancedAudioContainer")]
     [CreateAssetMenu(menuName = "ThunderRoad/Audio/Advanced audio container")]
+    [DeclareHorizontalGroup("Bools")]
+    [DeclareVerticalGroup("Clips")]
+    [DeclareHorizontalGroup("Clips/Horiz", Sizes = new float[] { -45f })]
+    [DeclareBoxGroup("Clips/Horiz/Box", HideTitle = true)]
+    [DeclareHorizontalGroup("CurveGen")]
+    [DeclareFoldoutGroup("AmpCurveSettings", Title = "Amplitude Curve Generation Settings")]
+    [DeclareHorizontalGroup("AmpCurveSettings/Horiz1")]
+    [DeclareHorizontalGroup("AmpCurveSettings/Horiz2")]
+    [DeclareHorizontalGroup("AmpCurveSettings/Horiz3")]
+    [DeclareHorizontalGroup("IDs")]
     public class AdvancedAudioContainer : ScriptableObject
     {
         [Serializable]
+        [DeclareVerticalGroup("Audio")]
+        [DeclareHorizontalGroup("Audio/Weight")]
+        [DeclareVerticalGroup("Animation")]
+        [DeclareVerticalGroup("Subtitle")]
         public class AudioClipData
         {
+            [HideInInspector]
+            public bool UseAmplitudeCurves = false;
+
             [ReadOnly]
+            [Group("Audio")]
+            [HideLabel]
             public AudioClip audio;
+            [Group("Animation")]
+            [HideLabel]
+            [HideIf(nameof(UseAmplitudeCurves))]
             public AnimationClip animation;
+            [Group("Animation")]
+            [HideLabel]
+            [ShowIf(nameof(UseAmplitudeCurves))]
+            public AnimationCurve amplitudeCurve;
+            [Group("Animation")]
+            [LabelText("Expression")]
+            [AutoLabelWidth]
             public FaceAnimator.Expression dialogExpression;
+            [Group("Subtitle")]
+            [LabelText("ID")]
+            [AutoLabelWidth]
             public string transcriptionTextId;
 # if UNITY_EDITOR
             [OnValueChanged(nameof(WeightUpdated))]
 #endif
+            [Group("Audio/Weight")]
+            [LabelText("Weight")]
+            [AutoLabelWidth]
             public int weight = 1;
 # if UNITY_EDITOR
             [ShowInInspector]
-            public float percent => Mathf.RoundToInt(1000f * ((float)weight / (Mathf.Approximately(totalWeight, 0f) ? weight : totalWeight))) / 10f;
+            [Group("Audio/Weight")]
+            [HideLabel]
+            public string percent => $"{Mathf.RoundToInt(1000f * ((float)weight / (Mathf.Approximately(totalWeight, 0f) ? weight : totalWeight))) / 10f}%";
             [ShowInInspector]
+            [Group("Subtitle")]
+            [LabelText("Text")]
+            [AutoLabelWidth]
             [ReadOnly]
             public string transcriptionText
             {
@@ -59,33 +99,128 @@ namespace ThunderRoad
             public AudioClipData(AudioClip aud) => audio = aud;
         }
 #if UNITY_EDITOR
-        [Header("Classification")]
+        [Group("Bools")]
+        [AutoLabelWidth(AddedWidth = 6f)]
         [Tooltip("If true, this audio container is considered diegetic (in-world sound source). If false, it's non-diegetic (UI or background sound).")]
         public bool isDiagetic = false;
 #endif
 
-        [TableList(AlwaysExpanded = true, HideAddButton = true, HideRemoveButton = true)]
+        [Group("Clips")]
+        [TableList(AlwaysExpanded = true, HideAddButton = true, IgnoreButtonSpacing = true)]
         public List<AudioClipData> clips = new();
+        [Group("Bools")]
+        [AutoLabelWidth(AddedWidth = 6f)]
         public bool useShuffle;
+        [Group("Bools")]
+        [AutoLabelWidth(AddedWidth = 6f)]
         public bool showSubtitles = true;
 #if UNITY_EDITOR
-        public void UpdateAllExpressions()
+        [InlineButton(nameof(GetExpressionOptions), "Set all expressions to...", DropdownButton = true, ButtonWidth = 220f)]
+        [NonSerialized]
+        [ShowInInspector]
+        [Group("Clips/Horiz/Box")]
+        [LabelText("Add new clip: ")]
+        [AutoLabelWidth]
+        [OnValueChanged(nameof(RunValidation))]
+        public AudioClip newClip;
+
+        [AutoLabelWidth(AddedWidth = 6f)]
+        [Group("CurveGen")]
+        [Tooltip("If true, an amplitude curve will be generated for each audio clip in this container for use with haptics or lip syncing")]
+        public bool UseAmplitudeCurves = false;
+
+        private TriDropdownList<Action> GetExpressionOptions()
         {
-            foreach (AudioClipData clip in clips)
+            TriDropdownList<Action> result = new TriDropdownList<Action>();
+            foreach (FaceAnimator.Expression expression in Enum.GetValues(typeof(FaceAnimator.Expression)))
             {
-                clip.dialogExpression = setAllExpressions;
+                result.Add($"{expression.ToString()}", () =>
+                {
+                    foreach (var clip in clips)
+                    {
+                        clip.dialogExpression = expression;
+                    }
+                    EditorUtility.SetDirty(this);
+                    AssetDatabase.SaveAssetIfDirty(this);
+                });
+            }
+            return result;
+        }
+
+        [ShowIf(nameof(UseAmplitudeCurves))]
+        [Group("AmpCurveSettings")]
+        [AutoLabelWidth(AddedWidth = 6f)]
+        [Tooltip("If greater than zero, amplitudes below this amount will be flattened to zero.")]
+        [Range(0, 1)]
+        public float amplitudeGate = 0;
+
+        [ShowIf(nameof(UseAmplitudeCurves))]
+        [Group("AmpCurveSettings/Horiz1")]
+        [AutoLabelWidth(AddedWidth = 6f)]
+        [Range(0, 1)]
+        public float fadeInDuration = 0;
+        [ShowIf(nameof(UseAmplitudeCurves))]
+        [Group("AmpCurveSettings/Horiz1")]
+        [AutoLabelWidth(AddedWidth = 6f)]
+        [Range(0, 1)]
+        public float fadeOutDuration = 0;
+
+        [ShowIf(nameof(UseAmplitudeCurves))]
+        [Group("AmpCurveSettings/Horiz2")]
+        [AutoLabelWidth(AddedWidth = 6f)]
+        [Range(0, 10)]
+        public float curvePower = 1;
+
+        [ShowIf(nameof(UseAmplitudeCurves))]
+        [Group("AmpCurveSettings/Horiz3")]
+        [AutoLabelWidth(AddedWidth = 6f)]
+        [Range(0, 10)]
+        public float amplify = 1;
+
+        [ShowIf(nameof(UseAmplitudeCurves))]
+        [Group("AmpCurveSettings/Horiz3")]
+        [AutoLabelWidth(AddedWidth = 6f)]
+        [Range(0, 1)]
+        public float boost = 0;
+
+        [ShowIf(nameof(UseAmplitudeCurves))]
+        [Group("AmpCurveSettings/Horiz2")]
+        public bool smoothCurve = true;
+
+        [ShowIf(nameof(UseAmplitudeCurves))]
+        [Group("AmpCurveSettings")]
+        [AutoLabelWidth(AddedWidth = 6f)]
+        [Range(0, 1)]
+        public float stopTime = 1;
+        [ShowIf(nameof(UseAmplitudeCurves))]
+        [Group("AmpCurveSettings")]
+        [AutoLabelWidth(AddedWidth = 6f)]
+        [Range(1, 120)]
+        public int SamplesPerSecond = 10;
+
+        [Button]
+        [Group("CurveGen")]
+        public void GenerateAmplitudeCurves()
+        {
+            UseAmplitudeCurves = true;
+            var settings = new AudioContainer.CurveParams
+            {
+                amplitudeGate = amplitudeGate,
+                fadeInDuration = fadeInDuration,
+                fadeOutDuration = fadeOutDuration,
+                samplesPerSecond = SamplesPerSecond,
+                smoothCurve = smoothCurve,
+                power = curvePower,
+                amplify = amplify,
+                boost = boost,
+                stopTime = stopTime
+            };
+            foreach (var audioClip in clips)
+            {
+                audioClip.amplitudeCurve = AudioContainer.GenerateCurveFromAudio(audioClip.audio, settings);
             }
         }
 
-        [NonSerialized]
-        [ShowInInspector]
-        [OnValueChanged(nameof(UpdateAllExpressions))]
-        public FaceAnimator.Expression setAllExpressions;
-#endif
-        [Header("Add clip")]
-        public AudioClip newClip;
-
-#if UNITY_EDITOR
         [Button]
         public void ApplyLabels()
         {
@@ -93,7 +228,6 @@ namespace ThunderRoad
             {
                 AudioContainer.SetLabels(data.audio, isDiagetic);
             }
-
         }
         
         public void UpdateWeights()
@@ -126,7 +260,8 @@ namespace ThunderRoad
             }
         }
 
-        [Button]
+        [Button("Find and replace in Transcription IDs")]
+        [Group("IDs")]
         public void IDFindAndReplace(string find = "", string replace = "")
         {
             foreach (AudioClipData data in clips)
@@ -144,27 +279,23 @@ namespace ThunderRoad
             }
         }
 
-        [Button]
-        public void AddTranscriptionIDsToTextJSON(string textID = "English", string groupID = "Dialog")
-        {
-            TextData text = Catalog.GetData<TextData>(textID);
-            TextData.TextGroup group = text.textGroups.First(groupInText => groupInText.id == groupID);
-            foreach (AudioClipData data in clips)
-            {
-                if (data.transcriptionTextId.IsNullOrEmptyOrWhitespace())
-                {
-                    Debug.LogError($"Missing subtitle for {name}/{data.audio.name}");
-                    continue;
-                }
-                group.texts.Add(new TextData.TextID() { id = data.transcriptionTextId, text = "L:" + data.transcriptionTextId });
-            }
-        }
 #endif
 
         private void OnValidate()
         {
             clips ??= new List<AudioClipData>();
 #if UNITY_EDITOR
+            RunValidation();
+#endif
+        }
+
+#if UNITY_EDITOR
+        private bool isValidating = false;
+
+        private void RunValidation()
+        {
+            if (isValidating) return;
+            isValidating = true;
             UpdateWeights();
             if (newClip != null)
             {
@@ -179,12 +310,35 @@ namespace ThunderRoad
                 clips.Add(new AudioClipData(newClip));
             }
             newClip = null;
+            var settings = new AudioContainer.CurveParams
+            {
+                amplitudeGate = amplitudeGate,
+                fadeInDuration = fadeInDuration,
+                fadeOutDuration = fadeOutDuration,
+                samplesPerSecond = SamplesPerSecond,
+                smoothCurve = smoothCurve,
+                power = curvePower,
+                amplify = amplify,
+                boost = boost,
+                stopTime = stopTime
+            };
             foreach (var clip in clips)
             {
                 clip.weightUpdate = UpdateWeights;
+                clip.UseAmplitudeCurves = UseAmplitudeCurves;
+                if (UseAmplitudeCurves)
+                {
+                    clip.amplitudeCurve = AudioContainer.GenerateCurveFromAudio(clip.audio, settings);
+                }
+                else
+                {
+                    clip.amplitudeCurve = null;
+                }
             }
-#endif
+            AssetDatabase.SaveAssetIfDirty(this);
+            isValidating = false;
         }
+#endif
 
         public AudioContainer audioContainer
         {
@@ -196,11 +350,13 @@ namespace ThunderRoad
                 }
                 _audioContainer = CreateInstance<AudioContainer>();
                 _audioContainer.sounds = new List<AudioClip>();
+                _audioContainer.amplitudeCurves = new List<AnimationCurve>();
                 foreach (AudioClipData data in clips)
                 {
                     for (int i = 0; i < data.weight; i++)
                     {
                         _audioContainer.sounds.Add(data.audio);
+                        if (data.amplitudeCurve != null) _audioContainer.amplitudeCurves.Add(data.amplitudeCurve);
                     }
                 }
                 _audioContainer.useShuffle = useShuffle;

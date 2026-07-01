@@ -17,7 +17,6 @@ namespace ThunderRoad
         protected float playTime;
 
         public bool spawnOnStart = true;
-        public bool editorLoad = true;
         
         [Range(0, 1)]
         public float intensity;
@@ -33,6 +32,8 @@ namespace ThunderRoad
         [GradientUsage(true)]
         public Gradient secondaryGradient;
 
+        public bool useCustomParent = false;
+        public Transform customParent;
         public Transform source;
         public Transform target;
 

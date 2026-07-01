@@ -275,7 +275,7 @@
       "intensitySmoothingSampleCount": 0,
       "speedSmoothingSampleCount": 10,
       "cullMinVolume": 0.05,
-      "volumeDb": -20.14,
+      "volumeDb": -10.0,
       "useVolumeIntensity": false,
       "volumeIntensityCurve": null,
       "useVolumeSpeed": true,

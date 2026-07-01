@@ -78,6 +78,7 @@
         "z": 0.0
       },
       "collisionEffectId": "",
+      "collisionEffectDuration": 0.0,
       "collisionLayerMask": -65665,
       "collisionMaxGroundAngle": 45.0,
       "collisionEmitRate": 0.2,

@@ -7,10 +7,13 @@ namespace ThunderRoad
 {
     public class OptionSurvivalPreset : OptionBase<OptionIntValue>
     {
-	    public int defaultValue;
-	    public int currentValue;
+        [Group("Foldout")]
+        public int defaultValue;
+        [Group("Foldout")]
+        public int currentValue;
 
-	    public List<SurvivalPreset> presets;
+        [Group("Foldout")]
+        public List<SurvivalPreset> presets;
 
         public override OptionValue DefaultValue() => new OptionIntValue(defaultValue);
         public int Count => presets?.Count ?? 0;

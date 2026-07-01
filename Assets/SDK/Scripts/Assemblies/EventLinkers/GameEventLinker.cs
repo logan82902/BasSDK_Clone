@@ -26,7 +26,13 @@ namespace ThunderRoad
             OnPlayerPossessCreature = 9,
             OnLinkerStart = 10,
             ItemBreakStart = 11,
-            ItemBreakEnd = 12
+            ItemBreakEnd = 12,
+            OnWaveStart = 13,
+            OnWaveLoop = 14,
+            OnWaveEnd = 15,
+            OnWaveWin = 16,
+            OnWaveCancel = 17,
+            OnWaveFail = 18,
         }
 
         public enum FromType

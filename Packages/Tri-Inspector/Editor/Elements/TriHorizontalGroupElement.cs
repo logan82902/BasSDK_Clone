@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using TriInspector.Utilities;
 using UnityEditor;
 using UnityEngine;
@@ -66,6 +66,10 @@ namespace TriInspector.Elements
             for (var i = 0; i < ChildrenCount; i++)
             {
                 var childWidth = GetChildWidth(i, totalDynamic, dynamicChildCount);
+                if (TryGetSizeReductionByIndex(i, out float sizeMinus))
+                {
+                    childWidth += sizeMinus;
+                }
                 var child = GetChild(i);
                 var childRect = new Rect(position)
                 {
@@ -112,13 +116,37 @@ namespace TriInspector.Elements
 
         private bool TryGetFixedSizeByIndex(int index, out float fixedSize)
         {
-            if (index < _sizes.Length && _sizes[index] > 0f)
+            if (index < _sizes.Length && _sizes[index] > 1f)
             {
                 fixedSize = _sizes[index];
                 return true;
             }
 
             fixedSize = 0f;
+            return false;
+        }
+
+        private bool TryGetSizeReductionByIndex(int index, out float sizeMinus)
+        {
+            if (index < _sizes.Length && _sizes[index] < 0f)
+            {
+                sizeMinus = _sizes[index];
+                return true;
+            }
+
+            sizeMinus = 0f;
+            return false;
+        }
+
+        private bool TryGetSizeRatioByIndex(int index, out float sizeRatio)
+        {
+            if (index < _sizes.Length && _sizes[index] > 0f && _sizes[index] < 1f)
+            {
+                sizeRatio = _sizes[index];
+                return true;
+            }
+
+            sizeRatio = 0f;
             return false;
         }
     }

@@ -31,6 +31,9 @@ namespace ThunderRoad
         [Group("Top/Defaults")]
         [LabelWidth(65f)]
         public GameObject rigPrefab;
+        [Group("Top")]
+        [AutoLabelWidth(AddedWidth = 5f)]
+        public string nameRemoveString = string.Empty;
         [Group("Top/Addressables")]
         [LabelWidth(110f)]
         public AddressableAssetGroup partAddressables;
@@ -48,12 +51,14 @@ namespace ThunderRoad
 
         [System.Serializable]
         [InlineProperty]
-        [DeclareFoldoutGroup("ArmorPart", Title = "$" + nameof(name), Expanded = true)]
+        [DeclareFoldoutGroup("ArmorPart", Title = "$" + nameof(shortName), Expanded = true)]
         [DeclareHorizontalGroup("ArmorPart/PartHoriz")]
         public class LODsArmorPart
         {
             [HideInInspector]
             public string name;
+            [HideInInspector]
+            public string shortName;
             [Group("ArmorPart/PartHoriz")]
             [LabelText("Part SMR LOD")]
             [AutoLabelWidth]
@@ -76,6 +81,7 @@ namespace ThunderRoad
             [System.Serializable]
             [DeclareHorizontalGroup("LODHoriz", Sizes = new float[] { 270f, 0f, 0f, 0f })]
             [InlineProperty]
+            [ListElementLabel("LOD %")]
             public class LOD
             {
                 [Group("LODHoriz")]
@@ -182,6 +188,7 @@ namespace ThunderRoad
             {
                 armorPart.lods = armorPart.lods.OrderBy(lod => lod.renderer.name).ToList();
                 armorPart.partSMRlod = Mathf.Min(armorPart.partSMRlod, armorPart.lods.Count - 1);
+                armorPart.shortName = armorPart.name.Replace(nameRemoveString, "");
                 this.armorParts.Add(armorPart);
                 if (wardrobeAddresables != null)
                 {
@@ -256,10 +263,12 @@ namespace ThunderRoad
                 }
                 else
                 {
-                    string partsFolderFromMesh = AssetDatabase.GetAssetPath(armorPart.lods[0].renderer.sharedMesh);
-                    partsFolderFromMesh = partsFolderFromMesh.Substring(0, partsFolderFromMesh.LastIndexOf('/')) + "/Parts/";
-                    assetPath = partsFolderFromMesh + armorPart.name + ".prefab";
-                    assetAddress = addressPrefix + armorPart.name;
+                    string meshFolder = AssetDatabase.GetAssetPath(armorPart.lods[0].renderer.sharedMesh);
+                    meshFolder = meshFolder.Substring(0, meshFolder.LastIndexOf('/'));
+                    string partsFolderFromMesh = $"{meshFolder}/Parts";
+                    assetPath = $"{partsFolderFromMesh}/{armorPart.name}.prefab";
+                    if (!AssetDatabase.IsValidFolder(partsFolderFromMesh)) AssetDatabase.CreateFolder(meshFolder, "Parts");
+                    assetAddress = addressPrefix + armorPart.shortName;
                     foreach (string label in defaultLabels.Split(','))
                     {
                         labels.Add(label.Trim());

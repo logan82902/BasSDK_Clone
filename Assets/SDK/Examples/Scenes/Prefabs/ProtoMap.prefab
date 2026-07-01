@@ -3203,7 +3203,7 @@ MonoBehaviour:
   canvasDetails: {fileID: 123779173486047347}
   worldMap: {fileID: 0}
   worldMapLabel: {fileID: 1416446493305233017}
-  mapCardLocationPrefab: {fileID: 1741059032473445973, guid: 7416d75e3a091da459a0271a80344362,
+  mapCardLocationPrefab: {fileID: 1741059032473445973, guid: e65edd6221e6a404a84f7df9bcd5c23a,
     type: 3}
   mapRenderer: {fileID: 7624810050736646491}
   levelPresentation: {fileID: 3688113817650226504}

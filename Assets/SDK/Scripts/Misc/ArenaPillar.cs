@@ -16,19 +16,5 @@ namespace ThunderRoad
         public Transform tpPosition;
         public float maxItemRadius = 10f;
 
-        public void Init(ISurvivalModule survivalModule)
-        {
-            if (survivalModule.TryGetPillarSounds(out var raise, out var lower))
-            {
-                raiseSound = raise;
-                lowerSound = lower;
-            }
-
-            if (survivalModule.TryGetTeleportPosition(out var teleportPoint))
-            {
-                tpPosition.SetPositionAndRotation(teleportPoint,
-                    Quaternion.LookRotation(transform.position - teleportPoint));
-            }
-        }
     }
 }
