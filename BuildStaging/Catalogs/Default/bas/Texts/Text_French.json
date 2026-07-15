@@ -15057,21 +15057,21 @@
         },
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
-          "id": "KharTibCrystalCore_1",
+          "id": "CrystalCore_1",
           "text": "Un cœur de cristal ! Incroyablement rares... mais si la nouvelle se répandait que je vends des cœurs de cristal, cette île serait envahie par des sorciers avides de pouvoir prêts à tous les prendre par la force. J’ai bien peur de ne pas pouvoir accepter cela pour n’importe quel prix.",
           "spriteAddress": null,
           "videoAddress": null
         },
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
-          "id": "KharTibCrystalCore_2",
+          "id": "CrystalCore_2",
           "text": "Un noyau de cristal... Tu l’as fait ! Bravo, mon gars. C’est beaucoup de pouvoir, mais écoute... Plus un homme détient de pouvoir, moins il a tendance à voir clairement.",
           "spriteAddress": null,
           "videoAddress": null
         },
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
-          "id": "KharTibCrystalCore_3",
+          "id": "CrystalCore_3",
           "text": "Oh... La Guilde serait extrêmement fâchée: par principe, il est impossible que je revende ce cœur de cristal à n’importe quel prix. Leur pouvoir est trop grand, et le danger de ce pouvoir n’est pas qu’il change simplement un homme... c’est que ça lui fait croire qu’il le mérite.... à tout prix.",
           "spriteAddress": null,
           "videoAddress": null
@@ -15127,42 +15127,42 @@
         },
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
-          "id": "KharTibSwordOfNaa_1",
+          "id": "SwordOfNaa_1",
           "text": "Qu’est-ce que tu as là? C’est Dalgarian ? Waouh, il n’y a aucun moyen que je puisse vendre un truc aussi chaud, l'ami. Tu vas vouloir garder celui-ci pour toi.",
           "spriteAddress": null,
           "videoAddress": null
         },
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
-          "id": "KharTibSwordOfNaa_2",
+          "id": "SwordOfNaa_2",
           "text": "Par les dieux... une lame dalgarienne ? Il n’y a pas de prix à mettre là-dessus, mec ! Tu voudras la garder.",
           "spriteAddress": null,
           "videoAddress": null
         },
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
-          "id": "KharTibSwordOfNaa_3",
+          "id": "SwordOfNaa_3",
           "text": "Je n’en crois pas mes yeux ! Une vraie lame dalgarienne... Il y a des gens qui te trancheraient la gorge pour avoir ça, l'ami. Il est hors de question que je prenne le risque de revendre quelque chose d’aussi rare.",
           "spriteAddress": null,
           "videoAddress": null
         },
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
-          "id": "KharTibWristBlade_1",
+          "id": "WristBlade_1",
           "text": "L’outil ultime de l’assassin, juste là. La lame reste cachée jusqu’au moment même où tu dois l’utiliser.",
           "spriteAddress": null,
           "videoAddress": null
         },
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
-          "id": "KharTibWristBlade_2",
+          "id": "WristBlade_2",
           "text": "L’origine exacte de cette lame est inconnue, mais la croyance populaire veut qu’elle soit utilisée parmi les guildes d’assassins de Khar-Tib. Cela me semble improbable cependant ; cela ne ressemble pas du tout à un artisanat Kharèse.",
           "spriteAddress": null,
           "videoAddress": null
         },
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
-          "id": "KharTibWristBlade_3",
+          "id": "WristBlade_3",
           "text": "Ce mécanisme est vraiment hypnotisant. Je n’arrive pas à comprendre moi-même.",
           "spriteAddress": null,
           "videoAddress": null

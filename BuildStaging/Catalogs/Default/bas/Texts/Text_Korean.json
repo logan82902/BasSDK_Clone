@@ -15057,21 +15057,21 @@
         },
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
-          "id": "KharTibCrystalCore_1",
+          "id": "CrystalCore_1",
           "text": "수정 코어! 믿기 힘들 정도로 희귀하지만... 제가 수정 코어를 팔고 있다는 소문이 나면, 이 섬은 그것들을 모두 강제로 빼앗으려는 권력에 굶주린 마법사들로 들끓을 거예요. 어떤 값으로도 받을 수 없을 것 같습니다.",
           "spriteAddress": null,
           "videoAddress": null
         },
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
-          "id": "KharTibCrystalCore_2",
+          "id": "CrystalCore_2",
           "text": "수정 코어... 해냈군요! 잘했어요, 친구. 당신은 엄청난 힘을 손에 넣었어요. 하지만 들어보세요... 사람이 더 많은 힘을 쥘수록, 보는 눈이 더 흐려지는 법이에요.",
           "spriteAddress": null,
           "videoAddress": null
         },
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
-          "id": "KharTibCrystalCore_3",
+          "id": "CrystalCore_3",
           "text": "호... 길드가 지금쯤이면 저에게 엄청 화가 났겠지만, 원칙적으로 이 수정 코어를 어떤 값으로도 재판매할 수 없어요. 그 힘은 너무 강력하고, 힘의 위험성은 단지 사람을 변화시킨다는 점이 아니에요... 그 힘이 그가 자신이 그걸 받을 자격이 있다고 믿게 만든다는 거죠... 어떤 대가를 치르더라도 말이에요.",
           "spriteAddress": null,
           "videoAddress": null
@@ -15127,42 +15127,42 @@
         },
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
-          "id": "KharTibSwordOfNaa_1",
+          "id": "SwordOfNaa_1",
           "text": "도대체 바이에스의 무엇을 가지고 있는 거죠? 이게 달가리안인가요? 워, 이런 뜨거운 물건은 절대 처리할 수 없어요, 친구. 이건 당신이 직접 간직해야 할 겁니다.",
           "spriteAddress": null,
           "videoAddress": null
         },
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
-          "id": "KharTibSwordOfNaa_2",
+          "id": "SwordOfNaa_2",
           "text": "이런 세상에... 달가리안 검? 이건 가격을 매길 수 없어요, 친구! 당신이 직접 간직해야 할 겁니다.",
           "spriteAddress": null,
           "videoAddress": null
         },
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
-          "id": "KharTibSwordOfNaa_3",
+          "id": "SwordOfNaa_3",
           "text": "내 눈을 믿을 수가 없네! 진짜 달가리안 검이군... 이걸 가지려고 당신의 목을 그을 사람들이 밖에 있을 거예요, 친구. 이렇게 뜨거운 물건을 재판매할 위험은 절대 감수할 수 없어요.",
           "spriteAddress": null,
           "videoAddress": null
         },
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
-          "id": "KharTibWristBlade_1",
+          "id": "WristBlade_1",
           "text": "그야말로 최고의 암살자 도구입니다. 칼날은 사용해야 할 바로 그 순간까지 숨겨져 있습니다.",
           "spriteAddress": null,
           "videoAddress": null
         },
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
-          "id": "KharTibWristBlade_2",
+          "id": "WristBlade_2",
           "text": "그 칼날의 정확한 기원은 알려져 있지 않지만, 카르-티브의 암살자 길드들 사이에서 사용된다는 것이 일반적인 믿음입니다. 하지만 제게는 그럴듯하지 않아 보여요; 전혀 카레즈 장인 정신처럼 보이지 않거든요.",
           "spriteAddress": null,
           "videoAddress": null
         },
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
-          "id": "KharTibWristBlade_3",
+          "id": "WristBlade_3",
           "text": "그 메커니즘은 정말 최면적이군요. 저도 잘 모르겠습니다.",
           "spriteAddress": null,
           "videoAddress": null

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using TriInspector;
 using UnityEngine;
 using UnityEngine.Events;
@@ -19,6 +20,9 @@ namespace ThunderRoad
     [DeclareBoxGroup("Breakable")]
     public class SpellBomb : ThunderBehaviour
     {
+        public static List<SpellBomb> activeBombs = new List<SpellBomb>();
+
+
         [AutoLabelWidth(MinWidth = 0f)]
         public Item item;
 
@@ -135,6 +139,7 @@ namespace ThunderRoad
             Timer,
             Impact,
             CreatureProximity,
+            Manual,
         }
 
         public TriDropdownList<string> GetAllSpellCastChargeID() => Catalog.GetDropdownAllID<SpellCastCharge>();

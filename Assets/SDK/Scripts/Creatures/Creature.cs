@@ -315,6 +315,8 @@ namespace ThunderRoad
         public event SimpleDelegate OnDataLoaded;
         public event SimpleDelegate OnHeightChanged;
 
+        public event TeleportEvent OnTeleportEvent;
+
         [NonSerialized]
         public bool updateReveal;
 

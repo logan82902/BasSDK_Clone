@@ -40,6 +40,8 @@ namespace ThunderRoad
         public AnimationCurve intensityCurve;
         [Group("Particle")]
         public bool renderInLateUpdate;
+        [Group("Particle")]
+        public float playDelay;
 
         [Group("Color")]
         [NonSerialized]

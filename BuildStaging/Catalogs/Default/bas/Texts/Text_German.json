@@ -15057,21 +15057,21 @@
         },
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
-          "id": "KharTibCrystalCore_1",
+          "id": "CrystalCore_1",
           "text": "Ein Kristallkern! Unglaublich selten... aber wenn sich herumspräche, dass ich mit Kristallkernen hausieren gehe, würde diese Insel von machthungrigen Zauberern überrannt werden, die bereit sind, sie sich alle mit Gewalt zu nehmen. Ich fürchte, das kann ich um keinen Preis annehmen.",
           "spriteAddress": null,
           "videoAddress": null
         },
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
-          "id": "KharTibCrystalCore_2",
+          "id": "CrystalCore_2",
           "text": "Ein Kristallkern... du hast es geschafft! Gut gemacht, Kumpel. Das ist eine Menge Macht, die du da besitzt, aber hör zu... je mehr Macht ein Mann besitzt, desto weniger klar sieht er tendenziell.",
           "spriteAddress": null,
           "videoAddress": null
         },
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
-          "id": "KharTibCrystalCore_3",
+          "id": "CrystalCore_3",
           "text": "Ho... Die Gilde wäre im Moment unglaublich wütend auf mich, aber aus Prinzip kann ich diesen Kristallkern auf keinen Fall für irgendeinen Preis weiterverkaufen. Seine Macht ist zu groß, und die Gefahr der Macht besteht nicht nur darin, dass sie einen Menschen verändert... sondern darin, dass sie ihn glauben lässt, er hätte sie verdient.... um jeden Preis.",
           "spriteAddress": null,
           "videoAddress": null
@@ -15127,42 +15127,42 @@
         },
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
-          "id": "KharTibSwordOfNaa_1",
+          "id": "SwordOfNaa_1",
           "text": "Was um alles in der Welt hast du denn da? Ist das dalgarianisch? Oha, es gibt keine Möglichkeit, dass ich etwas so Heißes verkaufen könnte, Kumpel. Das solltest du lieber für dich behalten.",
           "spriteAddress": null,
           "videoAddress": null
         },
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
-          "id": "KharTibSwordOfNaa_2",
+          "id": "SwordOfNaa_2",
           "text": "Bei den Göttern... eine dalgarianische Klinge? Dafür gibt es keinen Preis, den man festlegen könnte, Kumpel! Die solltest du behalten.",
           "spriteAddress": null,
           "videoAddress": null
         },
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
-          "id": "KharTibSwordOfNaa_3",
+          "id": "SwordOfNaa_3",
           "text": "Ich traue meinem Auge nicht! Eine echte dalgarianische Klinge... Es gibt Leute da draußen, die dir die Kehle durchschneiden würden, um das hier zu bekommen, Kumpel. Ich kann unmöglich riskieren, etwas so Heißes weiterzuverkaufen.",
           "spriteAddress": null,
           "videoAddress": null
         },
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
-          "id": "KharTibWristBlade_1",
+          "id": "WristBlade_1",
           "text": "Das ultimative Werkzeug für Meuchelmörder. Die Klinge bleibt bis zu dem Moment verborgen, in dem du sie benutzen musst.",
           "spriteAddress": null,
           "videoAddress": null
         },
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
-          "id": "KharTibWristBlade_2",
+          "id": "WristBlade_2",
           "text": "Der genaue Ursprung dieser Klinge ist unbekannt, aber der Volksmund glaubt, dass sie in den Meuchelmördergilden von Khar-Tib verwendet wird. Erscheint mir jedoch unwahrscheinlich; das sieht überhaupt nicht nach kharesischer Handwerkskunst aus.",
           "spriteAddress": null,
           "videoAddress": null
         },
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
-          "id": "KharTibWristBlade_3",
+          "id": "WristBlade_3",
           "text": "Dieser Mechanismus ist wahrlich hypnotisierend. Ich kann es selbst nicht ganz begreifen.",
           "spriteAddress": null,
           "videoAddress": null

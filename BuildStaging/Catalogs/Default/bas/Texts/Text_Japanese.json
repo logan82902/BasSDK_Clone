@@ -15057,21 +15057,21 @@
         },
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
-          "id": "KharTibCrystalCore_1",
+          "id": "CrystalCore_1",
           "text": "クリスタル・コアだ！ものすごくレアだぞ…。もし俺がこれを扱ってるって噂になったら、この島は力に飢えた魔術師で埋まっちまう。すまないが、いくらでも受け取れないね。",
           "spriteAddress": null,
           "videoAddress": null
         },
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
-          "id": "KharTibCrystalCore_2",
+          "id": "CrystalCore_2",
           "text": "クリスタル・コア…やったな、見事だ。かなりの力を持ってるけどな、聞いてくれ。力を持てば持つほど、人はそれを正しく見られなくなる。",
           "spriteAddress": null,
           "videoAddress": null
         },
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
-          "id": "KharTibCrystalCore_3",
+          "id": "CrystalCore_3",
           "text": "ほぅ…ギルドは今ごろ俺に激怒してるだろうが、原則としてこのクリスタル・コアはどんな値段でも再販できない。その力は強すぎるし、危険ってのは人を変えることじゃない…自分がそれに値すると思い込ませることなんだ。",
           "spriteAddress": null,
           "videoAddress": null
@@ -15127,42 +15127,42 @@
         },
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
-          "id": "KharTibSwordOfNaa_1",
+          "id": "SwordOfNaa_1",
           "text": "おや…それは何を持ってきたんだ？ダルガリアンか？これは…こんな“熱い”ものは扱えないね。自分で持っておいた方がいい。",
           "spriteAddress": null,
           "videoAddress": null
         },
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
-          "id": "KharTibSwordOfNaa_2",
+          "id": "SwordOfNaa_2",
           "text": "神々よ…ダルガリアン・ブレードだと？これには値段なんて付けられないよ、相棒。これは自分で持っておくべきだ。",
           "spriteAddress": null,
           "videoAddress": null
         },
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
-          "id": "KharTibSwordOfNaa_3",
+          "id": "SwordOfNaa_3",
           "text": "信じられない…本物のダルガリアン・ブレードだ。これを巡って人は喉を掻き切るぞ。こんな危険なものは再販できない。",
           "spriteAddress": null,
           "videoAddress": null
         },
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
-          "id": "KharTibWristBlade_1",
+          "id": "WristBlade_1",
           "text": "これは究極のアサシン・ツールだね。必要な瞬間まで刃は隠されている。",
           "spriteAddress": null,
           "videoAddress": null
         },
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
-          "id": "KharTibWristBlade_2",
+          "id": "WristBlade_2",
           "text": "正確な起源は不明だが、カール＝ティブのアサシンギルドで使われているという説が有力だ。ただ、カレスのクラフトには見えないね。",
           "spriteAddress": null,
           "videoAddress": null
         },
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
-          "id": "KharTibWristBlade_3",
+          "id": "WristBlade_3",
           "text": "この機構は本当に催眠的だな。正直、俺にもよく分からない。",
           "spriteAddress": null,
           "videoAddress": null

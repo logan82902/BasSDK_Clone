@@ -22,6 +22,7 @@ namespace ThunderRoad
         public EffectLink effectLink = EffectLink.Intensity;
 
         public bool renderInLateUpdate;
+        public float playDelay = 0f;
         public bool useScaleCurve;
         public AnimationCurve scaleCurve;
 

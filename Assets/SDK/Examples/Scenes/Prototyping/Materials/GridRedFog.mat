@@ -10,7 +10,8 @@ Material:
   m_Name: GridRedFog
   m_Shader: {fileID: -6465566751694194690, guid: f2ccc783dd448614ebfe96a78331e1de,
     type: 3}
-  m_ValidKeywords: []
+  m_ValidKeywords:
+  - _ALPHATEST_ON
   m_InvalidKeywords:
   - LAYER_MAX3
   - MODED_MOSS

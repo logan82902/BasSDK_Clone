@@ -15057,21 +15057,21 @@
         },
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
-          "id": "KharTibCrystalCore_1",
+          "id": "CrystalCore_1",
           "text": "แกนคริสตัล! หายากอย่างเหลือเชื่อ... แต่ถ้าข่าวออกไปว่าฉันขายแกนคริสตัล เกาะนี้จะเต็มไปด้วยนักเวทที่กระหายอำนาจพร้อมที่จะแย่งชิงมันด้วยกำลัง ฉันเกรงว่าฉันไม่สามารถรับมันได้ไม่ว่าจะราคาเท่าไหร่",
           "spriteAddress": null,
           "videoAddress": null
         },
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
-          "id": "KharTibCrystalCore_2",
+          "id": "CrystalCore_2",
           "text": "แกนคริสตัล... นายทำได้! ทำได้ดีมากเพื่อน นั่นคือพลังอันยิ่งใหญ่นายได้มา แต่นะฟังนะ... ยิ่งคนมีพลังมากเท่าไหร่ เขาก็มักจะมองไม่ค่อยชัดเท่านั้นแหละ",
           "spriteAddress": null,
           "videoAddress": null
         },
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
-          "id": "KharTibCrystalCore_3",
+          "id": "CrystalCore_3",
           "text": "โฮ... กิลด์คงจะไม่พอใจฉันอย่างมากตอนนี้ แต่ด้วยหลักการแล้วฉันไม่สามารถขายแกนคริสตัลนี้ต่อไม่ว่าจะราคาเท่าไหร่ พลังของมันมันยิ่งใหญ่เกินไป และอันตรายของพลังไม่ใช่แค่มันเปลี่ยนแปลงคนคนหนึ่ง... แต่มันทำให้เขาเชื่อว่าเขาสมควรได้รับมัน... ไม่ว่าจะด้วยต้นทุนใดก็ตาม",
           "spriteAddress": null,
           "videoAddress": null
@@ -15127,42 +15127,42 @@
         },
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
-          "id": "KharTibSwordOfNaa_1",
+          "id": "SwordOfNaa_1",
           "text": "นั่นอะไรบนแผ่นดินไบเอธน่ะ? นี่ของดัลกาเรียนเหรอ? โว้ว ฉันไม่มีทางจัดการของร้อนขนาดนี้ได้หรอกเพื่อน นายน่าจะเก็บมันไว้เอง",
           "spriteAddress": null,
           "videoAddress": null
         },
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
-          "id": "KharTibSwordOfNaa_2",
+          "id": "SwordOfNaa_2",
           "text": "เทพเจ้าช่วย... ดาบดัลกาเรียน? ไม่มีราคาที่นายจะตั้งให้มันได้หรอกเพื่อน! นายน่าจะเก็บมันไว้",
           "spriteAddress": null,
           "videoAddress": null
         },
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
-          "id": "KharTibSwordOfNaa_3",
+          "id": "SwordOfNaa_3",
           "text": "ฉันไม่อยากเชื่อสายตาตัวเอง! ดาบดัลกาเรียนของแท้... มีคนนอกนั้นที่จะเชือดคอนายเพื่อให้ได้สิ่งนี้ไปนะเพื่อน ไม่มีทางที่ฉันจะเสี่ยงขายของร้อนขนาดนี้ต่อได้หรอก",
           "spriteAddress": null,
           "videoAddress": null
         },
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
-          "id": "KharTibWristBlade_1",
+          "id": "WristBlade_1",
           "text": "เครื่องมือนักฆ่าระดับสุดยอดนั่นเลย ใบมีดจะถูกซ่อนไว้จนกว่าจะถึงเวลาที่คุณต้องใช้มัน",
           "spriteAddress": null,
           "videoAddress": null
         },
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
-          "id": "KharTibWristBlade_2",
+          "id": "WristBlade_2",
           "text": "ต้นกำเนิดที่แท้จริงของใบมีดนั้นไม่เป็นที่รู้จัก แต่ความเชื่อทั่วไปคือมันถูกใช้ในหมู่สมาคมนักฆ่าแห่งคาร์-ทิบ แต่มันดูไม่น่าเชื่อสำหรับฉันนะ; มันดูไม่เหมือนฝีมือคาเรสเลยสักนิด",
           "spriteAddress": null,
           "videoAddress": null
         },
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
-          "id": "KharTibWristBlade_3",
+          "id": "WristBlade_3",
           "text": "กลไกนั่นมันน่าหลงใหลจริงๆ ฉันก็ไม่ค่อยเข้าใจมันเหมือนกัน",
           "spriteAddress": null,
           "videoAddress": null

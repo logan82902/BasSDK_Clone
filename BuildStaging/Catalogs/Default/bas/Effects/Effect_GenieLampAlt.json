@@ -17,6 +17,7 @@
       "effectParticleAddress": "Bas.Particle.Khartib.GenieLamp",
       "intensityCurve": null,
       "renderInLateUpdate": false,
+      "playDelay": 1.1333,
       "mainColorStart": {
         "r": 0.0,
         "g": 0.0,

@@ -110,6 +110,11 @@ namespace ThunderRoad
         public float armResistanceMultiplier = 3;
         public bool allowDynamicHeight;
         public bool defenseHasPriority;
+        public bool transferPushToBlocker = false;
+        public float transferVelocityModifier = -8f;
+        public int transferredPushModifier = -1;
+        public int minTransferredPush = 2;
+        public int maxTransferredPush = 4;
 
         public override void OnItemDataRefresh(ItemData data)
         {

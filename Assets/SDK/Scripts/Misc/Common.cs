@@ -176,6 +176,8 @@ namespace ThunderRoad
         Items = 4,
         Npcs = 8,
         Player = 16,
+        Golem = 32,
+        CustomEntity = 64,
     }
 
     public enum ImbueUseButton
@@ -190,7 +192,8 @@ namespace ThunderRoad
         Windows,
         Android,
     }
-    
+
+    public delegate void TeleportEvent(Vector3 positionDelta, Quaternion rotationDelta, EventTime eventTime);
 
     public static class LevelOptionExtensions
     {
@@ -487,6 +490,34 @@ return true;
         public static int GetMaskRemoveLayer(int mask, int layer)
         {
             return (mask & ~(1 << layer));
+        }
+
+        public static ObjectClassification ClassifyUnityCollision(Collision collision, out Ragdoll ragdoll)
+        {
+            ragdoll = null;
+            if (collision.rigidbody)
+            {
+                if (collision.rigidbody.GetComponentInParent<ThunderEntity>() is ThunderEntity thunderEntity)
+                {
+                    switch (thunderEntity)
+                    {
+                        case Item:
+                            return ObjectClassification.Items;
+                        case Creature creature:
+                            ragdoll = creature.ragdoll;
+                            return creature.isPlayer ? ObjectClassification.Player : ObjectClassification.Npcs;
+                        case Golem:
+                            return ObjectClassification.Golem;
+                        default:
+                            return ObjectClassification.CustomEntity;
+                    }
+                }
+                return ObjectClassification.DynamicEnvironment;
+            }
+            else
+            {
+                return ObjectClassification.StaticEnvironment;
+            }
         }
 
         private static bool qualityLevelCached;

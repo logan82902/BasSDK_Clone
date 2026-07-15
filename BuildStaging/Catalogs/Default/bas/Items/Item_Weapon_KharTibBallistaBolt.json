@@ -193,6 +193,33 @@
       "dampening": 0.1
     }
   ],
-  "modules": [],
+  "modules": [
+    {
+      "$type": "ThunderRoad.ItemModuleAI, ThunderRoad",
+      "primaryClass": "Throwable",
+      "secondaryClass": "None",
+      "weaponHandling": "OneHanded",
+      "secondaryHandling": "None",
+      "weaponAttackTypes": "Thrust",
+      "alwaysPrimary": false,
+      "defaultStanceInfo": {
+        "$type": "ThunderRoad.ItemModuleAI+StanceInfo, ThunderRoad",
+        "offhand": "Empty",
+        "grabAIHandleRadius": 0.0,
+        "stanceDataID": ""
+      },
+      "stanceInfosByOffhand": [],
+      "rangedWeaponData": null,
+      "ignoredByDefense": false,
+      "armResistanceMultiplier": 3.0,
+      "allowDynamicHeight": false,
+      "defenseHasPriority": false,
+      "transferPushToBlocker": true,
+      "transferVelocityModifier": 0.0,
+      "transferredPushModifier": 0,
+      "minTransferredPush": 3,
+      "maxTransferredPush": 4
+    }
+  ],
   "entityModules": []
 }

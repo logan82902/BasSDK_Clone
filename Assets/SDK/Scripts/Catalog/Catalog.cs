@@ -91,7 +91,7 @@ namespace ThunderRoad
             (typeof(SkillTreeData), Category.SkillTree),
             (typeof(EnemyConfig), Category.EnemyConfig),
             (typeof(LootConfigData), Category.LootConfig),
-            (typeof(MapData), Category.Custom),
+            (typeof(MapData), Category.Map),
             (typeof(BundleData), Category.Bundle),
         };
 
@@ -1462,25 +1462,8 @@ namespace ThunderRoad
 
         }
 
-        public static IEnumerator InstantiateCoroutine<T>(string address, Action<T> callback, string handlerName) where T : UnityEngine.Object
-        {
-            if (!Application.isPlaying || string.IsNullOrEmpty(address))
-            {
-                callback?.Invoke(null);
-                yield break;
-            }
-
-            //Load location type here is always a gameobject, since were instantiating a prefab instance
-            //try to get the result from the cache first, this avoid an extra yield and the callback
-            if (!TryGetAddressLocation<T>(address, out IResourceLocation location))
-            {
-                yield return LoadLocationCoroutine<GameObject>(address, value => location = value, handlerName);
-            }
-            yield return InstantiateCoroutine<T>(location, callback, handlerName);
-        }
-
         /// <summary>
-        /// Instantiates a prefab and returns either the prefab itself if the Type param is GameObject or a component on the gameobject of type T
+        /// Instantiates a prefab at origin, under no parent, and returns either the prefab itself if the Type param is a Gameobject or a component of the gameobject of type T
         /// </summary>
         /// <param name="location"></param>
         /// <param name="callback"></param>
@@ -1489,24 +1472,60 @@ namespace ThunderRoad
         /// <returns></returns>
         public static IEnumerator InstantiateCoroutine<T>(object location, Action<T> callback, string handlerName) where T : UnityEngine.Object
         {
-            if (location == null)
+            yield return InstantiateCoroutine<T>(location, Vector3.zero, Quaternion.identity, null, callback, handlerName);
+        }
+        
+        /// <summary>
+        /// Instantiates a prefab at the given position/rotation/parent and returns either the prefab itself if the Type param is GameObject or a component on the gameobject of type T
+        /// </summary>
+        /// <param name="location"></param>
+        /// <param name="position"></param>
+        /// <param name="rotation"></param>
+        /// <param name="parent"></param>
+        /// <param name="callback"></param>
+        /// <param name="handlerName"></param>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public static IEnumerator InstantiateCoroutine<T>(object location, Vector3 position, Quaternion rotation, Transform parent, Action<T> callback, string handlerName) where T : UnityEngine.Object
+        {
+            if (!Application.isPlaying || location == null)
             {
                 callback?.Invoke(null);
                 yield break;
             }
-
-            AsyncOperationHandle<GameObject> handle;
-            //This is to support calling the appropriate Addressables API for loading a location vs a key
+            
+            if (location is string address)
+            {
+                if (string.IsNullOrEmpty(address))
+                {
+                    callback?.Invoke(null);
+                    yield break;
+                }
+                //Load location type here is always a gameobject, since were instantiating a prefab instance
+                //try to get the result from the cache first, this avoid an extra yield and the callback
+                if (TryGetAddressLocation<T>(address, out IResourceLocation cachedLocation))
+                {
+                    location = cachedLocation;
+                }
+                else
+                {
+                    yield return LoadLocationCoroutine<GameObject>(address, value => location = value, handlerName);
+                }
+            } 
+            
+            AsyncOperationHandle<GameObject> handle = default;
             IResourceLocation resourceLocation = null;
-            if (location is IResourceLocation)
+            switch (location)
             {
-                resourceLocation = location as IResourceLocation;
-                handle = Addressables.InstantiateAsync(resourceLocation);
+                case IResourceLocation iResourceLocation:
+                    resourceLocation = iResourceLocation;
+                    handle = Addressables.InstantiateAsync(resourceLocation, position, rotation, parent);
+                    break;
+                default:
+                    handle = Addressables.InstantiateAsync(location, position, rotation, parent);
+                    break;
             }
-            else
-            {
-                handle = Addressables.InstantiateAsync(location);
-            }
+            
             if (handle.Status == AsyncOperationStatus.Failed)
             {
                 Debug.LogError($"Addressable operation failed InstantiateAsync for handlerName: {handlerName} - Please check the bundles have been built correctly. {handle.OperationException}");
@@ -1524,12 +1543,12 @@ namespace ThunderRoad
                 if (typeof(T) == typeof(GameObject))
                 {
                     callback?.Invoke(handle.Result as T);
+                    yield break;
                 }
-                else
-                {
-                    callback?.Invoke(handle.Result.GetComponent<T>());
-                }
+                
+                callback?.Invoke(handle.Result.GetComponent<T>());
                 yield break;
+                
             }
 
             Debug.LogWarning($"Unable to find asset at location [{resourceLocation?.PrimaryKey}] of type [{typeof(T).Name}] for object [{handlerName}]");

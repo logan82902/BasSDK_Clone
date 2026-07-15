@@ -1,0 +1,411 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Shaders
+  m_EditorClassIdentifier: 
+  m_GroupName: Shaders
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 6237709eb85317c489c81cd5ed115742
+  m_SerializeEntries:
+  - m_GUID: f9635d0df331a5b4793ebbcac6811d1d
+    m_Address: Shader.Custom.AlwaysVisibleTexture
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: eb579d3ad5006914ba3c93c831ddc4bd
+    m_Address: Shader.Custom.SuperSampleUI
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 650dd9526735d5b46b79224bc6e94025
+    m_Address: Shader.Urp.Unlit
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e7857e9d0c934dc4f83f270f8447b006
+    m_Address: Shader.Urp.UberPost
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2ec46fac8edcd244daf165b5d932af86
+    m_Address: Shader.Custom.Clouds
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0406db5a14f94604a8c57ccfbc9f3b46
+    m_Address: Shader.Urp.Particles.Unlit
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8516d7a69675844a7a0b7095af7c46af
+    m_Address: Shader.Urp.Particles.SimpleLit
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b7839dad95683814aa64166edc107ae2
+    m_Address: Shader.Urp.Particles.Lit
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2f846f119a410f04ca15024b658aa75d
+    m_Address: Shader.Custom.CloudsCircular
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fe393ace9b354375a9cb14cdbbc28be4
+    m_Address: TMP_SDF-Mobile
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 14eb328de4b8eb245bb7cea29e4ac00b
+    m_Address: TMP_SDF SSD
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 36e335017ad71d54fbb10842863188ae
+    m_Address: Shader.FallbackShader
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e6e9a19c3678ded42a3bc431ebef7dbd
+    m_Address: Shader.FallbackError
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0634eff38bf7f81469db9f8843c3c4bc
+    m_Address: Shader.ASshader.Shoreline
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f2ccc783dd448614ebfe96a78331e1de
+    m_Address: Shader.ASshader.LitMoss
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 85223a223cda538449b409e75850e586
+    m_Address: Shader.ASshader.SkySorcery
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 82a5a921ef7fcdc46a3e77926311c8a6
+    m_Address: Shader.ASshader.SkyboxProceduralCustom
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 41e9acc223d13ae42a6e9aedd250e0f6
+    m_Address: Shader.Crystal
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bad63f306d09bd342b144e1bfb9b2a8d
+    m_Address: Shader.ASshader.Foliage
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cdb6b8b9cb7e18a4da22d21affb2675a
+    m_Address: Shader.ASshader.River
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fb75b850d235a954b85f4e56bb924b58
+    m_Address: Shader.VFX.FlowMapParticlesLit
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 62214302291aff744a6c958ca6514190
+    m_Address: vfx_flowmap_noise_filter
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7a43b2945b75b8f4086ea9fe022d2fcd
+    m_Address: vfx_tornado_funnel_no_zwriting
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: de3810a1e7026d64d9bdd48b4bbb8414
+    m_Address: vfx_flowmap_SOUL_particles_lit
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 785dbd9860678214a9d2e1282124a14a
+    m_Address: vfx_big_mesh_waterfall
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e76a1bd217cb854409c3f6743a0c05b2
+    m_Address: vfx_blood_shader
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cde4309eda2a2ce44ad6217b9f170b52
+    m_Address: vfx_winddust
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f6289ae2fef59194184a0c66b82cf98c
+    m_Address: vfx_Universal_ParticlesLit_ZwriteOff
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a3d800b099a06e0478fb790c5e79057a
+    m_Address: TMP_SDF-URP Lit
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cf81c85f95fe47e1a27f6ae460cf182c
+    m_Address: TMP_Sprite
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e6bbbb87ca1f18342979311e4eed6947
+    m_Address: Material.Dalgarian.Sky
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2ce2ca39ee5140945a026ee07440f902
+    m_Address: Material.Outpost.Sky
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9b254022dfdf7244885497b428080bf1
+    m_Address: vfx_crystal_shield
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 61c37d766059a284085d644baecbb0a3
+    m_Address: vfx_skilltree_line_shader
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 84d2efce2db39f7469f05270f8ed9d44
+    m_Address: vfx_particle_motionvector_unlit
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f453ba31e5c1167409f43467955aefe9
+    m_Address: vfx_hdr_additive_flowmap
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cb0d74c42a0ea664eaeae97a6ae54d04
+    m_Address: vfx_gravity_ball_depth
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2c1fab670dd5f244ab3406a3576b2cc6
+    m_Address: vfx_fresnel_soft
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 15b03fc544413e24db458b3733497642
+    m_Address: vfx_flowmap_particles
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e3f5dc80b9ae7054ebb50851c28272ff
+    m_Address: vfx_flowmap_SOUL_solid_lit
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d4844e3384a04704daf8cf1a67356fa9
+    m_Address: vfx_flat_planet_shader_NIGHT
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 450250fe3dbd8bd41a3ec896737b3d7a
+    m_Address: vfx_flat_planet_shader_DAY
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9cf300c520bf52344bec4ec0c292aa74
+    m_Address: vfx_fake_bloom_solid
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e24e1cc79017f2c4d8db62272aeeea30
+    m_Address: vfx_fake_bloom_additive_smoothblending
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f1faa56099a204140ac92802594b3dc5
+    m_Address: vfx_additive_background_object
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 11da565ec2a5dae419ed5d8cd473c08e
+    m_Address: vfx_Universal_ParticlesUnLit_ZwriteOff
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4c74c765ac035ee409636f02b70fd7b5
+    m_Address: skilltree_orb_shader
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 198f6ddb2911fb7478e8aba580fb7474
+    m_Address: clouds_shader_circular_Additive
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9c3f25e9f81052a4eb805ae333e2a1a4
+    m_Address: bubbles_shader
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 913d0affc26f04f4aabf2de5843cfd2b
+    m_Address: VFX_Gravity_Tube
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0a4e9e9359be6a84693e2a831990b3ca
+    m_Address: VFX_Distortion_ColorTexture
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ad5821f0a97f6cc4e80328ac97ce80d7
+    m_Address: ReflectionProxy
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3d0ee87eb51e0c243aebf2ba4a2e3663
+    m_Address: Assets/Repos/Bas-Assets/Levels/_A_Ranger/_Shared/Materials/Skies/Sky_Outpost.mat
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 955711a39a4c0554c8511d2f4d704406
+    m_Address: Assets/Repos/Bas-Assets/Items/Materials/ShadowProxy.mat
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 272a6d017d714ac46a66f5f5ff9c1228
+    m_Address: Shaders.Mock.Variants
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - Android
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: b14c4d9d8b63f3247be008fe8b53d3ae, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 5aa53f2901447bd469f46725a437354f, type: 2}
+    - {fileID: 11400000, guid: e0bac7c07c4868c448ca92efd2c64f44, type: 2}
+    - {fileID: 11400000, guid: ad0d2329e4af7f64db0ff9d9262d196b, type: 2}

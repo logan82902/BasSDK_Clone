@@ -13,6 +13,7 @@ namespace ThunderRoad
         public Transform targetTeleportTransform;
         public bool useRelativePosition;
         public bool useFading = true;
+        public bool keepVelocity = true;
         public float fadeInDuration = 1;
         public float fadeOutDuration = 1;
 

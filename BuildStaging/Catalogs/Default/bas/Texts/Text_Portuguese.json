@@ -15057,21 +15057,21 @@
         },
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
-          "id": "KharTibCrystalCore_1",
+          "id": "CrystalCore_1",
           "text": "Um núcleo de cristal! Incrivelmente raro... mas se soubessem que eu estou vendendo núcleos de cristal, esta ilha seria invadida por feiticeiros famintos por poder prontos para tomá-los à força. Receio não poder aceitar isso por nenhum preço.",
           "spriteAddress": null,
           "videoAddress": null
         },
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
-          "id": "KharTibCrystalCore_2",
+          "id": "CrystalCore_2",
           "text": "Um núcleo de cristal... você conseguiu! Muito bem, amigo. Isso é muito poder em suas mãos, mas ouça... quanto mais poder um homem tem, menos claramente ele tende a ver.",
           "spriteAddress": null,
           "videoAddress": null
         },
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
-          "id": "KharTibCrystalCore_3",
+          "id": "CrystalCore_3",
           "text": "Ho... A Guilda ficaria extremamente irritada comigo agora, mas por princípio não há como eu revender este Núcleo de Cristal por qualquer preço. O poder deles é grande demais, e o perigo do poder não é apenas mudar um homem... é fazê-lo acreditar que o merece... a qualquer custo.",
           "spriteAddress": null,
           "videoAddress": null
@@ -15127,42 +15127,42 @@
         },
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
-          "id": "KharTibSwordOfNaa_1",
+          "id": "SwordOfNaa_1",
           "text": "O que em Byeth você tem aí? Isso é Dalgariano? Uau, não tem como eu lidar com algo tão valioso, amigo. Você vai querer ficar com isso para você.",
           "spriteAddress": null,
           "videoAddress": null
         },
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
-          "id": "KharTibSwordOfNaa_2",
+          "id": "SwordOfNaa_2",
           "text": "Pelos deuses... uma lâmina Dalgariana? Não existe preço para isso, amigo! Você vai querer ficar com ela.",
           "spriteAddress": null,
           "videoAddress": null
         },
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
-          "id": "KharTibSwordOfNaa_3",
+          "id": "SwordOfNaa_3",
           "text": "Não acredito no que estou vendo! Uma verdadeira lâmina Dalgariana... Há pessoas que cortariam sua garganta para ter isso, amigo. Não posso correr o risco de revender algo tão valioso.",
           "spriteAddress": null,
           "videoAddress": null
         },
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
-          "id": "KharTibWristBlade_1",
+          "id": "WristBlade_1",
           "text": "A ferramenta definitiva de assassino. A lâmina fica escondida até o exato momento em que você precisa usá-la.",
           "spriteAddress": null,
           "videoAddress": null
         },
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
-          "id": "KharTibWristBlade_2",
+          "id": "WristBlade_2",
           "text": "A origem exata dessa lâmina é desconhecida, mas acredita-se que seja usada por guildas de assassinos de Khar-Tib. Embora isso me pareça improvável; não parece artesanato Kharese.",
           "spriteAddress": null,
           "videoAddress": null
         },
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
-          "id": "KharTibWristBlade_3",
+          "id": "WristBlade_3",
           "text": "Esse mecanismo é realmente hipnotizante. Eu mesmo não consigo entendê-lo totalmente.",
           "spriteAddress": null,
           "videoAddress": null

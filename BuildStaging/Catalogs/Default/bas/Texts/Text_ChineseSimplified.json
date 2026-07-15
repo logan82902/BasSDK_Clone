@@ -15057,21 +15057,21 @@
         },
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
-          "id": "KharTibCrystalCore_1",
+          "id": "CrystalCore_1",
           "text": "一个水晶核心！极其稀有……但如果我兜售水晶核心的消息传出去，这个岛就会被渴望力量的巫师们蜂拥而至，他们会用武力夺走一切。恐怕无论什么价格，我都不能收下这个。",
           "spriteAddress": null,
           "videoAddress": null
         },
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
-          "id": "KharTibCrystalCore_2",
+          "id": "CrystalCore_2",
           "text": "一个水晶核心……你做到了！干得好，伙计。你手上握有巨大的力量，但听着……一个人拥有的力量越大，他的眼光往往就越不清晰。",
           "spriteAddress": null,
           "videoAddress": null
         },
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
-          "id": "KharTibCrystalCore_3",
+          "id": "CrystalCore_3",
           "text": "嚯……公会现在肯定对我极为不满，但原则上，无论什么价格我都不能转卖这个水晶核心。它们的力量太强大了，而力量的危险之处并不在于它会改变一个人……而在于它让他相信自己配得上这种力量……不惜一切代价。",
           "spriteAddress": null,
           "videoAddress": null
@@ -15127,42 +15127,42 @@
         },
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
-          "id": "KharTibSwordOfNaa_1",
+          "id": "SwordOfNaa_1",
           "text": "你在拜斯那儿搞到了什么？这是达尔加里亚的东西？哇，伙计，这么烫手的东西我可没法脱手。你还是自己留着吧。",
           "spriteAddress": null,
           "videoAddress": null
         },
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
-          "id": "KharTibSwordOfNaa_2",
+          "id": "SwordOfNaa_2",
           "text": "老天爷……一把达尔加里亚剑？这玩意可没法定价，伙计！你还是自己留着吧。",
           "spriteAddress": null,
           "videoAddress": null
         },
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
-          "id": "KharTibSwordOfNaa_3",
+          "id": "SwordOfNaa_3",
           "text": "我简直不敢相信自己的眼睛！一把真正的达尔加里亚剑……外面有些人为了得到它会割开你的喉咙，伙计。这么烫手的东西，我可不敢冒险转卖。",
           "spriteAddress": null,
           "videoAddress": null
         },
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
-          "id": "KharTibWristBlade_1",
+          "id": "WristBlade_1",
           "text": "这就是终极的刺客工具。刀刃在你需要使用的那一刻之前一直保持隐藏状态。",
           "spriteAddress": null,
           "videoAddress": null
         },
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
-          "id": "KharTibWristBlade_2",
+          "id": "WristBlade_2",
           "text": "那把刀刃的确切来源未知，但普遍认为它被用于卡尔提布的刺客公会。不过我觉得不太可能；它看起来一点都不像卡雷什的工艺。",
           "spriteAddress": null,
           "videoAddress": null
         },
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
-          "id": "KharTibWristBlade_3",
+          "id": "WristBlade_3",
           "text": "那个装置确实令人着迷。我自己也搞不太明白。",
           "spriteAddress": null,
           "videoAddress": null

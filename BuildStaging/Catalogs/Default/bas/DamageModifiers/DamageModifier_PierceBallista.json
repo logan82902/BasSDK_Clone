@@ -39,23 +39,28 @@
           "pushLevels": [
             {
               "$type": "ThunderRoad.DamageModifierData+Modifier+PushLevel, ThunderRoad",
-              "hitVelocity": 1.0,
-              "throwVelocity": 1.0
+              "hitVelocity": 6.0,
+              "throwVelocity": 3.0
             },
             {
               "$type": "ThunderRoad.DamageModifierData+Modifier+PushLevel, ThunderRoad",
-              "hitVelocity": 1.0,
-              "throwVelocity": 1.0
+              "hitVelocity": 10.0,
+              "throwVelocity": 6.0
             },
             {
               "$type": "ThunderRoad.DamageModifierData+Modifier+PushLevel, ThunderRoad",
-              "hitVelocity": 1.0,
-              "throwVelocity": 1.0
+              "hitVelocity": 15.0,
+              "throwVelocity": 10.0
             },
             {
               "$type": "ThunderRoad.DamageModifierData+Modifier+PushLevel, ThunderRoad",
-              "hitVelocity": 1.0,
-              "throwVelocity": 1.0
+              "hitVelocity": 24.0,
+              "throwVelocity": 15.0
+            },
+            {
+              "$type": "ThunderRoad.DamageModifierData+Modifier+PushLevel, ThunderRoad",
+              "hitVelocity": 60.0,
+              "throwVelocity": 60.0
             }
           ],
           "penetrationMinVelocity": 1.0,

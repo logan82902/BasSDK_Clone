@@ -272,37 +272,16 @@
           "stanceDataID": "HumanMeleeDualWieldStance"
         }
       ],
-      "rangedWeaponData": {
-        "$type": "ThunderRoad.ItemModuleAI+RangedWeaponData, ThunderRoad",
-        "ammoType": "",
-        "tooCloseDistance": 5.0,
-        "spread": {
-          "x": 1.0,
-          "y": 1.0
-        },
-        "projectileSpeed": 20.0,
-        "accountForGravity": true,
-        "weaponAimAngleOffset": {
-          "x": 0.0,
-          "y": 0.0,
-          "z": 0.0
-        },
-        "weaponHoldPositionOffset": {
-          "x": 0.0,
-          "y": 0.0,
-          "z": 0.0
-        },
-        "weaponHoldAngleOffset": {
-          "x": 0.0,
-          "y": 0.0,
-          "z": 0.0
-        },
-        "customRangedAttackAnimationData": ""
-      },
+      "rangedWeaponData": null,
       "ignoredByDefense": false,
       "armResistanceMultiplier": 3.0,
       "allowDynamicHeight": false,
-      "defenseHasPriority": false
+      "defenseHasPriority": false,
+      "transferPushToBlocker": true,
+      "transferVelocityModifier": -6.0,
+      "transferredPushModifier": 0,
+      "minTransferredPush": 2,
+      "maxTransferredPush": 3
     },
     {
       "$type": "ThunderRoad.ItemModuleStats, ThunderRoad",

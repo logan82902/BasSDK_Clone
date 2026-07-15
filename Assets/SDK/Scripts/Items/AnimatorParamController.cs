@@ -64,7 +64,7 @@ namespace ThunderRoad
                         }
                         else
                         {
-                            Debug.LogError("Type error: First value in operation is not a valid boolean\nCould not process input bool operation"
+                            Debug.LogError($"Type error: First value in operation ({parsedOperation.lhs}) is not a valid boolean\nCould not process input bool operation"
                                 + "\nError from: " + parsedOperation.originalOperation);
                             return;
                         }
@@ -77,7 +77,7 @@ namespace ThunderRoad
                     bool rhs;
                     if (!StringToBool(parsedOperation.rhs, out rhs))
                     {
-                        Debug.LogError("Type error: Second value in operation is not a valid boolean\nCould not process input bool operation"
+                        Debug.LogError($"Type error: Second value in operation ({parsedOperation.rhs}) is not a valid boolean\nCould not process input bool operation"
                             + "\nError from: " + parsedOperation.originalOperation);
                         return;
                     }
@@ -99,14 +99,14 @@ namespace ThunderRoad
                     float lhs;
                     if (!StringToFloat(parsedOperation.lhs, out lhs))
                     {
-                        Debug.LogError("Type error: First value in comparison is not a valid number\nCould not process input bool operation"
+                        Debug.LogError($"Type error: First value in comparison ({parsedOperation.lhs}) is not a valid number\nCould not process input bool operation"
                             + "\nError from: " + parsedOperation.originalOperation);
                         return;
                     }
                     float rhs;
                     if (!StringToFloat(parsedOperation.rhs, out rhs))
                     {
-                        Debug.LogError("Type error: Second value in comparison is not a valid number\nCould not process input bool operation"
+                        Debug.LogError($"Type error: Second value in comparison ({parsedOperation.rhs}) is not a valid number\nCould not process input bool operation"
                             + "\nError from: " + parsedOperation.originalOperation);
                         return;
                     }
@@ -164,7 +164,7 @@ namespace ThunderRoad
                 int lhs;
                 if (!StringToInt(parsedOperation.lhs, out lhs))
                 {
-                    Debug.LogError("Type error: First value in operation is not a valid integer\nCould not process input integer operation"
+                    Debug.LogError($"Type error: First value in operation ({parsedOperation.lhs}) is not a valid integer\nCould not process input integer operation"
                             + "\nError from: " + parsedOperation.originalOperation);
                     return;
                 }
@@ -176,7 +176,7 @@ namespace ThunderRoad
                 int rhs;
                 if (!StringToInt(parsedOperation.rhs, out rhs))
                 {
-                    Debug.LogError("Type error: Second value in operation is not a valid integer\nCould not process input integer operation"
+                    Debug.LogError($"Type error: Second value in operation ({parsedOperation.rhs}) is not a valid integer\nCould not process input integer operation"
                             + "\nError from: " + parsedOperation.originalOperation);
                     return;
                 }
@@ -243,7 +243,7 @@ namespace ThunderRoad
                 float lhs;
                 if (!StringToFloat(parsedOperation.lhs, out lhs))
                 {
-                    Debug.LogError("Type error: First value in operation is not a valid float\nCould not process input float operation"
+                    Debug.LogError($"Type error: First value in operation ({parsedOperation.lhs}) is not a valid float\nCould not process input float operation"
                             + "\nError from: " + parsedOperation.originalOperation);
                     return;
                 }
@@ -255,7 +255,7 @@ namespace ThunderRoad
                 float rhs;
                 if (!StringToFloat(parsedOperation.rhs, out rhs))
                 {
-                    Debug.LogError("Type error: Second value in operation is not a valid float\nCould not process input float operation"
+                    Debug.LogError($"Type error: Second value in operation ({parsedOperation.rhs}) is not a valid float\nCould not process input float operation"
                             + "\nError from: " + parsedOperation.originalOperation);
                     return;
                 }
