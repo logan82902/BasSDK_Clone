@@ -40,8 +40,6 @@
     "com.unity.xr.legacyinputhelpers": "2.1.13",
     "com.unity.xr.management": "4.5.2",
     "com.unity.xr.mock-hmd": "1.4.0-preview.2",
-    "com.unity.xr.openxr": "1.15.1",
-    "com.valvesoftware.openxr.utils": "https://github.com/ValveSoftware/Unity.git?path=/com.valvesoftware.openxr.utils",
     "jillejr.newtonsoft.json-for-unity.converters": "1.6.3",
     "com.unity.modules.ai": "1.0.0",
     "com.unity.modules.androidjni": "1.0.0",

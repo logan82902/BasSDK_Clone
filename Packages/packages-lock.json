@@ -372,28 +372,6 @@
       },
       "url": "https://packages.unity.com"
     },
-    "com.unity.xr.openxr": {
-      "version": "1.15.1",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {
-        "com.unity.inputsystem": "1.6.3",
-        "com.unity.xr.core-utils": "2.3.0",
-        "com.unity.xr.management": "4.4.0",
-        "com.unity.xr.legacyinputhelpers": "2.1.2"
-      },
-      "url": "https://packages.unity.com"
-    },
-    "com.valvesoftware.openxr.utils": {
-      "version": "https://github.com/ValveSoftware/Unity.git?path=/com.valvesoftware.openxr.utils",
-      "depth": 0,
-      "source": "git",
-      "dependencies": {
-        "com.unity.xr.openxr": "1.10.0",
-        "com.unity.inputsystem": "1.7.0"
-      },
-      "hash": "28c3b8d9a4ecd7a128906e11c398944d3c8524dc"
-    },
     "jillejr.newtonsoft.json-for-unity.converters": {
       "version": "1.6.3",
       "depth": 0,
