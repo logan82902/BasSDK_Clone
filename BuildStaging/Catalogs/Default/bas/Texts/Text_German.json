@@ -1036,6 +1036,13 @@
           "text": "Das Hochheben von Feinden mit Marionette ist viel einfacher, wenn du erstere zunächst zum Torkeln bringst!",
           "spriteAddress": "",
           "videoAddress": ""
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "57",
+          "text": "Schwere stumpfe Waffen sind stark genug, um Gegner selbst durch ihren Schild ins Taumeln zu bringen.",
+          "spriteAddress": null,
+          "videoAddress": null
         }
       ]
     },

@@ -48,6 +48,9 @@
   "allowInRouletteMode": true,
   "combatSkill": true,
   "allowOnFirstWave": true,
-  "requiredSkills": [],
+  "requiredSkills": [
+    "RemoteDetonation",
+    "SecondWind"
+  ],
   "IsCombinedSkill": true
 }

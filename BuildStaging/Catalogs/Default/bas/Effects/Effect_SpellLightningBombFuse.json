@@ -17,6 +17,7 @@
       "effectParticleAddress": "Bas.Particle.SpellBomb.Lightning.Fuse",
       "intensityCurve": null,
       "renderInLateUpdate": false,
+      "playDelay": 0.0,
       "mainColorStart": {
         "r": 0.0,
         "g": 0.0,

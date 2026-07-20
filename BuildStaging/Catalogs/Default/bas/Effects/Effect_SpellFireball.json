@@ -17,6 +17,7 @@
       "effectParticleAddress": "Bas.Particle.Spell.Fire.BallTrail",
       "intensityCurve": null,
       "renderInLateUpdate": false,
+      "playDelay": 0.0,
       "mainColorStart": {
         "r": 4.237095,
         "g": 2.28492546,

@@ -1009,6 +1009,7 @@
         "postWrapMode": "ClampForever"
       },
       "renderInLateUpdate": false,
+      "playDelay": 0.0,
       "mainColorStart": {
         "r": 0.7490196,
         "g": 1.785802E-07,

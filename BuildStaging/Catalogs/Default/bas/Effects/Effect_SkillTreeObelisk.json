@@ -17,6 +17,7 @@
       "effectParticleAddress": "Bas.Particle.SkillTree.Start",
       "intensityCurve": null,
       "renderInLateUpdate": false,
+      "playDelay": 0.0,
       "mainColorStart": {
         "r": 0.0,
         "g": 0.0,
@@ -113,6 +114,7 @@
       "effectParticleAddress": "Bas.Particle.SkillTree.Loop",
       "intensityCurve": null,
       "renderInLateUpdate": false,
+      "playDelay": 0.0,
       "mainColorStart": {
         "r": 0.0,
         "g": 0.0,
@@ -209,6 +211,7 @@
       "effectParticleAddress": "Bas.Particle.SkillTree.End",
       "intensityCurve": null,
       "renderInLateUpdate": false,
+      "playDelay": 0.0,
       "mainColorStart": {
         "r": 0.0,
         "g": 0.0,

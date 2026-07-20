@@ -1036,6 +1036,13 @@
           "text": "先讓敵人失衡，再用提線木偶解決敵人會容易得多！",
           "spriteAddress": "",
           "videoAddress": ""
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "57",
+          "text": "沉重而鈍的武器威力強大，足以透過敵人的盾牌使其踉蹌。",
+          "spriteAddress": null,
+          "videoAddress": null
         }
       ]
     },

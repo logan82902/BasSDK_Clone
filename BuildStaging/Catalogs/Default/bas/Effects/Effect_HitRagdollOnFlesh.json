@@ -81,6 +81,7 @@
       "effectParticleAddress": "Bas.Particle.Collision.Flesh",
       "intensityCurve": null,
       "renderInLateUpdate": false,
+      "playDelay": 0.0,
       "mainColorStart": {
         "r": 0.0,
         "g": 0.0,

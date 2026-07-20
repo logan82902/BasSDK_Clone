@@ -1036,6 +1036,13 @@
           "text": "Il est plus simple de se saisir d'ennemis à l'aide de Marionnette si vous les faites d'abord chanceler !",
           "spriteAddress": "",
           "videoAddress": ""
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "57",
+          "text": "Les armes lourdes et contondantes peuvent étourdir les ennemis, même lorsqu'ils utilisent un bouclier.",
+          "spriteAddress": null,
+          "videoAddress": null
         }
       ]
     },

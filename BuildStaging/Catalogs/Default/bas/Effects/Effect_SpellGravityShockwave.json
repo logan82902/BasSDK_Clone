@@ -380,6 +380,7 @@
       "effectParticleAddress": "Bas.Particle.Spell.Gravity.Shockwave360",
       "intensityCurve": null,
       "renderInLateUpdate": false,
+      "playDelay": 0.0,
       "mainColorStart": {
         "r": 1.0,
         "g": 1.0,
@@ -482,6 +483,7 @@
         "postWrapMode": "ClampForever"
       },
       "renderInLateUpdate": false,
+      "playDelay": 0.0,
       "mainColorStart": {
         "r": 0.0,
         "g": 0.0,

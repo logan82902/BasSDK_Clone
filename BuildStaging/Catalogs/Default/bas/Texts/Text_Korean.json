@@ -1036,6 +1036,13 @@
           "text": "적을 먼저 휘청거리는 상태로 만들면 더욱 쉽게 마리오네트로 집어 들 수 있습니다!",
           "spriteAddress": null,
           "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "57",
+          "text": "무겁고 둔기류 무기는 적의 방패를 뚫고도 적을 비틀거리게 할 만큼 강력합니다.",
+          "spriteAddress": null,
+          "videoAddress": null
         }
       ]
     },

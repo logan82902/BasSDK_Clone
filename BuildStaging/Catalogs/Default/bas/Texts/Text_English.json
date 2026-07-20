@@ -1036,6 +1036,13 @@
           "text": "Picking up enemies with Marionette is far easier if you stagger them first!",
           "spriteAddress": "",
           "videoAddress": ""
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "57",
+          "text": "Heavy and blunt weapons are strong enough to stagger enemies through their shield.",
+          "spriteAddress": "",
+          "videoAddress": ""
         }
       ]
     },

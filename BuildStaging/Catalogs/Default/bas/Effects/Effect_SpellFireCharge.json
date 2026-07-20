@@ -663,6 +663,7 @@
         "postWrapMode": "ClampForever"
       },
       "renderInLateUpdate": false,
+      "playDelay": 0.0,
       "mainColorStart": {
         "r": 1.0,
         "g": 1.0,

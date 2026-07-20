@@ -1036,6 +1036,13 @@
           "text": "การใช้หุ่นเชิดยกศัตรูขึ้นมาจะง่ายกว่ามากหากคุณทำให้พวกเขาโซเซก่อน!",
           "spriteAddress": null,
           "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "57",
+          "text": "อาวุธหนักและทื่อมีพลังมากพอที่จะทำให้ศัตรูเซถลาแม้ผ่านโล่ของพวกเขา",
+          "spriteAddress": null,
+          "videoAddress": null
         }
       ]
     },

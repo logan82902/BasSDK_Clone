@@ -151,7 +151,6 @@
   "handleDamager": false,
   "badAngleBluntFallback": true,
   "badAngleDamage": 1.0,
-  "badAngleRecoilMultiplier": 0.5,
   "badAngleMaterialDamageId": "BluntMassive",
   "dyingAnimationMaxVelocity": 8.0,
   "addForce": 0.0,

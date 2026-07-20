@@ -151,7 +151,6 @@
   "handleDamager": false,
   "badAngleBluntFallback": false,
   "badAngleDamage": 1.0,
-  "badAngleRecoilMultiplier": 0.0,
   "badAngleMaterialDamageId": "",
   "dyingAnimationMaxVelocity": 35.0,
   "addForce": 25.0,

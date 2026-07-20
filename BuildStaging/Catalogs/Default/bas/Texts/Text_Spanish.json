@@ -1036,6 +1036,13 @@
           "text": "¡Agarrar enemigos con Marioneta es mucho más fácil si les haces tambalear primero!",
           "spriteAddress": null,
           "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "57",
+          "text": "Las armas pesadas y contundentes tienen la potencia suficiente para hacer tambalear a los enemigos a través de su escudo.",
+          "spriteAddress": null,
+          "videoAddress": null
         }
       ]
     },

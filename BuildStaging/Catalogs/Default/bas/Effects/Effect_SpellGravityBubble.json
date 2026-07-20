@@ -317,6 +317,7 @@
       "effectParticleAddress": "Bas.Particle.Spell.Gravity.BubbleStart",
       "intensityCurve": null,
       "renderInLateUpdate": false,
+      "playDelay": 0.0,
       "mainColorStart": {
         "r": 0.0,
         "g": 0.0,
@@ -442,6 +443,7 @@
         "postWrapMode": "ClampForever"
       },
       "renderInLateUpdate": false,
+      "playDelay": 0.0,
       "mainColorStart": {
         "r": 0.745283,
         "g": 0.249599516,

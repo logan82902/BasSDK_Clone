@@ -1036,6 +1036,13 @@
           "text": "最初に敵をよろめかせれば、マリオネットで楽に持ち上げることができる！",
           "spriteAddress": null,
           "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "57",
+          "text": "重く鈍い武器は、盾を構えている敵でもひるませることができます。",
+          "spriteAddress": null,
+          "videoAddress": null
         }
       ]
     },

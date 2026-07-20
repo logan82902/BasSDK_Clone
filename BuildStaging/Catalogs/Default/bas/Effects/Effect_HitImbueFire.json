@@ -17,6 +17,7 @@
       "effectParticleAddress": "Bas.Particle.Spell.Fire.ImbueImpact",
       "intensityCurve": null,
       "renderInLateUpdate": false,
+      "playDelay": 0.0,
       "mainColorStart": {
         "r": 2.99607849,
         "g": 0.2509804,
@@ -616,6 +617,7 @@
       "effectParticleAddress": "Bas.Particle.Spell.Fire.ImbueSmokeLoop",
       "intensityCurve": null,
       "renderInLateUpdate": false,
+      "playDelay": 0.0,
       "mainColorStart": {
         "r": 0.0,
         "g": 0.0,

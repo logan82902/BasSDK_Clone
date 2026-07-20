@@ -42,6 +42,8 @@
   "allowInRouletteMode": false,
   "combatSkill": false,
   "allowOnFirstWave": true,
-  "requiredSkills": [],
+  "requiredSkills": [
+    "DiveStrike"
+  ],
   "IsCombinedSkill": false
 }

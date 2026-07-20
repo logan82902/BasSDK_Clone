@@ -484,6 +484,7 @@
       "effectParticleAddress": "Bas.Particle.Spell.Gravity.ImbueBlade.New",
       "intensityCurve": null,
       "renderInLateUpdate": false,
+      "playDelay": 0.0,
       "mainColorStart": {
         "r": 0.2727275,
         "g": 0.0,

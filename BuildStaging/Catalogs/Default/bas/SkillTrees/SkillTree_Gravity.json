@@ -35,6 +35,7 @@
   "tierBlockers": [
     "Gravity",
     "BoostJump",
-    "GravityMerge"
+    "GravityMerge",
+    null
   ]
 }

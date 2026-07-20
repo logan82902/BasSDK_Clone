@@ -380,6 +380,7 @@
       "effectParticleAddress": "Bas.Particle.Collision.Flesh",
       "intensityCurve": null,
       "renderInLateUpdate": false,
+      "playDelay": 0.0,
       "mainColorStart": {
         "r": 0.0,
         "g": 0.0,
@@ -478,6 +479,7 @@
       "effectParticleAddress": "Bas.Particle.Penetration.Flesh",
       "intensityCurve": null,
       "renderInLateUpdate": false,
+      "playDelay": 0.0,
       "mainColorStart": {
         "r": 0.0,
         "g": 0.0,
@@ -576,6 +578,7 @@
       "effectParticleAddress": "Bas.Particle.Penetration.FleshExit",
       "intensityCurve": null,
       "renderInLateUpdate": false,
+      "playDelay": 0.0,
       "mainColorStart": {
         "r": 0.0,
         "g": 0.0,
@@ -740,6 +743,7 @@
       "effectParticleAddress": "Bas.Particle.Penetration.FleshExit",
       "intensityCurve": null,
       "renderInLateUpdate": false,
+      "playDelay": 0.0,
       "mainColorStart": {
         "r": 0.0,
         "g": 0.0,
@@ -918,6 +922,7 @@
       "effectParticleAddress": "Bas.Particle.Collision.FleshNoGore",
       "intensityCurve": null,
       "renderInLateUpdate": false,
+      "playDelay": 0.0,
       "mainColorStart": {
         "r": 0.0,
         "g": 0.0,

@@ -1036,6 +1036,13 @@
           "text": "Pegar os inimigos com Marionete fica muito mais fácil se você os desestabilizar primeiro!",
           "spriteAddress": null,
           "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "57",
+          "text": "Armas pesadas e contundentes podem atordoar inimigos, mesmo quando usam um escudo.",
+          "spriteAddress": null,
+          "videoAddress": null
         }
       ]
     },

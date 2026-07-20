@@ -322,6 +322,7 @@
       "effectParticleAddress": "Bas.Particle.Spell.Gravity.Charge",
       "intensityCurve": null,
       "renderInLateUpdate": false,
+      "playDelay": 0.0,
       "mainColorStart": {
         "r": 0.745283,
         "g": 0.249599516,

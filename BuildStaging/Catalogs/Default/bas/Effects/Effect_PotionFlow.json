@@ -138,6 +138,7 @@
       "effectParticleAddress": "Bas.Particle.Misc.LiquidFlow",
       "intensityCurve": null,
       "renderInLateUpdate": false,
+      "playDelay": 0.0,
       "mainColorStart": {
         "r": 0.7735849,
         "g": 0.0,
