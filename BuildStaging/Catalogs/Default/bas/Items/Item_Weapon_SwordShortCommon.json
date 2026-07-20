@@ -276,7 +276,12 @@
       "ignoredByDefense": false,
       "armResistanceMultiplier": 3.0,
       "allowDynamicHeight": false,
-      "defenseHasPriority": false
+      "defenseHasPriority": false,
+      "transferPushToBlocker": false,
+      "transferVelocityModifier": -8.0,
+      "transferredPushModifier": -1,
+      "minTransferredPush": 2,
+      "maxTransferredPush": 4
     },
     {
       "$type": "ThunderRoad.ItemModuleStats, ThunderRoad",

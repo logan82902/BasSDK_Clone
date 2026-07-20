@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 597b621837728a84a9404055f404055d, type: 3}
+  m_Name: OceanFogAsset-Infuser
+  m_EditorClassIdentifier: 
+  settings:
+    _topColor: {r: 0.36200002, g: 0.21776561, b: 0.16968748, a: 1}
+    _bottomColor: {r: 0.191, g: 0.1528, b: 0.11753846, a: 1}
+    _underWaterTint: {r: 0.44, g: 0.34848002, b: 0.3168, a: 1}
+    _exponent: 10
+    _intensity: 0.029
+    _fogDensity2: 0.127
+    _oceanFogDensity: 0.225
+    _fogOffset: 0

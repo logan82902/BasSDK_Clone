@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
 using System;
@@ -27,6 +27,9 @@ namespace ThunderRoad
 
         public static Action<PlayerSpawner, EventTime> onSpawn;
 
+        // True if the player calibration was done after spawning the player. 
+        public bool DidPlayerCalibration { get; private set; }
+        
         public enum Type
         {
             DefaultStart,

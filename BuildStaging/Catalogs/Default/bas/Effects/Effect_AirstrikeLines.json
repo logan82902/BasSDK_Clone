@@ -17,6 +17,7 @@
       "effectParticleAddress": "Bas.Particle.Spell.Juggernaut.Lines",
       "intensityCurve": null,
       "renderInLateUpdate": false,
+      "playDelay": 0.0,
       "mainColorStart": {
         "r": 1.39607847,
         "g": 0.4392157,
@@ -78,6 +79,7 @@
         "z": 0.0
       },
       "collisionEffectId": null,
+      "collisionEffectDuration": 0.0,
       "collisionLayerMask": -65665,
       "collisionMaxGroundAngle": 45.0,
       "collisionEmitRate": 0.2,

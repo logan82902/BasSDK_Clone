@@ -1,0 +1,25 @@
+{
+  "$type": "ThunderRoad.MapData, ThunderRoad",
+  "id": "OutpostArenas",
+  "sensitiveContent": "None",
+  "sensitiveFilterBehaviour": "Discard",
+  "version": 0,
+  "groupPath": "",
+  "worldmapPrefabAddress": "Bas.Image.Map.Default",
+  "worldmapTextureAddress": "Bas.Worldmap.OutpostArenas",
+  "worldmapLocalisationId": "OutpostArenasMap",
+  "bookmarkIconAddress": "Bas.Icon.Location.Outpost",
+  "bookmarkColor": {
+    "r": 0.3254902,
+    "g": 0.349019617,
+    "b": 0.368627459,
+    "a": 1.0
+  },
+  "iconColor": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+  },
+  "order": 6
+}

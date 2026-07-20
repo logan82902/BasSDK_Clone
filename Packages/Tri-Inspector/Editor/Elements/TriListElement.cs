@@ -33,6 +33,8 @@ namespace TriInspector.Elements
         private bool _displayAll = false;
         private int _currentStartIndex = 0;
 
+        protected readonly bool ignoreButtonSpacing;
+
         protected ReorderableList ListGui => _reorderableListGui;
 
         public TriListElement(TriProperty property, Func<TriProperty, TriElement> customChildFunction = null)
@@ -44,6 +46,7 @@ namespace TriInspector.Elements
             _alwaysExpanded = settings?.AlwaysExpanded ?? false;
             _showElementLabels = settings?.ShowElementLabels ?? false;
             _dontForceInline = settings?.DontForceInline ?? false;
+            ignoreButtonSpacing = settings?.IgnoreButtonSpacing ?? false;
             _itemsPerPage = settings?.ItemsPerPage ?? 0;
             _useDropdown = property.TryGetAttribute(out DropdownListAttribute dropdown);
             _searchableDropdown = dropdown?.Searchable ?? false;
@@ -145,7 +148,12 @@ namespace TriInspector.Elements
 
             _lastContentWidth = width;
 
-            return _reorderableListGui.GetHeight();
+            float height = _reorderableListGui.GetHeight();
+            if (ignoreButtonSpacing)
+            {
+                height -= EditorGUIUtility.singleLineHeight;
+            }
+            return height;
         }
 
         public override void OnGUI(Rect position)

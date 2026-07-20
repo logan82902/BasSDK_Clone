@@ -152,8 +152,8 @@
       "overrideMaxMeleeCount": 2,
       "groupHealthMultiplier": 1.0,
       "minMaxCount": {
-        "x": 8,
-        "y": 8
+        "x": 4,
+        "y": 4
       },
       "spawnPointIndex": -1,
       "prereqGroupIndex": -1,
@@ -174,8 +174,52 @@
       "overrideMaxMeleeCount": 2,
       "groupHealthMultiplier": 1.0,
       "minMaxCount": {
-        "x": 7,
-        "y": 7
+        "x": 4,
+        "y": 4
+      },
+      "spawnPointIndex": -1,
+      "prereqGroupIndex": -1,
+      "prereqMaxRemainingAlive": 0
+    },
+    {
+      "$type": "ThunderRoad.WaveData+Group, ThunderRoad",
+      "mergeKey": "40bb00ea",
+      "reference": "Table",
+      "referenceID": "KharTibMeleeOnly",
+      "overrideFaction": true,
+      "factionID": 3,
+      "overrideContainer": false,
+      "overrideContainerID": "",
+      "overrideBrain": false,
+      "overrideBrainID": "",
+      "overrideMaxMelee": false,
+      "overrideMaxMeleeCount": 0,
+      "groupHealthMultiplier": 1.0,
+      "minMaxCount": {
+        "x": 4,
+        "y": 4
+      },
+      "spawnPointIndex": -1,
+      "prereqGroupIndex": -1,
+      "prereqMaxRemainingAlive": 0
+    },
+    {
+      "$type": "ThunderRoad.WaveData+Group, ThunderRoad",
+      "mergeKey": "9dd64329",
+      "reference": "Table",
+      "referenceID": "KharTibAlertMix",
+      "overrideFaction": true,
+      "factionID": 3,
+      "overrideContainer": false,
+      "overrideContainerID": "",
+      "overrideBrain": false,
+      "overrideBrainID": "",
+      "overrideMaxMelee": false,
+      "overrideMaxMeleeCount": 0,
+      "groupHealthMultiplier": 1.0,
+      "minMaxCount": {
+        "x": 3,
+        "y": 3
       },
       "spawnPointIndex": -1,
       "prereqGroupIndex": -1,
@@ -292,5 +336,5 @@
       "prereqMaxRemainingAlive": 0
     }
   ],
-  "modules": null
+  "modules": []
 }

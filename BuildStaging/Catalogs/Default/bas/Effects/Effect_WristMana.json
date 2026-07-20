@@ -135,6 +135,7 @@
       "effectParticleAddress": "Bas.Particle.Misc.WristMenu.Mana",
       "intensityCurve": null,
       "renderInLateUpdate": false,
+      "playDelay": 0.0,
       "mainColorStart": {
         "r": 0.644262433,
         "g": 1.07547176,
@@ -196,6 +197,7 @@
         "z": 0.0
       },
       "collisionEffectId": null,
+      "collisionEffectDuration": 0.0,
       "collisionLayerMask": -2162889,
       "collisionMaxGroundAngle": 45.0,
       "collisionEmitRate": 0.2,

@@ -1996,27 +1996,11 @@ MonoBehaviour:
   touchRadius: 0.05
   artificialDistance: 0
   touchCenter: {x: 0, y: 0, z: 0}
+  name: 
   defaultGrabAxisRatio: 0
   ikAnchorOffset: {x: 0, y: 0, z: 0}
-  orientationDefaultLeft: {fileID: 0}
   orientationDefaultRight: {fileID: 0}
-  allowedOrientations:
-  - rotation: {x: 0, y: 0, z: 0}
-    positionOffset: {x: 0, y: 0, z: 0}
-    allowedHand: 1
-    isDefault: 1
-  - rotation: {x: 0, y: 0, z: 180}
-    positionOffset: {x: 0, y: 0, z: 0}
-    allowedHand: 2
-    isDefault: 2
-  - rotation: {x: 180, y: 0, z: 0}
-    positionOffset: {x: 0, y: 0, z: 0}
-    allowedHand: 1
-    isDefault: 1
-  - rotation: {x: 180, y: 0, z: 180}
-    positionOffset: {x: 0, y: 0, z: 0}
-    allowedHand: 2
-    isDefault: 2
+  orientationDefaultLeft: {fileID: 0}
   releaseHandle: {fileID: 0}
   activateHandle: {fileID: 0}
   AIGrabHandle: {fileID: 0}
@@ -2036,6 +2020,23 @@ MonoBehaviour:
   moveToHandle: {fileID: 0}
   moveToHandleAxisPos: 0
   updatePosesAutomatically: 0
+  allowedOrientations:
+  - rotation: {x: 0, y: 0, z: 0}
+    positionOffset: {x: 0, y: 0, z: 0}
+    allowedHand: 1
+    isDefault: 1
+  - rotation: {x: 0, y: 0, z: 180}
+    positionOffset: {x: 0, y: 0, z: 0}
+    allowedHand: 2
+    isDefault: 2
+  - rotation: {x: 180, y: 0, z: 0}
+    positionOffset: {x: 0, y: 0, z: 0}
+    allowedHand: 1
+    isDefault: 1
+  - rotation: {x: 180, y: 0, z: 180}
+    positionOffset: {x: 0, y: 0, z: 0}
+    allowedHand: 2
+    isDefault: 2
   redirectControllerAxis: 0
   controllerAxisOutputX:
     m_PersistentCalls:
@@ -2043,6 +2044,7 @@ MonoBehaviour:
   controllerAxisOutputY:
     m_PersistentCalls:
       m_Calls: []
+  handlers: []
 --- !u!54 &138238653
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2338,6 +2340,7 @@ MonoBehaviour:
   referenceType: 0
   priority: 1
   spawnerType: 0
+  debugBreakOnSpawn: 0
   parentSpawner: {fileID: 0}
   pooled: 0
   spawnOnStart: 1
@@ -2703,27 +2706,11 @@ MonoBehaviour:
   touchRadius: 0.05
   artificialDistance: 0
   touchCenter: {x: 0, y: 0, z: 0}
+  name: 
   defaultGrabAxisRatio: 0
   ikAnchorOffset: {x: 0, y: 0, z: 0}
-  orientationDefaultLeft: {fileID: 0}
   orientationDefaultRight: {fileID: 0}
-  allowedOrientations:
-  - rotation: {x: 0, y: 0, z: 0}
-    positionOffset: {x: 0, y: 0, z: 0}
-    allowedHand: 1
-    isDefault: 1
-  - rotation: {x: 0, y: 0, z: 180}
-    positionOffset: {x: 0, y: 0, z: 0}
-    allowedHand: 2
-    isDefault: 2
-  - rotation: {x: 180, y: 0, z: 0}
-    positionOffset: {x: 0, y: 0, z: 0}
-    allowedHand: 1
-    isDefault: 1
-  - rotation: {x: 180, y: 0, z: 180}
-    positionOffset: {x: 0, y: 0, z: 0}
-    allowedHand: 2
-    isDefault: 2
+  orientationDefaultLeft: {fileID: 0}
   releaseHandle: {fileID: 0}
   activateHandle: {fileID: 0}
   AIGrabHandle: {fileID: 0}
@@ -2743,6 +2730,23 @@ MonoBehaviour:
   moveToHandle: {fileID: 0}
   moveToHandleAxisPos: 0
   updatePosesAutomatically: 0
+  allowedOrientations:
+  - rotation: {x: 0, y: 0, z: 0}
+    positionOffset: {x: 0, y: 0, z: 0}
+    allowedHand: 1
+    isDefault: 1
+  - rotation: {x: 0, y: 0, z: 180}
+    positionOffset: {x: 0, y: 0, z: 0}
+    allowedHand: 2
+    isDefault: 2
+  - rotation: {x: 180, y: 0, z: 0}
+    positionOffset: {x: 0, y: 0, z: 0}
+    allowedHand: 1
+    isDefault: 1
+  - rotation: {x: 180, y: 0, z: 180}
+    positionOffset: {x: 0, y: 0, z: 0}
+    allowedHand: 2
+    isDefault: 2
   redirectControllerAxis: 0
   controllerAxisOutputX:
     m_PersistentCalls:
@@ -2750,6 +2754,7 @@ MonoBehaviour:
   controllerAxisOutputY:
     m_PersistentCalls:
       m_Calls: []
+  handlers: []
 --- !u!54 &225875711
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2988,27 +2993,11 @@ MonoBehaviour:
   touchRadius: 0.05
   artificialDistance: 0
   touchCenter: {x: 0, y: 0, z: 0}
+  name: 
   defaultGrabAxisRatio: 0
   ikAnchorOffset: {x: 0, y: 0, z: 0}
-  orientationDefaultLeft: {fileID: 0}
   orientationDefaultRight: {fileID: 0}
-  allowedOrientations:
-  - rotation: {x: 0, y: 0, z: 0}
-    positionOffset: {x: 0, y: 0, z: 0}
-    allowedHand: 1
-    isDefault: 1
-  - rotation: {x: 0, y: 0, z: 180}
-    positionOffset: {x: 0, y: 0, z: 0}
-    allowedHand: 2
-    isDefault: 2
-  - rotation: {x: 180, y: 0, z: 0}
-    positionOffset: {x: 0, y: 0, z: 0}
-    allowedHand: 1
-    isDefault: 1
-  - rotation: {x: 180, y: 0, z: 180}
-    positionOffset: {x: 0, y: 0, z: 0}
-    allowedHand: 2
-    isDefault: 2
+  orientationDefaultLeft: {fileID: 0}
   releaseHandle: {fileID: 0}
   activateHandle: {fileID: 0}
   AIGrabHandle: {fileID: 0}
@@ -3028,6 +3017,23 @@ MonoBehaviour:
   moveToHandle: {fileID: 0}
   moveToHandleAxisPos: 0
   updatePosesAutomatically: 0
+  allowedOrientations:
+  - rotation: {x: 0, y: 0, z: 0}
+    positionOffset: {x: 0, y: 0, z: 0}
+    allowedHand: 1
+    isDefault: 1
+  - rotation: {x: 0, y: 0, z: 180}
+    positionOffset: {x: 0, y: 0, z: 0}
+    allowedHand: 2
+    isDefault: 2
+  - rotation: {x: 180, y: 0, z: 0}
+    positionOffset: {x: 0, y: 0, z: 0}
+    allowedHand: 1
+    isDefault: 1
+  - rotation: {x: 180, y: 0, z: 180}
+    positionOffset: {x: 0, y: 0, z: 0}
+    allowedHand: 2
+    isDefault: 2
   redirectControllerAxis: 0
   controllerAxisOutputX:
     m_PersistentCalls:
@@ -3035,6 +3041,7 @@ MonoBehaviour:
   controllerAxisOutputY:
     m_PersistentCalls:
       m_Calls: []
+  handlers: []
 --- !u!54 &243430740
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3196,6 +3203,7 @@ MonoBehaviour:
   referenceType: 0
   priority: 1
   spawnerType: 0
+  debugBreakOnSpawn: 0
   parentSpawner: {fileID: 0}
   pooled: 0
   spawnOnStart: 1
@@ -4352,6 +4360,7 @@ MonoBehaviour:
   referenceType: 0
   priority: 1
   spawnerType: 0
+  debugBreakOnSpawn: 0
   parentSpawner: {fileID: 0}
   pooled: 0
   spawnOnStart: 1
@@ -5043,27 +5052,11 @@ MonoBehaviour:
   touchRadius: 0.05
   artificialDistance: 0
   touchCenter: {x: 0, y: 0, z: 0}
+  name: 
   defaultGrabAxisRatio: 0
   ikAnchorOffset: {x: 0, y: 0, z: 0}
-  orientationDefaultLeft: {fileID: 0}
   orientationDefaultRight: {fileID: 0}
-  allowedOrientations:
-  - rotation: {x: 0, y: 0, z: 0}
-    positionOffset: {x: 0, y: 0, z: 0}
-    allowedHand: 1
-    isDefault: 1
-  - rotation: {x: 0, y: 0, z: 180}
-    positionOffset: {x: 0, y: 0, z: 0}
-    allowedHand: 2
-    isDefault: 2
-  - rotation: {x: 180, y: 0, z: 0}
-    positionOffset: {x: 0, y: 0, z: 0}
-    allowedHand: 1
-    isDefault: 1
-  - rotation: {x: 180, y: 0, z: 180}
-    positionOffset: {x: 0, y: 0, z: 0}
-    allowedHand: 2
-    isDefault: 2
+  orientationDefaultLeft: {fileID: 0}
   releaseHandle: {fileID: 0}
   activateHandle: {fileID: 0}
   AIGrabHandle: {fileID: 0}
@@ -5083,6 +5076,23 @@ MonoBehaviour:
   moveToHandle: {fileID: 0}
   moveToHandleAxisPos: 0
   updatePosesAutomatically: 0
+  allowedOrientations:
+  - rotation: {x: 0, y: 0, z: 0}
+    positionOffset: {x: 0, y: 0, z: 0}
+    allowedHand: 1
+    isDefault: 1
+  - rotation: {x: 0, y: 0, z: 180}
+    positionOffset: {x: 0, y: 0, z: 0}
+    allowedHand: 2
+    isDefault: 2
+  - rotation: {x: 180, y: 0, z: 0}
+    positionOffset: {x: 0, y: 0, z: 0}
+    allowedHand: 1
+    isDefault: 1
+  - rotation: {x: 180, y: 0, z: 180}
+    positionOffset: {x: 0, y: 0, z: 0}
+    allowedHand: 2
+    isDefault: 2
   redirectControllerAxis: 0
   controllerAxisOutputX:
     m_PersistentCalls:
@@ -5090,6 +5100,7 @@ MonoBehaviour:
   controllerAxisOutputY:
     m_PersistentCalls:
       m_Calls: []
+  handlers: []
 --- !u!54 &405763360
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -7014,27 +7025,11 @@ MonoBehaviour:
   touchRadius: 0.05
   artificialDistance: 0
   touchCenter: {x: 0, y: 0, z: 0}
+  name: 
   defaultGrabAxisRatio: 0
   ikAnchorOffset: {x: 0, y: 0, z: 0}
-  orientationDefaultLeft: {fileID: 0}
   orientationDefaultRight: {fileID: 0}
-  allowedOrientations:
-  - rotation: {x: 0, y: 0, z: 0}
-    positionOffset: {x: 0, y: 0, z: 0}
-    allowedHand: 1
-    isDefault: 1
-  - rotation: {x: 0, y: 0, z: 180}
-    positionOffset: {x: 0, y: 0, z: 0}
-    allowedHand: 2
-    isDefault: 2
-  - rotation: {x: 180, y: 0, z: 0}
-    positionOffset: {x: 0, y: 0, z: 0}
-    allowedHand: 1
-    isDefault: 1
-  - rotation: {x: 180, y: 0, z: 180}
-    positionOffset: {x: 0, y: 0, z: 0}
-    allowedHand: 2
-    isDefault: 2
+  orientationDefaultLeft: {fileID: 0}
   releaseHandle: {fileID: 0}
   activateHandle: {fileID: 0}
   AIGrabHandle: {fileID: 0}
@@ -7054,6 +7049,23 @@ MonoBehaviour:
   moveToHandle: {fileID: 0}
   moveToHandleAxisPos: 0
   updatePosesAutomatically: 0
+  allowedOrientations:
+  - rotation: {x: 0, y: 0, z: 0}
+    positionOffset: {x: 0, y: 0, z: 0}
+    allowedHand: 1
+    isDefault: 1
+  - rotation: {x: 0, y: 0, z: 180}
+    positionOffset: {x: 0, y: 0, z: 0}
+    allowedHand: 2
+    isDefault: 2
+  - rotation: {x: 180, y: 0, z: 0}
+    positionOffset: {x: 0, y: 0, z: 0}
+    allowedHand: 1
+    isDefault: 1
+  - rotation: {x: 180, y: 0, z: 180}
+    positionOffset: {x: 0, y: 0, z: 0}
+    allowedHand: 2
+    isDefault: 2
   redirectControllerAxis: 0
   controllerAxisOutputX:
     m_PersistentCalls:
@@ -7061,6 +7073,7 @@ MonoBehaviour:
   controllerAxisOutputY:
     m_PersistentCalls:
       m_Calls: []
+  handlers: []
 --- !u!54 &562568178
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -7869,27 +7882,11 @@ MonoBehaviour:
   touchRadius: 0.05
   artificialDistance: 0
   touchCenter: {x: 0, y: 0, z: 0}
+  name: 
   defaultGrabAxisRatio: 0
   ikAnchorOffset: {x: 0, y: 0, z: 0}
-  orientationDefaultLeft: {fileID: 0}
   orientationDefaultRight: {fileID: 0}
-  allowedOrientations:
-  - rotation: {x: 0, y: 0, z: 0}
-    positionOffset: {x: 0, y: 0, z: 0}
-    allowedHand: 1
-    isDefault: 1
-  - rotation: {x: 0, y: 0, z: 180}
-    positionOffset: {x: 0, y: 0, z: 0}
-    allowedHand: 2
-    isDefault: 2
-  - rotation: {x: 180, y: 0, z: 0}
-    positionOffset: {x: 0, y: 0, z: 0}
-    allowedHand: 1
-    isDefault: 1
-  - rotation: {x: 180, y: 0, z: 180}
-    positionOffset: {x: 0, y: 0, z: 0}
-    allowedHand: 2
-    isDefault: 2
+  orientationDefaultLeft: {fileID: 0}
   releaseHandle: {fileID: 0}
   activateHandle: {fileID: 0}
   AIGrabHandle: {fileID: 0}
@@ -7909,6 +7906,23 @@ MonoBehaviour:
   moveToHandle: {fileID: 0}
   moveToHandleAxisPos: 0
   updatePosesAutomatically: 0
+  allowedOrientations:
+  - rotation: {x: 0, y: 0, z: 0}
+    positionOffset: {x: 0, y: 0, z: 0}
+    allowedHand: 1
+    isDefault: 1
+  - rotation: {x: 0, y: 0, z: 180}
+    positionOffset: {x: 0, y: 0, z: 0}
+    allowedHand: 2
+    isDefault: 2
+  - rotation: {x: 180, y: 0, z: 0}
+    positionOffset: {x: 0, y: 0, z: 0}
+    allowedHand: 1
+    isDefault: 1
+  - rotation: {x: 180, y: 0, z: 180}
+    positionOffset: {x: 0, y: 0, z: 0}
+    allowedHand: 2
+    isDefault: 2
   redirectControllerAxis: 0
   controllerAxisOutputX:
     m_PersistentCalls:
@@ -7916,6 +7930,7 @@ MonoBehaviour:
   controllerAxisOutputY:
     m_PersistentCalls:
       m_Calls: []
+  handlers: []
 --- !u!54 &612791389
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -8750,6 +8765,7 @@ MonoBehaviour:
   referenceType: 0
   priority: 1
   spawnerType: 0
+  debugBreakOnSpawn: 0
   parentSpawner: {fileID: 0}
   pooled: 0
   spawnOnStart: 1
@@ -9101,27 +9117,11 @@ MonoBehaviour:
   touchRadius: 0.05
   artificialDistance: 0
   touchCenter: {x: 0, y: 0, z: 0}
+  name: 
   defaultGrabAxisRatio: 0
   ikAnchorOffset: {x: 0, y: 0, z: 0}
-  orientationDefaultLeft: {fileID: 0}
   orientationDefaultRight: {fileID: 0}
-  allowedOrientations:
-  - rotation: {x: 0, y: 0, z: 0}
-    positionOffset: {x: 0, y: 0, z: 0}
-    allowedHand: 1
-    isDefault: 1
-  - rotation: {x: 0, y: 0, z: 180}
-    positionOffset: {x: 0, y: 0, z: 0}
-    allowedHand: 2
-    isDefault: 2
-  - rotation: {x: 180, y: 0, z: 0}
-    positionOffset: {x: 0, y: 0, z: 0}
-    allowedHand: 1
-    isDefault: 1
-  - rotation: {x: 180, y: 0, z: 180}
-    positionOffset: {x: 0, y: 0, z: 0}
-    allowedHand: 2
-    isDefault: 2
+  orientationDefaultLeft: {fileID: 0}
   releaseHandle: {fileID: 0}
   activateHandle: {fileID: 0}
   AIGrabHandle: {fileID: 0}
@@ -9141,6 +9141,23 @@ MonoBehaviour:
   moveToHandle: {fileID: 0}
   moveToHandleAxisPos: 0
   updatePosesAutomatically: 0
+  allowedOrientations:
+  - rotation: {x: 0, y: 0, z: 0}
+    positionOffset: {x: 0, y: 0, z: 0}
+    allowedHand: 1
+    isDefault: 1
+  - rotation: {x: 0, y: 0, z: 180}
+    positionOffset: {x: 0, y: 0, z: 0}
+    allowedHand: 2
+    isDefault: 2
+  - rotation: {x: 180, y: 0, z: 0}
+    positionOffset: {x: 0, y: 0, z: 0}
+    allowedHand: 1
+    isDefault: 1
+  - rotation: {x: 180, y: 0, z: 180}
+    positionOffset: {x: 0, y: 0, z: 0}
+    allowedHand: 2
+    isDefault: 2
   redirectControllerAxis: 0
   controllerAxisOutputX:
     m_PersistentCalls:
@@ -9148,6 +9165,7 @@ MonoBehaviour:
   controllerAxisOutputY:
     m_PersistentCalls:
       m_Calls: []
+  handlers: []
 --- !u!54 &721276463
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -9669,27 +9687,11 @@ MonoBehaviour:
   touchRadius: 0.05
   artificialDistance: 0
   touchCenter: {x: 0, y: 0, z: 0}
+  name: 
   defaultGrabAxisRatio: 0
   ikAnchorOffset: {x: 0, y: 0, z: 0}
-  orientationDefaultLeft: {fileID: 0}
   orientationDefaultRight: {fileID: 0}
-  allowedOrientations:
-  - rotation: {x: 0, y: 0, z: 0}
-    positionOffset: {x: 0, y: 0, z: 0}
-    allowedHand: 1
-    isDefault: 1
-  - rotation: {x: 0, y: 0, z: 180}
-    positionOffset: {x: 0, y: 0, z: 0}
-    allowedHand: 2
-    isDefault: 2
-  - rotation: {x: 180, y: 0, z: 0}
-    positionOffset: {x: 0, y: 0, z: 0}
-    allowedHand: 1
-    isDefault: 1
-  - rotation: {x: 180, y: 0, z: 180}
-    positionOffset: {x: 0, y: 0, z: 0}
-    allowedHand: 2
-    isDefault: 2
+  orientationDefaultLeft: {fileID: 0}
   releaseHandle: {fileID: 0}
   activateHandle: {fileID: 0}
   AIGrabHandle: {fileID: 0}
@@ -9709,6 +9711,23 @@ MonoBehaviour:
   moveToHandle: {fileID: 0}
   moveToHandleAxisPos: 0
   updatePosesAutomatically: 0
+  allowedOrientations:
+  - rotation: {x: 0, y: 0, z: 0}
+    positionOffset: {x: 0, y: 0, z: 0}
+    allowedHand: 1
+    isDefault: 1
+  - rotation: {x: 0, y: 0, z: 180}
+    positionOffset: {x: 0, y: 0, z: 0}
+    allowedHand: 2
+    isDefault: 2
+  - rotation: {x: 180, y: 0, z: 0}
+    positionOffset: {x: 0, y: 0, z: 0}
+    allowedHand: 1
+    isDefault: 1
+  - rotation: {x: 180, y: 0, z: 180}
+    positionOffset: {x: 0, y: 0, z: 0}
+    allowedHand: 2
+    isDefault: 2
   redirectControllerAxis: 0
   controllerAxisOutputX:
     m_PersistentCalls:
@@ -9716,6 +9735,7 @@ MonoBehaviour:
   controllerAxisOutputY:
     m_PersistentCalls:
       m_Calls: []
+  handlers: []
 --- !u!54 &755016010
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -10273,27 +10293,11 @@ MonoBehaviour:
   touchRadius: 0.05
   artificialDistance: 0
   touchCenter: {x: 0, y: 0, z: 0}
+  name: 
   defaultGrabAxisRatio: 0
   ikAnchorOffset: {x: 0, y: 0, z: 0}
-  orientationDefaultLeft: {fileID: 0}
   orientationDefaultRight: {fileID: 0}
-  allowedOrientations:
-  - rotation: {x: 0, y: 0, z: 0}
-    positionOffset: {x: 0, y: 0, z: 0}
-    allowedHand: 1
-    isDefault: 1
-  - rotation: {x: 0, y: 0, z: 180}
-    positionOffset: {x: 0, y: 0, z: 0}
-    allowedHand: 2
-    isDefault: 2
-  - rotation: {x: 180, y: 0, z: 0}
-    positionOffset: {x: 0, y: 0, z: 0}
-    allowedHand: 1
-    isDefault: 1
-  - rotation: {x: 180, y: 0, z: 180}
-    positionOffset: {x: 0, y: 0, z: 0}
-    allowedHand: 2
-    isDefault: 2
+  orientationDefaultLeft: {fileID: 0}
   releaseHandle: {fileID: 0}
   activateHandle: {fileID: 0}
   AIGrabHandle: {fileID: 0}
@@ -10313,6 +10317,23 @@ MonoBehaviour:
   moveToHandle: {fileID: 0}
   moveToHandleAxisPos: 0
   updatePosesAutomatically: 0
+  allowedOrientations:
+  - rotation: {x: 0, y: 0, z: 0}
+    positionOffset: {x: 0, y: 0, z: 0}
+    allowedHand: 1
+    isDefault: 1
+  - rotation: {x: 0, y: 0, z: 180}
+    positionOffset: {x: 0, y: 0, z: 0}
+    allowedHand: 2
+    isDefault: 2
+  - rotation: {x: 180, y: 0, z: 0}
+    positionOffset: {x: 0, y: 0, z: 0}
+    allowedHand: 1
+    isDefault: 1
+  - rotation: {x: 180, y: 0, z: 180}
+    positionOffset: {x: 0, y: 0, z: 0}
+    allowedHand: 2
+    isDefault: 2
   redirectControllerAxis: 0
   controllerAxisOutputX:
     m_PersistentCalls:
@@ -10320,6 +10341,7 @@ MonoBehaviour:
   controllerAxisOutputY:
     m_PersistentCalls:
       m_Calls: []
+  handlers: []
 --- !u!54 &798862178
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -10701,27 +10723,11 @@ MonoBehaviour:
   touchRadius: 0.05
   artificialDistance: 0
   touchCenter: {x: 0, y: 0, z: 0}
+  name: 
   defaultGrabAxisRatio: 0
   ikAnchorOffset: {x: 0, y: 0, z: 0}
-  orientationDefaultLeft: {fileID: 0}
   orientationDefaultRight: {fileID: 0}
-  allowedOrientations:
-  - rotation: {x: 0, y: 0, z: 0}
-    positionOffset: {x: 0, y: 0, z: 0}
-    allowedHand: 1
-    isDefault: 1
-  - rotation: {x: 0, y: 0, z: 180}
-    positionOffset: {x: 0, y: 0, z: 0}
-    allowedHand: 2
-    isDefault: 2
-  - rotation: {x: 180, y: 0, z: 0}
-    positionOffset: {x: 0, y: 0, z: 0}
-    allowedHand: 1
-    isDefault: 1
-  - rotation: {x: 180, y: 0, z: 180}
-    positionOffset: {x: 0, y: 0, z: 0}
-    allowedHand: 2
-    isDefault: 2
+  orientationDefaultLeft: {fileID: 0}
   releaseHandle: {fileID: 0}
   activateHandle: {fileID: 0}
   AIGrabHandle: {fileID: 0}
@@ -10741,6 +10747,23 @@ MonoBehaviour:
   moveToHandle: {fileID: 0}
   moveToHandleAxisPos: 0
   updatePosesAutomatically: 0
+  allowedOrientations:
+  - rotation: {x: 0, y: 0, z: 0}
+    positionOffset: {x: 0, y: 0, z: 0}
+    allowedHand: 1
+    isDefault: 1
+  - rotation: {x: 0, y: 0, z: 180}
+    positionOffset: {x: 0, y: 0, z: 0}
+    allowedHand: 2
+    isDefault: 2
+  - rotation: {x: 180, y: 0, z: 0}
+    positionOffset: {x: 0, y: 0, z: 0}
+    allowedHand: 1
+    isDefault: 1
+  - rotation: {x: 180, y: 0, z: 180}
+    positionOffset: {x: 0, y: 0, z: 0}
+    allowedHand: 2
+    isDefault: 2
   redirectControllerAxis: 0
   controllerAxisOutputX:
     m_PersistentCalls:
@@ -10748,6 +10771,7 @@ MonoBehaviour:
   controllerAxisOutputY:
     m_PersistentCalls:
       m_Calls: []
+  handlers: []
 --- !u!54 &822317511
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -11966,27 +11990,11 @@ MonoBehaviour:
   touchRadius: 0.05
   artificialDistance: 0
   touchCenter: {x: 0, y: 0, z: 0}
+  name: 
   defaultGrabAxisRatio: 0
   ikAnchorOffset: {x: 0, y: 0, z: 0}
-  orientationDefaultLeft: {fileID: 0}
   orientationDefaultRight: {fileID: 0}
-  allowedOrientations:
-  - rotation: {x: 0, y: 0, z: 0}
-    positionOffset: {x: 0, y: 0, z: 0}
-    allowedHand: 1
-    isDefault: 1
-  - rotation: {x: 0, y: 0, z: 180}
-    positionOffset: {x: 0, y: 0, z: 0}
-    allowedHand: 2
-    isDefault: 2
-  - rotation: {x: 180, y: 0, z: 0}
-    positionOffset: {x: 0, y: 0, z: 0}
-    allowedHand: 1
-    isDefault: 1
-  - rotation: {x: 180, y: 0, z: 180}
-    positionOffset: {x: 0, y: 0, z: 0}
-    allowedHand: 2
-    isDefault: 2
+  orientationDefaultLeft: {fileID: 0}
   releaseHandle: {fileID: 0}
   activateHandle: {fileID: 0}
   AIGrabHandle: {fileID: 0}
@@ -12006,6 +12014,23 @@ MonoBehaviour:
   moveToHandle: {fileID: 0}
   moveToHandleAxisPos: 0
   updatePosesAutomatically: 0
+  allowedOrientations:
+  - rotation: {x: 0, y: 0, z: 0}
+    positionOffset: {x: 0, y: 0, z: 0}
+    allowedHand: 1
+    isDefault: 1
+  - rotation: {x: 0, y: 0, z: 180}
+    positionOffset: {x: 0, y: 0, z: 0}
+    allowedHand: 2
+    isDefault: 2
+  - rotation: {x: 180, y: 0, z: 0}
+    positionOffset: {x: 0, y: 0, z: 0}
+    allowedHand: 1
+    isDefault: 1
+  - rotation: {x: 180, y: 0, z: 180}
+    positionOffset: {x: 0, y: 0, z: 0}
+    allowedHand: 2
+    isDefault: 2
   redirectControllerAxis: 0
   controllerAxisOutputX:
     m_PersistentCalls:
@@ -12013,6 +12038,7 @@ MonoBehaviour:
   controllerAxisOutputY:
     m_PersistentCalls:
       m_Calls: []
+  handlers: []
 --- !u!54 &906968809
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -12558,27 +12584,11 @@ MonoBehaviour:
   touchRadius: 0.05
   artificialDistance: 0
   touchCenter: {x: 0, y: 0, z: 0}
+  name: 
   defaultGrabAxisRatio: 0
   ikAnchorOffset: {x: 0, y: 0, z: 0}
-  orientationDefaultLeft: {fileID: 0}
   orientationDefaultRight: {fileID: 0}
-  allowedOrientations:
-  - rotation: {x: 0, y: 0, z: 0}
-    positionOffset: {x: 0, y: 0, z: 0}
-    allowedHand: 1
-    isDefault: 1
-  - rotation: {x: 0, y: 0, z: 180}
-    positionOffset: {x: 0, y: 0, z: 0}
-    allowedHand: 2
-    isDefault: 2
-  - rotation: {x: 180, y: 0, z: 0}
-    positionOffset: {x: 0, y: 0, z: 0}
-    allowedHand: 1
-    isDefault: 1
-  - rotation: {x: 180, y: 0, z: 180}
-    positionOffset: {x: 0, y: 0, z: 0}
-    allowedHand: 2
-    isDefault: 2
+  orientationDefaultLeft: {fileID: 0}
   releaseHandle: {fileID: 0}
   activateHandle: {fileID: 0}
   AIGrabHandle: {fileID: 0}
@@ -12598,6 +12608,23 @@ MonoBehaviour:
   moveToHandle: {fileID: 0}
   moveToHandleAxisPos: 0
   updatePosesAutomatically: 0
+  allowedOrientations:
+  - rotation: {x: 0, y: 0, z: 0}
+    positionOffset: {x: 0, y: 0, z: 0}
+    allowedHand: 1
+    isDefault: 1
+  - rotation: {x: 0, y: 0, z: 180}
+    positionOffset: {x: 0, y: 0, z: 0}
+    allowedHand: 2
+    isDefault: 2
+  - rotation: {x: 180, y: 0, z: 0}
+    positionOffset: {x: 0, y: 0, z: 0}
+    allowedHand: 1
+    isDefault: 1
+  - rotation: {x: 180, y: 0, z: 180}
+    positionOffset: {x: 0, y: 0, z: 0}
+    allowedHand: 2
+    isDefault: 2
   redirectControllerAxis: 0
   controllerAxisOutputX:
     m_PersistentCalls:
@@ -12605,6 +12632,7 @@ MonoBehaviour:
   controllerAxisOutputY:
     m_PersistentCalls:
       m_Calls: []
+  handlers: []
 --- !u!54 &950117583
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -14156,27 +14184,11 @@ MonoBehaviour:
   touchRadius: 0.05
   artificialDistance: 0
   touchCenter: {x: 0, y: 0, z: 0}
+  name: 
   defaultGrabAxisRatio: 0
   ikAnchorOffset: {x: 0, y: 0, z: 0}
-  orientationDefaultLeft: {fileID: 0}
   orientationDefaultRight: {fileID: 0}
-  allowedOrientations:
-  - rotation: {x: 0, y: 0, z: 0}
-    positionOffset: {x: 0, y: 0, z: 0}
-    allowedHand: 1
-    isDefault: 1
-  - rotation: {x: 0, y: 0, z: 180}
-    positionOffset: {x: 0, y: 0, z: 0}
-    allowedHand: 2
-    isDefault: 2
-  - rotation: {x: 180, y: 0, z: 0}
-    positionOffset: {x: 0, y: 0, z: 0}
-    allowedHand: 1
-    isDefault: 1
-  - rotation: {x: 180, y: 0, z: 180}
-    positionOffset: {x: 0, y: 0, z: 0}
-    allowedHand: 2
-    isDefault: 2
+  orientationDefaultLeft: {fileID: 0}
   releaseHandle: {fileID: 0}
   activateHandle: {fileID: 0}
   AIGrabHandle: {fileID: 0}
@@ -14196,6 +14208,23 @@ MonoBehaviour:
   moveToHandle: {fileID: 0}
   moveToHandleAxisPos: 0
   updatePosesAutomatically: 0
+  allowedOrientations:
+  - rotation: {x: 0, y: 0, z: 0}
+    positionOffset: {x: 0, y: 0, z: 0}
+    allowedHand: 1
+    isDefault: 1
+  - rotation: {x: 0, y: 0, z: 180}
+    positionOffset: {x: 0, y: 0, z: 0}
+    allowedHand: 2
+    isDefault: 2
+  - rotation: {x: 180, y: 0, z: 0}
+    positionOffset: {x: 0, y: 0, z: 0}
+    allowedHand: 1
+    isDefault: 1
+  - rotation: {x: 180, y: 0, z: 180}
+    positionOffset: {x: 0, y: 0, z: 0}
+    allowedHand: 2
+    isDefault: 2
   redirectControllerAxis: 0
   controllerAxisOutputX:
     m_PersistentCalls:
@@ -14203,6 +14232,7 @@ MonoBehaviour:
   controllerAxisOutputY:
     m_PersistentCalls:
       m_Calls: []
+  handlers: []
 --- !u!54 &1023471464
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -14808,6 +14838,8 @@ MonoBehaviour:
   imbueActivatorHandlesOverride: []
   allowImbueEffect: 1
   colliderGroupId: 
+  name: 
+  cookie: {fileID: 0}
 --- !u!1001 &1079812943
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16157,27 +16189,11 @@ MonoBehaviour:
   touchRadius: 0.05
   artificialDistance: 0
   touchCenter: {x: 0, y: 0, z: 0}
+  name: 
   defaultGrabAxisRatio: 0
   ikAnchorOffset: {x: 0, y: 0, z: 0}
-  orientationDefaultLeft: {fileID: 0}
   orientationDefaultRight: {fileID: 0}
-  allowedOrientations:
-  - rotation: {x: 0, y: 0, z: 0}
-    positionOffset: {x: 0, y: 0, z: 0}
-    allowedHand: 1
-    isDefault: 1
-  - rotation: {x: 0, y: 0, z: 180}
-    positionOffset: {x: 0, y: 0, z: 0}
-    allowedHand: 2
-    isDefault: 2
-  - rotation: {x: 180, y: 0, z: 0}
-    positionOffset: {x: 0, y: 0, z: 0}
-    allowedHand: 1
-    isDefault: 1
-  - rotation: {x: 180, y: 0, z: 180}
-    positionOffset: {x: 0, y: 0, z: 0}
-    allowedHand: 2
-    isDefault: 2
+  orientationDefaultLeft: {fileID: 0}
   releaseHandle: {fileID: 0}
   activateHandle: {fileID: 0}
   AIGrabHandle: {fileID: 0}
@@ -16197,6 +16213,23 @@ MonoBehaviour:
   moveToHandle: {fileID: 0}
   moveToHandleAxisPos: 0
   updatePosesAutomatically: 0
+  allowedOrientations:
+  - rotation: {x: 0, y: 0, z: 0}
+    positionOffset: {x: 0, y: 0, z: 0}
+    allowedHand: 1
+    isDefault: 1
+  - rotation: {x: 0, y: 0, z: 180}
+    positionOffset: {x: 0, y: 0, z: 0}
+    allowedHand: 2
+    isDefault: 2
+  - rotation: {x: 180, y: 0, z: 0}
+    positionOffset: {x: 0, y: 0, z: 0}
+    allowedHand: 1
+    isDefault: 1
+  - rotation: {x: 180, y: 0, z: 180}
+    positionOffset: {x: 0, y: 0, z: 0}
+    allowedHand: 2
+    isDefault: 2
   redirectControllerAxis: 0
   controllerAxisOutputX:
     m_PersistentCalls:
@@ -16204,6 +16237,7 @@ MonoBehaviour:
   controllerAxisOutputY:
     m_PersistentCalls:
       m_Calls: []
+  handlers: []
 --- !u!54 &1195678230
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -16272,27 +16306,11 @@ MonoBehaviour:
   touchRadius: 0.05
   artificialDistance: 0
   touchCenter: {x: 0, y: 0, z: 0}
+  name: 
   defaultGrabAxisRatio: 0
   ikAnchorOffset: {x: 0, y: 0, z: 0}
-  orientationDefaultLeft: {fileID: 0}
   orientationDefaultRight: {fileID: 0}
-  allowedOrientations:
-  - rotation: {x: 0, y: 0, z: 0}
-    positionOffset: {x: 0, y: 0, z: 0}
-    allowedHand: 1
-    isDefault: 1
-  - rotation: {x: 0, y: 0, z: 180}
-    positionOffset: {x: 0, y: 0, z: 0}
-    allowedHand: 2
-    isDefault: 2
-  - rotation: {x: 180, y: 0, z: 0}
-    positionOffset: {x: 0, y: 0, z: 0}
-    allowedHand: 1
-    isDefault: 1
-  - rotation: {x: 180, y: 0, z: 180}
-    positionOffset: {x: 0, y: 0, z: 0}
-    allowedHand: 2
-    isDefault: 2
+  orientationDefaultLeft: {fileID: 0}
   releaseHandle: {fileID: 0}
   activateHandle: {fileID: 0}
   AIGrabHandle: {fileID: 0}
@@ -16312,6 +16330,23 @@ MonoBehaviour:
   moveToHandle: {fileID: 0}
   moveToHandleAxisPos: 0
   updatePosesAutomatically: 0
+  allowedOrientations:
+  - rotation: {x: 0, y: 0, z: 0}
+    positionOffset: {x: 0, y: 0, z: 0}
+    allowedHand: 1
+    isDefault: 1
+  - rotation: {x: 0, y: 0, z: 180}
+    positionOffset: {x: 0, y: 0, z: 0}
+    allowedHand: 2
+    isDefault: 2
+  - rotation: {x: 180, y: 0, z: 0}
+    positionOffset: {x: 0, y: 0, z: 0}
+    allowedHand: 1
+    isDefault: 1
+  - rotation: {x: 180, y: 0, z: 180}
+    positionOffset: {x: 0, y: 0, z: 0}
+    allowedHand: 2
+    isDefault: 2
   redirectControllerAxis: 0
   controllerAxisOutputX:
     m_PersistentCalls:
@@ -16319,6 +16354,7 @@ MonoBehaviour:
   controllerAxisOutputY:
     m_PersistentCalls:
       m_Calls: []
+  handlers: []
 --- !u!54 &1200642591
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -16507,27 +16543,11 @@ MonoBehaviour:
   touchRadius: 0.05
   artificialDistance: 0
   touchCenter: {x: 0, y: 0, z: 0}
+  name: 
   defaultGrabAxisRatio: 0
   ikAnchorOffset: {x: 0, y: 0, z: 0}
-  orientationDefaultLeft: {fileID: 0}
   orientationDefaultRight: {fileID: 0}
-  allowedOrientations:
-  - rotation: {x: 0, y: 0, z: 0}
-    positionOffset: {x: 0, y: 0, z: 0}
-    allowedHand: 1
-    isDefault: 1
-  - rotation: {x: 0, y: 0, z: 180}
-    positionOffset: {x: 0, y: 0, z: 0}
-    allowedHand: 2
-    isDefault: 2
-  - rotation: {x: 180, y: 0, z: 0}
-    positionOffset: {x: 0, y: 0, z: 0}
-    allowedHand: 1
-    isDefault: 1
-  - rotation: {x: 180, y: 0, z: 180}
-    positionOffset: {x: 0, y: 0, z: 0}
-    allowedHand: 2
-    isDefault: 2
+  orientationDefaultLeft: {fileID: 0}
   releaseHandle: {fileID: 0}
   activateHandle: {fileID: 0}
   AIGrabHandle: {fileID: 0}
@@ -16547,6 +16567,23 @@ MonoBehaviour:
   moveToHandle: {fileID: 0}
   moveToHandleAxisPos: 0
   updatePosesAutomatically: 0
+  allowedOrientations:
+  - rotation: {x: 0, y: 0, z: 0}
+    positionOffset: {x: 0, y: 0, z: 0}
+    allowedHand: 1
+    isDefault: 1
+  - rotation: {x: 0, y: 0, z: 180}
+    positionOffset: {x: 0, y: 0, z: 0}
+    allowedHand: 2
+    isDefault: 2
+  - rotation: {x: 180, y: 0, z: 0}
+    positionOffset: {x: 0, y: 0, z: 0}
+    allowedHand: 1
+    isDefault: 1
+  - rotation: {x: 180, y: 0, z: 180}
+    positionOffset: {x: 0, y: 0, z: 0}
+    allowedHand: 2
+    isDefault: 2
   redirectControllerAxis: 0
   controllerAxisOutputX:
     m_PersistentCalls:
@@ -16554,6 +16591,7 @@ MonoBehaviour:
   controllerAxisOutputY:
     m_PersistentCalls:
       m_Calls: []
+  handlers: []
 --- !u!54 &1217497216
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -16866,6 +16904,8 @@ MonoBehaviour:
   forceFullIntensity: 0
   enterOnly: 1
   forceAllowHitLocomotionLayer: -1
+  collisions: []
+  isColliding: 0
 --- !u!1 &1236688592
 GameObject:
   m_ObjectHideFlags: 0
@@ -17383,6 +17423,7 @@ MonoBehaviour:
   referenceType: 0
   priority: 1
   spawnerType: 0
+  debugBreakOnSpawn: 0
   parentSpawner: {fileID: 0}
   pooled: 0
   spawnOnStart: 1
@@ -17722,27 +17763,11 @@ MonoBehaviour:
   touchRadius: 0.05
   artificialDistance: 0
   touchCenter: {x: 0, y: 0, z: 0}
+  name: 
   defaultGrabAxisRatio: 0
   ikAnchorOffset: {x: 0, y: 0, z: 0}
-  orientationDefaultLeft: {fileID: 0}
   orientationDefaultRight: {fileID: 0}
-  allowedOrientations:
-  - rotation: {x: 0, y: 0, z: 0}
-    positionOffset: {x: 0, y: 0, z: 0}
-    allowedHand: 1
-    isDefault: 1
-  - rotation: {x: 0, y: 0, z: 180}
-    positionOffset: {x: 0, y: 0, z: 0}
-    allowedHand: 2
-    isDefault: 2
-  - rotation: {x: 180, y: 0, z: 0}
-    positionOffset: {x: 0, y: 0, z: 0}
-    allowedHand: 1
-    isDefault: 1
-  - rotation: {x: 180, y: 0, z: 180}
-    positionOffset: {x: 0, y: 0, z: 0}
-    allowedHand: 2
-    isDefault: 2
+  orientationDefaultLeft: {fileID: 0}
   releaseHandle: {fileID: 0}
   activateHandle: {fileID: 0}
   AIGrabHandle: {fileID: 0}
@@ -17762,6 +17787,23 @@ MonoBehaviour:
   moveToHandle: {fileID: 0}
   moveToHandleAxisPos: 0
   updatePosesAutomatically: 0
+  allowedOrientations:
+  - rotation: {x: 0, y: 0, z: 0}
+    positionOffset: {x: 0, y: 0, z: 0}
+    allowedHand: 1
+    isDefault: 1
+  - rotation: {x: 0, y: 0, z: 180}
+    positionOffset: {x: 0, y: 0, z: 0}
+    allowedHand: 2
+    isDefault: 2
+  - rotation: {x: 180, y: 0, z: 0}
+    positionOffset: {x: 0, y: 0, z: 0}
+    allowedHand: 1
+    isDefault: 1
+  - rotation: {x: 180, y: 0, z: 180}
+    positionOffset: {x: 0, y: 0, z: 0}
+    allowedHand: 2
+    isDefault: 2
   redirectControllerAxis: 0
   controllerAxisOutputX:
     m_PersistentCalls:
@@ -17769,6 +17811,7 @@ MonoBehaviour:
   controllerAxisOutputY:
     m_PersistentCalls:
       m_Calls: []
+  handlers: []
 --- !u!54 &1321298256
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -18146,6 +18189,7 @@ MonoBehaviour:
   referenceType: 0
   priority: 1
   spawnerType: 0
+  debugBreakOnSpawn: 0
   parentSpawner: {fileID: 0}
   pooled: 0
   spawnOnStart: 1
@@ -18841,6 +18885,7 @@ MonoBehaviour:
   referenceType: 0
   priority: 1
   spawnerType: 0
+  debugBreakOnSpawn: 0
   parentSpawner: {fileID: 0}
   pooled: 0
   spawnOnStart: 1
@@ -19314,6 +19359,7 @@ MonoBehaviour:
   referenceType: 0
   priority: 1
   spawnerType: 0
+  debugBreakOnSpawn: 0
   parentSpawner: {fileID: 0}
   pooled: 0
   spawnOnStart: 1
@@ -19690,25 +19736,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   invokePlayerExitOnAwake: 0
-  ignorePlayerCreature: 0
-  ignoreNonRootParts: 1
-  ignoreIdleCreatures: 0
-  blockPhysicsCulling: 0
-  physicalCreatureState: 1
+  navSpeedModifier: 0
+  runSpeed: 0
   killPlayer: 1
   killNPC: 1
-  despawnItem: 1
   despawnNPC: 1
+  despawnItem: 1
   despawnDelay: 10
-  constantStatus: 0
-  statusIDs: []
-  playStatusEffects: 1
-  statusOnPlayer: 0
-  statusOnCreature: 0
-  statusOnItem: 0
-  disableArmorDetection: 0
-  breakBreakables: 0
-  portals: []
   spawnEffect: 0
   effectID: 
   effectMassVelocityCurve:
@@ -19719,34 +19753,26 @@ MonoBehaviour:
     m_RotationOrder: 4
   effectOrientation: {x: 0, y: 0, z: 1}
   orientEffectToEntranceXZNormal: 0
-  navSpeedModifier: 0
-  runSpeed: 0
   teleportPlayer: 0
   keepPlayerVelocity: 0
   teleportItem: 0
   keepItemVelocity: 0
   customTeleportTarget: {fileID: 0}
+  constantStatus: 0
+  statusIDs: []
+  playStatusEffects: 1
+  statusOnPlayer: 0
+  statusOnCreature: 0
+  statusOnItem: 0
+  disableArmorDetection: 0
   forceNonCreatures: 0
-  forceIgnoredItemIds: []
-  forceIgnoredItemTypes: 
   forcePlayer: 0
   creatureForceMode: 0
   forceTransform: {fileID: 0}
-  forceExclusionZone: {fileID: 0}
-  cancelItemVelocity: 0
-  cancelCreatureVelocity: 0
-  cancelPlayerVelocity: 0
-  itemVelocityMultOnEnter: 1
-  creatureVelocityMultOnEnter: 1
-  playerVelocityMultOnEnter: 1
-  itemForceMult: 1
-  creatureForceMult: 1
-  playerForceMult: 1
   linearForceActive: 0
   linearForceMode: 0
   linearForce: {x: 0, y: 0, z: 0}
   radialForceActive: 0
-  radialForceProjectOnSwirlPlane: 0
   radialForceMode: 0
   radialForce:
     serializedVersion: 2
@@ -19791,12 +19817,34 @@ MonoBehaviour:
   resistiveForceMode: 0
   minimumResistedVelocity: 0
   resistInForceTransformForward: 0
-  resistInAllDirections: 0
   resistiveForceDirection: {x: 0, y: 0, z: 0}
+  forceExclusionZone: {fileID: 0}
+  cancelItemVelocity: 0
+  cancelCreatureVelocity: 0
+  cancelPlayerVelocity: 0
+  itemVelocityMultOnEnter: 1
+  creatureVelocityMultOnEnter: 1
+  playerVelocityMultOnEnter: 1
+  itemForceMult: 1
+  creatureForceMult: 1
+  playerForceMult: 1
+  ignorePlayerCreature: 0
+  ignoreNonRootParts: 1
+  ignoreIdleCreatures: 0
+  blockPhysicsCulling: 0
+  physicalCreatureState: 1
+  portals: []
+  breakBreakables: 0
   playerEnterEvent:
     m_PersistentCalls:
       m_Calls: []
   playerExitEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  golemEnterEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  golemExitEvent:
     m_PersistentCalls:
       m_Calls: []
   creatureEnterEvent:
@@ -19823,18 +19871,13 @@ MonoBehaviour:
   lastItemExitEvent:
     m_PersistentCalls:
       m_Calls: []
-  golemEnterEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  golemExitEvent:
-    m_PersistentCalls:
-      m_Calls: []
   firstEntityEnterEvent:
     m_PersistentCalls:
       m_Calls: []
   lastEntityExitEvent:
     m_PersistentCalls:
       m_Calls: []
+  collidersInside: 0
 --- !u!4 &1490939853
 Transform:
   m_ObjectHideFlags: 0
@@ -21544,27 +21587,11 @@ MonoBehaviour:
   touchRadius: 0.05
   artificialDistance: 0
   touchCenter: {x: 0, y: 0, z: 0}
+  name: 
   defaultGrabAxisRatio: 0
   ikAnchorOffset: {x: 0, y: 0, z: 0}
-  orientationDefaultLeft: {fileID: 0}
   orientationDefaultRight: {fileID: 0}
-  allowedOrientations:
-  - rotation: {x: 0, y: 0, z: 0}
-    positionOffset: {x: 0, y: 0, z: 0}
-    allowedHand: 1
-    isDefault: 1
-  - rotation: {x: 0, y: 0, z: 180}
-    positionOffset: {x: 0, y: 0, z: 0}
-    allowedHand: 2
-    isDefault: 2
-  - rotation: {x: 180, y: 0, z: 0}
-    positionOffset: {x: 0, y: 0, z: 0}
-    allowedHand: 1
-    isDefault: 1
-  - rotation: {x: 180, y: 0, z: 180}
-    positionOffset: {x: 0, y: 0, z: 0}
-    allowedHand: 2
-    isDefault: 2
+  orientationDefaultLeft: {fileID: 0}
   releaseHandle: {fileID: 0}
   activateHandle: {fileID: 0}
   AIGrabHandle: {fileID: 0}
@@ -21584,6 +21611,23 @@ MonoBehaviour:
   moveToHandle: {fileID: 0}
   moveToHandleAxisPos: 0
   updatePosesAutomatically: 0
+  allowedOrientations:
+  - rotation: {x: 0, y: 0, z: 0}
+    positionOffset: {x: 0, y: 0, z: 0}
+    allowedHand: 1
+    isDefault: 1
+  - rotation: {x: 0, y: 0, z: 180}
+    positionOffset: {x: 0, y: 0, z: 0}
+    allowedHand: 2
+    isDefault: 2
+  - rotation: {x: 180, y: 0, z: 0}
+    positionOffset: {x: 0, y: 0, z: 0}
+    allowedHand: 1
+    isDefault: 1
+  - rotation: {x: 180, y: 0, z: 180}
+    positionOffset: {x: 0, y: 0, z: 0}
+    allowedHand: 2
+    isDefault: 2
   redirectControllerAxis: 0
   controllerAxisOutputX:
     m_PersistentCalls:
@@ -21591,6 +21635,7 @@ MonoBehaviour:
   controllerAxisOutputY:
     m_PersistentCalls:
       m_Calls: []
+  handlers: []
 --- !u!54 &1646475702
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -25113,9 +25158,6 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-  linkerStartLevelEvents: []
-  levelLoadEvents: []
-  levelUnloadEvents: []
 --- !u!4 &1859164060
 Transform:
   m_ObjectHideFlags: 0
@@ -25487,27 +25529,11 @@ MonoBehaviour:
   touchRadius: 0.05
   artificialDistance: 0
   touchCenter: {x: 0, y: 0, z: 0}
+  name: 
   defaultGrabAxisRatio: 0
   ikAnchorOffset: {x: 0, y: 0, z: 0}
-  orientationDefaultLeft: {fileID: 0}
   orientationDefaultRight: {fileID: 0}
-  allowedOrientations:
-  - rotation: {x: 0, y: 0, z: 0}
-    positionOffset: {x: 0, y: 0, z: 0}
-    allowedHand: 1
-    isDefault: 1
-  - rotation: {x: 0, y: 0, z: 180}
-    positionOffset: {x: 0, y: 0, z: 0}
-    allowedHand: 2
-    isDefault: 2
-  - rotation: {x: 180, y: 0, z: 0}
-    positionOffset: {x: 0, y: 0, z: 0}
-    allowedHand: 1
-    isDefault: 1
-  - rotation: {x: 180, y: 0, z: 180}
-    positionOffset: {x: 0, y: 0, z: 0}
-    allowedHand: 2
-    isDefault: 2
+  orientationDefaultLeft: {fileID: 0}
   releaseHandle: {fileID: 0}
   activateHandle: {fileID: 0}
   AIGrabHandle: {fileID: 0}
@@ -25527,6 +25553,23 @@ MonoBehaviour:
   moveToHandle: {fileID: 0}
   moveToHandleAxisPos: 0
   updatePosesAutomatically: 0
+  allowedOrientations:
+  - rotation: {x: 0, y: 0, z: 0}
+    positionOffset: {x: 0, y: 0, z: 0}
+    allowedHand: 1
+    isDefault: 1
+  - rotation: {x: 0, y: 0, z: 180}
+    positionOffset: {x: 0, y: 0, z: 0}
+    allowedHand: 2
+    isDefault: 2
+  - rotation: {x: 180, y: 0, z: 0}
+    positionOffset: {x: 0, y: 0, z: 0}
+    allowedHand: 1
+    isDefault: 1
+  - rotation: {x: 180, y: 0, z: 180}
+    positionOffset: {x: 0, y: 0, z: 0}
+    allowedHand: 2
+    isDefault: 2
   redirectControllerAxis: 0
   controllerAxisOutputX:
     m_PersistentCalls:
@@ -25534,6 +25577,7 @@ MonoBehaviour:
   controllerAxisOutputY:
     m_PersistentCalls:
       m_Calls: []
+  handlers: []
 --- !u!54 &1899973693
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -25677,27 +25721,11 @@ MonoBehaviour:
   touchRadius: 0.05
   artificialDistance: 0
   touchCenter: {x: 0, y: 0, z: 0}
+  name: 
   defaultGrabAxisRatio: 0
   ikAnchorOffset: {x: 0, y: 0, z: 0}
-  orientationDefaultLeft: {fileID: 0}
   orientationDefaultRight: {fileID: 0}
-  allowedOrientations:
-  - rotation: {x: 0, y: 0, z: 0}
-    positionOffset: {x: 0, y: 0, z: 0}
-    allowedHand: 1
-    isDefault: 1
-  - rotation: {x: 0, y: 0, z: 180}
-    positionOffset: {x: 0, y: 0, z: 0}
-    allowedHand: 2
-    isDefault: 2
-  - rotation: {x: 180, y: 0, z: 0}
-    positionOffset: {x: 0, y: 0, z: 0}
-    allowedHand: 1
-    isDefault: 1
-  - rotation: {x: 180, y: 0, z: 180}
-    positionOffset: {x: 0, y: 0, z: 0}
-    allowedHand: 2
-    isDefault: 2
+  orientationDefaultLeft: {fileID: 0}
   releaseHandle: {fileID: 0}
   activateHandle: {fileID: 0}
   AIGrabHandle: {fileID: 0}
@@ -25717,6 +25745,23 @@ MonoBehaviour:
   moveToHandle: {fileID: 0}
   moveToHandleAxisPos: 0
   updatePosesAutomatically: 0
+  allowedOrientations:
+  - rotation: {x: 0, y: 0, z: 0}
+    positionOffset: {x: 0, y: 0, z: 0}
+    allowedHand: 1
+    isDefault: 1
+  - rotation: {x: 0, y: 0, z: 180}
+    positionOffset: {x: 0, y: 0, z: 0}
+    allowedHand: 2
+    isDefault: 2
+  - rotation: {x: 180, y: 0, z: 0}
+    positionOffset: {x: 0, y: 0, z: 0}
+    allowedHand: 1
+    isDefault: 1
+  - rotation: {x: 180, y: 0, z: 180}
+    positionOffset: {x: 0, y: 0, z: 0}
+    allowedHand: 2
+    isDefault: 2
   redirectControllerAxis: 0
   controllerAxisOutputX:
     m_PersistentCalls:
@@ -25724,6 +25769,7 @@ MonoBehaviour:
   controllerAxisOutputY:
     m_PersistentCalls:
       m_Calls: []
+  handlers: []
 --- !u!54 &1901059691
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -26957,40 +27003,55 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: Portcullis01
+  holderPoint: {fileID: 1869936896}
   spawnPoint: {fileID: 363980986}
+  additionalHolderPoints: []
   parryPoint: {fileID: 1920462909}
-  mainHandleLeft: {fileID: 0}
   mainHandleRight: {fileID: 0}
+  mainHandleLeft: {fileID: 0}
+  flyDirRef: {fileID: 0}
   preview: {fileID: 212366136}
-  audioSource: {fileID: 0}
-  snapPitchRange: 0.05
-  DisallowDespawn: 0
   worldAttached: 0
   keepParent: 0
-  forceMeshLayer: -1
-  customReferences: []
-  holderPoint: {fileID: 1869936896}
-  additionalHolderPoints: []
-  customSnaps: []
-  audioContainerSnap: {fileID: 0}
-  audioContainerInventory: {fileID: 0}
   creaturePhysicToggleRadius: 2
   useCustomCenterOfMass: 0
   customCenterOfMass: {x: 0, y: 0, z: 0}
   customInertiaTensor: 0
   customInertiaTensorCollider: {fileID: 0}
-  obbPoint: {fileID: 0}
-  orientedBoundsPoints: []
-  flyDirRef: {fileID: 0}
+  customReferences: []
   forceThrown: 0
+  forceMeshLayer: -1
+  lightVolumeReceiver: {fileID: 0}
+  audioSource: {fileID: 0}
+  snapPitchRange: 0.05
+  childHolders: []
+  customSnaps: []
   flyFromThrow: 0
   flyRotationSpeed: 2
   flyThrowAngle: 0
+  isTelekinesisGrabbed: 0
+  isThrowed: 0
+  isFlying: 0
+  isFlyingBackwards: 0
+  isMoving: 0
+  wasMoving: 0
+  isGripped: 0
+  isBrokenPiece: 0
+  ignoredRagdoll: {fileID: 0}
+  ignoredItem: {fileID: 0}
+  ignoredCollider: {fileID: 0}
+  disableSnap: 0
+  audioContainerSnap: {fileID: 0}
+  audioContainerInventory: {fileID: 0}
   distantGrabSafeDistance: 1
   distantGrabSpinEnabled: 1
   distantGrabThrowRatio: 1
-  lightVolumeReceiver: {fileID: 0}
-  itemVolume: 0
+  isPooled: 0
+  DisallowDespawn: 0
+  parryActive: 0
+  isPenetrating: 0
+  spawnTime: 0
+  lastInteractionTime: 0
 --- !u!54 &2005562480
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -30594,27 +30655,11 @@ MonoBehaviour:
   touchRadius: 0.05
   artificialDistance: 0
   touchCenter: {x: 0, y: 0, z: 0}
+  name: 
   defaultGrabAxisRatio: 0
   ikAnchorOffset: {x: 0, y: 0, z: 0}
-  orientationDefaultLeft: {fileID: 0}
   orientationDefaultRight: {fileID: 0}
-  allowedOrientations:
-  - rotation: {x: 0, y: 0, z: 0}
-    positionOffset: {x: 0, y: 0, z: 0}
-    allowedHand: 1
-    isDefault: 1
-  - rotation: {x: 0, y: 0, z: 180}
-    positionOffset: {x: 0, y: 0, z: 0}
-    allowedHand: 2
-    isDefault: 2
-  - rotation: {x: 180, y: 0, z: 0}
-    positionOffset: {x: 0, y: 0, z: 0}
-    allowedHand: 1
-    isDefault: 1
-  - rotation: {x: 180, y: 0, z: 180}
-    positionOffset: {x: 0, y: 0, z: 0}
-    allowedHand: 2
-    isDefault: 2
+  orientationDefaultLeft: {fileID: 0}
   releaseHandle: {fileID: 0}
   activateHandle: {fileID: 0}
   AIGrabHandle: {fileID: 0}
@@ -30634,6 +30679,23 @@ MonoBehaviour:
   moveToHandle: {fileID: 0}
   moveToHandleAxisPos: 0
   updatePosesAutomatically: 0
+  allowedOrientations:
+  - rotation: {x: 0, y: 0, z: 0}
+    positionOffset: {x: 0, y: 0, z: 0}
+    allowedHand: 1
+    isDefault: 1
+  - rotation: {x: 0, y: 0, z: 180}
+    positionOffset: {x: 0, y: 0, z: 0}
+    allowedHand: 2
+    isDefault: 2
+  - rotation: {x: 180, y: 0, z: 0}
+    positionOffset: {x: 0, y: 0, z: 0}
+    allowedHand: 1
+    isDefault: 1
+  - rotation: {x: 180, y: 0, z: 180}
+    positionOffset: {x: 0, y: 0, z: 0}
+    allowedHand: 2
+    isDefault: 2
   redirectControllerAxis: 0
   controllerAxisOutputX:
     m_PersistentCalls:
@@ -30641,6 +30703,7 @@ MonoBehaviour:
   controllerAxisOutputY:
     m_PersistentCalls:
       m_Calls: []
+  handlers: []
 --- !u!54 &2105872990
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -31256,6 +31319,8 @@ MonoBehaviour:
   forceFullIntensity: 0
   enterOnly: 0
   forceAllowHitLocomotionLayer: -1
+  collisions: []
+  isColliding: 0
 --- !u!4 &742924340288400976
 Transform:
   m_ObjectHideFlags: 0
@@ -31423,6 +31488,8 @@ MonoBehaviour:
   forceFullIntensity: 0
   enterOnly: 1
   forceAllowHitLocomotionLayer: -1
+  collisions: []
+  isColliding: 0
 --- !u!1 &1462316551209026015
 GameObject:
   m_ObjectHideFlags: 0
@@ -31817,151 +31884,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 856927366904879908, guid: bee712845017c364c94ee99e4fcb9308,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 908424327479420685, guid: bee712845017c364c94ee99e4fcb9308,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 908424327479420685, guid: bee712845017c364c94ee99e4fcb9308,
-        type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 908424327479420685, guid: bee712845017c364c94ee99e4fcb9308,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 908424327479420685, guid: bee712845017c364c94ee99e4fcb9308,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1333663271578065288, guid: bee712845017c364c94ee99e4fcb9308,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1380903006013136728, guid: bee712845017c364c94ee99e4fcb9308,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1745390467726953919, guid: bee712845017c364c94ee99e4fcb9308,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1745390467726953919, guid: bee712845017c364c94ee99e4fcb9308,
-        type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1745390467726953919, guid: bee712845017c364c94ee99e4fcb9308,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1745390467726953919, guid: bee712845017c364c94ee99e4fcb9308,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2856756868618704571, guid: bee712845017c364c94ee99e4fcb9308,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2856756868618704571, guid: bee712845017c364c94ee99e4fcb9308,
-        type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2856756868618704571, guid: bee712845017c364c94ee99e4fcb9308,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2856756868618704571, guid: bee712845017c364c94ee99e4fcb9308,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2885235171880543253, guid: bee712845017c364c94ee99e4fcb9308,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2885235171880543253, guid: bee712845017c364c94ee99e4fcb9308,
-        type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2885235171880543253, guid: bee712845017c364c94ee99e4fcb9308,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2885235171880543253, guid: bee712845017c364c94ee99e4fcb9308,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3330948901573722984, guid: bee712845017c364c94ee99e4fcb9308,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3668271488809529319, guid: bee712845017c364c94ee99e4fcb9308,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3668271488809529319, guid: bee712845017c364c94ee99e4fcb9308,
-        type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3668271488809529319, guid: bee712845017c364c94ee99e4fcb9308,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3668271488809529319, guid: bee712845017c364c94ee99e4fcb9308,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4204359718324426146, guid: bee712845017c364c94ee99e4fcb9308,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4471345096228146582, guid: bee712845017c364c94ee99e4fcb9308,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4471345096228146582, guid: bee712845017c364c94ee99e4fcb9308,
-        type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4471345096228146582, guid: bee712845017c364c94ee99e4fcb9308,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4471345096228146582, guid: bee712845017c364c94ee99e4fcb9308,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4631947361472002419, guid: bee712845017c364c94ee99e4fcb9308,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -32002,124 +31924,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: -180
       objectReference: {fileID: 0}
-    - target: {fileID: 4793992365067903078, guid: bee712845017c364c94ee99e4fcb9308,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4950631173357176603, guid: bee712845017c364c94ee99e4fcb9308,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4950631173357176603, guid: bee712845017c364c94ee99e4fcb9308,
-        type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4950631173357176603, guid: bee712845017c364c94ee99e4fcb9308,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4950631173357176603, guid: bee712845017c364c94ee99e4fcb9308,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5559968129695961800, guid: bee712845017c364c94ee99e4fcb9308,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5824603824288551377, guid: bee712845017c364c94ee99e4fcb9308,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5824603824288551377, guid: bee712845017c364c94ee99e4fcb9308,
-        type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5824603824288551377, guid: bee712845017c364c94ee99e4fcb9308,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5824603824288551377, guid: bee712845017c364c94ee99e4fcb9308,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6089055945054521829, guid: bee712845017c364c94ee99e4fcb9308,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6369661942675991444, guid: bee712845017c364c94ee99e4fcb9308,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6929484485179524025, guid: bee712845017c364c94ee99e4fcb9308,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7019333171242377047, guid: bee712845017c364c94ee99e4fcb9308,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7019333171242377047, guid: bee712845017c364c94ee99e4fcb9308,
-        type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7019333171242377047, guid: bee712845017c364c94ee99e4fcb9308,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7019333171242377047, guid: bee712845017c364c94ee99e4fcb9308,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7356238216440210302, guid: bee712845017c364c94ee99e4fcb9308,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8080196774524831377, guid: bee712845017c364c94ee99e4fcb9308,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8265543271973800396, guid: bee712845017c364c94ee99e4fcb9308,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8765191546812701483, guid: bee712845017c364c94ee99e4fcb9308,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8765191546812701483, guid: bee712845017c364c94ee99e4fcb9308,
-        type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8765191546812701483, guid: bee712845017c364c94ee99e4fcb9308,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8765191546812701483, guid: bee712845017c364c94ee99e4fcb9308,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8889338751771851186, guid: bee712845017c364c94ee99e4fcb9308,
@@ -32726,6 +32533,8 @@ MonoBehaviour:
   forceFullIntensity: 0
   enterOnly: 1
   forceAllowHitLocomotionLayer: -1
+  collisions: []
+  isColliding: 0
 --- !u!1 &4407528968502842014
 GameObject:
   m_ObjectHideFlags: 0
@@ -33276,11 +33085,11 @@ MonoBehaviour:
   touchRadius: 0.1
   artificialDistance: 0
   touchCenter: {x: 0, y: 0, z: 0}
+  name: 
   defaultGrabAxisRatio: 0
   ikAnchorOffset: {x: 0, y: 0, z: 0}
-  orientationDefaultLeft: {fileID: 3764408085997942590}
   orientationDefaultRight: {fileID: 6349365667337597209}
-  allowedOrientations: []
+  orientationDefaultLeft: {fileID: 3764408085997942590}
   releaseHandle: {fileID: 0}
   activateHandle: {fileID: 0}
   AIGrabHandle: {fileID: 0}
@@ -33299,6 +33108,7 @@ MonoBehaviour:
   moveToHandle: {fileID: 0}
   moveToHandleAxisPos: 0
   updatePosesAutomatically: 0
+  allowedOrientations: []
   redirectControllerAxis: 0
   controllerAxisOutputX:
     m_PersistentCalls:
@@ -33306,6 +33116,7 @@ MonoBehaviour:
   controllerAxisOutputY:
     m_PersistentCalls:
       m_Calls: []
+  handlers: []
 --- !u!1 &5926983124374279239
 GameObject:
   m_ObjectHideFlags: 0

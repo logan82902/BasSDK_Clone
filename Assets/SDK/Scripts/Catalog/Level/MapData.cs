@@ -29,13 +29,6 @@ namespace ThunderRoad
         [NonSerialized]
         public Texture2D worldmapTexture2D;
 
-#if UNITY_EDITOR
-        public override string GetCatalogPath()
-        {
-            return base.GetCatalogPath().Replace("Customs", "Maps");
-        }
-#endif
-
 
         public override IEnumerator OnCatalogRefreshCoroutine()
         {

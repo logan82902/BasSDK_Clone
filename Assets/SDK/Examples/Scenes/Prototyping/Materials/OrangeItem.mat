@@ -10,12 +10,12 @@ Material:
   m_Name: OrangeItem
   m_Shader: {fileID: -6465566751694194690, guid: f2ccc783dd448614ebfe96a78331e1de,
     type: 3}
-  m_ValidKeywords:
-  - _CAUSTICSENABLE_ON
+  m_ValidKeywords: []
   m_InvalidKeywords:
   - LAYER_MAX3
   - MODED_MOSS
   - TEXTURE_MAX8
+  - _CAUSTICSENABLE_ON
   - _EMISSION
   - _METALLICSPECGLOSSMAP
   - _RECEIVESHADOWS_ON
@@ -206,6 +206,7 @@ Material:
     - _Bitmask: 0
     - _Blend: 0
     - _BlendMode_UseColorMask: 0
+    - _BlendOp: 0
     - _BumpScale: 1
     - _CausticsEnable: 1
     - _ClearCoatMask: 0
@@ -218,6 +219,7 @@ Material:
     - _DRAWERMinMax_MossDetailRemapx_MossDetailRemapyRange_MOSS_UseMossDetails: 0
     - _DRAWERMinMax_MossDetailRemapz_MossDetailRemapwClamp_MOSS_UseMossDetails: 0
     - _DRAWERMinMax_MossSlopeMM: 0
+    - _DRAWERPacked_BaseMapMoss_Alpha_Remap_Albedo_AAMode_Negative_MossAlphaMaskMM_MOSS_UseMossMaskWithAlpha_UseAlbedoAlpha: 0
     - _DRAWERPacked_MossNoiseNoise_RemapRMode_Negative_MossNoiseMM_MOSS_UseMossNoise: 0
     - _DebugCounter: 0
     - _DebugScale: 4
@@ -239,14 +241,18 @@ Material:
     - _Int0: 0
     - _Layer0Metallic: 0
     - _Layer0NormalStrength: 1
+    - _Layer0Red: 0
     - _Layer0Red_UseReveal: 0
     - _Layer0Smoothness: 0.5
+    - _Layer1Green: 0
     - _Layer1Green_UseReveal: 0
     - _Layer1Metallic: 0
     - _Layer1NormalStrength: 1
     - _Layer1Smoothness: 0.5
+    - _Layer2Blue: 0
     - _Layer2Blue_UseReveal: 0
     - _Layer2Height: -1
+    - _Layer3Alpha: 0
     - _Layer3Alpha_UseReveal: 0
     - _Lightmapping: 1
     - _MODE: 0
@@ -275,6 +281,8 @@ Material:
     - _MossSlopeDistort: 1
     - _MossSlopeNormRotate: 0
     - _MossSmoothness: 0
+    - _MossStochasticContrast: 0.5
+    - _MossStochasticScale: 1
     - _MossUV: 0
     - _NormalMossMask_MOSS_UseNormalMap: -1
     - _NormalStrength: 1
@@ -284,7 +292,7 @@ Material:
     - _OcclusionStrength: 1
     - _PRVOL: 0
     - _Parallax: 0.02
-    - _QueueControl: -1
+    - _QueueControl: 0
     - _QueueOffset: 0
     - _REFLECTIONBILLBOARDSTOCHASTIC: 0
     - _ReceiveShadows: 1

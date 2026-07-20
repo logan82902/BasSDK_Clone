@@ -9,6 +9,7 @@
   "description": null,
   "descriptionLocalizationId": null,
   "sceneAddress": null,
+  "sceneVariants": null,
   "showOnlyDevMode": false,
   "showInLevelSelection": false,
   "worldMapId": "Eraden",
@@ -34,5 +35,6 @@
   ],
   "customCameras": [],
   "throwableRefType": "Item",
-  "improvisedThrowableID": "ThrowablesRock"
+  "improvisedThrowableID": "ThrowablesRock",
+  "HasSceneVariants": false
 }

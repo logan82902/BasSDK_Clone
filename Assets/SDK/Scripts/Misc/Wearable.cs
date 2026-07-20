@@ -23,9 +23,9 @@ namespace ThunderRoad
 #endif
         public string wardrobeChannel;
 
-        [Group("WARDROBE")]
 #if UNITY_EDITOR
-        [Dropdown(nameof(GetAllChannelLayers))]
+        [Group("WARDROBE")]
+        [DropdownList(nameof(GetAllChannelLayers))]
 #endif
         public WearableEntry[] wardrobeLayers;
 
@@ -38,6 +38,12 @@ namespace ThunderRoad
             public string layer;
             [ReadOnly]
             public int layerIndex;
+
+            public override bool Equals(object obj)
+            {
+                if (obj is not WearableEntry wearableEntry) return false;
+                return layerIndex == wearableEntry.layerIndex;
+            }
         }
 
         #region EDITOR
@@ -61,7 +67,7 @@ namespace ThunderRoad
         /// <summary>
         /// This will allow for easier channel selection instead of manually typing strings.
         /// </summary>
-        private TriDropdownList<string> GetAllChannels()
+        public TriDropdownList<string> GetAllChannels()
         {
             // Cache.
             TriDropdownList<string> tmp = new();
@@ -81,7 +87,7 @@ namespace ThunderRoad
             return tmp;
         }
 
-        private TriDropdownList<WearableEntry> GetAllChannelLayers()
+        public TriDropdownList<WearableEntry> GetAllChannelLayers()
         {
             // Cache.
             TriDropdownList<WearableEntry> tmp = new();

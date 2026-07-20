@@ -97,6 +97,7 @@ namespace ThunderRoad
             trigger.gameObject.layer = Common.GetLayer(LayerName.MovingItem);
         }
 
+
         public void Lock()
         {
         }

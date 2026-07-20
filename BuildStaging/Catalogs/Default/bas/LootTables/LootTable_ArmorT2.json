@@ -51,6 +51,20 @@
           "probabilityWeight": 1.0,
           "sensitiveContent": "None",
           "sensitiveFilterBehaviour": "Discard"
+        },
+        {
+          "$type": "ThunderRoad.LootTable+Drop, ThunderRoad",
+          "mergeKey": "47d798ad",
+          "referenceID": "ArmorKharTib",
+          "reference": "Bundle",
+          "randMode": "ItemCount",
+          "minMaxRand": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "probabilityWeight": 0.0,
+          "sensitiveContent": "None",
+          "sensitiveFilterBehaviour": "Discard"
         }
       ]
     }

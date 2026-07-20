@@ -373,6 +373,104 @@
           "probabilityWeight": 0.5,
           "sensitiveContent": "None",
           "sensitiveFilterBehaviour": "Discard"
+        },
+        {
+          "$type": "ThunderRoad.LootTable+Drop, ThunderRoad",
+          "mergeKey": "2ce19beb",
+          "referenceID": "AxeKharTibDouble",
+          "reference": "Item",
+          "randMode": "ItemCount",
+          "minMaxRand": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "probabilityWeight": 1.0,
+          "sensitiveContent": "None",
+          "sensitiveFilterBehaviour": "Discard"
+        },
+        {
+          "$type": "ThunderRoad.LootTable+Drop, ThunderRoad",
+          "mergeKey": "cce55a97",
+          "referenceID": "AxeLongKharTibWarpick",
+          "reference": "Item",
+          "randMode": "ItemCount",
+          "minMaxRand": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "probabilityWeight": 1.0,
+          "sensitiveContent": "None",
+          "sensitiveFilterBehaviour": "Discard"
+        },
+        {
+          "$type": "ThunderRoad.LootTable+Drop, ThunderRoad",
+          "mergeKey": "cfac8fcd",
+          "referenceID": "DaggerKharTibHaladie",
+          "reference": "Item",
+          "randMode": "ItemCount",
+          "minMaxRand": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "probabilityWeight": 1.0,
+          "sensitiveContent": "None",
+          "sensitiveFilterBehaviour": "Discard"
+        },
+        {
+          "$type": "ThunderRoad.LootTable+Drop, ThunderRoad",
+          "mergeKey": "f5938704",
+          "referenceID": "DualBladeStaffKharTib",
+          "reference": "Item",
+          "randMode": "ItemCount",
+          "minMaxRand": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "probabilityWeight": 1.0,
+          "sensitiveContent": "None",
+          "sensitiveFilterBehaviour": "Discard"
+        },
+        {
+          "$type": "ThunderRoad.LootTable+Drop, ThunderRoad",
+          "mergeKey": "cf52ddbe",
+          "referenceID": "ShieldKharTib",
+          "reference": "Item",
+          "randMode": "ItemCount",
+          "minMaxRand": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "probabilityWeight": 1.0,
+          "sensitiveContent": "None",
+          "sensitiveFilterBehaviour": "Discard"
+        },
+        {
+          "$type": "ThunderRoad.LootTable+Drop, ThunderRoad",
+          "mergeKey": "619ddc10",
+          "referenceID": "SwordKharTibKhopesh",
+          "reference": "Item",
+          "randMode": "ItemCount",
+          "minMaxRand": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "probabilityWeight": 1.0,
+          "sensitiveContent": "None",
+          "sensitiveFilterBehaviour": "Discard"
+        },
+        {
+          "$type": "ThunderRoad.LootTable+Drop, ThunderRoad",
+          "mergeKey": "7196fa2e",
+          "referenceID": "SwordKharTibScimitar",
+          "reference": "Item",
+          "randMode": "ItemCount",
+          "minMaxRand": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "probabilityWeight": 1.0,
+          "sensitiveContent": "None",
+          "sensitiveFilterBehaviour": "Discard"
         }
       ]
     }

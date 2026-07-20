@@ -15,5 +15,7 @@ namespace ThunderRoad
         {
             yield break;
         }
+
+        public virtual void DrawGizmos() { }
     }
 }

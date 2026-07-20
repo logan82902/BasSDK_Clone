@@ -9,6 +9,7 @@
   "description": "An ancient Dalgarian ruin. Be prepared for a long and treacherous run through a labyrinth.",
   "descriptionLocalizationId": "DalgarianDescription",
   "sceneAddress": "Level.Areas",
+  "sceneVariants": null,
   "showOnlyDevMode": false,
   "showInLevelSelection": true,
   "worldMapId": "Eraden",
@@ -123,7 +124,8 @@
             "DalgarianEnemyConfigT2",
             "DalgarianEnemyConfigT3",
             "DalgarianEnemyConfigRakta",
-            "DalgarianEnemyConfigSentara"
+            "DalgarianEnemyConfigSentara",
+            "DalgarianEnemyConfigKharTib"
           ],
           "name": "EnemyConfig",
           "localizationGroup": "Default",
@@ -158,5 +160,6 @@
   ],
   "customCameras": [],
   "throwableRefType": "Item",
-  "improvisedThrowableID": null
+  "improvisedThrowableID": null,
+  "HasSceneVariants": false
 }

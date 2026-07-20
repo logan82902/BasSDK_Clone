@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using TriInspector;
 
 namespace ThunderRoad
@@ -6,15 +7,23 @@ namespace ThunderRoad
 	[Serializable]
     [SkipInTypeDropdown]
     [AutoLabelWidth(MinWidth = 0f)]
+	[DeclareFoldoutGroup("Foldout", Title = "$" + nameof(inspectorName))]
     public abstract class OptionBase
 	{
 		[JsonMergeKey]
+		[Group("Foldout")]
 		public string name; //id of the option
 
+		[JsonIgnore]
+		public string inspectorName => $"{name} \"{displayName}\" ({GetType().Name})";
+
+        [Group("Foldout")]
         [Dropdown(nameof(GetAllTextGroupId))]
         public string localizationGroup = TextData.DEFAULT_TEXT_GROUP;
+        [Group("Foldout")]
         [Dropdown(nameof(GetAllTextId))]
         public string displayName;
+        [Group("Foldout")]
         [Dropdown(nameof(GetAllTextId))]
         public string description;
 

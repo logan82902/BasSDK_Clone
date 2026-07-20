@@ -7,7 +7,7 @@
   "groupPath": "",
   "localizationId": "-",
   "displayName": "Minecart",
-  "description": null,
+  "description": "",
   "author": "Kaou",
   "valueType": "Gold",
   "value": 0.0,
@@ -16,25 +16,25 @@
   "flags": "None",
   "levelRequired": 0,
   "type": "Prop",
-  "category": null,
+  "category": "Unknown",
   "update": "",
-  "iconEffectId": null,
+  "iconEffectId": "",
   "preferredItemCenter": "Mass",
   "drainImbueWhenIdle": true,
   "forceImbueUseButton": "None",
   "prefabAddress": "Bas.Item.Prop.DalgMinecart",
-  "iconAddress": null,
-  "closeUpIconAddress": null,
+  "iconAddress": "",
+  "closeUpIconAddress": "",
   "pooledCount": 0,
   "androidPooledCount": 0,
   "allowedStorage": 0,
   "despawnOnStoredInInventory": false,
   "isStackable": false,
-  "consumableId": null,
-  "inventoryAudioContainerAddress": null,
+  "consumableId": "",
+  "inventoryAudioContainerAddress": "",
   "inventoryAudioVolume_dB": 0.0,
   "slot": "",
-  "snapAudioContainerAddress": null,
+  "snapAudioContainerAddress": "",
   "snapAudioVolume_dB": 0.0,
   "overrideMassAndDrag": true,
   "mass": 150.0,
@@ -173,6 +173,11 @@
       "$type": "ThunderRoad.ItemData+Interactable, ThunderRoad",
       "transformName": "Handle",
       "interactableId": "ObjectHandleProp"
+    },
+    {
+      "$type": "ThunderRoad.ItemData+Interactable, ThunderRoad",
+      "transformName": "HandleNoTK",
+      "interactableId": "ObjectHandlePropNoTK"
     }
   ],
   "effectHinges": [],
@@ -188,6 +193,6 @@
       "dampening": 0.1
     }
   ],
-  "modules": null,
+  "modules": [],
   "entityModules": []
 }

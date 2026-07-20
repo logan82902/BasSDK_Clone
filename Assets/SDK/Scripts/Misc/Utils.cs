@@ -30,6 +30,7 @@ namespace ThunderRoad
             return new Color(color.r / largest, color.g / largest, color.b / largest, color.a);
         }
         public static float Clamp(this float input, float low, float high) => Mathf.Clamp(input, low, high);
+        public static float Clamp01(this float input) => Mathf.Clamp(input, 0, 1);
 
         public static float Remap(this float input, float inLow, float inHigh, float outLow, float outHigh)
             => (input - inLow) / (inHigh - inLow) * (outHigh - outLow) + outLow;

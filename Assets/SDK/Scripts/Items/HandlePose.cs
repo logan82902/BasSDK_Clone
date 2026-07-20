@@ -70,7 +70,7 @@ namespace ThunderRoad
 #if TESTINGLOCALLY
             return;
 #endif
-            if (!this.InPrefabScene() && !Application.isBatchMode)
+            if (!Application.isBatchMode)
             {
                 UnityEditor.EditorApplication.delayCall += _OnValidate;
             }
@@ -221,17 +221,9 @@ namespace ThunderRoad
 
         public void UpdateName()
         {
-            if (handle)
-            {
-                if (side == Side.Right)
-                {
-                    this.name = "OrientRight" + (handle.orientationDefaultRight == this ? "_Default" : "");
-                }
-                else if (side == Side.Left)
-                {
-                    this.name = "OrientLeft" + (handle.orientationDefaultLeft == this ? "_Default" : "");
-                }
-            }
+            string requiredName = side == Side.Right ? "OrientRight" : "OrientLeft";
+            if (handle && (handle.orientationDefaultRight == this || handle.orientationDefaultLeft == this)) requiredName += "_Default";
+            if (!name.Contains(requiredName)) name = requiredName;
         }
 
         protected void GizmoDrawFinger(HandPoseData.Pose.Finger finger, HandPoseData.Pose.Finger finger2, Matrix4x4 matrix)

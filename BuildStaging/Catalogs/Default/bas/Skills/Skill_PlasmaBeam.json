@@ -302,7 +302,9 @@
   "allowOnFirstWave": true,
   "requiredSkills": [
     "Fire",
-    "Lightning"
+    "Lightning",
+    "FireMerge",
+    "LightningMerge"
   ],
   "IsCombinedSkill": true
 }

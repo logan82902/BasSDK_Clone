@@ -1,0 +1,300 @@
+{
+  "$type": "ThunderRoad.ItemData, ThunderRoad",
+  "id": "AxeLongKharTibWarpick",
+  "sensitiveContent": "None",
+  "sensitiveFilterBehaviour": "Discard",
+  "version": 4,
+  "groupPath": "",
+  "localizationId": "AxeLongKharTibWarpick",
+  "displayName": "War Talon",
+  "description": "A Kharese blend between a warpick and scythe, inspired by the devastating claws of the beasts roaming the deserts of Khar-Tib.",
+  "author": "Warpfrog",
+  "valueType": "Gold",
+  "value": 526.0,
+  "rewardValue": 0.0,
+  "tier": 2,
+  "flags": "Spinnable, Jabbing, Blunt",
+  "levelRequired": 0,
+  "type": "Weapon",
+  "category": "Khar-Tib Weapons",
+  "update": "Khar-Tib",
+  "iconEffectId": "",
+  "preferredItemCenter": "Mass",
+  "drainImbueWhenIdle": true,
+  "forceImbueUseButton": "None",
+  "prefabAddress": "Bas.Item.Melee.KharTib.Warpick",
+  "iconAddress": "Bas.Item.Melee.KharTib.Warpick.Icon[wpn_zaghnal]",
+  "closeUpIconAddress": "Bas.Item.Melee.KharTib.Warpick.IconClose[wpn_zaghnal-close-up]",
+  "pooledCount": 0,
+  "androidPooledCount": 0,
+  "allowedStorage": "Container, SandboxAllItems",
+  "despawnOnStoredInInventory": false,
+  "isStackable": false,
+  "consumableId": "",
+  "inventoryAudioContainerAddress": "",
+  "inventoryAudioVolume_dB": 0.0,
+  "slot": "Large",
+  "snapAudioContainerAddress": "Bas.AudioGroup.Snap.Heavy",
+  "snapAudioVolume_dB": 0.0,
+  "overrideMassAndDrag": true,
+  "mass": 4.5,
+  "drag": 1.0,
+  "angularDrag": 0.05,
+  "density": 7800.0,
+  "focusRegenMultiplier": 1.0,
+  "spellChargeSpeedPlayerMultiplier": 1.0,
+  "spellChargeSpeedNPCMultiplier": 1.0,
+  "collisionMaxOverride": 0,
+  "collisionEnterOnly": false,
+  "collisionNoMinVelocityCheck": false,
+  "forceLayer": "None",
+  "diffForceLayerWhenHeld": false,
+  "forceLayerHeld": "None",
+  "waterHandSpringMultiplierCurve": {
+    "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
+    "keys": [
+      {
+        "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
+        "time": 0.0,
+        "value": 0.3,
+        "inTangent": 0.0,
+        "outTangent": 0.0,
+        "inWeight": 0.0,
+        "outWeight": 0.0,
+        "weightedMode": "None",
+        "tangentMode": 0
+      },
+      {
+        "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
+        "time": 1.0,
+        "value": 0.15,
+        "inTangent": 0.0,
+        "outTangent": 0.0,
+        "inWeight": 0.0,
+        "outWeight": 0.0,
+        "weightedMode": "None",
+        "tangentMode": 0
+      }
+    ],
+    "length": 2,
+    "preWrapMode": "ClampForever",
+    "postWrapMode": "ClampForever"
+  },
+  "waterDragMultiplierCurve": {
+    "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
+    "keys": [
+      {
+        "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
+        "time": 0.0,
+        "value": 1.0,
+        "inTangent": 0.0,
+        "outTangent": 0.0,
+        "inWeight": 0.0,
+        "outWeight": 0.0,
+        "weightedMode": "None",
+        "tangentMode": 0
+      },
+      {
+        "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
+        "time": 1.0,
+        "value": 10.0,
+        "inTangent": 0.0,
+        "outTangent": 0.0,
+        "inWeight": 0.0,
+        "outWeight": 0.0,
+        "weightedMode": "None",
+        "tangentMode": 0
+      }
+    ],
+    "length": 2,
+    "preWrapMode": "ClampForever",
+    "postWrapMode": "ClampForever"
+  },
+  "waterSampleMinRadius": 0.2,
+  "throwMultiplier": 1.0,
+  "runSpeedMultiplier": 1.0,
+  "flyRotationSpeed": 2.0,
+  "flyThrowAngle": 120.0,
+  "allowFlyBackwards": false,
+  "telekinesisSafeDistance": 1.0,
+  "telekinesisThrowRatio": 1.5,
+  "telekinesisAutoGrabAnyHandle": false,
+  "grippable": true,
+  "grabAndGripClimb": false,
+  "playerGrabAndGripChangeLayer": true,
+  "customSnaps": [],
+  "drainImbueOnSnap": true,
+  "imbueEnergyOverTimeOnSnap": {
+    "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
+    "keys": [
+      {
+        "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
+        "time": 0.0,
+        "value": 1.0,
+        "inTangent": 0.0,
+        "outTangent": 0.0,
+        "inWeight": 0.0,
+        "outWeight": 0.0,
+        "weightedMode": "None",
+        "tangentMode": 0
+      },
+      {
+        "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
+        "time": 3.0,
+        "value": 0.0,
+        "inTangent": 0.0,
+        "outTangent": 0.0,
+        "inWeight": 0.0,
+        "outWeight": 0.0,
+        "weightedMode": "None",
+        "tangentMode": 0
+      }
+    ],
+    "length": 2,
+    "preWrapMode": "ClampForever",
+    "postWrapMode": "ClampForever"
+  },
+  "colliderGroups": [
+    {
+      "$type": "ThunderRoad.ItemData+ColliderGroup, ThunderRoad",
+      "transformName": "Blades",
+      "colliderGroupId": "BladeSword2h"
+    },
+    {
+      "$type": "ThunderRoad.ItemData+ColliderGroup, ThunderRoad",
+      "transformName": "Blunt",
+      "colliderGroupId": "BladeMace"
+    }
+  ],
+  "damagers": [
+    {
+      "$type": "ThunderRoad.ItemData+Damager, ThunderRoad",
+      "transformName": "Pierce",
+      "damagerID": "WarpickPierce"
+    },
+    {
+      "$type": "ThunderRoad.ItemData+Damager, ThunderRoad",
+      "transformName": "Slash",
+      "damagerID": "SwordSlash1H"
+    },
+    {
+      "$type": "ThunderRoad.ItemData+Damager, ThunderRoad",
+      "transformName": "Blunt",
+      "damagerID": "Mace1H"
+    },
+    {
+      "$type": "ThunderRoad.ItemData+Damager, ThunderRoad",
+      "transformName": "Handle",
+      "damagerID": "HandleHeavy"
+    }
+  ],
+  "Interactables": [
+    {
+      "$type": "ThunderRoad.ItemData+Interactable, ThunderRoad",
+      "transformName": "Handle",
+      "interactableId": "ObjectHandleHeavy"
+    }
+  ],
+  "effectHinges": [],
+  "whooshs": [
+    {
+      "$type": "ThunderRoad.ItemData+Whoosh, ThunderRoad",
+      "transformName": "Whoosh",
+      "effectId": "WhooshMace",
+      "trigger": "Always",
+      "stopOnSnap": true,
+      "minVelocity": 3.0,
+      "maxVelocity": 14.0,
+      "dampening": 0.1
+    }
+  ],
+  "modules": [
+    {
+      "$type": "ThunderRoad.ItemModuleAI, ThunderRoad",
+      "primaryClass": "Melee",
+      "secondaryClass": "None",
+      "weaponHandling": "TwoHanded",
+      "secondaryHandling": "None",
+      "weaponAttackTypes": "Swing",
+      "alwaysPrimary": false,
+      "defaultStanceInfo": {
+        "$type": "ThunderRoad.ItemModuleAI+StanceInfo, ThunderRoad",
+        "offhand": "Anything",
+        "grabAIHandleRadius": 0.0,
+        "stanceDataID": "HumanMelee1hStance"
+      },
+      "stanceInfosByOffhand": [
+        {
+          "$type": "ThunderRoad.ItemModuleAI+StanceInfo, ThunderRoad",
+          "offhand": "SameItem",
+          "grabAIHandleRadius": 0.0,
+          "stanceDataID": ""
+        }
+      ],
+      "rangedWeaponData": null,
+      "ignoredByDefense": false,
+      "armResistanceMultiplier": 3.0,
+      "allowDynamicHeight": false,
+      "defenseHasPriority": false,
+      "transferPushToBlocker": true,
+      "transferVelocityModifier": 0.0,
+      "transferredPushModifier": 0,
+      "minTransferredPush": 2,
+      "maxTransferredPush": 4
+    },
+    {
+      "$type": "ThunderRoad.ItemModuleStats, ThunderRoad",
+      "stats": [
+        {
+          "$type": "ThunderRoad.ItemStatInt, ThunderRoad",
+          "value": 5,
+          "useStarIcons": true,
+          "name": "FleshDamage"
+        },
+        {
+          "$type": "ThunderRoad.ItemStatInt, ThunderRoad",
+          "value": 4,
+          "useStarIcons": true,
+          "name": "LeatherDamage"
+        },
+        {
+          "$type": "ThunderRoad.ItemStatInt, ThunderRoad",
+          "value": 2,
+          "useStarIcons": true,
+          "name": "PlateDamage"
+        },
+        {
+          "$type": "ThunderRoad.ItemStatInt, ThunderRoad",
+          "value": 2,
+          "useStarIcons": true,
+          "name": "Penetration"
+        },
+        {
+          "$type": "ThunderRoad.ItemStatInt, ThunderRoad",
+          "value": 2,
+          "useStarIcons": true,
+          "name": "Dismemberment"
+        },
+        {
+          "$type": "ThunderRoad.ItemStatInt, ThunderRoad",
+          "value": 3,
+          "useStarIcons": true,
+          "name": "Stagger"
+        },
+        {
+          "$type": "ThunderRoad.ItemStatInt, ThunderRoad",
+          "value": 2,
+          "useStarIcons": true,
+          "name": "Imbue"
+        },
+        {
+          "$type": "ThunderRoad.ItemStatInt, ThunderRoad",
+          "value": 3,
+          "useStarIcons": true,
+          "name": "Handling"
+        }
+      ]
+    }
+  ],
+  "entityModules": []
+}

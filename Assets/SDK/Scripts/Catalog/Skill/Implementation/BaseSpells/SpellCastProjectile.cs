@@ -10,167 +10,137 @@ using Newtonsoft.Json;
 
 namespace ThunderRoad.Skill.Spell
 {
-    [DeclareBoxGroup("Grip Cast", Title = "Grip Cast")]
-    [DeclareBoxGroup("Cast Heat Zone", Title = "Cast Heat Zone")]
-    [DeclareBoxGroup("Projectile", Title = "Projectile")]
-    [DeclareBoxGroup("Fire Sparks", Title = "Fire Sparks")]
-    [DeclareBoxGroup("Imbue", Title = "Imbue")]
-    [DeclareBoxGroup("Imbue use", Title = "Imbue use")]
-    [DeclareBoxGroup("Staff Slam", Title = "Staff Slam")]
-    [DeclareBoxGroup("Musket")]
+    [DeclareBoxGroup("Split/Right/Grip Cast", Title = "Grip Cast")]
+    [DeclareBoxGroup("Split/Right/Cast Heat Zone", Title = "Cast Heat Zone")]
+    [DeclareBoxGroup("Split/Right/Projectile", Title = "Projectile")]
+    [DeclareBoxGroup("Split/Right/Fire Sparks", Title = "Fire Sparks")]
+    [DeclareBoxGroup("Split/Right/Imbue", Title = "Imbue")]
+    [DeclareBoxGroup("Split/Right/Imbue use", Title = "Imbue use")]
+    [DeclareBoxGroup("Split/Right/Staff Slam", Title = "Staff Slam")]
     public class SpellCastProjectile : SpellCastCharge
     {
-        [Group("Grip Cast")]
+        [Group("Split/Right/Grip Cast")]
         public float gripCastHeatTransfer = 40;
-        [Group("Cast Heat Zone")]
+        [Group("Split/Right/Cast Heat Zone")]
         public bool allowCastHeat = true;
-        [Group("Cast Heat Zone")]
+        [Group("Split/Right/Cast Heat Zone")]
         [ShowIf(nameof(allowCastHeat))]
         public float spellCastHeatPerSecond = 20;
 
-        [Group("Cast Heat Zone")]
+        [Group("Split/Right/Cast Heat Zone")]
         [ShowIf(nameof(allowCastHeat))]
         public float castHeatRadius = 0.1f;
-        [Group("Projectile")]
+        [Group("Split/Right/Projectile")]
         [LabelText("$" + nameof(IntensityPerSkillLabel))]
         public float intensityPerSkill = 0.1f;
         [JsonIgnore]
         public string IntensityPerSkillLabel => SkillPassiveLabel("Damage", intensityPerSkill);
-        [Group("Projectile")]
+        [Group("Split/Right/Projectile")]
         [LabelText("$" + nameof(DurationPerSkillLabel))]
         public float durationPerSkill = 0.1f;
         [JsonIgnore]
         public string DurationPerSkillLabel => SkillPassiveLabel("Burn Duration", durationPerSkill);
-        [Group("Projectile")]
+        [Group("Split/Right/Projectile")]
         public bool destroyInWater = false;
-        [Group("Projectile")]
+        [Group("Split/Right/Projectile")]
         [Dropdown(nameof(GetAllEffectID))]
         public string projectileEffectId;
         [NonSerialized]
         public EffectData projectileEffectData;
 
-        [Group("Projectile")]
+        [Group("Split/Right/Projectile")]
         [Dropdown(nameof(GetAllItemID))]
         public string projectileId;
         [NonSerialized]
         public ItemData projectileData;
 
-        [Group("Projectile")]
+        [Group("Split/Right/Projectile")]
         [Dropdown(nameof(GetAllDamagerID))]
         public string projectileDamagerId;
         [NonSerialized]
         public DamagerData projectileDamagerData;
 
-        [Group("Projectile")]
+        [Group("Split/Right/Projectile")]
         public readonly AnimationCurve damageOverTimeCurve = AnimationCurve.Linear(1, 1, 1, 1);
 
 
-        [Group("Projectile")]
+        [Group("Split/Right/Projectile")]
         public float projectileImbueEnergyTransferred = 0;
-        [Group("Projectile")]
+        [Group("Split/Right/Projectile")]
         [Range(0f, 1f)]
         public float throwHeadBias = 0.5f;
-        [Group("Projectile")]
+        [Group("Split/Right/Projectile")]
         public float projectileVelocity = 5;
-        [Group("Projectile")]
+        [Group("Split/Right/Projectile")]
         public bool projectilePlayerGuided = true;
-        [Group("Projectile")]
+        [Group("Split/Right/Projectile")]
         public float projectileGuidanceDelay = 0.5f;
 
-        [Group("Projectile")]
+        [Group("Split/Right/Projectile")]
         public bool projectileAllowDeflect = true;
-        [Group("Projectile")]
+        [Group("Split/Right/Projectile")]
         [Dropdown(nameof(GetAllEffectID))]
         public string projectileDeflectEffectId;
         [NonSerialized]
         public EffectData projectileDeflectEffectData;
 
-        [Group("Fire Sparks")]
+        [Group("Split/Right/Fire Sparks")]
         [Dropdown(nameof(GetAllStatusEffectID))]
         public string fireSparkStatusId = "Burning";
         [NonSerialized]
         public StatusData fireSparkStatusEffect;
 
-        [Group("Fire Sparks")]
+        [Group("Split/Right/Fire Sparks")]
         public float fireSparkStatusDuration = 5;
 
-        [Group("Fire Sparks")]
+        [Group("Split/Right/Fire Sparks")]
         public float fireSparkHeatTransfer = 10;
 
-        [Group("Imbue")]
+        [Group("Split/Right/Imbue")]
         [Dropdown(nameof(GetAllStatusEffectID))]
         public string imbueHitStatusEffectId = "Burning";
         [NonSerialized]
         protected StatusData imbueHitStatusEffect;
-        [Group("Imbue")]
+        [Group("Split/Right/Imbue")]
         public float imbueHitStatusDuration = Mathf.Infinity;
-        [Group("Imbue")]
+        [Group("Split/Right/Imbue")]
         public float imbueHitHeat = 20;
-        [Group("Imbue")]
+        [Group("Split/Right/Imbue")]
         public float imbuePenetrateHeatPerSecond = 10;
 
-        [Group("Imbue use")]
+        [Group("Split/Right/Imbue use")]
         public float imbueUseConsumption = 10;
-        [Group("Imbue use")]
+        [Group("Split/Right/Imbue use")]
         [Dropdown(nameof(GetAllEffectID))]
         public string imbueUseEffectId;
         [NonSerialized]
         public EffectData imbueUseEffectData;
-        [Group("Imbue use")]
+        [Group("Split/Right/Imbue use")]
         [Dropdown(nameof(GetAllEffectID))]
         public string imbueUseProjectileEffectId;
         [NonSerialized]
         public EffectData imbueUseProjectileEffectData;
 
-        [Group("Imbue use")]
+        [Group("Split/Right/Imbue use")]
         public FireMode imbueShootFireMode = FireMode.InheritVelocity;
 
-        [Group("Imbue use")]
+        [Group("Split/Right/Imbue use")]
         public TriggerType imbueShootTriggerMode = TriggerType.ButtonUp;
 
-        [Group("Staff Slam")]
+        [Group("Split/Right/Staff Slam")]
         [Dropdown(nameof(GetAllEffectID))]
         public string imbueHitProjectileEffectId;
         [NonSerialized]
         public EffectData imbueHitProjectileEffectData;
-        [Group("Staff Slam")]
+        [Group("Split/Right/Staff Slam")]
         protected float staffSlamFireballSpeed = 15f;
-        [Group("Staff Slam")]
+        [Group("Split/Right/Staff Slam")]
         public int staffSlamNumFireballs = 6;
-        [Group("Staff Slam")]
+        [Group("Split/Right/Staff Slam")]
         public float slamOnCrystalDistance = 1f;
 
-        [Group("Musket")]
-        public float musketDamage = 30f;
-        [Group("Musket")]
-        public float musketRadius = 2f;
-        [Group("Musket")]
-        public LayerMask musketDecapitateLayerMask;
-        [Group("Musket")]
-        public int fireSparkCount = 6;
-        [Group("Musket")]
-        [Dropdown(nameof(GetAllStatusEffectID))]
-        public string musketStatusId;
-        protected StatusData musketStatusData;
-        [Group("Musket")]
-        [Dropdown(nameof(GetAllEffectID))]
-        public string musketSparkEffectId;
-        protected EffectData musketSparkEffectData;
-        [Group("Musket")]
-        public float musketForce = 20f;
-        [Group("Musket")]
-        public float musketStatusDuration = Mathf.Infinity;
-        [Group("Musket")]
-        public float musketStatusParameterCone = 100;
-        [Group("Musket")]
-        public float musketStatusParameterParticle = 100;
-        [Group("Musket")]
-        public Vector2 musketSparkVelocity = new Vector2(15f, 25f);
 
-        protected SkillTwinFlame twinFlameSkill;
-        
-        
-        
+
         protected HashSet<Creature> creaturesHeatedThisFrame;
 
         public new SpellCastProjectile Clone()
@@ -191,9 +161,6 @@ namespace ThunderRoad.Skill.Spell
             imbueUseEffectData = Catalog.GetData<EffectData>(imbueUseEffectId);
             imbueHitProjectileEffectData = Catalog.GetData<EffectData>(imbueHitProjectileEffectId);
             imbueUseProjectileEffectData = Catalog.GetData<EffectData>(imbueUseProjectileEffectId);
-            musketStatusData = Catalog.GetData<StatusData>(musketStatusId);
-            musketSparkEffectData = Catalog.GetData<EffectData>(musketSparkEffectId);
-            twinFlameSkill = Catalog.GetData<SkillTwinFlame>("TwinFlame");
 
         }
 

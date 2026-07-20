@@ -380,6 +380,7 @@
       "effectParticleAddress": "Bas.Particle.Spell.MoltenBeam.Merge",
       "intensityCurve": null,
       "renderInLateUpdate": false,
+      "playDelay": 0.0,
       "mainColorStart": {
         "r": 0.0,
         "g": 0.0,
@@ -433,14 +434,44 @@
         "y": 0.3,
         "z": 0.3
       },
-      "useScaleCurve": false,
-      "scaleCurve": null,
+      "useScaleCurve": true,
+      "scaleCurve": {
+        "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
+        "keys": [
+          {
+            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
+            "time": 0.0,
+            "value": 0.1,
+            "inTangent": 0.0,
+            "outTangent": 0.0,
+            "inWeight": 0.0,
+            "outWeight": 0.0,
+            "weightedMode": "None",
+            "tangentMode": 0
+          },
+          {
+            "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
+            "time": 1.0,
+            "value": 0.3,
+            "inTangent": 0.5760705,
+            "outTangent": 0.5760705,
+            "inWeight": 0.04669261,
+            "outWeight": 0.0,
+            "weightedMode": "None",
+            "tangentMode": 0
+          }
+        ],
+        "length": 2,
+        "preWrapMode": "ClampForever",
+        "postWrapMode": "ClampForever"
+      },
       "localRotation": {
         "x": 0.0,
         "y": 0.0,
         "z": 0.0
       },
-      "collisionEffectId": null,
+      "collisionEffectId": "",
+      "collisionEffectDuration": 0.0,
       "collisionLayerMask": -129,
       "collisionMaxGroundAngle": 45.0,
       "collisionEmitRate": 0.2,

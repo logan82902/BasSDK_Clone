@@ -1,0 +1,21 @@
+{
+  "$type": "ThunderRoad.BundleData, ThunderRoad",
+  "id": "CrossbowBundleT2",
+  "sensitiveContent": "None",
+  "sensitiveFilterBehaviour": "Discard",
+  "version": 0,
+  "groupPath": "T2",
+  "localizationGroup": "Bundles",
+  "displayName": "KharTibCrossbow",
+  "description": "",
+  "altDescriptionTitle": "ContentsTitle",
+  "isArmorBundle": false,
+  "bundleItemId": "Bundle",
+  "items": [
+    "KharTibCrossbow",
+    "QuiverBolts"
+  ],
+  "skills": [],
+  "lootTables": [],
+  "spriteAddress": "Ui.Icon.Unknown"
+}

@@ -89,6 +89,11 @@ namespace TriInspector.Drawers
                     height += FooterExtraSpace;
                 }
 
+                if (ignoreButtonSpacing)
+                {
+                    height -= EditorGUIUtility.singleLineHeight;
+                }
+
                 return height;
             }
 

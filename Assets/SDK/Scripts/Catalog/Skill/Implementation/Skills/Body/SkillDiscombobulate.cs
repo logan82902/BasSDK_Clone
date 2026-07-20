@@ -10,6 +10,7 @@ namespace ThunderRoad.Skill
     [DeclareBoxGroup("Bonk Effect", Title = "Bonk Effect")]
     public class SkillDiscombobulate : SkillData
     {
+
         [Group("Impact Modifiers")]
         public float impactVelocity = 6f;
         [Group("Impact Modifiers")]

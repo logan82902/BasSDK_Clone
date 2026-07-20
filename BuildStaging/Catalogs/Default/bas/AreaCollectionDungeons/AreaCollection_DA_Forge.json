@@ -1,0 +1,37 @@
+{
+  "$type": "ThunderRoad.AreaCollectionDungeon, ThunderRoad",
+  "id": "DA_Forge",
+  "sensitiveContent": "None",
+  "sensitiveFilterBehaviour": "Discard",
+  "version": 0,
+  "groupPath": "Individual Rooms/Dalgarian",
+  "path": [
+    {
+      "$type": "ThunderRoad.AreaCollectionDungeon+PathGroup, ThunderRoad",
+      "numberAreaMinToSpawn": 1,
+      "numberAreaMaxToSpawn": 1,
+      "creatureFillPercentage": 1.0,
+      "lootFillPercentage": 1.0,
+      "isSharedNPCAlert": true,
+      "areaPoolIdContainer": [
+        {
+          "$type": "ThunderRoad.AreaCollectionDungeon+AreaTableIdContainer, ThunderRoad",
+          "dataId": "DA_Forge"
+        }
+      ]
+    }
+  ],
+  "retry_previous_area_allowed": 50000,
+  "bounds_margin": 0.1,
+  "backupList": [
+    {
+      "$type": "ThunderRoad.AreaCollectionDungeon+BackupData, ThunderRoad",
+      "areaDataBackupIdContainer": {
+        "$type": "ThunderRoad.IAreaBlueprintGenerator+IAreaBlueprintGeneratorIdContainer, ThunderRoad",
+        "dataId": "DungeonBackup_GL_Short_0",
+        "category": "AreaCollection"
+      },
+      "maxCreature": 25.0
+    }
+  ]
+}

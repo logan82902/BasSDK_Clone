@@ -206,8 +206,8 @@
   "modules": [
     {
       "$type": "ThunderRoad.ItemModuleCrystalMusket, ThunderRoad",
-      "hammerDuration": 0.02,
-      "hammerDelay": 0.2,
+      "hammerDuration": 0.035,
+      "hammerDelay": 0.185,
       "fireDelay": 0.2,
       "recoil": 50.0,
       "recoilCurve": {

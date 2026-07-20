@@ -17,6 +17,7 @@
       "effectParticleAddress": "Bas.Particle.SkillTree.CrystalHolder.Start",
       "intensityCurve": null,
       "renderInLateUpdate": false,
+      "playDelay": 0.0,
       "mainColorStart": {
         "r": 0.0,
         "g": 0.0,
@@ -78,6 +79,7 @@
         "z": 0.0
       },
       "collisionEffectId": null,
+      "collisionEffectDuration": 0.0,
       "collisionLayerMask": -65665,
       "collisionMaxGroundAngle": 45.0,
       "collisionEmitRate": 0.2,
@@ -112,6 +114,7 @@
       "effectParticleAddress": "Bas.Particle.SkillTree.CrystalHolder.Loop",
       "intensityCurve": null,
       "renderInLateUpdate": false,
+      "playDelay": 0.0,
       "mainColorStart": {
         "r": 0.0,
         "g": 0.0,
@@ -173,6 +176,7 @@
         "z": 0.0
       },
       "collisionEffectId": null,
+      "collisionEffectDuration": 0.0,
       "collisionLayerMask": -65665,
       "collisionMaxGroundAngle": 45.0,
       "collisionEmitRate": 0.2,
@@ -207,6 +211,7 @@
       "effectParticleAddress": "Bas.Particle.SkillTree.CrystalHolder.End",
       "intensityCurve": null,
       "renderInLateUpdate": false,
+      "playDelay": 0.0,
       "mainColorStart": {
         "r": 0.0,
         "g": 0.0,
@@ -268,6 +273,7 @@
         "z": 0.0
       },
       "collisionEffectId": null,
+      "collisionEffectDuration": 0.0,
       "collisionLayerMask": -65665,
       "collisionMaxGroundAngle": 45.0,
       "collisionEmitRate": 0.2,

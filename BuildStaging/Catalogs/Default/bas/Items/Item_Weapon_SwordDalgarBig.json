@@ -18,7 +18,7 @@
   "type": "Weapon",
   "category": "Greatswords",
   "update": "",
-  "iconEffectId": null,
+  "iconEffectId": "",
   "preferredItemCenter": "Mass",
   "drainImbueWhenIdle": true,
   "forceImbueUseButton": "None",

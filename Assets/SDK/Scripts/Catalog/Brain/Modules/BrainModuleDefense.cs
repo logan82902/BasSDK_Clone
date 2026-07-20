@@ -20,6 +20,18 @@ namespace ThunderRoad
         public float dangerLevelDecreaseTime = 0.5f;
         public float shieldRiposteChance = 0.3f;
 
+        [Header("Push transfer")]
+        [Dropdown(nameof(GetAllMaterialId))]
+        public string blockSubstituteMaterialId = "Plate";
+        [NonSerialized]
+        [JsonIgnore]
+        public MaterialData blockSubstituteMaterial;
+        public int minBlockTransferredPushLevel = 1;
+        public int maxBlockTransferredPushLevel = 4;
+        public bool disarmOnBlockDestabilize = true;
+
+        public TriDropdownList<string> GetAllMaterialId() => Catalog.GetDropdownAllID(Category.Material);
+
         [Header("Swing defense")]
         public float defenseMaxDistance = 8f;
         public float parryDetectionRadius = 5f;

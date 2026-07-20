@@ -1,0 +1,21 @@
+{
+  "$type": "ThunderRoad.BundleData, ThunderRoad",
+  "id": "WarriorKharTibT2",
+  "sensitiveContent": "None",
+  "sensitiveFilterBehaviour": "Discard",
+  "version": 0,
+  "groupPath": "T2",
+  "localizationGroup": "Bundles",
+  "displayName": "BundleKharTibBundleT2Name",
+  "description": "",
+  "altDescriptionTitle": "ContentsTitle",
+  "isArmorBundle": false,
+  "bundleItemId": "Bundle",
+  "items": [
+    "SwordKharTibScimitar",
+    "ShieldKharTib"
+  ],
+  "skills": [],
+  "lootTables": [],
+  "spriteAddress": "Ui.Icon.Unknown"
+}

@@ -1,0 +1,207 @@
+{
+  "$type": "ThunderRoad.ItemData, ThunderRoad",
+  "id": "BombQuiverFire",
+  "sensitiveContent": "None",
+  "sensitiveFilterBehaviour": "Discard",
+  "version": 4,
+  "groupPath": "",
+  "localizationId": "BombQuiverFire",
+  "displayName": "Fire Crystal Bombs",
+  "description": "An exploding device fashioned out of elemental crystals. Must be armed, then thrown. Only when near an enemy, it will produce a firey explosion.",
+  "author": "Glitch",
+  "valueType": "Gold",
+  "value": 1269.0,
+  "rewardValue": 0.0,
+  "tier": 2,
+  "flags": "Spinnable",
+  "levelRequired": 0,
+  "type": "Quiver",
+  "category": "Khar-Tib Weapons",
+  "update": "",
+  "iconEffectId": "",
+  "preferredItemCenter": "Mass",
+  "drainImbueWhenIdle": true,
+  "forceImbueUseButton": "None",
+  "prefabAddress": "Bas.Item.Special.KharTib.SpellbombFire.Quiver",
+  "iconAddress": "Bas.Item.Special.KharTib.SpellbombFire.Quiver.Icon[wpn_spellbomb_fire_quiver]",
+  "closeUpIconAddress": "",
+  "pooledCount": 0,
+  "androidPooledCount": 0,
+  "allowedStorage": "Container, SandboxAllItems",
+  "despawnOnStoredInInventory": false,
+  "isStackable": false,
+  "consumableId": "",
+  "inventoryAudioContainerAddress": "",
+  "inventoryAudioVolume_dB": 0.0,
+  "slot": "Small",
+  "snapAudioContainerAddress": "Bas.AudioGroup.Snap.Leather",
+  "snapAudioVolume_dB": 0.0,
+  "overrideMassAndDrag": true,
+  "mass": 0.9,
+  "drag": 0.0,
+  "angularDrag": 0.05,
+  "density": 1000.0,
+  "focusRegenMultiplier": 1.0,
+  "spellChargeSpeedPlayerMultiplier": 1.0,
+  "spellChargeSpeedNPCMultiplier": 1.0,
+  "collisionMaxOverride": 0,
+  "collisionEnterOnly": false,
+  "collisionNoMinVelocityCheck": false,
+  "forceLayer": "None",
+  "diffForceLayerWhenHeld": false,
+  "forceLayerHeld": "None",
+  "waterHandSpringMultiplierCurve": {
+    "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
+    "keys": [
+      {
+        "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
+        "time": 0.0,
+        "value": 0.3,
+        "inTangent": 0.0,
+        "outTangent": 0.0,
+        "inWeight": 0.0,
+        "outWeight": 0.0,
+        "weightedMode": "None",
+        "tangentMode": 0
+      },
+      {
+        "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
+        "time": 1.0,
+        "value": 0.15,
+        "inTangent": 0.0,
+        "outTangent": 0.0,
+        "inWeight": 0.0,
+        "outWeight": 0.0,
+        "weightedMode": "None",
+        "tangentMode": 0
+      }
+    ],
+    "length": 2,
+    "preWrapMode": "ClampForever",
+    "postWrapMode": "ClampForever"
+  },
+  "waterDragMultiplierCurve": {
+    "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
+    "keys": [
+      {
+        "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
+        "time": 0.0,
+        "value": 1.0,
+        "inTangent": 0.0,
+        "outTangent": 0.0,
+        "inWeight": 0.0,
+        "outWeight": 0.0,
+        "weightedMode": "None",
+        "tangentMode": 0
+      },
+      {
+        "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
+        "time": 1.0,
+        "value": 10.0,
+        "inTangent": 0.0,
+        "outTangent": 0.0,
+        "inWeight": 0.0,
+        "outWeight": 0.0,
+        "weightedMode": "None",
+        "tangentMode": 0
+      }
+    ],
+    "length": 2,
+    "preWrapMode": "ClampForever",
+    "postWrapMode": "ClampForever"
+  },
+  "waterSampleMinRadius": 0.2,
+  "throwMultiplier": 1.0,
+  "runSpeedMultiplier": 1.0,
+  "flyRotationSpeed": 2.0,
+  "flyThrowAngle": 0.0,
+  "allowFlyBackwards": false,
+  "telekinesisSafeDistance": 1.0,
+  "telekinesisThrowRatio": 1.0,
+  "telekinesisAutoGrabAnyHandle": false,
+  "grippable": true,
+  "grabAndGripClimb": false,
+  "playerGrabAndGripChangeLayer": true,
+  "customSnaps": [
+    {
+      "$type": "ThunderRoad.ItemData+CustomSnap, ThunderRoad",
+      "holderName": "HipsLeft",
+      "localPosition": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "localRotation": {
+        "x": 180.0,
+        "y": 0.0,
+        "z": 0.0
+      }
+    }
+  ],
+  "drainImbueOnSnap": true,
+  "imbueEnergyOverTimeOnSnap": {
+    "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
+    "keys": [
+      {
+        "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
+        "time": 0.0,
+        "value": 1.0,
+        "inTangent": 0.0,
+        "outTangent": 0.0,
+        "inWeight": 0.0,
+        "outWeight": 0.0,
+        "weightedMode": "None",
+        "tangentMode": 0
+      },
+      {
+        "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
+        "time": 3.0,
+        "value": 0.0,
+        "inTangent": 0.0,
+        "outTangent": 0.0,
+        "inWeight": 0.0,
+        "outWeight": 0.0,
+        "weightedMode": "None",
+        "tangentMode": 0
+      }
+    ],
+    "length": 2,
+    "preWrapMode": "ClampForever",
+    "postWrapMode": "ClampForever"
+  },
+  "colliderGroups": [],
+  "damagers": [
+    {
+      "$type": "ThunderRoad.ItemData+Damager, ThunderRoad",
+      "transformName": "Blunt",
+      "damagerID": "HandleLight"
+    }
+  ],
+  "Interactables": [
+    {
+      "$type": "ThunderRoad.ItemData+Interactable, ThunderRoad",
+      "transformName": "Handle",
+      "interactableId": "ObjectHandleHeavy"
+    },
+    {
+      "$type": "ThunderRoad.ItemData+Interactable, ThunderRoad",
+      "transformName": "Holder",
+      "interactableId": "HolderBombFire"
+    }
+  ],
+  "effectHinges": [],
+  "whooshs": [],
+  "modules": [
+    {
+      "$type": "ThunderRoad.ItemModuleStats, ThunderRoad",
+      "stats": [
+        {
+          "$type": "ThunderRoad.ItemStatString, ThunderRoad",
+          "value": "5",
+          "name": "HoldAmount"
+        }
+      ]
+    }
+  ],
+  "entityModules": []
+}

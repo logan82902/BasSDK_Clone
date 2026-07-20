@@ -188,6 +188,8 @@
   "allowInRouletteMode": true,
   "combatSkill": false,
   "allowOnFirstWave": true,
-  "requiredSkills": [],
+  "requiredSkills": [
+    "SpellCastTest"
+  ],
   "IsCombinedSkill": false
 }

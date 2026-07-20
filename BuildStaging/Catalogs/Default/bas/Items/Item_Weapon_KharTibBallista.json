@@ -1,0 +1,284 @@
+{
+  "$type": "ThunderRoad.ItemData, ThunderRoad",
+  "id": "KharTibBallista",
+  "sensitiveContent": "None",
+  "sensitiveFilterBehaviour": "Discard",
+  "version": 4,
+  "groupPath": "",
+  "localizationId": "-",
+  "displayName": "Ballista",
+  "description": "",
+  "author": "Glitch",
+  "valueType": "Gold",
+  "value": 0.0,
+  "rewardValue": 0.0,
+  "tier": 3,
+  "flags": "Spinnable",
+  "levelRequired": 0,
+  "type": "Weapon",
+  "category": "Bows",
+  "update": "",
+  "iconEffectId": "",
+  "preferredItemCenter": "Mass",
+  "drainImbueWhenIdle": true,
+  "forceImbueUseButton": "None",
+  "prefabAddress": "",
+  "iconAddress": "",
+  "closeUpIconAddress": "",
+  "pooledCount": 0,
+  "androidPooledCount": 0,
+  "allowedStorage": 0,
+  "despawnOnStoredInInventory": false,
+  "isStackable": false,
+  "consumableId": "",
+  "inventoryAudioContainerAddress": "",
+  "inventoryAudioVolume_dB": 0.0,
+  "slot": "Bow",
+  "snapAudioContainerAddress": "Bas.AudioGroup.Snap.Other",
+  "snapAudioVolume_dB": 0.0,
+  "overrideMassAndDrag": false,
+  "mass": 1.3,
+  "drag": 0.0,
+  "angularDrag": 0.05,
+  "density": 800.0,
+  "focusRegenMultiplier": 1.0,
+  "spellChargeSpeedPlayerMultiplier": 1.0,
+  "spellChargeSpeedNPCMultiplier": 1.0,
+  "collisionMaxOverride": 0,
+  "collisionEnterOnly": false,
+  "collisionNoMinVelocityCheck": false,
+  "forceLayer": "PlayerLocomotionObject",
+  "diffForceLayerWhenHeld": false,
+  "forceLayerHeld": "None",
+  "waterHandSpringMultiplierCurve": {
+    "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
+    "keys": [
+      {
+        "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
+        "time": 0.0,
+        "value": 0.3,
+        "inTangent": 0.0,
+        "outTangent": 0.0,
+        "inWeight": 0.0,
+        "outWeight": 0.0,
+        "weightedMode": "None",
+        "tangentMode": 0
+      },
+      {
+        "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
+        "time": 1.0,
+        "value": 0.15,
+        "inTangent": 0.0,
+        "outTangent": 0.0,
+        "inWeight": 0.0,
+        "outWeight": 0.0,
+        "weightedMode": "None",
+        "tangentMode": 0
+      }
+    ],
+    "length": 2,
+    "preWrapMode": "ClampForever",
+    "postWrapMode": "ClampForever"
+  },
+  "waterDragMultiplierCurve": {
+    "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
+    "keys": [
+      {
+        "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
+        "time": 0.0,
+        "value": 1.0,
+        "inTangent": 0.0,
+        "outTangent": 0.0,
+        "inWeight": 0.0,
+        "outWeight": 0.0,
+        "weightedMode": "None",
+        "tangentMode": 0
+      },
+      {
+        "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
+        "time": 1.0,
+        "value": 10.0,
+        "inTangent": 0.0,
+        "outTangent": 0.0,
+        "inWeight": 0.0,
+        "outWeight": 0.0,
+        "weightedMode": "None",
+        "tangentMode": 0
+      }
+    ],
+    "length": 2,
+    "preWrapMode": "ClampForever",
+    "postWrapMode": "ClampForever"
+  },
+  "waterSampleMinRadius": 0.2,
+  "throwMultiplier": 1.0,
+  "runSpeedMultiplier": 1.0,
+  "flyRotationSpeed": 2.0,
+  "flyThrowAngle": 0.0,
+  "allowFlyBackwards": false,
+  "telekinesisSafeDistance": 1.0,
+  "telekinesisThrowRatio": 1.0,
+  "telekinesisAutoGrabAnyHandle": false,
+  "grippable": true,
+  "grabAndGripClimb": false,
+  "playerGrabAndGripChangeLayer": true,
+  "customSnaps": [
+    {
+      "$type": "ThunderRoad.ItemData+CustomSnap, ThunderRoad",
+      "holderName": "BackLeft",
+      "localPosition": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "localRotation": {
+        "x": 0.0,
+        "y": 180.0,
+        "z": 0.0
+      }
+    }
+  ],
+  "drainImbueOnSnap": true,
+  "imbueEnergyOverTimeOnSnap": {
+    "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
+    "keys": [
+      {
+        "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
+        "time": 0.0,
+        "value": 1.0,
+        "inTangent": 0.0,
+        "outTangent": 0.0,
+        "inWeight": 0.0,
+        "outWeight": 0.0,
+        "weightedMode": "None",
+        "tangentMode": 0
+      },
+      {
+        "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
+        "time": 3.0,
+        "value": 0.0,
+        "inTangent": 0.0,
+        "outTangent": 0.0,
+        "inWeight": 0.0,
+        "outWeight": 0.0,
+        "weightedMode": "None",
+        "tangentMode": 0
+      }
+    ],
+    "length": 2,
+    "preWrapMode": "ClampForever",
+    "postWrapMode": "ClampForever"
+  },
+  "colliderGroups": [],
+  "damagers": [
+    {
+      "$type": "ThunderRoad.ItemData+Damager, ThunderRoad",
+      "transformName": "Blunt",
+      "damagerID": "HandleLight"
+    }
+  ],
+  "Interactables": [
+    {
+      "$type": "ThunderRoad.ItemData+Interactable, ThunderRoad",
+      "transformName": "HandleLeft",
+      "interactableId": "ObjectHandleHeavyNoTK"
+    },
+    {
+      "$type": "ThunderRoad.ItemData+Interactable, ThunderRoad",
+      "transformName": "HandleRight",
+      "interactableId": "ObjectHandleHeavyNoTK"
+    },
+    {
+      "$type": "ThunderRoad.ItemData+Interactable, ThunderRoad",
+      "transformName": "HandleString",
+      "interactableId": "ObjectHandleBowString"
+    }
+  ],
+  "effectHinges": [],
+  "whooshs": [],
+  "modules": [
+    {
+      "$type": "ThunderRoad.ItemModuleAI, ThunderRoad",
+      "primaryClass": "Bow",
+      "secondaryClass": "None",
+      "weaponHandling": "TwoHanded",
+      "secondaryHandling": "None",
+      "weaponAttackTypes": "None",
+      "alwaysPrimary": false,
+      "defaultStanceInfo": {
+        "$type": "ThunderRoad.ItemModuleAI+StanceInfo, ThunderRoad",
+        "offhand": "Empty",
+        "grabAIHandleRadius": 0.0,
+        "stanceDataID": ""
+      },
+      "stanceInfosByOffhand": [],
+      "rangedWeaponData": {
+        "$type": "ThunderRoad.ItemModuleAI+RangedWeaponData, ThunderRoad",
+        "ammoType": "Arrow",
+        "tooCloseDistance": 5.0,
+        "spread": {
+          "x": 0.25,
+          "y": 0.5
+        },
+        "projectileSpeed": 22.0,
+        "accountForGravity": true,
+        "weaponAimAngleOffset": {
+          "x": 0.0,
+          "y": 2.14,
+          "z": 0.0
+        },
+        "weaponHoldPositionOffset": {
+          "x": 0.3,
+          "y": -0.07,
+          "z": 0.6
+        },
+        "weaponHoldAngleOffset": {
+          "x": 0.0,
+          "y": 20.0,
+          "z": -20.0
+        },
+        "customRangedAttackAnimationData": ""
+      },
+      "ignoredByDefense": false,
+      "armResistanceMultiplier": 2.0,
+      "allowDynamicHeight": false,
+      "defenseHasPriority": true,
+      "transferPushToBlocker": false,
+      "transferVelocityModifier": -8.0,
+      "transferredPushModifier": -1,
+      "minTransferredPush": 2,
+      "maxTransferredPush": 4
+    },
+    {
+      "$type": "ThunderRoad.ItemModuleStats, ThunderRoad",
+      "stats": [
+        {
+          "$type": "ThunderRoad.ItemStatInt, ThunderRoad",
+          "value": 5,
+          "useStarIcons": true,
+          "name": "DrawPower"
+        }
+      ]
+    },
+    {
+      "$type": "ThunderRoad.ItemModuleCrossbow, ThunderRoad",
+      "pullRatioToLock": 0.95,
+      "audioLockAddress": "Bas.AudioGroup.Ballista.LoadBolt",
+      "audioSpanLoopAddress": "Bas.AudioGroup.Ballista.Spanning",
+      "velocityMultiplier": 3.0,
+      "stringSpring": 1250.0,
+      "firedBounciness": 0.0,
+      "audioShootMinPull": 0.1,
+      "autoSpawnArrow": false,
+      "arrowProjectileID": "KharTibBallistaBolt",
+      "arrowDamageMultiplier": 100.0,
+      "arrowForceMultiplier": 15.0,
+      "audioDrawPullSpeed": 0.02,
+      "audioStringAddress": "",
+      "audioGroupDrawAddress": "",
+      "audioGroupShootAddress": "",
+      "maxPullRatioAI": 0.75
+    }
+  ],
+  "entityModules": []
+}

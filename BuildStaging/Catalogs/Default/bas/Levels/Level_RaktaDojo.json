@@ -9,6 +9,7 @@
   "description": "A Raike temple used for advanced meditation rituals and honing the practice of sorcery.",
   "descriptionLocalizationId": "RaktaDojoDescription",
   "sceneAddress": "Bas.Level.RaktaDojo",
+  "sceneVariants": null,
   "showOnlyDevMode": false,
   "showInLevelSelection": true,
   "worldMapId": "Rakta",
@@ -64,6 +65,45 @@
         {
           "$type": "ThunderRoad.LevelModuleSurvival, ThunderRoad",
           "trueRandomInProgressive": false,
+          "shockGradient": {
+            "$type": "UnityEngine.Gradient, UnityEngine.CoreModule",
+            "colorKeys": [
+              {
+                "$type": "UnityEngine.GradientColorKey, UnityEngine.CoreModule",
+                "color": {
+                  "r": 0.8,
+                  "g": 0.8,
+                  "b": 0.8,
+                  "a": 1.0
+                },
+                "time": 0.0
+              },
+              {
+                "$type": "UnityEngine.GradientColorKey, UnityEngine.CoreModule",
+                "color": {
+                  "r": 0.6,
+                  "g": 0.6,
+                  "b": 0.6,
+                  "a": 1.0
+                },
+                "time": 1.0
+              }
+            ],
+            "alphaKeys": [
+              {
+                "$type": "UnityEngine.GradientAlphaKey, UnityEngine.CoreModule",
+                "alpha": 1.0,
+                "time": 0.0
+              },
+              {
+                "$type": "UnityEngine.GradientAlphaKey, UnityEngine.CoreModule",
+                "alpha": 1.0,
+                "time": 1.0
+              }
+            ],
+            "mode": "Blend"
+          },
+          "forceAllowedGrabbables": [],
           "dualTreeWeight": 0.4,
           "subSkillWeight": 0.6,
           "skillTierWeightPerWave": [
@@ -192,6 +232,9 @@
           "rewardPillarAddress": "Bas.LevelModule.RewardPillarWood",
           "raiseSoundAudioContainerAddress": "Bas.AudioGroup.Survival.Pillar.Raise.Wood",
           "lowerSoundAudioContainerAddress": "Bas.AudioGroup.Survival.Pillar.Lower.Wood",
+          "mainPillarIndex": 0,
+          "autoConfigureTeleportZone": false,
+          "autoConfigureTeleportBoundsSize": 10.0,
           "useCustomTeleportPoint": false,
           "customTeleportPoint": {
             "x": 0.0,
@@ -205,44 +248,6 @@
           "victoryEffectId": "SurvivalVictory",
           "lightningZapEffectId": "SpellLightningBoltZapSingle",
           "dropItemEffectId": "SurvivalDropItem",
-          "shockGradient": {
-            "$type": "UnityEngine.Gradient, UnityEngine.CoreModule",
-            "colorKeys": [
-              {
-                "$type": "UnityEngine.GradientColorKey, UnityEngine.CoreModule",
-                "color": {
-                  "r": 0.8,
-                  "g": 0.8,
-                  "b": 0.8,
-                  "a": 1.0
-                },
-                "time": 0.0
-              },
-              {
-                "$type": "UnityEngine.GradientColorKey, UnityEngine.CoreModule",
-                "color": {
-                  "r": 0.6,
-                  "g": 0.6,
-                  "b": 0.6,
-                  "a": 1.0
-                },
-                "time": 1.0
-              }
-            ],
-            "alphaKeys": [
-              {
-                "$type": "UnityEngine.GradientAlphaKey, UnityEngine.CoreModule",
-                "alpha": 1.0,
-                "time": 0.0
-              },
-              {
-                "$type": "UnityEngine.GradientAlphaKey, UnityEngine.CoreModule",
-                "alpha": 1.0,
-                "time": 1.0
-              }
-            ],
-            "mode": "Blend"
-          },
           "rewardEffectId": "SurvivalRewardHighlight",
           "skillItemId": "SkillOrbItem",
           "startDelay": 3.0,
@@ -709,5 +714,6 @@
   ],
   "customCameras": [],
   "throwableRefType": "Item",
-  "improvisedThrowableID": null
+  "improvisedThrowableID": null,
+  "HasSceneVariants": false
 }

@@ -1,0 +1,57 @@
+{
+  "$type": "ThunderRoad.CreatureTable, ThunderRoad",
+  "id": "KharTibSorcererOnly",
+  "sensitiveContent": "None",
+  "sensitiveFilterBehaviour": "Discard",
+  "version": 1,
+  "groupPath": "Factions/Sandbox",
+  "description": "",
+  "linkedToGenderRatio": false,
+  "drops": [
+    {
+      "$type": "ThunderRoad.CreatureTable+Drop, ThunderRoad",
+      "mergeKey": "8f649ed1",
+      "reference": "Table",
+      "referenceID": "KharTib_Base_MeleeStrong",
+      "overrideFaction": false,
+      "factionID": 5,
+      "overrideContainer": false,
+      "overrideContainerID": "CultistDevotee",
+      "overrideBrain": false,
+      "overrideBrainID": "HumanHard",
+      "overrideEthnicity": false,
+      "overrideEthnicityID": "",
+      "probabilityWeight": 6.0
+    },
+    {
+      "$type": "ThunderRoad.CreatureTable+Drop, ThunderRoad",
+      "mergeKey": "89428afd",
+      "reference": "Table",
+      "referenceID": "KharTib_Base_RangedStrong",
+      "overrideFaction": false,
+      "factionID": 5,
+      "overrideContainer": false,
+      "overrideContainerID": "CultistPartisan",
+      "overrideBrain": false,
+      "overrideBrainID": "HumanHard",
+      "overrideEthnicity": false,
+      "overrideEthnicityID": "",
+      "probabilityWeight": 2.0
+    },
+    {
+      "$type": "ThunderRoad.CreatureTable+Drop, ThunderRoad",
+      "mergeKey": "fc9511af",
+      "reference": "Table",
+      "referenceID": "KharTib_Base_RangedWeak",
+      "overrideFaction": false,
+      "factionID": 0,
+      "overrideContainer": false,
+      "overrideContainerID": "",
+      "overrideBrain": false,
+      "overrideBrainID": "",
+      "overrideEthnicity": false,
+      "overrideEthnicityID": "",
+      "probabilityWeight": 3.0
+    }
+  ]
+}

@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using ThunderRoad.Skill.Spell;
+using TriInspector;
 using UnityEngine;
 using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
-
-using TriInspector;
 
 namespace ThunderRoad.Skill.SpellPower
 {
@@ -86,6 +85,7 @@ namespace ThunderRoad.Skill.SpellPower
         public float gripDistance;
         [NonSerialized]
         public Rigidbody grip;
+        protected Side side;
         protected ConfigurableJoint joint;
         protected ConstantForce hangingMassForce;
         [NonSerialized]

@@ -51,6 +51,20 @@
           "probabilityWeight": 1.0,
           "sensitiveContent": "None",
           "sensitiveFilterBehaviour": "Discard"
+        },
+        {
+          "$type": "ThunderRoad.LootTable+Drop, ThunderRoad",
+          "mergeKey": "f1f59b65",
+          "referenceID": "Shop_Apparel_T2_KharTib",
+          "reference": "Table",
+          "randMode": "ItemCount",
+          "minMaxRand": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "probabilityWeight": 1.0,
+          "sensitiveContent": "None",
+          "sensitiveFilterBehaviour": "Discard"
         }
       ]
     }

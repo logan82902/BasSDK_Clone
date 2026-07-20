@@ -64,6 +64,7 @@ namespace ThunderRoad
         }
 
         [Serializable]
+        [AutoLabelWidth]
         [DeclareHorizontalGroup("Split")]
         [DeclareBoxGroup("Split/Filters", Title = "Filters")]
         [DeclareBoxGroup("Split/Imbue", Title = "Imbue")]
@@ -146,6 +147,7 @@ namespace ThunderRoad
             public TriDropdownList<string> GetAllSpellID() => Catalog.GetDropdownAllID<SpellData>();
         }
 
+        [AutoLabelWidth]
         public struct CustomSpellEffect
         {
             [Dropdown(nameof(GetAllSpellID))]

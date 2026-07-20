@@ -18,7 +18,7 @@
       "globalOnPlayerOnly": false,
       "playDelay": 0.0,
       "dopplerLevel": 0.0,
-      "useAudioForHaptic": false,
+      "useAudioForHaptic": true,
       "intensitySmoothingSampleCount": 0,
       "speedSmoothingSampleCount": 0,
       "cullMinVolume": 0.1,
@@ -259,6 +259,7 @@
       "effectParticleAddress": "Bas.Particle.Spell.Gravity.Ready",
       "intensityCurve": null,
       "renderInLateUpdate": false,
+      "playDelay": 0.0,
       "mainColorStart": {
         "r": 0.0,
         "g": 0.0,
@@ -320,6 +321,7 @@
         "z": 0.0
       },
       "collisionEffectId": null,
+      "collisionEffectDuration": 0.0,
       "collisionLayerMask": -65665,
       "collisionMaxGroundAngle": 45.0,
       "collisionEmitRate": 0.2,

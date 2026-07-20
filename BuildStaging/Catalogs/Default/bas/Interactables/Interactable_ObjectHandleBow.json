@@ -4,7 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 3,
-  "groupPath": null,
+  "groupPath": "",
   "disableOnStart": false,
   "rotateAroundAxis": false,
   "forceHoldGripToGrab": false,
@@ -37,6 +37,7 @@
   "rotationSpring2hMultiplier": 0.1,
   "rotationDamper2hMultiplier": 0.1,
   "forceClimbing": false,
+  "affectedByBowHandling": true,
   "dominantWhenTwoHanded": true,
   "ignoreSnap": false,
   "disabledOnSnap": false,
@@ -62,7 +63,7 @@
   "highlighterViewHandFreeOnly": false,
   "ignoreWhenTouchConflict": false,
   "referencePoint": "Grip",
-  "localizationId": null,
+  "localizationId": "",
   "highlightDefaultTitle": "",
   "highlightDefaultDesignation": ""
 }

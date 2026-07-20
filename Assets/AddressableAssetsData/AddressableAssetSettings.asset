@@ -45,15 +45,15 @@ MonoBehaviour:
   m_overridePlayerVersion: Proto
   m_GroupAssets:
   - {fileID: 11400000, guid: fbe88945f5fd22549a3b2283780ee7c2, type: 2}
-  - {fileID: 11400000, guid: cfc7bd780798872419ab40cac555580b, type: 2}
-  - {fileID: 11400000, guid: dada93e4e3a09ef4ba4a1759a0d8f911, type: 2}
-  - {fileID: 11400000, guid: 8056bd77f330a8348bb12d7cb956bea0, type: 2}
-  - {fileID: 11400000, guid: 256939aa0931a9f448e8a6a0765902d7, type: 2}
-  - {fileID: 11400000, guid: 9f937fc8a19b3ae429f92c02db43898a, type: 2}
-  - {fileID: 11400000, guid: 6c00cdf8a2c6afb419ce6148fbb245c0, type: 2}
   - {fileID: 11400000, guid: 3aa89b373a1efa14fafbff5c7372dcc8, type: 2}
   - {fileID: 11400000, guid: 6d365c0dc0532324e899cfa057d49684, type: 2}
+  - {fileID: 11400000, guid: cfc7bd780798872419ab40cac555580b, type: 2}
+  - {fileID: 11400000, guid: dada93e4e3a09ef4ba4a1759a0d8f911, type: 2}
   - {fileID: 11400000, guid: 53753514782f4b54aab1832255592318, type: 2}
+  - {fileID: 11400000, guid: 6c00cdf8a2c6afb419ce6148fbb245c0, type: 2}
+  - {fileID: 11400000, guid: 256939aa0931a9f448e8a6a0765902d7, type: 2}
+  - {fileID: 11400000, guid: 9f937fc8a19b3ae429f92c02db43898a, type: 2}
+  - {fileID: 11400000, guid: 8056bd77f330a8348bb12d7cb956bea0, type: 2}
   m_BuildSettings:
     m_CompileScriptsInVirtualMode: 0
     m_CleanupStreamingAssetsAfterBuilds: 1
@@ -65,31 +65,31 @@ MonoBehaviour:
       m_Id: beb5d4ddf477d9144afd1a99cbaaca60
       m_ProfileName: Default
       m_Values:
-      - m_Id: ce15733c007f6d84a9cd434894e23ab1
-        m_Value: '[ThunderRoad.AssetBundleBuilder.assetsLocalPath]'
-      - m_Id: f0d6e0cdd8192a84f819089abb779b64
-        m_Value: '{ThunderRoad.FileManager.aaDefaultPath}'
-      - m_Id: d8fad135d0762f943a80ca7860c8e9fc
-        m_Value: '[UnityEngine.AddressableAssets.Addressables.BuildPath]'
       - m_Id: 3868748ffde3b334bbd8b7acf4ed429e
         m_Value: '{UnityEngine.AddressableAssets.Addressables.RuntimePath}'
+      - m_Id: ce15733c007f6d84a9cd434894e23ab1
+        m_Value: '[ThunderRoad.AssetBundleBuilder.assetsLocalPath]'
+      - m_Id: d8fad135d0762f943a80ca7860c8e9fc
+        m_Value: '[UnityEngine.AddressableAssets.Addressables.BuildPath]'
       - m_Id: ebabd56f856c87f47810de635632fa27
         m_Value: '{ThunderRoad.FileManager.aaModPath}/Proto'
+      - m_Id: f0d6e0cdd8192a84f819089abb779b64
+        m_Value: '{ThunderRoad.FileManager.aaDefaultPath}'
     m_ProfileEntryNames:
+    - m_Id: 3868748ffde3b334bbd8b7acf4ed429e
+      m_Name: RuntimeLoadPath
+      m_InlineUsage: 0
     - m_Id: ce15733c007f6d84a9cd434894e23ab1
       m_Name: DefaultBuildPath
-      m_InlineUsage: 0
-    - m_Id: f0d6e0cdd8192a84f819089abb779b64
-      m_Name: DefaultLoadPath
       m_InlineUsage: 0
     - m_Id: d8fad135d0762f943a80ca7860c8e9fc
       m_Name: RuntimeBuildPath
       m_InlineUsage: 0
-    - m_Id: 3868748ffde3b334bbd8b7acf4ed429e
-      m_Name: RuntimeLoadPath
-      m_InlineUsage: 0
     - m_Id: ebabd56f856c87f47810de635632fa27
       m_Name: ModLoadPath
+      m_InlineUsage: 0
+    - m_Id: f0d6e0cdd8192a84f819089abb779b64
+      m_Name: DefaultLoadPath
       m_InlineUsage: 0
     m_ProfileVersion: 1
   m_LabelTable:
@@ -285,6 +285,11 @@ MonoBehaviour:
     - SentaraGroup2
     - SentaraArmor
     - SentaraPotions
+    - KharTibArmor
+    - Ballista
+    - KharTibBomb
+    - KharTibCrossbow
+    - KharTibRock
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: b2091e8321e676b4eb1c72cfbde3dec2, type: 2}

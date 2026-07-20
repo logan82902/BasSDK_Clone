@@ -21,8 +21,7 @@ namespace ThunderRoad
         [Button]
         public void AddLevel()
         {
-            DropLevel dropLevel = new DropLevel()
-            {
+            DropLevel dropLevel = new DropLevel() {
                 lootTable = this,
                 dropLevel = levelledDrops.Count,
             };
@@ -31,6 +30,7 @@ namespace ThunderRoad
             levelledDrops = levelledDrops.OrderBy(x => x.dropLevel).ToList();
         }
 #endif
+        
 
         [Serializable]
         [DeclareBoxGroup("$elementName", Title = "$elementName")]
@@ -67,7 +67,7 @@ namespace ThunderRoad
                 int index = lootTable.levelledDrops.IndexOf(this);
                 if (index >= 0 && index < lootTable.levelledDrops.Count)
                 {
-                    if (index - 1 < 0) return;
+                    if(index - 1 < 0) return;
                     lootTable.levelledDrops[index] = lootTable.levelledDrops[index - 1];
                     lootTable.levelledDrops[index - 1] = this;
                     lootTable.levelledDrops[index].dropLevel = index;
@@ -83,7 +83,7 @@ namespace ThunderRoad
                 int index = lootTable.levelledDrops.IndexOf(this);
                 if (index >= 0 && index < lootTable.levelledDrops.Count)
                 {
-                    if (index + 1 == lootTable.levelledDrops.Count) return;
+                    if(index + 1 == lootTable.levelledDrops.Count) return;
                     lootTable.levelledDrops[index] = lootTable.levelledDrops[index + 1];
                     lootTable.levelledDrops[index + 1] = this;
                     lootTable.levelledDrops[index].dropLevel = index;
@@ -101,6 +101,9 @@ namespace ThunderRoad
             [HideReferencePicker]
             [Group("$elementName/Bottom")]
             [PropertyOrder(4)]
+#if UNITY_EDITOR
+            [OnValueChanged(nameof(UpdateDrops))]
+#endif
             public List<Drop> drops;
 
             [JsonIgnore]
@@ -142,6 +145,61 @@ namespace ThunderRoad
                 return clone;
             }
 
+#if UNITY_EDITOR
+            public void UpdateDrops()
+            {
+                AssessLevel(false);
+                foreach (Drop drop in drops)
+                {
+                    drop.level = this;
+                }
+            }
+#endif
+
+            /// <summary>
+            /// Calculates the percentage and asigns the probabilities how many times
+            /// the items can be picked. Function used also to validate data when tweaking numbers in editor.
+            /// </summary>	
+            public void AssessLevel(bool getMinMax)
+            {
+                if (drops == null || drops.Count == 0)
+                    return;
+                minMoneyValue = Mathf.Infinity;
+                maxMoneyValue = Mathf.NegativeInfinity;
+                minRewardValue = Mathf.Infinity;
+                maxRewardValue = Mathf.NegativeInfinity;
+                float currentProbabilityWeightMaximum = 0f;
+                // Sets the weight ranges of the selected items.
+                foreach (Drop line in drops)
+                {
+#if UNITY_EDITOR
+                    line.level = this;
+#endif
+                    if (line.probabilityWeight < 0f)
+                    {
+                        // Prevent usage of negative weight.
+                        line.probabilityWeight = 0f;
+                    }
+                    else
+                    {
+                        line.probabilityRangeFrom = currentProbabilityWeightMaximum;
+                        currentProbabilityWeightMaximum += line.probabilityWeight;
+                        line.probabilityRangeTo = currentProbabilityWeightMaximum;
+                    }
+                    if (getMinMax && line.reference == Drop.Reference.Item)
+                    {
+                        if (line.itemData == null)
+                            line.itemData = Catalog.GetData<ItemData>(line.referenceID);
+                        if (line.itemData == null)
+                            continue;
+                        minMoneyValue = Mathf.Min(minMoneyValue, line.itemData.value);
+                        maxMoneyValue = Mathf.Max(maxMoneyValue, line.itemData.value);
+                        minRewardValue = Mathf.Min(minRewardValue, line.itemData.rewardValue);
+                        maxRewardValue = Mathf.Max(maxRewardValue, line.itemData.rewardValue);
+                    }
+                }
+                probabilityTotalWeight = currentProbabilityWeightMaximum;
+            }
         }
 
         [Serializable]
@@ -185,16 +243,30 @@ namespace ThunderRoad
             [PropertyOrder(3)]
             public float probabilityWeight;
 
+#if UNITY_EDITOR
             [PropertyOrder(4)]
             [ShowInInspector]
             [ReadOnly]
-            //[ProgressBar(0, 100)]
-            [NonSerialized]
-            public float probabilityPercent;
+            [JsonIgnore]
+            public float probabilityPercent
+            {
+                get
+                {
+                    if (level == null) return 0f;
+                    return (probabilityWeight / level.probabilityTotalWeight) * 100f;
+                }
+            }
 
             [NonSerialized]
+            [JsonIgnore]
+            public DropLevel level;
+#endif
+
+            [NonSerialized]
+            [JsonIgnore]
             public float probabilityRangeFrom;
             [NonSerialized]
+            [JsonIgnore]
             public float probabilityRangeTo;
 
             public Drop()

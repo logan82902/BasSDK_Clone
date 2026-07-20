@@ -42,7 +42,8 @@ namespace ThunderRoad
         EntityModule,
         EnemyConfig,
         LootConfig,
-        Bundle
+        Bundle,
+        Map,
     }
     
 }

@@ -9,6 +9,7 @@
   "description": "To be continued",
   "descriptionLocalizationId": null,
   "sceneAddress": "Bas.Level.EndSpace",
+  "sceneVariants": null,
   "showOnlyDevMode": false,
   "showInLevelSelection": true,
   "worldMapId": "Eraden",
@@ -41,5 +42,6 @@
   ],
   "customCameras": [],
   "throwableRefType": "Item",
-  "improvisedThrowableID": null
+  "improvisedThrowableID": null,
+  "HasSceneVariants": false
 }

@@ -1,0 +1,311 @@
+{
+  "$type": "ThunderRoad.ItemData, ThunderRoad",
+  "id": "KharTibCrossbow",
+  "sensitiveContent": "None",
+  "sensitiveFilterBehaviour": "Discard",
+  "version": 4,
+  "groupPath": "",
+  "localizationId": "KharTibCrossbow",
+  "displayName": "Crossbow",
+  "description": "An advanced, compact crossbow, lacking in power compared to a regular bow but makes up for it in rapid fire and ease of use. It can store multiple projectiles inside, so users don't need to draw an arrow for every shot.",
+  "author": "Warpfrog",
+  "valueType": "Gold",
+  "value": 675.0,
+  "rewardValue": 0.0,
+  "tier": 2,
+  "flags": "Blunt, NoChargeSapping, NoMoltenArc",
+  "levelRequired": 0,
+  "type": "Weapon",
+  "category": "Khar-Tib Weapons",
+  "update": "Khar-Tib",
+  "iconEffectId": "",
+  "preferredItemCenter": "Mass",
+  "drainImbueWhenIdle": false,
+  "forceImbueUseButton": "None",
+  "prefabAddress": "Bas.Item.Ranged.KharTib.Crossbow",
+  "iconAddress": "Bas.Item.Ranged.KharTib.Crossbow.Icon[wpn_khartibcrossbow]",
+  "closeUpIconAddress": "",
+  "pooledCount": 0,
+  "androidPooledCount": 0,
+  "allowedStorage": "Container, SandboxAllItems",
+  "despawnOnStoredInInventory": false,
+  "isStackable": false,
+  "consumableId": "",
+  "inventoryAudioContainerAddress": "",
+  "inventoryAudioVolume_dB": 0.0,
+  "slot": "Medium",
+  "snapAudioContainerAddress": "Bas.AudioGroup.Snap.Other",
+  "snapAudioVolume_dB": 0.0,
+  "overrideMassAndDrag": true,
+  "mass": 3.0,
+  "drag": 0.5,
+  "angularDrag": 1.0,
+  "density": 1000.0,
+  "focusRegenMultiplier": 1.0,
+  "spellChargeSpeedPlayerMultiplier": 1.0,
+  "spellChargeSpeedNPCMultiplier": 1.0,
+  "collisionMaxOverride": 0,
+  "collisionEnterOnly": false,
+  "collisionNoMinVelocityCheck": false,
+  "forceLayer": "None",
+  "diffForceLayerWhenHeld": false,
+  "forceLayerHeld": "None",
+  "waterHandSpringMultiplierCurve": {
+    "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
+    "keys": [
+      {
+        "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
+        "time": 0.0,
+        "value": 0.3,
+        "inTangent": 0.0,
+        "outTangent": 0.0,
+        "inWeight": 0.0,
+        "outWeight": 0.0,
+        "weightedMode": "None",
+        "tangentMode": 0
+      },
+      {
+        "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
+        "time": 1.0,
+        "value": 0.15,
+        "inTangent": 0.0,
+        "outTangent": 0.0,
+        "inWeight": 0.0,
+        "outWeight": 0.0,
+        "weightedMode": "None",
+        "tangentMode": 0
+      }
+    ],
+    "length": 2,
+    "preWrapMode": "ClampForever",
+    "postWrapMode": "ClampForever"
+  },
+  "waterDragMultiplierCurve": {
+    "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
+    "keys": [
+      {
+        "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
+        "time": 0.0,
+        "value": 1.0,
+        "inTangent": 0.0,
+        "outTangent": 0.0,
+        "inWeight": 0.0,
+        "outWeight": 0.0,
+        "weightedMode": "None",
+        "tangentMode": 0
+      },
+      {
+        "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
+        "time": 1.0,
+        "value": 10.0,
+        "inTangent": 0.0,
+        "outTangent": 0.0,
+        "inWeight": 0.0,
+        "outWeight": 0.0,
+        "weightedMode": "None",
+        "tangentMode": 0
+      }
+    ],
+    "length": 2,
+    "preWrapMode": "ClampForever",
+    "postWrapMode": "ClampForever"
+  },
+  "waterSampleMinRadius": 0.2,
+  "throwMultiplier": 0.3,
+  "runSpeedMultiplier": 1.0,
+  "flyRotationSpeed": 2.0,
+  "flyThrowAngle": 0.0,
+  "allowFlyBackwards": false,
+  "telekinesisSafeDistance": 1.0,
+  "telekinesisThrowRatio": 1.0,
+  "telekinesisAutoGrabAnyHandle": false,
+  "grippable": false,
+  "grabAndGripClimb": false,
+  "playerGrabAndGripChangeLayer": true,
+  "customSnaps": [
+    {
+      "$type": "ThunderRoad.ItemData+CustomSnap, ThunderRoad",
+      "holderName": "HipsRight",
+      "localPosition": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "localRotation": {
+        "x": 7.544,
+        "y": 0.0,
+        "z": 0.0
+      }
+    },
+    {
+      "$type": "ThunderRoad.ItemData+CustomSnap, ThunderRoad",
+      "holderName": "HipsLeft",
+      "localPosition": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "localRotation": {
+        "x": 7.544,
+        "y": 0.0,
+        "z": 180.0
+      }
+    },
+    {
+      "$type": "ThunderRoad.ItemData+CustomSnap, ThunderRoad",
+      "holderName": "BackRight",
+      "localPosition": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "localRotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 180.0
+      }
+    },
+    {
+      "$type": "ThunderRoad.ItemData+CustomSnap, ThunderRoad",
+      "holderName": "BackLeft",
+      "localPosition": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "localRotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 180.0
+      }
+    }
+  ],
+  "drainImbueOnSnap": false,
+  "imbueEnergyOverTimeOnSnap": {
+    "$type": "UnityEngine.AnimationCurve, UnityEngine.CoreModule",
+    "keys": [
+      {
+        "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
+        "time": 0.0,
+        "value": 1.0,
+        "inTangent": 0.0,
+        "outTangent": 0.0,
+        "inWeight": 0.0,
+        "outWeight": 0.0,
+        "weightedMode": "None",
+        "tangentMode": 0
+      },
+      {
+        "$type": "UnityEngine.Keyframe, UnityEngine.CoreModule",
+        "time": 3.0,
+        "value": 0.0,
+        "inTangent": 0.0,
+        "outTangent": 0.0,
+        "inWeight": 0.0,
+        "outWeight": 0.0,
+        "weightedMode": "None",
+        "tangentMode": 0
+      }
+    ],
+    "length": 2,
+    "preWrapMode": "ClampForever",
+    "postWrapMode": "ClampForever"
+  },
+  "colliderGroups": [
+    {
+      "$type": "ThunderRoad.ItemData+ColliderGroup, ThunderRoad",
+      "transformName": "Root",
+      "colliderGroupId": "PropDefault"
+    },
+    {
+      "$type": "ThunderRoad.ItemData+ColliderGroup, ThunderRoad",
+      "transformName": "Colliders",
+      "colliderGroupId": "PropMetal"
+    },
+    {
+      "$type": "ThunderRoad.ItemData+ColliderGroup, ThunderRoad",
+      "transformName": "Blades",
+      "colliderGroupId": "PropMetal"
+    }
+  ],
+  "damagers": [
+    {
+      "$type": "ThunderRoad.ItemData+Damager, ThunderRoad",
+      "transformName": "Blunt",
+      "damagerID": "PropBlunt"
+    },
+    {
+      "$type": "ThunderRoad.ItemData+Damager, ThunderRoad",
+      "transformName": "Slash",
+      "damagerID": "DaggerSlash"
+    },
+    {
+      "$type": "ThunderRoad.ItemData+Damager, ThunderRoad",
+      "transformName": "Pierce",
+      "damagerID": "DaggerPierce"
+    }
+  ],
+  "Interactables": [
+    {
+      "$type": "ThunderRoad.ItemData+Interactable, ThunderRoad",
+      "transformName": "Handle",
+      "interactableId": "ObjectHandleLight"
+    },
+    {
+      "$type": "ThunderRoad.ItemData+Interactable, ThunderRoad",
+      "transformName": "HandleString",
+      "interactableId": "ObjectHandleBowString"
+    },
+    {
+      "$type": "ThunderRoad.ItemData+Interactable, ThunderRoad",
+      "transformName": "Handle2",
+      "interactableId": "ObjectHandleAimedWeaponSupport"
+    }
+  ],
+  "effectHinges": [],
+  "whooshs": [
+    {
+      "$type": "ThunderRoad.ItemData+Whoosh, ThunderRoad",
+      "transformName": "Whoosh",
+      "effectId": "WhooshPropLight",
+      "trigger": "Always",
+      "stopOnSnap": true,
+      "minVelocity": 5.0,
+      "maxVelocity": 12.0,
+      "dampening": 0.1
+    }
+  ],
+  "modules": [
+    {
+      "$type": "ThunderRoad.ItemModuleStats, ThunderRoad",
+      "stats": [
+        {
+          "$type": "ThunderRoad.ItemStatInt, ThunderRoad",
+          "value": 1,
+          "useStarIcons": true,
+          "name": "DrawPower"
+        }
+      ]
+    },
+    {
+      "$type": "ThunderRoad.ItemModuleCrossbow, ThunderRoad",
+      "pullRatioToLock": 0.95,
+      "audioLockAddress": "Bas.AudioGroup.Crossbow.Lock",
+      "audioSpanLoopAddress": "Bas.AudioGroup.Crossbow.Span",
+      "velocityMultiplier": 4.5,
+      "stringSpring": 2100.0,
+      "firedBounciness": 0.0,
+      "audioShootMinPull": 0.1,
+      "autoSpawnArrow": false,
+      "arrowProjectileID": "KharTibCrossbowBolt",
+      "arrowDamageMultiplier": 1.0,
+      "arrowForceMultiplier": 1.0,
+      "audioDrawPullSpeed": 0.02,
+      "audioStringAddress": "",
+      "audioGroupDrawAddress": "",
+      "audioGroupShootAddress": "Bas.AudioGroup.Crossbow.Shoot",
+      "maxPullRatioAI": 0.75
+    }
+  ],
+  "entityModules": []
+}

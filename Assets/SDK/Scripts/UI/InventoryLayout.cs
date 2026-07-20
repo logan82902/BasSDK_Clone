@@ -1,10 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace ThunderRoad
 {
-
 	public class InventoryLayout : MonoBehaviour
 	{
 		// this component will let you set the layout of the inventory grid, with spacing, padding, and number of columns and rows
@@ -15,7 +12,6 @@ namespace ThunderRoad
 
 		public void SetLayout()
 		{
-
 			//get the number of children
 			int childCount = transform.childCount;
 
@@ -36,7 +32,6 @@ namespace ThunderRoad
                     row * (itemSize + spacing) - (rows - 1) * (itemSize + spacing) / 2f,
                     0f);
 
-
 				//set the position of this child
 				child.localPosition = position;
 			}
@@ -51,6 +46,5 @@ namespace ThunderRoad
 		{
 			SetLayout();
 		}
-
 	}
 }

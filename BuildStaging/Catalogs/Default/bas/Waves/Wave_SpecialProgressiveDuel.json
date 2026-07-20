@@ -117,6 +117,28 @@
     },
     {
       "$type": "ThunderRoad.WaveData+Group, ThunderRoad",
+      "mergeKey": "e759add1",
+      "reference": "Table",
+      "referenceID": "KharTibMeleeOnly",
+      "overrideFaction": true,
+      "factionID": 3,
+      "overrideContainer": false,
+      "overrideContainerID": "",
+      "overrideBrain": false,
+      "overrideBrainID": "",
+      "overrideMaxMelee": false,
+      "overrideMaxMeleeCount": 0,
+      "groupHealthMultiplier": 1.0,
+      "minMaxCount": {
+        "x": 4,
+        "y": 4
+      },
+      "spawnPointIndex": -1,
+      "prereqGroupIndex": -1,
+      "prereqMaxRemainingAlive": 0
+    },
+    {
+      "$type": "ThunderRoad.WaveData+Group, ThunderRoad",
       "mergeKey": "aa0fc529",
       "reference": "Table",
       "referenceID": "RaktaMeleeOnly",
@@ -182,5 +204,5 @@
       "prereqMaxRemainingAlive": 0
     }
   ],
-  "modules": null
+  "modules": []
 }

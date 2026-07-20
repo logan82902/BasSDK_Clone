@@ -4,7 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 0,
-  "groupPath": null,
+  "groupPath": "",
   "pooledCount": 1,
   "androidPooledCount": 1,
   "dialogs": [
@@ -91,6 +91,12 @@
       "id": "breathlessdeath",
       "mixerChannel": "Voice",
       "audioGroupAddress": "Bas.AudioGroup.Voice.Male.BreathlessDeath"
+    },
+    {
+      "$type": "ThunderRoad.VoiceData+Dialog, ThunderRoad",
+      "id": "heavybreath",
+      "mixerChannel": "Voice",
+      "audioGroupAddress": "Bas.AudioGroup.Voice.Male.Exhausted"
     }
   ]
 }

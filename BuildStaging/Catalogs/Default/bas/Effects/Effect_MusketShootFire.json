@@ -17,6 +17,7 @@
       "effectParticleAddress": "Bas.Particle.Musket.Fire.Shoot",
       "intensityCurve": null,
       "renderInLateUpdate": false,
+      "playDelay": 0.0,
       "mainColorStart": {
         "r": 0.0,
         "g": 0.0,
@@ -78,6 +79,7 @@
         "z": 0.0
       },
       "collisionEffectId": null,
+      "collisionEffectDuration": 0.0,
       "collisionLayerMask": 2147483647,
       "collisionMaxGroundAngle": 45.0,
       "collisionEmitRate": 0.2,
@@ -112,6 +114,7 @@
       "effectParticleAddress": "Bas.Particle.Musket.Fire.Sparks",
       "intensityCurve": null,
       "renderInLateUpdate": false,
+      "playDelay": 0.0,
       "mainColorStart": {
         "r": 0.0,
         "g": 0.0,
@@ -173,6 +176,7 @@
         "z": 0.0
       },
       "collisionEffectId": null,
+      "collisionEffectDuration": 0.0,
       "collisionLayerMask": 213918721,
       "collisionMaxGroundAngle": 45.0,
       "collisionEmitRate": 0.2,
@@ -219,7 +223,7 @@
       "volumeSpeedCurve": null,
       "volumeBlendMode": "Min",
       "reverbZoneMix": 1.0,
-      "isNoiseForAI": false,
+      "isNoiseForAI": true,
       "onDynamicMusic": false,
       "dynamicMusicTiming": "OnBeat",
       "randomPlay": false,
@@ -311,7 +315,7 @@
       "volumeSpeedCurve": null,
       "volumeBlendMode": "Min",
       "reverbZoneMix": 1.0,
-      "isNoiseForAI": false,
+      "isNoiseForAI": true,
       "onDynamicMusic": false,
       "dynamicMusicTiming": "OnBeat",
       "randomPlay": false,

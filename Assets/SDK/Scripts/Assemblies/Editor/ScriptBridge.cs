@@ -130,7 +130,7 @@ namespace ThunderRoad
             {
                 public string name;
                 public string defines;
-                
+
                 public enum Platform
                 {
                     None,

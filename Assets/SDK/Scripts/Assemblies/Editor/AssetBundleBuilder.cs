@@ -20,6 +20,7 @@ using UnityEditor.Build.Pipeline.Utilities;
 using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.ResourceManagement.ResourceProviders;
 using Debug = UnityEngine.Debug;
 
 #pragma warning disable UDR0001 // Domain Reload Analyzer
@@ -65,7 +66,11 @@ namespace ThunderRoad
         {
             static Startup()
             {
-                EditorCoroutineUtility.StartCoroutineOwnerless(ClearMissingAAGroupsCoroutine());
+                if (!SessionState.GetBool("ClearMissingAAGroupsOnStartup", false))
+                {
+                    EditorCoroutineUtility.StartCoroutineOwnerless(ClearMissingAAGroupsCoroutine());
+                    SessionState.SetBool("ClearMissingAAGroupsOnStartup", true);
+                }
             }
         }
 
@@ -229,12 +234,14 @@ namespace ThunderRoad
 
                     bundledAssetGroupSchema.IncludeInBuild = false;
                     bundledAssetGroupSchema.BundleNaming = BundledAssetGroupSchema.BundleNamingStyle.NoHash;
+                    //always lz4 for chunked compression, good mix of compression + memory usage
                     bundledAssetGroupSchema.Compression = BundledAssetGroupSchema.BundleCompressionMode.LZ4;
                     bundledAssetGroupSchema.UseAssetBundleCrc = false;
                     bundledAssetGroupSchema.UseAssetBundleCrcForCachedBundles = false;
                     bundledAssetGroupSchema.IncludeAddressInCatalog = true;
                     bundledAssetGroupSchema.IncludeGUIDInCatalog = true;
                     bundledAssetGroupSchema.IncludeLabelsInCatalog = true;
+                    bundledAssetGroupSchema.AssetLoadMode = AssetLoadMode.RequestedAssetAndDependencies;
                     
                     //check if the bundle group is a mod, so we can set the correct build and load paths
                     if(assetBundleGroup.isMod && isInBundleGroup)
@@ -273,10 +280,13 @@ namespace ThunderRoad
                         {
                             bundledAssetGroupSchema.IncludeInBuild = true;
                             
-                            //if were on android, enable using unitywebrequest for local asset bundles. its faster on android
-                            bundledAssetGroupSchema.UseUnityWebRequestForLocalBundles = EditorUserBuildSettings.activeBuildTarget == BuildTarget.Android;
+                            // this was recommended to be abled on android because it was faster
+                            // however  if its set to true and we have caching enabled by default, it will copy the bundles to a local cache directory
+                            // this uses up disk space, and also takes time on first load, which can cause high disk io on some platforms
+                            bundledAssetGroupSchema.UseUnityWebRequestForLocalBundles = false;
                             //dont use a timeout, as we dont want to timeout on local asset bundles
                             bundledAssetGroupSchema.Timeout = 0;
+ 
                             // unitybuiltinshaders use same path as default group, so it's important to set this correctly
                             if (assetBundleGroup.isDefault && bundledAssetGroupSchema.LoadPath.GetName(settings) == "DefaultLoadPath" && !thunderRoadAAGroupSchema.sharedBundle)
                             {

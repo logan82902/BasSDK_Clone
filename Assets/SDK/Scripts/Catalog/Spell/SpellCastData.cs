@@ -6,36 +6,36 @@ using TriInspector;
 namespace ThunderRoad
 {
     [Serializable]
-    [DeclareBoxGroup("Wheel display", Title = "Wheel display")]
-    [DeclareBoxGroup("AI", Title = "AI")]
-    [DeclareBoxGroup("Mana", Title = "Mana")]
+    [DeclareBoxGroup("Split/Left/Wheel display", Title = "Wheel display")]
+    [DeclareBoxGroup("Split/Left/AI", Title = "AI")]
+    [DeclareBoxGroup("Split/Left/Mana", Title = "Mana")]
     public class SpellCastData : SpellData
     {
-        [Group("Wheel display")]
+        [Group("Split/Left/Wheel display")]
         public string wheelDisplayName;
 
-        [Group("Wheel display")]
+        [Group("Split/Left/Wheel display")]
         public bool hasOrder = false;
-        [Group("Wheel display")]
+        [Group("Split/Left/Wheel display")]
         public int order;
 
         [HideInInspector]
         public int? Order => hasOrder ? order : null;
-        [Group("Wheel display")]
+        [Group("Split/Left/Wheel display")]
         [Dropdown(nameof(GetAllEffectID))]
         public string iconEffectId;
         [NonSerialized]
         public EffectData iconEffectData;
-        [Group("AI")]
+        [Group("Split/Left/AI")]
         public CastType aiCastType;
-        [Group("AI")]
+        [Group("Split/Left/AI")]
         [EnableIf(nameof(aiCastType), CastType.CastLoop)]
         public float loopMaxDuration = 5f;
-        [Group("AI")]
+        [Group("Split/Left/AI")]
         public float aiCastMinDistance = 1;
-        [Group("AI")]
+        [Group("Split/Left/AI")]
         public float aiCastMaxDistance = 20;
-        [Group("AI")]
+        [Group("Split/Left/AI")]
         public float aiCastGestureLength = 0.7f;
 
         public enum CastType
@@ -43,9 +43,6 @@ namespace ThunderRoad
             CastSimple,
             CastLoop,
         }
-
-        [Group("Mana")]
-        public float minMana = 5;
 
         public new SpellCastData Clone()
         {

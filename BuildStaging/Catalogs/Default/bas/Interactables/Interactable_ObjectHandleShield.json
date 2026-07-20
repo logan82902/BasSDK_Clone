@@ -37,6 +37,7 @@
   "rotationSpring2hMultiplier": 1.0,
   "rotationDamper2hMultiplier": 1.0,
   "forceClimbing": false,
+  "affectedByBowHandling": false,
   "dominantWhenTwoHanded": true,
   "ignoreSnap": false,
   "disabledOnSnap": false,

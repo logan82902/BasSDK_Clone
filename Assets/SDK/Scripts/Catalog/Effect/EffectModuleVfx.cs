@@ -41,7 +41,7 @@ namespace ThunderRoad
         [Group("General")]
         public float despawnDelay = 0;
         [Group("General")]
-        public new AnimationCurve intensityCurve;
+        public AnimationCurve intensityCurve;
         [Group("General")]
         public float lifeTime = 5;
         [Group("General")]

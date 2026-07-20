@@ -167,6 +167,19 @@ namespace ThunderRoad
         UnBlockable
     }
 
+    [System.Flags]
+    public enum ObjectClassification
+    {
+        None = 0,
+        StaticEnvironment = 1,
+        DynamicEnvironment = 2,
+        Items = 4,
+        Npcs = 8,
+        Player = 16,
+        Golem = 32,
+        CustomEntity = 64,
+    }
+
     public enum ImbueUseButton
     {
         None,
@@ -179,7 +192,8 @@ namespace ThunderRoad
         Windows,
         Android,
     }
-    
+
+    public delegate void TeleportEvent(Vector3 positionDelta, Quaternion rotationDelta, EventTime eventTime);
 
     public static class LevelOptionExtensions
     {
@@ -224,6 +238,7 @@ namespace ThunderRoad
         SurvivalWaves,
         SurvivalRewards,
         SurvivalRestriction,
+        SceneVariantId
     }
 
     [Flags]
@@ -243,29 +258,7 @@ namespace ThunderRoad
         Transform,
         PlayerForwardWorldPosition
     }
-
-    [Serializable]
-    public class PcmData
-    {
-        public float[] data;
-        public byte[] samples;
-
-        public int buffersize;
-        public int sampleRate;
-        public int channelMask;
-
-        public PcmData(AudioClip audioClip)
-        {
-            data = new float[audioClip.samples * audioClip.channels];
-            buffersize = audioClip.samples * audioClip.channels;
-            audioClip.GetData(data, 0);
-            sampleRate = audioClip.frequency;
-            channelMask = audioClip.channels;
-            //UpdateSamples(data, sampleRate, channelMask, 0);
-        }
-
-    }
-
+    
     [Serializable]
     public class AssetReferenceAudioClip : AssetReferenceT<AudioClip>
     {
@@ -497,6 +490,34 @@ return true;
         public static int GetMaskRemoveLayer(int mask, int layer)
         {
             return (mask & ~(1 << layer));
+        }
+
+        public static ObjectClassification ClassifyUnityCollision(Collision collision, out Ragdoll ragdoll)
+        {
+            ragdoll = null;
+            if (collision.rigidbody)
+            {
+                if (collision.rigidbody.GetComponentInParent<ThunderEntity>() is ThunderEntity thunderEntity)
+                {
+                    switch (thunderEntity)
+                    {
+                        case Item:
+                            return ObjectClassification.Items;
+                        case Creature creature:
+                            ragdoll = creature.ragdoll;
+                            return creature.isPlayer ? ObjectClassification.Player : ObjectClassification.Npcs;
+                        case Golem:
+                            return ObjectClassification.Golem;
+                        default:
+                            return ObjectClassification.CustomEntity;
+                    }
+                }
+                return ObjectClassification.DynamicEnvironment;
+            }
+            else
+            {
+                return ObjectClassification.StaticEnvironment;
+            }
         }
 
         private static bool qualityLevelCached;

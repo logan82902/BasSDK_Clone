@@ -23,7 +23,7 @@ namespace ThunderRoad
 
         [Dropdown(nameof(GetAllTextId))]
         public string descriptionTextID;
-        
+
         [ShowIf(nameof(descriptionTextID), "")]
         public string descriptionText;
 

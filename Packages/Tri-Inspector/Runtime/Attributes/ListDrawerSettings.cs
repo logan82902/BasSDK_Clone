@@ -13,6 +13,7 @@ namespace TriInspector
         public bool AlwaysExpanded { get; set; }
         public bool ShowElementLabels { get; set; }
         public bool DontForceInline { get; set; }
+        public bool IgnoreButtonSpacing { get; set; } = false;
         public int ItemsPerPage { get; set; } = 0;
     }
 }

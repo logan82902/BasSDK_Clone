@@ -1,0 +1,26 @@
+{
+  "$type": "ThunderRoad.BundleData, ThunderRoad",
+  "id": "ArmorKharTib",
+  "sensitiveContent": "None",
+  "sensitiveFilterBehaviour": "Discard",
+  "version": 0,
+  "groupPath": "Armor",
+  "localizationGroup": "Bundles",
+  "displayName": "BundleArmorKharTibName",
+  "description": "",
+  "altDescriptionTitle": "ContentsTitle",
+  "isArmorBundle": true,
+  "bundleItemId": "Bundle",
+  "items": [
+    "ApparelKharTibBoots",
+    "ApparelKharTibGloveL",
+    "ApparelKharTibGloveR",
+    "ApparelKharTibHelmet",
+    "ApparelKharTibJacket",
+    "ApparelKharTibPants",
+    "ApparelKharTibShoulder"
+  ],
+  "skills": [],
+  "lootTables": [],
+  "spriteAddress": "Ui.Icon.Unknown"
+}

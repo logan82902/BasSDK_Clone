@@ -1,8 +1,10 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 
 namespace ThunderRoad
 {
-    public class WaveModule
+    [Serializable]
+    public abstract class WaveModule
     {
         public virtual void OnCatalogRefresh() {}
 

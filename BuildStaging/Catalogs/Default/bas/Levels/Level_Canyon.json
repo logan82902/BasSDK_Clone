@@ -9,6 +9,7 @@
   "description": "A lost temple built within a canyon. Between several bridges is a very dangerous drop to the river below.",
   "descriptionLocalizationId": "CanyonDescription",
   "sceneAddress": "Bas.Level.Canyon",
+  "sceneVariants": null,
   "showOnlyDevMode": false,
   "showInLevelSelection": false,
   "worldMapId": "Eraden",
@@ -64,6 +65,45 @@
         {
           "$type": "ThunderRoad.LevelModuleSurvival, ThunderRoad",
           "trueRandomInProgressive": false,
+          "shockGradient": {
+            "$type": "UnityEngine.Gradient, UnityEngine.CoreModule",
+            "colorKeys": [
+              {
+                "$type": "UnityEngine.GradientColorKey, UnityEngine.CoreModule",
+                "color": {
+                  "r": 0.8,
+                  "g": 0.8,
+                  "b": 0.8,
+                  "a": 1.0
+                },
+                "time": 0.0
+              },
+              {
+                "$type": "UnityEngine.GradientColorKey, UnityEngine.CoreModule",
+                "color": {
+                  "r": 0.6,
+                  "g": 0.6,
+                  "b": 0.6,
+                  "a": 1.0
+                },
+                "time": 1.0
+              }
+            ],
+            "alphaKeys": [
+              {
+                "$type": "UnityEngine.GradientAlphaKey, UnityEngine.CoreModule",
+                "alpha": 1.0,
+                "time": 0.0
+              },
+              {
+                "$type": "UnityEngine.GradientAlphaKey, UnityEngine.CoreModule",
+                "alpha": 1.0,
+                "time": 1.0
+              }
+            ],
+            "mode": "Blend"
+          },
+          "forceAllowedGrabbables": [],
           "dualTreeWeight": 0.4,
           "subSkillWeight": 0.6,
           "skillTierWeightPerWave": [
@@ -192,6 +232,9 @@
           "rewardPillarAddress": "Bas.LevelModule.RewardPillar",
           "raiseSoundAudioContainerAddress": "Bas.AudioGroup.Survival.Pillar.Raise.Stone",
           "lowerSoundAudioContainerAddress": "Bas.AudioGroup.Survival.Pillar.Lower.Stone",
+          "mainPillarIndex": 0,
+          "autoConfigureTeleportZone": false,
+          "autoConfigureTeleportBoundsSize": 10.0,
           "useCustomTeleportPoint": false,
           "customTeleportPoint": {
             "x": 0.0,
@@ -205,44 +248,6 @@
           "victoryEffectId": "SurvivalVictory",
           "lightningZapEffectId": "SpellLightningBoltZapSingle",
           "dropItemEffectId": "SurvivalDropItem",
-          "shockGradient": {
-            "$type": "UnityEngine.Gradient, UnityEngine.CoreModule",
-            "colorKeys": [
-              {
-                "$type": "UnityEngine.GradientColorKey, UnityEngine.CoreModule",
-                "color": {
-                  "r": 0.8,
-                  "g": 0.8,
-                  "b": 0.8,
-                  "a": 1.0
-                },
-                "time": 0.0
-              },
-              {
-                "$type": "UnityEngine.GradientColorKey, UnityEngine.CoreModule",
-                "color": {
-                  "r": 0.6,
-                  "g": 0.6,
-                  "b": 0.6,
-                  "a": 1.0
-                },
-                "time": 1.0
-              }
-            ],
-            "alphaKeys": [
-              {
-                "$type": "UnityEngine.GradientAlphaKey, UnityEngine.CoreModule",
-                "alpha": 1.0,
-                "time": 0.0
-              },
-              {
-                "$type": "UnityEngine.GradientAlphaKey, UnityEngine.CoreModule",
-                "alpha": 1.0,
-                "time": 1.0
-              }
-            ],
-            "mode": "Blend"
-          },
           "rewardEffectId": "SurvivalRewardHighlight",
           "skillItemId": "SkillOrbItem",
           "startDelay": 3.0,
@@ -720,5 +725,6 @@
   ],
   "customCameras": [],
   "throwableRefType": "Item",
-  "improvisedThrowableID": null
+  "improvisedThrowableID": null,
+  "HasSceneVariants": false
 }
