@@ -11,10 +11,12 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Profiling;
 
+
 #if UNITY_EDITOR
 using UnityEditor;
 using UnityEditor.AddressableAssets.Settings;
 using UnityEngine.Rendering;
+using UnityEditor.AddressableAssets;
 #endif
 
 namespace ThunderRoad
@@ -195,8 +197,18 @@ namespace ThunderRoad
                 settings.SetDirty(AddressableAssetSettings.ModificationEvent.GroupRemoved, null, true, true);
             }
         }
+
+        public static bool IsPrefabInstanceRoot(this GameObject gameObject, out bool isAddressable)
+        {
+            isAddressable = false;
+            if (gameObject == null || PrefabUtility.GetNearestPrefabInstanceRoot(gameObject) != gameObject) return false;
+            string guid = AssetDatabase.AssetPathToGUID(PrefabUtility.GetPrefabAssetPathOfNearestInstanceRoot(gameObject));
+            AddressableAssetSettings settings = AddressableAssetSettingsDefaultObject.Settings;
+            isAddressable = settings != null && settings.FindAssetEntry(guid, includeImplicit: true) != null;
+            return true;
+        }
 #endif
-        
+
         private static List<Component> GetDependentComponents(Component target)
         {
             var result = new List<Component>();

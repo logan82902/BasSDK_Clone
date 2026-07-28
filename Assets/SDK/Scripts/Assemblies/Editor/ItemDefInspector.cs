@@ -10,7 +10,7 @@ namespace ThunderRoad
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Domain reload", "UDR0001:Domain Reload Analyzer", Justification = "<Pending>")]
         private static bool warningFoldoutOpen = true;
 
-        private List<string> currentIssues;
+        private List<Item.ItemProblem> currentIssues;
         private int majorIssueCount = 0;
 
         protected override void OnDisablePostDispose()
@@ -27,10 +27,10 @@ namespace ThunderRoad
             Item item = (Item)target;
             currentIssues = item.CheckItemProblems();
             majorIssueCount = 0;
-            foreach (string infoString in currentIssues)
+            foreach (Item.ItemProblem infoString in currentIssues)
             {
-                if (!infoString.Contains("!ERROR!")) continue;
-                DrawHelpBox(infoString);
+                if (!infoString.message.Contains("!ERROR!")) continue;
+                DrawHelpBox(infoString.message);
                 majorIssueCount++;
             }
         }
@@ -41,27 +41,27 @@ namespace ThunderRoad
             warningFoldoutOpen = EditorGUILayout.Foldout(warningFoldoutOpen, $"Configuration Warnings ({warningCount})", warningCount > 0 ? EditorStyles.foldoutHeader : EditorStyles.foldout);
             if (warningFoldoutOpen)
             {
-                foreach (string infoString in currentIssues)
+                foreach (Item.ItemProblem issue in currentIssues)
                 {
-                    if (!infoString.Contains("!WARNING!")) continue;
-                    DrawHelpBox(infoString);
+                    if (!issue.message.Contains("!WARNING!")) continue;
+                    DrawHelpBox(issue);
                 }
             }
         }
 
-        private void DrawHelpBox(string message)
+        private void DrawHelpBox(Item.ItemProblem issue)
         {
-            if (message.Contains("!ERROR!"))
+            if (issue.message.Contains("!ERROR!"))
             {
-                EditorGUILayout.HelpBox(message.Replace("!ERROR!", ""), MessageType.Error);
+                EditorGUILayout.HelpBox(issue.message.Replace("!ERROR!", ""), MessageType.Error);
                 return;
             }
-            if (message.Contains("!WARNING!"))
+            if (issue.message.Contains("!WARNING!"))
             {
-                EditorGUILayout.HelpBox(message.Replace("!WARNING!", ""), MessageType.Warning);
+                EditorGUILayout.HelpBox(issue.message.Replace("!WARNING!", ""), MessageType.Warning);
                 return;
             }
-            EditorGUILayout.HelpBox(message, MessageType.Info);
+            EditorGUILayout.HelpBox(issue.message, MessageType.Info);
         }
 
         private void OnSceneGUI()

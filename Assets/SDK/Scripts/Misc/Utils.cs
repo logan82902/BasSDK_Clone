@@ -1498,7 +1498,9 @@ namespace ThunderRoad
 
             Debug.Log($"Handlers for {this}:\n - {string.Join("\n - ", list)}");
         }
-        public static implicit operator T(ValueHandler<T> valueHandler) => valueHandler.Value;
+
+        public static implicit operator T(ValueHandler<T> valueHandler)
+            => valueHandler is null ? default : valueHandler.Value;
     }
 
     public class FloatHandler : ValueHandler<float>
