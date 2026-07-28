@@ -26,8 +26,10 @@ namespace ThunderRoad
 
         [HideReferencePicker]
         [TableList(AlwaysExpanded = true)]
+        [OnValueChanged(nameof(EditorCalculateWeight))]
         public List<Drop> drops;
 
+        private float probabilityTotalWeight;
 
         public override CatalogData Clone()
         {
@@ -44,6 +46,24 @@ namespace ThunderRoad
                 ids.AddRange(drop.GetFactionIDs());
             }
             return ids;
+        }
+
+        public List<string> GetAllCreatureIDs()
+        {
+            List<string> results = new List<string>();
+            foreach (Drop drop in drops)
+            {
+                if (drop.referenceID.IsNullOrEmptyOrWhitespace()) continue;
+                if (drop.reference == Drop.Reference.Table)
+                {
+                    results.AddRange(Catalog.GetData<CreatureTable>(drop.referenceID).GetAllCreatureIDs());
+                }
+                else
+                {
+                    results.Add(drop.referenceID);
+                }
+            }
+            return results;
         }
 
         [Serializable]
@@ -115,7 +135,6 @@ namespace ThunderRoad
             [Group("Probability Weights")]
             [HideLabel]
             [ShowInInspector]
-            [OnValueChanged(nameof(EditorCalculateWeight))]
             public float probabilityWeight;
 
             [Group("Probability Weights")]
@@ -166,14 +185,23 @@ namespace ThunderRoad
 
             public TriDropdownList<string> GetAllEthnicityID()
             {
-                //hardcode a list of IDs for now
-                TriDropdownList<string> list = new();
-                list.Add("Eradian", "Eradian");
-                list.Add("Madene", "Madene");
-                list.Add("Sentari", "Sentari");
-                list.Add("Kharese", "Kharese");
-                list.Add("Raike", "Raike");
-                return list;
+                if (reference == Reference.Table)
+                {
+                    TriDropdownList<string> result = new TriDropdownList<string>();
+                    foreach (string creatureId in Catalog.GetData<CreatureTable>(referenceID).GetAllCreatureIDs())
+                    {
+                        foreach (var ethnicityOption in Catalog.GetData<CreatureData>(creatureId).GetAllEthnicityID())
+                        {
+                            if (result.Contains(ethnicityOption)) continue;
+                            result.Add(ethnicityOption);
+                        }
+                    }
+                    return result;
+                }
+                else
+                {
+                    return Catalog.GetData<CreatureData>(referenceID).GetAllEthnicityID();
+                }
             }
             public TriDropdownList<int> GetAllFactionID() => Catalog.gameData.GetFactions();
 
@@ -213,14 +241,6 @@ namespace ThunderRoad
                 if (!string.IsNullOrEmpty(referenceID)) return;
             }
 
-            public void EditorCalculateWeight()
-            {
-                foreach (CreatureTable creatureTable in Catalog.GetDataList(Category.CreatureTable))
-                {
-                    creatureTable.EditorCalculateWeight();
-                }
-            }
-
             public Drop Clone()
             {
                 return MemberwiseClone() as Drop;
@@ -234,6 +254,17 @@ namespace ThunderRoad
             return 1;
         }
 
+        public override void OnCatalogRefresh()
+        {
+            base.OnCatalogRefresh();
+            
+            drops ??= new List<Drop>();
+            foreach (Drop drop in drops)
+            {
+                drop.OnCatalogRefresh();
+            }
+            CalculateWeight();
+        }
 
         public void EditorCalculateWeight()
         {
@@ -246,6 +277,32 @@ namespace ThunderRoad
         /// </summary>	
         public void CalculateWeight()
         {
+            if (drops.IsNullOrEmpty()) return;
+
+            float currentProbabilityWeightMaximum = 0f;
+            // Sets the weight ranges of the selected items.
+            int dropsCount = drops.Count;
+            for (var i = 0; i < dropsCount; i++)
+            {
+                Drop lootDropItem = drops[i];
+                if (lootDropItem.probabilityWeight < 0)
+                {
+                    // Prevent usage of negative weight.
+                    lootDropItem.probabilityWeight = 0;
+                    continue;
+                }
+                lootDropItem.probabilityRangeFrom = currentProbabilityWeightMaximum;
+                currentProbabilityWeightMaximum += lootDropItem.probabilityWeight;
+                lootDropItem.probabilityRangeTo = currentProbabilityWeightMaximum;
+                
+            }
+            probabilityTotalWeight = currentProbabilityWeightMaximum;
+            // Calculate percentage of item drop select rate.
+            for (var i = 0; i < dropsCount; i++)
+            {
+                Drop lootDropItem = drops[i];
+                lootDropItem.probabilityPercent = lootDropItem.probabilityWeight / probabilityTotalWeight * 100;
+            }
         }
 
 

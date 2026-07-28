@@ -121,9 +121,6 @@ namespace ThunderRoad
         [ShowIf("badAngleBluntFallback")]
         public float badAngleDamage = 1;
         [Group("Split/Left/Bad angle")]
-        [ShowIf("badAngleBluntFallback")]
-        public float badAngleRecoilMultiplier;
-        [Group("Split/Left/Bad angle")]
         [Dropdown(nameof(GetAllDamagerModifierID))]
         [ShowIf("badAngleBluntFallback")]
         public string badAngleMaterialDamageId;

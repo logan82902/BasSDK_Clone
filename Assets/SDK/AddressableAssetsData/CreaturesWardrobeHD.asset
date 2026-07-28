@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: CreaturesWardrobeHD
   m_EditorClassIdentifier: 
   m_GroupName: CreaturesWardrobeHD
+  m_Data:
+    m_SerializedData: []
   m_GUID: 24587d5c6705a494eaac7bb8b76cb6cb
   m_SerializeEntries:
   - m_GUID: 01dfa38abae920f488a3fc9cc709348b
@@ -2226,6 +2228,104 @@ MonoBehaviour:
     m_SerializedLabels:
     - Windows
     - SentaraArmor
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 765b221d484cb1a429fe8d28a8bfe14b
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.KharTib.Feet
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - KharTibArmor
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 93a3b4a4849b63a4c83ea46c7c2d21f0
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.KharTib.HandLeft
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - KharTibArmor
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 95eb5fc268748e146ac4ce1e647dcbc3
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.KharTib.HandRight
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - KharTibArmor
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2e6bcedcf05d6784cba108f89987e4e6
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.KharTib.Helmet
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - KharTibArmor
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 13f6e90778ec0244d9ec033f14ce69de
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.KharTib.Legs
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - KharTibArmor
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0ae536337b822da4a90bf6f6bc2fe7b8
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.KharTib.Shoulder
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - KharTibArmor
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a30a2bd4f17ee154182383a229717fd4
+    m_Address: Bas.Creature.Wardrobe.HumanFemale.KharTib.Torso
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - KharTibArmor
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 962844f1ca315db46a6d2e624c913e7d
+    m_Address: Bas.Creature.Wardrobe.HumanMale.KharTib.Feet
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - KharTibArmor
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4ec41cb8253c58f4e83742da6c2bf0da
+    m_Address: Bas.Creature.Wardrobe.HumanMale.KharTib.HandLeft
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - KharTibArmor
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1e01d9002bd882b4f97f809c3274ba69
+    m_Address: Bas.Creature.Wardrobe.HumanMale.KharTib.HandRight
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - KharTibArmor
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 786950d96f3de6c429fe61ffddb4e028
+    m_Address: Bas.Creature.Wardrobe.HumanMale.KharTib.Helmet
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - KharTibArmor
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 42e170dcbaaeddc4882cf900bbae53bd
+    m_Address: Bas.Creature.Wardrobe.HumanMale.KharTib.Legs
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - KharTibArmor
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 55891d02ddaacd847bb03f437bec8401
+    m_Address: Bas.Creature.Wardrobe.HumanMale.KharTib.Shoulder
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - KharTibArmor
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d0c406c20ac883544aec94b07748894e
+    m_Address: Bas.Creature.Wardrobe.HumanMale.KharTib.Torso
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Windows
+    - KharTibArmor
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: b14c4d9d8b63f3247be008fe8b53d3ae, type: 2}

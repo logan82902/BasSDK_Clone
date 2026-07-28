@@ -27,7 +27,12 @@ namespace ThunderRoad
         private Vector2 resetGridPosition;
         private RectOffset defaultGridOffset;
 
-        protected new void Awake()
+        /// <summary>
+        /// Used to pause the scroll update when are hiding the UI
+        /// </summary>
+        public bool EnableUpdate { get; set; } = true;
+        
+        protected override void Awake()
         {
             base.Awake();
 
@@ -39,7 +44,7 @@ namespace ThunderRoad
             }
         }
 
-        protected new void Start()
+        protected override void Start()
         {
             base.Start();
 
@@ -55,15 +60,16 @@ namespace ThunderRoad
             UpdateResetPosition();
         }
 
-        protected new void OnEnable()
+        protected override void OnEnable()
         {
             base.OnEnable();
 
             previousGridPosition = content.localPosition.y;
         }
 
-        protected new void LateUpdate()
+        protected override void LateUpdate()
         {
+            if (!EnableUpdate) return;
             base.LateUpdate();
 
             // Check if we want to adjust the scroll content position, in case some of the scrollbars

@@ -9,6 +9,7 @@
   "description": "An old, repurposed outpost in the land of Eraden, occupied by hostile forces. Reach the end and steal their loot.",
   "descriptionLocalizationId": "OutpostDescription",
   "sceneAddress": "Level.Areas",
+  "sceneVariants": null,
   "showOnlyDevMode": false,
   "showInLevelSelection": true,
   "worldMapId": "Eraden",
@@ -81,7 +82,8 @@
             "OutpostEnemyConfigT2",
             "OutpostEnemyConfigT3",
             "OutpostEnemyConfigRakta",
-            "OutpostEnemyConfigSentara"
+            "OutpostEnemyConfigSentara",
+            "OutpostEnemyConfigKharTib"
           ],
           "name": "EnemyConfig",
           "localizationGroup": "Default",
@@ -158,5 +160,6 @@
   ],
   "customCameras": [],
   "throwableRefType": "Item",
-  "improvisedThrowableID": null
+  "improvisedThrowableID": null,
+  "HasSceneVariants": false
 }

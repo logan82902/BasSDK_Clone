@@ -1,8 +1,6 @@
 ﻿using System;
 using UnityEngine;
-
-
-using TriInspector;
+using UnityEngine.Events;
 
 namespace ThunderRoad
 {
@@ -10,6 +8,7 @@ namespace ThunderRoad
     {
         public AudioContainer audioContainer;
         public bool playOnAwake;
+        public bool loop = false;
 
         [NonSerialized]
         public AudioSource audioSource;
@@ -24,5 +23,8 @@ namespace ThunderRoad
         {
         }
 
+        public void Stop()
+        {
+        }
     }
 }

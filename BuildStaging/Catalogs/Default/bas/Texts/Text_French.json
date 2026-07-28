@@ -1036,6 +1036,13 @@
           "text": "Il est plus simple de se saisir d'ennemis à l'aide de Marionnette si vous les faites d'abord chanceler !",
           "spriteAddress": "",
           "videoAddress": ""
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "57",
+          "text": "Les armes lourdes et contondantes peuvent étourdir les ennemis, même lorsqu'ils utilisent un bouclier.",
+          "spriteAddress": null,
+          "videoAddress": null
         }
       ]
     },
@@ -3872,6 +3879,13 @@
         },
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "LoadAchievements",
+          "text": "Chargement des Succès",
+          "spriteAddress": "",
+          "videoAddress": ""
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
           "id": "GeneratePools",
           "text": "Création des ensembles",
           "spriteAddress": "",
@@ -6123,6 +6137,20 @@
       "texts": [
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "LevelDayVariantName",
+          "text": "Jour",
+          "spriteAddress": "",
+          "videoAddress": ""
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "LevelNightVariantName",
+          "text": "Nuit",
+          "spriteAddress": "",
+          "videoAddress": ""
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
           "id": "Arena",
           "text": "Arène",
           "spriteAddress": "",
@@ -6186,7 +6214,14 @@
         },
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
-          "id": "MarketDescription",
+          "id": "MarketDayVariantDescription",
+          "text": "Un marché au cœur d'une ville d'Eraden par une journée claire et ensoleillée.",
+          "spriteAddress": "",
+          "videoAddress": ""
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "MarketNightVariantDescription",
           "text": "Un marché au coeur d'une ville d'Eraden. Il est beaucoup moins fréquenté en pleine nuit.",
           "spriteAddress": "",
           "videoAddress": ""
@@ -6299,21 +6334,21 @@
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
           "id": "OutpostLibraryDescription",
-          "text": "Une vieille bibliothèque où sont amoncelés des livres oubliés.",
+          "text": "Une vieille bibliothèque plutôt dense, remplie de livres oubliés.",
           "spriteAddress": "",
           "videoAddress": ""
         },
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
           "id": "OutpostWatermillDescription",
-          "text": "Un petit moulin construit sur un cours d'eau entre les fortifications de l'avant-poste.",
+          "text": "Un petit moulin construit sur un ruisseau entre les fortifications de l’avant-poste.",
           "spriteAddress": "",
           "videoAddress": ""
         },
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
           "id": "OutpostFallenCorridorDescription",
-          "text": "Une petite cour servant de terrain d'entraînement de fortune.",
+          "text": "Une petite cour utilisée comme terrain d’entraînement improvisé.",
           "spriteAddress": "",
           "videoAddress": ""
         },
@@ -6327,7 +6362,7 @@
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
           "id": "OutpostCoastalFortDescription",
-          "text": "Une fortification construite sur une plage afin de surveiller l'approche d'envahisseurs et de se défendre contre eux.",
+          "text": "Une fortification construite sur une plage pour défendre et surveiller les envahisseurs.",
           "spriteAddress": "",
           "videoAddress": ""
         },
@@ -6384,6 +6419,139 @@
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
           "id": "MadluMap",
           "text": "Madlu",
+          "spriteAddress": "",
+          "videoAddress": ""
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "OutpostLibrary",
+          "text": "Bibliothèque de l’avant-poste",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "OutpostWatermill",
+          "text": "Moulin à eau de l’avant-poste",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "OutpostFallenCorridor",
+          "text": "Corridor de l’avant-poste",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "OutpostChapel",
+          "text": "Chapelle de l’avant-poste",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "OutpostCoastalFort",
+          "text": "Fort côtier de l’avant-poste",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "DalgarianMuseum",
+          "text": "Musée Dalgarien",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "DalgarianMuseumDescription",
+          "text": "Une salle dalgarienne à moitié effondrée avec plusieurs socles et expositions, probablement un musée.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "DalgarianRefinary",
+          "text": "Raffinerie Dalgarienne",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "DalgarianRefinaryDescription",
+          "text": "Une haute pièce avec une grande raffinerie de cristal. Des canaux de cristaux liquides tournent autour d’un Cristal de Gravité à but inconnu.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "DalgarianSenate",
+          "text": "Sénat Dalgarien",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "DalgarianSenateDescription",
+          "text": "Une salle du Sénat dalgaire. Autrefois, le Conseil dalgarien se réunissait probablement ici.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "DalgarianForge",
+          "text": "Forge Dalgarienne",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "DalgarianForgeDescription",
+          "text": "Une Forge dalgaire, probablement pour raffiner et façonner l’Astarium.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "DalgarianTemple",
+          "text": "Temple Dalgarien",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "DalgarianTempleDescription",
+          "text": "Une grande salle menant à un ancien autel.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibDesert",
+          "text": "Forteresse Kharèse",
+          "spriteAddress": "",
+          "videoAddress": ""
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibDesertDescription",
+          "text": "Une forteresse abandonnée depuis longtemps, stratégiquement placée dans les déserts brûlants de Khar-Tib.",
+          "spriteAddress": "",
+          "videoAddress": ""
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "OutpostArenasMap",
+          "text": "Arènes de l’Avant-Poste",
+          "spriteAddress": "",
+          "videoAddress": ""
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "DalgarianArenasMap",
+          "text": "Arènes Dalgariennes",
           "spriteAddress": "",
           "videoAddress": ""
         }
@@ -12867,49 +13035,21 @@
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
           "id": "ItemFalchion_1",
-          "text": "Qu'est-ce que c'est ? Un fauchon provenant de Khar-Tib ! Je vous déconseille de le vendre, camarade !",
+          "text": "Oh, c'est une lame Sentari ! Tu ne voudras pas vendre ça, l'ami !",
           "spriteAddress": "",
           "videoAddress": ""
         },
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
-          "id": "ItemFalchion_4",
-          "text": "Qu'est-ce que c'est ? Un fauchon provenant de Khar-Tib ! Je vous déconseille de le vendre !",
+          "id": "ItemFalchion_2",
+          "text": "Qu’est-ce que tu as là, un fauchon ? C'est une lame rare par ici, tu devrais la garder, l'ami.",
           "spriteAddress": "",
           "videoAddress": ""
         },
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
-          "id": "ItemFalchion_6",
-          "text": "Une arme exotique ! C'est l'arme de prédilection des marins de Khar-Tib. Mieux vaut la garder.",
-          "spriteAddress": "",
-          "videoAddress": ""
-        },
-        {
-          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
-          "id": "ItemFalchion_9",
-          "text": "Une arme exotique ! C'est l'arme de prédilection des marins de Khar-Tib. Mieux vaut la garder.",
-          "spriteAddress": "",
-          "videoAddress": ""
-        },
-        {
-          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
-          "id": "ItemFalchion_11",
-          "text": "On dirait que vous avez trouvé une arme venant d'une contrée lointaine. Cette lame courbe est un fauchon issu des terres de Khar-Tib.",
-          "spriteAddress": "",
-          "videoAddress": ""
-        },
-        {
-          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
-          "id": "ItemFalchion_13",
-          "text": "On dirait que vous avez trouvé une arme venant d'une contrée lointaine. Cette lame courbe est un fauchon issu des déserts de Khar-Tib.",
-          "spriteAddress": "",
-          "videoAddress": ""
-        },
-        {
-          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
-          "id": "ItemFalchion_18",
-          "text": "On dirait que vous avez trouvé une arme venant d'une contrée lointaine. Cette lame courbe est un fauchon issu des terres désertiques de Khar-Tib.",
+          "id": "ItemFalchion_3",
+          "text": "Oh wow ! Un fauchon Sentari. C'était mon arme préférée à l'époque où je voyageais. C'est une trouvaille rare l'ami, je le garderais si j'étais toi.",
           "spriteAddress": "",
           "videoAddress": ""
         },
@@ -14837,6 +14977,321 @@
           "text": "Charge et prépare-toi, l’ami !",
           "spriteAddress": "",
           "videoAddress": ""
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibArmour_1",
+          "text": "Tu sens ce blindage dur ? Les Kharèses fabriquent des armures à partir des carapaces des créatures exotiques qui vivent dans leurs déserts.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibArmour_2",
+          "text": "Vivant dans le désert, il est difficile de trouver beaucoup de métaux et de fibres typiques, mais les Kharèse  font de leur mieux avec ce qu’ils ont.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibArmour_3",
+          "text": "Personnellement, je n’aime pas le sable. C’est rugueux, irritant et irritant, et ça se répand partout. Alors assurez-vous de bien le secouer avant de le mettre.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibBombFire_1",
+          "text": "Tu as un enfer dans une bouteille, mon gars ! Manipule le avec précaution, et surtout ne l'approche pas du feu.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibBombFire_2",
+          "text": "La chaleur des déserts du Khar-Tib est brutale, mais je préfère y rester coincé pendant des semaines plutôt que d’être la cible de ces choses.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibBombGravity_1",
+          "text": "Si jamais tu as besoin de rapidement passer par-dessus un mur, lance-le à tes pieds!",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibBombLightning_1",
+          "text": "Vous savez comment un puissant sorcier peut couper quelqu’un en deux avec un arc de foudre de son bâton ? Oui, eh bien... d’une manière ou d’une autre, les Kharèse ont réussi à embouteiller cette expérience !",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibBombLightning_2",
+          "text": "Cette bombe est bien connue parmi les Kharèse  pour sa létalité et le carnage qu’elle laisse derrière elle. Effrayant.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibBombGeneric_Special",
+          "text": "Huile pour lampe ? Corde ? Des bombes ? Tu le veux, c’est à toi mon pote, tant que tu as assez d’argent !",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibCrossbow_1",
+          "text": "Les arbalètes sont une excellente alternative à l’arc pour ceux qui ne connaissent pas le tir à l’arc. Plus facile à viser, pas d’effort pour maintenir la corde en place!",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibCrossbow_2",
+          "text": "Il est facile de tirer à l’arbalète, ce qui les rend attirantes pour les petites tribus Kharèse qui doivent parfois compter sur une population non entraînée pour se défendre.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibCrossbow_3",
+          "text": "J’ai vu des plans fous d’inventeurs Sentari essayant d’améliorer l’arbalète kharèse. L’un de ces modèles comportait une sorte de « cylindre » rotatif. Super idée, mais ça ne marche pas !",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "CrystalCore_1",
+          "text": "Un cœur de cristal ! Incroyablement rares... mais si la nouvelle se répandait que je vends des cœurs de cristal, cette île serait envahie par des sorciers avides de pouvoir prêts à tous les prendre par la force. J’ai bien peur de ne pas pouvoir accepter cela pour n’importe quel prix.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "CrystalCore_2",
+          "text": "Un noyau de cristal... Tu l’as fait ! Bravo, mon gars. C’est beaucoup de pouvoir, mais écoute... Plus un homme détient de pouvoir, moins il a tendance à voir clairement.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "CrystalCore_3",
+          "text": "Oh... La Guilde serait extrêmement fâchée: par principe, il est impossible que je revende ce cœur de cristal à n’importe quel prix. Leur pouvoir est trop grand, et le danger de ce pouvoir n’est pas qu’il change simplement un homme... c’est que ça lui fait croire qu’il le mérite.... à tout prix.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibGenericWeapon_1",
+          "text": "L’artisanat Kharèse ne cesse d’émerveiller. Des armes détaillées avec des accents d’os élégants. Vraiment impressionnant.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibGenericWeapon_2",
+          "text": "Les lames courbes sont une spécialité de Khar-Tib. Elles tranchent plus facilement car leurs lames longent la peau plutôt que de la mordre. Donc, tu ferais mieux d’éviter de t’en prendre une.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibGenericWeapon_3",
+          "text": "Les Kharèses sont vraiment débrouillards. Les os que vous voyez dans ces armes y proviennent en grande partie des créatures qui vivent dans les sables du désert.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibGenericWeapon_4",
+          "text": "Un excellent achat. C’est une arme Kharèse authentique.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibGenericWeapon_5",
+          "text": "Cette arme provient de Khar-Tib. Ça te servira bien.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibGenericWeapon_6",
+          "text": "J’ai entendu des Eradiens débiter que les guerriers Kharèses placent leurs lames sous le soleil avant les batailles, soi-disant, en prétendant que cela infligera des dégâts de brûlure supplémentaires à leurs ennemis. Heh, une pure invention.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibGenericWeapon_7",
+          "text": "As-tu déjà vu quelqu’un utiliser une lance avec une lame à chaque extrémité ? J’ai entendu dire qu’ils sont étonnamment populaires auprès des sorciers du Sud.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SwordOfNaa_1",
+          "text": "Qu’est-ce que tu as là? C’est Dalgarian ? Waouh, il n’y a aucun moyen que je puisse vendre un truc aussi chaud, l'ami. Tu vas vouloir garder celui-ci pour toi.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SwordOfNaa_2",
+          "text": "Par les dieux... une lame dalgarienne ? Il n’y a pas de prix à mettre là-dessus, mec ! Tu voudras la garder.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SwordOfNaa_3",
+          "text": "Je n’en crois pas mes yeux ! Une vraie lame dalgarienne... Il y a des gens qui te trancheraient la gorge pour avoir ça, l'ami. Il est hors de question que je prenne le risque de revendre quelque chose d’aussi rare.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "WristBlade_1",
+          "text": "L’outil ultime de l’assassin, juste là. La lame reste cachée jusqu’au moment même où tu dois l’utiliser.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "WristBlade_2",
+          "text": "L’origine exacte de cette lame est inconnue, mais la croyance populaire veut qu’elle soit utilisée parmi les guildes d’assassins de Khar-Tib. Cela me semble improbable cependant ; cela ne ressemble pas du tout à un artisanat Kharèse.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "WristBlade_3",
+          "text": "Ce mécanisme est vraiment hypnotisant. Je n’arrive pas à comprendre moi-même.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibCheckout_Special",
+          "text": "Je suis vraiment content de t’avoir comme client, mon gars. J’ai des types bizarres qui passent par ici. Hier encore, un vagabond est arrivé... Il courait partout, bavardait tout seul, une horreur!",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibFirstLore_0",
+          "text": "Eh bien... Tu sais ce que tu as là ? C’est de Khar-Tib ! Pas un endroit qu’on oublie rapidement, mais c’est un endroit complexe, attention... une culture pas facilement définissable",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibFirstLore_1",
+          "text": "plutôt un patchwork de tribus dispersées sur un océan de sable, chacune avec ses propres seigneurs de guerre, coutumes et rancunes.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibFirstLore_2",
+          "text": "Chaleur brûlante le jour, froid mordant la nuit, et pas une goutte de pitié entre les deux. Mais les gens ? Durs comme ça.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibFirstLore_3",
+          "text": "Bien sûr, ils doivent l’être, avec ces créatures qui rôdent sous ces sables... Tu ne veux pas savoir !",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibLore_A_0",
+          "text": "Chaque tribu de Khar-Tib jure qu’elle est la plus ancienne, la plus forte, la souveraine légitime.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibLore_A_1",
+          "text": "Le plus drôle, c’est que si vous restez assez longtemps avec eux, vous commencez à croire chacun d’eux.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibLore_B_0",
+          "text": "Khar-Tib a toujours été un groupe de tribus décentralisées, tenues lâchement unies par une identité culturelle partagée.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibLore_B_1",
+          "text": "On parle maintenant d’un puissant seigneur de guerre liant toutes les tribus sous une même bannière. Une idée dangereuse, ça.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibLore_B_2",
+          "text": "La force de Khar-Tib a toujours été tempérée par son manque de cohésion... Unissez-la, et vous avez quelque chose dont le reste du monde devrait s’inquiéter.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibLore_C_0",
+          "text": "Ah, Khar-Tib... La première chose que vous apprenez, c’est que le désert ne pardonne pas les erreurs. J’ai une fois vu une caravane disparaître du jour au lendemain — pas de traces, pas d’épave, juste du sable lisse au matin.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibLore_C_1",
+          "text": "Si vous entendez déjà un grondement sourd là-bas ? Ne reste pas sur place à essayer de comprendre. Croyez-moi sur ce point.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibLore_D",
+          "text": "Tu as déjà vu un voilier des sables? Un étrange engin Khar-Tib ; moitié navire, moitié miracle, conçu pour traverser les déserts autrement infranchissables.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibLore_E_0",
+          "text": "Leurs marchés de Khar-Tib sont chaotiques mais beaux.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibLore_E_1",
+          "text": "Des épices volant dans l’air, des tissus plus brillants que des pierres précieuses, et chaque marchand vous convainquant que le prix qu’ils proposent va les mettre en faillite.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibLore_F",
+          "text": "La nuit tombe sur Khar-Tib comme un marteau. Un instant tu transpires à travers tes bottes, l’instant d’après tu gèles sous un ciel si clair qu’on croirait que tu pourrais tendre la main pour toucher la planète Oron.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibLore_G",
+          "text": "Le commerce est une chose curieuse à Khar-Tib. Le fer et le bois rapporteront une fortune, et en retour vous verrez des textiles et des fruits que vous ne trouverez nulle part ailleurs à Byeth.",
+          "spriteAddress": null,
+          "videoAddress": null
         }
       ]
     },
@@ -15002,6 +15457,27 @@
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
           "id": "Rakta",
           "text": "Rakta",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTib",
+          "text": "Khar-Tib",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibOutpostDesc",
+          "text": "Avant-poste de Khar-Tib",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibDalgDesc",
+          "text": "Ruine dalgarienne de Khar-Tib",
           "spriteAddress": null,
           "videoAddress": null
         }
@@ -15975,6 +16451,20 @@
           "text": "Ensemble Psionique",
           "spriteAddress": "",
           "videoAddress": ""
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleArmorKharTibName",
+          "text": "Ensemble de guerriers Kharèse",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleKharTibBundleT2Name",
+          "text": "Ensemble épée et planche",
+          "spriteAddress": null,
+          "videoAddress": null
         }
       ]
     }
@@ -16157,8 +16647,8 @@
     {
       "$type": "ThunderRoad.TextData+Item, ThunderRoad",
       "id": "DualBladeStaff",
-      "name": "Bâton à lames",
-      "description": "Arme atypique provenant de Khar-Tib. On raconte qu'elle était utilisée pour la danse plutôt qu'au combat, mais ses lames sont tranchantes et d'excellente qualité."
+      "name": "Bâton à Double Lame",
+      "description": "Une arme peu orthodoxe. On dit qu'elle serait utilisée dans une forme de danse plutôt que pour le combat, mais la lame sont tranchantes et de haute qualité malgré tout."
     },
     {
       "$type": "ThunderRoad.TextData+Item, ThunderRoad",
@@ -16236,7 +16726,7 @@
       "$type": "ThunderRoad.TextData+Item, ThunderRoad",
       "id": "WristBlade",
       "name": "Lame de poignet",
-      "description": "Arme blanche caractéristique des assassins de Khar-Tib. Montée sur le poignet, elle permet de porter des coups plus puissants."
+      "description": "Une lame d’assassin d’origine exotique. La lame peut être dissimulée pour plus de liberté, et la monture au poignet permet à l’utilisateur de poignarder avec beaucoup plus de force que la normale."
     },
     {
       "$type": "ThunderRoad.TextData+Item, ThunderRoad",
@@ -16799,8 +17289,8 @@
     {
       "$type": "ThunderRoad.TextData+Item, ThunderRoad",
       "id": "SwordOldieFalchion",
-      "name": "Fauchon",
-      "description": "Vieux fauchon originaire de Khar-Tib, souvent utilisé lors de combats maritimes contre les pirates sentaris."
+      "name": "Falchion",
+      "description": "Un vieux falchion d’origine Sentari, utilisé par les marins, corsaires et pirates du monde entier."
     },
     {
       "$type": "ThunderRoad.TextData+Item, ThunderRoad",
@@ -17971,6 +18461,162 @@
       "id": "Dojo_Gong_Mallet",
       "name": "Maillet de gong",
       "description": ""
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "AxeKharTibDouble",
+      "name": "Hache à Double Tranchant",
+      "description": "Une hache de guerre kharèse lourde et menaçante. Elle demande de la force et de l’endurance pour être utilisée efficacement mais est assez puissante et polyvalente."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "AxeLongKharTibWarpick",
+      "name": "Talon de Guerre",
+      "description": "Un mélange Kharèse entre un pioche de guerre et une faux, inspiré par les griffes féroces des créatures du pays de Khar-Tib."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "DaggerKharTibHaladie",
+      "name": "Dague à Double Lame",
+      "description": "Un poignard Kharèse nécessitant des techniques spéciales pour être pleinement utilisé. À Khar-Tib, elle est portée comme signe de l’habileté d’un soldat d’élite."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "ShieldKharTib",
+      "name": "Bouclier Kharèse",
+      "description": "Un bouclier de Khar-Tib utilisé par de nombreux soldats pour ses capacités offensives et défensives simultanées."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "SwordKharTibKhopesh",
+      "name": "Épée Faucille",
+      "description": "Une arme d’élite de Khar-Tib qui combine la puissance d’une hache avec celle d'une épée."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "SwordKharTibScimitar",
+      "name": "Cimeterre",
+      "description": "Une épée Kharèse conçue pour être une arme simple mais au tranché excellent ."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "DualBladeStaffKharTib",
+      "name": "Bâton Kharèse à Double Lame",
+      "description": "Un bâton de guerre de Khar-Tib. Rarement vu en combat car on dit qu’il est conçu pour affronter plus d’un adversaire à la fois alors que le porteur n’a pas d’alliés à proximité."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "SpellBombLightning",
+      "name": "Bombe de Cristal de Foudre",
+      "description": "Un engin explosif fabriqué à partir de cristaux élémentaires. Doit être activée, puis jetée. Après un délai, cette bombe libérera des fils de foudre tranchants."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "SpellBombFire",
+      "name": "Bombe de Cristal de Feu",
+      "description": "Un engin explosif fabriqué à partir de cristaux élémentaires. Doit être activée, puis jetée. Il faut être armé, puis jeté. Ce n’est qu’en étant près d’un ennemi qu’il produira une explosion enflammée."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "SpellBombGravity",
+      "name": "Bombe à Cristal de Gravité",
+      "description": "Un engin explosif fabriqué à partir de cristaux élémentaires. Doit être activée, puis jetée. Au contact, cette bombe créera une impulsion gravitationnelle."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "BombQuiverLightning",
+      "name": "Bombes de Cristaux de Foudre",
+      "description": "Un engin explosif fabriqué à partir de cristaux élémentaires. Doit être activée, puis jetée.  Après un délai, cette bombe libérera des fils de foudre tranchants."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "BombQuiverFire",
+      "name": "Bombe de Cristal de Feu",
+      "description": "Un engin explosif fabriqué à partir de cristaux élémentaires. Doit être activée, puis jetée. Il faut être armé, puis jeté. Ce n’est qu’en étant près d’un ennemi qu’il produira une explosion enflammée."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "BombQuiverGravity",
+      "name": "Bombe à Cristal de Gravité",
+      "description": "Un engin explosif fabriqué à partir de cristaux élémentaires. Doit être activée, puis jetée. Au contact, cette bombe créera une impulsion gravitationnelle."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "KharTibCrossbow",
+      "name": "Arbalète",
+      "description": "Une arbalète avancée et compacte, moins puissante qu’un arc classique mais compensée par son tir rapide et sa facilité d’utilisation. Il peut stocker plusieurs projectiles à l’intérieur, donc les utilisateurs n’ont pas besoin d'armer une flèche à chaque tir."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "KharTibCrossbowBolt",
+      "name": "Carreau d’Arbalète",
+      "description": "Un petit projectile pour arbalètes."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "QuiverBolts",
+      "name": "Carquois de Carreau d’arbalète",
+      "description": "Un petit projectile pour arbalètes."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "ApparelKharTibBoots",
+      "name": "Bottes de guerrier kharèses",
+      "description": "Bottes de pêche au sable d’origine Kharèse. Très bien adapté pour se protéger des éléments du désert."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "ApparelKharTibGloveL",
+      "name": "Canon d'avant-bras Kharèse (G)",
+      "description": "Armure de protection pour avant-bras de Khar-Tib."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "ApparelKharTibGloveR",
+      "name": "Canon d'avant-bras Kharèse  (D)",
+      "description": "Armure de protection pour avant-bras de Khar-Tib."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "ApparelKharTibHelmet",
+      "name": "Casque de Guerrier Kharèse",
+      "description": "Un casque Kharèse menaçant qui aide à protéger des éléments du désert ainsi que des attaques ennemies."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "ApparelKharTibJacket",
+      "name": "Cuirasse de Guerre Kharèse",
+      "description": "Armure de guerrier Kharèse fabriquée dans du cuir durci des bêtes de Khar-Tib."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "ApparelKharTibPants",
+      "name": "Cuissot Kharèse",
+      "description": "Armure protectrice des jambes de Khar-Tib."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "ApparelKharTibShoulder",
+      "name": "Epaulière  Kharèse",
+      "description": "Armure d’épaule kharèse qui partage encore certaines caractéristiques de la bête dont elle a été façonnée."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "Cushion",
+      "name": "Coussin",
+      "description": null
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "GenieLamp",
+      "name": "Lampe",
+      "description": null
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "KharTibDrum",
+      "name": "Tambour",
+      "description": null
     }
   ],
   "waves": [
@@ -18213,6 +18859,30 @@
       "id": "SentaraDuel",
       "title": "Duel contre le Capitaine Sentari",
       "description": "Combattez plusieurs capitaines Sentari dans des duels à mort."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Wave, ThunderRoad",
+      "id": "KharTibDuel",
+      "title": "Duel de guerrier Kharèse",
+      "description": "Combattez les guerriers de Khar-Tib dans un duel à mort."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Wave, ThunderRoad",
+      "id": "KharTibFull",
+      "title": "Standard",
+      "description": "Combattez chaque type d'ennemi de cette faction."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Wave, ThunderRoad",
+      "id": "KharTibMeleeOnly",
+      "title": "Mêlée uniquement",
+      "description": "Combattez uniquement les ennemis qui utilisent des armes de mêlée."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Wave, ThunderRoad",
+      "id": "KharTibSorceryOnly",
+      "title": "Sorcellerie uniquement",
+      "description": "Combattez les sorciers de cette faction."
     }
   ]
 }

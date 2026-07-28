@@ -17,6 +17,7 @@
       "effectParticleAddress": "Bas.Particle.Spell.Lightning.ImbueBlade.New",
       "intensityCurve": null,
       "renderInLateUpdate": true,
+      "playDelay": 0.0,
       "mainColorStart": {
         "r": 5.85650826,
         "g": 6.388918,
@@ -78,6 +79,7 @@
         "z": 0.0
       },
       "collisionEffectId": null,
+      "collisionEffectDuration": 0.0,
       "collisionLayerMask": -2097353,
       "collisionMaxGroundAngle": 45.0,
       "collisionEmitRate": 0.2,

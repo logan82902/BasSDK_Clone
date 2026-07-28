@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: BladeAndSorcery
   m_EditorClassIdentifier: 
   versionMajor: 1
-  versionMinor: 2
-  versionRevision: 0
+  versionMinor: 3
+  versionRevision: 1
   versionBuild: 1
   minModVersion: 1.0.0.0
   productName: BladeAndSorcery

@@ -157,13 +157,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   invokePlayerExitOnAwake: 0
-  navSpeedModifier: 0
-  runSpeed: 0
+  ignorePlayerCreature: 0
+  ignoreNonRootParts: 1
+  ignoreIdleCreatures: 0
+  blockPhysicsCulling: 0
+  physicalCreatureState: 1
   killPlayer: 0
   killNPC: 0
-  despawnNPC: 0
   despawnItem: 0
+  despawnNPC: 0
   despawnDelay: 0
+  constantStatus: 0
+  statusIDs: []
+  playStatusEffects: 1
+  statusOnPlayer: 0
+  statusOnCreature: 0
+  statusOnItem: 0
+  disableArmorDetection: 0
+  breakBreakables: 0
+  portals: []
   spawnEffect: 0
   effectID: 
   effectMassVelocityCurve:
@@ -174,26 +186,34 @@ MonoBehaviour:
     m_RotationOrder: 4
   effectOrientation: {x: 0, y: 0, z: 1}
   orientEffectToEntranceXZNormal: 0
+  navSpeedModifier: 0
+  runSpeed: 0
   teleportPlayer: 0
   keepPlayerVelocity: 0
   teleportItem: 0
   keepItemVelocity: 0
   customTeleportTarget: {fileID: 0}
-  constantStatus: 0
-  statusIDs: []
-  playStatusEffects: 1
-  statusOnPlayer: 0
-  statusOnCreature: 0
-  statusOnItem: 0
-  disableArmorDetection: 0
   forceNonCreatures: 0
+  forceIgnoredItemIds: []
+  forceIgnoredItemTypes: 
   forcePlayer: 0
   creatureForceMode: 0
   forceTransform: {fileID: 0}
+  forceExclusionZone: {fileID: 0}
+  cancelItemVelocity: 0
+  cancelCreatureVelocity: 0
+  cancelPlayerVelocity: 0
+  itemVelocityMultOnEnter: 1
+  creatureVelocityMultOnEnter: 1
+  playerVelocityMultOnEnter: 1
+  itemForceMult: 1
+  creatureForceMult: 1
+  playerForceMult: 1
   linearForceActive: 0
   linearForceMode: 0
   linearForce: {x: 0, y: 0, z: 0}
   radialForceActive: 0
+  radialForceProjectOnSwirlPlane: 0
   radialForceMode: 0
   radialForce:
     serializedVersion: 2
@@ -238,34 +258,12 @@ MonoBehaviour:
   resistiveForceMode: 0
   minimumResistedVelocity: 0
   resistInForceTransformForward: 0
+  resistInAllDirections: 0
   resistiveForceDirection: {x: 0, y: 0, z: 0}
-  forceExclusionZone: {fileID: 0}
-  cancelItemVelocity: 0
-  cancelCreatureVelocity: 0
-  cancelPlayerVelocity: 0
-  itemVelocityMultOnEnter: 1
-  creatureVelocityMultOnEnter: 1
-  playerVelocityMultOnEnter: 1
-  itemForceMult: 1
-  creatureForceMult: 1
-  playerForceMult: 1
-  ignorePlayerCreature: 0
-  ignoreNonRootParts: 1
-  ignoreIdleCreatures: 0
-  blockPhysicsCulling: 0
-  physicalCreatureState: 1
-  portals: []
-  breakBreakables: 0
   playerEnterEvent:
     m_PersistentCalls:
       m_Calls: []
   playerExitEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  golemEnterEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  golemExitEvent:
     m_PersistentCalls:
       m_Calls: []
   creatureEnterEvent:
@@ -290,6 +288,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   lastItemExitEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  golemEnterEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  golemExitEvent:
     m_PersistentCalls:
       m_Calls: []
   firstEntityEnterEvent:
@@ -422,6 +426,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 547371945093188699, guid: eb56f9bcfdaa14949a8b53432e5dec86,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 767823908704095567, guid: eb56f9bcfdaa14949a8b53432e5dec86,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -436,6 +445,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Value
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1226388830144038224, guid: eb56f9bcfdaa14949a8b53432e5dec86,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1277439821048578365, guid: eb56f9bcfdaa14949a8b53432e5dec86,
         type: 3}
@@ -466,6 +480,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1771531283622220841, guid: eb56f9bcfdaa14949a8b53432e5dec86,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1897886644689078423, guid: eb56f9bcfdaa14949a8b53432e5dec86,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 2070702134989563713, guid: eb56f9bcfdaa14949a8b53432e5dec86,
         type: 3}
@@ -522,6 +546,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -180
       objectReference: {fileID: 0}
+    - target: {fileID: 2392525471211935904, guid: eb56f9bcfdaa14949a8b53432e5dec86,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2742520108474423187, guid: eb56f9bcfdaa14949a8b53432e5dec86,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2912797633437456807, guid: eb56f9bcfdaa14949a8b53432e5dec86,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2998959035573448063, guid: eb56f9bcfdaa14949a8b53432e5dec86,
         type: 3}
       propertyPath: container
@@ -532,6 +571,11 @@ PrefabInstance:
       propertyPath: retrieveZone
       value: 
       objectReference: {fileID: 5182945833880878218}
+    - target: {fileID: 3378081597383340680, guid: eb56f9bcfdaa14949a8b53432e5dec86,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4114865663431658767, guid: eb56f9bcfdaa14949a8b53432e5dec86,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -561,6 +605,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4136645507995348014, guid: eb56f9bcfdaa14949a8b53432e5dec86,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4370330229320000998, guid: eb56f9bcfdaa14949a8b53432e5dec86,
         type: 3}
@@ -621,6 +670,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UI_ItemSpawner
+      objectReference: {fileID: 0}
+    - target: {fileID: 5440840771502496800, guid: eb56f9bcfdaa14949a8b53432e5dec86,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5643611322778937341, guid: eb56f9bcfdaa14949a8b53432e5dec86,
         type: 3}
@@ -722,6 +776,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7102676672817132944, guid: eb56f9bcfdaa14949a8b53432e5dec86,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7445570145253060371, guid: eb56f9bcfdaa14949a8b53432e5dec86,
         type: 3}
       propertyPath: m_Size
@@ -802,6 +861,16 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7955065721531950514, guid: eb56f9bcfdaa14949a8b53432e5dec86,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8185029413559667151, guid: eb56f9bcfdaa14949a8b53432e5dec86,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8349353048098338860, guid: eb56f9bcfdaa14949a8b53432e5dec86,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -846,6 +915,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 9041463309764572862, guid: eb56f9bcfdaa14949a8b53432e5dec86,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 9116714724932245456, guid: eb56f9bcfdaa14949a8b53432e5dec86,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eb56f9bcfdaa14949a8b53432e5dec86, type: 3}

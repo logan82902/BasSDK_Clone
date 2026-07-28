@@ -109,6 +109,7 @@
       "effectParticleAddress": "Bas.Particle.Spell.Telekinesis.Push",
       "intensityCurve": null,
       "renderInLateUpdate": false,
+      "playDelay": 0.0,
       "mainColorStart": {
         "r": 0.745283,
         "g": 0.249599516,
@@ -170,6 +171,7 @@
         "z": 0.0
       },
       "collisionEffectId": null,
+      "collisionEffectDuration": 0.0,
       "collisionLayerMask": -2097353,
       "collisionMaxGroundAngle": 45.0,
       "collisionEmitRate": 0.2,

@@ -18,12 +18,12 @@ namespace ThunderRoad
         [Dropdown(nameof(GetAllSpellCastChargeID), AppendToField = true)]
         public string imbueSpellId;
         [FormerlySerializedAs("imbueSkillIds")]
-        [DropdownList(nameof(GetAllSkillID))]
+        [DropdownList(nameof(GetAllSpellSkillID))]
         public List<string> imbueSkillIDs;
 
         public TriDropdownList<string> GetAllSpellCastChargeID()
             => Catalog.GetDropdownAllID<SpellCastCharge>();
-        public TriDropdownList<string> GetAllSkillID()
+        public TriDropdownList<string> GetAllSpellSkillID()
             => Catalog.GetDropdownAllID<SpellSkillData>();
 
     }

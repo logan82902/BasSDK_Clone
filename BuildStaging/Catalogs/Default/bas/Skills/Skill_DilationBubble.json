@@ -33,6 +33,8 @@
   "allowInRouletteMode": true,
   "combatSkill": false,
   "allowOnFirstWave": true,
-  "requiredSkills": [],
+  "requiredSkills": [
+    "GravityMerge"
+  ],
   "IsCombinedSkill": false
 }

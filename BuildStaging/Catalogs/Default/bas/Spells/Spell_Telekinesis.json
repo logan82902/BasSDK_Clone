@@ -174,7 +174,9 @@
   "allowInRouletteMode": true,
   "combatSkill": false,
   "allowOnFirstWave": true,
-  "requiredSkills": [],
+  "requiredSkills": [
+    "SlowTime"
+  ],
   "enabled": true,
   "CatchDistance": 6.0,
   "IsCombinedSkill": false

@@ -162,6 +162,7 @@ Packages/com.unity.visualeffectgraph/Samples~
 Assets/Experimental/Shadowood/AssetConsolidation/AssetConsolidation*
 Assets/Plugins/Crest/Crest-Examples*
 Assets/Sycoforge*
+HybridCLRData/
 
 # Ignore everything in Mods
 BuildStaging/Catalogs/Mods/*

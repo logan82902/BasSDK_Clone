@@ -33,6 +33,9 @@ namespace ThunderRoad
         [Tooltip("GameObjects placed in this holder will not have any physics interactions with any colliders in this list, when the item is taken out (For example, an arrow will not collide with its' quiver)")]
         public List<Collider> ignoredColliders = new();
         [Group("Holder")]
+        [Tooltip("Colliders referenced in this list are enabled while the holder has at least one non-disabled item in it, to provide collision for large holstered items that have their colliders disabled.")]
+        public List<Collider> dummyColliders = new List<Collider>();
+        [Group("Holder")]
         [Tooltip("This value is used to define the target anchor in editor only. This is ignored in game, and is a testing tool only.")]
         public string editorTargetAnchor;
         [NonSerialized]
@@ -72,7 +75,7 @@ namespace ThunderRoad
 
             Item.HolderPoint hp = item.GetHolderPoint(targetAnchor);
             
-            ItemData.CustomSnap cs = item.GetCustomSnap(name);
+            ItemData.CustomSnap cs = item.GetCustomSnap(Application.isPlaying ? name : transform.name);
             Transform itemHolderPoint = hp != null ? hp.anchor : item.transform;
             Transform alignmentPoint = useAnchor ? slots[0].transform : slots[items.IndexOf(item)].transform;
             Quaternion holderStartLocal = itemHolderPoint.localRotation;
@@ -88,6 +91,14 @@ namespace ThunderRoad
         }
 
         public void SnapItemSilent(Item item)
+        {
+        }
+
+        public void AddLockInverter(UnityEngine.Object toggler)
+        {
+        }
+
+        public void RemoveLockInverter(UnityEngine.Object toggler)
         {
         }
 

@@ -9,6 +9,7 @@ namespace ThunderRoad
     [HelpURL("https://kospy.github.io/BasSDK/Components/ThunderRoad/Misc/Interactable.html")]
     [DeclareBoxGroup("Data", Title = "Interactable")]
     [DeclareBoxGroup("Touch")]
+    [DeclareBoxGroup("Runtime")]
     public class Interactable : ThunderBehaviour
     {
 
@@ -93,8 +94,14 @@ namespace ThunderRoad
         public InteractableData data;
 
         [NonSerialized]
+        [ShowInInspector]
+        [Group("Touch")]
+        [ReadOnly]
         public Collider touchCollider;
         [NonSerialized]
+        [ShowInInspector]
+        [Group("Touch")]
+        [ReadOnly]
         public bool touchActive = true;
 
         private float previousCenterDistance = Mathf.Infinity;

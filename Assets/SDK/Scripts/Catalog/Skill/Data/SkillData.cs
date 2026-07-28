@@ -18,12 +18,15 @@ namespace ThunderRoad
 #if UNITY_EDITOR
     [EditorLoadPriority(-5)]
 #endif
-    [DeclareBoxGroup("Skill Tree Display", Title = "Skill Tree Display")]
-    [DeclareBoxGroup("Skill Popup", Title = "Skill Popup")]
-    [DeclareBoxGroup("Skill Orb", Title = "Skill Orb")]
-    [DeclareBoxGroup("Skill Tutorial", Title = "Skill Tutorial")]
-    [DeclareBoxGroup("Skill Cost", Title = "Skill Cost")]
-    [DeclareBoxGroup("Survival")]
+    [DeclareHorizontalGroup("Split")]
+    [DeclareVerticalGroup("Split/Left")]
+    [DeclareVerticalGroup("Split/Right")]
+    [DeclareBoxGroup("Split/Left/Skill Tree Display", Title = "Skill Tree Display")]
+    [DeclareBoxGroup("Split/Left/Skill Popup", Title = "Skill Popup")]
+    [DeclareBoxGroup("Split/Left/Skill Orb", Title = "Skill Orb")]
+    [DeclareBoxGroup("Split/Left/Skill Tutorial", Title = "Skill Tutorial")]
+    [DeclareBoxGroup("Split/Left/Skill Cost", Title = "Skill Cost")]
+    [DeclareBoxGroup("Split/Left/Survival")]
     public abstract class SkillData : CatalogData, IContainerLoadable<SkillData>, ILootTableDrop
     {
         // Show disabled skills at the bottom of the Odin tree. It's reversed, I don't know why.
@@ -31,39 +34,39 @@ namespace ThunderRoad
                                             + (8 - (isDefaultSkill ? -1 : tier))
                                             + (isTierBlocker ? 0 : 8 - (isDefaultSkill ? -1 : tier))
                                             + id;
-        [Group("Skill Tree Display")]
+        [Group("Split/Left/Skill Tree Display")]
         [Dropdown(nameof(GetAllShardsId))]
         public string shardId = "Crystal_Small_01_Shard";
 
-        [Group("Skill Tree Display")]
+        [Group("Split/Left/Skill Tree Display")]
         public string prefabAddress = "Bas.Item.Misc.SkillOrb";
 
-        [Group("Skill Tree Display")]
+        [Group("Split/Left/Skill Tree Display")]
         public string meshAddress;
 
-        [Group("Skill Tree Display")]
+        [Group("Split/Left/Skill Tree Display")]
         public float meshSize = 1f;
 
-        [Group("Skill Tree Display")]
+        [Group("Split/Left/Skill Tree Display")]
         [InfoBox("0-indexed tier. Use 0 for Tier 1, 1 for Tier 2, and 2 for Tier 3.")]
         public int tier;
 
-        [Group("Skill Tree Display")]
+        [Group("Split/Left/Skill Tree Display")]
         public bool allowSkill = true;
 
-        [Group("Skill Tree Display")]
+        [Group("Split/Left/Skill Tree Display")]
         public bool forceAllowRefund = false;
 
-        [Group("Skill Tree Display")]
+        [Group("Split/Left/Skill Tree Display")]
         public bool showInTree = true;
 
-        [Group("Skill Tree Display")]
+        [Group("Split/Left/Skill Tree Display")]
         public bool hideInSkillMenu = false;
 
-        [Group("Skill Tree Display")]
+        [Group("Split/Left/Skill Tree Display")]
         public bool IsCombinedSkill => !string.IsNullOrEmpty(primarySkillTreeId) && !string.IsNullOrEmpty(secondarySkillTreeId) && !primarySkillTreeId.Equals(secondarySkillTreeId);
 
-        [Group("Skill Popup")]
+        [Group("Split/Left/Skill Popup")]
         public string skillTreeDisplayName;
 
         public string GetName() 
@@ -103,25 +106,25 @@ namespace ThunderRoad
                    + $"{(IsCombinedSkill ? $"X-{string.Concat((primarySkillTreeId[0].ToString() + secondarySkillTreeId[0]).OrderBy(s => s))}" : primarySkillTreeId[0].ToString())}{tier + 1} ";
         }
 
-        [Group("Skill Popup")]
+        [Group("Split/Left/Skill Popup")]
         public string description;
 
 
-        [Group("Skill Popup")]
+        [Group("Split/Left/Skill Popup")]
         public string imageAddress = "";
 
-        [Group("Skill Popup")]
+        [Group("Split/Left/Skill Popup")]
         public string videoAddress = "";
 
-        [Group("Skill Popup")]
+        [Group("Split/Left/Skill Popup")]
         public string buttonSpriteSheetAddress = "Bas.Ui.SkillTree.Icons";
-        [Group("Skill Popup")]
+        [Group("Split/Left/Skill Popup")]
         public string buttonEnabledIconAddress;
 
-        [Group("Skill Popup")]
+        [Group("Split/Left/Skill Popup")]
         public string buttonDisabledIconAddress;
 
-        [Group("Skill Orb")]
+        [Group("Split/Left/Skill Orb")]
         public string orbIconAddress = "";
 
 #if UNITY_EDITOR
@@ -129,13 +132,13 @@ namespace ThunderRoad
         public Sprite icon;
 #endif
 
-        [Group("Skill Popup")]
+        [Group("Split/Left/Skill Popup")]
         private int videoCount = 0;
 
-        [Group("Skill Cost")]
+        [Group("Split/Left/Skill Cost")]
         public int costOverride = -1;
 
-        [Group("Skill Cost")]
+        [Group("Split/Left/Skill Cost")]
         [ShowInInspector]
         [JsonIgnore]
         public int Cost
@@ -162,7 +165,7 @@ namespace ThunderRoad
             }
         }
 
-        [Group("Skill Cost")]
+        [Group("Split/Left/Skill Cost")]
         [FormerlySerializedAs("defaultSkill")]
         public bool isDefaultSkill = false;
         
@@ -178,14 +181,14 @@ namespace ThunderRoad
         public static event SkillLoadedEvent OnSkillUnloadedEvent;
 
 
-        [Group("Skill Tree Display")]
+        [Group("Split/Left/Skill Tree Display")]
         [Dropdown(nameof(GetAllSkillTreeID))]
         public string primarySkillTreeId;
 
         [NonSerialized]
         public SkillTreeData primarySkillTree;
 
-        [Group("Skill Tree Display")]
+        [Group("Split/Left/Skill Tree Display")]
         [Dropdown(nameof(GetAllSkillTreeID))]
         public string secondarySkillTreeId;
 
@@ -193,20 +196,20 @@ namespace ThunderRoad
         public SkillTreeData secondarySkillTree;
 
         // Only one should be blocker by Tier
-        [Group("Skill Tree Display")]
+        [Group("Split/Left/Skill Tree Display")]
         public bool isTierBlocker = false;
 
-        [Group("Survival")]
+        [Group("Split/Left/Survival")]
         public bool canSpawnAsReward = false;
-        [Group("Survival")]
+        [Group("Split/Left/Survival")]
         public bool allowInRouletteMode = true;
-        [Group("Survival")]
+        [Group("Split/Left/Survival")]
         public bool combatSkill = false;
 
-        [Group("Survival")]
+        [Group("Split/Left/Survival")]
         public bool allowOnFirstWave = true;
 
-        [Group("Survival")]
+        [Group("Split/Left/Survival")]
         [DropdownList(nameof(GetAllSkillID))]
         public List<string> requiredSkills = new();
 
@@ -298,16 +301,20 @@ namespace ThunderRoad
             {
                 orbIconAddress = $"Bas.Ui.SkillTree.Icons[{id}]";
             }
-            
-            primarySkillTree = Catalog.GetData<SkillTreeData>(primarySkillTreeId);
-            secondarySkillTree = Catalog.GetData<SkillTreeData>(secondarySkillTreeId);
+
+            if (Catalog.TryGetData(primarySkillTreeId, out primarySkillTree))
+            {
+                primarySkillTree.InitTierBlockers(); //initalise incase this skill is loaded before the tree
+            }
+            if (Catalog.TryGetData(secondarySkillTreeId, out secondarySkillTree))
+            {
+                secondarySkillTree.InitTierBlockers(); //initalise incase this skill is loaded before the tree
+            }
 
             if (isTierBlocker && primarySkillTree != null)
-            {
-                while (primarySkillTree.tierBlockers.Count <= tier)
-                    primarySkillTree.tierBlockers.Add(null);
-
-                primarySkillTree.tierBlockers[tier] = id;
+            { 
+                //set the tierblocker for this tier to this skill
+               primarySkillTree.tierBlockers[tier] = id;
             }
 
             if (forceOverrideToLocalisedText)
@@ -349,15 +356,23 @@ namespace ThunderRoad
                     && string.IsNullOrEmpty(primarySkillTree.iconDisabledAddress))
                     buttonDisabledIconAddress = $"{buttonSpriteSheetAddress}[{primarySkillTreeId}_Button]";
             }
-        }
-
-        public override IEnumerator OnCatalogRefreshCoroutine()
-        {
+            
+            // initialise tier blockers etc
             requiredSkills ??= new List<string>();
 
-            if (primarySkillTree is null) yield break;
-            if (IsCombinedSkill)
+            if (primarySkillTree is null) return;
+            if (primarySkillTree.tierBlockers.Count <= tier)
             {
+                Debug.LogError($"Skill {id} has a tier of {tier} but the primary skill tree only has {primarySkillTree.tierBlockers.Count} tiers.");
+                return;
+            }
+            if (IsCombinedSkill && secondarySkillTree is not null)
+            {
+                if (secondarySkillTree.tierBlockers.Count <= tier)
+                {
+                    Debug.LogError($"Skill {id} has a tier of {tier} but the secondary skill tree only has {secondarySkillTree.tierBlockers.Count} tiers.");
+                    return;
+                }
                 // Known issue: If a modder implements non-blocker (i.e. orbiting or minor) dual-tree skills,
                 //  they will not automatically require the central dual tree skill.
                 requiredSkills.Add(primarySkillTree.tierBlockers[tier]);
@@ -372,7 +387,7 @@ namespace ThunderRoad
                 requiredSkills.Add(primarySkillTree.tierBlockers[tier]);
             }
         }
-
+        
         public void GetOrbIcon(Action<Sprite> callback)
         {
             Catalog.LoadAssetAsync(orbIconAddress, callback, id);

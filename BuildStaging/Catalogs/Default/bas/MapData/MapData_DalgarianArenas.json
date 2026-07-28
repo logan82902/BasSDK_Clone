@@ -1,0 +1,25 @@
+{
+  "$type": "ThunderRoad.MapData, ThunderRoad",
+  "id": "DalgarianArenas",
+  "sensitiveContent": "None",
+  "sensitiveFilterBehaviour": "Discard",
+  "version": 0,
+  "groupPath": "",
+  "worldmapPrefabAddress": "Bas.Image.Map.Default",
+  "worldmapTextureAddress": "Bas.Worldmap.DalgarianArenas",
+  "worldmapLocalisationId": "DalgarianArenasMap",
+  "bookmarkIconAddress": "Bas.Icon.Location.Dalgarian",
+  "bookmarkColor": {
+    "r": 0.3647059,
+    "g": 0.282352954,
+    "b": 0.372549027,
+    "a": 1.0
+  },
+  "iconColor": {
+    "r": 0.9372549,
+    "g": 0.635294139,
+    "b": 0.349019617,
+    "a": 1.0
+  },
+  "order": 7
+}

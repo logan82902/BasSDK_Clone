@@ -281,6 +281,7 @@
       "effectParticleAddress": "Bas.Particle.Collision.Flesh",
       "intensityCurve": null,
       "renderInLateUpdate": false,
+      "playDelay": 0.0,
       "mainColorStart": {
         "r": 0.0,
         "g": 0.0,
@@ -342,6 +343,7 @@
         "z": 0.0
       },
       "collisionEffectId": "DropBlood",
+      "collisionEffectDuration": 0.0,
       "collisionLayerMask": 1,
       "collisionMaxGroundAngle": 45.0,
       "collisionEmitRate": 0.2,

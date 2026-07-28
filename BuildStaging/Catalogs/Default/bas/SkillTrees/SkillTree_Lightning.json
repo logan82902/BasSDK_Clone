@@ -35,6 +35,7 @@
   "tierBlockers": [
     "Lightning",
     "ChargeSapping",
-    "LightningMerge"
+    "LightningMerge",
+    null
   ]
 }

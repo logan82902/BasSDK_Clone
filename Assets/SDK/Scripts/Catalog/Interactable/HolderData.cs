@@ -63,6 +63,8 @@ namespace ThunderRoad
         public bool allowTeleGrab = true;
         [Group("Holder")]
         public bool hideFromFpv;
+        [Group("Holder")]
+        public float unsnapColliderEnableDelay = 0f;
 
         [Group("Holder")]
         public GrabTeleport grabTeleport = GrabTeleport.Disabled;
@@ -70,6 +72,8 @@ namespace ThunderRoad
         public bool disableObjectProximityHighlighter = false;
         [Group("Holder")]
         public bool delegateToParentHolder;
+        [Group("Holder")]
+        public bool ignoreEmptyChildHolders = false;
         [Group("Holder")]
         public float cleanItemsDuration = 0;
         [Group("Holder")]

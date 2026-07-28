@@ -13,7 +13,6 @@ using UnityEngine.AddressableAssets;
 using UnityEditor;
 #endif
 using TriInspector;
-using UnityEngine.UIElements;
 
 namespace ThunderRoad
 {
@@ -93,7 +92,6 @@ namespace ThunderRoad
         [Tooltip("Can add additional holderpoints for different interactables.\n \nFor Items on the Item Rack, the anchor must be named HolderRackTopAnchor, or alternatively for the bow rack, HolderRackTopAnchorBow, and HolderRackSideAnchor for Shield rack")]
         [Group("Tabs/Storage"), Tab("General")]
         public List<HolderPoint> additionalHolderPoints = new();
-        [Header("Holder")]
         [Group("Tabs/Storage"), Tab("General")]
         public List<ItemData.CustomSnap> customSnaps = new();
         [Group("Tabs/Storage"), Tab("General")]
@@ -241,7 +239,9 @@ namespace ThunderRoad
         [NonSerialized]
         public FloatHandler sliceAngleMultiplier;
         [NonSerialized]
-        public FloatHandler damageMultiplier;
+        public FloatHandler damageMultiplier = new FloatHandler();
+        [NonSerialized]
+        public FloatHandler appliedForceMultiplier = new FloatHandler();
         [NonSerialized]
         public IntAddHandler pushLevelMultiplier;
 
@@ -256,6 +256,7 @@ namespace ThunderRoad
 
         [Tooltip("The real geometric volume of the item used for water submersion calculations. Calculated from the prefabs Oriented Bounding Box")]
         [ReadOnly]
+        [Group("Tabs/Physics"), Tab("General")]
         public float itemVolume = 0;
 
 
@@ -301,7 +302,7 @@ namespace ThunderRoad
             if (Application.isPlaying)
                 return;
 #if UNITY_EDITOR
-            if (UnityEditor.BuildPipeline.isBuildingPlayer)
+            if (BuildPipeline.isBuildingPlayer)
                 return;
 
             if (!this.InPrefabScene())
@@ -311,10 +312,200 @@ namespace ThunderRoad
                 return;
             
             SetupDefaultComponents();
-            
         }
-        
+
 #if UNITY_EDITOR
+        public class ItemProblem
+        {
+            public string message;
+            public Fix fixType = Fix.NoAuto;
+            public object fixData;
+
+            public enum Fix
+            {
+                NoAuto,
+                EmissionRenderer,
+                EffectRenderer,
+            }
+
+            public static implicit operator ItemProblem(string message) => new ItemProblem(message);
+
+            public ItemProblem(string message)
+            {
+                this.message = message;
+            }
+
+            public ItemProblem(string message, Fix fixType, object fixData)
+            {
+                this.message = message;
+                this.fixType = fixType;
+                this.fixData = fixData;
+            }
+        }
+
+        public List<ItemProblem> CheckItemProblems()
+        {
+            List<ItemProblem> problems = new List<ItemProblem>();
+            if (itemId == "")
+            {
+                problems.Add("!ERROR!Do not forget to assign a valid Item ID.");
+            }
+            else
+            {
+                if (!Catalog.IsJsonLoaded())
+                {
+                    problems.Add($"!WARNING!Catalog isn't loaded, can't confirm if item ID is valid or check item data.");
+                }
+                else if (Catalog.TryGetData(itemId, out ItemData itemData))
+                {
+                    if (itemData.prefabAddress.IsNullOrEmptyOrWhitespace())
+                    {
+                        problems.Add($"!WARNING!The prefab address on item data {itemId} is empty, it will not be able to be spawned from the book.");
+                    }
+                    else
+                    {
+                        string addressablePath = Catalog.GetAssetPathFromAddress(itemData.prefabAddress);
+                        string assetDatabasePath = AssetDatabase.GetAssetPath(this.gameObject);
+                        if (addressablePath != assetDatabasePath)
+                        {
+                            problems.Add($"!WARNING!The prefab address on item data {itemId} doesn't point to this item prefab. This item will not be able to be spawned from the book.");
+                        }
+                    }
+                }
+                else
+                {
+                    problems.Add($"!WARNING!Item ID {itemId} doesn't point to a valid item data!");
+                }
+            }
+
+            foreach (MeshCollider meshCollider in GetComponentsInChildren<MeshCollider>())
+            {
+                if (!meshCollider.convex)
+                {
+                    problems.Add($"!ERROR!The mesh collider {meshCollider.name} has to be set to convex.");
+                }
+            }
+
+            problems.Add("!ERROR!There aren't any enabled non-trigger colliders assigned to this object. It will fall through the ground.");
+            int noColliderProblemIndex = problems.Count - 1;
+            bool hasSolidCollider = false;
+            foreach (Collider collider in GetComponentsInChildren<Collider>())
+            {
+                if (collider.enabled && !collider.isTrigger)
+                {
+                    hasSolidCollider = true;
+                }
+                if (!collider.sharedMaterial && collider != customInertiaTensorCollider)
+                {
+                    problems.Add($"!WARNING!Collider {collider.name} is missing a physics material and will not make sounds nor decals on impact.");
+                }
+                if (!collider.GetComponentInParent<ColliderGroup>() && collider != customInertiaTensorCollider)
+                {
+                    problems.Add($"!WARNING!Collider {collider.name} does not have any Collider Group on parent.");
+                }
+            }
+            if (hasSolidCollider)
+            {
+                problems.RemoveAt(noColliderProblemIndex);
+            }
+
+            foreach (var meshFilter in GetComponentsInChildren<MeshFilter>(true))
+            {
+                if (meshFilter.sharedMesh != null) continue;
+                problems.Add($"!ERROR!MeshFilter component in the child object {meshFilter.name} has no mesh assigned.");
+            }
+
+            if (GetComponentInChildren<Breakable>() is Breakable breakable)
+            {
+                problems.AddRange(CheckColliderGroupIssues(breakable.unbrokenObjectsHolder, name));
+                foreach (Item item in breakable.brokenObjectsHolder.GetComponentsInChildren<Item>())
+                {
+                    if (item.gameObject.IsPrefabInstanceRoot(out bool isAddressable) && !isAddressable)
+                    {
+                        problems.Add($"!ERROR!Broken part child object {item.name} is a prefab instance, but the prefab asset is not set to addressable.");
+                    }
+                }
+            }
+            else
+            {
+                problems.AddRange(CheckColliderGroupIssues(gameObject, name));
+            }
+
+            if (GetDefaultHolderPoint() == null)
+            {
+                problems.Add("!WARNING!There is no holder point assigned to this object. It will not be able to be holstered.");
+            }
+
+            if (parryPoint == null)
+            {
+                problems.Add("!WARNING!There is no parry point on this item. Enemies will not know how to defend with it.");
+            }
+
+            if (transform.lossyScale != Vector3.one)
+            {
+                problems.Add("!WARNING!The scale of the Item definition object should set to 1. Meshes and colliders may need manual adjustment.");
+            }
+
+            if (!mainHandleLeft || !mainHandleRight)
+            {
+                problems.Add("!WARNING!There are no handles on this object. It will not be able to be picked up from the spawn book.");
+            }
+            return problems;
+        }
+
+        private List<ItemProblem> CheckColliderGroupIssues(GameObject root, string name)
+        {
+            List<ItemProblem> problems = new List<ItemProblem>();
+            ColliderGroup[] itemColliderGroups = root.GetComponentsInChildren<ColliderGroup>();
+            List<ColliderGroup> childGroups = new List<ColliderGroup>();
+            foreach (ColliderGroup colliderGroup in itemColliderGroups)
+            {
+                if (colliderGroup.subImbueGroups.IsNullOrEmpty()) continue;
+                foreach (ColliderGroup subImbueGroup in colliderGroup.subImbueGroups)
+                {
+                    childGroups.Add(subImbueGroup);
+                }
+            }
+            int hasEmissionRendererGroups = itemColliderGroups.Length;
+            int insertIndex = problems.Count;
+            foreach (ColliderGroup colliderGroup in itemColliderGroups)
+            {
+                bool isChildGroup = childGroups.Contains(colliderGroup);
+                if (colliderGroup.imbueEffectRenderer == null)
+                {
+                    if (!isChildGroup) problems.Add($"!WARNING!ColliderGroup {colliderGroup.gameObject.name} is missing an imbue effect renderer and will not properly show particles if imbued!");
+                }
+                else
+                {
+                    if (colliderGroup.imbueEffectRenderer.transform.lossyScale != Vector3.one)
+                    {
+                        problems.Add($"!WARNING!The scale of GameObject {colliderGroup.imbueEffectRenderer.name} should be set to 1 to ensure effects scale properly.");
+                    }
+                    bool effectRendererVisible = colliderGroup.imbueEffectRenderer.gameObject.activeSelf && colliderGroup.imbueEffectRenderer.enabled && !colliderGroup.imbueEffectRenderer.materials.IsNullOrEmpty();
+                    if (effectRendererVisible)
+                    {
+                        problems.Add(new ItemProblem($"!WARNING!The imbue effect renderer {colliderGroup.imbueEffectRenderer.name} for group {colliderGroup.gameObject.name} is visible and needs to be disabled.",
+                            ItemProblem.Fix.EffectRenderer, colliderGroup.transform.GetPathFrom(baseTransform)));
+                    }
+                }
+                if (colliderGroup.imbueEmissionRenderer == null)
+                {
+                    hasEmissionRendererGroups--;
+                    if (!isChildGroup) problems.Add($"!WARNING!ColliderGroup {colliderGroup.gameObject.name} is missing an imbue emission renderer and won't glow when imbued!");
+                }
+                else if (colliderGroup.imbueEmissionRenderer.transform.lossyScale != Vector3.one)
+                {
+                    problems.Add($"!WARNING!The scale of GameObject {colliderGroup.imbueEmissionRenderer.name} should be set to 1 to ensure effects scale properly.");
+                }
+            }
+            if (hasEmissionRendererGroups == 0)
+            {
+                problems.Insert(insertIndex, new ItemProblem($"!ERROR!There are no ColliderGroups on item {name} that have an imbue emission renderer assigned! At least one imbue emission renderer on the item is required for item status effects!",
+                    ItemProblem.Fix.EmissionRenderer, null));
+            }
+            return problems;
+        }
+
         private float CalculateOBBVolume(Transform[] orientedBoundsPoints)
         {
             if (orientedBoundsPoints == null || orientedBoundsPoints.Length != 8)
@@ -339,6 +530,7 @@ namespace ThunderRoad
         }
         
         [Button]
+        [Group("Tabs/Physics"), Tab("General")]
         public void SetupBoundsPoints()
         {
             var root = GetItemRoot();
@@ -371,6 +563,10 @@ namespace ThunderRoad
 
             foreach (var col in colliders)
             {
+                //ignore trigger colliders
+                if (col.isTrigger) 
+                    continue;
+                //ignore the inertia tensor colliders
                 if (inertiaTensorColliders.Contains(col))
                     continue;
 
@@ -519,11 +715,14 @@ namespace ThunderRoad
                 preview.transform.SetParent(transform, false);
             }
 
-            Transform whoosh = transform.Find("Whoosh");
-            if (whoosh && !whoosh.GetComponent<WhooshPoint>())
+            var whoosh = GetComponentInChildren<WhooshPoint>();
+            if (!whoosh && transform.Find("Whoosh"))
+                whoosh = transform.Find("Whoosh").gameObject.AddComponent<WhooshPoint>();
+            if (!whoosh)
             {
-                Debug.LogWarning($"[DefaultComponents] Adding WhooshPoint to {this.itemId}");
-                whoosh.gameObject.AddComponent<WhooshPoint>();
+                Debug.LogWarning($"[DefaultComponents] Adding Whoosh to {this.itemId}");
+                whoosh = new GameObject("Whoosh").AddComponent<WhooshPoint>();
+                whoosh.transform.SetParent(transform, false);
             }
 
             if (!mainHandleRight)
@@ -683,6 +882,14 @@ namespace ThunderRoad
         {
         }
 
+        public void AddNoHolsterCollisionObject(Component component)
+        {
+        }
+
+        public void RemoveNoHolsterCollisionObject(Component component)
+        {
+        }
+
 
         [ContextMenu("Convert to spawner")]
         public void CreateItemSpawnerFromItem()
@@ -764,10 +971,15 @@ namespace ThunderRoad
 
         public ItemData.CustomSnap GetCustomSnap(string holderName)
         {
-            if (itemId.IsNullOrEmptyOrWhitespace()) return null;
-            var data = Catalog.GetData<ItemData>(itemId);
-            if (data == null) return null;
-            foreach (ItemData.CustomSnap customSnap in data.customSnaps)
+            List<ItemData.CustomSnap> customSnaps = this.customSnaps;
+            if (!Application.isPlaying)
+            {
+                if (itemId.IsNullOrEmptyOrWhitespace()) return null;
+                var data = Catalog.GetData<ItemData>(itemId);
+                if (data == null) return null;
+                customSnaps = data.customSnaps;
+            }
+            foreach (ItemData.CustomSnap customSnap in customSnaps)
             {
                 if (customSnap.holderName == holderName)
                 {

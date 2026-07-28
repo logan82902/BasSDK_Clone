@@ -4,7 +4,7 @@
   "sensitiveContent": "None",
   "sensitiveFilterBehaviour": "Discard",
   "version": 3,
-  "groupPath": null,
+  "groupPath": "",
   "apparelProtectionLevel": 0,
   "idMapColorIds": [],
   "defaultEffects": [
@@ -19,13 +19,12 @@
     {
       "$type": "ThunderRoad.MaterialData+Collision, ThunderRoad",
       "targetMaterialIds": [
-        "Sand",
         "Dirt"
       ],
       "effects": [
         {
           "$type": "ThunderRoad.EffectBundle, ThunderRoad",
-          "effectId": "FootstepSand",
+          "effectId": "FootstepDefault",
           "ignoredEffects": []
         }
       ]
@@ -78,6 +77,58 @@
         {
           "$type": "ThunderRoad.EffectBundle, ThunderRoad",
           "effectId": "FootstepWater",
+          "ignoredEffects": []
+        }
+      ]
+    },
+    {
+      "$type": "ThunderRoad.MaterialData+Collision, ThunderRoad",
+      "targetMaterialIds": [
+        "Fabric"
+      ],
+      "effects": [
+        {
+          "$type": "ThunderRoad.EffectBundle, ThunderRoad",
+          "effectId": "FootstepCloth",
+          "ignoredEffects": []
+        }
+      ]
+    },
+    {
+      "$type": "ThunderRoad.MaterialData+Collision, ThunderRoad",
+      "targetMaterialIds": [
+        "Sand"
+      ],
+      "effects": [
+        {
+          "$type": "ThunderRoad.EffectBundle, ThunderRoad",
+          "effectId": "FootstepSand",
+          "ignoredEffects": []
+        }
+      ]
+    },
+    {
+      "$type": "ThunderRoad.MaterialData+Collision, ThunderRoad",
+      "targetMaterialIds": [
+        "Bones"
+      ],
+      "effects": [
+        {
+          "$type": "ThunderRoad.EffectBundle, ThunderRoad",
+          "effectId": "FootstepBones",
+          "ignoredEffects": []
+        }
+      ]
+    },
+    {
+      "$type": "ThunderRoad.MaterialData+Collision, ThunderRoad",
+      "targetMaterialIds": [
+        "Grass"
+      ],
+      "effects": [
+        {
+          "$type": "ThunderRoad.EffectBundle, ThunderRoad",
+          "effectId": "FootstepGrass",
           "ignoredEffects": []
         }
       ]

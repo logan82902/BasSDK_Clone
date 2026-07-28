@@ -13,7 +13,7 @@ namespace ThunderRoad
     {
         [Header("References")]
         public Container container;
-        [SerializeField] private Transform spawnPoint;
+        [SerializeField] public Transform spawnPoint;
         [SerializeField] private UiItemSpawnerCategoryElement categoryElement;
         [SerializeField] private UiItemSpawnerItemElement itemElement;
         [SerializeField] private ToggleGroup categoriesLayout;

@@ -30,7 +30,7 @@ namespace ThunderRoad
         [Group("Box/Vertical/Data/TopLine")]
         [ShowInInspector, LabelWidth(15f)]
         [PropertyOrder(0)]
-        [DisableIf(nameof(lockData))]
+        [DisableIf(nameof(overrideLock))]
         public string id
         {
             get => catalogData.id;
@@ -76,13 +76,13 @@ namespace ThunderRoad
         [Group("Box/Vertical/Data/TopLine")]
         [ShowInInspector, LabelWidth(70)]
         [PropertyOrder(6)]
-        [DisableIf(nameof(groupLocked))]
+        [DisableIf(nameof(overrideLock))]
         public string groupPath
         {
             get => catalogData.groupPath;
             set => catalogData.groupPath = value;
         }
-        private bool groupLocked => lockData || catalogData.isOverrider;
+        private bool overrideLock => lockData || catalogData.isOverrider;
 
         [Group("Box/Vertical/Data/BottomLine")]
         [ShowInInspector, LabelWidth(60)]

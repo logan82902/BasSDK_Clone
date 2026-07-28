@@ -531,6 +531,7 @@
       "effectParticleAddress": "Bas.Particle.Spell.Fire.Orb.New",
       "intensityCurve": null,
       "renderInLateUpdate": false,
+      "playDelay": 0.0,
       "mainColorStart": {
         "r": 0.0,
         "g": 0.0,
@@ -592,6 +593,7 @@
         "z": 0.0
       },
       "collisionEffectId": null,
+      "collisionEffectDuration": 0.0,
       "collisionLayerMask": -2097353,
       "collisionMaxGroundAngle": 45.0,
       "collisionEmitRate": 0.2,

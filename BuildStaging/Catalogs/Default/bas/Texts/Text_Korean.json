@@ -1036,6 +1036,13 @@
           "text": "적을 먼저 휘청거리는 상태로 만들면 더욱 쉽게 마리오네트로 집어 들 수 있습니다!",
           "spriteAddress": null,
           "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "57",
+          "text": "무겁고 둔기류 무기는 적의 방패를 뚫고도 적을 비틀거리게 할 만큼 강력합니다.",
+          "spriteAddress": null,
+          "videoAddress": null
         }
       ]
     },
@@ -3872,6 +3879,13 @@
         },
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "LoadAchievements",
+          "text": "업적 로딩 중",
+          "spriteAddress": "",
+          "videoAddress": ""
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
           "id": "GeneratePools",
           "text": "풀 생성 중",
           "spriteAddress": null,
@@ -6123,6 +6137,20 @@
       "texts": [
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "LevelDayVariantName",
+          "text": "낮",
+          "spriteAddress": "",
+          "videoAddress": ""
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "LevelNightVariantName",
+          "text": "밤",
+          "spriteAddress": "",
+          "videoAddress": ""
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
           "id": "Arena",
           "text": "아레나",
           "spriteAddress": null,
@@ -6186,7 +6214,14 @@
         },
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
-          "id": "MarketDescription",
+          "id": "MarketDayVariantDescription",
+          "text": "맑고 화창한 날, 에라덴 마을 중심에 있는 시장입니다.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "MarketNightVariantDescription",
           "text": "에라덴 어느 한 마을의 중심부에 위치한 장터입니다. 한밤중에는 꽤나 한산한 편입니다.",
           "spriteAddress": null,
           "videoAddress": null
@@ -6299,35 +6334,35 @@
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
           "id": "OutpostLibraryDescription",
-          "text": "잊힌 책으로 가득한, 다소 빽빽하고 오래된 도서관입니다.",
+          "text": "잊혀진 책들로 가득한 오래되고 꽤 빽빽한 도서관입니다.",
           "spriteAddress": null,
           "videoAddress": null
         },
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
           "id": "OutpostWatermillDescription",
-          "text": "전초 기지 방어 시설 사이의 개울가에 지어진 자그마한 방앗간입니다.",
+          "text": "전초기지의 요새들 사이 개울 위에 지어진 작은 물레방아간입니다.",
           "spriteAddress": null,
           "videoAddress": null
         },
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
           "id": "OutpostFallenCorridorDescription",
-          "text": "즉석 훈련장으로 쓰이는 조그마한 안뜰입니다.",
+          "text": "즉석 훈련장으로 사용되는 작은 안뜰입니다.",
           "spriteAddress": null,
           "videoAddress": null
         },
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
           "id": "OutpostChapelDescription",
-          "text": "옛 알다릭 왕을 기리는 예배당입니다.",
+          "text": "옛 왕 알다릭에게 바쳐진 예배 장소입니다.",
           "spriteAddress": null,
           "videoAddress": null
         },
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
           "id": "OutpostCoastalFortDescription",
-          "text": "침입자를 경계하고 제압하기 위해 세워진 해변가의 요새입니다.",
+          "text": "침략자로부터 방어하고 감시하기 위해 해변에 세워진 요새입니다.",
           "spriteAddress": null,
           "videoAddress": null
         },
@@ -6386,6 +6421,139 @@
           "text": "마들루",
           "spriteAddress": null,
           "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "OutpostLibrary",
+          "text": "전초기지 도서관",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "OutpostWatermill",
+          "text": "전초기지 물레방아간",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "OutpostFallenCorridor",
+          "text": "전초기지 무너진 복도",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "OutpostChapel",
+          "text": "전초기지 예배당",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "OutpostCoastalFort",
+          "text": "전초기지 해안 요새",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "DalgarianMuseum",
+          "text": "달가리안 박물관",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "DalgarianMuseumDescription",
+          "text": "여러 대좌와 전시물이 있는 반쯤 무너진 달가리안 방으로, 박물관으로 추정됩니다.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "DalgarianRefinary",
+          "text": "달가리안 정제소",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "DalgarianRefinaryDescription",
+          "text": "대형 수정 정제소가 있는 높은 방입니다. 액체 수정 채널이 알 수 없는 목적의 중력 수정 주위를 돌고 있습니다.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "DalgarianSenate",
+          "text": "달가리안 원로원",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "DalgarianSenateDescription",
+          "text": "달가리안 원로원 회의실입니다. 과거 시대에 달가리안 평의회가 아마도 이곳에 모였을 것입니다.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "DalgarianForge",
+          "text": "달가리안 대장간",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "DalgarianForgeDescription",
+          "text": "달가리안 대장간으로, 아스타리움을 정제하고 성형하는 장소로 추정됩니다.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "DalgarianTemple",
+          "text": "달가리안 사원",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "DalgarianTempleDescription",
+          "text": "고대 제단으로 이어지는 웅장한 홀입니다.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibDesert",
+          "text": "카레즈 요새",
+          "spriteAddress": "",
+          "videoAddress": ""
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibDesertDescription",
+          "text": "카르-티브의 뜨거운 사막에 전략적으로 자리 잡은, 오래전에 버려진 요새입니다.",
+          "spriteAddress": "",
+          "videoAddress": ""
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "OutpostArenasMap",
+          "text": "전초기지 투기장",
+          "spriteAddress": "",
+          "videoAddress": ""
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "DalgarianArenasMap",
+          "text": "달가리안 투기장",
+          "spriteAddress": "",
+          "videoAddress": ""
         }
       ]
     },
@@ -12867,49 +13035,21 @@
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
           "id": "ItemFalchion_1",
-          "text": "아니, 이게 무엇인가? 카르티브산 펄션 도검이 아닌가? 어이 친구, 이건 함부로 팔아선 안 되는 물건이오!",
+          "text": "오, 이건 센타리 칼이잖아! 이건 팔지 않는 게 좋을 거야, 친구!",
           "spriteAddress": null,
           "videoAddress": null
         },
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
-          "id": "ItemFalchion_4",
-          "text": "아니, 이게 무엇인가? 카르티브산 펄션 도검이 아닌가? 어이 친구, 이건 함부로 팔아선 안 되는 물건이오!",
+          "id": "ItemFalchion_2",
+          "text": "거기 있는 건 뭐야, 팔시온인가? 이 근방에선 보기 드문 검이야, 계속 가지고 있어, 친구.",
           "spriteAddress": null,
           "videoAddress": null
         },
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
-          "id": "ItemFalchion_6",
-          "text": "특이한 검이구만! 카르티브 뱃사람들이 익히 사용하는 검이오. 간직할 만한 가치가 있는 물건이라오.",
-          "spriteAddress": null,
-          "videoAddress": null
-        },
-        {
-          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
-          "id": "ItemFalchion_9",
-          "text": "특이한 검이구만! 카르티브 뱃사람들이 익히 사용하는 검이오. 간직할 만한 가치가 있는 물건이라오.",
-          "spriteAddress": null,
-          "videoAddress": null
-        },
-        {
-          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
-          "id": "ItemFalchion_11",
-          "text": "이 지역 출신이 아닌 무기를 찾아왔구려. 이 휘어진 날을 보아하니 카르티브의 내륙에서 쓰이는 펄션이로군.",
-          "spriteAddress": null,
-          "videoAddress": null
-        },
-        {
-          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
-          "id": "ItemFalchion_13",
-          "text": "이 지역 출신이 아닌 무기를 찾아왔구려. 이 휘어진 날을 보아하니 카르티브의 사막에서 쓰이는 펄션이로군.",
-          "spriteAddress": null,
-          "videoAddress": null
-        },
-        {
-          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
-          "id": "ItemFalchion_18",
-          "text": "이 지역 출신이 아닌 무기를 찾아왔구려. 이 휘어진 날을 보아하니 카르티브의 내륙 사막에서 쓰이는 펄션이로군.",
+          "id": "ItemFalchion_3",
+          "text": "와! 센타리 팔시온이네. 내가 모험하던 시절에 제일 좋아하던 무기야. 정말 귀한 거니까, 내가 너라면 절대 안 팔 거야.",
           "spriteAddress": null,
           "videoAddress": null
         },
@@ -14837,6 +14977,321 @@
           "text": "장전 완료, 친구!",
           "spriteAddress": null,
           "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibArmour_1",
+          "text": "그 단단한 판금 느껴지나요? 카레즈인들은 사막에 사는 이국적인 생물들의 등딱지로 갑옷을 만듭니다.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibArmour_2",
+          "text": "사막에서 생활하다 보면 일반적인 금속이나 섬유를 구하기 어렵지만, 카레즈인들은 가진 것들로 최선을 다합니다.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibArmour_3",
+          "text": "개인적으로 나는 모래를 좋아하지 않아요. 거칠고, 까칠하고, 자극적이고, 어디에나 들어붙거든요. 그러니까 이것을 입기 전에 꼭 털어내세요.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibBombFire_1",
+          "text": "거기 병 속에 지옥불이 들어있네, 친구! 조심해서 다루고, 특히 근처에서 담배에 불을 붙이지 마.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibBombFire_2",
+          "text": "카르-티브 사막의 열기는 혹독하지만, 차라리 거기에 몇 주 동안 갇히는 게 이 물건들의 공격을 받는 것보다 낫겠어요.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibBombGravity_1",
+          "text": "벽을 넘어야 할 때, 이걸 발 밑에 던지면 휙 하고 날아갈 거야!",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibBombLightning_1",
+          "text": "강력한 마법사가 자신의 지팡이에서 나오는 번개 줄기로 사람을 반으로 자르는 거 알죠? 네, 글쎄... 카레즈인들이 어떻게든 그 경험을 병에 담아냈어요!",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibBombLightning_2",
+          "text": "이 폭탄은 치명성과 남기는 참혹함으로 인해 카레즈인들 사이에서 잘 알려져 있습니다. 무서운 물건이죠.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibBombGeneric_Special",
+          "text": "램프 오일? 밧줄? 폭탄? 원하는 게 있으면, 돈만 충분하다면 네 거야, 친구!",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibCrossbow_1",
+          "text": "석궁은 궁술에 익숙하지 않은 사람에게 활의 훌륭한 대안입니다. 조준이 더 쉽고, 장전 후에는 활시위를 당기고 있을 노력이 필요 없습니다!",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibCrossbow_2",
+          "text": "석궁은 쏘기 쉬워서, 때로는 훈련되지 않은 민중에게 의존해야 하는 카르-티브의 작은 부족들에게 매력적입니다.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibCrossbow_3",
+          "text": "센타리 발명가들이 카레즈 석궁을 개선하려고 만든 미친 청사진들을 본 적이 있습니다. 그중 하나는 회전하는 \"\"원통\"\" 같은 것이 달려 있었어요. 멋진 아이디어지만, 절대 작동하지 않을 거예요!",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "CrystalCore_1",
+          "text": "수정 코어! 믿기 힘들 정도로 희귀하지만... 제가 수정 코어를 팔고 있다는 소문이 나면, 이 섬은 그것들을 모두 강제로 빼앗으려는 권력에 굶주린 마법사들로 들끓을 거예요. 어떤 값으로도 받을 수 없을 것 같습니다.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "CrystalCore_2",
+          "text": "수정 코어... 해냈군요! 잘했어요, 친구. 당신은 엄청난 힘을 손에 넣었어요. 하지만 들어보세요... 사람이 더 많은 힘을 쥘수록, 보는 눈이 더 흐려지는 법이에요.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "CrystalCore_3",
+          "text": "호... 길드가 지금쯤이면 저에게 엄청 화가 났겠지만, 원칙적으로 이 수정 코어를 어떤 값으로도 재판매할 수 없어요. 그 힘은 너무 강력하고, 힘의 위험성은 단지 사람을 변화시킨다는 점이 아니에요... 그 힘이 그가 자신이 그걸 받을 자격이 있다고 믿게 만든다는 거죠... 어떤 대가를 치르더라도 말이에요.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibGenericWeapon_1",
+          "text": "카레즈의 장인 정신은 항상 놀라움을 안겨줍니다. 우아한 뼈 장식이 세심하게 들어간 무기들. 정말 인상적이에요.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibGenericWeapon_2",
+          "text": "칼날이 구부러진 검은 카르-티브의 특산품이나 다름없습니다. 칼날이 살을 베어 들어가는 대신 피부를 따라 흐르기 때문에 더 쉽게 베어냅니다. 그러니, 그런 검에 맞지 않도록 하는 게 좋을 겁니다.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibGenericWeapon_3",
+          "text": "카레즈인들은 정말 지략이 풍부합니다. 저 무기들에서 보이는 뼈는 대부분 사막의 모래에 사는 생물들에게서 얻은 것입니다.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibGenericWeapon_4",
+          "text": "훌륭한 구매입니다. 그건 진품 카레즈 무기입니다.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibGenericWeapon_5",
+          "text": "그 무기는 카르-티브에서 유래했습니다. 당신에게 잘 맞을 겁니다.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibGenericWeapon_6",
+          "text": "에라디안들이 카레즈 전사들이 전투 전에 태양 아래에서 칼날을 담근다고 떠드는 걸 들었습니다. 아마도 적에게 추가 화염 피해를 입히기 위해서라고 주장하더군요. 헤헤, 완전히 지어낸 이야기입니다.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibGenericWeapon_7",
+          "text": "양쪽 끝에 칼날이 달린 창을 사용하는 사람을 본 적 있나요? 남쪽 마법사들 사이에서 놀랍도록 인기가 많다고 들었습니다.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SwordOfNaa_1",
+          "text": "도대체 바이에스의 무엇을 가지고 있는 거죠? 이게 달가리안인가요? 워, 이런 뜨거운 물건은 절대 처리할 수 없어요, 친구. 이건 당신이 직접 간직해야 할 겁니다.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SwordOfNaa_2",
+          "text": "이런 세상에... 달가리안 검? 이건 가격을 매길 수 없어요, 친구! 당신이 직접 간직해야 할 겁니다.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SwordOfNaa_3",
+          "text": "내 눈을 믿을 수가 없네! 진짜 달가리안 검이군... 이걸 가지려고 당신의 목을 그을 사람들이 밖에 있을 거예요, 친구. 이렇게 뜨거운 물건을 재판매할 위험은 절대 감수할 수 없어요.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "WristBlade_1",
+          "text": "그야말로 최고의 암살자 도구입니다. 칼날은 사용해야 할 바로 그 순간까지 숨겨져 있습니다.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "WristBlade_2",
+          "text": "그 칼날의 정확한 기원은 알려져 있지 않지만, 카르-티브의 암살자 길드들 사이에서 사용된다는 것이 일반적인 믿음입니다. 하지만 제게는 그럴듯하지 않아 보여요; 전혀 카레즈 장인 정신처럼 보이지 않거든요.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "WristBlade_3",
+          "text": "그 메커니즘은 정말 최면적이군요. 저도 잘 모르겠습니다.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibCheckout_Special",
+          "text": "고객님이 있어서 정말 기쁩니다, 친구. 여기로 이상한 사람들이 좀 지나가거든요. 바로 어제는 부랑자 하나가 들어왔는데… 여기저기 뛰어다니고, 혼잣말을 중얼거리고, 저를 깜짝 놀라게 했어요!",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibFirstLore_0",
+          "text": "자, 이제… 당신이 뭘 가졌는지 아세요? 그건 카르-티브에서 온 거예요! 쉽게 잊을 수 있는 곳은 아니지만, 복잡한 곳이란 걸 명심하세요… 쉽게 정의 내릴 수 있는 문화가 아니에요;",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibFirstLore_1",
+          "text": "모래 바다에 흩어져 있는 부족들의 집합체에 가깝죠. 각각의 군주, 관습, 그리고 원한을 가지고 있습니다.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibFirstLore_2",
+          "text": "낮에는 타는 듯한 더위, 밤에는 혹독한 추위, 그 사이에는 자비라고는 전혀 없어요. 하지만 사람들? 그야말로 강인하기 그지없죠.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibFirstLore_3",
+          "text": "물론, 그 모래 아래에 숨어 있는 그런 생물들을 생각하면 그래야만 해요… 당신은 알고 싶지 않을 걸요!",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibLore_A_0",
+          "text": "카르-티브의 각 부족은 자신들이 가장 오래되었고, 가장 강하며, 합법적인 통치자라고 맹세합니다.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibLore_A_1",
+          "text": "재미있는 점은, 그들과 충분히 오래 이야기하다 보면, 그들 모두의 말을 믿게 된다는 거예요.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibLore_B_0",
+          "text": "카르-티브는 항상 분권화된 부족들의 집합체였으며, 공유된 문화적 정체성에 의해 느슨하게 결속되어 왔습니다.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibLore_B_1",
+          "text": "지금은 한 강력한 군주가 모든 부족을 하나의 깃발 아래 묶으려 한다는 소문이 있습니다. 위험한 발상이죠, 그건.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibLore_B_2",
+          "text": "카르-티브의 힘은 항상 응집력 부족으로 인해 완화되어 왔습니다… 이를 통일하면, 나머지 세계가 걱정해야 할 무언가를 갖게 되는 겁니다.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibLore_C_0",
+          "text": "아, 카르-티브… 가장 먼저 배우는 것은 사막은 실수를 용서하지 않는다는 거예요. 한 번은 대상단이 밤사이에 사라지는 걸 본 적이 있어요—흔적도, 잔해도 없고, 아침엔 매끄러운 모래만 남아 있었죠.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibLore_C_1",
+          "text": "밖에서 낮은 굉음 같은 걸 들으면? 거기 서서 뭔지 알아내려고 하지 마세요. 제 말을 믿으세요.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibLore_D",
+          "text": "샌드-스키머 본 적 있나요? 이상한 카르-티브의 장치입니다; 반은 배, 반은 기적, 그렇지 않으면 횡단이 불가능한 사막을 가로지르도록 설계되었죠.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibLore_E_0",
+          "text": "카르-티브의 시장은 혼돈입니다... 아름다운 혼돈이죠.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibLore_E_1",
+          "text": "공기에는 향신료가 짙게 깔리고, 보석보다 더 선명한 직물들, 그리고 모든 상인들은 자신이 제시하는 가격 때문에 망할 것처럼 당신을 설득합니다.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibLore_F",
+          "text": "카르-티브에는 밤이 망치처럼 내려앉습니다. 한 순간에는 장화까지 땀으로 흠뻑 젖다가, 다음 순간에는 너무나 맑아서 손을 뻗으면 오론 행성에 닿을 것 같은 하늘 아래서 얼어붙게 됩니다.",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibLore_G",
+          "text": "카르-티브에서 무역은 흥미로운 일입니다. 철과 목재는 왕의 몸값에 맞먹는 가치를 지니며, 그 대가로 바이에스 어디에서도 볼 수 없는 직물과 과일들을 보게 될 것입니다.",
+          "spriteAddress": null,
+          "videoAddress": null
         }
       ]
     },
@@ -15002,6 +15457,27 @@
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
           "id": "Rakta",
           "text": "락타",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTib",
+          "text": "카르-티브",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibOutpostDesc",
+          "text": "카르-티브 전초기지",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibDalgDesc",
+          "text": "카르-티브 달가리안 유적",
           "spriteAddress": null,
           "videoAddress": null
         }
@@ -15975,6 +16451,20 @@
           "text": "사이오닉 번들",
           "spriteAddress": null,
           "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleArmorKharTibName",
+          "text": "카레즈 전사 번들",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleKharTibBundleT2Name",
+          "text": "검과 방패 번들",
+          "spriteAddress": null,
+          "videoAddress": null
         }
       ]
     }
@@ -16157,8 +16647,8 @@
     {
       "$type": "ThunderRoad.TextData+Item, ThunderRoad",
       "id": "DualBladeStaff",
-      "name": "칼날 지팡이",
-      "description": "카르티브에서 유래한 특이한 무기입니다. 본래 용도는 전투가 아닌 무용이라고 알려져 있지만, 날카롭고 좋은 품질의 칼날이 달려 있습니다."
+      "name": "양날 스태프",
+      "description": "전투보다는 일종의 춤에 사용된다고 전해지는 독특한 무기지만, 그 칼날은 여전히 날카롭고 높은 품질을 자랑합니다."
     },
     {
       "$type": "ThunderRoad.TextData+Item, ThunderRoad",
@@ -16235,8 +16725,8 @@
     {
       "$type": "ThunderRoad.TextData+Item, ThunderRoad",
       "id": "WristBlade",
-      "name": "손목검",
-      "description": "카르티브에서 사용되는 암살용 검입니다. 손목에 탈착되는 형태로 보다 훨씬 강력한 힘을 주어 찌를 수 있습니다."
+      "name": "손목 검",
+      "description": "이국적인 기원의 암살자용 검입니다. 검은 은밀함을 위해 숨길 수 있으며, 손목 장치는 사용자가 평소보다 훨씬 더 강한 찌르기를 할 수 있게 해줍니다."
     },
     {
       "$type": "ThunderRoad.TextData+Item, ThunderRoad",
@@ -16799,8 +17289,8 @@
     {
       "$type": "ThunderRoad.TextData+Item, ThunderRoad",
       "id": "SwordOldieFalchion",
-      "name": "펄션",
-      "description": "카르티브에서 유래된 오래된 펄션으로, 센타라 해적을 막아내는 해상 전투에서 자주 사용됩니다."
+      "name": "팔시온",
+      "description": "센타리 기원의 오래된 팔시온으로, 전 세계의 선원, 사략선원, 해적들이 사용해 왔습니다."
     },
     {
       "$type": "ThunderRoad.TextData+Item, ThunderRoad",
@@ -17971,6 +18461,162 @@
       "id": "Dojo_Gong_Mallet",
       "name": "공 망치",
       "description": null
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "AxeKharTibDouble",
+      "name": "양날 도끼",
+      "description": "무겁고 위협적인 카레즈 전쟁 도끼입니다. 효과적으로 사용하려면 힘과 체력이 필요하지만, 상당히 강력하고 다용도로 활용할 수 있습니다."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "AxeLongKharTibWarpick",
+      "name": "전쟁 발톱",
+      "description": "카레즈의 전쟁 도끼와 낫의 혼합형으로, 카르-티브 땅의 생물들이 가진 사나운 발톱에서 영감을 받았습니다."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "DaggerKharTibHaladie",
+      "name": "양날 단검",
+      "description": "특수한 기술이 필요한 카레즈 단검입니다. 카르-티브에서는 정예 병사의 기량을 상징하는 표식으로 공개적으로 착용됩니다."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "ShieldKharTib",
+      "name": "카레즈 방패",
+      "description": "카르-티브의 방패로, 공격과 방어 능력을 동시에 갖추어 많은 병사들이 사용합니다."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "SwordKharTibKhopesh",
+      "name": "낫 검",
+      "description": "카르-티브 기원의 정예 무기로, 도끼와 검의 장점을 결합했습니다."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "SwordKharTibScimitar",
+      "name": "시미터",
+      "description": "평범하지만 뛰어난 베기 무기로 설계된 흔한 카레즈 검입니다."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "DualBladeStaffKharTib",
+      "name": "카레즈 양날 스태프",
+      "description": "카르-티브의 전쟁 지팡이입니다. 전투에서 거의 볼 수 없는 이유는, 사용자 주변에 아군이 없을 때 여러 명의 적을 동시에 상대하기 위해 만들어졌다고 전해지기 때문입니다."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "SpellBombLightning",
+      "name": "번개 수정 폭탄",
+      "description": "원소 수정으로 만들어진 폭발 장치입니다. 반드시 작동시킨 후 던져야 합니다. 잠시 후, 이 폭탄은 베는 듯한 번개 줄기를 방출합니다."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "SpellBombFire",
+      "name": "화염 수정 폭탄",
+      "description": "원소 수정으로 만들어진 폭발 장치입니다. 반드시 작동시킨 후 던져야 합니다. 적과 가까워져야만 화염 폭발을 일으킵니다."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "SpellBombGravity",
+      "name": "중력 수정 폭탄",
+      "description": "원소 수정으로 만들어진 폭발 장치입니다. 반드시 작동시킨 후 던져야 합니다. 접촉 시, 이 폭탄은 중력 충격파를 생성합니다."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "BombQuiverLightning",
+      "name": "번개 수정 폭탄들",
+      "description": "원소 수정으로 만들어진 폭발 장치입니다. 반드시 작동시킨 후 던져야 합니다. 잠시 후, 이 폭탄은 베는 듯한 번개 줄기를 방출합니다."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "BombQuiverFire",
+      "name": "화염 수정 폭탄들",
+      "description": "원소 수정으로 만들어진 폭발 장치입니다. 반드시 작동시킨 후 던져야 합니다. 적과 가까워져야만 화염 폭발을 일으킵니다."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "BombQuiverGravity",
+      "name": "중력 수정 폭탄들",
+      "description": "원소 수정으로 만들어진 폭발 장치입니다. 반드시 작동시킨 후 던져야 합니다. 접촉 시, 이 폭탄은 중력 충격파를 생성합니다."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "KharTibCrossbow",
+      "name": "석궁",
+      "description": "고급형 소형 석궁으로, 일반 활에 비해 위력은 부족하지만 빠른 연사력과 사용 편의성으로 이를 보완합니다. 내부에 여러 발의 탄환을 저장할 수 있어, 사용자가 매번 화살을 장전할 필요가 없습니다."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "KharTibCrossbowBolt",
+      "name": "석궁 볼트",
+      "description": "석궁용 소형 탄환입니다."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "QuiverBolts",
+      "name": "석궁 볼트 화살통",
+      "description": "석궁용 소형 탄환입니다."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "ApparelKharTibBoots",
+      "name": "카레즈 전사 부츠",
+      "description": "카르-티브 기원의 사막 통과용 부츠입니다. 사막의 자연 환경으로부터 보호하는 데 매우 적합합니다."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "ApparelKharTibGloveL",
+      "name": "카레즈 전사 완갑 (L)",
+      "description": "카르-티브의 보호용 팔뚝 갑옷입니다."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "ApparelKharTibGloveR",
+      "name": "카레즈 전사 완갑 (R)",
+      "description": "카르-티브의 보호용 팔뚝 갑옷입니다."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "ApparelKharTibHelmet",
+      "name": "카레즈 전사 투구",
+      "description": "사막의 환경과 적의 공격으로부터 보호해주는 위협적인 카레즈 투구입니다."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "ApparelKharTibJacket",
+      "name": "카레즈 전사 흉갑",
+      "description": "카르-티브의 야수 가죽으로 제작된 카레즈 전사 갑옷입니다."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "ApparelKharTibPants",
+      "name": "카레즈 전사 넓적다리 갑옷",
+      "description": "카르-티브의 보호용 다리 갑옷입니다."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "ApparelKharTibShoulder",
+      "name": "카레즈 전사 어깨 갑옷",
+      "description": "제작된 야수의 특징을 여전히 간직하고 있는 카레즈 어깨 갑옷입니다."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "Cushion",
+      "name": "쿠션",
+      "description": null
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "GenieLamp",
+      "name": "램프",
+      "description": null
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "KharTibDrum",
+      "name": "드럼",
+      "description": null
     }
   ],
   "waves": [
@@ -18213,6 +18859,30 @@
       "id": "SentaraDuel",
       "title": "센타리 대장 결투",
       "description": "센타리 대장과 죽음의 결투를 벌이세요."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Wave, ThunderRoad",
+      "id": "KharTibDuel",
+      "title": "카레즈 전사 결투",
+      "description": "카르-티브의 전사들과 죽음을 건 결투를 벌이십시오."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Wave, ThunderRoad",
+      "id": "KharTibFull",
+      "title": "기본",
+      "description": "이 진영의 모든 적 유형과 싸워라."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Wave, ThunderRoad",
+      "id": "KharTibMeleeOnly",
+      "title": "근접형",
+      "description": "근접 무기를 사용하는 적과만 싸워라."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Wave, ThunderRoad",
+      "id": "KharTibSorceryOnly",
+      "title": "마법 전용",
+      "description": "이 진영의 마법사와 싸우세요."
     }
   ]
 }

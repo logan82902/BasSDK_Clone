@@ -8,6 +8,7 @@ using TriInspector;
 
 namespace ThunderRoad
 {
+    [RequireComponent(typeof(Renderer)), DisallowMultipleComponent()]
     [HelpURL("https://kospy.github.io/BasSDK/Components/ThunderRoad/Items/RevealDecal.html")]
     [AddComponentMenu("ThunderRoad/Reveal Decal")]
     public class RevealDecal : MonoBehaviour

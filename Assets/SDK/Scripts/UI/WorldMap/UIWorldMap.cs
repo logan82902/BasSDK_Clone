@@ -34,6 +34,7 @@ namespace ThunderRoad
                 child.name = i++.ToString();
             }
         }
+        
 #if UNITY_EDITOR
         private void OnDrawGizmos()
         {

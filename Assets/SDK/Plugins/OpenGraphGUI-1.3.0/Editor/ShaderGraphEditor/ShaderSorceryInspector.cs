@@ -34,6 +34,7 @@ public class ShaderSorceryInspector : Needle.MarkdownShaderGUI
 
         if (targetMat.HasProperty("_UseReveal")) Reveal(properties);
         base.OnGUI(materialEditor, properties);
+        RenderQueueOptions(materialEditor, properties);
     }
 
     //[MenuItem("ThunderRoad (SDK)/EnforceShaderKeywordLogic")]
@@ -92,6 +93,13 @@ public class ShaderSorceryInspector : Needle.MarkdownShaderGUI
         // Shadowood: handled transparent/opaque dropdowns and blend modes
 
         //var original = String.Join(", ", material.enabledKeywords.Select(o => o.name)).GetHashCode(); //material.enabledKeywords.ToList().Select(o=>o.name).ToString().GetHashCode();
+        int renderQueue = material.renderQueue;
+        bool userQueueOverride = material.HasFloat("_QueueControl") && material.GetFloat("_QueueControl") == (float)BaseShaderGUI.QueueControl.UserOverride;
+
+        if (material.HasFloat("_QueueControl") && material.GetFloat("_QueueControl") < 0)
+        {
+            material.SetFloat("_QueueControl", (float)BaseShaderGUI.QueueControl.Auto);
+        }
 
         BaseShaderGUI.SurfaceType surfaceType = BaseShaderGUI.SurfaceType.Opaque;
         if (material.HasFloat("_Surface")) surfaceType = (BaseShaderGUI.SurfaceType) material.GetFloat("_Surface"); // UnityEditor.Rendering.Universal.Property.SurfaceType
@@ -104,6 +112,11 @@ public class ShaderSorceryInspector : Needle.MarkdownShaderGUI
         if (material.HasFloat("_Surface"))
         {
             BaseShaderGUI.SetMaterialKeywords(material); // Also calls SetupMaterialBlendMode()
+        }
+
+        if (userQueueOverride)
+        {
+            material.renderQueue = renderQueue;
         }
 
         if (surfaceType == BaseShaderGUI.SurfaceType.Transparent || alphaClip == 1)
@@ -157,6 +170,44 @@ public class ShaderSorceryInspector : Needle.MarkdownShaderGUI
         //    var blendOpaque = material.GetFloat("_BlendOpaque");
         //    //BaseShaderGUI.SetupMaterialBlendMode(material);
         //}
+    }
+
+    private static void RenderQueueOptions(MaterialEditor materialEditor, MaterialProperty[] properties)
+    {
+        MaterialProperty queueControl = FindProperty("_QueueControl", properties, false);
+        MaterialProperty queueOffset = FindProperty("_QueueOffset", properties, false);
+
+        if (queueControl == null)
+        {
+            materialEditor.RenderQueueField();
+            return;
+        }
+
+        EditorGUILayout.Space();
+        EditorGUI.showMixedValue = queueControl.hasMixedValue;
+        EditorGUI.BeginChangeCheck();
+        int selectedQueueControl = EditorGUILayout.Popup("Queue Control", (int)queueControl.floatValue, new[] { "Auto", "User Override" });
+        if (EditorGUI.EndChangeCheck())
+        {
+            queueControl.floatValue = selectedQueueControl;
+        }
+        EditorGUI.showMixedValue = false;
+
+        if ((int)queueControl.floatValue == (int)BaseShaderGUI.QueueControl.UserOverride)
+        {
+            materialEditor.RenderQueueField();
+        }
+        else if (queueOffset != null)
+        {
+            EditorGUI.showMixedValue = queueOffset.hasMixedValue;
+            EditorGUI.BeginChangeCheck();
+            int selectedQueueOffset = EditorGUILayout.IntSlider("Sorting Priority", (int)queueOffset.floatValue, -50, 50);
+            if (EditorGUI.EndChangeCheck())
+            {
+                queueOffset.floatValue = selectedQueueOffset;
+            }
+            EditorGUI.showMixedValue = false;
+        }
     }
 
     void Reveal(MaterialProperty[] properties)

@@ -9,6 +9,7 @@
   "description": "Tower sweet tower",
   "descriptionLocalizationId": null,
   "sceneAddress": "Bas.Level.Tower",
+  "sceneVariants": null,
   "showOnlyDevMode": false,
   "showInLevelSelection": true,
   "worldMapId": "Eraden",
@@ -39,5 +40,6 @@
   ],
   "customCameras": [],
   "throwableRefType": "Item",
-  "improvisedThrowableID": null
+  "improvisedThrowableID": null,
+  "HasSceneVariants": false
 }

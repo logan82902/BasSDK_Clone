@@ -12,32 +12,27 @@
 *.asset merge=unityyamlmerge eol=lf
 *.meta merge=unityyamlmerge eol=lf
 *.controller merge=unityyamlmerge eol=lf
-
-## formerly git-lfs (disabled) ##
-# Image
+## git-lfs ##
+#Image
 *.jpg -text
 *.jpeg -text
 *.png -text
 *.gif -text
 *.psd -text
 *.ai -text
-
-# Audio
+#Audio
 *.mp3 -text
 *.wav -text
 *.ogg -text
-
-# Video
+#Video
 *.mp4 -text
 *.mov -text
-
-# 3D Object
+#3D Object
 *.FBX -text
 *.fbx -text
 *.blend -text
 *.obj -text
-
-# ETC
+#ETC
 *.a -text
 *.exr -text
 *.tga -text
@@ -50,6 +45,7 @@
 *.rns -text
 *.reason -text
 *.lxo -text
+#CUSTOM
 *.exe -text
 *.cubemap merge=unityyamlmerge eol=lf
 *LightingData.asset -text
@@ -60,10 +56,11 @@
 *.pdn -text
 *.svg -text
 *.ico -text
+*.aif -text
 *.flac -text
+*.unitypackage -text
 *ColorTable.asset -text
-
-# UMA
+#UMA
 *race*.asset -text
 *TPose*.asset -text
 *Slot*.asset -text
@@ -71,3 +68,4 @@
 *AssetIndexer.asset -text
 *.c4d -text
 *PolyMeshAsset.asset -text
+Assets/Experimental/Shadowood/Ocean/OceanExample/HomeExample/Home_Android_Alex_*.unity -text

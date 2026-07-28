@@ -29,9 +29,9 @@
       "overrideFaction": true,
       "factionID": 3,
       "overrideContainer": false,
-      "overrideContainerID": null,
+      "overrideContainerID": "",
       "overrideBrain": false,
-      "overrideBrainID": null,
+      "overrideBrainID": "",
       "overrideMaxMelee": false,
       "overrideMaxMeleeCount": 0,
       "groupHealthMultiplier": 1.0,
@@ -47,13 +47,13 @@
       "$type": "ThunderRoad.WaveData+Group, ThunderRoad",
       "mergeKey": "0f8bed06",
       "reference": "Table",
-      "referenceID": "TribalAlertMix",
+      "referenceID": "SentaraAlertMix",
       "overrideFaction": true,
       "factionID": 3,
       "overrideContainer": false,
-      "overrideContainerID": null,
+      "overrideContainerID": "",
       "overrideBrain": false,
-      "overrideBrainID": null,
+      "overrideBrainID": "",
       "overrideMaxMelee": false,
       "overrideMaxMeleeCount": 0,
       "groupHealthMultiplier": 1.0,
@@ -66,5 +66,5 @@
       "prereqMaxRemainingAlive": 0
     }
   ],
-  "modules": null
+  "modules": []
 }

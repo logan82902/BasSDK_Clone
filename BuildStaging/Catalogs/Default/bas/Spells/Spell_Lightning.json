@@ -85,20 +85,47 @@
   "arcThrowAngle": 30.0,
   "arcShockDuration": 1.5,
   "arcJumpDelay": 1.5,
-  "musketThunderboltId": "Thunderbolt",
-  "musketProjectileEffectId": "LightningBullet",
-  "musketProjectileId": "DynamicProjectile",
-  "musketProjectileDamagerId": "Lightning",
-  "musketProjectileCount": 0,
-  "musketProjectileSpeed": 30.0,
-  "musketTargetRadius": 4.0,
-  "musketProjectileAngle": 15.0,
   "orgMinSprayStart": 0.0,
   "sprayStart": 0.0,
   "boltCount": 0,
   "castDescription": "{LightningDescriptionCast}",
   "imbueDescription": "{LightningDescriptionImbue}",
   "slamDescription": "{LightningDescriptionSlam}",
+  "modules": [
+    {
+      "$type": "ThunderRoad.SpellModuleBombLightning, ThunderRoad",
+      "explodeEffectId": "SpellLightningBombExplode",
+      "explodeElectrocuteRadius": 2.0,
+      "explodeElectrocuteDuration": 5.0,
+      "skillArcwireId": "Arcwire",
+      "explodeArcCount": 7,
+      "nodesPerArc": 5,
+      "arcAngle": 0.8,
+      "minMaxArcLifetime": {
+        "x": 0.4,
+        "y": 0.8
+      },
+      "minMaxArcSpeed": {
+        "x": 5.0,
+        "y": 6.0
+      },
+      "arcsTargetCreatures": true
+    },
+    {
+      "$type": "ThunderRoad.SpellModuleMusketLightning, ThunderRoad",
+      "musketThunderboltId": "Thunderbolt",
+      "musketProjectileEffectId": "LightningBullet",
+      "musketProjectileId": "DynamicProjectile",
+      "musketProjectileDamagerId": "Lightning",
+      "musketProjectileCount": 0,
+      "musketProjectileSpeed": 30.0,
+      "musketTargetRadius": 4.0,
+      "musketProjectileAngle": 15.0,
+      "musketHammerEffectId": "MusketHammerLightning",
+      "musketShootEffectId": "MusketShootLightning",
+      "musketChargeEffectId": "MusketCrystalLightning"
+    }
+  ],
   "chargeEffectId": "SpellLightningCharge",
   "readyEffectId": "SpellLightningReady",
   "readyMinorEffectId": "SpellFlourishMinorLightning",
@@ -173,18 +200,12 @@
   "orbVariationAmount": 0.2,
   "chargeSpeed": 0.8,
   "allowStaffBuff": false,
-  "heldStaffModifiers": {
-    "$type": "System.Collections.Generic.Dictionary`2[[ThunderRoad.Modifier, ThunderRoad],[System.Single, mscorlib]], mscorlib",
-    "ChargeSpeed": 1.5,
-    "Range": 1.2,
-    "Efficiency": 1.1
-  },
   "chargeSpeedPerSkill": 0.06,
   "grabbedFireMaxCharge": 0.25,
   "endOnGrip": true,
   "allowCharge": true,
-  "chargeMinHaptic": 0.05,
-  "chargeMaxHaptic": 0.2,
+  "chargeMinHaptic": 0.0,
+  "chargeMaxHaptic": 0.0,
   "handSpringMultiplier": 0.8,
   "handLocomotionVelocityCorrectionMultiplier": 1.0,
   "allowThrow": false,
@@ -226,9 +247,9 @@
   "staffSlamTipEffectId": "SpellLightningStaffSlamBolt",
   "staffSlamCollisionEffectId": "SpellLightningStaffSlam",
   "allowEnemySelfSlam": false,
-  "musketHammerEffectId": "MusketHammerLightning",
-  "musketShootEffectId": "MusketShootLightning",
-  "musketChargeEffectId": "MusketCrystalLightning",
+  "musketHammerEffectId": null,
+  "musketShootEffectId": null,
+  "musketChargeEffectId": null,
   "wheelDisplayName": "{SpellLightning}",
   "hasOrder": true,
   "order": 1,
@@ -238,7 +259,6 @@
   "aiCastMinDistance": 2.0,
   "aiCastMaxDistance": 5.0,
   "aiCastGestureLength": 0.8,
-  "minMana": 40.0,
   "shardId": "Crystal_Small_01_Shard",
   "prefabAddress": "Bas.Item.Misc.SkillOrb",
   "meshAddress": "Bas.Mesh.SkillTree.TierCrystal.Lightning.T1",
@@ -269,5 +289,11 @@
   "MinDuration": 5.00000048,
   "MaxDuration": 9.9995,
   "Order": 1,
-  "IsCombinedSkill": false
+  "IsCombinedSkill": false,
+  "heldStaffModifiers": {
+    "$type": "ThunderRoad.SpellCastCharge+SpellModifierDictionary, ThunderRoad",
+    "ChargeSpeed": 1.5,
+    "Range": 1.2,
+    "Efficiency": 1.1
+  }
 }

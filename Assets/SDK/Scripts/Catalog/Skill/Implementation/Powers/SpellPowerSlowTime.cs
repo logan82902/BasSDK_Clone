@@ -4,6 +4,7 @@ using ThunderRoad.Skill.Spell;
 using UnityEngine;
 
 using TriInspector;
+using Newtonsoft.Json;
 
 namespace ThunderRoad.Skill.SpellPower
 {
@@ -36,8 +37,9 @@ namespace ThunderRoad.Skill.SpellPower
         public float focusMinToUse = 10;
         [Group("HyperFocus")]
         public string hyperFocusSkillID = "HyperFocus";
-        [Group("HyperFocus")]
-        protected SkillHyperFocus hyperFocusSkill;
+        [NonSerialized]
+        [JsonIgnore]
+        public SkillHyperFocus hyperFocusSkill;
 
         [Group("Focus")]
         [Dropdown(nameof(GetAllEffectID))]

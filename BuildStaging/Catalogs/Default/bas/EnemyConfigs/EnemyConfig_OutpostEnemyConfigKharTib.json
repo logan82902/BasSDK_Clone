@@ -1,0 +1,52 @@
+{
+  "$type": "ThunderRoad.EnemyConfig, ThunderRoad",
+  "id": "OutpostEnemyConfigKharTib",
+  "sensitiveContent": "None",
+  "sensitiveFilterBehaviour": "Discard",
+  "version": 0,
+  "groupPath": "",
+  "iconAddress": "Bas.Icon.KharTib",
+  "customIconColor": true,
+  "iconColor": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+  },
+  "color": {
+    "r": 0.41568628,
+    "g": 0.274509817,
+    "b": 0.266666681,
+    "a": 1.0
+  },
+  "name": "{KharTib}",
+  "nameLocalizationId": "KharTib",
+  "descriptionsByLevelId": [
+    {
+      "$type": "ThunderRoad.EnemyConfig+DescriptionByLevelId, ThunderRoad",
+      "levelId": "DungeonOutpost",
+      "description": "KharTibOutpostDesc"
+    }
+  ],
+  "patrolMixId": "KharTibAlertMix",
+  "patrolMeleeId": "KharTibMeleeOnly",
+  "patrolRangedId": "KharTib_Base_RangedWeak",
+  "alertMixId": "KharTibAlertMix",
+  "alertMeleeId": "KharTibMeleeOnly",
+  "alertRangedId": "KharTib_Base_RangedWeak",
+  "rareMixId": "KharTibAlertMix",
+  "rareMeleeId": "KharTibMeleeOnly",
+  "rareRangedId": "KharTib_Base_RangedStrong",
+  "mixedStd": "Dungeon_KharTib_Std_Mixed",
+  "meleeOnlyStd": "Dungeon_KharTib_Std_MeleeOnly",
+  "meleeFocusedStd": "Dungeon_KharTib_Std_MeleeFocused",
+  "rangedFocusedStd": "Dungeon_KharTib_Std_RangedFocused",
+  "mixedArena": "Dungeon_KharTib_Arena_Mixed",
+  "meleeOnlyArena": "Dungeon_KharTib_Arena_MeleeOnly",
+  "meleeFocusedArena": "Dungeon_KharTib_Arena_MeleeFocused",
+  "rangedFocusedArena": "Dungeon_KharTib_Arena_RangedFocused",
+  "mixedEnd": "Dungeon_KharTib_End_Mixed",
+  "meleeOnlyEnd": "Dungeon_KharTib_End_MeleeOnly",
+  "meleeFocusedEnd": "Dungeon_KharTib_End_MeleeFocused",
+  "rangedFocusedEnd": "Dungeon_KharTib_End_RangedFocused"
+}

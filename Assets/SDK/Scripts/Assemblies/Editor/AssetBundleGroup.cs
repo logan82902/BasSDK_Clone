@@ -52,7 +52,7 @@ namespace ThunderRoad
         [ShowIf(nameof(isMod))]
         [ListDrawerSettings(HideAddButton = true, HideRemoveButton = true, Draggable = false)]
         public List<ScriptBridge> scriptBridges;
-        
+
         [Title("Manifest")]
         [Group("manifest/fields")]
         [ShowIf("isMod")]

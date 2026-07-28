@@ -13,7 +13,9 @@ namespace ThunderRoad
         public string effectId;
         public float minTorque = 5;
         public float maxTorque = 12;
-        public HingeJoint joint;
+        public Joint joint;
+        public Rigidbody jointRb;
+        public Vector3 rbLocalAxis = Vector3.zero;
 
         public TriDropdownList<string> GetAllEffectID() => Catalog.GetDropdownAllID(Category.Effect);
 

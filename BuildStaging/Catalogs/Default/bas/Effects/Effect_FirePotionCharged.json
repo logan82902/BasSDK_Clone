@@ -144,6 +144,7 @@
         "postWrapMode": "ClampForever"
       },
       "renderInLateUpdate": false,
+      "playDelay": 0.0,
       "mainColorStart": {
         "r": 0.0,
         "g": 0.0,
@@ -211,6 +212,7 @@
         "z": 0.0
       },
       "collisionEffectId": "",
+      "collisionEffectDuration": 0.0,
       "collisionLayerMask": 2147417983,
       "collisionMaxGroundAngle": 45.0,
       "collisionEmitRate": 0.2,

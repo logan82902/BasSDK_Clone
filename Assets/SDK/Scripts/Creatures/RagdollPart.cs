@@ -347,15 +347,17 @@ namespace ThunderRoad
         [Group("Tabs"), Tab("Runtime (Ragdoll Part)")]
         [ShowInInspector]
         [NonSerialized]
-        [HideLabel]
+        [HideReferencePicker]
         public Ragdoll.Bone bone;
         [Group("Tabs"), Tab("Runtime (Ragdoll Part)")]
         [ShowInInspector]
         [NonSerialized]
+        [ListDrawerSettings(AlwaysExpanded = true, HideAddButton = true, HideRemoveButton = true, Draggable = false)]
         public List<RagdollPart> childParts = new();
         [Group("Tabs"), Tab("Runtime (Ragdoll Part)")]
         [ShowInInspector]
         [NonSerialized]
+        [TableList(HideAddButton = true, HideRemoveButton = true, Draggable = false)]
         public List<Creature.RendererData> renderers = new();
         [Group("Tabs"), Tab("Runtime (Ragdoll Part)")]
         [ShowInInspector]
@@ -372,6 +374,7 @@ namespace ThunderRoad
         [Group("Tabs"), Tab("Runtime (Ragdoll Part)")]
         [ShowInInspector]
         [NonSerialized]
+        [TableList(HideAddButton = true, HideRemoveButton = true, Draggable = false)]
         public List<Creature.RendererData> meshpartRendererList = new();
         [NonSerialized]
         public bool isSliced;

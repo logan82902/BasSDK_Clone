@@ -514,10 +514,13 @@ namespace TriInspector
                     .ToList();
             }
 
+            bool hasNoRecursion = this.TryGetAttribute<NoRecursionAttribute>(out _);
             if (_childrenProperties != null)
             {
                 foreach (var childrenProperty in _childrenProperties)
                 {
+                    // don't run validation on child properties with the no recursion attribute
+                    if (hasNoRecursion && childrenProperty.TryGetAttribute<NoRecursionAttribute>(out _)) continue;
                     childrenProperty.RunValidation();
                 }
             }

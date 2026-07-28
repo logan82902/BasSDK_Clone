@@ -10,6 +10,8 @@ namespace ThunderRoad
 {
     public class ShopDisplay : ThunderBehaviour
     {
+        public const string secondaryItemName = "SecondaryShopItem";
+
         public enum DisplayType
         {
             Holders,

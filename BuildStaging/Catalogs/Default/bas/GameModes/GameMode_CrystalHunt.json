@@ -150,8 +150,8 @@
         "$type": "ThunderRoad.Modules.CrystalHuntLevelInstancesModule+LevelInfo, ThunderRoad",
         "levelId": "DungeonTutorial",
         "modeId": "CrystalHunt",
-        "staticEnemyConfigDataId": null,
-        "staticLootConfigDataId": null
+        "staticEnemyConfigDataId": "",
+        "staticLootConfigDataId": ""
       },
       "tutorialEnemyConfig": "OutpostEnemyConfigT0",
       "tutorialLootConfig": "OutpostLootConfigT0",
@@ -160,8 +160,8 @@
         "$type": "ThunderRoad.Modules.CrystalHuntLevelInstancesModule+LevelInfo, ThunderRoad",
         "levelId": "DungeonOutpost",
         "modeId": "CrystalHunt",
-        "staticEnemyConfigDataId": null,
-        "staticLootConfigDataId": null
+        "staticEnemyConfigDataId": "",
+        "staticLootConfigDataId": ""
       },
       "outpostEnemyConfigs": {
         "$type": "ThunderRoad.Modules.CrystalHuntLevelInstancesModule+EnemyConfigTiers, ThunderRoad",
@@ -207,43 +207,50 @@
           "$type": "ThunderRoad.Modules.CrystalHuntLevelInstancesModule+LevelInfo, ThunderRoad",
           "levelId": "Sanctuary",
           "modeId": "WaveAssault",
-          "staticEnemyConfigDataId": null,
-          "staticLootConfigDataId": null
+          "staticEnemyConfigDataId": "",
+          "staticLootConfigDataId": ""
         },
         {
           "$type": "ThunderRoad.Modules.CrystalHuntLevelInstancesModule+LevelInfo, ThunderRoad",
           "levelId": "Canyon",
           "modeId": "WaveAssault",
-          "staticEnemyConfigDataId": null,
-          "staticLootConfigDataId": null
+          "staticEnemyConfigDataId": "",
+          "staticLootConfigDataId": ""
         },
         {
           "$type": "ThunderRoad.Modules.CrystalHuntLevelInstancesModule+LevelInfo, ThunderRoad",
           "levelId": "Citadel",
           "modeId": "WaveAssault",
-          "staticEnemyConfigDataId": null,
-          "staticLootConfigDataId": null
+          "staticEnemyConfigDataId": "",
+          "staticLootConfigDataId": ""
         },
         {
           "$type": "ThunderRoad.Modules.CrystalHuntLevelInstancesModule+LevelInfo, ThunderRoad",
           "levelId": "Market",
           "modeId": "WaveAssault",
-          "staticEnemyConfigDataId": null,
-          "staticLootConfigDataId": null
+          "staticEnemyConfigDataId": "",
+          "staticLootConfigDataId": ""
         },
         {
           "$type": "ThunderRoad.Modules.CrystalHuntLevelInstancesModule+LevelInfo, ThunderRoad",
           "levelId": "RaktaDojo",
           "modeId": "WaveAssault",
           "staticEnemyConfigDataId": "OutpostEnemyConfigRakta",
-          "staticLootConfigDataId": null
+          "staticLootConfigDataId": ""
         },
         {
           "$type": "ThunderRoad.Modules.CrystalHuntLevelInstancesModule+LevelInfo, ThunderRoad",
           "levelId": "SentaraShip",
           "modeId": "WaveAssault",
           "staticEnemyConfigDataId": "OutpostEnemyConfigSentara",
-          "staticLootConfigDataId": null
+          "staticLootConfigDataId": ""
+        },
+        {
+          "$type": "ThunderRoad.Modules.CrystalHuntLevelInstancesModule+LevelInfo, ThunderRoad",
+          "levelId": "KharTibDesert",
+          "modeId": "WaveAssault",
+          "staticEnemyConfigDataId": "OutpostEnemyConfigKharTib",
+          "staticLootConfigDataId": ""
         }
       ],
       "dalgarianMapLocationRandomNearest": 3,
@@ -251,8 +258,8 @@
         "$type": "ThunderRoad.Modules.CrystalHuntLevelInstancesModule+LevelInfo, ThunderRoad",
         "levelId": "DungeonDalgarian",
         "modeId": "CrystalHunt",
-        "staticEnemyConfigDataId": null,
-        "staticLootConfigDataId": null
+        "staticEnemyConfigDataId": "",
+        "staticLootConfigDataId": ""
       },
       "dalgarianEnemyConfigs": {
         "$type": "ThunderRoad.Modules.CrystalHuntLevelInstancesModule+EnemyConfigTiers, ThunderRoad",

@@ -42,8 +42,14 @@ namespace ThunderRoad
         public override void OnCatalogRefresh()
         {
             base.OnCatalogRefresh();
-            tierBlockers = new List<string>();
+            InitTierBlockers();
             crystalItemData = Catalog.GetData<ItemData>(crystalItemId);
+        }
+
+        public void InitTierBlockers()
+        {
+            tierBlockers ??= new List<string>(maxTier);
+            while (tierBlockers.Count <= maxTier) tierBlockers.Add(null);
         }
     }
 }

@@ -214,6 +214,7 @@ namespace ThunderRoad
         public List<Color> skinColorsShared;
 
         [Serializable]
+        [AutoLabelWidth(MinWidth = 0f)]
         [DeclareBoxGroup("Custom Materials", Title = "Custom Materials")]
         [DeclareBoxGroup("Custom Parts", Title = "Custom Parts")]
         [DeclareBoxGroup("Colors", Title = "Colors")]
@@ -255,9 +256,11 @@ namespace ThunderRoad
 
         [Group("Tabs"), Tab("Ragdoll")]
         [InlineProperty]
+        [HideLabel]
         public RagdollData ragdollData;
 
         [Serializable]
+        [AutoLabelWidth(MinWidth = 0f)]
         public class RagdollData
         {
             public float standingMass = 65f;
@@ -303,6 +306,7 @@ namespace ThunderRoad
         }
 
         [Serializable]
+        [AutoLabelWidth(MinWidth = 0f)]
         public class PartData
         {
             public RagdollPart.Type bodyPartTypes;
@@ -352,31 +356,6 @@ namespace ThunderRoad
 
 
         [Group("Tabs"), Tab("Expression")]
-        [Dropdown(nameof(GetAllExpressionId))]
-        public string expressionAttackId;
-        [NonSerialized, JsonIgnore]
-        public ExpressionData expressionAttackData;
-        [Group("Tabs"), Tab("Expression")]
-        [Dropdown(nameof(GetAllExpressionId))]
-        public string expressionPainId;
-        [NonSerialized, JsonIgnore]
-        public ExpressionData expressionPainData;
-        [Group("Tabs"), Tab("Expression")]
-        [Dropdown(nameof(GetAllExpressionId))]
-        public string expressionDeathId;
-        [NonSerialized, JsonIgnore]
-        public ExpressionData expressionDeathData;
-        [Group("Tabs"), Tab("Expression")]
-        [Dropdown(nameof(GetAllExpressionId))]
-        public string expressionChokeId;
-        [NonSerialized, JsonIgnore]
-        public ExpressionData expressionChokeData;
-        [Group("Tabs"), Tab("Expression")]
-        [Dropdown(nameof(GetAllExpressionId))]
-        public string expressionAngryId;
-        [NonSerialized, JsonIgnore]
-        public ExpressionData expressionAngryData;
-        [Group("Tabs"), Tab("Expression")]
         public Vector2 eyeVerticalAngleClamps = new(-10f, 15f);
         [Group("Tabs"), Tab("Expression")]
         public Vector2 eyeHorizontalAngleClamps = new(-20f, 20f);
@@ -384,6 +363,7 @@ namespace ThunderRoad
         public List<EyeClip> eyeClips = new();
 
         [Serializable]
+        [AutoLabelWidth(MinWidth = 0f)]
         public class EyeClip
         {
             public string clipName = "";
@@ -590,13 +570,11 @@ namespace ThunderRoad
 
         public TriDropdownList<string> GetAllEthnicityID()
         {
-            //hardcode a list of IDs for now
             TriDropdownList<string> list = new();
-            list.Add("Eradian", "Eradian");
-            list.Add("Madene", "Madene");
-            list.Add("Sentari", "Sentari");
-            list.Add("Kharese", "Kharese");
-            list.Add("Raike", "Raike");
+            foreach (var ethnicGroup in ethnicGroups)
+            {
+                list.Add(ethnicGroup.id, ethnicGroup.id);
+            }
             return list;
         }
         public TriDropdownList<string> GetAllSpellID() => Catalog.GetDropdownAllID<SpellData>();
@@ -615,11 +593,6 @@ namespace ThunderRoad
         public override void OnCatalogRefresh()
         {
             base.OnCatalogRefresh();
-            expressionAttackData = Catalog.GetData<ExpressionData>(expressionAttackId);
-            expressionPainData = Catalog.GetData<ExpressionData>(expressionPainId);
-            expressionDeathData = Catalog.GetData<ExpressionData>(expressionDeathId);
-            expressionChokeData = Catalog.GetData<ExpressionData>(expressionChokeId);
-            expressionAngryData = Catalog.GetData<ExpressionData>(expressionAngryId);
             playerFallDamageEffectData = Catalog.GetData<EffectData>(playerFallDamageEffectId);
             drownEffectData = Catalog.GetData<EffectData>(drownEffectId);
             jumpEffectData = Catalog.GetData<EffectData>(jumpEffectId);

@@ -1,0 +1,123 @@
+{
+  "$type": "ThunderRoad.ContainerData, ThunderRoad",
+  "id": "KharTibMage",
+  "sensitiveContent": "None",
+  "sensitiveFilterBehaviour": "Discard",
+  "version": 1,
+  "groupPath": "Factions/KharTib",
+  "displayName": "",
+  "description": "",
+  "containerContents": [
+    {
+      "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "949008a0",
+      "referenceID": "ChargeSpeedBoost"
+    },
+    {
+      "$type": "ThunderRoad.SpellContent, ThunderRoad",
+      "mergeKey": "d73d6a4e",
+      "referenceID": "Fire"
+    },
+    {
+      "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "d5e94c2d",
+      "referenceID": "Ignition"
+    },
+    {
+      "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "34fe804e",
+      "referenceID": "FireballRicochet"
+    },
+    {
+      "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "9c4cd754",
+      "referenceID": "Overcharge"
+    },
+    {
+      "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "1600fa43",
+      "referenceID": "MeleeImbueRandom"
+    },
+    {
+      "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "57aaa437",
+      "referenceID": "ChargeSapping"
+    },
+    {
+      "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "1cd4bb71",
+      "referenceID": "FireSapping"
+    },
+    {
+      "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "7b478967",
+      "referenceID": "GravitySapping"
+    },
+    {
+      "$type": "ThunderRoad.SkillContent, ThunderRoad",
+      "mergeKey": "d92e7aa2",
+      "referenceID": "HeavyFirepower"
+    },
+    {
+      "$type": "ThunderRoad.TableContent, ThunderRoad",
+      "quantity": 1,
+      "state": {
+        "$type": "ThunderRoad.ContentStateHolder, ThunderRoad",
+        "holderName": "BackRight"
+      },
+      "customDataList": null,
+      "mergeKey": "6f886e40",
+      "referenceID": "WeaponSoldierThrall"
+    },
+    {
+      "$type": "ThunderRoad.TableContent, ThunderRoad",
+      "quantity": 1,
+      "state": {
+        "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
+      },
+      "customDataList": [],
+      "mergeKey": "8f592399",
+      "referenceID": "HairsSoldier"
+    },
+    {
+      "$type": "ThunderRoad.ItemContent, ThunderRoad",
+      "quantity": 1,
+      "state": {
+        "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
+      },
+      "customDataList": [],
+      "mergeKey": "a9e4b71f",
+      "referenceID": "ApparelKharTibShoulder"
+    },
+    {
+      "$type": "ThunderRoad.ItemContent, ThunderRoad",
+      "quantity": 1,
+      "state": {
+        "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
+      },
+      "customDataList": [],
+      "mergeKey": "fcff6439",
+      "referenceID": "ApparelKharTibJacket"
+    },
+    {
+      "$type": "ThunderRoad.ItemContent, ThunderRoad",
+      "quantity": 1,
+      "state": {
+        "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
+      },
+      "customDataList": [],
+      "mergeKey": "7ec8cbe8",
+      "referenceID": "ApparelKharTibPants"
+    },
+    {
+      "$type": "ThunderRoad.ItemContent, ThunderRoad",
+      "quantity": 1,
+      "state": {
+        "$type": "ThunderRoad.ContentStateWorn, ThunderRoad"
+      },
+      "customDataList": [],
+      "mergeKey": "4fe6a81c",
+      "referenceID": "ApparelKharTibBoots"
+    }
+  ]
+}

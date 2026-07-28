@@ -11,6 +11,7 @@
   "damagePerTick": 10.0,
   "layerMask": 4202496,
   "forceMult": 10.0,
+  "imbueTransferPerSecond": 10000.0,
   "heatTransferPerSecond": 999999.0,
   "burningId": "Burning",
   "pushbackCurve": {

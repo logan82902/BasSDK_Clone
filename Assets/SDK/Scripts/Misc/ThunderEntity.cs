@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 
 using TriInspector;
@@ -50,6 +51,7 @@ namespace ThunderRoad
         public static List<ThunderEntity> allEntities = new();
         public List<EntityModule> entityModules;
         public Dictionary<Type, AbstractEntityVariable> variables;
+        public List<Coroutine> despawnTrackedCoroutines = new List<Coroutine>();
  // ProjectCore
         public virtual void Despawn()
         {

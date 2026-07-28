@@ -1,11 +1,18 @@
 ﻿using UnityEngine;
 using UnityEditor;
+using System.Collections.Generic;
 
 namespace ThunderRoad
 {
     [CustomEditor(typeof(Item))]
     public class ItemDefInspector : ThunderInspector
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Domain reload", "UDR0001:Domain Reload Analyzer", Justification = "<Pending>")]
+        private static bool warningFoldoutOpen = true;
+
+        private List<Item.ItemProblem> currentIssues;
+        private int majorIssueCount = 0;
+
         protected override void OnDisablePostDispose()
         {
             if (target)
@@ -15,57 +22,46 @@ namespace ThunderRoad
             }
         }
 
-        protected override void OnCreateGUIPostCoreElement()
+        protected override void OnCreateGUIPreCoreElement()
         {
             Item item = (Item)target;
-            if (item.itemId == "")
+            currentIssues = item.CheckItemProblems();
+            majorIssueCount = 0;
+            foreach (Item.ItemProblem infoString in currentIssues)
             {
-                EditorGUILayout.HelpBox("Do not forget to assign a valid Item ID.", MessageType.Error);
+                if (!infoString.message.Contains("!ERROR!")) continue;
+                DrawHelpBox(infoString.message);
+                majorIssueCount++;
             }
+        }
 
-            foreach (MeshCollider col in item.gameObject.GetComponentsInChildren<MeshCollider>())
+        protected override void OnCreateGUIPostCoreElement()
+        {
+            int warningCount = currentIssues.Count - majorIssueCount;
+            warningFoldoutOpen = EditorGUILayout.Foldout(warningFoldoutOpen, $"Configuration Warnings ({warningCount})", warningCount > 0 ? EditorStyles.foldoutHeader : EditorStyles.foldout);
+            if (warningFoldoutOpen)
             {
-                if (!col.convex)
+                foreach (Item.ItemProblem issue in currentIssues)
                 {
-                    EditorGUILayout.HelpBox("The mesh collider " + col.name + " has to be set to convex.", MessageType.Error);
+                    if (!issue.message.Contains("!WARNING!")) continue;
+                    DrawHelpBox(issue);
                 }
             }
+        }
 
-            if (!item.GetComponentInChildren<Collider>())
+        private void DrawHelpBox(Item.ItemProblem issue)
+        {
+            if (issue.message.Contains("!ERROR!"))
             {
-                EditorGUILayout.HelpBox("There are no colliders assigned to this object. It will fall through the ground.", MessageType.Error);
+                EditorGUILayout.HelpBox(issue.message.Replace("!ERROR!", ""), MessageType.Error);
+                return;
             }
-            foreach (Collider collider in item.GetComponentsInChildren<Collider>())
+            if (issue.message.Contains("!WARNING!"))
             {
-                if (!collider.sharedMaterial && collider != item.customInertiaTensorCollider)
-                {
-                    EditorGUILayout.HelpBox("Collider " + collider.name + " is missing a physics material and will not make sounds nor decals on impact.", MessageType.Warning);
-                }
-                if (!collider.GetComponentInParent<ColliderGroup>() && collider != item.customInertiaTensorCollider)
-                {
-                    EditorGUILayout.HelpBox("Collider " + collider.name + " do not have any Collider Group on parent.", MessageType.Warning);
-                }
+                EditorGUILayout.HelpBox(issue.message.Replace("!WARNING!", ""), MessageType.Warning);
+                return;
             }
-
-            if (item.GetDefaultHolderPoint() == null)
-            {
-                EditorGUILayout.HelpBox("There is no holder point assigned to this object. It will not be able to be holstered.", MessageType.Warning);
-            }
-
-            if (item.parryPoint == null)
-            {
-                EditorGUILayout.HelpBox("There is no parry point assigned to this object. Enemies will not know how to weild it.", MessageType.Warning);
-            }
-
-            if (item.transform.lossyScale != Vector3.one)
-            {
-                EditorGUILayout.HelpBox("The scale of the Item definition object should set to 1. Sercale the Mesh object instead.", MessageType.Warning);
-            }
-
-            if (!item.mainHandleLeft || !item.mainHandleRight)
-            {
-                EditorGUILayout.HelpBox("There are no handles on this object. It will not be able to be picked up from the spawn book.", MessageType.Warning);
-            }
+            EditorGUILayout.HelpBox(issue.message, MessageType.Info);
         }
 
         private void OnSceneGUI()

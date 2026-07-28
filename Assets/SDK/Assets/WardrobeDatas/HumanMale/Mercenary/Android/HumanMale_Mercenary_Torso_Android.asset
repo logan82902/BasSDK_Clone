@@ -25,7 +25,7 @@ MonoBehaviour:
   layers: 0200000001000000
   fullyOccludedLayers: 0000000000000000
   partialOccludedLayers: 8000000000000000
-  partialOccludedMasks: 2900000029000000
+  partialOccludedMasks: 2800000029000000
   occlusionID: 
   occlusionIDHash: 0
   tags: []

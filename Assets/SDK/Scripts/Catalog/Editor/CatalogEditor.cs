@@ -100,7 +100,8 @@ namespace ThunderRoad
             Unload,
             View,
             Override,
-            ActiveMod
+            ActiveMod,
+            Pin
         }
 
         private class TreeBranch
@@ -323,11 +324,11 @@ namespace ThunderRoad
                 branchResult += elementHeight * branch.dataGUIDs.Count;
                 return branchResult;
             }
-            if (rootBranch == null) return 2 * elementHeight;
+            result = (2 * elementHeight) + (elementHeight * (Catalog.gameData?.overriders?.Count ?? 0));
+            if (rootBranch == null) return result;
             if (openFoldouts.IsNullOrEmpty()) openFoldouts = new Dictionary<string, bool>();
             if (!onlyItems)
             {
-                result = 2 * elementHeight;
                 foreach (TreeBranch rootChild in rootBranch.childBranches)
                 {
                     result += RecursiveAddHeight(rootChild);
@@ -494,6 +495,21 @@ namespace ThunderRoad
                     }
                 }
 
+                if (CatalogFavouritesSO.Instance.favourites is { Count: > 0 })
+                {
+                    foreach (var category in CatalogFavouritesSO.Instance.favourites)
+                    {
+                        foreach (var id in category.Value)
+                        {
+                            if (Catalog.GetData(category.Key, id) is not CatalogData catalogData) continue;
+                            if (onlyItems && catalogData is not ItemData) continue;
+                            if (activeModData != null && catalogData.owner != null && catalogData.owner != activeModData) continue;
+                            DrawCatalogEntry(catalogData, 0, true, height, viewRect, true);
+                            height += buttonStyle.fixedHeight + 2f;
+                        }
+                    }
+                }
+                
                 if (onlyItems)
                 {
                     foreach (TreeBranch branch in rootBranch.childBranches)
@@ -529,7 +545,7 @@ namespace ThunderRoad
             return count;
         }
 
-        private void DrawCatalogEntry(CatalogData catalogData, int indent, bool drawSeparator, float height, Rect viewRect)
+        private void DrawCatalogEntry(CatalogData catalogData, int indent, bool drawSeparator, float height, Rect viewRect, bool favourite = false)
         {
             GUIStyle buttonStyle = new(EditorStyles.toolbarButton) { alignment = TextAnchor.MiddleLeft, fixedHeight = EditorGUIUtility.singleLineHeight * 1.5f, clipping = TextClipping.Clip, imagePosition = ImagePosition.ImageLeft };
             GUIStyle lrStyle = new(EditorStyles.toolbarButton) { fixedHeight = EditorGUIUtility.singleLineHeight * 1.5f };
@@ -553,7 +569,10 @@ namespace ThunderRoad
             if (currentPaneMode == PaneMode.TwoJSONs)
             {
                 buttonRect.width -= 40f;
-                if (GUI.Button(buttonRect, catalogData.GetCatalogEditorButtonContent(), buttonStyle))
+                var content = catalogData.GetCatalogEditorButtonContent();
+                if (favourite)
+                    content.text = "★ " + content.text;
+                if (GUI.Button(buttonRect, content, buttonStyle))
                 {
                     GUI.FocusControl(null);
                     if (!initialJsons.ContainsKey(catalogData.editorGuid)) CreateInitialJSON(catalogData);
@@ -576,7 +595,11 @@ namespace ThunderRoad
             }
             else
             {
-                if (GUI.Button(buttonRect, catalogData.GetCatalogEditorButtonContent(), buttonStyle))
+                var content = catalogData.GetCatalogEditorButtonContent();
+                if (favourite)
+                    content.text += " ★";
+                
+                if (GUI.Button(buttonRect, content, buttonStyle))
                 {
                     GUI.FocusControl(null);
                     if (!initialJsons.ContainsKey(catalogData.editorGuid)) CreateInitialJSON(catalogData);
@@ -1192,6 +1215,22 @@ namespace ThunderRoad
                         else if (data is GameData gameData)
                         {
                             System.Diagnostics.Process.Start(Path.GetDirectoryName(gameData.filePath));
+                        }
+                    }
+
+                    if (data is CatalogData favouriteCatalogData)
+                    {
+                        var favouriteText = CatalogFavouritesSO.Instance.IsFavourite(favouriteCatalogData)
+                            ? " Unpin"
+                            : " Pin";
+                        GUIContent favouriteContent = new(favouriteText,
+                            GetIcon(Icon.Pin, customToolbarStyle.fontSize),
+                            "Pin or unpin this JSON file");
+                        
+                        if (GUILayout.Button(favouriteContent, customToolbarStyle,
+                                GUILayout.Width(customToolbarStyle.CalcSize(favouriteContent).x + widthAddition)))
+                        {
+                            CatalogFavouritesSO.Instance.ToggleFavourite(favouriteCatalogData);
                         }
                     }
                 }

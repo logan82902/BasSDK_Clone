@@ -31,6 +31,8 @@
   "allowInRouletteMode": false,
   "combatSkill": false,
   "allowOnFirstWave": true,
-  "requiredSkills": [],
+  "requiredSkills": [
+    "Lightning"
+  ],
   "IsCombinedSkill": false
 }

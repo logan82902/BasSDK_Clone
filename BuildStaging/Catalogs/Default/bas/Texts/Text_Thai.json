@@ -1036,6 +1036,13 @@
           "text": "การใช้หุ่นเชิดยกศัตรูขึ้นมาจะง่ายกว่ามากหากคุณทำให้พวกเขาโซเซก่อน!",
           "spriteAddress": null,
           "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "57",
+          "text": "อาวุธหนักและทื่อมีพลังมากพอที่จะทำให้ศัตรูเซถลาแม้ผ่านโล่ของพวกเขา",
+          "spriteAddress": null,
+          "videoAddress": null
         }
       ]
     },
@@ -3872,6 +3879,13 @@
         },
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "LoadAchievements",
+          "text": "กำลังโหลดความสำเร็จ",
+          "spriteAddress": "",
+          "videoAddress": ""
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
           "id": "GeneratePools",
           "text": "กำลังสร้างแหล่งข้อมูล",
           "spriteAddress": null,
@@ -6123,6 +6137,20 @@
       "texts": [
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "LevelDayVariantName",
+          "text": "กลางวัน",
+          "spriteAddress": "",
+          "videoAddress": ""
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "LevelNightVariantName",
+          "text": "กลางคืน",
+          "spriteAddress": "",
+          "videoAddress": ""
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
           "id": "Arena",
           "text": "อารีน่า",
           "spriteAddress": null,
@@ -6186,7 +6214,14 @@
         },
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
-          "id": "MarketDescription",
+          "id": "MarketDayVariantDescription",
+          "text": "ตลาดใจกลางเมืองเอราเดนในวันที่ท้องฟ้าแจ่มใสและมีแสงแดดสดใส",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "MarketNightVariantDescription",
           "text": "ตลาดใจกลางเมืองใน ชาวเอราเดน ซึ่งในเวลากลางคืนอันเงียบสงบจะไม่คึกคักเหมือนตอนกลางวัน",
           "spriteAddress": null,
           "videoAddress": null
@@ -6299,14 +6334,14 @@
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
           "id": "OutpostLibraryDescription",
-          "text": "ห้องสมุดเก่าแก่และเต็มไปด้วยหนังสือที่ถูกลืมเลือน",
+          "text": "ห้องสมุดเก่าแก่ที่ค่อนข้างหนาแน่น เต็มไปด้วยหนังสือที่ถูกลืม",
           "spriteAddress": null,
           "videoAddress": null
         },
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
           "id": "OutpostWatermillDescription",
-          "text": "โรงสีขนาดเล็กที่สร้างขึ้นบนลำธารระหว่างป้อมปราการของด่านหน้า",
+          "text": "โรงสีเล็กๆ ที่สร้างบนลำธารระหว่างป้อมปราการของฐานทัพหน้า",
           "spriteAddress": null,
           "videoAddress": null
         },
@@ -6320,14 +6355,14 @@
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
           "id": "OutpostChapelDescription",
-          "text": "สถานที่บูชาที่ถูกอุทิศให้กับราชา อัลดาริก ผู้ยิ่งใหญ่ในอดีต",
+          "text": "สถานที่สักการะที่อุทิศให้กับกษัตริย์อัลดาริกผู้เก่าแก่",
           "spriteAddress": null,
           "videoAddress": null
         },
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
           "id": "OutpostCoastalFortDescription",
-          "text": "ป้อมปราการที่สร้างขึ้นบนชายหาดเพื่อป้องกันและเฝ้ามองการรุกรานจากศัตรู",
+          "text": "ป้อมปราการที่สร้างขึ้นบนชายหาดเพื่อป้องกันและเฝ้าระวังผู้บุกรุก",
           "spriteAddress": null,
           "videoAddress": null
         },
@@ -6386,6 +6421,139 @@
           "text": "มัดลู",
           "spriteAddress": null,
           "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "OutpostLibrary",
+          "text": "ห้องสมุดฐานทัพหน้า",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "OutpostWatermill",
+          "text": "โรงสีน้ำฐานทัพหน้า",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "OutpostFallenCorridor",
+          "text": "ทางเดินถล่มฐานทัพหน้า",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "OutpostChapel",
+          "text": "โบสถ์น้อยฐานทัพหน้า",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "OutpostCoastalFort",
+          "text": "ป้อมชายฝั่งฐานทัพหน้า",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "DalgarianMuseum",
+          "text": "พิพิธภัณฑ์ดัลกาเรียน",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "DalgarianMuseumDescription",
+          "text": "ห้องดัลกาเรียนที่พังทลายลงครึ่งหนึ่ง มีแท่นฐานและสิ่งจัดแสดงหลายแห่ง อาจเป็นพิพิธภัณฑ์",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "DalgarianRefinary",
+          "text": "โรงกลั่นดัลกาเรียน",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "DalgarianRefinaryDescription",
+          "text": "ห้องสูงที่มีโรงกลั่นคริสตัลขนาดใหญ่ ช่องทางของคริสตัลเหลววนรอบคริสตัลแรงโน้มถ่วงซึ่งไม่ทราบจุดประสงค์",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "DalgarianSenate",
+          "text": "วุฒิสภาดัลกาเรียน",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "DalgarianSenateDescription",
+          "text": "ห้องวุฒิสภาดัลกาเรียน ในยุคที่ผ่านมา สันนิษฐานว่าสภาดัลกาเรียนน่าจะประชุมกันที่นี่",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "DalgarianForge",
+          "text": "โรงตีเหล็กดัลกาเรียน",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "DalgarianForgeDescription",
+          "text": "โรงตีเหล็กดัลกาเรียน น่าจะใช้สำหรับการกลั่นและขึ้นรูปอัสทาเรียม",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "DalgarianTemple",
+          "text": "วิหารดัลกาเรียน",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "DalgarianTempleDescription",
+          "text": "ห้องโถงใหญ่ที่นำไปสู่แท่นบูชาโบราณ",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibDesert",
+          "text": "ป้อมปราการคาเรส",
+          "spriteAddress": "",
+          "videoAddress": ""
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibDesertDescription",
+          "text": "ป้อมปราการที่ถูกทิ้งร้างมานาน ตั้งอยู่จุดยุทธศาสตร์ในทะเลทรายอันแผดเผาของคาร์-ทิบ",
+          "spriteAddress": "",
+          "videoAddress": ""
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "OutpostArenasMap",
+          "text": "สนามประลองฐานทัพหน้า",
+          "spriteAddress": "",
+          "videoAddress": ""
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "DalgarianArenasMap",
+          "text": "สนามประลองดัลกาเรียน",
+          "spriteAddress": "",
+          "videoAddress": ""
         }
       ]
     },
@@ -12867,49 +13035,21 @@
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
           "id": "ItemFalchion_1",
-          "text": "นี่มันอะไรกัน? นี่คือดาบสั้นฟัลชิออนจากดินแดนคาร์ติบนี่นา! ท่านคงไม่อยากขายมันหรอกนะ เพื่อน!",
+          "text": "โอ้ นี่มันดาบเซนทารีนี่! นายไม่อยากขายมันหรอก เพื่อน!",
           "spriteAddress": null,
           "videoAddress": null
         },
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
-          "id": "ItemFalchion_4",
-          "text": "นี่มันอะไรกัน? นี่คือดาบสั้นฟัลชิออนจากดินแดนคาร์ติบนี่นา! ท่านคงไม่อยากขายมันหรอกนะ!",
+          "id": "ItemFalchion_2",
+          "text": "นั่นอะไรน่ะ ดาบฟัลเชียนเหรอ? แถวนี้หาดูยากนะ นายควรเก็บมันไว้ เพื่อน",
           "spriteAddress": null,
           "videoAddress": null
         },
         {
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
-          "id": "ItemFalchion_6",
-          "text": "ดาบจากแดนไกลนี่! เหล่านักเดินเรือจากคาร์ติบใช้ดาบแบบนี้ ท่านควรเก็บรักษาเอาไว้นะ",
-          "spriteAddress": null,
-          "videoAddress": null
-        },
-        {
-          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
-          "id": "ItemFalchion_9",
-          "text": "ดาบจากแดนไกลนี่! เหล่านักเดินเรือจากคาร์ติบใช้ดาบแบบนี้ ท่านควรเก็บรักษาเอาไว้นะ",
-          "spriteAddress": null,
-          "videoAddress": null
-        },
-        {
-          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
-          "id": "ItemFalchion_11",
-          "text": "ดูเหมือนว่าท่านได้ค้นพบอาวุธที่ไม่ได้มาจากแผ่นดินแห่งนี้ ดาบโค้งเล่มนั้นคือดาบสั้นฟัลชิออนจากดินแดนคาร์ติบ",
-          "spriteAddress": null,
-          "videoAddress": null
-        },
-        {
-          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
-          "id": "ItemFalchion_13",
-          "text": "ดูเหมือนว่าท่านได้ค้นพบอาวุธที่ไม่ได้มาจากแผ่นดินแห่งนี้ ดาบโค้งเล่มนั้นคือดาบสั้นฟัลชิออนจากทะเลทรายคาร์ติบ",
-          "spriteAddress": null,
-          "videoAddress": null
-        },
-        {
-          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
-          "id": "ItemFalchion_18",
-          "text": "ดูเหมือนว่าท่านได้ค้นพบอาวุธที่ไม่ได้มาจากแผ่นดินแห่งนี้ ดาบโค้งเล่มนั้นคือดาบสั้นฟัลชิออนจากดินแดนทะเลทรายคาร์ติบ",
+          "id": "ItemFalchion_3",
+          "text": "โอ้โห! ดาบฟัลเชียนเซนทารี นี่เป็นอาวุธโปรดของฉันสมัยออกผจญภัยเลยนะเนี่ย ของหายากเลยนะเพื่อน ถ้าเป็นฉัน ฉันจะเก็บมันไว้",
           "spriteAddress": null,
           "videoAddress": null
         },
@@ -14837,6 +14977,321 @@
           "text": "เตรียมบรรจุ พร้อมยิง!",
           "spriteAddress": null,
           "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibArmour_1",
+          "text": "รู้สึกถึงแผ่นเกราะแข็งๆนั่นไหม? ชาวคาเรสทำเกราะจากกระดองของสิ่งมีชีวิตแปลกประหลาดที่อาศัยอยู่ในทะเลทรายของพวกเขา",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibArmour_2",
+          "text": "การใช้ชีวิตในทะเลทราย ทำให้หายากที่จะพบโลหะและเส้นใยทั่วไป แต่ชาวคาเรสก็ทำได้ดีที่สุดเท่าที่จะมี",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibArmour_3",
+          "text": "จริงๆนะ ฉันไม่ชอบทราย มันหยาบ ด้าน และน่ารำคาญ และมันไปทั่วทุกที่ ดังนั้นอย่าลืมสะบัดเจ้านี่ก่อนใส่ล่ะ",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibBombFire_1",
+          "text": "นายมีนรกขุมนั่นอยู่ในขวดเลยนะเพื่อน! จัดการด้วยความระมัดระวัง โดยเฉพาะอย่างยิ่ง อย่าจุดไปป์ใกล้ๆมัน",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibBombFire_2",
+          "text": "ความร้อนของทะเลทรายคาร์-ทิบนั้นโหดร้าย แต่ฉันอยากติดอยู่ที่นั่นเป็นสัปดาห์มากกว่าต้องตกเป็นฝ่ายรับสิ่งเหล่านี้",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibBombGravity_1",
+          "text": "ถ้าต้องการแรงกระโจนข้ามกำแพง โยนเจ้านี่ลงที่เท้าแล้วนายจะลอยละลิ่ว!",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibBombLightning_1",
+          "text": "นายรู้ไหมว่าไอ้พ่อมดเก่งๆเนี่ย มันใช้สายฟ้าจากไม้เท้าฟันคนเป็นสองท่อนได้ยังไง? ใช่แล้ว... ชาวคาเรสเนี่ย เขาจัดการเก็บประสบการณ์นั้นใส่ขวดได้!",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibBombLightning_2",
+          "text": "ระเบิดนี้เป็นที่รู้จักดีในหมู่ชาวคาเรสในเรื่องความร้ายแรงและความสยดสยองที่มันทิ้งไว้ สิ่งที่น่ากลัวจริงๆ",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibBombGeneric_Special",
+          "text": "น้ำมันตะเกียง? เชือก? ระเบิด? นายอยากได้ใช่ไหม มันเป็นของนายแล้วเพื่อน ตราบใดที่นายมีเงินพอ!",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibCrossbow_1",
+          "text": "หน้าไม้เป็นทางเลือกที่ดีสำหรับผู้ที่ไม่ชำนาญการยิงธนู เล็งง่ายกว่า ไม่ต้องออกแรงดึงสายค้างหลังจากง้างแล้ว!",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibCrossbow_2",
+          "text": "การยิงหน้าไม้นั้นง่าย ทำให้มันน่าสนใจสำหรับเผ่าเล็กๆในคาร์-ทิบ ซึ่งบางครั้งจำเป็นต้องพึ่งพาชาวบ้านที่ไม่ได้ผ่านการฝึกเพื่อป้องกันตัว",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibCrossbow_3",
+          "text": "ฉันเห็นแปลนบ้าบอของนักประดิษฐ์เซนทารีที่พยายามจะปรับปรุงหน้าไม้คาเรส แบบหนึ่งมีลักษณะคล้าย \"\"กระบอก\"\" หมุนได้ ความคิดเจ๋งดี แต่ไม่มีทางใช้งานได้หรอก!",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "CrystalCore_1",
+          "text": "แกนคริสตัล! หายากอย่างเหลือเชื่อ... แต่ถ้าข่าวออกไปว่าฉันขายแกนคริสตัล เกาะนี้จะเต็มไปด้วยนักเวทที่กระหายอำนาจพร้อมที่จะแย่งชิงมันด้วยกำลัง ฉันเกรงว่าฉันไม่สามารถรับมันได้ไม่ว่าจะราคาเท่าไหร่",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "CrystalCore_2",
+          "text": "แกนคริสตัล... นายทำได้! ทำได้ดีมากเพื่อน นั่นคือพลังอันยิ่งใหญ่นายได้มา แต่นะฟังนะ... ยิ่งคนมีพลังมากเท่าไหร่ เขาก็มักจะมองไม่ค่อยชัดเท่านั้นแหละ",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "CrystalCore_3",
+          "text": "โฮ... กิลด์คงจะไม่พอใจฉันอย่างมากตอนนี้ แต่ด้วยหลักการแล้วฉันไม่สามารถขายแกนคริสตัลนี้ต่อไม่ว่าจะราคาเท่าไหร่ พลังของมันมันยิ่งใหญ่เกินไป และอันตรายของพลังไม่ใช่แค่มันเปลี่ยนแปลงคนคนหนึ่ง... แต่มันทำให้เขาเชื่อว่าเขาสมควรได้รับมัน... ไม่ว่าจะด้วยต้นทุนใดก็ตาม",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibGenericWeapon_1",
+          "text": "ฝีมือการผลิตของชาวคาเรสไม่เคยหยุดทำให้ประหลาดใจ อาวุธที่ประดับด้วยกระดูกอย่างหรูหรา น่าประทับใจจริงๆ",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibGenericWeapon_2",
+          "text": "ดาบโค้งเป็นอะไรที่พิเศษในคาร์-ทิบ มันตัดได้ง่ายกว่าเพราะใบมีดแล่นไปตามผิวหนังแทนที่จะบั่นเข้าไป ดังนั้น นายควรหลีกเลี่ยงไม่ให้ถูกมันดีที่สุด",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibGenericWeapon_3",
+          "text": "ชาวคาเรสเป็นคนที่รู้จักใช้ทรัพยากรจริงๆ กระดูกที่นายเห็นในอาวุธพวกนั้น ส่วนใหญ่ได้มาจากสิ่งมีชีวิตที่อาศัยอยู่ในผืนทรายทะเลทราย",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibGenericWeapon_4",
+          "text": "การซื้อที่ยอดเยี่ยม นั่นคืออาวุธคาเรสของแท้",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibGenericWeapon_5",
+          "text": "อาวุธนั้นมีต้นกำเนิดจากคาร์-ทิบ มันจะทำหน้าที่ได้ดี",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibGenericWeapon_6",
+          "text": "ฉันได้ยินชาวเอราเดียนพูดถึงวิธีที่นักรบคาเรสจุ่มใบมีดอาบแสงอาทิตย์ก่อนการต่อสู้ โดยอ้างว่ามันจะสร้างความเสียหายจากการเผาไหม้เพิ่มเติมแก่ศัตรู หึ เรื่องแต่งทั้งนั้น",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibGenericWeapon_7",
+          "text": "นายเคยเห็นใครใช้หอกที่มีใบมีดทั้งสองปลายไหม? ฉันได้ยินว่ามันเป็นที่นิยมอย่างน่าประหลาดใจในหมู่นักเวทจากแดนใต้",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SwordOfNaa_1",
+          "text": "นั่นอะไรบนแผ่นดินไบเอธน่ะ? นี่ของดัลกาเรียนเหรอ? โว้ว ฉันไม่มีทางจัดการของร้อนขนาดนี้ได้หรอกเพื่อน นายน่าจะเก็บมันไว้เอง",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SwordOfNaa_2",
+          "text": "เทพเจ้าช่วย... ดาบดัลกาเรียน? ไม่มีราคาที่นายจะตั้งให้มันได้หรอกเพื่อน! นายน่าจะเก็บมันไว้",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "SwordOfNaa_3",
+          "text": "ฉันไม่อยากเชื่อสายตาตัวเอง! ดาบดัลกาเรียนของแท้... มีคนนอกนั้นที่จะเชือดคอนายเพื่อให้ได้สิ่งนี้ไปนะเพื่อน ไม่มีทางที่ฉันจะเสี่ยงขายของร้อนขนาดนี้ต่อได้หรอก",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "WristBlade_1",
+          "text": "เครื่องมือนักฆ่าระดับสุดยอดนั่นเลย ใบมีดจะถูกซ่อนไว้จนกว่าจะถึงเวลาที่คุณต้องใช้มัน",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "WristBlade_2",
+          "text": "ต้นกำเนิดที่แท้จริงของใบมีดนั้นไม่เป็นที่รู้จัก แต่ความเชื่อทั่วไปคือมันถูกใช้ในหมู่สมาคมนักฆ่าแห่งคาร์-ทิบ แต่มันดูไม่น่าเชื่อสำหรับฉันนะ; มันดูไม่เหมือนฝีมือคาเรสเลยสักนิด",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "WristBlade_3",
+          "text": "กลไกนั่นมันน่าหลงใหลจริงๆ ฉันก็ไม่ค่อยเข้าใจมันเหมือนกัน",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibCheckout_Special",
+          "text": "ดีใจจริงๆที่มีนายเป็นลูกค้า เพื่อน ฉันเจอพวกประหลาดผ่านมาบ้างนะ แค่เมื่อวานก็มีคนร่อนเร่เดินเข้ามา... วิ่งไปมา พึมพำกับตัวเอง ทำเอาฉันกลัวเลย!",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibFirstLore_0",
+          "text": "ทีนี้... นายรู้ไหมว่านายได้อะไรน่ะ? นั่นมันมาจากคาร์-ทิบ! ไม่ใช่ที่ที่คุณจะลืมง่ายๆ แต่มันเป็นสถานที่ที่ซับซ้อน จำไว้... ไม่ใช่วัฒนธรรมที่ให้คำจำกัดความง่ายๆ",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibFirstLore_1",
+          "text": "เหมือนกับผืนผ้าหลากสีของเผ่าต่างๆ ที่กระจัดกระจายไปทั่วทะเลทราย แต่ละเผ่าต่างก็มีเจ้าเมือง ขนบธรรมเนียม และความแค้นเป็นของตัวเอง",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibFirstLore_2",
+          "text": "ความร้อนระอุในตอนกลางวัน หนาวเหน็บในตอนกลางคืน และไม่มีความเมตตาแม้แต่น้อยในระหว่างนั้น แต่ผู้คนล่ะ? แข็งแกร่งที่สุดเท่าที่มีมา",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibFirstLore_3",
+          "text": "แน่นอน พวกเขาก็ต้องเป็นอย่างนั้น กับสิ่งมีชีวิตบางอย่างที่ซุ่มซ่อนอยู่ใต้ผืนทราย... นายไม่อยากรู้ดอก!",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibLore_A_0",
+          "text": "แต่ละเผ่าในคาร์-ทิบสาบานว่าตนเป็นเผ่าแก่ที่สุด แข็งแกร่งที่สุด และเป็นผู้ปกครองที่ชอบธรรม",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibLore_A_1",
+          "text": "เรื่องตลกก็คือ ถ้านายนั่งคุยกับพวกเขานานพอ นายจะเริ่มเชื่อทุกๆเผ่า",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibLore_B_0",
+          "text": "คาร์-ทิบเป็นกลุ่มของเผ่าที่กระจายอำนาจมาโดยตลอด ยึดติดกันอย่างหลวมๆด้วยเอกลักษณ์ทางวัฒนธรรมที่มีร่วมกัน",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibLore_B_1",
+          "text": "ตอนนี้มีข่าวลือเกี่ยวกับเจ้าเมืองผู้ทรงพลังที่กำลังรวบรวมทุกเผ่าไว้ภายใต้ธงเดียวกัน ความคิดที่อันตรายนะ นั่น",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibLore_B_2",
+          "text": "ความแข็งแกร่งของคาร์-ทิบถูกกลั่นกรองด้วยการขาดความสามัคคีมาโดยตลอด... รวมมันเข้า แล้วคุณจะได้สิ่งที่โลกภายนอกต้องกังวล",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibLore_C_0",
+          "text": "อา คาร์-ทิบ... สิ่งแรกที่นายจะได้รู้คือทะเลทรายไม่ให้อภัยความผิดพลาด ฉันเคยเห็นกองคาราวานหายไปในชั่วข้ามคืน—ไม่มีรอยเท้า ไม่มีซากปรักหักพัง มีเพียงผืนทรายเรียบในตอนเช้า",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibLore_C_1",
+          "text": "ถ้านายได้ยินเสียงคำรามทุ้มๆนั่นละก็? อย่าได้ยืนหาคำตอบเด็ดขาด เชื่อฉันเหอะ",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibLore_D",
+          "text": "เคยเห็นเรือลากเลื่อนทรายไหม? สิ่งประดิษฐ์ประหลาดของคาร์-ทิบ ครึ่งเรือ ครึ่งปาฏิหาริย์ ออกแบบมาเพื่อแล่นข้ามทะเลทรายที่ไม่อาจข้ามผ่านได้",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibLore_E_0",
+          "text": "ตลาดของคาร์-ทิบนั้นโกลาหล... โกลาหลที่สวยงาม",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibLore_E_1",
+          "text": "เครื่องเทศอบอวลในอากาศ ผ้าสีสันสดใสกว่าเพชรพลอย และพ่อค้าทุกคนก็โน้มน้าวนายว่าราคาที่เขาให้นั้นจะทำให้เขาต้องเจ๊ง",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibLore_F",
+          "text": "กลางคืนมาเยือนคาร์-ทิบเร็วเท่าค้อนทุบ ตอนหนึ่งนายยังเหงื่อท่วมรองเท้า อีกตอนนายก็กลายเป็นน้ำแข็งภายใต้ท้องฟ้าที่ใสราวกับเอื้อมไปสัมผัสดาวโอรอน",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibLore_G",
+          "text": "การค้าในคาร์-ทิบเป็นเรื่องแปลก เหล็กและไม้แปรรูปจะเรียกค่าไถ่เท่ากับกษัตริย์ และตอบกลับมา คุณจะได้เห็นสิ่งทอและผลไม้ที่คุณจะไม่พบที่ไหนในไบเอธ",
+          "spriteAddress": null,
+          "videoAddress": null
         }
       ]
     },
@@ -15002,6 +15457,27 @@
           "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
           "id": "Rakta",
           "text": "รักตา",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTib",
+          "text": "คาร์-ทิบ",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibOutpostDesc",
+          "text": "ฐานทัพหน้าคาร์-ทิบ",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "KharTibDalgDesc",
+          "text": "ซากปรักหักพังดัลกาเรียนแห่งคาร์-ทิบ",
           "spriteAddress": null,
           "videoAddress": null
         }
@@ -15975,6 +16451,20 @@
           "text": "ชุดพลังจิต",
           "spriteAddress": null,
           "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleArmorKharTibName",
+          "text": "ชุดนักรบคาเรส",
+          "spriteAddress": null,
+          "videoAddress": null
+        },
+        {
+          "$type": "ThunderRoad.TextData+TextID, ThunderRoad",
+          "id": "BundleKharTibBundleT2Name",
+          "text": "ชุดดาบและโล่",
+          "spriteAddress": null,
+          "videoAddress": null
         }
       ]
     }
@@ -16157,8 +16647,8 @@
     {
       "$type": "ThunderRoad.TextData+Item, ThunderRoad",
       "id": "DualBladeStaff",
-      "name": "คทาวุธคมมีด",
-      "description": "อาวุธแปลกประหลาดจาก คาร์ ทิบ ว่ากันว่าใช้เพื่อการเต้นระบำมากกว่าการต่อสู้ แต่คมมีดก็คมและมีคุณภาพสูง"
+      "name": "ไม้เท้าสองคม",
+      "description": "อาวุธที่ไม่ธรรมดา ซึ่งว่ากันว่าใช้สำหรับการเต้นรำมากกว่าการต่อสู้ แต่ใบมีดยังคงคมและมีคุณภาพสูง"
     },
     {
       "$type": "ThunderRoad.TextData+Item, ThunderRoad",
@@ -16235,8 +16725,8 @@
     {
       "$type": "ThunderRoad.TextData+Item, ThunderRoad",
       "id": "WristBlade",
-      "name": "ดาบข้อมือ",
-      "description": "คมมีดลอบสังหารจาก คาร์ ทิบ การสวมใส่บนข้อมือจะช่วยให้ผู้ใช้แทงด้วยกำลังมากยิ่งขึ้นกว่าปกติ"
+      "name": "ใบมีดข้อมือ",
+      "description": "ใบมีดของนักลอบสังหารจากแหล่งกำเนิดอันแปลกใหม่ ใบมีดสามารถซ่อนไว้เพื่อความแนบเนียน และอุปกรณ์ที่ข้อมือช่วยให้ผู้ใช้แทงได้แรงกว่าปกติอย่างมาก"
     },
     {
       "$type": "ThunderRoad.TextData+Item, ThunderRoad",
@@ -16799,8 +17289,8 @@
     {
       "$type": "ThunderRoad.TextData+Item, ThunderRoad",
       "id": "SwordOldieFalchion",
-      "name": "ดาบสั้นฟัลชิออน",
-      "description": "ดาบสั้นฟัลชิออนเก่าแก่จาก คาร์ ทิบ ที่ใช้ในการต่อสู้ทางทะเลเพื่อป้องกันการโจมตีจากโจรสลัด เซนทารี"
+      "name": "ดาบฟัลเชียน",
+      "description": "ดาบฟัลเชียนโบราณที่มีต้นกำเนิดจากเซนทารี ใช้โดยกะลาสี เอกชน และโจรสลัดทั่วโลก"
     },
     {
       "$type": "ThunderRoad.TextData+Item, ThunderRoad",
@@ -17971,6 +18461,162 @@
       "id": "Dojo_Gong_Mallet",
       "name": "ค้อนตีฆ้อง",
       "description": null
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "AxeKharTibDouble",
+      "name": "ขวานสองหัว",
+      "description": "ขวานสงครามคาเรสที่หนักหน่วงและน่าเกรงขาม ต้องใช้พละกำลังและความอดทนเพื่อใช้งานได้อย่างมีประสิทธิภาพ แต่ทรงพลังมากและใช้งานได้หลากหลาย"
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "AxeLongKharTibWarpick",
+      "name": "กรงเล็บศึก",
+      "description": "อาวุธลูกผสมคาเรสระหว่างง้าวและเคียว ได้แรงบันดาลใจจากกรงเล็บอันดุดันของสัตว์ร้ายแห่งดินแดนคาร์-ทิบ"
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "DaggerKharTibHaladie",
+      "name": "มีดสั้นสองคม",
+      "description": "มีดสั้นคาเรสที่ต้องใช้เทคนิคพิเศษเพื่อใช้งานได้เต็มประสิทธิภาพ ในคาร์-ทิบ จะถูกพกพาอย่างเปิดเผยเพื่อเป็นสัญลักษณ์แห่งความสามารถของทหารชั้นยอด"
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "ShieldKharTib",
+      "name": "โล่คาเรส",
+      "description": "โล่จากคาร์-ทิบที่ถูกใช้โดยทหารจำนวนมากเพราะความสามารถในการโจมตีและป้องกันไปพร้อมกัน"
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "SwordKharTibKhopesh",
+      "name": "ดาบรูปเคียว",
+      "description": "อาวุธชั้นยอดที่มีต้นกำเนิดจากคาร์-ทิบ ผสานจุดแข็งของขวานและดาบเข้าไว้ด้วยกัน"
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "SwordKharTibScimitar",
+      "name": "ดาบซิมิตาร์",
+      "description": "ดาบคาเรสทั่วไป ออกแบบมาให้เป็นอาวุธฟันที่เรียบง่ายแต่ยอดเยี่ยม"
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "DualBladeStaffKharTib",
+      "name": "ไม้เท้าสองคมคาเรส",
+      "description": "ไม้เท้าศึกจากคาร์-ทิบ ไม่ค่อยพบเห็นในการต่อสู้ เนื่องจากว่ากันว่าสร้างขึ้นเพื่อการต่อสู้กับศัตรูมากกว่าหนึ่งคนในเวลาเดียวกัน โดยที่ผู้ใช้ไม่มีพันธมิตรอยู่ใกล้เคียง"
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "SpellBombLightning",
+      "name": "ระเบิดคริสตัลสายฟ้า",
+      "description": "อุปกรณ์ระเบิดที่ทำจากคริสตัลธาตุ ต้องติดตั้งแล้วจึงโยนทิ้ง หลังจากดีเลย์ ระเบิดนี้จะปล่อยสายฟ้าเป็นเส้นเฉือน"
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "SpellBombFire",
+      "name": "ระเบิดคริสตัลเพลิง",
+      "description": "อุปกรณ์ระเบิดที่ทำจากคริสตัลธาตุ ต้องติดตั้งแล้วจึงโยนทิ้ง จะเกิดระเบิดเพลิงก็ต่อเมื่ออยู่ใกล้ศัตรู"
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "SpellBombGravity",
+      "name": "ระเบิดคริสตัลแรงโน้มถ่วง",
+      "description": "อุปกรณ์ระเบิดที่ทำจากคริสตัลธาตุ ต้องติดตั้งแล้วจึงโยนทิ้ง เมื่อสัมผัส ระเบิดนี้จะสร้างแรงกระตุ้นแรงโน้มถ่วง"
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "BombQuiverLightning",
+      "name": "ระเบิดคริสตัลสายฟ้าหลายลูก",
+      "description": "อุปกรณ์ระเบิดที่ทำจากคริสตัลธาตุ ต้องติดตั้งแล้วจึงโยนทิ้ง หลังจากดีเลย์ ระเบิดนี้จะปล่อยสายฟ้าเป็นเส้นเฉือน"
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "BombQuiverFire",
+      "name": "ระเบิดคริสตัลเพลิงหลายลูก",
+      "description": "อุปกรณ์ระเบิดที่ทำจากคริสตัลธาตุ ต้องติดตั้งแล้วจึงโยนทิ้ง จะเกิดระเบิดเพลิงก็ต่อเมื่ออยู่ใกล้ศัตรู"
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "BombQuiverGravity",
+      "name": "ระเบิดคริสตัลแรงโน้มถ่วงหลายลูก",
+      "description": "อุปกรณ์ระเบิดที่ทำจากคริสตัลธาตุ ต้องติดตั้งแล้วจึงโยนทิ้ง เมื่อสัมผัส ระเบิดนี้จะสร้างแรงกระตุ้นแรงโน้มถ่วง"
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "KharTibCrossbow",
+      "name": "หน้าไม้",
+      "description": "หน้าไม้ขนาดกะทัดรัดขั้นสูง ขาดพลังเมื่อเทียบกับธนูทั่วไป แต่ชดเชยด้วยการยิงที่รวดเร็วและใช้งานง่าย สามารถบรรจุกระสุนได้หลายนัดในตัว ทำให้ผู้ใช้ไม่ต้องง้างลูกธนูทุกครั้งที่ยิง"
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "KharTibCrossbowBolt",
+      "name": "ลูกหน้าไม้",
+      "description": "กระสุนขนาดเล็กสำหรับหน้าไม้"
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "QuiverBolts",
+      "name": "กระบอกบรรจุลูกหน้าไม้",
+      "description": "กระสุนขนาดเล็กสำหรับหน้าไม้"
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "ApparelKharTibBoots",
+      "name": "รองเท้าบูทนักรบคาเรส",
+      "description": "รองเท้าบูทเดินทรายที่มีต้นกำเนิดจากคาร์-ทิบ เหมาะอย่างยิ่งสำหรับการปกป้องจากธาตุแห่งทะเลทราย"
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "ApparelKharTibGloveL",
+      "name": "เกราะแขนนักรบคาเรส (ซ้าย)",
+      "description": "เกราะป้องกันปลายแขนจากคาร์-ทิบ"
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "ApparelKharTibGloveR",
+      "name": "เกราะแขนนักรบคาเรส (ขวา)",
+      "description": "เกราะป้องกันปลายแขนจากคาร์-ทิบ"
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "ApparelKharTibHelmet",
+      "name": "หมวกนักรบคาเรส",
+      "description": "หมวกคาเรสน่าเกรงขามที่ช่วยปกป้องทั้งจากธาตุแห่งทะเลทรายและการโจมตีของศัตรู"
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "ApparelKharTibJacket",
+      "name": "เกราะอกนักรบคาเรส",
+      "description": "เกราะนักรบคาเรสที่ทำจากหนังแข็งของสัตว์ร้ายแห่งคาร์-ทิบ"
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "ApparelKharTibPants",
+      "name": "เกราะขานักรบคาเรส",
+      "description": "เกราะป้องกันขาจากคาร์-ทิบ"
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "ApparelKharTibShoulder",
+      "name": "เกราะไหล่นักรบคาเรส",
+      "description": "เกราะไหล่คาเรสที่ยังคงลักษณะบางอย่างจากสัตว์ร้ายที่นำมาสร้าง"
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "Cushion",
+      "name": "หมอนอิง",
+      "description": null
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "GenieLamp",
+      "name": "ตะเกียง",
+      "description": null
+    },
+    {
+      "$type": "ThunderRoad.TextData+Item, ThunderRoad",
+      "id": "KharTibDrum",
+      "name": "กลอง",
+      "description": null
     }
   ],
   "waves": [
@@ -18213,6 +18859,30 @@
       "id": "SentaraDuel",
       "title": "การดวลกับกัปตันเซนทารี",
       "description": "ต่อสู้กับกัปตันเซนทารีในการดวลจนตาย"
+    },
+    {
+      "$type": "ThunderRoad.TextData+Wave, ThunderRoad",
+      "id": "KharTibDuel",
+      "title": "การประลองนักรบคาเรส",
+      "description": "จงต่อสู้กับนักรบแห่งคาร์-ทิบในการประลองจนถึงตาย"
+    },
+    {
+      "$type": "ThunderRoad.TextData+Wave, ThunderRoad",
+      "id": "KharTibFull",
+      "title": "มาตรฐาน",
+      "description": "ต่อสู้กับศัตรูทุกรูปแบบของฝ่ายนี้."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Wave, ThunderRoad",
+      "id": "KharTibMeleeOnly",
+      "title": "ระยะประชิดเท่านั้น",
+      "description": "ต่อสู้กับศัตรูที่ใช้แค่อาวุธประชิดเท่านั้น."
+    },
+    {
+      "$type": "ThunderRoad.TextData+Wave, ThunderRoad",
+      "id": "KharTibSorceryOnly",
+      "title": "เวทมนตร์เท่านั้น",
+      "description": "ต่อสู้กับพ่อมดของฝ่ายนี้."
     }
   ]
 }

@@ -33,6 +33,8 @@
   "allowInRouletteMode": false,
   "combatSkill": false,
   "allowOnFirstWave": true,
-  "requiredSkills": [],
+  "requiredSkills": [
+    "HyperFocus"
+  ],
   "IsCombinedSkill": false
 }

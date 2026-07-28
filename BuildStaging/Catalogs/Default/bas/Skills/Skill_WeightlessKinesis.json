@@ -49,6 +49,9 @@
   "allowInRouletteMode": false,
   "combatSkill": false,
   "allowOnFirstWave": true,
-  "requiredSkills": [],
+  "requiredSkills": [
+    "Gravity",
+    "SlowTime"
+  ],
   "IsCombinedSkill": true
 }

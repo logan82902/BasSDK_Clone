@@ -9,6 +9,7 @@ namespace ThunderRoad
 {
     [HelpURL("https://kospy.github.io/BasSDK/Components/ThunderRoad/Items/Damager.html")]
     [DeclareHorizontalGroup("Depth", Sizes = new float[] { 0f, 125f })]
+    [DeclareVerticalGroup("Defaults")]
     public class Damager : MonoBehaviour
     {
         public static bool easyDismemberment = false;
@@ -39,6 +40,18 @@ namespace ThunderRoad
         [Tooltip("Length of which the item can pierce/slash with.\nSet to 0 for Blunt damage and single-point Pierce damage.")]
         [Min(0f)]
         public float penetrationLength = 0;
+
+#if UNITY_EDITOR
+        [Dropdown(nameof(GetAllDamagerID), AppendToField = true)]
+#endif
+        [LabelWidth(90f)]
+        [Title("Defaults")]
+        [Tooltip("The damager data to load with, may be overridden by an item if this damager is on an item")]
+        [Group("Defaults")]
+        public string damagerID;
+        [Group("Defaults")]
+        [Tooltip("The collisionHandler to apply to, may be overridden by an item if this damager is on an item")]
+        public CollisionHandler collisionHandler;
 
  // ProjectCore
         public enum Direction
@@ -124,5 +137,9 @@ namespace ThunderRoad
         public void UnPenetrateAll()
         {
         }
+        
+#if UNITY_EDITOR
+        public TriDropdownList<string> GetAllDamagerID() => Catalog.GetDropdownAllID(Category.Damager);
+#endif
     }
 }

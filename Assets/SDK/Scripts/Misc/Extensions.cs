@@ -11,10 +11,12 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Profiling;
 
+
 #if UNITY_EDITOR
 using UnityEditor;
 using UnityEditor.AddressableAssets.Settings;
 using UnityEngine.Rendering;
+using UnityEditor.AddressableAssets;
 #endif
 
 namespace ThunderRoad
@@ -195,8 +197,18 @@ namespace ThunderRoad
                 settings.SetDirty(AddressableAssetSettings.ModificationEvent.GroupRemoved, null, true, true);
             }
         }
+
+        public static bool IsPrefabInstanceRoot(this GameObject gameObject, out bool isAddressable)
+        {
+            isAddressable = false;
+            if (gameObject == null || PrefabUtility.GetNearestPrefabInstanceRoot(gameObject) != gameObject) return false;
+            string guid = AssetDatabase.AssetPathToGUID(PrefabUtility.GetPrefabAssetPathOfNearestInstanceRoot(gameObject));
+            AddressableAssetSettings settings = AddressableAssetSettingsDefaultObject.Settings;
+            isAddressable = settings != null && settings.FindAssetEntry(guid, includeImplicit: true) != null;
+            return true;
+        }
 #endif
-        
+
         private static List<Component> GetDependentComponents(Component target)
         {
             var result = new List<Component>();
@@ -212,9 +224,9 @@ namespace ThunderRoad
 
                 foreach (RequireComponent attr in attrs)
                 {
-                    if (attr.m_Type0 == targetType ||
-                        attr.m_Type1 == targetType ||
-                        attr.m_Type2 == targetType)
+                    if ((attr.m_Type0 != null && targetType.IsSameOrSubclassOf(attr.m_Type0)) ||
+                        (attr.m_Type1 != null && targetType.IsSameOrSubclassOf(attr.m_Type1)) ||
+                        (attr.m_Type2 != null && targetType.IsSameOrSubclassOf(attr.m_Type2)))
                     {
                         result.Add(comp);
                         break;
@@ -932,6 +944,11 @@ namespace ThunderRoad
             return ((flags & value) > 0);
         }
 
+        public static bool HasFlagNoGC(this SimpleBreakable.DamageType flags, SimpleBreakable.DamageType value)
+        {
+            return ((flags & value) > 0);
+        }
+
         public static bool HasFlagNoGC(this BuildSettings.ContentFlag flags, BuildSettings.ContentFlag value)
         {
             return ((flags & value) > 0);
@@ -1113,6 +1130,12 @@ namespace ThunderRoad
         {
             fromdir.x = 0;
             return fromdir;
+        }
+
+        public static bool IsInsideMinMax(this Vector2 minMax, float value, bool inclusive = true)
+        {
+            if (inclusive) return value >= minMax.x && value <= minMax.y;
+            return value > minMax.x && value < minMax.y;
         }
 
         public static Vector2 ClampMinMax(this Vector2 vector, float min, float max)

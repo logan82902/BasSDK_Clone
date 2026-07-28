@@ -1,12 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+using System.Collections;
 using System.Globalization;
 using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-
 using TriInspector;
+
 namespace ThunderRoad
 {
     public class UIWaveSpawner : MonoBehaviour

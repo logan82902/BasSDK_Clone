@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor;
-
 using TriInspector;
+#if UNITY_EDITOR
+using UnityEditor;
+using UnityEditor.SceneManagement;
+#endif
 
 namespace ThunderRoad
 {
@@ -126,24 +128,32 @@ namespace ThunderRoad
             meshFilter.transform.localRotation = Quaternion.identity;
             meshFilter.transform.localScale = Vector3.one;
             meshFilter.sharedMesh = imbueMesh;
-            //creates a directory and saves the mesh as an asset
-            int meshNumber = 1;
 
 #if (UNITY_EDITOR)
             if (!Application.isPlaying)
             {
-                System.IO.Directory.CreateDirectory("Assets/Private/Generated Meshes");
-                string path = Application.dataPath + "/Private/Generated Meshes/ImbueGeneratedMesh" + name + meshNumber;
-                if (System.IO.File.Exists(path))
+                string imbueMeshPath = string.Empty;
+                
+                PrefabStage currentPrefabStage = UnityEditor.SceneManagement.PrefabStageUtility.GetCurrentPrefabStage();
+                if (currentPrefabStage != null)
                 {
-                    Debug.Log("File ImbueGeneratedMesh" + name + " already exists. Renaming current ImbueGeneratedMesh.");
-                    while (System.IO.File.Exists(Application.dataPath + "/Private/Generated Meshes/ImbueGeneratedMesh" + name + meshNumber))
-                    {
-                        meshNumber++;
-                    }
+                    // Prefab editor
+                    imbueMeshPath = currentPrefabStage.assetPath;
                 }
-
-                AssetDatabase.CreateAsset(imbueMesh, "Assets/Private/Generated Meshes/ImbueGeneratedMesh" + name + meshNumber);
+                else if (PrefabUtility.GetNearestPrefabInstanceRoot(this))
+                {
+                    // Prefab in scene
+                    imbueMeshPath = PrefabUtility.GetPrefabAssetPathOfNearestInstanceRoot(this);
+                }
+                else
+                {
+                    // Not a prefab -> don't run the rest of the method then?
+                    Debug.LogError("Unable to create an imbue mesh if the object is not a prefab!");
+                    return;
+                }
+                string path = imbueMeshPath.Replace(".prefab", "_VFXMesh.asset");
+                
+                AssetDatabase.CreateAsset(imbueMesh, path);
             }
 #endif
             imbueEffectRenderer = meshFilter.gameObject.AddComponent<MeshRenderer>();

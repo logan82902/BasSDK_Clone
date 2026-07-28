@@ -9,6 +9,7 @@
   "description": "New Area system\nBegin your first Dungeon adventure in the Greenlands; characterized by its ruined castle-like stone structures and cave systems. ",
   "descriptionLocalizationId": "OutpostDescription",
   "sceneAddress": "Level.Areas",
+  "sceneVariants": null,
   "showOnlyDevMode": true,
   "showInLevelSelection": true,
   "worldMapId": "Eraden",
@@ -105,5 +106,6 @@
   ],
   "customCameras": [],
   "throwableRefType": "Item",
-  "improvisedThrowableID": null
+  "improvisedThrowableID": null,
+  "HasSceneVariants": false
 }

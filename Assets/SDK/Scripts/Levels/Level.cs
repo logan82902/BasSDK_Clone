@@ -103,5 +103,20 @@ namespace ThunderRoad
             seed = UnityEngine.Random.Range(int.MinValue, int.MaxValue);
         }
 
+        public bool TryGetCustomReference(string name, out CustomReference customReference)
+        {
+            bool found = false;
+            customReference = null;
+            for (var i = 0; i < customReferences.Count; i++)
+            {
+                if (customReferences[i].name != name) continue;
+                customReference = customReferences[i];
+                found = true;
+                break;
+            }
+
+            return found;
+        }
+
     }
 }

@@ -96,6 +96,8 @@
   "allowInRouletteMode": true,
   "combatSkill": true,
   "allowOnFirstWave": true,
-  "requiredSkills": [],
+  "requiredSkills": [
+    "BruteForce"
+  ],
   "IsCombinedSkill": false
 }
