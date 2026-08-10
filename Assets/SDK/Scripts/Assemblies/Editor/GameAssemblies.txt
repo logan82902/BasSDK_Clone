@@ -155,6 +155,7 @@ Unity.XR.Management
 Unity.XR.MockHMD
 Unity.XR.Oculus
 Unity.XR.OpenVR
+Unity.XR.OpenXR
 Unity.XR.PICO
 UnityEngine.AccessibilityModule
 UnityEngine.AIModule
