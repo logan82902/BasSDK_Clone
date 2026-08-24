@@ -101,7 +101,7 @@ namespace ThunderRoad
 
         [Group("Box/Horiz/Verti/References")]
         [HideReferencePicker]
-        [ListDrawerSettings(Draggable = false, HideAddButton = true, HideRemoveButton = true, AlwaysExpanded = true)]
+        [ListDrawerSettings(Draggable = false, AlwaysExpanded = true)]
         public List<ItemData.ColliderGroup> colliderGroups;
         [Group("Box/Horiz/Verti/References")]
         [HideReferencePicker]
@@ -325,11 +325,10 @@ namespace ThunderRoad
         public ItemData GetModifiedData()
         {
             ItemData cloned = baseData.CloneJson();
-            cloned.filePath = saveFolder + "/Item_" + cloned.category + "_" + cloned.id + ".json";
+            cloned.id = customId;
             cloned.prefabAddress = Catalog.GetAddressFromPrefab(itemPrefab);
             cloned.iconAddress = Catalog.GetAddressFromPrefab(icon);
             cloned.closeUpIconAddress = Catalog.GetAddressFromPrefab(iconClose);
-            cloned.id = customId;
             cloned.localizationId = customId;
             cloned.displayName = displayName;
             cloned.description = description;
@@ -339,9 +338,17 @@ namespace ThunderRoad
             mass.Run(cloned);
             flags.Run(cloned);
             if (clearWhooshes) cloned.whooshs = new List<ItemData.Whoosh>();
-            cloned.colliderGroups = colliderGroups;
-            cloned.damagers = damagers;
-            cloned.Interactables = interactables;
+            cloned.colliderGroups = new List<ItemData.ColliderGroup>(colliderGroups);
+            for (int i = cloned.colliderGroups.Count - 1; i >= 0; i--)
+            {
+                if (cloned.colliderGroups[i].colliderGroupId.IsNullOrEmptyOrWhitespace())
+                {
+                    cloned.colliderGroups.RemoveAt(i);
+                }
+            }
+            cloned.damagers = new List<ItemData.Damager>(damagers);
+            cloned.Interactables = new List<ItemData.Interactable>(interactables);
+            cloned.filePath = saveFolder + "/Item_" + cloned.type + "_" + cloned.id + ".json";
             return cloned;
         }
     }
