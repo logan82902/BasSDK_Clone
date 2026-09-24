@@ -290,22 +290,23 @@ namespace ThunderRoad
             if (!Mathf.Approximately(previousTargetWeight, targetWeight))
                 hasDataChanged = true;
             previousTargetWeight = targetWeight;
-            if (Catalog.gameData != null)
-            {
-                if (defaultHandPoseData == null || defaultHandPoseData.id != defaultHandPoseId)
-                {
-                    defaultHandPoseData = Catalog.GetData<HandPoseData>(defaultHandPoseId);
-                    if (defaultHandPoseData != null) defaultHandPose = defaultHandPoseData.GetCreaturePose(creatureName);
-                    hasDataChanged = true;
-                }
 
-                if (targetHandPoseData == null || targetHandPoseData.id != targetHandPoseId)
-                {
-                    targetHandPoseData = Catalog.GetData<HandPoseData>(targetHandPoseId);
-                    if (targetHandPoseData != null) targetHandPose = targetHandPoseData.GetCreaturePose(creatureName);
-                    hasDataChanged = true;
-                }
+            if (!Catalog.IsJsonLoaded()) Catalog.EditorLoadAllJson(true, true, true);
+
+            if (defaultHandPoseData == null || defaultHandPoseData.id != defaultHandPoseId)
+            {
+                defaultHandPoseData = Catalog.GetData<HandPoseData>(defaultHandPoseId);
+                if (defaultHandPoseData != null) defaultHandPose = defaultHandPoseData.GetCreaturePose(creatureName);
+                hasDataChanged = true;
             }
+
+            if (targetHandPoseData == null || targetHandPoseData.id != targetHandPoseId)
+            {
+                targetHandPoseData = Catalog.GetData<HandPoseData>(targetHandPoseId);
+                if (targetHandPoseData != null) targetHandPose = targetHandPoseData.GetCreaturePose(creatureName);
+                hasDataChanged = true;
+            }
+
             if (!handle) handle = GetComponentInParent<Handle>();
             Vector3 defaultAxisPosition = transform.position;
             Vector3 offset = -transform.position;
