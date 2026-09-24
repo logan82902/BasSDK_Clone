@@ -337,8 +337,9 @@ namespace ThunderRoad
         {
             previewRagdollHand.transform.SetPositionAndRotation(gripMatrix.MultiplyPoint3x4(Vector3.zero), gripMatrix.rotation);
 
-            var defaultFingers = defaultHandPose.GetFingers(side);
-            var targetFingers = targetHandPose.GetFingers(side);
+            var defaultFingers = defaultHandPose?.GetFingers(side);
+            if (defaultFingers == null) return;
+            var targetFingers = targetHandPose?.GetFingers(side);
             bool blend = targetWeight > 0 && targetFingers != null;
             previewPoser.UpdateFinger(previewRagdollHand.fingerThumb, defaultFingers.thumb, blend ? targetFingers.thumb : defaultFingers.thumb, blend ? targetWeight : 0);
             previewPoser.UpdateFinger(previewRagdollHand.fingerIndex, defaultFingers.index, blend ? targetFingers.index : defaultFingers.index, blend ? targetWeight : 0);
