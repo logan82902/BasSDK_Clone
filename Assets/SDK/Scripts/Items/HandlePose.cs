@@ -1,4 +1,7 @@
 ﻿using UnityEngine;
+#if UNITY_EDITOR
+using UnityEditor.SceneManagement;
+#endif
 using System;
 
 
@@ -10,14 +13,22 @@ namespace ThunderRoad
 	public class HandlePose : MonoBehaviour
     {
         [Tooltip("References the handle this handpose is attached to.")]
+        [Group("General")]
+        [PropertyOrder(0)]
         public Handle handle;
         [Tooltip("Depicts which hand this handpose directs to.")]
+        [Group("General")]
+        [PropertyOrder(2)]
         public Side side = Side.Right;
         [Tooltip("ID of the handpose that is set to default if the target weight is zero.")]
-        [CatalogPicker(new[] {Category.HandPose})]
+        [Dropdown(nameof(GetAllHandPoseIds))]
+        [Group("Pose")]
+        [PropertyOrder(0)]
         public string defaultHandPoseId = "HandleDefault";
 
         [Tooltip("A per-HandlePose override for the Handle's SpellOrbTarget")]
+        [Group("General")]
+        [PropertyOrder(1)]
         public Transform spellOrbTarget;
         [NonSerialized]
         public HandPoseData defaultHandPoseData;
@@ -25,12 +36,16 @@ namespace ThunderRoad
 
         [Range(0f, 1f)]
         [Tooltip("Blends the \"Default\" handpose and the \"Target\" handpose, allowing you to create more unique and fitting handposes without needing to create new ones.")]
+        [Group("Pose")]
+        [PropertyOrder(2)]
         public float targetWeight;
         [NonSerialized]
         public float lastTargetWeight = -1;
 
         [Tooltip("ID of the handpose that is used to blend against the default handpose. Handpose that is used if the target weight is one.")]
-        [CatalogPicker(new[] {Category.HandPose})]
+        [Dropdown(nameof(GetAllHandPoseIds))]
+        [Group("Pose")]
+        [PropertyOrder(1)]
         public string targetHandPoseId;
         [NonSerialized]
         public HandPoseData targetHandPoseData;
@@ -53,16 +68,70 @@ namespace ThunderRoad
             targetHandPoseData = Catalog.GetData<HandPoseData>(targetHandPoseId) ??
                                   Catalog.GetData<HandPoseData>("HandleDefault");
         }
+ 
+        /// <summary>Returns a dropdown list of all creature IDs in the catalog.</summary>
+        public TriDropdownList<string> GetAllCreatureIDs() => Catalog.GetDropdownAllID(Category.Creature);
+
+        /// <summary>Returns a dropdown list of all hand pose IDs in the catalog.</summary>
+        public TriDropdownList<string> GetAllHandPoseIds() => Catalog.GetDropdownAllID(Category.HandPose);
 
 #if UNITY_EDITOR
+ 
+        /// <summary>
+        /// The type of preview the hand pose shows.
+        /// <see cref="PreviewMode.GizmoMesh"/> shows a gizmo wire mesh, <see cref="PreviewMode.GizmoWire"/> shows the legacy wire gizmo and <see cref="PreviewMode.Mesh"/> shows a solid mesh.
+        /// </summary>
+        protected enum PreviewMode
+        {
+            GizmoMesh,
+            GizmoWire,
+            Mesh
+        }
 
-        [Header("Editor Only")]
+        /// <summary>The constant player pref id that saves the <see cref="PreviewMode"/> selection.</summary>
+        public const string _HANDLEPOSE_PREVIEWMODE = "_HANDLEPOSE_PREVIEWMODE";
+
+        /// <summary>Returns the saved <see cref="PreviewMode"/> selection from the PlayerPrefs</summary>
+        [ShowInInspector]
+        [Title("Editor Only", HorizontalLine = false)]
+        [Group("Editor")]
+        [PropertyOrder(0)]
+        protected PreviewMode previewMode
+        {
+            get => (PreviewMode)PlayerPrefs.GetInt(_HANDLEPOSE_PREVIEWMODE);
+            set => PlayerPrefs.SetInt(_HANDLEPOSE_PREVIEWMODE, (int)value);
+        }
+
+        [Group("Editor")]
+        [PropertyOrder(2)]
         [Tooltip("Allows you to select a creature to test the handpose on.")]
         public Creature creature;
-        [CatalogCreatureNamePicker()]
+        [Dropdown(nameof(GetAllCreatureIDs))]
         [Tooltip("Uses the ID of the creature to ensure that the hand bones are correct.")]
+        [Group("Editor")]
+        [PropertyOrder(1)]
         public string creatureName = "HumanMale";
 
+        /// <summary>The scriptable object that contains the creature to previews mapping.</summary>
+        private HandPosePreviewSO handPosePreview;
+        /// <summary>The preview instance that contains the hand mesh.</summary>
+        private GameObject previewInstance;
+        /// <summary>The <see cref="RagdollHand"/> on the preview instance.</summary>
+        private RagdollHand previewRagdollHand;
+        /// <summary>The <see cref="RagdollHandPoser"/> on the preview instance.</summary>
+        private RagdollHandPoser previewPoser;
+        /// <summary>The <see cref="SkinnedMeshRenderer"/> on the preview instance.</summary>
+        private SkinnedMeshRenderer previewSmr;
+        /// <summary>The cached baked mesh to be used in the gizmo draw.</summary>
+        private Mesh cachedGizmoMesh;
+        /// <summary>The previous <see cref="targetWeight"/> to check if we need to update the baked mesh.</summary>
+        private float previousTargetWeight;
+        /// <summary>Flag to see if we need to update the baked mesh.</summary>
+        private bool hasDataChanged;
+        /// <summary>Flag if the parent handle is selected.</summary>
+        private bool isHandleSelected;
+        /// <summary>Flag if this object is selected.</summary>
+        private bool isSelfSelected;
         
 #if UNITY_EDITOR
         public virtual void OnValidate()
@@ -79,6 +148,12 @@ namespace ThunderRoad
         private void OnDestroy()
         {
 #if UNITY_EDITOR
+            if (previewInstance != null)
+            {
+                DestroyImmediate(previewInstance);
+                previewInstance = null;
+            }
+
             UnityEditor.EditorApplication.delayCall -= _OnValidate;
 #endif
         }
@@ -120,6 +195,8 @@ namespace ThunderRoad
         
 
         [Button]
+        [Group("Editor")]
+        [PropertyOrder(3)]
         public void EditorCreatureGrab()
         {
             if (creature)
@@ -148,20 +225,85 @@ namespace ThunderRoad
             }
         }
 
+       /// <summary>Ensures a preview instance is present or creates a new one.</summary>
+       protected void EnsurePreviewInstance()
+       {
+           HandPosePreviewSO preview = null;
+           // find preview SO if not yet present or creature id changed
+           if (handPosePreview == null || handPosePreview.creatureId != creatureName)
+           {
+               preview = HandPosePreviewSO.FindHandPosePreview(creatureName);
+           }
+
+           if (previewInstance != null)
+           {
+               if (preview == null && previewRagdollHand.side == side)
+                   return;
+               // destroy preview instance if creature id or side changed
+               DestroyImmediate(previewInstance);
+               previewInstance = null;
+           }
+
+           handPosePreview = preview;
+           if (handPosePreview == null || handPosePreview.GetPrefab(side) == null)
+               return;
+
+           // instantiate preview prefab
+           previewInstance = Instantiate(handPosePreview.GetPrefab(side));
+           previewInstance.hideFlags = HideFlags.HideAndDontSave;
+           previewInstance.SetActive(false);
+           StageUtility.PlaceGameObjectInCurrentStage(previewInstance);
+
+           previewRagdollHand = previewInstance.GetComponentInChildren<RagdollHand>(true);
+           previewPoser = previewInstance.GetComponentInChildren<RagdollHandPoser>(true);
+           previewSmr = previewInstance.GetComponentInChildren<SkinnedMeshRenderer>(true);
+           hasDataChanged = true;
+
+           if (previewRagdollHand == null || previewPoser == null || previewSmr == null)
+           {
+               Debug.LogError($"{previewInstance.name} is missing RagdollHand/RagdollHandPoser/SMR.");
+               DestroyImmediate(previewInstance);
+               previewInstance = null;
+           }
+       }
+
+       /// <summary>Disables hand preview when  not selected.</summary>
+       protected void OnDrawGizmos()
+       {
+           isSelfSelected = false;
+           isHandleSelected = false;
+           foreach (var selection in UnityEditor.Selection.gameObjects)
+           {
+               isSelfSelected |= selection == gameObject;
+               isHandleSelected |= selection == handle.gameObject;
+           }
+           // only show the actual hand renderer if mesh preview mode is enabled and it is selected
+           if (previewInstance != null)
+               previewInstance.SetActive(isSelfSelected && previewMode == PreviewMode.Mesh);
+       }
+
         protected void OnDrawGizmosSelected()
         {
+            // only show gizmos if it or the handle is selected
+            if (!isSelfSelected && !isHandleSelected)
+                return;
+            if (!Mathf.Approximately(previousTargetWeight, targetWeight))
+                hasDataChanged = true;
+            previousTargetWeight = targetWeight;
             if (Catalog.gameData != null)
             {
                 if (defaultHandPoseData == null || defaultHandPoseData.id != defaultHandPoseId)
                 {
                     defaultHandPoseData = Catalog.GetData<HandPoseData>(defaultHandPoseId);
                     if (defaultHandPoseData != null) defaultHandPose = defaultHandPoseData.GetCreaturePose(creatureName);
+                    hasDataChanged = true;
                 }
 
                 if (targetHandPoseData == null || targetHandPoseData.id != targetHandPoseId)
                 {
                     targetHandPoseData = Catalog.GetData<HandPoseData>(targetHandPoseId);
                     if (targetHandPoseData != null) targetHandPose = targetHandPoseData.GetCreaturePose(creatureName);
+                    hasDataChanged = true;
                 }
             }
             if (!handle) handle = GetComponentInParent<Handle>();
@@ -177,43 +319,86 @@ namespace ThunderRoad
                 Matrix4x4 gripMatrix = Matrix4x4.TRS(defaultAxisPosition + (transform.position + offset), this.transform.rotation * Quaternion.Inverse(defaultHandPose.GetFingers(side).gripLocalRotation), Vector3.one);
                 gripMatrix *= Matrix4x4.TRS(-defaultHandPose.GetFingers(side).gripLocalPosition, Quaternion.identity, Vector3.one);
 
-                Gizmos.matrix = gripMatrix;
-                Gizmos.color = Common.HueColourValue(HueColorName.Red);
-
-                // Need to spin the transform so the transform.TransformPoint works correctly for left hand
-                Quaternion originalRotation = transform.rotation;
-                if (side == Side.Left) transform.rotation *= Quaternion.Euler(0f, 0f, 180f);
-                Vector3 rootLocalPosition = gripMatrix.inverse.MultiplyPoint3x4(this.transform.TransformPoint(defaultHandPose.GetFingers(side).rootLocalPosition) + (defaultAxisPosition + offset) + (transform.position + offset));
-                if (side == Side.Left) transform.rotation = originalRotation;
-
-                if (targetWeight > 0 && targetHandPoseId != null && targetHandPoseId != "" && targetHandPose != null)
+                if (previewMode != PreviewMode.GizmoWire)
+                    EnsurePreviewInstance();
+                // only draw the mesh (gizmos) if it is selected
+                if (isSelfSelected && previewRagdollHand != null && previewPoser != null && previewSmr != null && previewMode != PreviewMode.GizmoWire)
                 {
-                    Gizmos.DrawLine(rootLocalPosition, Vector3.Lerp(defaultHandPose.GetFingers(side).thumb.proximal.localPosition, targetHandPose.GetFingers(side).thumb.proximal.localPosition, targetWeight));
-                    Gizmos.DrawLine(rootLocalPosition, Vector3.Lerp(defaultHandPose.GetFingers(side).index.proximal.localPosition, targetHandPose.GetFingers(side).index.proximal.localPosition, targetWeight));
-                    Gizmos.DrawLine(rootLocalPosition, Vector3.Lerp(defaultHandPose.GetFingers(side).middle.proximal.localPosition, targetHandPose.GetFingers(side).middle.proximal.localPosition, targetWeight));
-                    Gizmos.DrawLine(rootLocalPosition, Vector3.Lerp(defaultHandPose.GetFingers(side).ring.proximal.localPosition, targetHandPose.GetFingers(side).ring.proximal.localPosition, targetWeight));
-                    Gizmos.DrawLine(rootLocalPosition, Vector3.Lerp(defaultHandPose.GetFingers(side).little.proximal.localPosition, targetHandPose.GetFingers(side).little.proximal.localPosition, targetWeight));
-                    Gizmos.color = Common.HueColourValue(HueColorName.Orange);
-                    GizmoDrawFinger(defaultHandPose.GetFingers(side).thumb, targetHandPose.GetFingers(side).thumb, gripMatrix);
-                    GizmoDrawFinger(defaultHandPose.GetFingers(side).index, targetHandPose.GetFingers(side).index, gripMatrix);
-                    GizmoDrawFinger(defaultHandPose.GetFingers(side).middle, targetHandPose.GetFingers(side).middle, gripMatrix);
-                    GizmoDrawFinger(defaultHandPose.GetFingers(side).ring, targetHandPose.GetFingers(side).ring, gripMatrix);
-                    GizmoDrawFinger(defaultHandPose.GetFingers(side).little, targetHandPose.GetFingers(side).little, gripMatrix);
+                    GizmoDrawMeshHand(gripMatrix);
                 }
                 else
+                    GizmoDrawWireHand(gripMatrix, defaultAxisPosition, offset);
+            }
+        }
+
+        /// <summary>Draws a gizmo mesh representation of a posed hand.</summary>
+        protected void GizmoDrawMeshHand(Matrix4x4 gripMatrix)
+        {
+            previewRagdollHand.transform.SetPositionAndRotation(gripMatrix.MultiplyPoint3x4(Vector3.zero), gripMatrix.rotation);
+
+            var defaultFingers = defaultHandPose.GetFingers(side);
+            var targetFingers = targetHandPose.GetFingers(side);
+            bool blend = targetWeight > 0 && targetFingers != null;
+            previewPoser.UpdateFinger(previewRagdollHand.fingerThumb, defaultFingers.thumb, blend ? targetFingers.thumb : defaultFingers.thumb, blend ? targetWeight : 0);
+            previewPoser.UpdateFinger(previewRagdollHand.fingerIndex, defaultFingers.index, blend ? targetFingers.index : defaultFingers.index, blend ? targetWeight : 0);
+            previewPoser.UpdateFinger(previewRagdollHand.fingerMiddle, defaultFingers.middle, blend ? targetFingers.middle : defaultFingers.middle, blend ? targetWeight : 0);
+            previewPoser.UpdateFinger(previewRagdollHand.fingerRing, defaultFingers.ring, blend ? targetFingers.ring : defaultFingers.ring, blend ? targetWeight : 0);
+            previewPoser.UpdateFinger(previewRagdollHand.fingerLittle, defaultFingers.little, blend ? targetFingers.little : defaultFingers.little, blend ? targetWeight : 0);
+
+            if (previewMode == PreviewMode.GizmoMesh)
+            {
+                // only bake the mesh if there was an actual change
+                if (hasDataChanged)
                 {
-                    Gizmos.DrawLine(rootLocalPosition, defaultHandPose.GetFingers(side).thumb.proximal.localPosition);
-                    Gizmos.DrawLine(rootLocalPosition, defaultHandPose.GetFingers(side).index.proximal.localPosition);
-                    Gizmos.DrawLine(rootLocalPosition, defaultHandPose.GetFingers(side).middle.proximal.localPosition);
-                    Gizmos.DrawLine(rootLocalPosition, defaultHandPose.GetFingers(side).ring.proximal.localPosition);
-                    Gizmos.DrawLine(rootLocalPosition, defaultHandPose.GetFingers(side).little.proximal.localPosition);
-                    Gizmos.color = Common.HueColourValue(HueColorName.Orange);
-                    GizmoDrawFinger(defaultHandPose.GetFingers(side).thumb, null, gripMatrix);
-                    GizmoDrawFinger(defaultHandPose.GetFingers(side).index, null, gripMatrix);
-                    GizmoDrawFinger(defaultHandPose.GetFingers(side).middle, null, gripMatrix);
-                    GizmoDrawFinger(defaultHandPose.GetFingers(side).ring, null, gripMatrix);
-                    GizmoDrawFinger(defaultHandPose.GetFingers(side).little, null, gripMatrix);
+                    cachedGizmoMesh = new Mesh();
+                    previewSmr.BakeMesh(cachedGizmoMesh);
+                    hasDataChanged = false;
                 }
+                Gizmos.matrix = previewSmr.transform.localToWorldMatrix;
+                Gizmos.color = Common.HueColourValue(HueColorName.Orange);
+                Gizmos.DrawWireMesh(cachedGizmoMesh);
+            }
+        }
+
+        /// <summary>Draws a gizmo wire representation of a posed hand.</summary>
+        protected void GizmoDrawWireHand(Matrix4x4 gripMatrix, Vector3 defaultAxisPosition, Vector3 offset)
+        {
+            Gizmos.matrix = gripMatrix;
+            Gizmos.color = Common.HueColourValue(HueColorName.Red);
+
+            // Need to spin the transform so the transform.TransformPoint works correctly for left hand
+            Quaternion originalRotation = transform.rotation;
+            if (side == Side.Left) transform.rotation *= Quaternion.Euler(0f, 0f, 180f);
+            Vector3 rootLocalPosition = gripMatrix.inverse.MultiplyPoint3x4(this.transform.TransformPoint(defaultHandPose.GetFingers(side).rootLocalPosition) + (defaultAxisPosition + offset) + (transform.position + offset));
+            if (side == Side.Left) transform.rotation = originalRotation;
+
+            if (targetWeight > 0 && targetHandPoseId != null && targetHandPoseId != "" && targetHandPose != null)
+            {
+                Gizmos.DrawLine(rootLocalPosition, Vector3.Lerp(defaultHandPose.GetFingers(side).thumb.proximal.localPosition, targetHandPose.GetFingers(side).thumb.proximal.localPosition, targetWeight));
+                Gizmos.DrawLine(rootLocalPosition, Vector3.Lerp(defaultHandPose.GetFingers(side).index.proximal.localPosition, targetHandPose.GetFingers(side).index.proximal.localPosition, targetWeight));
+                Gizmos.DrawLine(rootLocalPosition, Vector3.Lerp(defaultHandPose.GetFingers(side).middle.proximal.localPosition, targetHandPose.GetFingers(side).middle.proximal.localPosition, targetWeight));
+                Gizmos.DrawLine(rootLocalPosition, Vector3.Lerp(defaultHandPose.GetFingers(side).ring.proximal.localPosition, targetHandPose.GetFingers(side).ring.proximal.localPosition, targetWeight));
+                Gizmos.DrawLine(rootLocalPosition, Vector3.Lerp(defaultHandPose.GetFingers(side).little.proximal.localPosition, targetHandPose.GetFingers(side).little.proximal.localPosition, targetWeight));
+                Gizmos.color = Common.HueColourValue(HueColorName.Orange);
+                GizmoDrawFinger(defaultHandPose.GetFingers(side).thumb, targetHandPose.GetFingers(side).thumb, gripMatrix);
+                GizmoDrawFinger(defaultHandPose.GetFingers(side).index, targetHandPose.GetFingers(side).index, gripMatrix);
+                GizmoDrawFinger(defaultHandPose.GetFingers(side).middle, targetHandPose.GetFingers(side).middle, gripMatrix);
+                GizmoDrawFinger(defaultHandPose.GetFingers(side).ring, targetHandPose.GetFingers(side).ring, gripMatrix);
+                GizmoDrawFinger(defaultHandPose.GetFingers(side).little, targetHandPose.GetFingers(side).little, gripMatrix);
+            }
+            else
+            {
+                Gizmos.DrawLine(rootLocalPosition, defaultHandPose.GetFingers(side).thumb.proximal.localPosition);
+                Gizmos.DrawLine(rootLocalPosition, defaultHandPose.GetFingers(side).index.proximal.localPosition);
+                Gizmos.DrawLine(rootLocalPosition, defaultHandPose.GetFingers(side).middle.proximal.localPosition);
+                Gizmos.DrawLine(rootLocalPosition, defaultHandPose.GetFingers(side).ring.proximal.localPosition);
+                Gizmos.DrawLine(rootLocalPosition, defaultHandPose.GetFingers(side).little.proximal.localPosition);
+                Gizmos.color = Common.HueColourValue(HueColorName.Orange);
+                GizmoDrawFinger(defaultHandPose.GetFingers(side).thumb, null, gripMatrix);
+                GizmoDrawFinger(defaultHandPose.GetFingers(side).index, null, gripMatrix);
+                GizmoDrawFinger(defaultHandPose.GetFingers(side).middle, null, gripMatrix);
+                GizmoDrawFinger(defaultHandPose.GetFingers(side).ring, null, gripMatrix);
+                GizmoDrawFinger(defaultHandPose.GetFingers(side).little, null, gripMatrix);
             }
         }
 
