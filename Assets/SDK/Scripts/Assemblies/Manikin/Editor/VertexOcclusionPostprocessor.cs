@@ -276,5 +276,10 @@ namespace ThunderRoad.Manikin
                 }
             }
         }
+
+        public override uint GetVersion()
+        {
+            return 1u;
+        }
     }
 }

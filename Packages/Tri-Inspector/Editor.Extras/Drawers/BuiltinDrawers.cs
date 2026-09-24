@@ -100,6 +100,10 @@ namespace TriInspector.Drawers
     {
         protected override Enum OnValueGUI(Rect position, GUIContent label, Enum value)
         {
+            if (value.GetType().IsDefined(typeof(FlagsAttribute), false))
+            {
+                return EditorGUI.EnumFlagsField(position, label, value);
+            }
             return EditorGUI.EnumPopup(position, label, value);
         }
     }

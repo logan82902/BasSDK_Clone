@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Runtime.Serialization;
 using TriInspector;
 using UnityEditor;
@@ -15,7 +16,8 @@ namespace ThunderRoad
         {
             get
             {
-                var instance = AssetDatabase.LoadAssetAtPath<CatalogFavouritesSO>("Assets/Personal/catalog_favourites.asset");
+                var filePath = "Assets/Personal/catalog_favourites.asset";
+                var instance = AssetDatabase.LoadAssetAtPath<CatalogFavouritesSO>(filePath);
                 if (instance != null)
                 {
                     return instance;
@@ -23,7 +25,12 @@ namespace ThunderRoad
                 
                 instance = CreateInstance<CatalogFavouritesSO>();
                 instance.favourites = new CatalogFavouriteMap();
-                AssetDatabase.CreateAsset(instance, "Assets/Personal/catalog_favourites.asset");
+
+                string directoryName = Path.GetDirectoryName(filePath);
+                if (!Directory.Exists(directoryName))
+                    Directory.CreateDirectory(directoryName);
+
+                AssetDatabase.CreateAsset(instance, filePath);
                 AssetDatabase.SaveAssets();
 
                 return instance;

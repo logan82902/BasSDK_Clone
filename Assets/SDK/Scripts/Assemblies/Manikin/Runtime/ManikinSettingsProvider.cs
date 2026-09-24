@@ -8,10 +8,9 @@ using UnityEditor;
 namespace ThunderRoad.Manikin
 {
     // Create a new type of Settings asset.
-    public class ManikinSettingsProvider : ScriptableObject
+    [FilePath("Assets/SDK/Config/ThunderRoad/ManikinSettings.asset", FilePathAttribute.Location.ProjectFolder)]
+    public class ManikinSettingsProvider : ScriptableSingleton<ManikinSettingsProvider>
     {
-        public static readonly string[] k_ManikinSettingsPaths = { "Assets/Editor/ManikinSettings.asset" };
-
         [System.Serializable]
         public enum VectorChannel { X,Y,Z,W }
 
@@ -62,37 +61,7 @@ namespace ThunderRoad.Manikin
 
         public static ManikinSettingsProvider GetSettings()
         {
-            ManikinSettingsProvider settings = null;
-
-            string loadpath = EditorPrefs.GetString("ManikinSettingsProviderPath", "");
-            if(!string.IsNullOrEmpty(loadpath))
-            {
-                settings = AssetDatabase.LoadAssetAtPath<ManikinSettingsProvider>(loadpath);
-            }
-
-            if (settings == null)
-            {
-                for (int i = 0; i < k_ManikinSettingsPaths.Length; i++)
-                {
-                    settings = AssetDatabase.LoadAssetAtPath<ManikinSettingsProvider>(k_ManikinSettingsPaths[i]);
-                    if (settings != null)
-                        break;
-                }
-            }
-
-            if (settings == null)
-            {
-                string[] results = AssetDatabase.FindAssets("ManikinSettings t:ManikinSettingsProvider", null);
-                if(results.Length > 0)
-                {
-                    string path = AssetDatabase.GUIDToAssetPath(results[0]);
-                    settings = AssetDatabase.LoadAssetAtPath<ManikinSettingsProvider>(path);
-
-                    EditorPrefs.SetString("ManikinSettingsProviderPath", path);
-                }
-            }
-
-            return settings;
+            return ManikinSettingsProvider.instance;
         }
 
         internal static ManikinSettingsProvider GetOrCreateSettings()
@@ -103,9 +72,9 @@ namespace ThunderRoad.Manikin
             {
                 Debug.LogWarning("Creating new manikin settings...");
                 settings = ScriptableObject.CreateInstance<ManikinSettingsProvider>();
-                AssetDatabase.CreateAsset(settings, k_ManikinSettingsPaths[0]);
+                var manikinSettingsPath = ManikinSettingsProvider.GetFilePath();
+                AssetDatabase.CreateAsset(settings, manikinSettingsPath);
                 AssetDatabase.SaveAssets();
-                EditorPrefs.SetString("ManikinSettingsProviderPath", k_ManikinSettingsPaths[0]);
             }
             return settings;
         }

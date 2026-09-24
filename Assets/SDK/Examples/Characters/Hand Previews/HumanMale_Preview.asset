@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41d9b18bab0c84749a30eef1ea66db8b, type: 3}
+  m_Name: HumanMale_Preview
+  m_EditorClassIdentifier: 
+  creatureId: HumanMale
+  previewPrefabLeft: {fileID: 4133321019778321294, guid: 3c7622fa3306f634d930c4da5271af0b,
+    type: 3}
+  previewPrefabRight: {fileID: 9086189532749437487, guid: d738e76daa1a7f540b0439df4f4ef8b7,
+    type: 3}
