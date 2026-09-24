@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 namespace ThunderRoad
 {
+    /// <summary>Custom inspector for <see cref="Item"/> that shows critical configuration errors above the TriInspector core and collapsible warnings below it.</summary>
     [CustomEditor(typeof(Item))]
     public class ItemDefInspector : ThunderInspector
     {
@@ -13,6 +14,7 @@ namespace ThunderRoad
         private List<Item.ItemProblem> currentIssues;
         private int majorIssueCount = 0;
 
+        /// <inheritdoc/>
         protected override void OnDisablePostDispose()
         {
             if (target)
@@ -22,6 +24,7 @@ namespace ThunderRoad
             }
         }
 
+        /// <inheritdoc/>
         protected override void OnCreateGUIPreCoreElement()
         {
             Item item = (Item)target;
@@ -35,6 +38,7 @@ namespace ThunderRoad
             }
         }
 
+        /// <inheritdoc/>
         protected override void OnCreateGUIPostCoreElement()
         {
             int warningCount = currentIssues.Count - majorIssueCount;
@@ -69,7 +73,8 @@ namespace ThunderRoad
             Item item = (Item)target;
             if (item.showCoMHandle)
             {
-                item.customCenterOfMass = Handles.DoPositionHandle(item.customCenterOfMass, Quaternion.LookRotation(item.transform.forward, item.transform.up));
+                Vector3 worldSpaceCoM = Handles.DoPositionHandle(item.transform.TransformPoint(item.customCenterOfMass), Quaternion.LookRotation(item.transform.forward, item.transform.up));
+                item.customCenterOfMass = item.transform.InverseTransformPoint(worldSpaceCoM);
                 item.GetComponent<Rigidbody>().centerOfMass = item.customCenterOfMass;
             }
         }
