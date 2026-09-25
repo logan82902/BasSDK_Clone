@@ -10,6 +10,7 @@ using TriInspector;
 namespace ThunderRoad
 {
     [HelpURL("https://kospy.github.io/BasSDK/Components/ThunderRoad/Items/HandlePose.html")]
+    [ExecuteInEditMode]
 	public class HandlePose : MonoBehaviour
     {
         [Tooltip("References the handle this handpose is attached to.")]
@@ -58,6 +59,8 @@ namespace ThunderRoad
 
         private void Start()
         {
+            if (!Application.isPlaying) return;
+            
             LoadHandPosesData();
         }
 
@@ -275,7 +278,7 @@ namespace ThunderRoad
            foreach (var selection in UnityEditor.Selection.gameObjects)
            {
                isSelfSelected |= selection == gameObject;
-               isHandleSelected |= selection == handle.gameObject;
+                isHandleSelected |= handle != null && selection == handle.gameObject;
            }
            // only show the actual hand renderer if mesh preview mode is enabled and it is selected
            if (previewInstance != null)
@@ -295,16 +298,20 @@ namespace ThunderRoad
 
             if (defaultHandPoseData == null || defaultHandPoseData.id != defaultHandPoseId)
             {
-                defaultHandPoseData = Catalog.GetData<HandPoseData>(defaultHandPoseId);
+                HandPoseData handPoseData = Catalog.GetData<HandPoseData>(defaultHandPoseId);
+                if (defaultHandPoseData != handPoseData)
+                    hasDataChanged = true;
+                defaultHandPoseData = handPoseData;
                 if (defaultHandPoseData != null) defaultHandPose = defaultHandPoseData.GetCreaturePose(creatureName);
-                hasDataChanged = true;
             }
 
             if (targetHandPoseData == null || targetHandPoseData.id != targetHandPoseId)
             {
-                targetHandPoseData = Catalog.GetData<HandPoseData>(targetHandPoseId);
+                HandPoseData handPoseData = Catalog.GetData<HandPoseData>(targetHandPoseId);
+                if (targetHandPoseData != handPoseData)
+                    hasDataChanged = true;
+                targetHandPoseData = handPoseData;
                 if (targetHandPoseData != null) targetHandPose = targetHandPoseData.GetCreaturePose(creatureName);
-                hasDataChanged = true;
             }
 
             if (!handle) handle = GetComponentInParent<Handle>();
